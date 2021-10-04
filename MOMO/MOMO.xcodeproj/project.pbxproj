@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19A3C617A274ADEA10B675C9 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A1B483BF6D0A7149575FD2 /* Pods_MOMO.framework */; };
+		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
+		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
+		DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */; };
+		DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C3270B4A2100699DA1 /* SceneDelegate.swift */; };
+		DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD43E8CA270B4A2300699DA1 /* Assets.xcassets */; };
+		DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD43E8CC270B4A2300699DA1 /* LaunchScreen.storyboard */; };
+		DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD43E8DE270B4C0100699DA1 /* Colors.xcassets */; };
+		DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8E0270B4E3500699DA1 /* MomoBaseTextField.swift */; };
+		DD43E8E3270B4E5100699DA1 /* MomoBaseSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8E2270B4E5100699DA1 /* MomoBaseSearchField.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A236BE73BA856FFDEC6E432 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
+		7F5F76FD2595853B883A9B8F /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
+		A8A1B483BF6D0A7149575FD2 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		DD43E8BE270B4A2100699DA1 /* MOMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DD43E8C3270B4A2100699DA1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DD43E8CA270B4A2300699DA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD43E8CD270B4A2300699DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DD43E8CF270B4A2300699DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD43E8DE270B4C0100699DA1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		DD43E8E0270B4E3500699DA1 /* MomoBaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoBaseTextField.swift; sourceTree = "<group>"; };
+		DD43E8E2270B4E5100699DA1 /* MomoBaseSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoBaseSearchField.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DD43E8BB270B4A2100699DA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19A3C617A274ADEA10B675C9 /* Pods_MOMO.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4511B2DE3F3AA173043E038C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F5F76FD2595853B883A9B8F /* Pods-MOMO.debug.xcconfig */,
+				1A236BE73BA856FFDEC6E432 /* Pods-MOMO.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		784C5CCB4490CBCAFD57490E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8A1B483BF6D0A7149575FD2 /* Pods_MOMO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD1356FB270B53C4003BAB4A /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */,
+			);
+			name = Generated;
+			path = MOMO/Support/Generated;
+			sourceTree = SOURCE_ROOT;
+			usesTabs = 0;
+		};
+		DD43E8B5270B4A2100699DA1 = {
+			isa = PBXGroup;
+			children = (
+				DD1356F9270B526A003BAB4A /* swiftgen.yml */,
+				DD43E8C0270B4A2100699DA1 /* MOMO */,
+				DD43E8BF270B4A2100699DA1 /* Products */,
+				4511B2DE3F3AA173043E038C /* Pods */,
+				784C5CCB4490CBCAFD57490E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DD43E8BF270B4A2100699DA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD43E8BE270B4A2100699DA1 /* MOMO.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD43E8C0270B4A2100699DA1 /* MOMO */ = {
+			isa = PBXGroup;
+			children = (
+				DD43E8D7270B4B0600699DA1 /* Global */,
+				DD43E8D6270B4AC800699DA1 /* Screen */,
+				DD43E8D5270B4A3A00699DA1 /* Support */,
+			);
+			path = MOMO;
+			sourceTree = "<group>";
+		};
+		DD43E8D5270B4A3A00699DA1 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DD1356FB270B53C4003BAB4A /* Generated */,
+				DD43E8C3270B4A2100699DA1 /* SceneDelegate.swift */,
+				DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */,
+				DD43E8CC270B4A2300699DA1 /* LaunchScreen.storyboard */,
+				DD43E8CA270B4A2300699DA1 /* Assets.xcassets */,
+				DD43E8DE270B4C0100699DA1 /* Colors.xcassets */,
+				DD43E8CF270B4A2300699DA1 /* Info.plist */,
+			);
+			name = Support;
+			path = MOMO/Support;
+			sourceTree = SOURCE_ROOT;
+		};
+		DD43E8D6270B4AC800699DA1 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				DD43E8EA270B4F2600699DA1 /* MyInfo */,
+				DD43E8E9270B4F0E00699DA1 /* Community */,
+				DD43E8E8270B4EFC00699DA1 /* Policy */,
+				DD43E8E7270B4EE100699DA1 /* Diary */,
+				DD43E8E6270B4ECB00699DA1 /* Tabs */,
+				DD43E8E5270B4EBE00699DA1 /* Home */,
+				DD43E8E4270B4EA700699DA1 /* Login */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		DD43E8D7270B4B0600699DA1 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				DD43E8DD270B4B7700699DA1 /* Service */,
+				DD43E8DB270B4B6800699DA1 /* Protocol */,
+				DD43E8DA270B4B5C00699DA1 /* Model */,
+				DD43E8D9270B4B4D00699DA1 /* Custom */,
+				DD43E8D8270B4B3600699DA1 /* Extension */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		DD43E8D8270B4B3600699DA1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DD43E8D9270B4B4D00699DA1 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				DD43E8E0270B4E3500699DA1 /* MomoBaseTextField.swift */,
+				DD43E8E2270B4E5100699DA1 /* MomoBaseSearchField.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		DD43E8DA270B4B5C00699DA1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD43E8DB270B4B6800699DA1 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		DD43E8DD270B4B7700699DA1 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		DD43E8E4270B4EA700699DA1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DD43E8E5270B4EBE00699DA1 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DD43E8E6270B4ECB00699DA1 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		DD43E8E7270B4EE100699DA1 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		DD43E8E8270B4EFC00699DA1 /* Policy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Policy;
+			sourceTree = "<group>";
+		};
+		DD43E8E9270B4F0E00699DA1 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		DD43E8EA270B4F2600699DA1 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DD43E8BD270B4A2100699DA1 /* MOMO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD43E8D2270B4A2300699DA1 /* Build configuration list for PBXNativeTarget "MOMO" */;
+			buildPhases = (
+				D14AEC1F23AAAC57E1DB7DC8 /* [CP] Check Pods Manifest.lock */,
+				DD43E8BA270B4A2100699DA1 /* Sources */,
+				DD43E8BB270B4A2100699DA1 /* Frameworks */,
+				DD43E8BC270B4A2100699DA1 /* Resources */,
+				DD1356F8270B51B8003BAB4A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MOMO;
+			productName = MOMO;
+			productReference = DD43E8BE270B4A2100699DA1 /* MOMO.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DD43E8B6270B4A2100699DA1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					DD43E8BD270B4A2100699DA1 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = DD43E8B9270B4A2100699DA1 /* Build configuration list for PBXProject "MOMO" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DD43E8B5270B4A2100699DA1;
+			productRefGroup = DD43E8BF270B4A2100699DA1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DD43E8BD270B4A2100699DA1 /* MOMO */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DD43E8BC270B4A2100699DA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
+				DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */,
+				DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */,
+				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D14AEC1F23AAAC57E1DB7DC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MOMO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD1356F8270B51B8003BAB4A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi \n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DD43E8BA270B4A2100699DA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */,
+				DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */,
+				DD43E8E3270B4E5100699DA1 /* MomoBaseSearchField.swift in Sources */,
+				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
+				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DD43E8CC270B4A2300699DA1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD43E8CD270B4A2300699DA1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DD43E8D0270B4A2300699DA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DD43E8D1270B4A2300699DA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DD43E8D3270B4A2300699DA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F5F76FD2595853B883A9B8F /* Pods-MOMO.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MOMO/Support/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.momstouch.MOMO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		DD43E8D4270B4A2300699DA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A236BE73BA856FFDEC6E432 /* Pods-MOMO.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MOMO/Support/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.momstouch.MOMO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DD43E8B9270B4A2100699DA1 /* Build configuration list for PBXProject "MOMO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD43E8D0270B4A2300699DA1 /* Debug */,
+				DD43E8D1270B4A2300699DA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD43E8D2270B4A2300699DA1 /* Build configuration list for PBXNativeTarget "MOMO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD43E8D3270B4A2300699DA1 /* Debug */,
+				DD43E8D4270B4A2300699DA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DD43E8B6270B4A2100699DA1 /* Project object */;
+}

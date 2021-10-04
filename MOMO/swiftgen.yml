@@ -1,0 +1,13 @@
+input_dir: MOMO/Support/
+output_dir: MOMO/Support/Generated
+
+xcassets:
+  inputs:
+    - Assets.xcassets
+    - Colors.xcassets
+  # 3
+  outputs:
+    # 4
+    templateName: swift5
+    # 5
+    output: XCAssets+Generated.swift
