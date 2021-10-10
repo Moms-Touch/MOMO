@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		177027F6A5C26090F148C286 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F0D2C52861F050C637C774 /* Pods_MOMO.framework */; };
+		28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC6332712C11A00C10B32 /* StoryboardInstantiable.swift */; };
+		28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC6352712C15B00C10B32 /* NibInstantiatable.swift */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
 		DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		067D968B7E83B11BF2A83FB4 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
+		28FEC6332712C11A00C10B32 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
+		28FEC6352712C15B00C10B32 /* NibInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiatable.swift; sourceTree = "<group>"; };
 		62FA676ADB3D1FAE45FB1857 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
 		87F0D2C52861F050C637C774 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		DD43E8DB270B4B6800699DA1 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				28FEC6332712C11A00C10B32 /* StoryboardInstantiable.swift */,
+				28FEC6352712C15B00C10B32 /* NibInstantiatable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -368,7 +374,9 @@
 				DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */,
 				DD43E8E3270B4E5100699DA1 /* MomoBaseSearchField.swift in Sources */,
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
+				28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */,
 				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
+				28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
