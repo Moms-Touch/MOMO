@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		177027F6A5C26090F148C286 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F0D2C52861F050C637C774 /* Pods_MOMO.framework */; };
 		28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC6332712C11A00C10B32 /* StoryboardInstantiable.swift */; };
 		28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC6352712C15B00C10B32 /* NibInstantiatable.swift */; };
+		6FF7CCABF915F7BACA19704F /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D8A3CE6B6EDDF0DB7962F /* Pods_MOMO.framework */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
 		DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */; };
@@ -22,11 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		067D968B7E83B11BF2A83FB4 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
+		218D8A3CE6B6EDDF0DB7962F /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FEC6332712C11A00C10B32 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		28FEC6352712C15B00C10B32 /* NibInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiatable.swift; sourceTree = "<group>"; };
-		62FA676ADB3D1FAE45FB1857 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
-		87F0D2C52861F050C637C774 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4584A62DE06449299FBDE89F /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		DD43E8BE270B4A2100699DA1 /* MOMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +37,7 @@
 		DD43E8DE270B4C0100699DA1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		DD43E8E0270B4E3500699DA1 /* MomoBaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoBaseTextField.swift; sourceTree = "<group>"; };
 		DD43E8E2270B4E5100699DA1 /* MomoBaseSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoBaseSearchField.swift; sourceTree = "<group>"; };
+		DE315F7B057862286DD0C609 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,28 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				177027F6A5C26090F148C286 /* Pods_MOMO.framework in Frameworks */,
+				6FF7CCABF915F7BACA19704F /* Pods_MOMO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4379B222A47CA89F6944A1CF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				87F0D2C52861F050C637C774 /* Pods_MOMO.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		4511B2DE3F3AA173043E038C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				62FA676ADB3D1FAE45FB1857 /* Pods-MOMO.debug.xcconfig */,
-				067D968B7E83B11BF2A83FB4 /* Pods-MOMO.release.xcconfig */,
+				4584A62DE06449299FBDE89F /* Pods-MOMO.debug.xcconfig */,
+				DE315F7B057862286DD0C609 /* Pods-MOMO.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A5209722D4DB90993D72463D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				218D8A3CE6B6EDDF0DB7962F /* Pods_MOMO.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DD1356FB270B53C4003BAB4A /* Generated */ = {
@@ -86,7 +86,7 @@
 				DD43E8C0270B4A2100699DA1 /* MOMO */,
 				DD43E8BF270B4A2100699DA1 /* Products */,
 				4511B2DE3F3AA173043E038C /* Pods */,
-				4379B222A47CA89F6944A1CF /* Frameworks */,
+				A5209722D4DB90993D72463D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,12 +244,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD43E8D2270B4A2300699DA1 /* Build configuration list for PBXNativeTarget "MOMO" */;
 			buildPhases = (
-				00EE9518C912C66811C145A3 /* [CP] Check Pods Manifest.lock */,
+				09CC14A012BE3B4ABF7B4438 /* [CP] Check Pods Manifest.lock */,
 				DD43E8BA270B4A2100699DA1 /* Sources */,
 				DD43E8BB270B4A2100699DA1 /* Frameworks */,
 				DD43E8BC270B4A2100699DA1 /* Resources */,
 				DD1356F8270B51B8003BAB4A /* ShellScript */,
-				B88842B3502C49EB315780C7 /* [CP] Embed Pods Frameworks */,
+				0C602195014DE94FB1640C38 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -307,7 +307,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00EE9518C912C66811C145A3 /* [CP] Check Pods Manifest.lock */ = {
+		09CC14A012BE3B4ABF7B4438 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -329,7 +329,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B88842B3502C49EB315780C7 /* [CP] Embed Pods Frameworks */ = {
+		0C602195014DE94FB1640C38 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -512,7 +512,7 @@
 		};
 		DD43E8D3270B4A2300699DA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62FA676ADB3D1FAE45FB1857 /* Pods-MOMO.debug.xcconfig */;
+			baseConfigurationReference = 4584A62DE06449299FBDE89F /* Pods-MOMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -532,7 +532,7 @@
 		};
 		DD43E8D4270B4A2300699DA1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 067D968B7E83B11BF2A83FB4 /* Pods-MOMO.release.xcconfig */;
+			baseConfigurationReference = DE315F7B057862286DD0C609 /* Pods-MOMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
