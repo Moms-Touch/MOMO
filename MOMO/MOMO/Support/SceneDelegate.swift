@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window = UIWindow(windowScene: windowScene)
     if !isLogged {
        //로그인화면으로 ㄲ
-        window?.rootViewController = LoginViweController()
+        window?.rootViewController = LoginViewController.loadFromStoryboard()
         
     } else {
       //홈탭으로 ㄲ

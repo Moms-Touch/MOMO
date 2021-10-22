@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LoginViweController: UIViewController {
+class LoginViewController: UIViewController, StoryboardInstantiable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
