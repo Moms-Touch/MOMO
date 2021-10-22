@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class Login: UIViewController {
+class LoginViweController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

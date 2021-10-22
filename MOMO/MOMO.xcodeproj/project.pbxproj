@@ -10,7 +10,8 @@
 		2248C99DA96B723103086AF5 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CDFD00A12096F5E3D4A9C3D /* Pods_MOMO.framework */; };
 		28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC6332712C11A00C10B32 /* StoryboardInstantiable.swift */; };
 		28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC6352712C15B00C10B32 /* NibInstantiatable.swift */; };
-		75321FF52712C9800035F772 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75321FF42712C97F0035F772 /* Login.swift */; };
+		75321FF52712C9800035F772 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75321FF42712C97F0035F772 /* LoginViewController.swift */; };
+		75CAC4A727227F77009A7F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75CAC4A627227F77009A7F14 /* Login.storyboard */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
 		DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */; };
@@ -28,7 +29,8 @@
 		5CCADEE432D72AC0228BF4C2 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
 		5CDFD00A12096F5E3D4A9C3D /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D21E588CC47968B5580FC6 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
-		75321FF42712C97F0035F772 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		75321FF42712C97F0035F772 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		75CAC4A627227F77009A7F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		DD43E8BE270B4A2100699DA1 /* MOMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,7 +195,8 @@
 		DD43E8E4270B4EA700699DA1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				75321FF42712C97F0035F772 /* Login.swift */,
+				75321FF42712C97F0035F772 /* LoginViewController.swift */,
+				75CAC4A627227F77009A7F14 /* Login.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
 				DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */,
 				DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */,
+				75CAC4A727227F77009A7F14 /* Login.storyboard in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,7 +384,7 @@
 				28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */,
 				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
 				28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */,
-				75321FF52712C9800035F772 /* Login.swift in Sources */,
+				75321FF52712C9800035F772 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
