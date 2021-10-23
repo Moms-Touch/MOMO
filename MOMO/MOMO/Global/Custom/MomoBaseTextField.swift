@@ -23,8 +23,10 @@ final class MomoBaseTextField: UITextField {
     
     private func applyMoMoDesign() {
         self.borderStyle = .none
-        self.layer.cornerRadius = self.frame.height / 2
+        self.layer.cornerRadius = figMaDefinedHeightValue / 2
         self.layer.borderWidth = 1
+        self.backgroundColor = .white
+        self.setBorderColor(to: .white)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightAnchor.constraint(equalToConstant: figMaDefinedHeightValue).isActive = true
         self.widthAnchor.constraint(equalToConstant: figMaDefinedWidthValue).isActive = true
