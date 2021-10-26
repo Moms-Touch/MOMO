@@ -14,6 +14,7 @@ class LoginViewController: UIViewController, StoryboardInstantiable {
     var passwordTextField = MomoBaseTextField(frame: CGRect())
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var passButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,21 +45,9 @@ class LoginViewController: UIViewController, StoryboardInstantiable {
             make.top.equalTo(loginButton).offset(79)
             make.leading.equalTo(idTextField)
         }
-        
-//
-//        NSLayoutConstraint.activate([idTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 39),
-//                                     idTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 369)])
+        passButton.snp.makeConstraints { make in
+            make.top.equalTo(signUpButton).offset(82)
+            make.centerX.equalToSuperview()
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

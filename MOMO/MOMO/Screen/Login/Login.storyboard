@@ -45,6 +45,14 @@
                                     <color key="baseForegroundColor" name="Pink4"/>
                                 </buttonConfiguration>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2V-lX-weM">
+                                <rect key="frame" x="142" y="745" width="130" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="가입없이 둘러보기">
+                                    <color key="baseForegroundColor" systemColor="systemGray2Color"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -57,6 +65,7 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="f3P-Ve-OxF" id="z1c-5K-YfW"/>
+                        <outlet property="passButton" destination="G2V-lX-weM" id="UwQ-fL-cs4"/>
                         <outlet property="signUpButton" destination="Afn-T5-O3z" id="E3d-0y-0Kp"/>
                     </connections>
                 </viewController>
@@ -75,6 +84,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
