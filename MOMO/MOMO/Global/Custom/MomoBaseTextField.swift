@@ -11,6 +11,11 @@ final class MomoBaseTextField: UITextField {
     private let figMaDefinedWidthValue: CGFloat = 295
     private let figMaDefinedHeightValue: CGFloat = 47
     
+    init() {
+        super.init(frame: CGRect())
+        applyMoMoDesign()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         applyMoMoDesign()
@@ -28,6 +33,7 @@ final class MomoBaseTextField: UITextField {
         self.backgroundColor = .white
         self.setBorderColor(to: .white)
         self.translatesAutoresizingMaskIntoConstraints = false
+//        self.textRect(forBounds: CGRE)
         self.heightAnchor.constraint(equalToConstant: figMaDefinedHeightValue).isActive = true
         self.widthAnchor.constraint(equalToConstant: figMaDefinedWidthValue).isActive = true
     }

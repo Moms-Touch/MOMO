@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 
-class LoginViewController: UIViewController, StoryboardInstantiable {
+class LoginViewController: UIViewController {
     
-    var idTextField = MomoBaseTextField(frame: CGRect())
-    var passwordTextField = MomoBaseTextField(frame: CGRect())
+    private let idTextField = MomoBaseTextField()
+    private let passwordTextField = MomoBaseTextField()
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var passButton: UIButton!
@@ -22,14 +22,14 @@ class LoginViewController: UIViewController, StoryboardInstantiable {
         // Do any additional setup after loading the view.
     }
     
-    func addView() {
+    private func addView() {
         view.addSubview(idTextField)
         view.addSubview(passwordTextField)
         
-        idTextField.snp.makeConstraints { (make) -> Void in
+        idTextField.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
-        passwordTextField.snp.makeConstraints { (make) -> Void in
+        passwordTextField.snp.makeConstraints { make in
             make.top.equalTo(idTextField).offset(66)
             make.leading.equalTo(idTextField)
         }
@@ -51,3 +51,5 @@ class LoginViewController: UIViewController, StoryboardInstantiable {
         }
     }
 }
+
+extension LoginViewController: StoryboardInstantiable { }

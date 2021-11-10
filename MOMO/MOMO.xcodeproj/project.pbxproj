@@ -11,6 +11,8 @@
 		28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC6332712C11A00C10B32 /* StoryboardInstantiable.swift */; };
 		28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC6352712C15B00C10B32 /* NibInstantiatable.swift */; };
 		75321FF52712C9800035F772 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75321FF42712C97F0035F772 /* LoginViewController.swift */; };
+		756E17AE272D70FF004C7CF8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756E17AD272D70FF004C7CF8 /* SignUpViewController.swift */; };
+		756E17B0272D7130004C7CF8 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 756E17AF272D7130004C7CF8 /* SignUp.storyboard */; };
 		75CAC4A727227F77009A7F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75CAC4A627227F77009A7F14 /* Login.storyboard */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
@@ -30,6 +32,8 @@
 		5CDFD00A12096F5E3D4A9C3D /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D21E588CC47968B5580FC6 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		75321FF42712C97F0035F772 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		756E17AD272D70FF004C7CF8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		756E17AF272D7130004C7CF8 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		75CAC4A627227F77009A7F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 			children = (
 				75321FF42712C97F0035F772 /* LoginViewController.swift */,
 				75CAC4A627227F77009A7F14 /* Login.storyboard */,
+				756E17AD272D70FF004C7CF8 /* SignUpViewController.swift */,
+				756E17AF272D7130004C7CF8 /* SignUp.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 			files = (
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
 				DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */,
+				756E17B0272D7130004C7CF8 /* SignUp.storyboard in Resources */,
 				DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */,
 				75CAC4A727227F77009A7F14 /* Login.storyboard in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
@@ -383,6 +390,7 @@
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
 				28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */,
 				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
+				756E17AE272D70FF004C7CF8 /* SignUpViewController.swift in Sources */,
 				28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */,
 				75321FF52712C9800035F772 /* LoginViewController.swift in Sources */,
 			);
