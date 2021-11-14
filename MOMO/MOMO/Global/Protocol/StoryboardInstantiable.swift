@@ -9,32 +9,50 @@ import UIKit
 
 protocol StoryboardInstantiable: AnyObject {
   
+  /*
+   Name of Storyboard file.
+   You can simply custom this property if error occurs with synthesized impelmentation.
+   */
+  
+  static var storyboardName: String { get }
+  
+  /*
+   Identifier of a ViewController in a Storyboard file
+   */
+  
+  static var storyboardIdentifier: String { get }
+  
+  /*
+   Returns an instance of ViewController from given identifier initiated with Storyboard UI Settings.
+   */
+  
   static func loadFromStoryboard() -> UIViewController
 }
 
 extension StoryboardInstantiable {
-  
-  /// 우리 팀은 Storyboard 의 작명규칙을
-  /// ViewController 를 제외한 이름으로 정하기로 결정했다.
-  static var fileName: String {
+
+  static var storyboardName: String {
     
     let className = String(describing: self)
     
-    // "ViewController".count is 14
-    return String(className.prefix(className.count - 14))
+    let classNameWithoutVC = className.replacingOccurrences(of: "ViewController", with: "")
+    
+    let classNameWithoutTable = classNameWithoutVC.replacingOccurrences(of: "Table", with: "")
+    
+    return classNameWithoutTable
   }
   
   static var storyboardIdentifier: String {
-    
+
     return String(describing: self)
   }
   
   static func loadFromStoryboard() -> UIViewController {
     
-    let storyboard = UIStoryboard(name: Self.fileName, bundle: nil)
+    let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
     
-    let homeMainVC = storyboard.instantiateViewController(identifier: Self.storyboardIdentifier)
+    let viewControllerFromStoryboard = storyboard.instantiateViewController(identifier: storyboardIdentifier)
     
-    return homeMainVC
+    return viewControllerFromStoryboard
   }
 }
