@@ -1,4 +1,5 @@
 PODS:
+  - FSCalendar (2.8.2)
   - Kingfisher (7.0.0)
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
@@ -8,6 +9,7 @@ PODS:
   - SwiftLint (0.44.0)
 
 DEPENDENCIES:
+  - FSCalendar
   - Kingfisher (~> 7.0)
   - NVActivityIndicatorView
   - SnapKit (~> 5.0.0)
@@ -16,6 +18,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - FSCalendar
     - Kingfisher
     - NVActivityIndicatorView
     - SnapKit
@@ -23,12 +26,13 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   Kingfisher: 5efc54fec3980f92354898532e562cc17f31efb4
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftLint: e96c0a8c770c7ebbc4d36c55baf9096bb65c4584
 
-PODFILE CHECKSUM: 6454889505a6a6b69e5576e99b39a247e8ccb782
+PODFILE CHECKSUM: a30894ee1999e86bdb6675ee0f15982ecc02cae5
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.2

@@ -11,5 +11,6 @@ target 'MOMO' do
   pod 'Kingfisher', '~> 7.0'
   pod 'NVActivityIndicatorView'
   pod 'SwiftLint'	
+  pod 'FSCalendar'
 
 end
