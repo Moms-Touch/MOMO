@@ -15,8 +15,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var nextButtonConstraint: NSLayoutConstraint!
     
-    var bottomConstraint: CGFloat = 0
-    var isExistKeyboard = false
+    private var bottomConstant: CGFloat = 0
+    private var isExistKeyboard = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addView()
@@ -29,7 +30,6 @@ class SignUpViewController: UIViewController {
         passwordTextField.setBorderColor(to: UIColor(named: "Pink2")!)
         emailTextField.addLeftPadding()
         passwordTextField.addLeftPadding()
-        nextButton.heightAnchor.constraint(equalToConstant: 59).isActive = true
         nextButton.layer.cornerRadius  = 4
     }
     
@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController {
     @objc private func addKeyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             if !isExistKeyboard {
-                bottomConstraint = nextButtonConstraint.constant
+                bottomConstant = nextButtonConstraint.constant
                 nextButtonConstraint.constant = keyboardFrame.cgRectValue.height
                 isExistKeyboard = true
             }
@@ -57,7 +57,7 @@ class SignUpViewController: UIViewController {
     
     @objc private func addKeyboardWiilHide(_ notification: Notification) {
         if isExistKeyboard {
-            nextButtonConstraint.constant = bottomConstraint
+            nextButtonConstraint.constant = bottomConstant
             isExistKeyboard = false
         }
         
