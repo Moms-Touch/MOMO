@@ -9,7 +9,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-  var isLogged = false
+  var isLogged = true
   var window: UIWindow?
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,7 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     if !isLogged {
        //로그인화면으로 ㄲ
     } else {
-      //홈탭으로 ㄲ
+      guard let windowScene = (scene as? UIWindowScene) else { return }
+      let home = TabBar()
+      home.selectedIndex = 0
+      self.window?.rootViewController = home
+      window?.makeKeyAndVisible()
+      window?.windowScene = windowScene
     }
     self.window?.makeKeyAndVisible()
   }
