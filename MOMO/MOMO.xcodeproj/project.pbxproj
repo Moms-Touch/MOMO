@@ -16,6 +16,8 @@
 		75CAC4A727227F77009A7F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75CAC4A627227F77009A7F14 /* Login.storyboard */; };
 		75D6E603273FB7B1009950BA /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6E602273FB7B1009950BA /* LocationViewController.swift */; };
 		75D6E605273FB7BF009950BA /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D6E604273FB7BF009950BA /* Location.storyboard */; };
+		75D6E60727412079009950BA /* PregnantStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6E60627412079009950BA /* PregnantStatusViewController.swift */; };
+		75D6E6092741208C009950BA /* PregnantStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D6E6082741208C009950BA /* PregnantStatus.storyboard */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
 		DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */; };
@@ -39,6 +41,8 @@
 		75CAC4A627227F77009A7F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		75D6E602273FB7B1009950BA /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		75D6E604273FB7BF009950BA /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
+		75D6E60627412079009950BA /* PregnantStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PregnantStatusViewController.swift; sourceTree = "<group>"; };
+		75D6E6082741208C009950BA /* PregnantStatus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PregnantStatus.storyboard; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		DD43E8BE270B4A2100699DA1 /* MOMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +213,8 @@
 				756E17AF272D7130004C7CF8 /* SignUp.storyboard */,
 				75D6E602273FB7B1009950BA /* LocationViewController.swift */,
 				75D6E604273FB7BF009950BA /* Location.storyboard */,
+				75D6E60627412079009950BA /* PregnantStatusViewController.swift */,
+				75D6E6082741208C009950BA /* PregnantStatus.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -318,6 +324,7 @@
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
 				DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */,
 				756E17B0272D7130004C7CF8 /* SignUp.storyboard in Resources */,
+				75D6E6092741208C009950BA /* PregnantStatus.storyboard in Resources */,
 				DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */,
 				75D6E605273FB7BF009950BA /* Location.storyboard in Resources */,
 				75CAC4A727227F77009A7F14 /* Login.storyboard in Resources */,
@@ -399,6 +406,7 @@
 				75D6E603273FB7B1009950BA /* LocationViewController.swift in Sources */,
 				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
 				756E17AE272D70FF004C7CF8 /* SignUpViewController.swift in Sources */,
+				75D6E60727412079009950BA /* PregnantStatusViewController.swift in Sources */,
 				28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */,
 				75321FF52712C9800035F772 /* LoginViewController.swift in Sources */,
 			);

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pregnant Status View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="PregnantStatusViewController" id="Y6W-OH-hqX" customClass="PregnantStatusViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 상태는 ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgI-6M-abU">
+                                <rect key="frame" x="38" y="112.5" width="186" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상태에 맞는 정보를 추천드려요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPb-wx-J4j">
+                                <rect key="frame" x="38" y="159.5" width="239.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ib-CC-w5a">
+                                <rect key="frame" x="38" y="578" width="295" height="59"/>
+                                <color key="backgroundColor" name="Pink4"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="Ekl-hJ-cWE"/>
+                                    <constraint firstAttribute="width" constant="295" id="b2P-v5-dSU"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="모모 시작하기">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="출산예정일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gB9-Hq-lJd">
+                                <rect key="frame" x="40" y="295" width="295" height="18.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" name="Pink2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="아기이름 / 태명" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q4R-Mx-WDa">
+                                <rect key="frame" x="40" y="339.5" width="295" height="18.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" name="Pink2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVc-xG-y1R">
+                                <rect key="frame" x="88.5" y="232" width="48.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="임신">
+                                    <color key="baseForegroundColor" name="Pink4"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedPregnantButton" destination="Y6W-OH-hqX" eventType="touchUpInside" id="F71-T0-BtL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sk-Hh-e7b">
+                                <rect key="frame" x="238.5" y="232" width="48.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="출산">
+                                    <color key="baseForegroundColor" name="Pink4"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedBirthButton" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gMC-GP-VGf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aVc-xG-y1R" firstAttribute="top" secondItem="bPb-wx-J4j" secondAttribute="bottom" constant="48.5" id="0Yi-4C-h0e"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gB9-Hq-lJd" secondAttribute="trailing" constant="40" id="2SB-pe-HZ2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8ib-CC-w5a" secondAttribute="bottom" constant="30" id="8Fb-ZT-frH"/>
+                            <constraint firstItem="aVc-xG-y1R" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="0.6" id="HQR-Hi-SXv"/>
+                            <constraint firstItem="8ib-CC-w5a" firstAttribute="leading" secondItem="OgI-6M-abU" secondAttribute="leading" id="L1j-vX-mS3"/>
+                            <constraint firstItem="bPb-wx-J4j" firstAttribute="top" secondItem="OgI-6M-abU" secondAttribute="bottom" constant="5" id="M40-af-51I"/>
+                            <constraint firstItem="q4R-Mx-WDa" firstAttribute="top" secondItem="gB9-Hq-lJd" secondAttribute="bottom" constant="26" id="Owr-UX-600"/>
+                            <constraint firstItem="6sk-Hh-e7b" firstAttribute="top" secondItem="bPb-wx-J4j" secondAttribute="bottom" constant="48.5" id="R7O-Up-ks8"/>
+                            <constraint firstItem="OgI-6M-abU" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.4" id="Sov-92-j1A"/>
+                            <constraint firstItem="6sk-Hh-e7b" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="1.4" id="Vgy-KN-cTq"/>
+                            <constraint firstItem="gB9-Hq-lJd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="XS9-lN-SU1"/>
+                            <constraint firstItem="q4R-Mx-WDa" firstAttribute="leading" secondItem="gB9-Hq-lJd" secondAttribute="leading" id="bqA-Zy-OLf"/>
+                            <constraint firstItem="OgI-6M-abU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="j5T-1d-50y"/>
+                            <constraint firstItem="q4R-Mx-WDa" firstAttribute="trailing" secondItem="gB9-Hq-lJd" secondAttribute="trailing" id="qOd-gp-729"/>
+                            <constraint firstItem="bPb-wx-J4j" firstAttribute="leading" secondItem="OgI-6M-abU" secondAttribute="leading" id="vOb-wZ-bh8"/>
+                            <constraint firstItem="gB9-Hq-lJd" firstAttribute="top" secondItem="aVc-xG-y1R" secondAttribute="bottom" constant="32" id="xQM-mc-c4c"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="babyNameTextField" destination="q4R-Mx-WDa" id="pMH-7y-Ybo"/>
+                        <outlet property="birthButton" destination="6sk-Hh-e7b" id="NiB-sx-xJl"/>
+                        <outlet property="expectedBirthdayField" destination="gB9-Hq-lJd" id="1Rw-Lw-JRL"/>
+                        <outlet property="nextButton" destination="8ib-CC-w5a" id="g0I-ff-EJh"/>
+                        <outlet property="nextButtonBottomConstraint" destination="8Fb-ZT-frH" id="Pr6-cL-YXi"/>
+                        <outlet property="pregnantButton" destination="aVc-xG-y1R" id="enC-3e-MU6"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-316" y="72"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Pink2">
+            <color red="1" green="0.41176470588235292" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Pink4">
+            <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
