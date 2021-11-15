@@ -20,22 +20,27 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 // MARK: - Asset Catalogs
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-
-/**
-  Author: Woochan
-  typealias code to clarify Asset Usage
- */
-internal typealias Assets = Asset.Assets
-internal typealias Colors = Asset.Colors
-
-
 internal enum Asset {
   internal enum Assets {
     internal static let accentColor = ColorAsset(name: "AccentColor")
+    internal static let logo = ImageAsset(name: "Logo")
     internal static let splashImage = ImageAsset(name: "SplashImage")
+    internal static let bell = ImageAsset(name: "bell")
+    internal static let bookmark = ImageAsset(name: "bookmark")
+    internal static let mainBack = ImageAsset(name: "mainBack")
+    internal static let mainBackground = ImageAsset(name: "mainBackground")
+    internal static let recommendBtn = ImageAsset(name: "recommendBtn")
+    internal static let calendar = ImageAsset(name: "calendar")
+    internal static let calendarSelect = ImageAsset(name: "calendar_select")
+    internal static let home = ImageAsset(name: "home")
+    internal static let homeSelect = ImageAsset(name: "home_select")
+    internal static let people = ImageAsset(name: "people")
+    internal static let peopleSelect = ImageAsset(name: "people_select")
+    internal static let policy = ImageAsset(name: "policy")
+    internal static let policySelect = ImageAsset(name: "policy_select")
+    internal static let todayBtn = ImageAsset(name: "todayBtn")
   }
-  
-internal enum Colors {
+  internal enum Colors {
     internal static let _45 = ColorAsset(name: "45")
     internal static let _71 = ColorAsset(name: "71")
     internal static let pink1 = ColorAsset(name: "Pink1")
