@@ -8,8 +8,22 @@
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
+  
+  static let identifier = "ListTableCell"
+  
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var organizationLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel!
+  
+  private var data: SimpleListModel? {
+    didSet {
+      titleLabel.text = data?.title
+      organizationLabel.text = data?.organization
+      dateLabel.text = data?.date.toString()
+    }
+  }
+  
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
