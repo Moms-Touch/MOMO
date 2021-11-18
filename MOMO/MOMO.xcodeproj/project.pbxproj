@@ -93,6 +93,32 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		75B26EA82746900200D6C509 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75321FF42712C97F0035F772 /* LoginViewController.swift */,
+				756E17AD272D70FF004C7CF8 /* SignUpViewController.swift */,
+				75D6E602273FB7B1009950BA /* LocationViewController.swift */,
+				75D6E60627412079009950BA /* PregnantStatusViewController.swift */,
+				75D6E60A2741EFBF009950BA /* FindPasswordViewController.swift */,
+				75D6E60E27423CDC009950BA /* NewPasswordInputViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		75B26EA92746902C00D6C509 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				75CAC4A627227F77009A7F14 /* Login.storyboard */,
+				756E17AF272D7130004C7CF8 /* SignUp.storyboard */,
+				75D6E604273FB7BF009950BA /* Location.storyboard */,
+				75D6E6082741208C009950BA /* PregnantStatus.storyboard */,
+				75D6E60C2741EFD0009950BA /* FindPassword.storyboard */,
+				758E3B7F27424734006216C7 /* NewPasswordInput.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		DD1356FB270B53C4003BAB4A /* Generated */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,18 +241,8 @@
 		DD43E8E4270B4EA700699DA1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				75321FF42712C97F0035F772 /* LoginViewController.swift */,
-				75CAC4A627227F77009A7F14 /* Login.storyboard */,
-				756E17AD272D70FF004C7CF8 /* SignUpViewController.swift */,
-				756E17AF272D7130004C7CF8 /* SignUp.storyboard */,
-				75D6E602273FB7B1009950BA /* LocationViewController.swift */,
-				75D6E604273FB7BF009950BA /* Location.storyboard */,
-				75D6E60627412079009950BA /* PregnantStatusViewController.swift */,
-				75D6E6082741208C009950BA /* PregnantStatus.storyboard */,
-				75D6E60A2741EFBF009950BA /* FindPasswordViewController.swift */,
-				75D6E60C2741EFD0009950BA /* FindPassword.storyboard */,
-				75D6E60E27423CDC009950BA /* NewPasswordInputViewController.swift */,
-				758E3B7F27424734006216C7 /* NewPasswordInput.storyboard */,
+				75B26EA92746902C00D6C509 /* Storyboard */,
+				75B26EA82746900200D6C509 /* ViewController */,
 			);
 			path = Login;
 			sourceTree = "<group>";
