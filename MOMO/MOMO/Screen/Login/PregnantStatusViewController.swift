@@ -90,7 +90,6 @@ class PregnantStatusViewController: UIViewController {
             nextButtonBottomConstraint.constant = bottomConstant
             isExistKeyboard = false
         }
-        
     }
 }
 
