@@ -6,24 +6,28 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+class SettingWebViewController: UIViewController {
+  
+  static let identifier = "ShowSettingWebViewController"
+  
+  @IBOutlet weak var titleLabel: UILabel!
+  
+  @IBOutlet weak var webView: WKWebView!
+  
+  var targetURL: URL!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    let request = URLRequest(url: targetURL)
+    
+    webView.load(request)
+    titleLabel.text = self.title
+  }
+  
+  @IBAction func didTapDismissButton(_ sender: UIButton) {
+    self.dismiss(animated: true, completion: nil)
+  }
 }
