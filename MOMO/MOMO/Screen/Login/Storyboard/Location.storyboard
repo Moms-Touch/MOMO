@@ -24,8 +24,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-pr-eq4">
-                                <rect key="frame" x="38" y="773" width="67.5" height="59"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-pr-eq4" customClass="MomoBaseButton" customModule="MOMO" customModuleProvider="target">
+                                <rect key="frame" x="38" y="773" width="295" height="59"/>
                                 <color key="backgroundColor" name="Pink4"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="Nq2-r4-x9a"/>
@@ -37,7 +37,7 @@
                                 </buttonConfiguration>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="지역" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pro-a2-pE3" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="296.5" width="67.5" height="34"/>
+                                <rect key="frame" x="38" y="290" width="295" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -74,6 +74,11 @@
             <point key="canvasLocation" x="139" y="139"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Pro-a2-pE3">
+            <size key="intrinsicContentSize" width="52.5" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

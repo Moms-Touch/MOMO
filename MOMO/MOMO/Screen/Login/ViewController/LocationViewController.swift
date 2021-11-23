@@ -29,7 +29,6 @@ final class LocationViewController: UIViewController {
     private func setUpView() {
         LocationTextField.setBorderColor(to: Asset.Colors.pink2.color)
         LocationTextField.addLeftPadding()
-        nextButton.layer.cornerRadius  = 4
     }
     
     @objc private func clickDoneButton() {

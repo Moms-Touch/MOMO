@@ -49,7 +49,6 @@ final class FindPasswordViewController: UIViewController {
         emailTextField.setBorderColor(to: Asset.Colors.pink4.color)
         emailTextField.addLeftPadding()
         temporaryPasswordButton.alpha = 0.5
-        temporaryPasswordButton.layer.cornerRadius  = 4
     }
     
     private func addKeyboardObserver() {

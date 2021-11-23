@@ -15,6 +15,7 @@
 		756E17B0272D7130004C7CF8 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 756E17AF272D7130004C7CF8 /* SignUp.storyboard */; };
 		758E3B8027424734006216C7 /* NewPasswordInput.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758E3B7F27424734006216C7 /* NewPasswordInput.storyboard */; };
 		75BF66D7274CE212005974B9 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF66D6274CE212005974B9 /* UITextField.swift */; };
+		75BF66D9274D362D005974B9 /* MomoBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF66D8274D362D005974B9 /* MomoBaseButton.swift */; };
 		75CAC4A727227F77009A7F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75CAC4A627227F77009A7F14 /* Login.storyboard */; };
 		75D6E603273FB7B1009950BA /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6E602273FB7B1009950BA /* LocationViewController.swift */; };
 		75D6E605273FB7BF009950BA /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D6E604273FB7BF009950BA /* Location.storyboard */; };
@@ -45,6 +46,7 @@
 		756E17AF272D7130004C7CF8 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		758E3B7F27424734006216C7 /* NewPasswordInput.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPasswordInput.storyboard; sourceTree = "<group>"; };
 		75BF66D6274CE212005974B9 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		75BF66D8274D362D005974B9 /* MomoBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoBaseButton.swift; sourceTree = "<group>"; };
 		75CAC4A627227F77009A7F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		75D6E602273FB7B1009950BA /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		75D6E604273FB7BF009950BA /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				DD43E8E0270B4E3500699DA1 /* MomoBaseTextField.swift */,
 				DD43E8E2270B4E5100699DA1 /* MomoBaseSearchField.swift */,
+				75BF66D8274D362D005974B9 /* MomoBaseButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				75D6E603273FB7B1009950BA /* LocationViewController.swift in Sources */,
 				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
 				75BF66D7274CE212005974B9 /* UITextField.swift in Sources */,
+				75BF66D9274D362D005974B9 /* MomoBaseButton.swift in Sources */,
 				756E17AE272D70FF004C7CF8 /* SignUpViewController.swift in Sources */,
 				75D6E60727412079009950BA /* PregnantStatusViewController.swift in Sources */,
 				28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */,

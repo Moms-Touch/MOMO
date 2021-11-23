@@ -29,7 +29,6 @@ final class SignUpViewController: UIViewController {
         passwordTextField.setBorderColor(to: Asset.Colors.pink2.color)
         emailTextField.addLeftPadding()
         passwordTextField.addLeftPadding()
-        nextButton.layer.cornerRadius  = 4
     }
     
     private func addKeyboardObserver() {

@@ -57,7 +57,6 @@ final class PregnantStatusViewController: UIViewController {
     private func setUpView() {
         pregnantButton.definedButtonDesign()
         birthButton.definedButtonDesign()
-        nextButton.layer.cornerRadius  = 4
     }
     
     private func addKeyboardObserver() {
