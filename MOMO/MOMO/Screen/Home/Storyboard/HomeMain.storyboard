@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Vtj-m1-iDU">
-                                <rect key="frame" x="163.5" y="44" width="87" height="34"/>
+                                <rect key="frame" x="163.5" y="54" width="87" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="8SV-tA-wNA"/>
                                     <constraint firstAttribute="width" constant="87" id="QCk-N8-cvK"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKa-eB-caM">
-                                <rect key="frame" x="370" y="49" width="24" height="24"/>
+                                <rect key="frame" x="370" y="59" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="JMK-Qq-ZVk"/>
                                     <constraint firstAttribute="height" constant="24" id="V7y-GT-Fnf"/>
@@ -39,7 +40,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wfy-1u-fgY">
-                                <rect key="frame" x="20" y="49" width="24" height="24"/>
+                                <rect key="frame" x="20" y="59" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="G9H-FJ-n7Z"/>
                                     <constraint firstAttribute="width" constant="24" id="ygb-zv-cFD"/>
@@ -47,9 +48,12 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="" image="bookmark"/>
                                 <buttonConfiguration key="configuration" style="plain" image="bookmark" title=""/>
+                                <connections>
+                                    <action selector="didTapBookmarkListButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hUI-BS-7Rx"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjU-4I-xgI">
-                                <rect key="frame" x="0.0" y="99" width="414" height="26"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="26"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항 / 한부모가정센터알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iff-Vu-E4t">
                                         <rect key="frame" x="134.5" y="6" width="145.5" height="14.5"/>
@@ -94,34 +98,65 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-h2-mqL">
-                                <rect key="frame" x="146" y="378" width="123" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-h2-mqL">
+                                <rect key="frame" x="119" y="330" width="176" height="45"/>
+                                <color key="backgroundColor" red="0.61597608010000005" green="0.31984402680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="YyB-zQ-cBd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="tintColor" name="45"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="튼튼이랑 90일째">
+                                    <color key="titleColor" name="45"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapProfile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WCY-ed-1p7"/>
+                                </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lJe-gp-myE">
-                                <rect key="frame" x="87" y="242" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7N-2r-EST">
+                                <rect key="frame" x="134" y="194" width="146" height="146"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="lJe-gp-myE">
+                                        <rect key="frame" x="4" y="4" width="138" height="138"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lJe-gp-myE" secondAttribute="bottom" constant="4" id="LSN-jq-R4L"/>
+                                    <constraint firstItem="lJe-gp-myE" firstAttribute="leading" secondItem="i7N-2r-EST" secondAttribute="leading" constant="4" id="Oyj-ta-YSm"/>
+                                    <constraint firstItem="lJe-gp-myE" firstAttribute="top" secondItem="i7N-2r-EST" secondAttribute="top" constant="4" id="QZM-ks-Lf5"/>
+                                    <constraint firstAttribute="width" secondItem="i7N-2r-EST" secondAttribute="height" multiplier="1:1" id="tDa-YD-Sfx"/>
+                                    <constraint firstAttribute="trailing" secondItem="lJe-gp-myE" secondAttribute="trailing" constant="4" id="yf3-qH-pnq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vjU-4I-xgI" firstAttribute="top" secondItem="Vtj-m1-iDU" secondAttribute="bottom" constant="21" id="5PA-n3-sF8"/>
+                            <constraint firstItem="vjU-4I-xgI" firstAttribute="top" secondItem="Vtj-m1-iDU" secondAttribute="bottom" constant="10" id="5PA-n3-sF8"/>
+                            <constraint firstItem="i7N-2r-EST" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8Vo-3m-6qy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9Ei-lu-XKr" secondAttribute="trailing" constant="20" id="9Et-sL-0oa"/>
+                            <constraint firstItem="GYb-h2-mqL" firstAttribute="trailing" secondItem="i7N-2r-EST" secondAttribute="trailing" constant="15" id="AMU-ha-0YC"/>
                             <constraint firstItem="PKa-eB-caM" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="CEs-zJ-aK1"/>
                             <constraint firstItem="Wfy-1u-fgY" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="IVc-wL-3zS"/>
                             <constraint firstItem="vjU-4I-xgI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="P9l-M5-TYD"/>
                             <constraint firstItem="Wfy-1u-fgY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="QAq-OB-0wb"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PKa-eB-caM" secondAttribute="trailing" constant="20" id="WV3-4X-7VP"/>
+                            <constraint firstItem="GYb-h2-mqL" firstAttribute="leading" secondItem="i7N-2r-EST" secondAttribute="leading" constant="-15" id="Y0E-42-TQn"/>
+                            <constraint firstItem="lJe-gp-myE" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="1/3" id="YPa-yI-3Nl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vjU-4I-xgI" secondAttribute="trailing" id="Yrb-cq-0F3"/>
+                            <constraint firstItem="GYb-h2-mqL" firstAttribute="top" secondItem="i7N-2r-EST" secondAttribute="bottom" constant="-10" id="ZKH-KE-1Yn"/>
                             <constraint firstItem="Vtj-m1-iDU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="d8n-qD-aFj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9Ei-lu-XKr" secondAttribute="bottom" constant="20" id="lmD-Fe-CTX"/>
-                            <constraint firstItem="Vtj-m1-iDU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="sr3-ty-Rmm"/>
+                            <constraint firstItem="i7N-2r-EST" firstAttribute="top" secondItem="vjU-4I-xgI" secondAttribute="bottom" constant="70" id="mf7-vw-9xX"/>
+                            <constraint firstItem="Vtj-m1-iDU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="sr3-ty-Rmm"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="babyProfileImageView" destination="lJe-gp-myE" id="N3U-TK-htE"/>
+                        <outlet property="dateWithBabyButton" destination="GYb-h2-mqL" id="FoU-eS-67P"/>
+                        <outlet property="imageHuggingView" destination="i7N-2r-EST" id="gKg-ij-gMS"/>
                         <outlet property="noticeView" destination="vjU-4I-xgI" id="FO5-FG-z7v"/>
                     </connections>
                 </viewController>
@@ -136,6 +171,9 @@
         <image name="bookmark" width="24" height="24"/>
         <image name="recommendBtn" width="60" height="60"/>
         <image name="todayBtn" width="60" height="60"/>
+        <namedColor name="45">
+            <color red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
