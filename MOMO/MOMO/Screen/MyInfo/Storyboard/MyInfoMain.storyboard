@@ -31,12 +31,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRx-Dl-RZF">
+                                        <rect key="frame" x="16" y="11" width="13" height="22"/>
+                                        <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="chevron.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="didTapBackButton:" destination="Lvk-wN-PD4" eventType="touchUpInside" id="RIA-Tx-qOd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="KRx-Dl-RZF" firstAttribute="centerY" secondItem="5x1-T1-zTi" secondAttribute="centerY" id="Dqg-Bv-xgk"/>
                                     <constraint firstItem="5x1-T1-zTi" firstAttribute="centerY" secondItem="9Mh-Gm-7z6" secondAttribute="centerY" id="Prk-rI-m6M"/>
                                     <constraint firstAttribute="height" constant="44" id="bIe-pY-Q9U"/>
                                     <constraint firstItem="5x1-T1-zTi" firstAttribute="centerX" secondItem="9Mh-Gm-7z6" secondAttribute="centerX" id="fX9-HI-B50"/>
+                                    <constraint firstItem="KRx-Dl-RZF" firstAttribute="leading" secondItem="9Mh-Gm-7z6" secondAttribute="leading" constant="16" id="sHc-Pi-rhr"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibF-RB-4c8">
@@ -217,6 +227,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

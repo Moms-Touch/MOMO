@@ -14,6 +14,11 @@ class MyInfoMainViewController: UIViewController, StoryboardInstantiable {
     // Do any additional setup after loading the view.
   }
   
+  @IBAction func didTapBackButton(_ sender: Any) {
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+  
 }
 
 class MyInfoMainTableViewController: InfoBaseTableViewController {
@@ -43,4 +48,6 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
       return
     }
   }
+  
+  
 }
