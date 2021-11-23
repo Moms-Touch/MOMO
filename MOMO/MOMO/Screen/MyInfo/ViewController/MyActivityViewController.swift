@@ -7,23 +7,40 @@
 
 import UIKit
 
-class MyActivityViewController: UIViewController {
+class MyActivityViewController: UIViewController,StoryboardInstantiable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+  @IBAction func didTabBackButton(_ sender: UIButton) {
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+class MyActivityTableViewController: InfoBaseTableViewController {
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    if #available(iOS 15.0, *) {
+      tableView.sectionHeaderTopPadding = 0
     }
-    */
-
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    switch indexPath.row {
+    case 0: //MyPost
+      print("gotoMyPost")
+    case 1: //MyComment
+      print("gotoMyComment")
+    case 2: //LikeList
+      print("gotoLikeList")
+    case 3: // BookMarkList
+      print("gotoBookMarkList")
+    default:
+      return
+    }
+  }
+  
 }
