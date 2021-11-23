@@ -7,26 +7,27 @@
 
 import UIKit
 
-class NewPasswordInputViewController: UIViewController {
+final class NewPasswordInputViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: MomoBaseTextField!
-    @IBOutlet weak var passwordTextField: MomoBaseTextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var loginBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet private weak var emailTextField: MomoBaseTextField!
+    @IBOutlet private weak var passwordTextField: MomoBaseTextField!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var loginBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var timeLabel: UILabel!
     
     private var bottomConstant: CGFloat = 0
     private var isExistKeyboard = false
-    private var limitTime = 180
+    private var expiredTime = 180 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addView()
+        setUpView()
     }
     
+    //Timer 지원해줌
     @IBAction func resendButtonClick(_ sender: UIButton) {
-        limitTime = 180
-        secToTime(sec: limitTime)
+        expiredTime = 180
+        secToTime(sec: expiredTime)
     }
     
     @IBAction func sendButtonClick(_ sender: UIButton) {
@@ -35,8 +36,8 @@ class NewPasswordInputViewController: UIViewController {
     }
     
     @objc func getSetTime() {
-        secToTime(sec: limitTime)
-        limitTime -= 1
+        secToTime(sec: expiredTime)
+        expiredTime -= 1
     }
     
     func secToTime(sec: Int) {
@@ -49,23 +50,23 @@ class NewPasswordInputViewController: UIViewController {
             timeLabel.text = String(minute) + ":" + String(second)
         }
         
-        if limitTime != 0 {
+        if expiredTime != 0 {
             perform(#selector(getSetTime), with: nil, afterDelay: 1.0)
-        } else if limitTime == 0 {
+        } else if expiredTime == 0 {
             timeLabel.isHidden = true
         }
     }
-    private func addView() {
-        emailTextField.setBorderColor(to: UIColor(named: "Pink2")!)
-        passwordTextField.setBorderColor(to: UIColor(named: "Pink2")!)
+    private func setUpView() {
+        emailTextField.setBorderColor(to: Asset.Colors.pink2.color)
+        passwordTextField.setBorderColor(to: Asset.Colors.pink2.color)
         emailTextField.addLeftPadding()
         passwordTextField.addLeftPadding()
         loginButton.layer.cornerRadius  = 4
     }
     
-    @IBAction func inputPassword(_ sender: MomoBaseTextField) {
+    @IBAction func insertPassword(_ sender: MomoBaseTextField) {
         guard let passwordTextField = sender.text else {
-            print("Password textfield is nill")
+            print("error: sender.text is nil")
             return
         }
         
@@ -104,5 +105,3 @@ class NewPasswordInputViewController: UIViewController {
         }
     }
 }
-
-extension NewPasswordInputViewController: StoryboardInstantiable {}

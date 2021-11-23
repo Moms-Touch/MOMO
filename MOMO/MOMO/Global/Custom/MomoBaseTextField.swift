@@ -7,9 +7,10 @@
 
 import UIKit
 
+@IBDesignable
 final class MomoBaseTextField: UITextField {
-    private let figMaDefinedWidthValue: CGFloat = 295
-    private let figMaDefinedHeightValue: CGFloat = 47
+    @IBInspectable private let figMaDefinedWidthValue: CGFloat = 295
+    @IBInspectable private let figMaDefinedHeightValue: CGFloat = 47
     
     init() {
         super.init(frame: CGRect())

@@ -6,48 +6,32 @@
 //
 
 import UIKit
-import SnapKit
 
-class LoginViewController: UIViewController {
+@IBDesignable
+final class LoginViewController: UIViewController {
     
-    private let idTextField = MomoBaseTextField()
-    private let passwordTextField = MomoBaseTextField()
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var passButton: UIButton!
+    @IBOutlet private weak var idTextField: MomoBaseTextField!
+    @IBOutlet private weak var passwordTextField: MomoBaseTextField!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var signUpButton: UIButton!
+    @IBOutlet private weak var passThroughButton: UIButton!
+    @IBOutlet private weak var checkBoxView: UIView!
+    @IBOutlet private weak var checkBoxLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addView()
-        // Do any additional setup after loading the view.
+        idTextField.addLeftPadding()
+        passwordTextField.addLeftPadding()
+        checkBoxView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(checkBoxClicked)))
     }
     
-    private func addView() {
-        view.addSubview(idTextField)
-        view.addSubview(passwordTextField)
-        
-        idTextField.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-        passwordTextField.snp.makeConstraints { make in
-            make.top.equalTo(idTextField).offset(66)
-            make.leading.equalTo(idTextField)
-        }
-        loginButton.snp.makeConstraints { make in
-            make.width.equalTo(295)
-            make.height.equalTo(60)
-            make.top.equalTo(passwordTextField).offset(90)
-            make.leading.equalTo(idTextField)
-        }
-        signUpButton.snp.makeConstraints { make in
-            make.width.equalTo(295)
-            make.height.equalTo(60)
-            make.top.equalTo(loginButton).offset(79)
-            make.leading.equalTo(idTextField)
-        }
-        passButton.snp.makeConstraints { make in
-            make.top.equalTo(signUpButton).offset(82)
-            make.centerX.equalToSuperview()
+    @objc func checkBoxClicked() {
+        if checkBoxLabel.isHidden == false {
+            checkBoxLabel.isHidden = true
+            passwordTextField.isSecureTextEntry = true
+        } else {
+            checkBoxLabel.isHidden = false
+            passwordTextField.isSecureTextEntry = false
         }
     }
 }

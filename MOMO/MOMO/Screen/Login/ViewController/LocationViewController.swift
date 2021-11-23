@@ -7,15 +7,15 @@
 
 import UIKit
 
-class LocationViewController: UIViewController {
-    @IBOutlet weak var explanationLabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var LocationTextField: MomoBaseTextField!
-    @IBOutlet weak var cityNamePickerView: UIPickerView!
+final class LocationViewController: UIViewController {
+    @IBOutlet private weak var explanationLabel: UILabel!
+    @IBOutlet private weak var nextButton: UIButton!
+    @IBOutlet private weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var LocationTextField: MomoBaseTextField!
+    @IBOutlet private weak var cityNamePickerView: UIPickerView!
     
     private let cityName = ["서울", "대전", "대구", "부산", "광주", "울산", "인천"]
-    private var selectedCity = ""
+    private var selectedCity = ""           // nil or seoul
     
     private var bottomConstant: CGFloat = 0
     private var isExistPickerView = false
@@ -23,23 +23,23 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         LocationTextField.delegate = self
-        addView()
+        setUpView()
     }
     
-    private func addView() {
-        LocationTextField.setBorderColor(to: UIColor(named: "Pink2")!)
+    private func setUpView() {
+        LocationTextField.setBorderColor(to: Asset.Colors.pink2.color)
         LocationTextField.addLeftPadding()
         nextButton.layer.cornerRadius  = 4
     }
     
-    @objc private func doneClick() {
+    @objc private func clickDoneButton() {
         LocationTextField.resignFirstResponder()
         LocationTextField.text = selectedCity
         nextButtonBottomConstraint.constant = bottomConstant
         cityNamePickerView.isHidden = true
     }
     
-    @objc private func cancelClick() {
+    @objc private func clickCancelButton() {
         LocationTextField.resignFirstResponder()
         nextButtonBottomConstraint.constant = bottomConstant
         cityNamePickerView.isHidden = true
@@ -54,8 +54,8 @@ extension LocationViewController: UITextFieldDelegate {
         LocationTextField.inputView = cityNamePickerView
         
         let flexibleSpace = UIBarButtonItem.flexibleSpace()
-        let doneButton = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(doneClick))
-        let cancelButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelClick))
+        let doneButton = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(clickDoneButton))
+        let cancelButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(clickCancelButton))
 
         let toolBar = UIToolbar()
         toolBar.barStyle = .default

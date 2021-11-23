@@ -75,6 +75,14 @@
             <point key="canvasLocation" x="33.333333333333336" y="70.923913043478265"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="clb-SM-pET">
+            <size key="intrinsicContentSize" width="76.5" height="34"/>
+        </designable>
+        <designable name="qF1-Cm-Aqb">
+            <size key="intrinsicContentSize" width="173.5" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

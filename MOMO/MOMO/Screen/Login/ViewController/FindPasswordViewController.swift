@@ -7,21 +7,24 @@
 
 import UIKit
 
-class FindPasswordViewController: UIViewController {
-    @IBOutlet weak var emailTextField: MomoBaseTextField!
-    @IBOutlet weak var temporaryPasswordButton: UIButton!
-    @IBOutlet weak var temporaryPasswordBottomConstraint: NSLayoutConstraint!
+final class FindPasswordViewController: UIViewController {
+    @IBOutlet private weak var emailTextField: MomoBaseTextField!
+    @IBOutlet private weak var temporaryPasswordButton: UIButton!
+    @IBOutlet private weak var temporaryPasswordBottomConstraint: NSLayoutConstraint!
     
-    private var bottomConstant: CGFloat = 0
+    private var bottomConstant: CGFloat = 0.0
     private var isExistKeyboard = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addView()
+        setUpView()
         addKeyboardObserver()
     }
     
-    func isValidEmail(testString:String) -> Bool {
+    //emailRegEx (x) -> emailRex or ...RegularExpression
+    //emailTest -> emailCheck
+    //함수이름이랑 파라미터명 안맞음 >.<
+    func isValidEmail(testString: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testString)
@@ -29,12 +32,12 @@ class FindPasswordViewController: UIViewController {
     
     @IBAction func editEmailTextField(_ sender: MomoBaseTextField) {
         guard let text = sender.text else {
-            print("error: sender.text is not string")
+            print("error: sender.text is nil")
             return
         }
         
         if isValidEmail(testString: text) {
-            temporaryPasswordButton.alpha = 1
+            temporaryPasswordButton.alpha = 1.0
             temporaryPasswordButton.isUserInteractionEnabled = true
         } else {
             temporaryPasswordButton.alpha = 0.5
@@ -42,8 +45,8 @@ class FindPasswordViewController: UIViewController {
         }
     }
     
-    private func addView() {
-        emailTextField.setBorderColor(to: UIColor(named: "Pink4")!)
+    private func setUpView() {
+        emailTextField.setBorderColor(to: Asset.Colors.pink4.color)
         emailTextField.addLeftPadding()
         temporaryPasswordButton.alpha = 0.5
         temporaryPasswordButton.layer.cornerRadius  = 4

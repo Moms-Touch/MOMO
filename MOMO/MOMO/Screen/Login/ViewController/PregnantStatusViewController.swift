@@ -6,15 +6,14 @@
 //
 
 import UIKit
-import SwiftUI
 
-class PregnantStatusViewController: UIViewController {
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var expectedBirthdayField: UITextField!
-    @IBOutlet weak var babyNameTextField: UITextField!
-    @IBOutlet weak var pregnantButton: UIButton!
-    @IBOutlet weak var birthButton: UIButton!
+final class PregnantStatusViewController: UIViewController {
+    @IBOutlet private weak var nextButton: UIButton!
+    @IBOutlet private weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var expectedBirthdayField: UITextField!
+    @IBOutlet private weak var babyNameTextField: UITextField!
+    @IBOutlet private weak var pregnantButton: UIButton!
+    @IBOutlet private weak var birthButton: UIButton!
     
     private var bottomConstant: CGFloat = 0
     private var isExistKeyboard = false
@@ -23,7 +22,7 @@ class PregnantStatusViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addView()
+        setUpView()
         addKeyboardObserver()
         expectedBirthdayField.setBottomBorder()
         babyNameTextField.setBottomBorder()
@@ -47,9 +46,7 @@ class PregnantStatusViewController: UIViewController {
             pregnantButton.backgroundColor = .systemPink
             birthButton.titleLabel?.textColor = .systemPink
             birthButton.backgroundColor = .white
-        }
-        
-        if isOnBirthButton {
+        } else if isOnBirthButton {
             pregnantButton.titleLabel?.textColor = .systemPink
             pregnantButton.backgroundColor = .white
             birthButton.titleLabel?.textColor = .white
@@ -57,7 +54,7 @@ class PregnantStatusViewController: UIViewController {
         }
     }
     
-    private func addView() {
+    private func setUpView() {
         pregnantButton.definedButtonDesign()
         birthButton.definedButtonDesign()
         nextButton.layer.cornerRadius  = 4
@@ -106,7 +103,7 @@ extension UIButton {
     func definedButtonDesign() {
         backgroundColor = .white
         layer.borderColor = UIColor.systemPink.cgColor
-        layer.borderWidth = 1
-        layer.cornerRadius = 4
+        layer.borderWidth = 1.0
+        layer.cornerRadius = 4.0
     }
 }

@@ -7,27 +7,26 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+final class SignUpViewController: UIViewController {
     
     @IBOutlet private weak var explanationLabel: UILabel!
-    @IBOutlet weak var emailTextField: MomoBaseTextField!
-    @IBOutlet weak var passwordTextField: MomoBaseTextField!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var nextButtonConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var emailTextField: MomoBaseTextField!
+    @IBOutlet private weak var passwordTextField: MomoBaseTextField!
+    @IBOutlet private weak var nextButton: UIButton!
+    @IBOutlet private weak var nextButtonConstraint: NSLayoutConstraint!
     
     private var bottomConstant: CGFloat = 0
     private var isExistKeyboard = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addView()
+        setUpView()
         addKeyboardObserver()
-        // Do any additional setup after loading the view.
     }
     
-    private func addView() {
-        emailTextField.setBorderColor(to: UIColor(named: "Pink2")!)
-        passwordTextField.setBorderColor(to: UIColor(named: "Pink2")!)
+    private func setUpView() {
+        emailTextField.setBorderColor(to: Asset.Colors.pink2.color)
+        passwordTextField.setBorderColor(to: Asset.Colors.pink2.color)
         emailTextField.addLeftPadding()
         passwordTextField.addLeftPadding()
         nextButton.layer.cornerRadius  = 4
@@ -38,7 +37,7 @@ class SignUpViewController: UIViewController {
                                                selector: #selector(addKeyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
-
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(addKeyboardWiilHide),
                                                name: UIResponder.keyboardWillHideNotification,
@@ -60,15 +59,6 @@ class SignUpViewController: UIViewController {
             nextButtonConstraint.constant = bottomConstant
             isExistKeyboard = false
         }
-        
-    }
-    
-}
-extension UITextField {
-    func addLeftPadding() {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
-        leftView = paddingView
-        leftViewMode = ViewMode.always
     }
 }
 
