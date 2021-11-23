@@ -1,28 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Bookmark List View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookmarkListViewController" id="Y6W-OH-hqX" customClass="BookmarkListViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEw-Ef-fZ4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNb-BH-h1r">
+                                        <rect key="frame" x="16" y="11" width="12.5" height="22"/>
+                                        <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="chevron.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="didTapBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wdC-aD-mtl"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHe-q3-0Fd">
+                                        <rect key="frame" x="207" y="22" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5qZ-ic-CKY"/>
+                                    <constraint firstItem="yHe-q3-0Fd" firstAttribute="centerX" secondItem="fEw-Ef-fZ4" secondAttribute="centerX" id="f5W-zp-9X9"/>
+                                    <constraint firstItem="pNb-BH-h1r" firstAttribute="leading" secondItem="fEw-Ef-fZ4" secondAttribute="leading" constant="16" id="kfX-zO-5dP"/>
+                                    <constraint firstItem="pNb-BH-h1r" firstAttribute="centerY" secondItem="fEw-Ef-fZ4" secondAttribute="centerY" id="yA9-pR-vW6"/>
+                                    <constraint firstItem="yHe-q3-0Fd" firstAttribute="centerY" secondItem="fEw-Ef-fZ4" secondAttribute="centerY" id="zJc-qd-XCh"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OFs-EK-2aS">
+                                <rect key="frame" x="0.0" y="88" width="414" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PvG-Ws-7qE"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="정보/정책"/>
+                                    <segment title="커뮤니티"/>
+                                </segments>
+                                <connections>
+                                    <action selector="didChangeBookmarkSegControl:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Qcd-db-D6E"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DOi-o8-kFj">
+                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                                <connections>
+                                    <segue destination="mlk-5Z-DYN" kind="embed" id="alh-uY-cXK"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OFs-EK-2aS" secondAttribute="trailing" id="2Hq-go-D3c"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="DOi-o8-kFj" secondAttribute="trailing" id="G0O-HW-Nso"/>
+                            <constraint firstItem="DOi-o8-kFj" firstAttribute="top" secondItem="OFs-EK-2aS" secondAttribute="bottom" constant="10" id="GVK-Aw-Tfr"/>
+                            <constraint firstItem="OFs-EK-2aS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KVg-Vg-3zd"/>
+                            <constraint firstItem="OFs-EK-2aS" firstAttribute="top" secondItem="fEw-Ef-fZ4" secondAttribute="bottom" id="TbI-0k-iw6"/>
+                            <constraint firstItem="fEw-Ef-fZ4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Yrt-3s-wCx"/>
+                            <constraint firstItem="fEw-Ef-fZ4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="arr-tu-f7b"/>
+                            <constraint firstItem="DOi-o8-kFj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="jIJ-Ol-ePh"/>
+                            <constraint firstItem="fEw-Ef-fZ4" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="oH0-Gx-xR9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="DOi-o8-kFj" secondAttribute="bottom" id="veP-uv-CH2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bookmarkSegControl" destination="OFs-EK-2aS" id="Ca2-32-gKU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-25" y="138"/>
+        </scene>
+        <!--Bookmark Page View Controller-->
+        <scene sceneID="jfa-6N-N9V">
+            <objects>
+                <viewController storyboardIdentifier="BookmarkPageViewController" id="mlk-5Z-DYN" customClass="BookmarkPageViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aZd-i5-brp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Qbc-0M-g5b"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ep7-m7-MWy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743" y="179"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
