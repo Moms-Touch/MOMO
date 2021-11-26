@@ -11,6 +11,17 @@
 		28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC6352712C15B00C10B32 /* NibInstantiatable.swift */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
+		DD1C24F827518C0700CDD64F /* WithTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C24F727518C0700CDD64F /* WithTextViewController.swift */; };
+		DD1C24FA27518C9900CDD64F /* WithTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C24F927518C9900CDD64F /* WithTextCollectionViewCell.swift */; };
+		DD1C24FC2751935700CDD64F /* WithTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD1C24FB2751935700CDD64F /* WithTextCollectionViewCell.xib */; };
+		DD1CF25F2740FD89007F6C9B /* DiaryReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */; };
+		DD1CF2632740FDB3007F6C9B /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */; };
+		DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */; };
+		DD1CF2672740FE68007F6C9B /* DiaryReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CF2662740FE68007F6C9B /* DiaryReportViewController.swift */; };
+		DD1CF2732741034A007F6C9B /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CF2722741034A007F6C9B /* DiaryDetailViewController.swift */; };
+		DD1CF27527410511007F6C9B /* CreateDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CF27427410511007F6C9B /* CreateDiaryViewController.swift */; };
+		DD1CF2772741051D007F6C9B /* CreateDiary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF2762741051D007F6C9B /* CreateDiary.storyboard */; };
+		DD1CF2792741052C007F6C9B /* WithText.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF2782741052C007F6C9B /* WithText.storyboard */; };
 		DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */; };
 		DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C3270B4A2100699DA1 /* SceneDelegate.swift */; };
 		DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD43E8CA270B4A2300699DA1 /* Assets.xcassets */; };
@@ -29,6 +40,17 @@
 		9ECECA8F5D7E1DE00DD1437D /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		DD1C24F727518C0700CDD64F /* WithTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextViewController.swift; sourceTree = "<group>"; };
+		DD1C24F927518C9900CDD64F /* WithTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD1C24FB2751935700CDD64F /* WithTextCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithTextCollectionViewCell.xib; sourceTree = "<group>"; };
+		DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryReport.storyboard; sourceTree = "<group>"; };
+		DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewController.swift; sourceTree = "<group>"; };
+		DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryMain.storyboard; sourceTree = "<group>"; };
+		DD1CF2662740FE68007F6C9B /* DiaryReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryReportViewController.swift; sourceTree = "<group>"; };
+		DD1CF2722741034A007F6C9B /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
+		DD1CF27427410511007F6C9B /* CreateDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiaryViewController.swift; sourceTree = "<group>"; };
+		DD1CF2762741051D007F6C9B /* CreateDiary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateDiary.storyboard; sourceTree = "<group>"; };
+		DD1CF2782741052C007F6C9B /* WithText.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WithText.storyboard; sourceTree = "<group>"; };
 		DD43E8BE270B4A2100699DA1 /* MOMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD43E8C3270B4A2100699DA1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +100,61 @@
 			path = MOMO/Support/Generated;
 			sourceTree = SOURCE_ROOT;
 			usesTabs = 0;
+		};
+		DD1CF2682740FE71007F6C9B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */,
+				DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DD1CF2692740FE84007F6C9B /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */,
+				DD1CF2662740FE68007F6C9B /* DiaryReportViewController.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		DD1CF26A274101FE007F6C9B /* CreateDiary */ = {
+			isa = PBXGroup;
+			children = (
+				DD1CF26C27410213007F6C9B /* WithText */,
+				DD1CF26B27410208007F6C9B /* WithVoice */,
+				DD1CF27427410511007F6C9B /* CreateDiaryViewController.swift */,
+				DD1CF2762741051D007F6C9B /* CreateDiary.storyboard */,
+			);
+			path = CreateDiary;
+			sourceTree = "<group>";
+		};
+		DD1CF26B27410208007F6C9B /* WithVoice */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WithVoice;
+			sourceTree = "<group>";
+		};
+		DD1CF26C27410213007F6C9B /* WithText */ = {
+			isa = PBXGroup;
+			children = (
+				DD1CF2782741052C007F6C9B /* WithText.storyboard */,
+				DD1C24F727518C0700CDD64F /* WithTextViewController.swift */,
+				DD1C24F927518C9900CDD64F /* WithTextCollectionViewCell.swift */,
+				DD1C24FB2751935700CDD64F /* WithTextCollectionViewCell.xib */,
+			);
+			path = WithText;
+			sourceTree = "<group>";
+		};
+		DD1CF2712741033C007F6C9B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DD1CF2722741034A007F6C9B /* DiaryDetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
 		};
 		DD43E8B5270B4A2100699DA1 = {
 			isa = PBXGroup;
@@ -212,6 +289,10 @@
 		DD43E8E7270B4EE100699DA1 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				DD1CF2712741033C007F6C9B /* Detail */,
+				DD1CF26A274101FE007F6C9B /* CreateDiary */,
+				DD1CF2692740FE84007F6C9B /* Report */,
+				DD1CF2682740FE71007F6C9B /* Main */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -297,9 +378,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1CF2772741051D007F6C9B /* CreateDiary.storyboard in Resources */,
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
+				DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */,
+				DD1CF2792741052C007F6C9B /* WithText.storyboard in Resources */,
+				DD1C24FC2751935700CDD64F /* WithTextCollectionViewCell.xib in Resources */,
 				DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */,
 				DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */,
+				DD1CF25F2740FD89007F6C9B /* DiaryReport.storyboard in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,13 +456,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1C24FA27518C9900CDD64F /* WithTextCollectionViewCell.swift in Sources */,
 				DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */,
+				DD1CF2672740FE68007F6C9B /* DiaryReportViewController.swift in Sources */,
 				DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */,
+				DD1C24F827518C0700CDD64F /* WithTextViewController.swift in Sources */,
 				DD43E8E3270B4E5100699DA1 /* MomoBaseSearchField.swift in Sources */,
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
 				28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */,
 				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
 				28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */,
+				DD1CF2632740FDB3007F6C9B /* DiaryMainViewController.swift in Sources */,
+				DD1CF2732741034A007F6C9B /* DiaryDetailViewController.swift in Sources */,
+				DD1CF27527410511007F6C9B /* CreateDiaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

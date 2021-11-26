@@ -15,11 +15,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
-    if !isLogged {
-       //로그인화면으로 ㄲ
-    } else {
-      //홈탭으로 ㄲ
-    }
+    
+//    if !isLogged {
+//       //로그인화면으로 ㄲ
+//    } else {
+//
+//
+//    }
+    
+    
+//    window?.rootViewController = CreateDiaryViewController.loadFromStoryboard()
+    window?.rootViewController = WithTextViewController.loadFromStoryboard()
+    
     self.window?.makeKeyAndVisible()
   }
 
