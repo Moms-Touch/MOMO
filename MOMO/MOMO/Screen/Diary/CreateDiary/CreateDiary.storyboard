@@ -43,14 +43,14 @@
                                     <constraint firstItem="Ffj-Qo-LBi" firstAttribute="centerY" secondItem="cmL-hR-Z4d" secondAttribute="centerY" id="nCM-29-enD"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yk9-Gs-ryA">
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yk9-Gs-ryA">
                                 <rect key="frame" x="20" y="127" width="374" height="73"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUb-gL-sxW">
                                         <rect key="frame" x="0.0" y="0.0" width="78.5" height="73"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="GUb-gL-sxW" secondAttribute="height" multiplier="69:65" constant="1" id="BHV-g7-J4n"/>
-                                            <constraint firstAttribute="width" constant="78.5" id="xXB-ie-gSh"/>
+                                            <constraint firstAttribute="width" priority="999" constant="78.5" id="xXB-ie-gSh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -77,6 +77,11 @@
                                         <state key="normal" image="bird.blue"/>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="GUb-gL-sxW" firstAttribute="width" secondItem="xXU-x0-VgQ" secondAttribute="width" id="Wie-8c-sYN"/>
+                                    <constraint firstItem="GUb-gL-sxW" firstAttribute="width" secondItem="gSn-HC-Zcx" secondAttribute="width" id="iGh-yg-sA0"/>
+                                    <constraint firstItem="GUb-gL-sxW" firstAttribute="width" secondItem="NUO-UX-b0M" secondAttribute="width" id="xyb-sG-Jeg"/>
+                                </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uq-4i-tBW">
                                 <rect key="frame" x="17" y="238" width="380" height="1"/>
