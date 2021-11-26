@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseStorage
 import Kingfisher
+import PDFKit
 
 class StorageService {
   
@@ -16,6 +17,7 @@ class StorageService {
   
   let storage = Storage.storage()
   let imageBaseUrl = "gs://momo-51df6.appspot.com/images/"
+  let fileBaseUrl = "gs://momo-51df6.appspot.com/files/"
   
   // completion 없는 것
   func uploadImage(img: UIImage, imageName: String) {
@@ -64,6 +66,27 @@ class StorageService {
         print("성공")
         completion()
       }
+    }
+  }
+  
+  // downloadFile 함수는 문서를 다운받는 함수이다.
+  // device에 documentDirectory에 다운로드 받을 것이고, fileURLInDevice는 ~/documentDirectory/'UrlString'
+  // completion을 통해서 다운로드 후 행위를 진행하면된다
+  // completion에 url은 local device에 있는 fileURL 이다. 
+  func downloadFile(with UrlString: String, completion: @escaping (URL?) -> Void) {
+    guard let newURL = UrlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {return}
+    let fileUrl = "files\(newURL)"
+    
+    let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    let fileUrlInDevice = documentPath.appendingPathComponent(UrlString)
+    
+    storage.reference().child(fileUrl).write(toFile: fileUrlInDevice) { (url, error) in
+      if let error = error {
+        print("\(error.localizedDescription)")
+        completion(nil)
+      }
+      guard let url = url else {return}
+      completion(url)
     }
   }
   
