@@ -9,25 +9,26 @@ import UIKit
 
 class CreateDiaryViewController: UIViewController, StoryboardInstantiable {
   
-//  @IBOutlet weak var completeDiary: UIButton! {
-//    
-//  }
+  @IBOutlet weak var diaryInputView: UIView!
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
+    let vc = WithTextViewController.loadFromStoryboard()
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    addChild(vc)
+    
+    diaryInputView.addSubview(vc.view)
+    
+    vc.view.translatesAutoresizingMaskIntoConstraints = false
+    
+    NSLayoutConstraint.activate([
+      vc.view.leadingAnchor.constraint(equalTo: diaryInputView.leadingAnchor),
+      vc.view.topAnchor.constraint(equalTo: diaryInputView.topAnchor),
+      vc.view.trailingAnchor.constraint(equalTo: diaryInputView.trailingAnchor),
+      vc.view.bottomAnchor.constraint(equalTo: diaryInputView.bottomAnchor),
+    ])
+    
+    vc.didMove(toParent: self)
+  }
 }

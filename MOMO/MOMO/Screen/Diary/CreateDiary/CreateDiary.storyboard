@@ -145,6 +145,9 @@
                             <constraint firstItem="hYj-XV-3tx" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="xX1-MY-MZO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="diaryInputView" destination="Tkc-Ae-Rvu" id="x50-HI-la6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

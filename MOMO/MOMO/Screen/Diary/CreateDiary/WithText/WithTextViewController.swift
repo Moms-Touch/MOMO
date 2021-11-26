@@ -50,7 +50,7 @@ extension WithTextViewController: UICollectionViewDataSource {
     
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithTextCollectionViewCell.identifier, for: indexPath) as? WithTextCollectionViewCell else { return UICollectionViewCell() }
     
-    cell.backgroundColor = .purple
+    cell.backgroundColor = Asset.Colors.pink5.color
     
     cell.questionLabel.text = "질문+\(indexPath.row)"
     cell.answerTextView.text = "대답대답"
