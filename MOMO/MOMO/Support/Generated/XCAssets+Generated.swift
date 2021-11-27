@@ -27,6 +27,10 @@ internal enum Asset {
     internal static let birdBlue = ImageAsset(name: "bird.blue")
     internal static let birdHappy = ImageAsset(name: "bird.happy")
     internal static let birdSad = ImageAsset(name: "bird.sad")
+    internal static let guide = ImageAsset(name: "Guide")
+    internal static let noGuide = ImageAsset(name: "NoGuide")
+    internal static let text = ImageAsset(name: "Text")
+    internal static let voice = ImageAsset(name: "Voice")
     internal static let reportBackImage = ImageAsset(name: "ReportBackImage")
     internal static let splashImage = ImageAsset(name: "SplashImage")
   }

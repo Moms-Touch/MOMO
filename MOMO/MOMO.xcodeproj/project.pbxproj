@@ -14,6 +14,8 @@
 		DD1C24F827518C0700CDD64F /* WithTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C24F727518C0700CDD64F /* WithTextViewController.swift */; };
 		DD1C24FA27518C9900CDD64F /* WithTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C24F927518C9900CDD64F /* WithTextCollectionViewCell.swift */; };
 		DD1C24FC2751935700CDD64F /* WithTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD1C24FB2751935700CDD64F /* WithTextCollectionViewCell.xib */; };
+		DD1C24FF2752765300CDD64F /* DiaryInputOption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C24FE2752765300CDD64F /* DiaryInputOption.storyboard */; };
+		DD1C2501275276B200CDD64F /* DiaryInputOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C2500275276B200CDD64F /* DiaryInputOptionViewController.swift */; };
 		DD1CF25F2740FD89007F6C9B /* DiaryReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */; };
 		DD1CF2632740FDB3007F6C9B /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */; };
 		DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */; };
@@ -43,6 +45,8 @@
 		DD1C24F727518C0700CDD64F /* WithTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextViewController.swift; sourceTree = "<group>"; };
 		DD1C24F927518C9900CDD64F /* WithTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD1C24FB2751935700CDD64F /* WithTextCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithTextCollectionViewCell.xib; sourceTree = "<group>"; };
+		DD1C24FE2752765300CDD64F /* DiaryInputOption.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryInputOption.storyboard; sourceTree = "<group>"; };
+		DD1C2500275276B200CDD64F /* DiaryInputOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInputOptionViewController.swift; sourceTree = "<group>"; };
 		DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryReport.storyboard; sourceTree = "<group>"; };
 		DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewController.swift; sourceTree = "<group>"; };
 		DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryMain.storyboard; sourceTree = "<group>"; };
@@ -100,6 +104,15 @@
 			path = MOMO/Support/Generated;
 			sourceTree = SOURCE_ROOT;
 			usesTabs = 0;
+		};
+		DD1C24FD2752762B00CDD64F /* InputOption */ = {
+			isa = PBXGroup;
+			children = (
+				DD1C24FE2752765300CDD64F /* DiaryInputOption.storyboard */,
+				DD1C2500275276B200CDD64F /* DiaryInputOptionViewController.swift */,
+			);
+			path = InputOption;
+			sourceTree = "<group>";
 		};
 		DD1CF2682740FE71007F6C9B /* Main */ = {
 			isa = PBXGroup;
@@ -289,6 +302,7 @@
 		DD43E8E7270B4EE100699DA1 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				DD1C24FD2752762B00CDD64F /* InputOption */,
 				DD1CF2712741033C007F6C9B /* Detail */,
 				DD1CF26A274101FE007F6C9B /* CreateDiary */,
 				DD1CF2692740FE84007F6C9B /* Report */,
@@ -380,6 +394,7 @@
 			files = (
 				DD1CF2772741051D007F6C9B /* CreateDiary.storyboard in Resources */,
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
+				DD1C24FF2752765300CDD64F /* DiaryInputOption.storyboard in Resources */,
 				DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */,
 				DD1CF2792741052C007F6C9B /* WithText.storyboard in Resources */,
 				DD1C24FC2751935700CDD64F /* WithTextCollectionViewCell.xib in Resources */,
@@ -466,6 +481,7 @@
 				28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */,
 				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
 				28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */,
+				DD1C2501275276B200CDD64F /* DiaryInputOptionViewController.swift in Sources */,
 				DD1CF2632740FDB3007F6C9B /* DiaryMainViewController.swift in Sources */,
 				DD1CF2732741034A007F6C9B /* DiaryDetailViewController.swift in Sources */,
 				DD1CF27527410511007F6C9B /* CreateDiaryViewController.swift in Sources */,

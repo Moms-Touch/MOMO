@@ -7,9 +7,22 @@
 
 import UIKit
 
+struct DiaryCreationType {
+  
+  enum InputType {
+    case text
+    case voice
+  }
+  
+  var inputType: InputType?
+  var hasGuide: Bool?
+}
+
+
 class CreateDiaryViewController: UIViewController, StoryboardInstantiable {
   
   @IBOutlet weak var diaryInputView: UIView!
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
