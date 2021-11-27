@@ -16,6 +16,7 @@
 		DD1C24FC2751935700CDD64F /* WithTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD1C24FB2751935700CDD64F /* WithTextCollectionViewCell.xib */; };
 		DD1C24FF2752765300CDD64F /* DiaryInputOption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C24FE2752765300CDD64F /* DiaryInputOption.storyboard */; };
 		DD1C2501275276B200CDD64F /* DiaryInputOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C2500275276B200CDD64F /* DiaryInputOptionViewController.swift */; };
+		DD1C25042752FC6A00CDD64F /* QuestionsMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C25032752FC6A00CDD64F /* QuestionsMain.storyboard */; };
 		DD1CF25F2740FD89007F6C9B /* DiaryReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */; };
 		DD1CF2632740FDB3007F6C9B /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */; };
 		DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */; };
@@ -47,6 +48,7 @@
 		DD1C24FB2751935700CDD64F /* WithTextCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithTextCollectionViewCell.xib; sourceTree = "<group>"; };
 		DD1C24FE2752765300CDD64F /* DiaryInputOption.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryInputOption.storyboard; sourceTree = "<group>"; };
 		DD1C2500275276B200CDD64F /* DiaryInputOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInputOptionViewController.swift; sourceTree = "<group>"; };
+		DD1C25032752FC6A00CDD64F /* QuestionsMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestionsMain.storyboard; sourceTree = "<group>"; };
 		DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryReport.storyboard; sourceTree = "<group>"; };
 		DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewController.swift; sourceTree = "<group>"; };
 		DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryMain.storyboard; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 				DD1C2500275276B200CDD64F /* DiaryInputOptionViewController.swift */,
 			);
 			path = InputOption;
+			sourceTree = "<group>";
+		};
+		DD1C25022752FBA700CDD64F /* Questions */ = {
+			isa = PBXGroup;
+			children = (
+				DD1C25032752FC6A00CDD64F /* QuestionsMain.storyboard */,
+			);
+			path = Questions;
 			sourceTree = "<group>";
 		};
 		DD1CF2682740FE71007F6C9B /* Main */ = {
@@ -321,6 +331,7 @@
 		DD43E8E9270B4F0E00699DA1 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				DD1C25022752FBA700CDD64F /* Questions */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -395,6 +406,7 @@
 				DD1CF2772741051D007F6C9B /* CreateDiary.storyboard in Resources */,
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
 				DD1C24FF2752765300CDD64F /* DiaryInputOption.storyboard in Resources */,
+				DD1C25042752FC6A00CDD64F /* QuestionsMain.storyboard in Resources */,
 				DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */,
 				DD1CF2792741052C007F6C9B /* WithText.storyboard in Resources */,
 				DD1C24FC2751935700CDD64F /* WithTextCollectionViewCell.xib in Resources */,

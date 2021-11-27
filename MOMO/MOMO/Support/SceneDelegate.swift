@@ -24,10 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //    }
     
     
+    window?.rootViewController = DiaryMainViewController.loadFromStoryboard()
 //    window?.rootViewController = CreateDiaryViewController.loadFromStoryboard()
 //    window?.rootViewController = WithTextViewController.loadFromStoryboard()
     
-    window?.rootViewController = DiaryInputOptionViewController.loadFromStoryboard()
+//    window?.rootViewController = DiaryInputOptionViewController.loadFromStoryboard()
     
     self.window?.makeKeyAndVisible()
   }
