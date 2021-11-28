@@ -16,7 +16,10 @@
 		DD1C24FC2751935700CDD64F /* WithTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD1C24FB2751935700CDD64F /* WithTextCollectionViewCell.xib */; };
 		DD1C24FF2752765300CDD64F /* DiaryInputOption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C24FE2752765300CDD64F /* DiaryInputOption.storyboard */; };
 		DD1C2501275276B200CDD64F /* DiaryInputOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C2500275276B200CDD64F /* DiaryInputOptionViewController.swift */; };
-		DD1C25042752FC6A00CDD64F /* QuestionsMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C25032752FC6A00CDD64F /* QuestionsMain.storyboard */; };
+		DD1C25062752FD1F00CDD64F /* QuestionsMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C25052752FD1F00CDD64F /* QuestionsMain.storyboard */; };
+		DD1C25082752FD2700CDD64F /* CreateQuestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C25072752FD2700CDD64F /* CreateQuestion.storyboard */; };
+		DD1C250A2752FD3200CDD64F /* QuetsionDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C25092752FD3200CDD64F /* QuetsionDetail.storyboard */; };
+		DD1C250C275305C100CDD64F /* QuestionsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C250B275305C100CDD64F /* QuestionsMainViewController.swift */; };
 		DD1CF25F2740FD89007F6C9B /* DiaryReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */; };
 		DD1CF2632740FDB3007F6C9B /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */; };
 		DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */; };
@@ -48,7 +51,10 @@
 		DD1C24FB2751935700CDD64F /* WithTextCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithTextCollectionViewCell.xib; sourceTree = "<group>"; };
 		DD1C24FE2752765300CDD64F /* DiaryInputOption.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryInputOption.storyboard; sourceTree = "<group>"; };
 		DD1C2500275276B200CDD64F /* DiaryInputOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInputOptionViewController.swift; sourceTree = "<group>"; };
-		DD1C25032752FC6A00CDD64F /* QuestionsMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestionsMain.storyboard; sourceTree = "<group>"; };
+		DD1C25052752FD1F00CDD64F /* QuestionsMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestionsMain.storyboard; sourceTree = "<group>"; };
+		DD1C25072752FD2700CDD64F /* CreateQuestion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateQuestion.storyboard; sourceTree = "<group>"; };
+		DD1C25092752FD3200CDD64F /* QuetsionDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuetsionDetail.storyboard; sourceTree = "<group>"; };
+		DD1C250B275305C100CDD64F /* QuestionsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsMainViewController.swift; sourceTree = "<group>"; };
 		DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryReport.storyboard; sourceTree = "<group>"; };
 		DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewController.swift; sourceTree = "<group>"; };
 		DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryMain.storyboard; sourceTree = "<group>"; };
@@ -119,9 +125,36 @@
 		DD1C25022752FBA700CDD64F /* Questions */ = {
 			isa = PBXGroup;
 			children = (
-				DD1C25032752FC6A00CDD64F /* QuestionsMain.storyboard */,
+				DD1C250F275305ED00CDD64F /* Detail */,
+				DD1C250E275305E800CDD64F /* Create */,
+				DD1C250D275305C500CDD64F /* Main */,
 			);
 			path = Questions;
+			sourceTree = "<group>";
+		};
+		DD1C250D275305C500CDD64F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DD1C25052752FD1F00CDD64F /* QuestionsMain.storyboard */,
+				DD1C250B275305C100CDD64F /* QuestionsMainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DD1C250E275305E800CDD64F /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				DD1C25072752FD2700CDD64F /* CreateQuestion.storyboard */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		DD1C250F275305ED00CDD64F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DD1C25092752FD3200CDD64F /* QuetsionDetail.storyboard */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		DD1CF2682740FE71007F6C9B /* Main */ = {
@@ -403,14 +436,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1C25082752FD2700CDD64F /* CreateQuestion.storyboard in Resources */,
 				DD1CF2772741051D007F6C9B /* CreateDiary.storyboard in Resources */,
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
 				DD1C24FF2752765300CDD64F /* DiaryInputOption.storyboard in Resources */,
-				DD1C25042752FC6A00CDD64F /* QuestionsMain.storyboard in Resources */,
+				DD1C25062752FD1F00CDD64F /* QuestionsMain.storyboard in Resources */,
 				DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */,
 				DD1CF2792741052C007F6C9B /* WithText.storyboard in Resources */,
 				DD1C24FC2751935700CDD64F /* WithTextCollectionViewCell.xib in Resources */,
 				DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */,
+				DD1C250A2752FD3200CDD64F /* QuetsionDetail.storyboard in Resources */,
 				DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */,
 				DD1CF25F2740FD89007F6C9B /* DiaryReport.storyboard in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
@@ -491,6 +526,7 @@
 				DD43E8E3270B4E5100699DA1 /* MomoBaseSearchField.swift in Sources */,
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
 				28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */,
+				DD1C250C275305C100CDD64F /* QuestionsMainViewController.swift in Sources */,
 				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
 				28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */,
 				DD1C2501275276B200CDD64F /* DiaryInputOptionViewController.swift in Sources */,
