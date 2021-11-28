@@ -20,6 +20,8 @@
 		DD1C25082752FD2700CDD64F /* CreateQuestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C25072752FD2700CDD64F /* CreateQuestion.storyboard */; };
 		DD1C250A2752FD3200CDD64F /* QuetsionDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1C25092752FD3200CDD64F /* QuetsionDetail.storyboard */; };
 		DD1C250C275305C100CDD64F /* QuestionsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C250B275305C100CDD64F /* QuestionsMainViewController.swift */; };
+		DD1C251127530D8E00CDD64F /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C251027530D8D00CDD64F /* QuestionTableViewCell.swift */; };
+		DD1C251327530E4100CDD64F /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD1C251227530E4100CDD64F /* QuestionTableViewCell.xib */; };
 		DD1CF25F2740FD89007F6C9B /* DiaryReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */; };
 		DD1CF2632740FDB3007F6C9B /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */; };
 		DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */; };
@@ -55,6 +57,8 @@
 		DD1C25072752FD2700CDD64F /* CreateQuestion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateQuestion.storyboard; sourceTree = "<group>"; };
 		DD1C25092752FD3200CDD64F /* QuetsionDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuetsionDetail.storyboard; sourceTree = "<group>"; };
 		DD1C250B275305C100CDD64F /* QuestionsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsMainViewController.swift; sourceTree = "<group>"; };
+		DD1C251027530D8D00CDD64F /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		DD1C251227530E4100CDD64F /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
 		DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryReport.storyboard; sourceTree = "<group>"; };
 		DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewController.swift; sourceTree = "<group>"; };
 		DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryMain.storyboard; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 			children = (
 				DD1C25052752FD1F00CDD64F /* QuestionsMain.storyboard */,
 				DD1C250B275305C100CDD64F /* QuestionsMainViewController.swift */,
+				DD1C251027530D8D00CDD64F /* QuestionTableViewCell.swift */,
+				DD1C251227530E4100CDD64F /* QuestionTableViewCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
 				DD1C24FF2752765300CDD64F /* DiaryInputOption.storyboard in Resources */,
 				DD1C25062752FD1F00CDD64F /* QuestionsMain.storyboard in Resources */,
+				DD1C251327530E4100CDD64F /* QuestionTableViewCell.xib in Resources */,
 				DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */,
 				DD1CF2792741052C007F6C9B /* WithText.storyboard in Resources */,
 				DD1C24FC2751935700CDD64F /* WithTextCollectionViewCell.xib in Resources */,
@@ -519,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD1C24FA27518C9900CDD64F /* WithTextCollectionViewCell.swift in Sources */,
+				DD1C251127530D8E00CDD64F /* QuestionTableViewCell.swift in Sources */,
 				DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */,
 				DD1CF2672740FE68007F6C9B /* DiaryReportViewController.swift in Sources */,
 				DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */,
