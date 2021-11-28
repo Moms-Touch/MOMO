@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import Photos
 
 class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
-  @IBOutlet weak var myBabyImageView: UIImageView!
+  @IBOutlet weak var myBabyImageView: UIImageView! {
+    didSet {
+      let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addBabyImage))
+      myBabyImageView.addGestureRecognizer(tapGesture)
+    }
+  }
   @IBOutlet var myBabyInfoTextFields: [UITextField]! {
     didSet {
       for index in myBabyInfoTextFields.indices {
@@ -27,9 +33,11 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
     }
   }
   
+  fileprivate let picker = UIImagePickerController()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    picker.delegate = self
     // Do any additional setup after loading the view.
   }
   
@@ -42,4 +50,35 @@ extension MyBabyInfoViewController {
   }
 }
 
-extension MyBabyInfoViewController {}
+extension MyBabyInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+  private func openLibrary() {
+    if #available(iOS 14, *) {
+      //PHAsset
+    } else {
+      picker.sourceType = .photoLibrary
+      picker.allowsEditing = true
+      present(picker, animated: true, completion: nil)
+    }
+  }
+  
+  private func openCamera() {
+    guard !UIImagePickerController.isSourceTypeAvailable(.camera) else {
+      print("Camera is not availble")
+      return
+    }
+    picker.sourceType = .camera
+    present(picker, animated: false, completion: nil)
+  }
+  
+  @objc private func addBabyImage(sender: UIImageView) {
+    let alert = UIAlertController(title: "아기 사진을 불러와주세요", message: nil, preferredStyle: .actionSheet)
+    let library = UIAlertAction(title: "사진앨범", style: .default, handler: {_ in self.openLibrary()})
+    let camera = UIAlertAction(title: "카메라", style: .default, handler:{ _ in self.openCamera()})
+    let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+    alert.addAction(library)
+    alert.addAction(camera)
+    alert.addAction(cancel)
+    present(alert, animated: true, completion: nil)
+  }
+}
