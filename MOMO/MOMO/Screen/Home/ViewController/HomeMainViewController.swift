@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import PanModal
 
-final class HomeMainViewController: UIViewController, StoryboardInstantiable {
+final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable {
   
   @IBOutlet weak var noticeView: UIView! {
     didSet {
@@ -38,8 +37,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable {
     }
   }
   
-  
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     assignbackground()
@@ -59,7 +56,14 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable {
   }
   
   @IBAction private func didTapRecommendButton(_ sender: UIButton) {
-    presentPanModal(RecommendModalViewController())
+    let recommendModalVC = RecommendModalViewController()
+    recommendModalVC.modalPresentationStyle = .custom
+    recommendModalVC.transitioningDelegate = self
+    dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
+    recommendModalVC.completionHandler = { [weak self] in
+      self?.dim(direction: .Out)
+    }
+    present(recommendModalVC, animated: true, completion: nil)
   }
   
   @IBAction private func didTapTodayButton(_ sender: UIButton) {
@@ -81,9 +85,12 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable {
   private func gotoMyProfile() {
     self.navigationController?.pushViewController(MyInfoMainViewController.loadFromStoryboard(), animated: true)
   }
-  
-  
-  
+}
+
+extension HomeMainViewController: UIViewControllerTransitioningDelegate {
+  func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    return PresentationController(presentedViewController: presented, presenting: presenting)
+  }
 }
 
 
