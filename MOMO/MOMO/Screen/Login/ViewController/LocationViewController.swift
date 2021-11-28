@@ -43,6 +43,9 @@ final class LocationViewController: UIViewController {
         nextButtonBottomConstraint.constant = bottomConstant
         cityNamePickerView.isHidden = true
     }
+    @IBAction func didTapPregnantButton(_ sender: UIButton) {
+        navigationController?.pushViewController(PregnantStatusViewController.loadFromStoryboard(), animated: true)
+    }
 }
 
 @available(iOS 14.0, *)
@@ -91,3 +94,5 @@ extension LocationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         selectedCity = cityName[row]
     }
 }
+
+extension LocationViewController: StoryboardInstantiable {}

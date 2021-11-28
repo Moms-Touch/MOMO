@@ -35,6 +35,9 @@
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapPregnantButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ssa-sa-0YM"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="지역" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pro-a2-pE3" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                 <rect key="frame" x="38" y="290" width="295" height="47"/>

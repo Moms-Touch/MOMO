@@ -106,3 +106,5 @@ extension UIButton {
         layer.cornerRadius = 4.0
     }
 }
+
+extension PregnantStatusViewController: StoryboardInstantiable {}

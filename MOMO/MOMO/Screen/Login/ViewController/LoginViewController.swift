@@ -34,6 +34,10 @@ final class LoginViewController: UIViewController {
             passwordTextField.isSecureTextEntry = false
         }
     }
+    
+    @IBAction func didTapSignUpButton(_ sender: UIButton) {
+        navigationController?.pushViewController(SignUpViewController.loadFromStoryboard(), animated: true)
+    }
 }
 
 extension LoginViewController: StoryboardInstantiable { }

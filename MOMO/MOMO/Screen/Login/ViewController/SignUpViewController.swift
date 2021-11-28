@@ -59,5 +59,9 @@ final class SignUpViewController: UIViewController {
             isExistKeyboard = false
         }
     }
+    @IBAction func didTapLocationButton(_ sender: UIButton) {
+        navigationController?.pushViewController(LocationViewController.loadFromStoryboard(), animated: true)
+    }
 }
 
+extension SignUpViewController: StoryboardInstantiable { }

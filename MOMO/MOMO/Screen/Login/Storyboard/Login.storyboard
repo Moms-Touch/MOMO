@@ -48,6 +48,9 @@
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
                                     <color key="baseForegroundColor" name="Pink4"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapSignUpButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ezw-CJ-btY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2V-lX-weM">
                                 <rect key="frame" x="125" y="570.5" width="125" height="31"/>
