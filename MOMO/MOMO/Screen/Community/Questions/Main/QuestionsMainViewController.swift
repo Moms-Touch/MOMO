@@ -42,12 +42,12 @@ class QuestionsMainViewController: UIViewController, StoryboardInstantiable {
     
     filterButtons.forEach {
       
-      $0.layer.borderColor = Asset.Colors.pink5.color.cgColor
+      $0.layer.borderColor = ThemeColor.pink5.color.cgColor
       $0.layer.borderWidth = 1
       $0.layer.cornerRadius = $0.frame.height / 2
       
       $0.setTitleColor(.white, for: .selected)
-      $0.tintColor = Asset.Colors.pink3.color
+      $0.tintColor = ThemeColor.pink3.color
     }
   }
   
@@ -61,7 +61,8 @@ class QuestionsMainViewController: UIViewController, StoryboardInstantiable {
     deselectAllFilterButton()
     
     sender.isSelected = true
-    sender.backgroundColor = Asset.Colors.pink2.color
+    
+    sender.backgroundColor = ThemeColor.pink2.color
   }
   
   /// 모든 필터 버튼의 선택을 해제한다.

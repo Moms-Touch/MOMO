@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //    }
     
     
-    window?.rootViewController = CreateQuestionViewController.loadFromStoryboard()
+    window?.rootViewController = QuestionsMainViewController.loadFromStoryboard()
 //    window?.rootViewController = CreateDiaryViewController.loadFromStoryboard()
 //    window?.rootViewController = WithTextViewController.loadFromStoryboard()
     
