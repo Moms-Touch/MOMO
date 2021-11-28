@@ -28,6 +28,10 @@
 		280BEFD7274BA60D00F031A7 /* CommunityMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280BEFD6274BA60D00F031A7 /* CommunityMainViewController.swift */; };
 		28492612273BF9E000FA2072 /* SettingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28492611273BF9E000FA2072 /* SettingWebViewController.swift */; };
 		28492614273F666F00FA2072 /* InfoBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */; };
+		285209722752243800AB8BAC /* Dimmable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209712752243800AB8BAC /* Dimmable.swift */; };
+		2852097427522C1300AB8BAC /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852097327522C1300AB8BAC /* PresentationController.swift */; };
+		28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */; };
+		285209782752646D00AB8BAC /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209772752646D00AB8BAC /* PopAnimator.swift */; };
 		28552F10274009A90028D363 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28552F0F274009A90028D363 /* UIView+Extension.swift */; };
 		28552F12274017820028D363 /* UITextfield+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28552F11274017820028D363 /* UITextfield+Extension.swift */; };
 		288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288ED75927427CC200C5178D /* BookmarkList.storyboard */; };
@@ -39,6 +43,11 @@
 		288ED76727428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED76627428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift */; };
 		288ED76927428C1E00C5178D /* PolicyBookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */; };
 		288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */; };
+		289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */; };
+		289B361D274F58E300535B2E /* RecommendSimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B361C274F58E300535B2E /* RecommendSimpleData.swift */; };
+		289B361F274F5CEC00535B2E /* simpleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B361E274F5CEC00535B2E /* simpleContent.swift */; };
+		289B3621274F5DBB00535B2E /* simpleContentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B3620274F5DBB00535B2E /* simpleContentContainer.swift */; };
+		289B3623274FA81200535B2E /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B3622274FA81200535B2E /* UICollectionView+Extension.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
 		28B49145274BB9B1002BA67A /* KeyboardScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49144274BB9B1002BA67A /* KeyboardScrollable.swift */; };
@@ -52,7 +61,6 @@
 		28F4714B2738F3970074D148 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 28F4714A2738F3970074D148 /* PanModal */; };
 		28F4714E2738F67A0074D148 /* HomeMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F4714D2738F67A0074D148 /* HomeMain.storyboard */; };
 		28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4714F273912220074D148 /* RecommendModalViewController.swift */; };
-		28F47154273A63BC0074D148 /* RecommendModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47153273A63BC0074D148 /* RecommendModal.storyboard */; };
 		28F47158273BE0780074D148 /* MyInfoMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47157273BE0780074D148 /* MyInfoMain.storyboard */; };
 		28F4715A273BE3D90074D148 /* MyActivity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47159273BE3D90074D148 /* MyActivity.storyboard */; };
 		28F4715C273BE3E90074D148 /* MyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4715B273BE3E90074D148 /* MyActivityViewController.swift */; };
@@ -93,6 +101,10 @@
 		280BEFD6274BA60D00F031A7 /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
 		28492611273BF9E000FA2072 /* SettingWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebViewController.swift; sourceTree = "<group>"; };
 		28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBaseTableViewController.swift; sourceTree = "<group>"; };
+		285209712752243800AB8BAC /* Dimmable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimmable.swift; sourceTree = "<group>"; };
+		2852097327522C1300AB8BAC /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellPresentationController.swift; sourceTree = "<group>"; };
+		285209772752646D00AB8BAC /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		28552F0F274009A90028D363 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		28552F11274017820028D363 /* UITextfield+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Extension.swift"; sourceTree = "<group>"; };
 		288ED75927427CC200C5178D /* BookmarkList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarkList.storyboard; sourceTree = "<group>"; };
@@ -104,6 +116,11 @@
 		288ED76627428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuntiyBookmarkTableViewController.swift; sourceTree = "<group>"; };
 		288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyBookmarkTableViewController.swift; sourceTree = "<group>"; };
 		288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkPageViewController.swift; sourceTree = "<group>"; };
+		289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		289B361C274F58E300535B2E /* RecommendSimpleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSimpleData.swift; sourceTree = "<group>"; };
+		289B361E274F5CEC00535B2E /* simpleContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simpleContent.swift; sourceTree = "<group>"; };
+		289B3620274F5DBB00535B2E /* simpleContentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simpleContentContainer.swift; sourceTree = "<group>"; };
+		289B3622274FA81200535B2E /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		28B49144274BB9B1002BA67A /* KeyboardScrollable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardScrollable.swift; sourceTree = "<group>"; };
@@ -116,7 +133,6 @@
 		28F471462738B8DC0074D148 /* MyInfoMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainViewController.swift; sourceTree = "<group>"; };
 		28F4714D2738F67A0074D148 /* HomeMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeMain.storyboard; sourceTree = "<group>"; };
 		28F4714F273912220074D148 /* RecommendModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModalViewController.swift; sourceTree = "<group>"; };
-		28F47153273A63BC0074D148 /* RecommendModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecommendModal.storyboard; sourceTree = "<group>"; };
 		28F47157273BE0780074D148 /* MyInfoMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoMain.storyboard; sourceTree = "<group>"; };
 		28F47159273BE3D90074D148 /* MyActivity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyActivity.storyboard; sourceTree = "<group>"; };
 		28F4715B273BE3E90074D148 /* MyActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivityViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +183,7 @@
 			children = (
 				288ED75E27427D5800C5178D /* ListTableViewCell.swift */,
 				288ED75F27427D5800C5178D /* ListTableViewCell.xib */,
+				289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +197,8 @@
 				288ED76627428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift */,
 				288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */,
 				288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */,
+				2852097327522C1300AB8BAC /* PresentationController.swift */,
+				28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -188,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				28F4714D2738F67A0074D148 /* HomeMain.storyboard */,
-				28F47153273A63BC0074D148 /* RecommendModal.storyboard */,
 				288ED75927427CC200C5178D /* BookmarkList.storyboard */,
 				280BEFBA274B319500F031A7 /* PolicyBookmarkTable.storyboard */,
 				280BEFBC274B31B700F031A7 /* CommuntiyBookmarkTable.storyboard */,
@@ -332,6 +350,7 @@
 				280BEFB2274B1CD400F031A7 /* UIImage+Extension.swift */,
 				280BEFB6274B226C00F031A7 /* UITableView+Extension.swift */,
 				280BEFD0274B7E2400F031A7 /* UIImageView+Extension.swift */,
+				289B3622274FA81200535B2E /* UICollectionView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -341,6 +360,7 @@
 			children = (
 				DD43E8E0270B4E3500699DA1 /* MomoBaseTextField.swift */,
 				DD43E8E2270B4E5100699DA1 /* MomoBaseSearchField.swift */,
+				285209772752646D00AB8BAC /* PopAnimator.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -349,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				288ED7622742865800C5178D /* SimpleListModel.swift */,
+				289B361C274F58E300535B2E /* RecommendSimpleData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -364,6 +385,9 @@
 				28B49144274BB9B1002BA67A /* KeyboardScrollable.swift */,
 				28B49146274BBA45002BA67A /* Scrollable.swift */,
 				28B49148274BBC47002BA67A /* TableViewGappable.swift */,
+				289B361E274F5CEC00535B2E /* simpleContent.swift */,
+				289B3620274F5DBB00535B2E /* simpleContentContainer.swift */,
+				285209712752243800AB8BAC /* Dimmable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -520,7 +544,6 @@
 				280BEFBB274B319500F031A7 /* PolicyBookmarkTable.storyboard in Resources */,
 				280BEFBF274B647900F031A7 /* GoogleService-Info.plist in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
-				28F47154273A63BC0074D148 /* RecommendModal.storyboard in Resources */,
 				28F4715A273BE3D90074D148 /* MyActivity.storyboard in Resources */,
 				280BEFBD274B31B700F031A7 /* CommuntiyBookmarkTable.storyboard in Resources */,
 				28F4715E273BE4620074D148 /* MySetting.storyboard in Resources */,
@@ -594,6 +617,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289B3623274FA81200535B2E /* UICollectionView+Extension.swift in Sources */,
 				DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */,
 				288ED7632742865800C5178D /* SimpleListModel.swift in Sources */,
 				28492612273BF9E000FA2072 /* SettingWebViewController.swift in Sources */,
@@ -601,6 +625,9 @@
 				28F4715C273BE3E90074D148 /* MyActivityViewController.swift in Sources */,
 				28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */,
 				28B49149274BBC47002BA67A /* TableViewGappable.swift in Sources */,
+				289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */,
+				2852097427522C1300AB8BAC /* PresentationController.swift in Sources */,
+				285209782752646D00AB8BAC /* PopAnimator.swift in Sources */,
 				280BEFD3274BA22E00F031A7 /* CanShowDetailView.swift in Sources */,
 				28F471432738B31E0074D148 /* DiaryMainViewController.swift in Sources */,
 				280BEFB5274B224500F031A7 /* ReusableView.swift in Sources */,
@@ -612,12 +639,17 @@
 				28F471452738B8D10074D148 /* PolicyMainViewController.swift in Sources */,
 				28F4713F2738A4020074D148 /* TabBar.swift in Sources */,
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
+				289B361F274F5CEC00535B2E /* simpleContent.swift in Sources */,
 				28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */,
 				288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */,
 				280BEFD5274BA35900F031A7 /* DetailViewController.swift in Sources */,
+				285209722752243800AB8BAC /* Dimmable.swift in Sources */,
+				289B3621274F5DBB00535B2E /* simpleContentContainer.swift in Sources */,
 				280BEFB1274B1CB400F031A7 /* UISegmentedControl+Extension.swift in Sources */,
 				288ED7652742870E00C5178D /* Date+Extension.swift in Sources */,
+				289B361D274F58E300535B2E /* RecommendSimpleData.swift in Sources */,
 				288ED76727428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift in Sources */,
+				28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */,
 				28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */,
 				288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */,
 				280BEFD7274BA60D00F031A7 /* CommunityMainViewController.swift in Sources */,
