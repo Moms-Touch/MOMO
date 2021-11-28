@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SimpleListModel {
+struct SimpleListModel: simpleContent {
   let title: String
   let organization: String
   let date: Date
