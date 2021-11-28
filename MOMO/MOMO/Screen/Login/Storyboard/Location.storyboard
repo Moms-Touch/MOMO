@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Location View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="LocationViewController" id="Y6W-OH-hqX" customClass="LocationViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 지역의  정책정보를 알려드려요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofc-36-CfB">
+                                <rect key="frame" x="38" y="142" width="326" height="74"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-pr-eq4" customClass="MomoBaseButton" customModule="MOMO" customModuleProvider="target">
+                                <rect key="frame" x="38" y="773" width="295" height="59"/>
+                                <color key="backgroundColor" name="Pink4"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="Nq2-r4-x9a"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="다음">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapPregnantButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ssa-sa-0YM"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="지역" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pro-a2-pE3" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                                <rect key="frame" x="38" y="290" width="295" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ne-6b-KJi">
+                                <rect key="frame" x="0.0" y="680" width="414" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="G5q-pr-eq4" secondAttribute="bottom" constant="30" id="51p-8L-lFd"/>
+                            <constraint firstAttribute="trailing" secondItem="ofc-36-CfB" secondAttribute="trailing" constant="50" id="9tS-aT-tzk"/>
+                            <constraint firstAttribute="bottom" secondItem="6ne-6b-KJi" secondAttribute="bottom" id="C2M-3l-aCJ"/>
+                            <constraint firstItem="ofc-36-CfB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="cly-rz-Jq6"/>
+                            <constraint firstItem="6ne-6b-KJi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fFf-VB-H21"/>
+                            <constraint firstItem="G5q-pr-eq4" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="hFM-vz-ink"/>
+                            <constraint firstItem="ofc-36-CfB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.4" id="nAy-b2-YKq"/>
+                            <constraint firstItem="G5q-pr-eq4" firstAttribute="trailing" secondItem="Pro-a2-pE3" secondAttribute="trailing" id="qh7-0x-vJI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6ne-6b-KJi" secondAttribute="trailing" id="rGn-u2-99q"/>
+                            <constraint firstItem="Pro-a2-pE3" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="uaQ-sC-Mlw"/>
+                            <constraint firstItem="Pro-a2-pE3" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.7" id="vEJ-Vr-roa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="LocationTextField" destination="Pro-a2-pE3" id="9uk-fg-5Gp"/>
+                        <outlet property="cityNamePickerView" destination="6ne-6b-KJi" id="LTG-S5-0Oe"/>
+                        <outlet property="explanationLabel" destination="ofc-36-CfB" id="XfH-Vx-X2F"/>
+                        <outlet property="nextButton" destination="G5q-pr-eq4" id="py3-vr-3t0"/>
+                        <outlet property="nextButtonBottomConstraint" destination="51p-8L-lFd" id="hap-wX-9C7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="139"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="Pro-a2-pE3">
+            <size key="intrinsicContentSize" width="52.5" height="34"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="Pink4">
+            <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -16,15 +16,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
     
-//    if !isLogged {
-//       //로그인화면으로 ㄲ
-//    } else {
-//
-//
-//    }
+      
+      if !isLogged {
+          //로그인화면으로 ㄲ
+          window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
+          
+      } else {
+          //홈탭으로 ㄲ
+      }
     
     
-    window?.rootViewController = CreateQuestionViewController.loadFromStoryboard()
+//    window?.rootViewController = CreateQuestionViewController.loadFromStoryboard()
 //    window?.rootViewController = CreateDiaryViewController.loadFromStoryboard()
 //    window?.rootViewController = WithTextViewController.loadFromStoryboard()
     

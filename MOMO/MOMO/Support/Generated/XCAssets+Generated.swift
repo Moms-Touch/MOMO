@@ -36,6 +36,7 @@ internal enum Asset {
     internal static let voice = ImageAsset(name: "Voice")
     internal static let reportBackImage = ImageAsset(name: "ReportBackImage")
     internal static let splashImage = ImageAsset(name: "SplashImage")
+    internal static let 로그인 = ImageAsset(name: "로그인")
   }
   internal enum Colors {
     internal static let _45 = ColorAsset(name: "45")
