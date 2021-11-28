@@ -58,7 +58,6 @@
 		28F471432738B31E0074D148 /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471422738B31E0074D148 /* DiaryMainViewController.swift */; };
 		28F471452738B8D10074D148 /* PolicyMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471442738B8D10074D148 /* PolicyMainViewController.swift */; };
 		28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471462738B8DC0074D148 /* MyInfoMainViewController.swift */; };
-		28F4714B2738F3970074D148 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 28F4714A2738F3970074D148 /* PanModal */; };
 		28F4714E2738F67A0074D148 /* HomeMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F4714D2738F67A0074D148 /* HomeMain.storyboard */; };
 		28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4714F273912220074D148 /* RecommendModalViewController.swift */; };
 		28F47158273BE0780074D148 /* MyInfoMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47157273BE0780074D148 /* MyInfoMain.storyboard */; };
@@ -164,7 +163,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28F4714B2738F3970074D148 /* PanModal in Frameworks */,
 				280BEFC6274B65F100F031A7 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				6FF7CCABF915F7BACA19704F /* Pods_MOMO.framework in Frameworks */,
 				280BEFC4274B65F100F031A7 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
@@ -479,7 +477,6 @@
 			);
 			name = MOMO;
 			packageProductDependencies = (
-				28F4714A2738F3970074D148 /* PanModal */,
 				280BEFC1274B65F100F031A7 /* FirebaseAnalytics */,
 				280BEFC3274B65F100F031A7 /* FirebaseAnalyticsSwift-Beta */,
 				280BEFC5274B65F100F031A7 /* FirebaseAnalyticsWithoutAdIdSupport */,
@@ -515,7 +512,6 @@
 			);
 			mainGroup = DD43E8B5270B4A2100699DA1;
 			packageReferences = (
-				28F471492738F3970074D148 /* XCRemoteSwiftPackageReference "PanModal" */,
 				280BEFC0274B65F100F031A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
@@ -888,14 +884,6 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		28F471492738F3970074D148 /* XCRemoteSwiftPackageReference "PanModal" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/slackhq/PanModal.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.6;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -928,11 +916,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		28F4714A2738F3970074D148 /* PanModal */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28F471492738F3970074D148 /* XCRemoteSwiftPackageReference "PanModal" */;
-			productName = PanModal;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
