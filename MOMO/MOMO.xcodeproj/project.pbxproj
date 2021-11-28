@@ -22,6 +22,7 @@
 		DD1C250C275305C100CDD64F /* QuestionsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C250B275305C100CDD64F /* QuestionsMainViewController.swift */; };
 		DD1C251127530D8E00CDD64F /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C251027530D8D00CDD64F /* QuestionTableViewCell.swift */; };
 		DD1C251327530E4100CDD64F /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD1C251227530E4100CDD64F /* QuestionTableViewCell.xib */; };
+		DD1C25152753179300CDD64F /* CreateQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C25142753179300CDD64F /* CreateQuestionViewController.swift */; };
 		DD1CF25F2740FD89007F6C9B /* DiaryReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */; };
 		DD1CF2632740FDB3007F6C9B /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */; };
 		DD1CF2652740FE37007F6C9B /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */; };
@@ -59,6 +60,7 @@
 		DD1C250B275305C100CDD64F /* QuestionsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsMainViewController.swift; sourceTree = "<group>"; };
 		DD1C251027530D8D00CDD64F /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		DD1C251227530E4100CDD64F /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
+		DD1C25142753179300CDD64F /* CreateQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewController.swift; sourceTree = "<group>"; };
 		DD1CF25E2740FD89007F6C9B /* DiaryReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryReport.storyboard; sourceTree = "<group>"; };
 		DD1CF2622740FDB3007F6C9B /* DiaryMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewController.swift; sourceTree = "<group>"; };
 		DD1CF2642740FE37007F6C9B /* DiaryMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryMain.storyboard; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				DD1C25072752FD2700CDD64F /* CreateQuestion.storyboard */,
+				DD1C25142753179300CDD64F /* CreateQuestionViewController.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				DD43E8E3270B4E5100699DA1 /* MomoBaseSearchField.swift in Sources */,
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
 				28FEC6342712C11A00C10B32 /* StoryboardInstantiable.swift in Sources */,
+				DD1C25152753179300CDD64F /* CreateQuestionViewController.swift in Sources */,
 				DD1C250C275305C100CDD64F /* QuestionsMainViewController.swift in Sources */,
 				DD43E8E1270B4E3500699DA1 /* MomoBaseTextField.swift in Sources */,
 				28FEC6362712C15B00C10B32 /* NibInstantiatable.swift in Sources */,
