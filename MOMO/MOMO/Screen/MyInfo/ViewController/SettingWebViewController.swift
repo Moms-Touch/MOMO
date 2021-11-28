@@ -20,7 +20,6 @@ class SettingWebViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     let request = URLRequest(url: targetURL)
     
     webView.load(request)
