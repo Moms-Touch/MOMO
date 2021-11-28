@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Diary Main View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="DiaryMainViewController" id="Y6W-OH-hqX" customClass="DiaryMainViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGW-SZ-Mbz" customClass="FSCalendar">
+                                <rect key="frame" x="20" y="44" width="374" height="375"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhK-yH-knk">
+                                <rect key="frame" x="20" y="509" width="374" height="100"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReportBackImage" translatesAutoresizingMaskIntoConstraints="NO" id="PGm-PW-i82">
+                                        <rect key="frame" x="0.0" y="23" width="362" height="77"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="spv-xO-kEQ">
+                                        <rect key="frame" x="8" y="8" width="179.5" height="37.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모모 리포트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79t-XJ-4bo">
+                                                <rect key="frame" x="0.0" y="0.0" width="179.5" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="뱁새 박사의 연구결과를 살펴보세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A63-UW-Ec1">
+                                                <rect key="frame" x="0.0" y="21.5" width="179.5" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                <color key="textColor" name="71"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9X4-8q-QnA">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="showDiaryReport:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="frF-73-F34"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="9X4-8q-QnA" firstAttribute="top" secondItem="DhK-yH-knk" secondAttribute="top" id="1NV-nS-GYH"/>
+                                    <constraint firstAttribute="bottom" secondItem="PGm-PW-i82" secondAttribute="bottom" id="7Pl-MR-64U"/>
+                                    <constraint firstAttribute="bottom" secondItem="9X4-8q-QnA" secondAttribute="bottom" id="F5O-Qc-y03"/>
+                                    <constraint firstItem="spv-xO-kEQ" firstAttribute="top" secondItem="DhK-yH-knk" secondAttribute="top" constant="8" id="R9E-en-xKh"/>
+                                    <constraint firstItem="PGm-PW-i82" firstAttribute="leading" secondItem="DhK-yH-knk" secondAttribute="leading" id="aDk-gj-Uwb"/>
+                                    <constraint firstItem="PGm-PW-i82" firstAttribute="top" secondItem="DhK-yH-knk" secondAttribute="top" constant="23" id="ceL-KH-lVd"/>
+                                    <constraint firstItem="9X4-8q-QnA" firstAttribute="leading" secondItem="DhK-yH-knk" secondAttribute="leading" id="ekE-zl-srh"/>
+                                    <constraint firstAttribute="trailing" secondItem="9X4-8q-QnA" secondAttribute="trailing" id="mCj-Pe-JRU"/>
+                                    <constraint firstAttribute="height" constant="100" id="mxK-N0-oWF"/>
+                                    <constraint firstItem="spv-xO-kEQ" firstAttribute="leading" secondItem="DhK-yH-knk" secondAttribute="leading" constant="8" id="xwp-8Z-rRc"/>
+                                    <constraint firstAttribute="trailing" secondItem="PGm-PW-i82" secondAttribute="trailing" constant="12" id="yZr-ct-7ot"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lGW-SZ-Mbz" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="5Q3-c8-eko"/>
+                            <constraint firstItem="lGW-SZ-Mbz" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.418527" id="6CM-Hf-tfd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="DhK-yH-knk" secondAttribute="trailing" constant="20" id="Y2j-T4-lcD"/>
+                            <constraint firstItem="DhK-yH-knk" firstAttribute="top" secondItem="lGW-SZ-Mbz" secondAttribute="bottom" constant="90" id="dqT-f9-3JG"/>
+                            <constraint firstItem="DhK-yH-knk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="eLu-6w-HNI"/>
+                            <constraint firstItem="lGW-SZ-Mbz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="h35-8i-bzc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lGW-SZ-Mbz" secondAttribute="trailing" constant="20" id="tqI-ya-m2K"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calendarView" destination="lGW-SZ-Mbz" id="slB-nm-Iyp"/>
+                        <outlet property="showReportButton" destination="9X4-8q-QnA" id="yRM-XG-iNh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13.043478260869566" y="93.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ReportBackImage" width="321" height="82"/>
+        <namedColor name="71">
+            <color red="0.44313725490196076" green="0.44313725490196076" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -15,16 +15,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
+    
+
     if !isLogged {
-       //로그인화면으로 ㄲ
+      window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
     } else {
-      guard let windowScene = (scene as? UIWindowScene) else { return }
       let home = TabBar()
       home.selectedIndex = 0
       self.window?.rootViewController = home
-      window?.makeKeyAndVisible()
-      window?.windowScene = windowScene
     }
+//    window?.rootViewController = CreateQuestionViewController.loadFromStoryboard()
+//    window?.rootViewController = CreateDiaryViewController.loadFromStoryboard()
+//    window?.rootViewController = WithTextViewController.loadFromStoryboard()
+    
+//    window?.rootViewController = DiaryInputOptionViewController.loadFromStoryboard()
+    window?.windowScene = windowScene
     self.window?.makeKeyAndVisible()
   }
 

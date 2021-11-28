@@ -23,11 +23,22 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 internal enum Asset {
   internal enum Assets {
     internal static let accentColor = ColorAsset(name: "AccentColor")
+    internal static let bookmark = ImageAsset(name: "Bookmark")
+    internal static let camera = ImageAsset(name: "Camera")
+    internal static let magnifier = ImageAsset(name: "Magnifier")
+    internal static let birdAngry = ImageAsset(name: "bird.angry")
+    internal static let birdBlue = ImageAsset(name: "bird.blue")
+    internal static let birdHappy = ImageAsset(name: "bird.happy")
+    internal static let birdSad = ImageAsset(name: "bird.sad")
+    internal static let guide = ImageAsset(name: "Guide")
+    internal static let noGuide = ImageAsset(name: "NoGuide")
+    internal static let text = ImageAsset(name: "Text")
+    internal static let voice = ImageAsset(name: "Voice")
+    internal static let reportBackImage = ImageAsset(name: "ReportBackImage")
     internal static let logo = ImageAsset(name: "Logo")
     internal static let splashImage = ImageAsset(name: "SplashImage")
     internal static let baby = ImageAsset(name: "baby")
     internal static let bell = ImageAsset(name: "bell")
-    internal static let bookmark = ImageAsset(name: "bookmark")
     internal static let mainBack = ImageAsset(name: "mainBack")
     internal static let mainBackground = ImageAsset(name: "mainBackground")
     internal static let recommendBtn = ImageAsset(name: "recommendBtn")
@@ -40,10 +51,12 @@ internal enum Asset {
     internal static let policy = ImageAsset(name: "policy")
     internal static let policySelect = ImageAsset(name: "policy_select")
     internal static let todayBtn = ImageAsset(name: "todayBtn")
+    internal static let 로그인 = ImageAsset(name: "로그인")
   }
   internal enum Colors {
     internal static let _45 = ColorAsset(name: "45")
     internal static let _71 = ColorAsset(name: "71")
+    internal static let borderYellow = ColorAsset(name: "BorderYellow")
     internal static let pink1 = ColorAsset(name: "Pink1")
     internal static let pink2 = ColorAsset(name: "Pink2")
     internal static let pink3 = ColorAsset(name: "Pink3")
@@ -73,6 +86,17 @@ internal final class ColorAsset {
     return color
   }()
 
+  #if os(iOS) || os(tvOS)
+  @available(iOS 11.0, tvOS 11.0, *)
+  internal func color(compatibleWith traitCollection: UITraitCollection) -> Color {
+    let bundle = BundleToken.bundle
+    guard let color = Color(named: name, in: bundle, compatibleWith: traitCollection) else {
+      fatalError("Unable to load color asset named \(name).")
+    }
+    return color
+  }
+  #endif
+
   fileprivate init(name: String) {
     self.name = name
   }
@@ -101,6 +125,7 @@ internal struct ImageAsset {
   internal typealias Image = UIImage
   #endif
 
+  @available(iOS 8.0, tvOS 9.0, watchOS 2.0, macOS 10.7, *)
   internal var image: Image {
     let bundle = BundleToken.bundle
     #if os(iOS) || os(tvOS)
@@ -116,9 +141,21 @@ internal struct ImageAsset {
     }
     return result
   }
+
+  #if os(iOS) || os(tvOS)
+  @available(iOS 8.0, tvOS 9.0, *)
+  internal func image(compatibleWith traitCollection: UITraitCollection) -> Image {
+    let bundle = BundleToken.bundle
+    guard let result = Image(named: name, in: bundle, compatibleWith: traitCollection) else {
+      fatalError("Unable to load image asset named \(name).")
+    }
+    return result
+  }
+  #endif
 }
 
 internal extension ImageAsset.Image {
+  @available(iOS 8.0, tvOS 9.0, watchOS 2.0, *)
   @available(macOS, deprecated,
     message: "This initializer is unsafe on macOS, please use the ImageAsset.image property")
   convenience init?(asset: ImageAsset) {

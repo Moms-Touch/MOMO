@@ -8,10 +8,16 @@ import UIKit
 
 protocol NibInstantiatable {
   
+  static var nib: UINib { get }
+  
   static func instantiateFromNib() -> Self
 }
 
 extension NibInstantiatable {
+  
+  static var nib: UINib {
+    UINib(nibName: String(describing: self), bundle: nil)
+  }
   
   static func instantiateFromNib() -> Self {
     
