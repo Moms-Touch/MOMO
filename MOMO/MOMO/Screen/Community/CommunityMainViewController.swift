@@ -1,8 +1,8 @@
 //
-//  CommunityMainViewController.swift
+//  CommuntiyMainViewController.swift
 //  MOMO
 //
-//  Created by abc on 2021/11/28.
+//  Created by abc on 2021/11/29.
 //
 
 import UIKit

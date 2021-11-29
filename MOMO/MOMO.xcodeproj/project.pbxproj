@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20EF93341C3448FA8612DEB0 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C25A5446B985E38D151EDE /* Pods_MOMO.framework */; };
 		280BEFBB274B319500F031A7 /* PolicyBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 280BEFBA274B319500F031A7 /* PolicyBookmark.storyboard */; };
 		280BEFBD274B31B700F031A7 /* CommuntiyBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */; };
 		280BEFBF274B647900F031A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 280BEFBE274B647900F031A7 /* GoogleService-Info.plist */; };
@@ -79,6 +80,7 @@
 		288ED76727428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED76627428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift */; };
 		288ED76927428C1E00C5178D /* PolicyBookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */; };
 		288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */; };
+		288EFD0B27548476000D1617 /* CommunityMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD0A27548476000D1617 /* CommunityMainViewController.swift */; };
 		289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
@@ -90,7 +92,6 @@
 		28CA30762753357300EF071E /* QuestionsMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CA306E2753357300EF071E /* QuestionsMain.storyboard */; };
 		28CA30772753357300EF071E /* CreateQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA30702753357300EF071E /* CreateQuestionViewController.swift */; };
 		28CA30782753357300EF071E /* CreateQuestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CA30712753357300EF071E /* CreateQuestion.storyboard */; };
-		28CA307A2753359000EF071E /* CommunityMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA30792753359000EF071E /* CommunityMainViewController.swift */; };
 		28F4713F2738A4020074D148 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4713E2738A4020074D148 /* TabBar.swift */; };
 		28F471412738B3090074D148 /* HomeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471402738B3090074D148 /* HomeMainViewController.swift */; };
 		28F471452738B8D10074D148 /* PolicyMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471442738B8D10074D148 /* PolicyMainViewController.swift */; };
@@ -106,7 +107,6 @@
 		28F47164273BE5500074D148 /* MyInfoEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47163273BE5500074D148 /* MyInfoEdit.storyboard */; };
 		28F47166273BE6FE0074D148 /* MyBabyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47165273BE6FE0074D148 /* MyBabyInfo.storyboard */; };
 		28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */; };
-		A07DA75FF0DD7AB2BCC37706 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1852987ECDD911C591CADEB8 /* Pods_MOMO.framework */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
 		DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */; };
@@ -117,8 +117,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1852987ECDD911C591CADEB8 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DFF81B7819EF72030B8AAA4 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
 		280BEFBA274B319500F031A7 /* PolicyBookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyBookmark.storyboard; sourceTree = "<group>"; };
 		280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommuntiyBookmark.storyboard; sourceTree = "<group>"; };
 		280BEFBE274B647900F031A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -184,6 +182,7 @@
 		288ED76627428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuntiyBookmarkTableViewController.swift; sourceTree = "<group>"; };
 		288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyBookmarkTableViewController.swift; sourceTree = "<group>"; };
 		288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkPageViewController.swift; sourceTree = "<group>"; };
+		288EFD0A27548476000D1617 /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
 		289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
@@ -194,7 +193,6 @@
 		28CA306E2753357300EF071E /* QuestionsMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionsMain.storyboard; sourceTree = "<group>"; };
 		28CA30702753357300EF071E /* CreateQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewController.swift; sourceTree = "<group>"; };
 		28CA30712753357300EF071E /* CreateQuestion.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateQuestion.storyboard; sourceTree = "<group>"; };
-		28CA30792753359000EF071E /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
 		28F4713E2738A4020074D148 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		28F471402738B3090074D148 /* HomeMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainViewController.swift; sourceTree = "<group>"; };
 		28F471442738B8D10074D148 /* PolicyMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyMainViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +208,8 @@
 		28F47163273BE5500074D148 /* MyInfoEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoEdit.storyboard; sourceTree = "<group>"; };
 		28F47165273BE6FE0074D148 /* MyBabyInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBabyInfo.storyboard; sourceTree = "<group>"; };
 		28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBabyInfoViewController.swift; sourceTree = "<group>"; };
+		98F755F27743C61F4F87144C /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
+		C7195CDA2CF0DE58BE1A8F30 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		DD1C24F727518C0700CDD64F /* WithTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextViewController.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 		DD43E8CD270B4A2300699DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD43E8CF270B4A2300699DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD43E8DE270B4C0100699DA1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		FF17888C736D499D4F88C95D /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
+		F7C25A5446B985E38D151EDE /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,7 +243,7 @@
 				280BEFC2274B65F100F031A7 /* FirebaseAnalytics in Frameworks */,
 				280BEFCA274B65F100F031A7 /* FirebaseStorageSwift-Beta in Frameworks */,
 				280BEFC8274B65F100F031A7 /* FirebaseStorage in Frameworks */,
-				A07DA75FF0DD7AB2BCC37706 /* Pods_MOMO.framework in Frameworks */,
+				20EF93341C3448FA8612DEB0 /* Pods_MOMO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				28CA30672753357300EF071E /* Questions */,
-				28CA30792753359000EF071E /* CommunityMainViewController.swift */,
+				288EFD0A27548476000D1617 /* CommunityMainViewController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -537,10 +537,10 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		8BC3DEA56CE889C27BCFF230 /* Frameworks */ = {
+		31BF6C63280AB56BA8B495D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1852987ECDD911C591CADEB8 /* Pods_MOMO.framework */,
+				F7C25A5446B985E38D151EDE /* Pods_MOMO.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -548,8 +548,8 @@
 		B941767FC29939FBBCF33955 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1DFF81B7819EF72030B8AAA4 /* Pods-MOMO.debug.xcconfig */,
-				FF17888C736D499D4F88C95D /* Pods-MOMO.release.xcconfig */,
+				C7195CDA2CF0DE58BE1A8F30 /* Pods-MOMO.debug.xcconfig */,
+				98F755F27743C61F4F87144C /* Pods-MOMO.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -572,7 +572,7 @@
 				DD43E8BF270B4A2100699DA1 /* Products */,
 				2852097927532CCB00AB8BAC /* Recovered References */,
 				B941767FC29939FBBCF33955 /* Pods */,
-				8BC3DEA56CE889C27BCFF230 /* Frameworks */,
+				31BF6C63280AB56BA8B495D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -681,7 +681,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD43E8D2270B4A2300699DA1 /* Build configuration list for PBXNativeTarget "MOMO" */;
 			buildPhases = (
-				11A6B8DE28E0C12634502F76 /* [CP] Check Pods Manifest.lock */,
+				86996329540E9E521B0248F0 /* [CP] Check Pods Manifest.lock */,
 				DD43E8BA270B4A2100699DA1 /* Sources */,
 				DD43E8BB270B4A2100699DA1 /* Frameworks */,
 				DD43E8BC270B4A2100699DA1 /* Resources */,
@@ -786,7 +786,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		11A6B8DE28E0C12634502F76 /* [CP] Check Pods Manifest.lock */ = {
+		86996329540E9E521B0248F0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -832,7 +832,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28CA307A2753359000EF071E /* CommunityMainViewController.swift in Sources */,
 				DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */,
 				28CA30742753357300EF071E /* QuestionTableViewCell.swift in Sources */,
 				285209F52753329600AB8BAC /* StorageService.swift in Sources */,
@@ -871,6 +870,7 @@
 				28CA30732753357300EF071E /* QuestionsMainViewController.swift in Sources */,
 				285209A02753325F00AB8BAC /* WithTextCollectionViewCell.swift in Sources */,
 				285209BD2753327200AB8BAC /* LocationViewController.swift in Sources */,
+				288EFD0B27548476000D1617 /* CommunityMainViewController.swift in Sources */,
 				288ED76727428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift in Sources */,
 				2852099B2753325F00AB8BAC /* DiaryDetailViewController.swift in Sources */,
 				28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */,
@@ -1034,7 +1034,7 @@
 		};
 		DD43E8D3270B4A2300699DA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DFF81B7819EF72030B8AAA4 /* Pods-MOMO.debug.xcconfig */;
+			baseConfigurationReference = C7195CDA2CF0DE58BE1A8F30 /* Pods-MOMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1057,7 +1057,7 @@
 		};
 		DD43E8D4270B4A2300699DA1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF17888C736D499D4F88C95D /* Pods-MOMO.release.xcconfig */;
+			baseConfigurationReference = 98F755F27743C61F4F87144C /* Pods-MOMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1070,6 +1070,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = net.momstouch.MOMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
