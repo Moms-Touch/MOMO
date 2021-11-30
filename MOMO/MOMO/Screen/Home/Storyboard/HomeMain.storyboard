@@ -38,6 +38,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="bell" title="">
                                     <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapBellButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qUG-64-sFn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wfy-1u-fgY">
                                 <rect key="frame" x="20" y="59" width="24" height="24"/>

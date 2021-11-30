@@ -74,6 +74,10 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     self.navigationController?.pushViewController(BookmarkListViewController.loadFromStoryboard(), animated: true)
   }
   
+  @IBAction func didTapBellButton(_ sender: UIButton) {
+    self.navigationController?.pushViewController(AlertViewController.loadFromStoryboard(), animated: true)
+  }
+  
   @IBAction private func didTapProfile(_ sender: Any) {
     gotoMyProfile()
   }
