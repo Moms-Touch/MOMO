@@ -6,21 +6,45 @@
 //
 
 import UIKit
-import Photos
+
+enum BabyInfo: CaseIterable {
+  static var allCases: [BabyInfo] = [ .babyName(name: nil), .birth(date: nil), .babyImage(imageURL: nil)]
+  
+  case babyImage(imageURL: String?)
+  case babyName(name: String?)
+  case birth(date: String?)
+  
+  var result: String? {
+    switch self {
+    case .babyImage(let imageURL):
+      return imageURL
+    case .babyName(let name):
+      return name
+    case .birth(let date):
+      return date
+    }
+  }
+  
+  var placeholder: String? {
+    switch self {
+    case .babyImage:
+      return nil
+    case .babyName:
+      return "아기이름"
+    case .birth:
+      return "출생일/출생예정일"
+    }
+  }
+}
 
 class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
-  @IBOutlet weak var myBabyImageView: UIImageView! {
-    didSet {
-      let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addBabyImage))
-      myBabyImageView.addGestureRecognizer(tapGesture)
-    }
-  }
+  @IBOutlet weak var myBabyImageView: UIImageView!
   @IBOutlet var myBabyInfoTextFields: [UITextField]! {
     didSet {
       for index in myBabyInfoTextFields.indices {
         let textfield = myBabyInfoTextFields[index]
-        textfield.attributedPlaceholder = NSAttributedString(string: BabyEditTextfields.allCases[index].rawValue, attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
+        textfield.attributedPlaceholder = NSAttributedString(string: BabyInfo.allCases[index].placeholder!, attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
         textfield.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         textfield.addLeftPadding(width: 20)
         textfield.layer.borderColor = Asset.Colors.pink4.color.cgColor
@@ -37,29 +61,25 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addBabyImage))
+    myBabyImageView.addGestureRecognizer(tapGesture)
     picker.delegate = self
-    // Do any additional setup after loading the view.
   }
   
-}
-
-extension MyBabyInfoViewController {
-  enum BabyEditTextfields: String, CaseIterable {
-    case babyName = "아기이름"
-    case birth = "출생일/출생예정일"
+  @IBAction private func didTapBackButton(sender: UIButton) {
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+  @IBAction private func didTapSaveButton(sender: UIButton) {
+    
   }
 }
 
 extension MyBabyInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   private func openLibrary() {
-    if #available(iOS 14, *) {
-      //PHAsset
-    } else {
-      picker.sourceType = .photoLibrary
-      picker.allowsEditing = true
-      present(picker, animated: true, completion: nil)
-    }
+    picker.allowsEditing = true
+    present(picker, animated: true, completion: nil)
   }
   
   private func openCamera() {
@@ -81,4 +101,27 @@ extension MyBabyInfoViewController: UIImagePickerControllerDelegate, UINavigatio
     alert.addAction(cancel)
     present(alert, animated: true, completion: nil)
   }
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    self.dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    var newImageData: Data?
+    if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+      newImageData = originalImage.jpegData(compressionQuality: 0.1)
+      guard let newImageData = newImageData else {
+        return
+      }
+      let imageURL: String = "userID_\(Date())"
+      StorageService.shared.uploadImageWithData(imageData: newImageData, imageName: imageURL) {
+        print("uploadCompleted")
+      }
+      myBabyImageView.image = UIImage(data: newImageData)!
+      dismiss(animated: true, completion: nil)
+    }
+  }
+  
 }
+
+

@@ -25,6 +25,9 @@
                                         <rect key="frame" x="16" y="11" width="12.5" height="22"/>
                                         <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="chevron.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="didTapBackButtonWithSender:" destination="0jS-M2-yOb" eventType="touchUpInside" id="Gdc-Ae-YYp"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아기정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0F-DF-yMt">
                                         <rect key="frame" x="172.5" y="10" width="69.5" height="24"/>
@@ -42,7 +45,7 @@
                                     <constraint firstItem="g0F-DF-yMt" firstAttribute="centerX" secondItem="FD6-P4-bc3" secondAttribute="centerX" id="om9-pM-8NC"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6io-Xy-SUP">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6io-Xy-SUP">
                                 <rect key="frame" x="100.5" y="139.5" width="213" height="210"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6io-Xy-SUP" secondAttribute="height" multiplier="1:1" id="LYY-x7-MHJ"/>
@@ -82,6 +85,9 @@
                                 <state key="normal" title="저장">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapSaveButtonWithSender:" destination="0jS-M2-yOb" eventType="touchUpInside" id="8NX-U7-z5M"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KYU-be-j5N"/>
