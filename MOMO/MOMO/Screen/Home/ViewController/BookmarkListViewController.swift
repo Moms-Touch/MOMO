@@ -7,16 +7,22 @@
 
 import UIKit
 
-final class BookmarkListViewController: UIViewController, StoryboardInstantiable {
-
-  @IBOutlet weak var bookmarkSegControl: UISegmentedControl! {
-    didSet {
-      bookmarkSegControl.removeBorder()
-      bookmarkSegControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Asset.Colors.pink4.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .bold)], for: .selected)
-      bookmarkSegControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Asset.Colors._71.color, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 24, weight: .bold)], for: .normal)
-      bookmarkSegControl.addBorder([.bottom], color: Asset.Colors.pink5.color, width: 3)
-    }
+final class BookmarkListViewController: UIViewController, StoryboardInstantiable, MomoPageable {
+  
+  var segmentedControl: UISegmentedControl {
+    return bookmarkSegControl
   }
+  
+  var segmentedControlTextColor: (selected: ColorAsset.Color, unselected: ColorAsset.Color) {
+    return (selected: Asset.Colors.pink4.color, unselected: Asset.Colors._71.color)
+  }
+  
+  var segmentedConrolBackgroundColor: UIColor {
+    return .white
+  }
+  
+
+  @IBOutlet weak var bookmarkSegControl: UISegmentedControl!
   
   
     override func viewDidLoad() {
@@ -24,6 +30,8 @@ final class BookmarkListViewController: UIViewController, StoryboardInstantiable
       NotificationCenter.default.addObserver(self, selector: #selector(getpageIndex(_:)),
                                              name: NSNotification.Name("SegControlNotification"),
                                              object: nil)
+      setupSegmentedControl()
+      setBorder(color: Asset.Colors.pink5.color)
     }
     
   
