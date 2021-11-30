@@ -52,7 +52,6 @@
 		285209E02753329600AB8BAC /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209C32753329600AB8BAC /* Date+Extension.swift */; };
 		285209E12753329600AB8BAC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209C42753329600AB8BAC /* UIView+Extension.swift */; };
 		285209E22753329600AB8BAC /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209C52753329600AB8BAC /* UIImage+Extension.swift */; };
-		285209E32753329600AB8BAC /* UISegmentedControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209C62753329600AB8BAC /* UISegmentedControl+Extension.swift */; };
 		285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209C72753329600AB8BAC /* UICollectionView+Extension.swift */; };
 		285209E52753329600AB8BAC /* UITextfield+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209C82753329600AB8BAC /* UITextfield+Extension.swift */; };
 		285209E62753329600AB8BAC /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209C92753329600AB8BAC /* UITableView+Extension.swift */; };
@@ -81,6 +80,15 @@
 		288ED76927428C1E00C5178D /* PolicyBookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */; };
 		288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */; };
 		288EFD0B27548476000D1617 /* CommunityMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD0A27548476000D1617 /* CommunityMainViewController.swift */; };
+		288EFD0D2754F217000D1617 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD0C2754F217000D1617 /* AlertViewController.swift */; };
+		288EFD0F2754F23F000D1617 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288EFD0E2754F23F000D1617 /* Alert.storyboard */; };
+		288EFD112754F27C000D1617 /* AlertPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD102754F27C000D1617 /* AlertPageViewController.swift */; };
+		288EFD132754F2AE000D1617 /* AlertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD122754F2AE000D1617 /* AlertTableViewController.swift */; };
+		288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD142754F2E5000D1617 /* MessageTableViewController.swift */; };
+		288EFD172754F354000D1617 /* AlertContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD162754F354000D1617 /* AlertContainer.swift */; };
+		288EFD192754F476000D1617 /* MomoPagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD182754F476000D1617 /* MomoPagable.swift */; };
+		288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD1A2755ADA0000D1617 /* MomoPageViewController.swift */; };
+		288EFD1D2755D41E000D1617 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */; };
 		289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
@@ -154,7 +162,6 @@
 		285209C32753329600AB8BAC /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		285209C42753329600AB8BAC /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		285209C52753329600AB8BAC /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		285209C62753329600AB8BAC /* UISegmentedControl+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extension.swift"; sourceTree = "<group>"; };
 		285209C72753329600AB8BAC /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		285209C82753329600AB8BAC /* UITextfield+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextfield+Extension.swift"; sourceTree = "<group>"; };
 		285209C92753329600AB8BAC /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -183,6 +190,15 @@
 		288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyBookmarkTableViewController.swift; sourceTree = "<group>"; };
 		288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkPageViewController.swift; sourceTree = "<group>"; };
 		288EFD0A27548476000D1617 /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
+		288EFD0C2754F217000D1617 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		288EFD0E2754F23F000D1617 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
+		288EFD102754F27C000D1617 /* AlertPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPageViewController.swift; sourceTree = "<group>"; };
+		288EFD122754F2AE000D1617 /* AlertTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewController.swift; sourceTree = "<group>"; };
+		288EFD142754F2E5000D1617 /* MessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
+		288EFD162754F354000D1617 /* AlertContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertContainer.swift; sourceTree = "<group>"; };
+		288EFD182754F476000D1617 /* MomoPagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoPagable.swift; sourceTree = "<group>"; };
+		288EFD1A2755ADA0000D1617 /* MomoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoPageViewController.swift; sourceTree = "<group>"; };
+		288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
@@ -375,7 +391,6 @@
 				285209C32753329600AB8BAC /* Date+Extension.swift */,
 				285209C42753329600AB8BAC /* UIView+Extension.swift */,
 				285209C52753329600AB8BAC /* UIImage+Extension.swift */,
-				285209C62753329600AB8BAC /* UISegmentedControl+Extension.swift */,
 				285209C72753329600AB8BAC /* UICollectionView+Extension.swift */,
 				285209C82753329600AB8BAC /* UITextfield+Extension.swift */,
 				285209C92753329600AB8BAC /* UITableView+Extension.swift */,
@@ -389,6 +404,7 @@
 				285209CB2753329600AB8BAC /* PopAnimator.swift */,
 				285209CC2753329600AB8BAC /* MomoBaseTextField.swift */,
 				285209CD2753329600AB8BAC /* MomoBaseSearchField.swift */,
+				288EFD1A2755ADA0000D1617 /* MomoPageViewController.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -407,6 +423,8 @@
 				285209D72753329600AB8BAC /* ReusableView.swift */,
 				285209D82753329600AB8BAC /* NibInstantiatable.swift */,
 				285209D92753329600AB8BAC /* StoryboardInstantiable.swift */,
+				288EFD162754F354000D1617 /* AlertContainer.swift */,
+				288EFD182754F476000D1617 /* MomoPagable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -434,6 +452,7 @@
 				288ED75E27427D5800C5178D /* ListTableViewCell.swift */,
 				288ED75F27427D5800C5178D /* ListTableViewCell.xib */,
 				289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */,
+				288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -496,6 +515,10 @@
 				288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */,
 				2852097327522C1300AB8BAC /* PresentationController.swift */,
 				28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */,
+				288EFD0C2754F217000D1617 /* AlertViewController.swift */,
+				288EFD102754F27C000D1617 /* AlertPageViewController.swift */,
+				288EFD122754F2AE000D1617 /* AlertTableViewController.swift */,
+				288EFD142754F2E5000D1617 /* MessageTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -507,6 +530,7 @@
 				288ED75927427CC200C5178D /* BookmarkList.storyboard */,
 				280BEFBA274B319500F031A7 /* PolicyBookmark.storyboard */,
 				280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */,
+				288EFD0E2754F23F000D1617 /* Alert.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -780,6 +804,7 @@
 				28F47166273BE6FE0074D148 /* MyBabyInfo.storyboard in Resources */,
 				285209992753325F00AB8BAC /* DiaryInputOption.storyboard in Resources */,
 				285209B62753327200AB8BAC /* NewPasswordInput.storyboard in Resources */,
+				288EFD0F2754F23F000D1617 /* Alert.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -852,12 +877,14 @@
 				285209A42753325F00AB8BAC /* DiaryMainViewController.swift in Sources */,
 				28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */,
 				285209E52753329600AB8BAC /* UITextfield+Extension.swift in Sources */,
+				288EFD112754F27C000D1617 /* AlertPageViewController.swift in Sources */,
 				285209F02753329600AB8BAC /* simpleContent.swift in Sources */,
 				285209E62753329600AB8BAC /* UITableView+Extension.swift in Sources */,
 				28F471452738B8D10074D148 /* PolicyMainViewController.swift in Sources */,
 				285209EC2753329600AB8BAC /* Scrollable.swift in Sources */,
 				285209F42753329600AB8BAC /* StoryboardInstantiable.swift in Sources */,
 				285209E22753329600AB8BAC /* UIImage+Extension.swift in Sources */,
+				288EFD132754F2AE000D1617 /* AlertTableViewController.swift in Sources */,
 				285209EB2753329600AB8BAC /* CanShowDetailView.swift in Sources */,
 				28F4713F2738A4020074D148 /* TabBar.swift in Sources */,
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
@@ -872,11 +899,13 @@
 				285209BD2753327200AB8BAC /* LocationViewController.swift in Sources */,
 				288EFD0B27548476000D1617 /* CommunityMainViewController.swift in Sources */,
 				288ED76727428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift in Sources */,
+				288EFD172754F354000D1617 /* AlertContainer.swift in Sources */,
 				2852099B2753325F00AB8BAC /* DiaryDetailViewController.swift in Sources */,
 				28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */,
 				28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */,
 				285209F72753329600AB8BAC /* SimpleListModel.swift in Sources */,
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
+				288EFD192754F476000D1617 /* MomoPagable.swift in Sources */,
 				288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */,
 				28F47160273BE4700074D148 /* MySettingViewController.swift in Sources */,
 				285209E92753329600AB8BAC /* MomoBaseSearchField.swift in Sources */,
@@ -884,13 +913,16 @@
 				285209F32753329600AB8BAC /* NibInstantiatable.swift in Sources */,
 				285209C02753327200AB8BAC /* LoginViewController.swift in Sources */,
 				288ED76027427D5800C5178D /* ListTableViewCell.swift in Sources */,
-				285209E32753329600AB8BAC /* UISegmentedControl+Extension.swift in Sources */,
 				2852099E2753325F00AB8BAC /* WithTextViewController.swift in Sources */,
 				28F471412738B3090074D148 /* HomeMainViewController.swift in Sources */,
+				288EFD1D2755D41E000D1617 /* AlertTableViewCell.swift in Sources */,
 				285209A22753325F00AB8BAC /* DiaryReportViewController.swift in Sources */,
+				288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */,
 				285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */,
+				288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */,
 				285209BE2753327200AB8BAC /* PregnantStatusViewController.swift in Sources */,
 				28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */,
+				288EFD0D2754F217000D1617 /* AlertViewController.swift in Sources */,
 				285209F22753329600AB8BAC /* ReusableView.swift in Sources */,
 				285209E82753329600AB8BAC /* MomoBaseTextField.swift in Sources */,
 				285209E12753329600AB8BAC /* UIView+Extension.swift in Sources */,
