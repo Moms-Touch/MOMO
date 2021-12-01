@@ -25,6 +25,7 @@ class MessageTableViewController: UITableViewController {
     view.backgroundColor = .white
     tableView.register(AlertTableViewCell.self)
     tableView.separatorStyle = .none
+    tableView.showsVerticalScrollIndicator = false
   }
 
   
