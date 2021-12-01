@@ -19,9 +19,9 @@ struct SimpleAlertModel {
   let content: String
 }
 
-class AlertTableViewCell: UITableViewCell {
+class AlertTableViewCell: UITableViewCell, AlertContainer {
   
-  lazy var contentLabel: UILabel = {
+  var note: UILabel = {
     let label = UILabel()
     label.numberOfLines = 2
     label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -33,11 +33,7 @@ class AlertTableViewCell: UITableViewCell {
   //Data를 받은다음에 title, alertType, content에 넣기
   var data: SimpleAlertModel? {
     didSet {
-      if data?.alertType == .message {
-        contentLabel.text = "\(data?.title)로부터 쪽지가 왔습니다. \(data?.content)"
-      } else {
-        contentLabel.text = "\(data?.title) 게시글에 대한 댓글이 달렸습니다. \(data?.content)"
-      }
+      contentChange()
     }
   }
   
@@ -53,8 +49,8 @@ class AlertTableViewCell: UITableViewCell {
   
   private func setupUI() {
     contentView.backgroundColor = Asset.Colors.pink5.color.withAlphaComponent(0.3)
-    contentView.addSubview(contentLabel)
-    contentLabel.snp.makeConstraints { make in
+    contentView.addSubview(note)
+    note.snp.makeConstraints { make in
       make.center.equalToSuperview()
       make.right.equalToSuperview().inset(20)
       make.left.equalToSuperview().offset(20)
