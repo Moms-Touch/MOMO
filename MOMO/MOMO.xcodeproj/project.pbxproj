@@ -86,7 +86,7 @@
 		288EFD132754F2AE000D1617 /* AlertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD122754F2AE000D1617 /* AlertTableViewController.swift */; };
 		288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD142754F2E5000D1617 /* MessageTableViewController.swift */; };
 		288EFD172754F354000D1617 /* AlertContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD162754F354000D1617 /* AlertContainer.swift */; };
-		288EFD192754F476000D1617 /* MomoPagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD182754F476000D1617 /* MomoPagable.swift */; };
+		288EFD192754F476000D1617 /* SegControlCustomable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD182754F476000D1617 /* SegControlCustomable.swift */; };
 		288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD1A2755ADA0000D1617 /* MomoPageViewController.swift */; };
 		288EFD1D2755D41E000D1617 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */; };
 		289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */; };
@@ -196,7 +196,7 @@
 		288EFD122754F2AE000D1617 /* AlertTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewController.swift; sourceTree = "<group>"; };
 		288EFD142754F2E5000D1617 /* MessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		288EFD162754F354000D1617 /* AlertContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertContainer.swift; sourceTree = "<group>"; };
-		288EFD182754F476000D1617 /* MomoPagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoPagable.swift; sourceTree = "<group>"; };
+		288EFD182754F476000D1617 /* SegControlCustomable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegControlCustomable.swift; sourceTree = "<group>"; };
 		288EFD1A2755ADA0000D1617 /* MomoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoPageViewController.swift; sourceTree = "<group>"; };
 		288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -424,7 +424,7 @@
 				285209D82753329600AB8BAC /* NibInstantiatable.swift */,
 				285209D92753329600AB8BAC /* StoryboardInstantiable.swift */,
 				288EFD162754F354000D1617 /* AlertContainer.swift */,
-				288EFD182754F476000D1617 /* MomoPagable.swift */,
+				288EFD182754F476000D1617 /* SegControlCustomable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -905,7 +905,7 @@
 				28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */,
 				285209F72753329600AB8BAC /* SimpleListModel.swift in Sources */,
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
-				288EFD192754F476000D1617 /* MomoPagable.swift in Sources */,
+				288EFD192754F476000D1617 /* SegControlCustomable.swift in Sources */,
 				288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */,
 				28F47160273BE4700074D148 /* MySettingViewController.swift in Sources */,
 				285209E92753329600AB8BAC /* MomoBaseSearchField.swift in Sources */,

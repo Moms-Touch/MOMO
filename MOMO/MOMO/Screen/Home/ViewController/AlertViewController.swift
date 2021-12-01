@@ -39,7 +39,7 @@ final class AlertViewController: UIViewController, StoryboardInstantiable {
   
 }
 
-extension AlertViewController: MomoPageable {
+extension AlertViewController: SegControlCustomable {
   var segmentedControl: UISegmentedControl {
     return alertSegControl
   }

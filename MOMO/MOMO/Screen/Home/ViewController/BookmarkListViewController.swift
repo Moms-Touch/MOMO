@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BookmarkListViewController: UIViewController, StoryboardInstantiable, MomoPageable {
+final class BookmarkListViewController: UIViewController, StoryboardInstantiable, SegControlCustomable {
   
   var segmentedControl: UISegmentedControl {
     return bookmarkSegControl

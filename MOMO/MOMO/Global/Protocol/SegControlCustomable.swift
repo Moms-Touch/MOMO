@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol MomoPageable: AnyObject {
+protocol SegControlCustomable: AnyObject {
   var segmentedControl: UISegmentedControl { get }
   var segmentedControlTextColor: (selected: ColorAsset.Color, unselected: ColorAsset.Color) { get }
   var segmentedConrolBackgroundColor: UIColor { get }
 }
-extension MomoPageable {
+extension SegControlCustomable {
   
   func removeBorder() {
     let colorImage = UIImage.colorImage(color: segmentedConrolBackgroundColor.cgColor, size: segmentedControl.bounds.size)
