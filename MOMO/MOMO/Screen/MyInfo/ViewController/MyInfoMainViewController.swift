@@ -33,7 +33,7 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch indexPath.row {
     case 0: //infoEdit
-      self.navigationController?.pushViewController(MyInfoEditViewController.loadFromStoryboard(), animated: true)
+      self.navigationController?.pushViewController(MyInfoEditViewController(), animated: true)
     case 1: //babyInfo
       self.navigationController?.pushViewController(MyBabyInfoViewController.loadFromStoryboard(), animated: true)
     case 2: //MyActivity
