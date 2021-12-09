@@ -15,20 +15,16 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     }
   }
   
-  @IBOutlet weak var imageHuggingView: UIView! {
-    didSet {
-      imageHuggingView.setRound()
-    }
-  }
+  @IBOutlet weak var imageHuggingView: UIView!
   @IBOutlet weak var babyProfileImageView: UIImageView! {
     didSet {
-      babyProfileImageView.setRound()
       babyProfileImageView.isUserInteractionEnabled = true
       let tapgesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gotoMyProfile(_:)))
       babyProfileImageView.addGestureRecognizer(tapgesture)
       //Usermodel을 observing 하고 있어야함
     }
   }
+  
   @IBOutlet weak var dateWithBabyButton: UIButton! {
     didSet {
       dateWithBabyButton.setRound()
@@ -40,6 +36,11 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   override func viewDidLoad() {
     super.viewDidLoad()
     assignbackground()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    imageHuggingView.setRound()
+    babyProfileImageView.setRound()
   }
   
   private func assignbackground(){

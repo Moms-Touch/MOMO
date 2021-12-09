@@ -150,9 +150,7 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let storyboard = UIStoryboard(name: "MySetting", bundle: nil)
-    guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingWebViewController") as? SettingWebViewController else {return}
-    vc.targetURL = URL(string: "https://www.google.com")!
+    let vc = RecommendDetailViewController.loadFromStoryboard()
     present(vc, animated: true, completion: nil)
   }
   
