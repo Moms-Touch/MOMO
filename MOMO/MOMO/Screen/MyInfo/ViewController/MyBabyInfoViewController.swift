@@ -39,6 +39,7 @@ enum BabyInfo: CaseIterable {
 
 class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
+  @IBOutlet weak var babyInfoScrollview: UIScrollView!
   @IBOutlet weak var myBabyImageView: UIImageView!
   @IBOutlet var myBabyInfoTextFields: [UITextField]! {
     didSet {
@@ -56,13 +57,17 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
       saveButton.setRound(5)
     }
   }
+  @IBOutlet var constraints: [NSLayoutConstraint]!
   
   fileprivate let picker = UIImagePickerController()
+  private var flag = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addBabyImage))
     myBabyImageView.addGestureRecognizer(tapGesture)
+    scrollingKeyboard()
+    scrollView.delegate = self
     picker.delegate = self
   }
   
@@ -72,6 +77,18 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
   @IBAction private func didTapSaveButton(sender: UIButton) {
     
+  }
+    
+  override func viewWillLayoutSubviews() {
+    if !flag {
+      constraints.forEach { $0.constant = $0.constant.fit(self)}
+      flag = true
+    }
+  }
+  
+  override func viewDidLayoutSubviews() {
+    myBabyImageView.setRound()
+    myBabyInfoTextFields.forEach {$0.setRound()}
   }
 }
 
@@ -120,6 +137,13 @@ extension MyBabyInfoViewController: UIImagePickerControllerDelegate, UINavigatio
       myBabyImageView.image = UIImage(data: newImageData)!
       dismiss(animated: true, completion: nil)
     }
+  }
+  
+}
+
+extension MyBabyInfoViewController: KeyboardScrollable, UIScrollViewDelegate {
+  var scrollView: UIScrollView {
+    return babyInfoScrollview
   }
   
 }
