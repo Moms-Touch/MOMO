@@ -31,7 +31,12 @@ class AlertTableViewController: UITableViewController {
 
 //MARK: - TableViewController,
 
-extension AlertTableViewController: TableViewGappable {
+extension AlertTableViewController: TableViewGappable, CanShowDetailView {
+  
+  override var navigationController: UINavigationController {
+    self.navigationController
+  }
+  
   
   var headerHeight: CGFloat {
     8
@@ -54,6 +59,10 @@ extension AlertTableViewController: TableViewGappable {
             AlertTableViewCell else {return AlertTableViewCell()}
     cell.data = dataSource[indexPath.section]
     return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    showDetailView(content: dataSource[indexPath.section])
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
