@@ -11,6 +11,7 @@ import SnapKit
 class RecommendModalViewController: UIViewController {
   
   private var datasource: [Int] = [1,2,3,4,5,6]
+  private let collectionViewHeight: CGFloat = 150
   internal var completionHandler: (()->())?
   internal var selectedCell: RecommendCollectionViewCell?
   
@@ -131,7 +132,7 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
     recommendCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
     recommendCollectionView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
     recommendCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    recommendCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+    recommendCollectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight.fit(self)).isActive = true
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
