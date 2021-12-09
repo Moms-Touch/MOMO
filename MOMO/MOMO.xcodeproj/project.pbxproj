@@ -20,6 +20,8 @@
 		280BEFD5274BA35900F031A7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280BEFD4274BA35900F031A7 /* DetailViewController.swift */; };
 		281D35382761EF3F00A128A5 /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209972753325F00AB8BAC /* DiaryMainViewController.swift */; };
 		281D35392761EF4200A128A5 /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209982753325F00AB8BAC /* DiaryMain.storyboard */; };
+		281D353B27622C5600A128A5 /* RecommendDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D353A27622C5600A128A5 /* RecommendDetail.storyboard */; };
+		281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281D353C2762313700A128A5 /* RecommendDetailViewController.swift */; };
 		28492612273BF9E000FA2072 /* SettingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28492611273BF9E000FA2072 /* SettingWebViewController.swift */; };
 		28492614273F666F00FA2072 /* InfoBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */; };
 		2852097427522C1300AB8BAC /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852097327522C1300AB8BAC /* PresentationController.swift */; };
@@ -134,6 +136,8 @@
 		280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommuntiyBookmark.storyboard; sourceTree = "<group>"; };
 		280BEFBE274B647900F031A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		280BEFD4274BA35900F031A7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		281D353A27622C5600A128A5 /* RecommendDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecommendDetail.storyboard; sourceTree = "<group>"; };
+		281D353C2762313700A128A5 /* RecommendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewController.swift; sourceTree = "<group>"; };
 		28492611273BF9E000FA2072 /* SettingWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebViewController.swift; sourceTree = "<group>"; };
 		28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBaseTableViewController.swift; sourceTree = "<group>"; };
 		2852097327522C1300AB8BAC /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 				288EFD102754F27C000D1617 /* AlertPageViewController.swift */,
 				288EFD122754F2AE000D1617 /* AlertTableViewController.swift */,
 				288EFD142754F2E5000D1617 /* MessageTableViewController.swift */,
+				281D353C2762313700A128A5 /* RecommendDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -547,6 +552,7 @@
 				280BEFBA274B319500F031A7 /* PolicyBookmark.storyboard */,
 				280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */,
 				288EFD0E2754F23F000D1617 /* Alert.storyboard */,
+				281D353A27622C5600A128A5 /* RecommendDetail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -818,6 +824,7 @@
 				285209B52753327200AB8BAC /* Location.storyboard in Resources */,
 				285209992753325F00AB8BAC /* DiaryInputOption.storyboard in Resources */,
 				285209B62753327200AB8BAC /* NewPasswordInput.storyboard in Resources */,
+				281D353B27622C5600A128A5 /* RecommendDetail.storyboard in Resources */,
 				288EFD0F2754F23F000D1617 /* Alert.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -922,6 +929,7 @@
 				28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */,
 				285209F72753329600AB8BAC /* SimpleListModel.swift in Sources */,
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
+				281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */,
 				288EFD192754F476000D1617 /* SegControlCustomable.swift in Sources */,
 				288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */,
 				28F47160273BE4700074D148 /* MySettingViewController.swift in Sources */,
