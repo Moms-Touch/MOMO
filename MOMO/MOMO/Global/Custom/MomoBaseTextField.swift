@@ -25,8 +25,8 @@ final class MomoBaseTextField: UITextField {
     self.borderStyle = .none
     self.layer.cornerRadius = self.frame.height / 2
     self.layer.borderWidth = 1
-    self.heightAnchor.constraint(equalToConstant: figMaDefinedHeightValue).isActive = true
-    self.widthAnchor.constraint(equalToConstant: figMaDefinedWidthValue).isActive = true
+//    self.heightAnchor.constraint(equalToConstant: figMaDefinedHeightValue).isActive = true
+//    self.widthAnchor.constraint(equalToConstant: figMaDefinedWidthValue).isActive = true
   }
   
   internal func setBorderColor(to color: UIColor) {
