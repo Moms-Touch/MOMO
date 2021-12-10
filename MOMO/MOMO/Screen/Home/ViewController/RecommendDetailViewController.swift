@@ -10,14 +10,14 @@ import WebKit
 
 class infoDataViewModel {
   
-  var model = InfoData(infoId: 1, author: "", title: "임산부에게는 이게 안좋아요ㅠ", url: "https://www.google.com", thumbnailImageURL: nil, week: 7, createdAt: "2021.11.11", updatedAt: "2021.12.12")
+  var model = InfoData(id: 1, author: "", title: "임산부에게는 이게 안좋아요ㅠ", url: "https://www.google.com", thumbnailImageUrl: nil, week: 7, createdAt: "2021.11.11", updatedAt: "2021.12.12")
     
   var url: URL {
     return URL(string: model.url)!
   }
   
   var thumbNailImageURL: URL? {
-    guard let thumbnailImageURL = model.thumbnailImageURL else {return nil}
+    guard let thumbnailImageURL = model.thumbnailImageUrl else {return nil}
     return URL(string: thumbnailImageURL)!
   }
   
