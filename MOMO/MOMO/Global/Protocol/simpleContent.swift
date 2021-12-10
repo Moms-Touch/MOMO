@@ -7,6 +7,8 @@
 
 import Foundation
 
+// simpleContent는 모델중에 tableviewcell이나 collectionviewcell에 쓰이는 모델에 채택하여 사용한다.
+
 protocol simpleContent {
   var id: Int {get set}
   var title: String {get set}
