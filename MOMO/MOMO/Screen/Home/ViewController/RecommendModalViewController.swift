@@ -151,6 +151,7 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let vc = RecommendDetailViewController.loadFromStoryboard()
+    vc.isModalInPresentation = true
     present(vc, animated: true, completion: nil)
   }
   

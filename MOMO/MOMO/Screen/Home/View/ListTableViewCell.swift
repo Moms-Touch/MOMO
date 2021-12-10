@@ -13,11 +13,11 @@ class ListTableViewCell: UITableViewCell, NibLoadableView {
   @IBOutlet weak var organizationLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   
-  private var data: SimpleListModel? {
+  private var data: simpleContent? {
     didSet {
       titleLabel.text = data?.title
-      organizationLabel.text = data?.organization
-      dateLabel.text = data?.date.toString()
+      organizationLabel.text = data?.author ?? "모모관리자"
+      dateLabel.text = data?.createdAt
     }
   }
   

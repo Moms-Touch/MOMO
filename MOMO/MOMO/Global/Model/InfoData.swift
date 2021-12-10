@@ -7,22 +7,21 @@
 
 import Foundation
 
-struct InfoData: simpleContent, Codable {
-  let infoId: Int
-  let author: String
-  let title: String
+struct InfoData: simpleContent, Codable {  
+  var id: Int
+  var author: String?
+  var title: String
   let url: String
-  let thumbnailImageURL: String?
+  var thumbnailImageUrl: String?
   let week: Int
-  let createdAt: String
+  var createdAt: String
   let updatedAt: String
 }
 
 extension InfoData{
   enum CodingKeys: String, CodingKey {
-    case infoId = "id"
-    case author, title, url
-    case thumbnailImageURL = "thumbnail_image_url"
+    case id, author, title, url
+    case thumbnailImageUrl = "thumbnail_image_url"
     case week
     case createdAt = "created_at"
     case updatedAt = "updated_at"
@@ -32,11 +31,11 @@ extension InfoData{
 extension InfoData {
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    infoId = (try? container.decode(Int.self, forKey: .infoId)) ?? -1
+    id = (try? container.decode(Int.self, forKey: .id)) ?? -1
     author = (try? container.decodeIfPresent(String.self, forKey: .author)) ?? ""
     title = (try? container.decodeIfPresent(String.self, forKey: .title)) ?? ""
     url = (try? container.decodeIfPresent(String.self, forKey: .url)) ?? ""
-    thumbnailImageURL = try? container.decodeIfPresent(String.self, forKey: .thumbnailImageURL)
+    thumbnailImageUrl = try? container.decodeIfPresent(String.self, forKey: .thumbnailImageUrl)
     week = (try? container.decodeIfPresent(Int.self, forKey: .week)) ?? 0
     createdAt = (try? container.decodeIfPresent(String.self, forKey: .createdAt)) ?? ""
     updatedAt = (try? container.decodeIfPresent(String.self, forKey: .updatedAt)) ?? ""

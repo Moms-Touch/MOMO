@@ -8,9 +8,10 @@
 import Foundation
 
 struct SimpleCommunityData: Codable, simpleContent {
-  let id: Int
-  let author: String
-  let thumbnailImageUrl: String
-  let createdAt: String
+  var id: Int
+  var title: String
+  var author: String?
+  var thumbnailImageUrl: String?
+  var createdAt: String
   let updatedAt: String
 }
