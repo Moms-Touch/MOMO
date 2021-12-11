@@ -7,6 +7,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -55,23 +56,6 @@
                                     <action selector="didTapBookmarkListButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hUI-BS-7Rx"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjU-4I-xgI">
-                                <rect key="frame" x="0.0" y="98" width="375" height="26"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항 / 한부모가정센터알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iff-Vu-E4t">
-                                        <rect key="frame" x="114.66666666666667" y="6.0000000000000009" width="145.66666666666663" height="14.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemGray4Color"/>
-                                <constraints>
-                                    <constraint firstItem="Iff-Vu-E4t" firstAttribute="centerX" secondItem="vjU-4I-xgI" secondAttribute="centerX" id="9tw-gk-8T2"/>
-                                    <constraint firstAttribute="height" constant="26" id="Uv7-uz-Q4d"/>
-                                    <constraint firstItem="Iff-Vu-E4t" firstAttribute="centerY" secondItem="vjU-4I-xgI" secondAttribute="centerY" id="yLz-C5-hrg"/>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="9Ei-lu-XKr">
                                 <rect key="frame" x="285" y="604" width="70" height="154"/>
                                 <subviews>
@@ -133,39 +117,63 @@
                                     <constraint firstAttribute="trailing" secondItem="lJe-gp-myE" secondAttribute="trailing" constant="4" id="yf3-qH-pnq"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jpF-y4-GV9">
+                                <rect key="frame" x="0.0" y="98" width="375" height="26"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="chy-Um-gdV"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AUV-0x-ULR">
+                                    <size key="itemSize" width="128" height="35"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BannerCell" id="Fi7-1Y-PpZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bUL-Rh-EV0">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="35"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="128" height="35"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vjU-4I-xgI" firstAttribute="top" secondItem="Vtj-m1-iDU" secondAttribute="bottom" constant="10" id="5PA-n3-sF8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jpF-y4-GV9" secondAttribute="trailing" id="7Tm-tr-WLe"/>
                             <constraint firstItem="i7N-2r-EST" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8Vo-3m-6qy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9Ei-lu-XKr" secondAttribute="trailing" constant="20" id="9Et-sL-0oa"/>
                             <constraint firstItem="GYb-h2-mqL" firstAttribute="trailing" secondItem="i7N-2r-EST" secondAttribute="trailing" constant="15" id="AMU-ha-0YC"/>
                             <constraint firstItem="PKa-eB-caM" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="CEs-zJ-aK1"/>
                             <constraint firstItem="Wfy-1u-fgY" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="IVc-wL-3zS"/>
-                            <constraint firstItem="vjU-4I-xgI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="P9l-M5-TYD"/>
+                            <constraint firstItem="jpF-y4-GV9" firstAttribute="top" secondItem="Vtj-m1-iDU" secondAttribute="bottom" constant="10" id="Jmd-3x-7WM"/>
+                            <constraint firstItem="i7N-2r-EST" firstAttribute="top" secondItem="jpF-y4-GV9" secondAttribute="bottom" constant="70" id="Kg8-AN-Xqt"/>
                             <constraint firstItem="Wfy-1u-fgY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="QAq-OB-0wb"/>
+                            <constraint firstItem="jpF-y4-GV9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="SB7-6d-inM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PKa-eB-caM" secondAttribute="trailing" constant="20" id="WV3-4X-7VP"/>
                             <constraint firstItem="GYb-h2-mqL" firstAttribute="leading" secondItem="i7N-2r-EST" secondAttribute="leading" constant="-15" id="Y0E-42-TQn"/>
                             <constraint firstItem="lJe-gp-myE" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="1/3" id="YPa-yI-3Nl"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vjU-4I-xgI" secondAttribute="trailing" id="Yrb-cq-0F3"/>
                             <constraint firstItem="GYb-h2-mqL" firstAttribute="top" secondItem="i7N-2r-EST" secondAttribute="bottom" constant="-10" id="ZKH-KE-1Yn"/>
                             <constraint firstItem="Vtj-m1-iDU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="d8n-qD-aFj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9Ei-lu-XKr" secondAttribute="bottom" constant="20" id="lmD-Fe-CTX"/>
-                            <constraint firstItem="i7N-2r-EST" firstAttribute="top" secondItem="vjU-4I-xgI" secondAttribute="bottom" constant="70" id="mf7-vw-9xX"/>
                             <constraint firstItem="Vtj-m1-iDU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="sr3-ty-Rmm"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="babyProfileImageView" destination="lJe-gp-myE" id="N3U-TK-htE"/>
+                        <outlet property="bannerCollectionView" destination="jpF-y4-GV9" id="Rn6-eL-Qyd"/>
                         <outlet property="dateWithBabyButton" destination="GYb-h2-mqL" id="FoU-eS-67P"/>
                         <outlet property="imageHuggingView" destination="i7N-2r-EST" id="gKg-ij-gMS"/>
-                        <outlet property="noticeView" destination="vjU-4I-xgI" id="FO5-FG-z7v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="93.75"/>
+            <point key="canvasLocation" x="34.399999999999999" y="93.103448275862078"/>
         </scene>
     </scenes>
     <resources>
@@ -180,9 +188,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
