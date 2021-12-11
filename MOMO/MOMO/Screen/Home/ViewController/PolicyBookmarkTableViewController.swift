@@ -18,7 +18,8 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
   }
   
   private var gapBWTCell:CGFloat = 10;
-  
+  // 후에 simplepolicydata 나오면 그것으로 변경
+  private var datasource: [SimpleCommunityData] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,7 +29,8 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
   // MARK: - Table view data source
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 10
+//    return 10
+    return datasource.count
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,6 +43,7 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
 
     //TODO: data 넣어주기
     //section으로 어레이 참조하기
+    cell.getSimpleData(data: datasource[indexPath.section])
 
     return cell
   }

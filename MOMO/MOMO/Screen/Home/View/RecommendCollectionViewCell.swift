@@ -7,7 +7,19 @@
 
 import UIKit
 
-class RecommendCollectionViewCell: UICollectionViewCell {
+class RecommendCollectionViewCell: UICollectionViewCell, simpleContentContainer {
+  
+  internal var data: simpleContent? {
+    didSet {
+      if let thumbnailImageUrl = data?.thumbnailImageUrl {
+        thumbNailImageView.setImage(with:thumbnailImageUrl)
+        titleLabel.text = data?.title
+      } else {
+        thumbNailImageView.image = UIImage(named: "Logo")!
+        titleLabel.text = data?.title
+      }
+    }
+  }
   
   lazy var thumbNailImageView: UIImageView = {
     let imageview = UIImageView(frame: CGRect(x: 0, y: 0, width: 103, height: 103))
