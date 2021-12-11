@@ -17,12 +17,17 @@ protocol CanShowDetailView: AnyObject {
     // Model은 특정 protocol을 받아야할 것이다.
 }
 
-extension CanShowDetailView {
+extension CanShowDetailView where Self: UIViewController {
   func showDetailView(content: Any?) {
     let detailViewController = DetailViewController()
     detailViewController.content = content
     self.navigationController.pushViewController(detailViewController, animated: true)
   }
+  
+  func showDetailWithWebView(content: simpleContent, viewcontroller: UIViewController) {
+    
+  }
+  
 }
 
 

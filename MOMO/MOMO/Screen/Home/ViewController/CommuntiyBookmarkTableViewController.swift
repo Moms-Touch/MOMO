@@ -18,7 +18,7 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
   }
   
   private var gapBWTCell:CGFloat = 10;
-
+  private var datasource: [SimpleCommunityData] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,7 +28,7 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
   // MARK: - Table view data source
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 10
+    return datasource.count
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,6 +39,7 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
     let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
 
     //TODO: 데이터 넣어주기
+    cell.getSimpleData(data: datasource[indexPath.section])
 
     return cell
   }

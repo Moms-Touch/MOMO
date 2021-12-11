@@ -10,7 +10,7 @@ import SnapKit
 
 class RecommendModalViewController: UIViewController {
   
-  private var datasource: [Int] = [1,2,3,4,5,6]
+  private var datasource: [InfoData] = []
   private let collectionViewHeight: CGFloat = 150
   internal var completionHandler: (()->())?
   internal var selectedCell: RecommendCollectionViewCell?
@@ -141,8 +141,10 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as? RecommendCollectionViewCell else {return RecommendCollectionViewCell()}
-    return cell
     
+    cell.getSimpleData(data: datasource[indexPath.row])
+    
+    return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
