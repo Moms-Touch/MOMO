@@ -22,7 +22,10 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6N-gT-zgb">
-                                        <rect key="frame" x="16" y="11" width="12.666666666666664" height="22"/>
+                                        <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="a6N-gT-zgb" secondAttribute="height" multiplier="1:1" id="dlh-JR-DqZ"/>
+                                        </constraints>
                                         <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="chevron.left" catalog="system"/>
                                         <connections>
@@ -39,10 +42,12 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="GFO-Uz-BoR" firstAttribute="centerY" secondItem="RZf-bE-p1n" secondAttribute="centerY" id="5m8-FY-awM"/>
+                                    <constraint firstAttribute="bottom" secondItem="a6N-gT-zgb" secondAttribute="bottom" constant="10" id="FrW-xs-lLk"/>
                                     <constraint firstItem="a6N-gT-zgb" firstAttribute="leading" secondItem="RZf-bE-p1n" secondAttribute="leading" constant="16" id="Qpm-SW-aMR"/>
                                     <constraint firstItem="a6N-gT-zgb" firstAttribute="centerY" secondItem="RZf-bE-p1n" secondAttribute="centerY" id="VbE-IF-c8s"/>
                                     <constraint firstAttribute="height" constant="44" id="hGL-a4-jH3"/>
                                     <constraint firstItem="GFO-Uz-BoR" firstAttribute="centerX" secondItem="RZf-bE-p1n" secondAttribute="centerX" id="iAp-0X-SVm"/>
+                                    <constraint firstItem="a6N-gT-zgb" firstAttribute="top" secondItem="RZf-bE-p1n" secondAttribute="top" constant="10" id="t0K-oj-7F4"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cd-kK-Eg9">

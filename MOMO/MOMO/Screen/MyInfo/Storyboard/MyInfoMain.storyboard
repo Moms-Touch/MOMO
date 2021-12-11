@@ -32,7 +32,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRx-Dl-RZF">
-                                        <rect key="frame" x="16" y="11" width="13" height="22"/>
+                                        <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="KRx-Dl-RZF" secondAttribute="height" multiplier="1:1" id="czf-Wv-j7M"/>
+                                        </constraints>
                                         <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="chevron.left" catalog="system"/>
                                         <connections>
@@ -42,7 +45,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="KRx-Dl-RZF" firstAttribute="top" secondItem="9Mh-Gm-7z6" secondAttribute="top" constant="10" id="Bap-0f-1A1"/>
                                     <constraint firstItem="KRx-Dl-RZF" firstAttribute="centerY" secondItem="5x1-T1-zTi" secondAttribute="centerY" id="Dqg-Bv-xgk"/>
+                                    <constraint firstAttribute="bottom" secondItem="KRx-Dl-RZF" secondAttribute="bottom" constant="10" id="ONw-Wx-7Hv"/>
                                     <constraint firstItem="5x1-T1-zTi" firstAttribute="centerY" secondItem="9Mh-Gm-7z6" secondAttribute="centerY" id="Prk-rI-m6M"/>
                                     <constraint firstAttribute="height" constant="44" id="bIe-pY-Q9U"/>
                                     <constraint firstItem="5x1-T1-zTi" firstAttribute="centerX" secondItem="9Mh-Gm-7z6" secondAttribute="centerX" id="fX9-HI-B50"/>
