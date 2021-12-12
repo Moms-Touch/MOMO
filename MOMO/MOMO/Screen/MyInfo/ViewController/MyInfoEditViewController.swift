@@ -28,6 +28,10 @@ final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
     super.viewDidLoad()
   }
   
+  @IBAction func didTapBackButton(_ sender: UIButton) {
+    self.navigationController?.popViewController(animated: true)
+  }
+  
 }
 
 final class EditInfoTableViewController: InfoBaseTableViewController {
