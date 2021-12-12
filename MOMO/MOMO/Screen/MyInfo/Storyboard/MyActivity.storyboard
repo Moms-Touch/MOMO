@@ -26,7 +26,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBH-Tc-2Ef">
-                                        <rect key="frame" x="16" y="11" width="13" height="22"/>
+                                        <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="sBH-Tc-2Ef" secondAttribute="height" multiplier="1:1" id="Nqi-Nn-iBZ"/>
+                                        </constraints>
                                         <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="chevron.left" catalog="system"/>
                                         <connections>
@@ -45,8 +48,10 @@
                                     <constraint firstItem="sBH-Tc-2Ef" firstAttribute="centerY" secondItem="jrX-rL-J2S" secondAttribute="centerY" id="O7H-o8-oFG"/>
                                     <constraint firstItem="1Ko-xX-jY4" firstAttribute="centerX" secondItem="jrX-rL-J2S" secondAttribute="centerX" id="TnE-Nm-okc"/>
                                     <constraint firstItem="1Ko-xX-jY4" firstAttribute="centerY" secondItem="jrX-rL-J2S" secondAttribute="centerY" id="VGQ-l7-pYB"/>
+                                    <constraint firstAttribute="bottom" secondItem="sBH-Tc-2Ef" secondAttribute="bottom" constant="10" id="ZWh-af-fNq"/>
                                     <constraint firstAttribute="height" constant="44" id="bsi-wS-Mnd"/>
                                     <constraint firstItem="sBH-Tc-2Ef" firstAttribute="leading" secondItem="jrX-rL-J2S" secondAttribute="leading" constant="16" id="mbG-Tb-fO1"/>
+                                    <constraint firstItem="sBH-Tc-2Ef" firstAttribute="top" secondItem="jrX-rL-J2S" secondAttribute="top" constant="10" id="yry-vn-Pje"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3n-bz-kzs">

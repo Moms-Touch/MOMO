@@ -17,6 +17,12 @@
 		280BEFCA274B65F100F031A7 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 280BEFC9274B65F100F031A7 /* FirebaseStorageSwift-Beta */; };
 		280BEFCD274B7B9400F031A7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 280BEFCC274B7B9400F031A7 /* Kingfisher */; };
 		280BEFD5274BA35900F031A7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280BEFD4274BA35900F031A7 /* DetailViewController.swift */; };
+		281D35382761EF3F00A128A5 /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209972753325F00AB8BAC /* DiaryMainViewController.swift */; };
+		281D35392761EF4200A128A5 /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209982753325F00AB8BAC /* DiaryMain.storyboard */; };
+		281D353B27622C5600A128A5 /* RecommendDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D353A27622C5600A128A5 /* RecommendDetail.storyboard */; };
+		281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281D353C2762313700A128A5 /* RecommendDetailViewController.swift */; };
+		281D353F27647FD500A128A5 /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281D353E27647FD500A128A5 /* BannerCell.swift */; };
+		281D35412764B17A00A128A5 /* MyInfoEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D35402764B17A00A128A5 /* MyInfoEdit.storyboard */; };
 		28492612273BF9E000FA2072 /* SettingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28492611273BF9E000FA2072 /* SettingWebViewController.swift */; };
 		28492614273F666F00FA2072 /* InfoBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */; };
 		2852097427522C1300AB8BAC /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852097327522C1300AB8BAC /* PresentationController.swift */; };
@@ -33,8 +39,6 @@
 		285209A12753325F00AB8BAC /* WithTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285209922753325F00AB8BAC /* WithTextCollectionViewCell.xib */; };
 		285209A22753325F00AB8BAC /* DiaryReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209942753325F00AB8BAC /* DiaryReportViewController.swift */; };
 		285209A32753325F00AB8BAC /* DiaryReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209952753325F00AB8BAC /* DiaryReport.storyboard */; };
-		285209A42753325F00AB8BAC /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209972753325F00AB8BAC /* DiaryMainViewController.swift */; };
-		285209A52753325F00AB8BAC /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209982753325F00AB8BAC /* DiaryMain.storyboard */; };
 		285209B52753327200AB8BAC /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209A82753327200AB8BAC /* Location.storyboard */; };
 		285209B62753327200AB8BAC /* NewPasswordInput.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209A92753327200AB8BAC /* NewPasswordInput.storyboard */; };
 		285209B72753327200AB8BAC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209AA2753327200AB8BAC /* Login.storyboard */; };
@@ -69,8 +73,7 @@
 		285209F32753329600AB8BAC /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209D82753329600AB8BAC /* NibInstantiatable.swift */; };
 		285209F42753329600AB8BAC /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209D92753329600AB8BAC /* StoryboardInstantiable.swift */; };
 		285209F52753329600AB8BAC /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DB2753329600AB8BAC /* StorageService.swift */; };
-		285209F62753329600AB8BAC /* RecommendSimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DD2753329600AB8BAC /* RecommendSimpleData.swift */; };
-		285209F72753329600AB8BAC /* SimpleListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DE2753329600AB8BAC /* SimpleListModel.swift */; };
+		285209F62753329600AB8BAC /* InfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DD2753329600AB8BAC /* InfoData.swift */; };
 		288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288ED75927427CC200C5178D /* BookmarkList.storyboard */; };
 		288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED75B27427CD000C5178D /* BookmarkListViewController.swift */; };
 		288ED76027427D5800C5178D /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED75E27427D5800C5178D /* ListTableViewCell.swift */; };
@@ -88,6 +91,7 @@
 		288EFD192754F476000D1617 /* SegControlCustomable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD182754F476000D1617 /* SegControlCustomable.swift */; };
 		288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD1A2755ADA0000D1617 /* MomoPageViewController.swift */; };
 		288EFD1D2755D41E000D1617 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */; };
+		288EFD252758E8D2000D1617 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */; };
 		289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
@@ -111,13 +115,17 @@
 		28F4715E273BE4620074D148 /* MySetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F4715D273BE4620074D148 /* MySetting.storyboard */; };
 		28F47160273BE4700074D148 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4715F273BE4700074D148 /* MySettingViewController.swift */; };
 		28F47162273BE5480074D148 /* MyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F47161273BE5480074D148 /* MyInfoEditViewController.swift */; };
-		28F47164273BE5500074D148 /* MyInfoEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47163273BE5500074D148 /* MyInfoEdit.storyboard */; };
-		28F47166273BE6FE0074D148 /* MyBabyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47165273BE6FE0074D148 /* MyBabyInfo.storyboard */; };
+		28F47164273BE5500074D148 /* MyBabyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47163273BE5500074D148 /* MyBabyInfo.storyboard */; };
 		28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */; };
 		531F5A5B3C7CC77E6BC204DA /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13342964BB44F88E3ED238E8 /* Pods_MOMO.framework */; };
 		75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C427661C0F0057CF9B /* NetworkManager.swift */; };
 		75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C627662CAC0057CF9B /* ParsingManager.swift */; };
 		75CE01CA27662CE00057CF9B /* APIable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C927662CE00057CF9B /* APIable.swift */; };
+		28F4FE132760C3BA00E699FC /* LikeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE122760C3BA00E699FC /* LikeData.swift */; };
+		28F4FE152760C82F00E699FC /* SimpleCommunityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE142760C82F00E699FC /* SimpleCommunityData.swift */; };
+		28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE162760CA7900E699FC /* NoticeData.swift */; };
+		28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1827610E3800E699FC /* NotificationData.swift */; };
+		28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1A27610E5A00E699FC /* BabyData.swift */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
 		DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */; };
@@ -134,6 +142,10 @@
 		280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommuntiyBookmark.storyboard; sourceTree = "<group>"; };
 		280BEFBE274B647900F031A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		280BEFD4274BA35900F031A7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		281D353A27622C5600A128A5 /* RecommendDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecommendDetail.storyboard; sourceTree = "<group>"; };
+		281D353C2762313700A128A5 /* RecommendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewController.swift; sourceTree = "<group>"; };
+		281D353E27647FD500A128A5 /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		281D35402764B17A00A128A5 /* MyInfoEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoEdit.storyboard; sourceTree = "<group>"; };
 		28492611273BF9E000FA2072 /* SettingWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebViewController.swift; sourceTree = "<group>"; };
 		28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBaseTableViewController.swift; sourceTree = "<group>"; };
 		2852097327522C1300AB8BAC /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
@@ -185,8 +197,7 @@
 		285209D82753329600AB8BAC /* NibInstantiatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibInstantiatable.swift; sourceTree = "<group>"; };
 		285209D92753329600AB8BAC /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		285209DB2753329600AB8BAC /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		285209DD2753329600AB8BAC /* RecommendSimpleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendSimpleData.swift; sourceTree = "<group>"; };
-		285209DE2753329600AB8BAC /* SimpleListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleListModel.swift; sourceTree = "<group>"; };
+		285209DD2753329600AB8BAC /* InfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoData.swift; sourceTree = "<group>"; };
 		288ED75927427CC200C5178D /* BookmarkList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarkList.storyboard; sourceTree = "<group>"; };
 		288ED75B27427CD000C5178D /* BookmarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewController.swift; sourceTree = "<group>"; };
 		288ED75E27427D5800C5178D /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
@@ -204,6 +215,7 @@
 		288EFD182754F476000D1617 /* SegControlCustomable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegControlCustomable.swift; sourceTree = "<group>"; };
 		288EFD1A2755ADA0000D1617 /* MomoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoPageViewController.swift; sourceTree = "<group>"; };
 		288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
+		288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
@@ -226,13 +238,19 @@
 		28F4715D273BE4620074D148 /* MySetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MySetting.storyboard; sourceTree = "<group>"; };
 		28F4715F273BE4700074D148 /* MySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
 		28F47161273BE5480074D148 /* MyInfoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoEditViewController.swift; sourceTree = "<group>"; };
-		28F47163273BE5500074D148 /* MyInfoEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoEdit.storyboard; sourceTree = "<group>"; };
-		28F47165273BE6FE0074D148 /* MyBabyInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBabyInfo.storyboard; sourceTree = "<group>"; };
+		28F47163273BE5500074D148 /* MyBabyInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBabyInfo.storyboard; sourceTree = "<group>"; };
 		28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBabyInfoViewController.swift; sourceTree = "<group>"; };
 		75CE01C427661C0F0057CF9B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		75CE01C627662CAC0057CF9B /* ParsingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingManager.swift; sourceTree = "<group>"; };
 		75CE01C927662CE00057CF9B /* APIable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIable.swift; sourceTree = "<group>"; };
 		7EBE4F48DE624B3EE6A28486 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
+		28F4FE122760C3BA00E699FC /* LikeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeData.swift; sourceTree = "<group>"; };
+		28F4FE142760C82F00E699FC /* SimpleCommunityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCommunityData.swift; sourceTree = "<group>"; };
+		28F4FE162760CA7900E699FC /* NoticeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeData.swift; sourceTree = "<group>"; };
+		28F4FE1827610E3800E699FC /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
+		28F4FE1A27610E5A00E699FC /* BabyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyData.swift; sourceTree = "<group>"; };
+		98F755F27743C61F4F87144C /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
+		C7195CDA2CF0DE58BE1A8F30 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		DD1C24F727518C0700CDD64F /* WithTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextViewController.swift; sourceTree = "<group>"; };
@@ -400,6 +418,7 @@
 				285209C72753329600AB8BAC /* UICollectionView+Extension.swift */,
 				285209C82753329600AB8BAC /* UITextfield+Extension.swift */,
 				285209C92753329600AB8BAC /* UITableView+Extension.swift */,
+				288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -451,6 +470,12 @@
 				285209DE2753329600AB8BAC /* SimpleListModel.swift */,
 				75CE01C427661C0F0057CF9B /* NetworkManager.swift */,
 				75CE01C627662CAC0057CF9B /* ParsingManager.swift */,
+				285209DD2753329600AB8BAC /* InfoData.swift */,
+				28F4FE122760C3BA00E699FC /* LikeData.swift */,
+				28F4FE142760C82F00E699FC /* SimpleCommunityData.swift */,
+				28F4FE162760CA7900E699FC /* NoticeData.swift */,
+				28F4FE1827610E3800E699FC /* NotificationData.swift */,
+				28F4FE1A27610E5A00E699FC /* BabyData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -462,6 +487,7 @@
 				288ED75F27427D5800C5178D /* ListTableViewCell.xib */,
 				289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */,
 				288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */,
+				281D353E27647FD500A128A5 /* BannerCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -528,6 +554,7 @@
 				288EFD102754F27C000D1617 /* AlertPageViewController.swift */,
 				288EFD122754F2AE000D1617 /* AlertTableViewController.swift */,
 				288EFD142754F2E5000D1617 /* MessageTableViewController.swift */,
+				281D353C2762313700A128A5 /* RecommendDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -540,6 +567,7 @@
 				280BEFBA274B319500F031A7 /* PolicyBookmark.storyboard */,
 				280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */,
 				288EFD0E2754F23F000D1617 /* Alert.storyboard */,
+				281D353A27622C5600A128A5 /* RecommendDetail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -550,8 +578,8 @@
 				28F47157273BE0780074D148 /* MyInfoMain.storyboard */,
 				28F47159273BE3D90074D148 /* MyActivity.storyboard */,
 				28F4715D273BE4620074D148 /* MySetting.storyboard */,
-				28F47163273BE5500074D148 /* MyInfoEdit.storyboard */,
-				28F47165273BE6FE0074D148 /* MyBabyInfo.storyboard */,
+				28F47163273BE5500074D148 /* MyBabyInfo.storyboard */,
+				281D35402764B17A00A128A5 /* MyInfoEdit.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -791,7 +819,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */,
-				28F47164273BE5500074D148 /* MyInfoEdit.storyboard in Resources */,
+				28F47164273BE5500074D148 /* MyBabyInfo.storyboard in Resources */,
 				2852099C2753325F00AB8BAC /* CreateDiary.storyboard in Resources */,
 				28F47158273BE0780074D148 /* MyInfoMain.storyboard in Resources */,
 				285209BA2753327200AB8BAC /* FindPassword.storyboard in Resources */,
@@ -805,22 +833,23 @@
 				28CA30762753357300EF071E /* QuestionsMain.storyboard in Resources */,
 				285209B72753327200AB8BAC /* Login.storyboard in Resources */,
 				DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */,
-				285209A52753325F00AB8BAC /* DiaryMain.storyboard in Resources */,
 				285209B82753327200AB8BAC /* PregnantStatus.storyboard in Resources */,
 				DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */,
 				2852099F2753325F00AB8BAC /* WithText.storyboard in Resources */,
 				28CA30782753357300EF071E /* CreateQuestion.storyboard in Resources */,
+				281D35412764B17A00A128A5 /* MyInfoEdit.storyboard in Resources */,
 				280BEFBB274B319500F031A7 /* PolicyBookmark.storyboard in Resources */,
 				280BEFBF274B647900F031A7 /* GoogleService-Info.plist in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
 				28F4715A273BE3D90074D148 /* MyActivity.storyboard in Resources */,
 				280BEFBD274B31B700F031A7 /* CommuntiyBookmark.storyboard in Resources */,
 				28F4715E273BE4620074D148 /* MySetting.storyboard in Resources */,
+				281D35392761EF4200A128A5 /* DiaryMain.storyboard in Resources */,
 				28CA30722753357300EF071E /* QuetsionDetail.storyboard in Resources */,
 				285209B52753327200AB8BAC /* Location.storyboard in Resources */,
-				28F47166273BE6FE0074D148 /* MyBabyInfo.storyboard in Resources */,
 				285209992753325F00AB8BAC /* DiaryInputOption.storyboard in Resources */,
 				285209B62753327200AB8BAC /* NewPasswordInput.storyboard in Resources */,
+				281D353B27622C5600A128A5 /* RecommendDetail.storyboard in Resources */,
 				288EFD0F2754F23F000D1617 /* Alert.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -882,6 +911,7 @@
 				288ED76927428C1E00C5178D /* PolicyBookmarkTableViewController.swift in Sources */,
 				28F4715C273BE3E90074D148 /* MyActivityViewController.swift in Sources */,
 				28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */,
+				281D353F27647FD500A128A5 /* BannerCell.swift in Sources */,
 				289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */,
 				2852097427522C1300AB8BAC /* PresentationController.swift in Sources */,
 				DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */,
@@ -890,10 +920,12 @@
 				285209BF2753327200AB8BAC /* NewPasswordInputViewController.swift in Sources */,
 				285209ED2753329600AB8BAC /* NibLoadableView.swift in Sources */,
 				285209E02753329600AB8BAC /* Date+Extension.swift in Sources */,
-				285209F62753329600AB8BAC /* RecommendSimpleData.swift in Sources */,
-				285209A42753325F00AB8BAC /* DiaryMainViewController.swift in Sources */,
+				285209F62753329600AB8BAC /* InfoData.swift in Sources */,
+				28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */,
 				28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */,
 				285209E52753329600AB8BAC /* UITextfield+Extension.swift in Sources */,
+				28F4FE132760C3BA00E699FC /* LikeData.swift in Sources */,
+				281D35382761EF3F00A128A5 /* DiaryMainViewController.swift in Sources */,
 				288EFD112754F27C000D1617 /* AlertPageViewController.swift in Sources */,
 				285209F02753329600AB8BAC /* simpleContent.swift in Sources */,
 				285209E62753329600AB8BAC /* UITableView+Extension.swift in Sources */,
@@ -909,6 +941,7 @@
 				288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */,
 				285209E72753329600AB8BAC /* PopAnimator.swift in Sources */,
 				285209EA2753329600AB8BAC /* Dimmable.swift in Sources */,
+				28F4FE152760C82F00E699FC /* SimpleCommunityData.swift in Sources */,
 				280BEFD5274BA35900F031A7 /* DetailViewController.swift in Sources */,
 				28CA30772753357300EF071E /* CreateQuestionViewController.swift in Sources */,
 				28CA30732753357300EF071E /* QuestionsMainViewController.swift in Sources */,
@@ -920,14 +953,15 @@
 				2852099B2753325F00AB8BAC /* DiaryDetailViewController.swift in Sources */,
 				28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */,
 				28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */,
-				285209F72753329600AB8BAC /* SimpleListModel.swift in Sources */,
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
+				281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */,
 				288EFD192754F476000D1617 /* SegControlCustomable.swift in Sources */,
 				288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */,
 				28F47160273BE4700074D148 /* MySettingViewController.swift in Sources */,
 				285209E92753329600AB8BAC /* MomoBaseSearchField.swift in Sources */,
 				285209EF2753329600AB8BAC /* simpleContentContainer.swift in Sources */,
 				285209F32753329600AB8BAC /* NibInstantiatable.swift in Sources */,
+				28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */,
 				285209C02753327200AB8BAC /* LoginViewController.swift in Sources */,
 				288ED76027427D5800C5178D /* ListTableViewCell.swift in Sources */,
 				2852099E2753325F00AB8BAC /* WithTextViewController.swift in Sources */,
@@ -942,6 +976,7 @@
 				285209BE2753327200AB8BAC /* PregnantStatusViewController.swift in Sources */,
 				28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */,
 				288EFD0D2754F217000D1617 /* AlertViewController.swift in Sources */,
+				288EFD252758E8D2000D1617 /* CGFloat+Extension.swift in Sources */,
 				285209F22753329600AB8BAC /* ReusableView.swift in Sources */,
 				285209E82753329600AB8BAC /* MomoBaseTextField.swift in Sources */,
 				285209E12753329600AB8BAC /* UIView+Extension.swift in Sources */,
@@ -949,6 +984,7 @@
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,
 				28492614273F666F00FA2072 /* InfoBaseTableViewController.swift in Sources */,
 				75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */,
+				28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */,
 				285209BB2753327200AB8BAC /* SignUpViewController.swift in Sources */,
 				28F47162273BE5480074D148 /* MyInfoEditViewController.swift in Sources */,
 			);

@@ -7,17 +7,17 @@
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell, NibLoadableView {
+class ListTableViewCell: UITableViewCell, NibLoadableView, simpleContentContainer {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var organizationLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
-  
-  private var data: SimpleListModel? {
+    
+  internal var data: simpleContent? {
     didSet {
       titleLabel.text = data?.title
-      organizationLabel.text = data?.organization
-      dateLabel.text = data?.date.toString()
+      organizationLabel.text = data?.author ?? "모모관리자"
+      dateLabel.text = data?.createdAt
     }
   }
   

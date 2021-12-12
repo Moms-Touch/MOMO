@@ -10,7 +10,8 @@ import SnapKit
 
 class RecommendModalViewController: UIViewController {
   
-  private var datasource: [Int] = [1,2,3,4,5,6]
+  private var datasource: [InfoData] = []
+  private let collectionViewHeight: CGFloat = 150
   internal var completionHandler: (()->())?
   internal var selectedCell: RecommendCollectionViewCell?
   
@@ -131,7 +132,7 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
     recommendCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
     recommendCollectionView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
     recommendCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    recommendCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+    recommendCollectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight.fit(self)).isActive = true
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -140,8 +141,10 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as? RecommendCollectionViewCell else {return RecommendCollectionViewCell()}
-    return cell
     
+    cell.getSimpleData(data: datasource[indexPath.row])
+    
+    return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -149,9 +152,8 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let storyboard = UIStoryboard(name: "MySetting", bundle: nil)
-    guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingWebViewController") as? SettingWebViewController else {return}
-    vc.targetURL = URL(string: "https://www.google.com")!
+    let vc = RecommendDetailViewController.loadFromStoryboard()
+    vc.isModalInPresentation = true
     present(vc, animated: true, completion: nil)
   }
   

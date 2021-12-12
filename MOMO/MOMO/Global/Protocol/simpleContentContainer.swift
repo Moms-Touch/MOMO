@@ -7,3 +7,13 @@
 
 import Foundation
 
+protocol simpleContentContainer: ReusableView{
+  var data: simpleContent? {get set}
+}
+
+extension simpleContentContainer {
+  func getSimpleData<T: simpleContent>(data: T) {
+    self.data = data
+  }
+}
+
