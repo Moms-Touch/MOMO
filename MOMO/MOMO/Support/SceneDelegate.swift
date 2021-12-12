@@ -17,13 +17,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window = UIWindow(windowScene: windowScene)
     
 
-    if !isLogged {
+//    if !isLogged {
       window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
-    } else {
-      let home = TabBar()
-      home.selectedIndex = 0
-      self.window?.rootViewController = home
-    }
+//    } else {
+//      let home = TabBar()
+//      home.selectedIndex = 0
+//      self.window?.rootViewController = home
+//    }
 //    window?.rootViewController = CreateQuestionViewController.loadFromStoryboard()
 //    window?.rootViewController = CreateDiaryViewController.loadFromStoryboard()
 //    window?.rootViewController = WithTextViewController.loadFromStoryboard()

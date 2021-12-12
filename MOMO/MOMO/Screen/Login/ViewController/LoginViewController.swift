@@ -20,8 +20,10 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      idTextField.addLeftPadding(width: 10)
-      passwordTextField.addLeftPadding(width: 10)
+        idTextField.setBorderColor(to: .white)
+        passwordTextField.setBorderColor(to: .white)
+        idTextField.addLeftPadding(width: 10)
+        passwordTextField.addLeftPadding(width: 10)
         checkBoxView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(checkBoxClicked)))
     }
     

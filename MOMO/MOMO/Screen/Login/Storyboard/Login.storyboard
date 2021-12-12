@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="로그인" translatesAutoresizingMaskIntoConstraints="NO" id="Hcj-c0-TfD">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="로그인" translatesAutoresizingMaskIntoConstraints="NO" id="Hcj-c0-TfD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3P-Ve-OxF">
-                                <rect key="frame" x="40" y="420.5" width="295" height="60"/>
+                                <rect key="frame" x="101" y="401" width="173.5" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xuK-jH-w5j"/>
                                 </constraints>
@@ -36,7 +36,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afn-T5-O3z">
-                                <rect key="frame" x="40" y="500.5" width="295" height="60"/>
+                                <rect key="frame" x="101" y="481" width="173.5" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="5Eo-YY-pXR"/>
                                 </constraints>
@@ -53,14 +53,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2V-lX-weM">
-                                <rect key="frame" x="125" y="570.5" width="125" height="31"/>
+                                <rect key="frame" x="125" y="551" width="125" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="가입없이 둘러보기">
                                     <color key="baseForegroundColor" systemColor="systemGray2Color"/>
                                 </buttonConfiguration>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbY-p8-Xzd" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="40" y="276.5" width="295" height="47"/>
+                                <rect key="frame" x="101" y="283" width="173.5" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -73,7 +74,8 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVf-p1-N2o" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="40" y="333.5" width="295" height="47"/>
+                                <rect key="frame" x="101" y="327" width="173.5" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -86,7 +88,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7R-KX-rXD">
-                                <rect key="frame" x="70" y="392.5" width="18" height="18"/>
+                                <rect key="frame" x="70" y="373" width="18" height="18"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLB-cb-e8g">
                                         <rect key="frame" x="1.5" y="-1.5" width="15" height="21"/>
@@ -107,7 +109,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLw-Bi-JW0">
-                                <rect key="frame" x="98" y="391" width="92.5" height="21"/>
+                                <rect key="frame" x="98" y="371.5" width="92.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -158,16 +160,8 @@
             <point key="canvasLocation" x="-172.46376811594203" y="83.705357142857139"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="HbY-p8-Xzd">
-            <size key="intrinsicContentSize" width="173.5" height="34"/>
-        </designable>
-        <designable name="aVf-p1-N2o">
-            <size key="intrinsicContentSize" width="32" height="34"/>
-        </designable>
-    </designables>
     <resources>
-        <image name="로그인" width="375" height="812"/>
+        <image name="로그인" width="375" height="812"/>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
