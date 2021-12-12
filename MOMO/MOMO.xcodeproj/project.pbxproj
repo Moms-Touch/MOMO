@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20EF93341C3448FA8612DEB0 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C25A5446B985E38D151EDE /* Pods_MOMO.framework */; };
 		280BEFBB274B319500F031A7 /* PolicyBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 280BEFBA274B319500F031A7 /* PolicyBookmark.storyboard */; };
 		280BEFBD274B31B700F031A7 /* CommuntiyBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */; };
 		280BEFBF274B647900F031A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 280BEFBE274B647900F031A7 /* GoogleService-Info.plist */; };
@@ -118,6 +117,10 @@
 		28F47162273BE5480074D148 /* MyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F47161273BE5480074D148 /* MyInfoEditViewController.swift */; };
 		28F47164273BE5500074D148 /* MyBabyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47163273BE5500074D148 /* MyBabyInfo.storyboard */; };
 		28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */; };
+		531F5A5B3C7CC77E6BC204DA /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13342964BB44F88E3ED238E8 /* Pods_MOMO.framework */; };
+		75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C427661C0F0057CF9B /* NetworkManager.swift */; };
+		75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C627662CAC0057CF9B /* ParsingManager.swift */; };
+		75CE01CA27662CE00057CF9B /* APIable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C927662CE00057CF9B /* APIable.swift */; };
 		28F4FE132760C3BA00E699FC /* LikeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE122760C3BA00E699FC /* LikeData.swift */; };
 		28F4FE152760C82F00E699FC /* SimpleCommunityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE142760C82F00E699FC /* SimpleCommunityData.swift */; };
 		28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE162760CA7900E699FC /* NoticeData.swift */; };
@@ -133,6 +136,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13342964BB44F88E3ED238E8 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		221FD4BCB3C54F8F7F5F140F /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
 		280BEFBA274B319500F031A7 /* PolicyBookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyBookmark.storyboard; sourceTree = "<group>"; };
 		280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommuntiyBookmark.storyboard; sourceTree = "<group>"; };
 		280BEFBE274B647900F031A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -235,6 +240,10 @@
 		28F47161273BE5480074D148 /* MyInfoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoEditViewController.swift; sourceTree = "<group>"; };
 		28F47163273BE5500074D148 /* MyBabyInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBabyInfo.storyboard; sourceTree = "<group>"; };
 		28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBabyInfoViewController.swift; sourceTree = "<group>"; };
+		75CE01C427661C0F0057CF9B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		75CE01C627662CAC0057CF9B /* ParsingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingManager.swift; sourceTree = "<group>"; };
+		75CE01C927662CE00057CF9B /* APIable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIable.swift; sourceTree = "<group>"; };
+		7EBE4F48DE624B3EE6A28486 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		28F4FE122760C3BA00E699FC /* LikeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeData.swift; sourceTree = "<group>"; };
 		28F4FE142760C82F00E699FC /* SimpleCommunityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCommunityData.swift; sourceTree = "<group>"; };
 		28F4FE162760CA7900E699FC /* NoticeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeData.swift; sourceTree = "<group>"; };
@@ -259,7 +268,6 @@
 		DD43E8CD270B4A2300699DA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD43E8CF270B4A2300699DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD43E8DE270B4C0100699DA1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		F7C25A5446B985E38D151EDE /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,7 +283,7 @@
 				280BEFC2274B65F100F031A7 /* FirebaseAnalytics in Frameworks */,
 				280BEFCA274B65F100F031A7 /* FirebaseStorageSwift-Beta in Frameworks */,
 				280BEFC8274B65F100F031A7 /* FirebaseStorage in Frameworks */,
-				20EF93341C3448FA8612DEB0 /* Pods_MOMO.framework in Frameworks */,
+				531F5A5B3C7CC77E6BC204DA /* Pods_MOMO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +465,11 @@
 		285209DC2753329600AB8BAC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				75CE01C827662CCF0057CF9B /* APIModel */,
+				285209DD2753329600AB8BAC /* RecommendSimpleData.swift */,
+				285209DE2753329600AB8BAC /* SimpleListModel.swift */,
+				75CE01C427661C0F0057CF9B /* NetworkManager.swift */,
+				75CE01C627662CAC0057CF9B /* ParsingManager.swift */,
 				285209DD2753329600AB8BAC /* InfoData.swift */,
 				28F4FE122760C3BA00E699FC /* LikeData.swift */,
 				28F4FE142760C82F00E699FC /* SimpleCommunityData.swift */,
@@ -585,19 +598,19 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		31BF6C63280AB56BA8B495D1 /* Frameworks */ = {
+		75CE01C827662CCF0057CF9B /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
-				F7C25A5446B985E38D151EDE /* Pods_MOMO.framework */,
+				75CE01C927662CE00057CF9B /* APIable.swift */,
 			);
-			name = Frameworks;
+			path = APIModel;
 			sourceTree = "<group>";
 		};
 		B941767FC29939FBBCF33955 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C7195CDA2CF0DE58BE1A8F30 /* Pods-MOMO.debug.xcconfig */,
-				98F755F27743C61F4F87144C /* Pods-MOMO.release.xcconfig */,
+				221FD4BCB3C54F8F7F5F140F /* Pods-MOMO.debug.xcconfig */,
+				7EBE4F48DE624B3EE6A28486 /* Pods-MOMO.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -620,7 +633,7 @@
 				DD43E8BF270B4A2100699DA1 /* Products */,
 				2852097927532CCB00AB8BAC /* Recovered References */,
 				B941767FC29939FBBCF33955 /* Pods */,
-				31BF6C63280AB56BA8B495D1 /* Frameworks */,
+				E5BC15B37F7E83CDF9086CF7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -722,6 +735,14 @@
 			path = MyInfo;
 			sourceTree = "<group>";
 		};
+		E5BC15B37F7E83CDF9086CF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13342964BB44F88E3ED238E8 /* Pods_MOMO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -729,7 +750,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD43E8D2270B4A2300699DA1 /* Build configuration list for PBXNativeTarget "MOMO" */;
 			buildPhases = (
-				86996329540E9E521B0248F0 /* [CP] Check Pods Manifest.lock */,
+				D524BFAEECAB1672CBA948CB /* [CP] Check Pods Manifest.lock */,
 				DD43E8BA270B4A2100699DA1 /* Sources */,
 				DD43E8BB270B4A2100699DA1 /* Frameworks */,
 				DD43E8BC270B4A2100699DA1 /* Resources */,
@@ -836,7 +857,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		86996329540E9E521B0248F0 /* [CP] Check Pods Manifest.lock */ = {
+		D524BFAEECAB1672CBA948CB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -946,9 +967,11 @@
 				2852099E2753325F00AB8BAC /* WithTextViewController.swift in Sources */,
 				28F471412738B3090074D148 /* HomeMainViewController.swift in Sources */,
 				288EFD1D2755D41E000D1617 /* AlertTableViewCell.swift in Sources */,
+				75CE01CA27662CE00057CF9B /* APIable.swift in Sources */,
 				285209A22753325F00AB8BAC /* DiaryReportViewController.swift in Sources */,
 				288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */,
 				285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */,
+				75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */,
 				288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */,
 				285209BE2753327200AB8BAC /* PregnantStatusViewController.swift in Sources */,
 				28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */,
@@ -960,6 +983,7 @@
 				28B49143274BB160002BA67A /* DeviceManager.swift in Sources */,
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,
 				28492614273F666F00FA2072 /* InfoBaseTableViewController.swift in Sources */,
+				75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */,
 				28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */,
 				285209BB2753327200AB8BAC /* SignUpViewController.swift in Sources */,
 				28F47162273BE5480074D148 /* MyInfoEditViewController.swift in Sources */,
@@ -1098,7 +1122,7 @@
 		};
 		DD43E8D3270B4A2300699DA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7195CDA2CF0DE58BE1A8F30 /* Pods-MOMO.debug.xcconfig */;
+			baseConfigurationReference = 221FD4BCB3C54F8F7F5F140F /* Pods-MOMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1121,7 +1145,7 @@
 		};
 		DD43E8D4270B4A2300699DA1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98F755F27743C61F4F87144C /* Pods-MOMO.release.xcconfig */;
+			baseConfigurationReference = 7EBE4F48DE624B3EE6A28486 /* Pods-MOMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

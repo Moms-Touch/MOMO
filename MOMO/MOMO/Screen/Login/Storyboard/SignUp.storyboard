@@ -25,17 +25,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qF1-Cm-Aqb" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="290" width="295" height="47"/>
+                                <rect key="frame" x="38" y="296.5" width="173.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clb-SM-pET" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="364" width="295" height="47"/>
+                                <rect key="frame" x="38" y="363" width="76.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk9-K4-Iyx" customClass="MomoBaseButton" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="773" width="295" height="59"/>
+                                <rect key="frame" x="38" y="773" width="173.5" height="59"/>
                                 <color key="backgroundColor" name="Pink4"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="eOC-Yz-ArJ"/>
@@ -78,14 +78,6 @@
             <point key="canvasLocation" x="33.333333333333336" y="70.923913043478265"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="clb-SM-pET">
-            <size key="intrinsicContentSize" width="76.5" height="34"/>
-        </designable>
-        <designable name="qF1-Cm-Aqb">
-            <size key="intrinsicContentSize" width="173.5" height="34"/>
-        </designable>
-    </designables>
     <resources>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
