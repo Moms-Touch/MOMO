@@ -17,6 +17,8 @@ final class SignUpViewController: UIViewController {
     
     private var bottomConstant: CGFloat = 0
     private var isExistKeyboard = false
+    let networkManager = NetworkManager()
+    let parsingManager = ParsingManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +63,16 @@ final class SignUpViewController: UIViewController {
     }
     @IBAction func didTapLocationButton(_ sender: UIButton) {
         navigationController?.pushViewController(LocationViewController.loadFromStoryboard(), animated: true)
+        let test = PostApi.registProfile(email: "ohsg0272@naver.com", password: "123", nickname: "12", isPregnant: true, hasChild: true, age: 123, location: "seoul", contentType: .jsonData)
+        networkManager.request(apiModel: test) { networkResult  in
+            switch networkResult {
+            case .success(let data):
+                print(data)
+                print(test)
+            case .failure(_):
+                print("error")
+            }
+        }
     }
 }
 

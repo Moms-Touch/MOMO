@@ -36,7 +36,7 @@ class NetworkManager {
             completion(.failure(NetworkError.invalidURL))
             return
         }
-        
+        print("url=")
         var request = URLRequest(url: url)
         request.httpMethod = apiModel.requestType.method
         request.httpBody = createDataBody(parameter: apiModel.param, contentType: apiModel.contentType)

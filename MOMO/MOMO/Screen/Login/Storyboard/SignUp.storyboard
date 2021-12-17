@@ -25,17 +25,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qF1-Cm-Aqb" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="296.5" width="173.5" height="34"/>
+                                <rect key="frame" x="38" y="290" width="295" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="295" id="8n2-Oz-Yq4"/>
+                                    <constraint firstAttribute="height" constant="47" id="QA0-Zr-cxU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clb-SM-pET" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="363" width="76.5" height="34"/>
+                                <rect key="frame" x="38" y="364" width="295" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk9-K4-Iyx" customClass="MomoBaseButton" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="773" width="173.5" height="59"/>
+                                <rect key="frame" x="38" y="773" width="295" height="59"/>
                                 <color key="backgroundColor" name="Pink4"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="eOC-Yz-ArJ"/>
@@ -55,6 +59,7 @@
                         <constraints>
                             <constraint firstItem="qF1-Cm-Aqb" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.7" id="83i-23-VKt"/>
                             <constraint firstItem="heT-O1-VZe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="Bfr-nY-Gx7"/>
+                            <constraint firstItem="clb-SM-pET" firstAttribute="height" secondItem="qF1-Cm-Aqb" secondAttribute="height" id="IvN-D7-Ti7"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Mk9-K4-Iyx" secondAttribute="bottom" constant="30" id="TmG-XQ-8rj"/>
                             <constraint firstItem="qF1-Cm-Aqb" firstAttribute="leading" secondItem="heT-O1-VZe" secondAttribute="leading" id="XJd-jI-KLU"/>
                             <constraint firstItem="clb-SM-pET" firstAttribute="leading" secondItem="qF1-Cm-Aqb" secondAttribute="leading" id="ZJa-9j-wA3"/>
@@ -63,8 +68,10 @@
                             <constraint firstItem="Mk9-K4-Iyx" firstAttribute="trailing" secondItem="qF1-Cm-Aqb" secondAttribute="trailing" id="d1h-4Z-2N1"/>
                             <constraint firstItem="clb-SM-pET" firstAttribute="centerY" secondItem="qF1-Cm-Aqb" secondAttribute="bottom" multiplier="1.15" id="fCa-nh-bnc"/>
                             <constraint firstAttribute="trailing" secondItem="heT-O1-VZe" secondAttribute="trailing" constant="50" id="mpJ-aP-VtL"/>
+                            <constraint firstItem="clb-SM-pET" firstAttribute="trailing" secondItem="qF1-Cm-Aqb" secondAttribute="trailing" id="pE5-ss-vai"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="emailTextField" destination="qF1-Cm-Aqb" id="wtM-h4-bpL"/>
                         <outlet property="explanationLabel" destination="heT-O1-VZe" id="wFa-eN-FHh"/>
