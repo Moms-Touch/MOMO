@@ -93,6 +93,7 @@
 		288EFD1D2755D41E000D1617 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */; };
 		288EFD252758E8D2000D1617 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */; };
 		289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */; };
+		28B192C22769685C00BAF93B /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B192C12769685C00BAF93B /* KeyChainService.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
 		28CA3065275334DA00EF071E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 28CA3064275334DA00EF071E /* FSCalendar */; };
@@ -122,6 +123,7 @@
 		28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE162760CA7900E699FC /* NoticeData.swift */; };
 		28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1827610E3800E699FC /* NotificationData.swift */; };
 		28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1A27610E5A00E699FC /* BabyData.swift */; };
+		531F5A5B3C7CC77E6BC204DA /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13342964BB44F88E3ED238E8 /* Pods_MOMO.framework */; };
 		39FA9D217A5D739EF1148389 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0483D471296DF0B030CE6FAE /* Pods_MOMO.framework */; };
 		75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C427661C0F0057CF9B /* NetworkManager.swift */; };
 		75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C627662CAC0057CF9B /* ParsingManager.swift */; };
@@ -217,6 +219,7 @@
 		288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		28B192C12769685C00BAF93B /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		28CA30692753357300EF071E /* QuetsionDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuetsionDetail.storyboard; sourceTree = "<group>"; };
@@ -459,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				285209DB2753329600AB8BAC /* StorageService.swift */,
+				28B192C12769685C00BAF93B /* KeyChainService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -975,6 +979,7 @@
 				288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */,
 				285209BE2753327200AB8BAC /* PregnantStatusViewController.swift in Sources */,
 				28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */,
+				28B192C22769685C00BAF93B /* KeyChainService.swift in Sources */,
 				288EFD0D2754F217000D1617 /* AlertViewController.swift in Sources */,
 				288EFD252758E8D2000D1617 /* CGFloat+Extension.swift in Sources */,
 				285209F22753329600AB8BAC /* ReusableView.swift in Sources */,

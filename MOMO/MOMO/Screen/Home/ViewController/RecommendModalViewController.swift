@@ -10,10 +10,11 @@ import SnapKit
 
 class RecommendModalViewController: UIViewController {
   
-  private var datasource: [InfoData] = []
+  private var datasource: [Int] = [1,2,3,4,5]
   private let collectionViewHeight: CGFloat = 150
   internal var completionHandler: (()->())?
   internal var selectedCell: RecommendCollectionViewCell?
+  private let transition = PopAnimator()
   
   lazy var closeIndicator: UIView = {
     let view = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 2))
@@ -57,6 +58,9 @@ class RecommendModalViewController: UIViewController {
     recommendCollectionView.register(RecommendCollectionViewCell.self)
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
     view.addGestureRecognizer(panGesture)
+    transition.dismissCompletion = {
+      self.selectedCell?.isHidden = false
+    }
   }
 }
 
@@ -142,7 +146,7 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as? RecommendCollectionViewCell else {return RecommendCollectionViewCell()}
     
-    cell.getSimpleData(data: datasource[indexPath.row])
+//    cell.getSimpleData(data: datasource[indexPath.row])
     
     return cell
   }
@@ -152,9 +156,27 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    selectedCell = collectionView.cellForItem(at: indexPath) as? RecommendCollectionViewCell
     let vc = RecommendDetailViewController.loadFromStoryboard()
-    vc.isModalInPresentation = true
+    vc.transitioningDelegate = self
     present(vc, animated: true, completion: nil)
+  }
+  
+}
+
+extension RecommendModalViewController: UIViewControllerTransitioningDelegate {
+  
+  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    transition.originFrame = selectedCell!.superview!.convert(selectedCell!.frame, to: nil)
+    transition.presenting = true
+    selectedCell!.isHidden = true
+    
+    return transition
+  }
+  
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    transition.presenting = false
+    return transition
   }
   
 }
