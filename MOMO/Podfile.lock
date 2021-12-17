@@ -1,5 +1,5 @@
 PODS:
-  - SwiftGen (6.5.1)
+  - SwiftGen (6.4.0)
 
 DEPENDENCIES:
   - SwiftGen (~> 6.0)
@@ -9,7 +9,7 @@ SPEC REPOS:
     - SwiftGen
 
 SPEC CHECKSUMS:
-  SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
+  SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
 
 PODFILE CHECKSUM: 1cd771883f0e9d5c60e8724a0c1ef90020f1ff11
 
