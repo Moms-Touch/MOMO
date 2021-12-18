@@ -50,7 +50,10 @@ final class BookmarkListViewController: UIViewController, StoryboardInstantiable
     NotificationCenter.default.post(name: NSNotification.Name("PageControlNotification"), object: bookmarkSegControl.selectedSegmentIndex)
   }
   
-  @IBAction func didTapBackButton(_ sender: UIButton) {
-    self.navigationController?.popViewController(animated: true)
-  }
+}
+
+extension BookmarkListViewController {
+    @IBAction func didTapBackButton(_ sender: UIButton) {
+      dismiss(animated: true, completion: nil)
+    }
 }
