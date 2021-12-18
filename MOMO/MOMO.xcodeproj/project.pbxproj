@@ -96,6 +96,9 @@
 		28B192C22769685C00BAF93B /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B192C12769685C00BAF93B /* KeyChainService.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
+		28B63E98276DED4D00CB5EBF /* CustomNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B63E97276DED4D00CB5EBF /* CustomNavigationManager.swift */; };
+		28B63E9A276DF17D00CB5EBF /* CustomNavigationPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B63E99276DF17D00CB5EBF /* CustomNavigationPresentationController.swift */; };
+		28B63E9C276DF53600CB5EBF /* CustomNavigationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B63E9B276DF53600CB5EBF /* CustomNavigationAnimator.swift */; };
 		28CA3065275334DA00EF071E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 28CA3064275334DA00EF071E /* FSCalendar */; };
 		28CA30722753357300EF071E /* QuetsionDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CA30692753357300EF071E /* QuetsionDetail.storyboard */; };
 		28CA30732753357300EF071E /* QuestionsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA306B2753357300EF071E /* QuestionsMainViewController.swift */; };
@@ -123,7 +126,6 @@
 		28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE162760CA7900E699FC /* NoticeData.swift */; };
 		28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1827610E3800E699FC /* NotificationData.swift */; };
 		28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1A27610E5A00E699FC /* BabyData.swift */; };
-		39FA9D217A5D739EF1148389 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0483D471296DF0B030CE6FAE /* Pods_MOMO.framework */; };
 		75BF0C0B276B489900C2D0C1 /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0A276B489900C2D0C1 /* LoginApi.swift */; };
 		75BF0C0D276B495000C2D0C1 /* SignUpApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0C276B495000C2D0C1 /* SignUpApi.swift */; };
 		75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0E276B851800C2D0C1 /* GetApi.swift */; };
@@ -225,6 +227,9 @@
 		28B192C12769685C00BAF93B /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		28B63E97276DED4D00CB5EBF /* CustomNavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationManager.swift; sourceTree = "<group>"; };
+		28B63E99276DF17D00CB5EBF /* CustomNavigationPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationPresentationController.swift; sourceTree = "<group>"; };
+		28B63E9B276DF53600CB5EBF /* CustomNavigationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationAnimator.swift; sourceTree = "<group>"; };
 		28CA30692753357300EF071E /* QuetsionDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuetsionDetail.storyboard; sourceTree = "<group>"; };
 		28CA306B2753357300EF071E /* QuestionsMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsMainViewController.swift; sourceTree = "<group>"; };
 		28CA306C2753357300EF071E /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
@@ -251,7 +256,6 @@
 		28F4FE162760CA7900E699FC /* NoticeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeData.swift; sourceTree = "<group>"; };
 		28F4FE1827610E3800E699FC /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		28F4FE1A27610E5A00E699FC /* BabyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyData.swift; sourceTree = "<group>"; };
-		318AA00A36A22E8FB95EC2D4 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		75BF0C0A276B489900C2D0C1 /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		75BF0C0C276B495000C2D0C1 /* SignUpApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpApi.swift; sourceTree = "<group>"; };
 		75BF0C0E276B851800C2D0C1 /* GetApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetApi.swift; sourceTree = "<group>"; };
@@ -447,11 +451,15 @@
 		285209CA2753329600AB8BAC /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				2852097327522C1300AB8BAC /* PresentationController.swift */,
 				DDA999992767946D00A21D9B /* XCAssetTypeAlias.swift */,
 				285209CB2753329600AB8BAC /* PopAnimator.swift */,
 				285209CC2753329600AB8BAC /* MomoBaseTextField.swift */,
 				285209CD2753329600AB8BAC /* MomoBaseSearchField.swift */,
 				288EFD1A2755ADA0000D1617 /* MomoPageViewController.swift */,
+				28B63E97276DED4D00CB5EBF /* CustomNavigationManager.swift */,
+				28B63E99276DF17D00CB5EBF /* CustomNavigationPresentationController.swift */,
+				28B63E9B276DF53600CB5EBF /* CustomNavigationAnimator.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -569,7 +577,6 @@
 				288ED76627428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift */,
 				288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */,
 				288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */,
-				2852097327522C1300AB8BAC /* PresentationController.swift */,
 				28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */,
 				288EFD0C2754F217000D1617 /* AlertViewController.swift */,
 				288EFD102754F27C000D1617 /* AlertPageViewController.swift */,
@@ -929,6 +936,7 @@
 			files = (
 				DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */,
 				28CA30742753357300EF071E /* QuestionTableViewCell.swift in Sources */,
+				28B63E98276DED4D00CB5EBF /* CustomNavigationManager.swift in Sources */,
 				285209F52753329600AB8BAC /* StorageService.swift in Sources */,
 				28492612273BF9E000FA2072 /* SettingWebViewController.swift in Sources */,
 				2852099A2753325F00AB8BAC /* DiaryInputOptionViewController.swift in Sources */,
@@ -970,6 +978,7 @@
 				285209EA2753329600AB8BAC /* Dimmable.swift in Sources */,
 				DDA9999A2767946D00A21D9B /* XCAssetTypeAlias.swift in Sources */,
 				28F4FE152760C82F00E699FC /* SimpleCommunityData.swift in Sources */,
+				28B63E9C276DF53600CB5EBF /* CustomNavigationAnimator.swift in Sources */,
 				280BEFD5274BA35900F031A7 /* DetailViewController.swift in Sources */,
 				28CA30772753357300EF071E /* CreateQuestionViewController.swift in Sources */,
 				28CA30732753357300EF071E /* QuestionsMainViewController.swift in Sources */,
@@ -1000,6 +1009,7 @@
 				288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */,
 				285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */,
 				75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */,
+				28B63E9A276DF17D00CB5EBF /* CustomNavigationPresentationController.swift in Sources */,
 				288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */,
 				285209BE2753327200AB8BAC /* PregnantStatusViewController.swift in Sources */,
 				28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */,

@@ -39,6 +39,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   }
   
   private var currentPage = 0
+  lazy var customNavigationDelegate = CustomNavigationManager()
   private var datasource: [NoticeData] = [NoticeData(id: 1, author: "관리자", title: "공지사항1", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 2, author: "관리자", title: "공지사항2", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 3, author: "관리자", title: "공지사항3", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 4, author: "관리자", title: "공지사항4", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 5, author: "관리자", title: "공지사항5", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12")]
   
   
@@ -81,9 +82,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     print(#function)
   }
   
-  @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
-    self.navigationController?.pushViewController(BookmarkListViewController.loadFromStoryboard(), animated: true)
-  }
   
   @IBAction func didTapBellButton(_ sender: UIButton) {
     self.navigationController?.pushViewController(AlertViewController.loadFromStoryboard(), animated: true)
@@ -104,7 +102,11 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
 
 extension HomeMainViewController: UIViewControllerTransitioningDelegate {
   func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-    return PresentationController(presentedViewController: presented, presenting: presenting)
+    if presented is RecommendModalViewController {
+      return PresentationController(presentedViewController: presented, presenting: presenting)
+    } else {
+      return nil
+    }
   }
 }
 
@@ -169,4 +171,13 @@ extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
   
 }
 
+extension HomeMainViewController {
+    @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
+      let destinationVC = BookmarkListViewController.loadFromStoryboard()
+      customNavigationDelegate.direction = .left
+      destinationVC.transitioningDelegate = customNavigationDelegate
+      destinationVC.modalPresentationStyle = .custom
+      present(destinationVC, animated: true, completion: nil)
+    }
+}
 
