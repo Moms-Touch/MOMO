@@ -11,8 +11,8 @@ import UIKit
 final class CustomNavigationAnimator: NSObject {
   
   private let direction: PresentationDirection
-  
-  let isPresentation: Bool
+  private let duration = 0.3
+  private let isPresentation: Bool
   
   init(direction: PresentationDirection, isPresentation: Bool) {
     self.direction = direction
@@ -25,7 +25,7 @@ final class CustomNavigationAnimator: NSObject {
 extension CustomNavigationAnimator: UIViewControllerAnimatedTransitioning {
   
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-    return 0.3
+    return duration
   }
   
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -39,7 +39,17 @@ extension CustomNavigationAnimator: UIViewControllerAnimatedTransitioning {
     }
     let presentedFrame = transitionContext.finalFrame(for: controller)
     var dismissFrame = presentedFrame
-    dismissFrame.origin.x = -presentedFrame.width
+    
+    switch direction {
+    case .left:
+      dismissFrame.origin.x = -presentedFrame.width
+    case .right:
+      dismissFrame.origin.x = transitionContext.containerView.frame.size.width
+    case .bottom:
+      dismissFrame.origin.y = transitionContext.containerView.frame.size.height
+    case .top:
+      dismissFrame.origin.y = -presentedFrame.height
+    }
     
     let initialFrame = isPresentation ? dismissFrame : presentedFrame
     let finalFrame = isPresentation ? presentedFrame : dismissFrame
@@ -58,9 +68,4 @@ extension CustomNavigationAnimator: UIViewControllerAnimatedTransitioning {
       })
 
   }
-  
-  
-  
-  
-  
 }

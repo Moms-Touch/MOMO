@@ -47,7 +47,8 @@ final class BookmarkListViewController: UIViewController, StoryboardInstantiable
   }
 
   @IBAction func didChangeBookmarkSegControl(_ sender: UISegmentedControl) {
-    NotificationCenter.default.post(name: NSNotification.Name("PageControlNotification"), object: bookmarkSegControl.selectedSegmentIndex)
+    NotificationCenter.default.post(name: NSNotification.Name("PageControlNotification"),
+                                    object: bookmarkSegControl.selectedSegmentIndex)
   }
   
 }

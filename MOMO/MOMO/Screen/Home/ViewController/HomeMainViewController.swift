@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable {
+final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable, UIViewControllerTransitioningDelegate {
   
   @IBOutlet weak var bannerCollectionView: UICollectionView! {
     didSet {
@@ -69,8 +69,9 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   
   @IBAction private func didTapRecommendButton(_ sender: UIButton) {
     let recommendModalVC = RecommendModalViewController()
+    customNavigationDelegate.direction = .bottom
+    recommendModalVC.transitioningDelegate = customNavigationDelegate
     recommendModalVC.modalPresentationStyle = .custom
-    recommendModalVC.transitioningDelegate = self
     dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
     recommendModalVC.completionHandler = { [weak self] in
       self?.dim(direction: .Out)
@@ -97,16 +98,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   
   private func gotoMyProfile() {
     self.navigationController?.pushViewController(MyInfoMainViewController.loadFromStoryboard(), animated: true)
-  }
-}
-
-extension HomeMainViewController: UIViewControllerTransitioningDelegate {
-  func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-    if presented is RecommendModalViewController {
-      return PresentationController(presentedViewController: presented, presenting: presenting)
-    } else {
-      return nil
-    }
   }
 }
 
