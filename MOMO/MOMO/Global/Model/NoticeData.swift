@@ -18,8 +18,6 @@ struct NoticeData: Codable {
 
 extension NoticeData {
   enum CodingKeys: String, CodingKey {
-    case id, author, title, url
-    case createdAt = "created_at"
-    case updatedAt = "updated_at"
+    case id, author, title, url, createdAt, updatedAt
   }
 }
