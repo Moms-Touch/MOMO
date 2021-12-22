@@ -9,6 +9,7 @@ import Foundation
 
 enum PostApi: APIable {
     case registProfile(email: String, password: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String, contentType: ContentType)
+
     
     var contentType: ContentType {
         switch self {
@@ -16,6 +17,15 @@ enum PostApi: APIable {
             return contentType
         }
     }
+  
+  var encodingType: EncodingType {
+    switch self {
+    case .registProfile:
+      return .JSONEncoding
+    default:
+      return .JSONEncoding
+    }
+  }
     
     var requestType: RequestType {
         switch self {
@@ -44,4 +54,11 @@ enum PostApi: APIable {
                     ]
         }
     }
+  
+  var header: [String : String]? {
+    switch self {
+    default:
+      return nil
+    }
+  }
 }
