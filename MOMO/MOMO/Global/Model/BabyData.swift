@@ -16,10 +16,7 @@ struct BabyData: Codable {
   let updatedAt: String
   
   enum CodingKeys: String, CodingKey {
-    case id, name, birth
-    case imageURL = "image_url"
-    case createdAt = "created_at"
-    case updatedAt = "updated_at"
+    case id, name, birth, imageURL, createdAt, updatedAt
   }
 }
 

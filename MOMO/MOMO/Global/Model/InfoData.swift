@@ -20,11 +20,7 @@ struct InfoData: simpleContent, Codable {
 
 extension InfoData{
   enum CodingKeys: String, CodingKey {
-    case id, author, title, url
-    case thumbnailImageUrl = "thumbnail_image_url"
-    case week
-    case createdAt = "created_at"
-    case updatedAt = "updated_at"
+    case id, author, title, url, thumbnailImageUrl, week, createdAt, updatedAt
   }
 }
 

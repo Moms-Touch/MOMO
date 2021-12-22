@@ -15,9 +15,7 @@ struct LikeData: Codable {
 
 extension LikeData {
   enum CodingKeys: String, CodingKey {
-    case commmunityData
-    case createdAt = "created_at"
-    case updatedAt = "updated_at"
+    case commmunityData, createdAt, updatedAt
   }
   
   init(from decoder: Decoder) throws {

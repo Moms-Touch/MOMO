@@ -48,10 +48,6 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     UIView.animate(withDuration: duration) {
       recommendCell.transform = self.presenting ? CGAffineTransform.identity : scaleTransform
-      print(finalFrame)
-      print(initialFrame)
-      print("finalFrame.midx, midy", finalFrame.midX, finalFrame.midY)
-      print("initical.midx, midy", initialFrame.midX, initialFrame.midY)
       recommendCell.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
     } completion: { _ in
       if !self.presenting {
