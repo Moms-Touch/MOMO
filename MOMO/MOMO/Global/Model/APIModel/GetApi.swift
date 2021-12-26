@@ -17,19 +17,19 @@ enum GetApi: APIable {
   
   case login
   case babyGet
-  case bookmarkGet
+  case bookmarkGet(token: String)
   case communityGet
   case communityDetailGet
   case noticeGet
   case policyGet(token: String, keyword: String?, location: String?, category: String?, page: String?)
-  //Infoget밑으로 안함
+  case infoGet(token: String, start: String, end: String)
 }
 
 extension GetApi {
   
   var contentType: ContentType {
     switch self {
-    case .noticeGet, .policyGet:
+    case .noticeGet, .policyGet, .infoGet, .bookmarkGet:
       return .noBody
     default:
       return .noBody
@@ -38,12 +38,12 @@ extension GetApi {
   
   var encodingType: EncodingType {
     switch self {
-    case .noticeGet:
+    case .noticeGet, .bookmarkGet:
       return .JSONEncoding
-    case .policyGet:
+    case .policyGet, .infoGet:
       return .URLEncoding
     default:
-      return .URLEncoding
+      return .JSONEncoding
     }
   }
   
@@ -55,8 +55,12 @@ extension GetApi {
     switch self {
     case .noticeGet:
       return makePathtoURL(path: "/notice")
+    case .infoGet:
+      return makePathtoURL(path: "/info")
     case .policyGet:
       return makePathtoURL(path: "/policy")
+    case .bookmarkGet:
+      return makePathtoURL(path: "/bookmark")
     default:
       return " "
     }
@@ -64,10 +68,12 @@ extension GetApi {
   
   var param: [String : String?]? {
     switch self {
-    case .noticeGet:
+    case .noticeGet, .bookmarkGet(_):
       return nil
     case .policyGet(_, let keyword, let location, let category, let page):
       return ["keyword": keyword, "location": location, "category": category, "page": page]
+    case .infoGet(_, let start, let end):
+      return ["start": start, "end": end]
     default:
       return nil
     }
@@ -77,7 +83,7 @@ extension GetApi {
     switch self {
     case .noticeGet:
       return nil
-    case .policyGet(let token, _, _, _, _):
+    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _), .bookmarkGet(let token):
       return [ "Authorization" : "Bearer \(token)"]
     default:
       return nil

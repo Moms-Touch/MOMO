@@ -49,26 +49,11 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     assignbackground()
     bannerTimer()
     getNotice()
-    testPolicy()
   }
   
   override func viewDidLayoutSubviews() {
     imageHuggingView.setRound()
     babyProfileImageView.setRound()
-  }
-  
-  private func testPolicy() {
-    networkManager.request(apiModel: GetApi.policyGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjksImVtYWlsIjoieWJAa2ltLmNvbSIsIm5hbWUiOiJ5YmtpbSIsImlhdCI6MTY0MDE4NjE1MCwiZXhwIjoxNjQwNDQ1MzUwLCJpc3MiOiJtb21vIn0.4TtHoK5dpdebtC8vyUc0XCMkCW3SAW9B6vz6_WgKYcU", keyword: nil, location: nil, category: "law", page: nil)) { result in
-      switch result {
-      case.success(let data):
-        let parsingmanager = ParsingManager()
-        parsingmanager.judgeGenericResponse(data: data, model: [SimpleCommunityData].self) { data in
-          print(data)
-        }
-      case .failure(let error):
-        print(error)
-      }
-    }
   }
   
   private func getNotice() {
@@ -107,11 +92,26 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     customNavigationDelegate.direction = .bottom
     recommendModalVC.transitioningDelegate = customNavigationDelegate
     recommendModalVC.modalPresentationStyle = .custom
-    dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
-    recommendModalVC.completionHandler = { [weak self] in
-      self?.dim(direction: .Out)
+    // networking
+    networkManager.request(apiModel: GetApi.infoGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImlhdCI6MTY0MDUxMTA0OSwiZXhwIjoxNjQwNzcwMjQ5LCJpc3MiOiJtb21vIn0.Z52lgsVvt9deFR7E94rTVNgLEdl4DNWKZGxI8NlgB54", start: "4", end: "5")) { (result) in
+      switch result {
+      case .success(let data):
+        let parsingmanager = ParsingManager()
+        parsingmanager.judgeGenericResponse(data: data, model: [InfoData].self) { [weak self] body in
+          guard let self = self else {return}
+          recommendModalVC.setData(data: body)
+          DispatchQueue.main.async {
+            self.dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
+            recommendModalVC.completionHandler = { [weak self] in
+              self?.dim(direction: .Out)
+            }
+            self.present(recommendModalVC, animated: true, completion: nil)
+          }
+        }
+      case .failure(let error):
+        fatalError("\(error)")
+      }
     }
-    present(recommendModalVC, animated: true, completion: nil)
   }
   
   @IBAction private func didTapTodayButton(_ sender: UIButton) {
