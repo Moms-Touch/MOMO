@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable {
+final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable, UIViewControllerTransitioningDelegate {
   
   @IBOutlet weak var bannerCollectionView: UICollectionView! {
     didSet {
@@ -39,6 +39,8 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   }
   
   private var currentPage = 0
+  lazy var networkManager = NetworkManager()
+  lazy var customNavigationDelegate = CustomNavigationManager()
   private var datasource: [NoticeData] = [NoticeData(id: 1, author: "관리자", title: "공지사항1", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 2, author: "관리자", title: "공지사항2", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 3, author: "관리자", title: "공지사항3", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 4, author: "관리자", title: "공지사항4", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 5, author: "관리자", title: "공지사항5", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12")]
   
   
@@ -46,11 +48,45 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     super.viewDidLoad()
     assignbackground()
     bannerTimer()
+    getNotice()
+    testPolicy()
   }
   
   override func viewDidLayoutSubviews() {
     imageHuggingView.setRound()
     babyProfileImageView.setRound()
+  }
+  
+  private func testPolicy() {
+    networkManager.request(apiModel: GetApi.policyGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjksImVtYWlsIjoieWJAa2ltLmNvbSIsIm5hbWUiOiJ5YmtpbSIsImlhdCI6MTY0MDE4NjE1MCwiZXhwIjoxNjQwNDQ1MzUwLCJpc3MiOiJtb21vIn0.4TtHoK5dpdebtC8vyUc0XCMkCW3SAW9B6vz6_WgKYcU", keyword: nil, location: nil, category: "law", page: nil)) { result in
+      switch result {
+      case.success(let data):
+        let parsingmanager = ParsingManager()
+        parsingmanager.judgeGenericResponse(data: data, model: [SimpleCommunityData].self) { data in
+          print(data)
+        }
+      case .failure(let error):
+        print(error)
+      }
+    }
+  }
+  
+  private func getNotice() {
+    networkManager.request(apiModel: GetApi.noticeGet) { result in
+      switch result {
+      case.success(let data):
+        let parsingManager = ParsingManager()
+        parsingManager.judgeGenericResponse(data: data, model: [NoticeData].self) { data in
+          DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            self.datasource = data
+            self.bannerCollectionView.reloadData()
+          }
+        }
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
   
   private func assignbackground(){
@@ -68,8 +104,9 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   
   @IBAction private func didTapRecommendButton(_ sender: UIButton) {
     let recommendModalVC = RecommendModalViewController()
+    customNavigationDelegate.direction = .bottom
+    recommendModalVC.transitioningDelegate = customNavigationDelegate
     recommendModalVC.modalPresentationStyle = .custom
-    recommendModalVC.transitioningDelegate = self
     dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
     recommendModalVC.completionHandler = { [weak self] in
       self?.dim(direction: .Out)
@@ -81,9 +118,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     print(#function)
   }
   
-  @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
-    self.navigationController?.pushViewController(BookmarkListViewController.loadFromStoryboard(), animated: true)
-  }
   
   @IBAction func didTapBellButton(_ sender: UIButton) {
     self.navigationController?.pushViewController(AlertViewController.loadFromStoryboard(), animated: true)
@@ -99,12 +133,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   
   private func gotoMyProfile() {
     self.navigationController?.pushViewController(MyInfoMainViewController.loadFromStoryboard(), animated: true)
-  }
-}
-
-extension HomeMainViewController: UIViewControllerTransitioningDelegate {
-  func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-    return PresentationController(presentedViewController: presented, presenting: presenting)
   }
 }
 
@@ -128,8 +156,6 @@ extension HomeMainViewController: UICollectionViewDelegate, UICollectionViewData
 extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    print(view.frame.size)
-    print(bannerCollectionView.frame.size)
     return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
   }
   
@@ -169,4 +195,13 @@ extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
   
 }
 
+extension HomeMainViewController {
+    @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
+      let destinationVC = BookmarkListViewController.loadFromStoryboard()
+      customNavigationDelegate.direction = .left
+      destinationVC.transitioningDelegate = customNavigationDelegate
+      destinationVC.modalPresentationStyle = .custom
+      present(destinationVC, animated: true, completion: nil)
+    }
+}
 

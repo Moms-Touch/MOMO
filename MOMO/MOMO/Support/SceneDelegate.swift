@@ -16,14 +16,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
     
-
-//    if !isLogged {
-      window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
+//    // keychain에 토큰 유무 확인
+//    if let accessToken = KeyChainService.shared.loadFromKeychain(account: "accessToken") {
+//      // TODO: 토큰검증
+//      if true { // TODO: res로 토큰을 받았다면
+//        // TODO: keychain에서 삭제 후 저장 실시(삭제 무조건 실시해야함)
+//        KeyChainService.shared.deleteFromKeyChain(account: "accessToken") //지우고
+//        KeyChainService.shared.saveInKeychain(account: "accessToken", value: accessToken)
+//        //TODO: userId와 토큰값을 저장
+//        //TODO: user가져오기를 통해서 Userdata에 추가
+//        let home = TabBar()
+//        home.selectedIndex = 0
+//        self.window?.rootViewController = home
+//      }
 //    } else {
-//      let home = TabBar()
-//      home.selectedIndex = 0
-//      self.window?.rootViewController = home
+//      isLogged = false
+//      window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
 //    }
+    
+    if !isLogged {
+      window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
+    } else {
+      let home = TabBar()
+      home.selectedIndex = 0
+      self.window?.rootViewController = home
+    }
 //    window?.rootViewController = CreateQuestionViewController.loadFromStoryboard()
 //    window?.rootViewController = CreateDiaryViewController.loadFromStoryboard()
 //    window?.rootViewController = WithTextViewController.loadFromStoryboard()
@@ -34,10 +51,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
-    // Called as the scene is being released by the system.
-    // This occurs shortly after the scene enters the background, or when its session is discarded.
-    // Release any resources associated with this scene that can be re-created the next time the scene connects.
-    // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
   }
 
   func sceneDidBecomeActive(_ scene: UIScene) {
