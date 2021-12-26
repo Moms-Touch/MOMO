@@ -7,9 +7,9 @@
 
 import UIKit
 
-class RecommendCollectionViewCell: UICollectionViewCell, simpleContentContainer {
+class RecommendCollectionViewCell: UICollectionViewCell {
   
-  internal var data: simpleContent? {
+  internal var data: InfoData? {
     didSet {
       if let thumbnailImageUrl = data?.thumbnailImageUrl {
         thumbNailImageView.setImage(with:thumbnailImageUrl)
@@ -19,6 +19,10 @@ class RecommendCollectionViewCell: UICollectionViewCell, simpleContentContainer 
         titleLabel.text = data?.title
       }
     }
+  }
+  
+  internal func getData(data: InfoData){
+    self.data = data
   }
   
   lazy var thumbNailImageView: UIImageView = {
