@@ -9,25 +9,32 @@ import Foundation
 
 enum PostApi: APIable {
     case registProfile(email: String, password: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String, contentType: ContentType)
+    case login(email: String, password: String, contentType: ContentType)
+    case findPassword(email: String, contentType: ContentType)
     
     var contentType: ContentType {
         switch self {
         case .registProfile(email: _, password: _, nickname: _, isPregnant: _, hasChild: _, age: _, location: _, contentType: let contentType):
             return contentType
+        case .login(_, _, contentType: let contentType):
+            return contentType
+        case .findPassword( _, contentType: let contentType):
+            return contentType
         }
     }
     
     var requestType: RequestType {
-        switch self {
-        case .registProfile:
-            return RequestType.post
-        }
+        return RequestType.post
     }
     
     var url: String {
         switch self {
         case .registProfile:
-            return "http://localhost:5001/momo-test-a4b5f/asia-northeast3/api/auth/signup"
+            return "https://asia-northeast3-momo-test-a4b5f.cloudfunctions.net/api/auth/signup"
+        case .login:
+            return "https://asia-northeast3-momo-test-a4b5f.cloudfunctions.net/api/auth/login"
+        case .findPassword(email: let email, contentType: let contentType):
+            return "https://asia-northeast3-momo-test-a4b5f.cloudfunctions.net/api/auth/password"
         }
     }
     
@@ -42,6 +49,11 @@ enum PostApi: APIable {
                     "age": age.description,
                     "location": location
                     ]
+        case .login(email: let email, password: let password, contentType: _):
+            return ["email": email,
+                    "password": password]
+        case .findPassword(email: let email, contentType: _):
+            return ["email": email]
         }
     }
 }

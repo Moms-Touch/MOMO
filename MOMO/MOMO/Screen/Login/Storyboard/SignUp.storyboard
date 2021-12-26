@@ -18,28 +18,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일/ 비밀번호를 설정해주세요" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heT-O1-VZe">
-                                <rect key="frame" x="38" y="137" width="326" height="84"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본 정보를 입력해주세요" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heT-O1-VZe">
+                                <rect key="frame" x="59.5" y="137" width="304.5" height="84"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qF1-Cm-Aqb" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="290" width="295" height="47"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Byn-7j-ppw">
+                                <rect key="frame" x="59.5" y="257.5" width="295" height="193"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qF1-Cm-Aqb" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="295" id="8n2-Oz-Yq4"/>
+                                            <constraint firstAttribute="height" constant="47" id="QA0-Zr-cxU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clb-SM-pET" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="73" width="295" height="47"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GF4-BZ-pkh" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="146" width="295" height="47"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="295" id="8n2-Oz-Yq4"/>
-                                    <constraint firstAttribute="height" constant="47" id="QA0-Zr-cxU"/>
+                                    <constraint firstItem="clb-SM-pET" firstAttribute="height" secondItem="qF1-Cm-Aqb" secondAttribute="height" id="LOP-it-X9g"/>
+                                    <constraint firstItem="GF4-BZ-pkh" firstAttribute="height" secondItem="clb-SM-pET" secondAttribute="height" id="MCx-kg-DQf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clb-SM-pET" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="364" width="295" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk9-K4-Iyx" customClass="MomoBaseButton" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="773" width="295" height="59"/>
+                                <rect key="frame" x="59.5" y="773" width="295" height="59"/>
                                 <color key="backgroundColor" name="Pink4"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="eOC-Yz-ArJ"/>
@@ -57,18 +71,14 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qF1-Cm-Aqb" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.7" id="83i-23-VKt"/>
-                            <constraint firstItem="heT-O1-VZe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="Bfr-nY-Gx7"/>
-                            <constraint firstItem="clb-SM-pET" firstAttribute="height" secondItem="qF1-Cm-Aqb" secondAttribute="height" id="IvN-D7-Ti7"/>
+                            <constraint firstItem="heT-O1-VZe" firstAttribute="leading" secondItem="Byn-7j-ppw" secondAttribute="leading" id="5Mt-Rf-gBQ"/>
+                            <constraint firstItem="Mk9-K4-Iyx" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="PaB-5z-mRf"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Mk9-K4-Iyx" secondAttribute="bottom" constant="30" id="TmG-XQ-8rj"/>
-                            <constraint firstItem="qF1-Cm-Aqb" firstAttribute="leading" secondItem="heT-O1-VZe" secondAttribute="leading" id="XJd-jI-KLU"/>
-                            <constraint firstItem="clb-SM-pET" firstAttribute="leading" secondItem="qF1-Cm-Aqb" secondAttribute="leading" id="ZJa-9j-wA3"/>
+                            <constraint firstItem="Byn-7j-ppw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="YEn-qg-uKC"/>
                             <constraint firstItem="heT-O1-VZe" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.4" id="aYh-cC-fXg"/>
-                            <constraint firstItem="Mk9-K4-Iyx" firstAttribute="leading" secondItem="qF1-Cm-Aqb" secondAttribute="leading" id="bHu-cu-lUv"/>
-                            <constraint firstItem="Mk9-K4-Iyx" firstAttribute="trailing" secondItem="qF1-Cm-Aqb" secondAttribute="trailing" id="d1h-4Z-2N1"/>
-                            <constraint firstItem="clb-SM-pET" firstAttribute="centerY" secondItem="qF1-Cm-Aqb" secondAttribute="bottom" multiplier="1.15" id="fCa-nh-bnc"/>
+                            <constraint firstItem="Mk9-K4-Iyx" firstAttribute="width" secondItem="qF1-Cm-Aqb" secondAttribute="width" id="fc2-Mf-GK9"/>
                             <constraint firstAttribute="trailing" secondItem="heT-O1-VZe" secondAttribute="trailing" constant="50" id="mpJ-aP-VtL"/>
-                            <constraint firstItem="clb-SM-pET" firstAttribute="trailing" secondItem="qF1-Cm-Aqb" secondAttribute="trailing" id="pE5-ss-vai"/>
+                            <constraint firstItem="Byn-7j-ppw" firstAttribute="centerY" secondItem="heT-O1-VZe" secondAttribute="bottom" multiplier="1.6" id="nnG-xZ-BMi"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
@@ -77,6 +87,7 @@
                         <outlet property="explanationLabel" destination="heT-O1-VZe" id="wFa-eN-FHh"/>
                         <outlet property="nextButton" destination="Mk9-K4-Iyx" id="fcf-cW-MBZ"/>
                         <outlet property="nextButtonConstraint" destination="TmG-XQ-8rj" id="Sm6-nn-P7H"/>
+                        <outlet property="nicknameTextField" destination="GF4-BZ-pkh" id="rIM-ji-q7a"/>
                         <outlet property="passwordTextField" destination="clb-SM-pET" id="h25-yB-WNP"/>
                     </connections>
                 </viewController>

@@ -12,13 +12,12 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var explanationLabel: UILabel!
     @IBOutlet private weak var emailTextField: MomoBaseTextField!
     @IBOutlet private weak var passwordTextField: MomoBaseTextField!
+    @IBOutlet weak var nicknameTextField: MomoBaseTextField!
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var nextButtonConstraint: NSLayoutConstraint!
     
     private var bottomConstant: CGFloat = 0
     private var isExistKeyboard = false
-    let networkManager = NetworkManager()
-    let parsingManager = ParsingManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +28,10 @@ final class SignUpViewController: UIViewController {
     private func setUpView() {
         emailTextField.setBorderColor(to: Asset.Colors.pink2.color)
         passwordTextField.setBorderColor(to: Asset.Colors.pink2.color)
-      emailTextField.addLeftPadding(width: 10)
+        nicknameTextField.setBorderColor(to: Asset.Colors.pink2.color)
+        emailTextField.addLeftPadding(width: 10)
         passwordTextField.addLeftPadding(width: 10)
+        nicknameTextField.addLeftPadding(width: 10)
     }
     
     private func addKeyboardObserver() {
@@ -61,18 +62,9 @@ final class SignUpViewController: UIViewController {
             isExistKeyboard = false
         }
     }
+    
     @IBAction func didTapLocationButton(_ sender: UIButton) {
         navigationController?.pushViewController(LocationViewController.loadFromStoryboard(), animated: true)
-        let test = PostApi.registProfile(email: "ohsg0272@naver.com", password: "123", nickname: "12", isPregnant: true, hasChild: true, age: 123, location: "seoul", contentType: .jsonData)
-        networkManager.request(apiModel: test) { networkResult  in
-            switch networkResult {
-            case .success(let data):
-                print(data)
-                print(test)
-            case .failure(_):
-                print("error")
-            }
-        }
     }
 }
 

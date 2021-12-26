@@ -7,13 +7,24 @@
 
 import UIKit
 
+protocol emailable: AnyObject {
+    func convey(with emailAddress: String?)
+}
+
 final class FindPasswordViewController: UIViewController {
     @IBOutlet private weak var emailTextField: MomoBaseTextField!
     @IBOutlet private weak var temporaryPasswordButton: UIButton!
     @IBOutlet private weak var temporaryPasswordBottomConstraint: NSLayoutConstraint!
     
+    weak var delegate: emailable?
     private var bottomConstant: CGFloat = 0.0
     private var isExistKeyboard = false
+    private let networkManager = NetworkManager()
+    private var emailAddress: String = ""{
+        willSet {
+            emailAddress = newValue
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +32,13 @@ final class FindPasswordViewController: UIViewController {
         addKeyboardObserver()
     }
     
-    //emailRegEx (x) -> emailRex or ...RegularExpression
-    //emailTest -> emailCheck
-    //함수이름이랑 파라미터명 안맞음 >.<
-    func isValidEmail(testString: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testString)
+    private func isValidEmail(_ address: String) -> Bool {
+        let emailRex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailCheck = NSPredicate(format:"SELF MATCHES %@", emailRex)
+        return emailCheck.evaluate(with: address)
     }
+    
+    
     
     @IBAction func editEmailTextField(_ sender: MomoBaseTextField) {
         guard let text = sender.text else {
@@ -36,12 +46,27 @@ final class FindPasswordViewController: UIViewController {
             return
         }
         
-        if isValidEmail(testString: text) {
+        if isValidEmail(text) {
             temporaryPasswordButton.alpha = 1.0
             temporaryPasswordButton.isUserInteractionEnabled = true
+            emailAddress = text
         } else {
             temporaryPasswordButton.alpha = 0.5
             temporaryPasswordButton.isUserInteractionEnabled = false
+        }
+    }
+    
+    @IBAction func didTapTemporaryPasswordButton(_ sender: UIButton) {
+        print(emailAddress)
+        networkManager.request(apiModel: PostApi.findPassword(email: emailAddress, contentType: .jsonData)) { [weak self] networkResult in
+            switch networkResult {
+            case .success:
+                self?.navigationController?.pushViewController(NewPasswordInputViewController.loadFromStoryboard(), animated: true)
+                self?.delegate?.convey(with: self?.emailAddress)
+            case .failure:
+                //alert창 띄우기
+                print("fail")
+            }
         }
     }
     
@@ -80,3 +105,5 @@ final class FindPasswordViewController: UIViewController {
         }
     }
 }
+
+extension FindPasswordViewController: StoryboardInstantiable { }

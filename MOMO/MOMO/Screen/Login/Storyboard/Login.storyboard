@@ -34,6 +34,9 @@
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapLoginButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4BW-Dy-3kM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afn-T5-O3z">
                                 <rect key="frame" x="40" y="500.5" width="295" height="60"/>
@@ -53,11 +56,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2V-lX-weM">
-                                <rect key="frame" x="125" y="570.5" width="125" height="31"/>
+                                <rect key="frame" x="137" y="570.5" width="101" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="가입없이 둘러보기">
+                                <buttonConfiguration key="configuration" style="plain" title="비밀번호 찾기">
                                     <color key="baseForegroundColor" systemColor="systemGray2Color"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapFindPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xjQ-zt-D7p"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbY-p8-Xzd" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                 <rect key="frame" x="40" y="276.5" width="295" height="47"/>
