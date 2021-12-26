@@ -10,7 +10,7 @@ import SnapKit
 
 class RecommendModalViewController: UIViewController {
   
-  private var datasource: [Int] = [1,2,3,4,5]
+  private var datasource: [InfoData] = []
   private let collectionViewHeight: CGFloat = 150
   internal var completionHandler: (()->())?
   internal var selectedCell: RecommendCollectionViewCell?
@@ -28,6 +28,7 @@ class RecommendModalViewController: UIViewController {
     let flowlayout = UICollectionViewFlowLayout()
     flowlayout.scrollDirection = .horizontal
     flowlayout.minimumLineSpacing = 35
+    flowlayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     let view = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
     view.backgroundColor = .white
     view.isPagingEnabled = true
@@ -55,6 +56,7 @@ class RecommendModalViewController: UIViewController {
     
     setDelegate()
     setuplayout()
+    print("숫자", datasource.count)
     recommendCollectionView.register(RecommendCollectionViewCell.self)
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
     view.addGestureRecognizer(panGesture)
@@ -62,6 +64,11 @@ class RecommendModalViewController: UIViewController {
       self.selectedCell?.isHidden = false
     }
   }
+  
+  internal func setData(data: [InfoData]) {
+    self.datasource = data
+  }
+  
 }
 
 //MARK: - PanGesture for HalfModal
@@ -134,20 +141,32 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
       make.left.equalTo(self.view).offset(20)
     }
     recommendCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
-    recommendCollectionView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+    recommendCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     recommendCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     recommendCollectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight.fit(self)).isActive = true
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    if datasource.count % 2 != 0 {
+      return datasource.count + 1
+    }
     return datasource.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as? RecommendCollectionViewCell else {return RecommendCollectionViewCell()}
     
-//    cell.getSimpleData(data: datasource[indexPath.row])
-    
+    // 홀수일 경우 paging을 위해서 빈 셀을 하나 더 만들어준다.
+    if datasource.count % 2 != 0 && indexPath.row == datasource.count{
+      cell.thumbNailImageView.image = nil
+      cell.titleLabel.text = ""
+      cell.isUserInteractionEnabled = false
+    } else {
+      cell.thumbNailImageView.image = UIImage(named: "Logo")
+      cell.titleLabel.text = "도레미"
+      cell.isUserInteractionEnabled = true
+      cell.getData(data: datasource[indexPath.row])
+    }
     return cell
   }
   
@@ -157,7 +176,13 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     selectedCell = collectionView.cellForItem(at: indexPath) as? RecommendCollectionViewCell
-    let vc = RecommendDetailViewController.loadFromStoryboard()
+    guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController else {return}
+    if let data = selectedCell?.data {
+      let viewmodel = InfoDataViewModel(model: data)
+      vc.viewModel = viewmodel
+    } else {
+      vc.viewModel = nil
+    }
     vc.transitioningDelegate = self
     present(vc, animated: true, completion: nil)
   }
