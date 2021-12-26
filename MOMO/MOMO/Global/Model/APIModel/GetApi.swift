@@ -22,14 +22,14 @@ enum GetApi: APIable {
   case communityDetailGet
   case noticeGet
   case policyGet(token: String, keyword: String?, location: String?, category: String?, page: String?)
-  //Infoget밑으로 안함
+  case infoGet(token: String, start: String, end: String)
 }
 
 extension GetApi {
   
   var contentType: ContentType {
     switch self {
-    case .noticeGet, .policyGet:
+    case .noticeGet, .policyGet, .infoGet:
       return .noBody
     default:
       return .noBody
@@ -40,7 +40,7 @@ extension GetApi {
     switch self {
     case .noticeGet:
       return .JSONEncoding
-    case .policyGet:
+    case .policyGet, .infoGet:
       return .URLEncoding
     default:
       return .URLEncoding
@@ -55,6 +55,8 @@ extension GetApi {
     switch self {
     case .noticeGet:
       return makePathtoURL(path: "/notice")
+    case .infoGet:
+      return makePathtoURL(path: "/info")
     case .policyGet:
       return makePathtoURL(path: "/policy")
     default:
@@ -68,6 +70,8 @@ extension GetApi {
       return nil
     case .policyGet(_, let keyword, let location, let category, let page):
       return ["keyword": keyword, "location": location, "category": category, "page": page]
+    case .infoGet(_, let start, let end):
+      return ["start": start, "end": end]
     default:
       return nil
     }
@@ -77,7 +81,7 @@ extension GetApi {
     switch self {
     case .noticeGet:
       return nil
-    case .policyGet(let token, _, _, _, _):
+    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _):
       return [ "Authorization" : "Bearer \(token)"]
     default:
       return nil

@@ -93,6 +93,7 @@
 		288EFD1D2755D41E000D1617 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */; };
 		288EFD252758E8D2000D1617 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */; };
 		289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */; };
+		28A9995B2778793300459D19 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9995A2778793300459D19 /* InfoViewModel.swift */; };
 		28B192C22769685C00BAF93B /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B192C12769685C00BAF93B /* KeyChainService.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
@@ -224,6 +225,7 @@
 		288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		289B3618274F40DC00535B2E /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		28A9995A2778793300459D19 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		28B192C12769685C00BAF93B /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
@@ -520,6 +522,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		28A999592778791D00459D19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				28A9995A2778793300459D19 /* InfoViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		28CA30662753357300EF071E /* Community */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +751,7 @@
 		DD43E8E5270B4EBE00699DA1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				28A999592778791D00459D19 /* Model */,
 				288ED75D27427D2A00C5178D /* View */,
 				28F4714C2738F66C0074D148 /* Storyboard */,
 				28F471482738F0240074D148 /* ViewController */,
@@ -988,6 +999,7 @@
 				288EFD172754F354000D1617 /* AlertContainer.swift in Sources */,
 				2852099B2753325F00AB8BAC /* DiaryDetailViewController.swift in Sources */,
 				28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */,
+				28A9995B2778793300459D19 /* InfoViewModel.swift in Sources */,
 				28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */,
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
 				281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */,
