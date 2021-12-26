@@ -56,20 +56,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     babyProfileImageView.setRound()
   }
   
-  private func testPolicy() {
-    networkManager.request(apiModel: GetApi.policyGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjksImVtYWlsIjoieWJAa2ltLmNvbSIsIm5hbWUiOiJ5YmtpbSIsImlhdCI6MTY0MDE4NjE1MCwiZXhwIjoxNjQwNDQ1MzUwLCJpc3MiOiJtb21vIn0.4TtHoK5dpdebtC8vyUc0XCMkCW3SAW9B6vz6_WgKYcU", keyword: nil, location: nil, category: "law", page: nil)) { result in
-      switch result {
-      case.success(let data):
-        let parsingmanager = ParsingManager()
-        parsingmanager.judgeGenericResponse(data: data, model: [SimpleCommunityData].self) { data in
-          print(data)
-        }
-      case .failure(let error):
-        print(error)
-      }
-    }
-  }
-  
   private func getNotice() {
     networkManager.request(apiModel: GetApi.noticeGet) { result in
       switch result {
@@ -126,8 +112,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
         fatalError("\(error)")
       }
     }
-    
-    
   }
   
   @IBAction private func didTapTodayButton(_ sender: UIButton) {
