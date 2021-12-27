@@ -11,7 +11,7 @@ struct InfoData: simpleContent, Codable {
   var id: Int
   var author: String?
   var title: String
-  let url: String
+  var url: String?
   var thumbnailImageUrl: String?
   let week: Int
   var createdAt: String
