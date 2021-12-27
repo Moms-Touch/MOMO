@@ -14,6 +14,7 @@ protocol simpleContent {
   var title: String {get set}
   var author: String? {get set}
   var createdAt: String {get set}
+  var url: String? {get set}
   var thumbnailImageUrl: String? {get set}
 }
 
