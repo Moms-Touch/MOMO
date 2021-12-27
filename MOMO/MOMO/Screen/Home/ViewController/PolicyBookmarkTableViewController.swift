@@ -18,12 +18,44 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
   }
   
   private var gapBWTCell:CGFloat = 10;
-  // 후에 simplepolicydata 나오면 그것으로 변경
-  private var datasource: [SimpleCommunityData] = []
+  
+  private var datasource: [Post] = []
+  
+  lazy var networkManager = NetworkManager()
+  
+  private func getData() {
+    var bookmarkData: [BookmarkData] = []
+    // 1. 가져온다.
+    networkManager.request(apiModel: GetApi.bookmarkGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImlhdCI6MTY0MDUxMTA0OSwiZXhwIjoxNjQwNzcwMjQ5LCJpc3MiOiJtb21vIn0.Z52lgsVvt9deFR7E94rTVNgLEdl4DNWKZGxI8NlgB54")) { (result) in
+      switch result {
+      case .success(let data):
+        let parsingManager = ParsingManager()
+        parsingManager.judgeGenericResponse(data: data, model: [BookmarkData].self) { [weak self]  (body) in
+          guard let self = self else {return}
+          bookmarkData = body
+          let policyBookmark = bookmarkData.filter { $0.post.category != Category.community }
+          let postData = policyBookmark.sorted { $0.createdAt < $1.createdAt }.map { return $0.post }
+          
+          // 현재 갯수와 동일한지 확인, 동일하다면 -> 버린다.
+          if postData.count == self.datasource.count {
+            return
+          } else { // 다르다면 전체 동기화
+            self.datasource = postData
+            DispatchQueue.main.async {
+              self.tableView.reloadData()
+            }
+          }
+        }
+      case .failure(let error):
+        print(error)
+      }
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(ListTableViewCell.self)
+    getData()
   }
   
   // MARK: - Table view data source

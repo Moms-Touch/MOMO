@@ -38,11 +38,13 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     }
   }
   
+  //banner의 현재 페이지
   private var currentPage = 0
+  private var datasource: [NoticeData] = []
+  
+  //networking
   lazy var networkManager = NetworkManager()
   lazy var customNavigationDelegate = CustomNavigationManager()
-  private var datasource: [NoticeData] = [NoticeData(id: 1, author: "관리자", title: "공지사항1", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 2, author: "관리자", title: "공지사항2", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 3, author: "관리자", title: "공지사항3", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 4, author: "관리자", title: "공지사항4", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 5, author: "관리자", title: "공지사항5", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12")]
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -149,7 +151,11 @@ extension HomeMainViewController: UICollectionViewDelegate, UICollectionViewData
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //여기서 바로 safari로 넘겨야할듯
+    let url = datasource[indexPath.row].url
+    let storyboard = UIStoryboard.init(name: "MySetting", bundle: nil)
+    guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingWebViewController") as? SettingWebViewController else {return}
+    vc.targetURL = URL(string: url)!
+    present(vc, animated: true, completion: nil)
   }
 }
 
@@ -168,12 +174,14 @@ extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
     return 0
   }
   
+  // 배너 타이머
   private func bannerTimer() {
     let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] (timer) in
       self?.bannerMove()
     }
   }
   
+  //배너가 돌아가는 애니메이션 + 페이지네이션하는 로직
   private func bannerMove() {
     if currentPage == datasource.count - 1 {
      

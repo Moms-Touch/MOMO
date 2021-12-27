@@ -16,10 +16,10 @@ class InfoDataViewModel {
   }
   
   var url: URL? {
-    guard let model = model else {
+    guard let url = model?.url else {
       return nil
     }
-    return URL(string: model.url)!
+    return URL(string: url)!
   }
   
   var thumbNailImageURL: URL? {
