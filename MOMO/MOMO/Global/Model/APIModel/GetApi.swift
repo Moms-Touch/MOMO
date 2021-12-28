@@ -16,7 +16,8 @@ import Foundation
 enum GetApi: APIable {
   
   case loginGet(token: String)
-  case babyGet
+  case userGet(token: String)
+  case babyGet(token: String)
   case bookmarkGet(token: String)
   case communityGet
   case communityDetailGet
@@ -29,7 +30,7 @@ extension GetApi {
   
   var contentType: ContentType {
     switch self {
-    case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet:
+    case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet, .userGet, .babyGet:
       return .noBody
     default:
       return .noBody
@@ -38,7 +39,7 @@ extension GetApi {
   
   var encodingType: EncodingType {
     switch self {
-    case .noticeGet, .bookmarkGet, .loginGet:
+    case .noticeGet, .bookmarkGet, .loginGet, .userGet, .babyGet:
       return .JSONEncoding
     case .policyGet, .infoGet:
       return .URLEncoding
@@ -63,6 +64,10 @@ extension GetApi {
       return makePathtoURL(path: "/bookmark")
     case .loginGet:
       return makePathtoURL(path: "/auth/login")
+    case .userGet:
+      return makePathtoURL(path: "/member")
+    case .babyGet:
+      return makePathtoURL(path: "/baby")
     default:
       return " "
     }
@@ -70,7 +75,7 @@ extension GetApi {
   
   var param: [String : String?]? {
     switch self {
-    case .noticeGet, .bookmarkGet(_), .loginGet(_):
+    case .noticeGet, .bookmarkGet(_), .loginGet(_), .userGet(_), .babyGet(_):
       return nil
     case .policyGet(_, let keyword, let location, let category, let page):
       return ["keyword": keyword, "location": location, "category": category, "page": page]
@@ -85,7 +90,7 @@ extension GetApi {
     switch self {
     case .noticeGet:
       return nil
-    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _), .bookmarkGet(let token), .loginGet(let token):
+    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _), .bookmarkGet(let token), .loginGet(let token), .userGet(let token), .babyGet(let token):
       return [ "Authorization" : "Bearer \(token)"]
     default:
       return nil
