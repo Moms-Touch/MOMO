@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable {
+final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable, UIViewControllerTransitioningDelegate {
   
   @IBOutlet weak var bannerCollectionView: UICollectionView! {
     didSet {
@@ -38,20 +38,43 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     }
   }
   
+  //banner의 현재 페이지
   private var currentPage = 0
-  private var datasource: [NoticeData] = [NoticeData(id: 1, author: "관리자", title: "공지사항1", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 2, author: "관리자", title: "공지사항2", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 3, author: "관리자", title: "공지사항3", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 4, author: "관리자", title: "공지사항4", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 5, author: "관리자", title: "공지사항5", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12")]
+  private var datasource: [NoticeData] = []
   
+  //networking
+  lazy var networkManager = NetworkManager()
+  lazy var customNavigationDelegate = CustomNavigationManager()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     assignbackground()
-    bannerTimer()
+    getNotice()
   }
   
   override func viewDidLayoutSubviews() {
     imageHuggingView.setRound()
     babyProfileImageView.setRound()
   }
+  
+  private func getNotice() {
+    networkManager.request(apiModel: GetApi.noticeGet) { result in
+      switch result {
+      case.success(let data):
+        let parsingManager = ParsingManager()
+        parsingManager.judgeGenericResponse(data: data, model: [NoticeData].self) { data in
+          DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            self.datasource = data
+            self.bannerCollectionView.reloadData()
+            self.bannerTimer()
+          }
+        }
+      case .failure(let error):
+        print(error)
+      }
+    }
+}
   
   private func assignbackground(){
     let background = UIImage(named: "mainBackground")
@@ -68,22 +91,36 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   
   @IBAction private func didTapRecommendButton(_ sender: UIButton) {
     let recommendModalVC = RecommendModalViewController()
+    customNavigationDelegate.direction = .bottom
+    recommendModalVC.transitioningDelegate = customNavigationDelegate
     recommendModalVC.modalPresentationStyle = .custom
-    recommendModalVC.transitioningDelegate = self
-    dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
-    recommendModalVC.completionHandler = { [weak self] in
-      self?.dim(direction: .Out)
+    // networking
+    guard let token = UserManager.shared.token else {return}
+    networkManager.request(apiModel: GetApi.infoGet(token: token, start: "4", end: "5")) { (result) in
+      switch result {
+      case .success(let data):
+        let parsingmanager = ParsingManager()
+        parsingmanager.judgeGenericResponse(data: data, model: [InfoData].self) { [weak self] body in
+          guard let self = self else {return}
+          recommendModalVC.setData(data: body)
+          DispatchQueue.main.async {
+            self.dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
+            recommendModalVC.completionHandler = { [weak self] in
+              self?.dim(direction: .Out)
+            }
+            self.present(recommendModalVC, animated: true, completion: nil)
+          }
+        }
+      case .failure(let error):
+        fatalError("\(error)")
+      }
     }
-    present(recommendModalVC, animated: true, completion: nil)
   }
   
   @IBAction private func didTapTodayButton(_ sender: UIButton) {
     print(#function)
   }
   
-  @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
-    self.navigationController?.pushViewController(BookmarkListViewController.loadFromStoryboard(), animated: true)
-  }
   
   @IBAction func didTapBellButton(_ sender: UIButton) {
     self.navigationController?.pushViewController(AlertViewController.loadFromStoryboard(), animated: true)
@@ -102,12 +139,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   }
 }
 
-extension HomeMainViewController: UIViewControllerTransitioningDelegate {
-  func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-    return PresentationController(presentedViewController: presented, presenting: presenting)
-  }
-}
-
 extension HomeMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -121,15 +152,17 @@ extension HomeMainViewController: UICollectionViewDelegate, UICollectionViewData
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //여기서 바로 safari로 넘겨야할듯
+    let url = datasource[indexPath.row].url
+    let storyboard = UIStoryboard.init(name: "MySetting", bundle: nil)
+    guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingWebViewController") as? SettingWebViewController else {return}
+    vc.targetURL = URL(string: url)!
+    present(vc, animated: true, completion: nil)
   }
 }
 
 extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    print(view.frame.size)
-    print(bannerCollectionView.frame.size)
     return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
   }
   
@@ -142,12 +175,14 @@ extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
     return 0
   }
   
+  // 배너 타이머
   private func bannerTimer() {
     let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] (timer) in
       self?.bannerMove()
     }
   }
   
+  //배너가 돌아가는 애니메이션 + 페이지네이션하는 로직
   private func bannerMove() {
     if currentPage == datasource.count - 1 {
      
@@ -169,4 +204,13 @@ extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
   
 }
 
+extension HomeMainViewController {
+    @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
+      let destinationVC = BookmarkListViewController.loadFromStoryboard()
+      customNavigationDelegate.direction = .left
+      destinationVC.transitioningDelegate = customNavigationDelegate
+      destinationVC.modalPresentationStyle = .custom
+      present(destinationVC, animated: true, completion: nil)
+    }
+}
 

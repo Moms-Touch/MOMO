@@ -8,6 +8,7 @@
 import UIKit
 
 enum BabyInfo: CaseIterable {
+  
   static var allCases: [BabyInfo] = [ .babyName(name: nil), .birth(date: nil), .babyImage(imageURL: nil)]
   
   case babyImage(imageURL: String?)
@@ -35,6 +36,10 @@ enum BabyInfo: CaseIterable {
       return "출생일/출생예정일"
     }
   }
+}
+
+struct BabyInfoViewModel {
+  
 }
 
 class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {

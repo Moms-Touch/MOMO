@@ -8,32 +8,17 @@
 import UIKit
 import WebKit
 
-class infoDataViewModel {
-  
-  var model = InfoData(id: 1, author: "", title: "임산부에게는 이게 안좋아요ㅠ", url: "https://www.google.com", thumbnailImageUrl: nil, week: 7, createdAt: "2021.11.11", updatedAt: "2021.12.12")
-    
-  var url: URL {
-    return URL(string: model.url)!
-  }
-  
-  var thumbNailImageURL: URL? {
-    guard let thumbnailImageURL = model.thumbnailImageUrl else {return nil}
-    return URL(string: thumbnailImageURL)!
-  }
-  
-  var isbookMark: Bool {
-    return false
-  }
-}
-
 class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, StoryboardInstantiable {
   
-  var viewModel = infoDataViewModel()
+  var viewModel: InfoDataViewModel?
   @IBOutlet weak var webView: WKWebView!
   @IBOutlet weak var bookmarkButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    guard let viewModel = viewModel else {
+      return
+    }
     loadURL(url: viewModel.url)
   }
   
@@ -41,7 +26,10 @@ class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigatio
     super.viewDidAppear(animated)
   }
   
-  private func loadURL(url: URL) {
+  private func loadURL(url: URL?) {
+    guard let url = url else {
+      return
+    }
     let request = URLRequest(url: url)
     webView.load(request)
     webView.uiDelegate = self
@@ -63,6 +51,9 @@ class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigatio
   @IBAction func didTapDirectToLink(_ sender: UIButton) {
     let storyboard = UIStoryboard(name: "MySetting", bundle: nil)
     guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingWebViewController") as? SettingWebViewController else {return}
+    guard let viewModel = viewModel else {
+      return
+    }
     vc.targetURL = viewModel.url
     present(vc, animated: true, completion: nil)
   }

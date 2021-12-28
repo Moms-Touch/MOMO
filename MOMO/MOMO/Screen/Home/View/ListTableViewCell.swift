@@ -12,12 +12,18 @@ class ListTableViewCell: UITableViewCell, NibLoadableView, simpleContentContaine
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var organizationLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
-    
+  @IBOutlet weak var thumbnailImageView: UIImageView!
+  
   internal var data: simpleContent? {
     didSet {
       titleLabel.text = data?.title
       organizationLabel.text = data?.author ?? "모모관리자"
       dateLabel.text = data?.createdAt
+      guard let thumbnailImageUrl = data?.thumbnailImageUrl else {
+        thumbnailImageView.image = UIImage(named: "Logo")!
+        return
+      }
+      thumbnailImageView.setImage(with: thumbnailImageUrl)
     }
   }
   

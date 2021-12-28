@@ -17,12 +17,43 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
       return gapBWTCell
   }
   
-  private var gapBWTCell:CGFloat = 10;
-  private var datasource: [SimpleCommunityData] = []
+  private var gapBWTCell:CGFloat = 10
+  
+  private var datasource: [Post] = []
+  
+  lazy var networkManager = NetworkManager()
 
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(ListTableViewCell.self)
+    getData()
+  }
+  
+  private func getData() {
+    
+    var bookmarkData: [BookmarkData] = []
+    guard let token = UserManager.shared.token else {return}
+    networkManager.request(apiModel: GetApi.bookmarkGet(token: token)) { (result) in
+      switch result {
+      case .success(let data):
+        let parsingManager = ParsingManager()
+        parsingManager.judgeGenericResponse(data: data, model: [BookmarkData].self) { [weak self] (body) in
+          guard let self = self else {return}
+          bookmarkData = body
+          let postData = bookmarkData.filter { $0.post.category == Category.community }.sorted { $0.createdAt < $1.createdAt }.map { return $0.post }
+          if postData.count == self.datasource.count {
+            return
+          } else {
+            self.datasource = postData
+            DispatchQueue.main.async {
+              self.tableView.reloadData()
+            }
+          }
+        }
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
   
   // MARK: - Table view data source
@@ -40,14 +71,10 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
 
     //TODO: 데이터 넣어주기
     cell.getSimpleData(data: datasource[indexPath.section])
-
     return cell
   }
   
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     scrollView.bounces = scrollView.contentOffset.y > 0
   }
-  
-  
-  
 }
