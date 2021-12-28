@@ -49,7 +49,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   override func viewDidLoad() {
     super.viewDidLoad()
     assignbackground()
-    bannerTimer()
     getNotice()
   }
   
@@ -68,13 +67,14 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
             guard let self = self else {return}
             self.datasource = data
             self.bannerCollectionView.reloadData()
+            self.bannerTimer()
           }
         }
       case .failure(let error):
         print(error)
       }
     }
-  }
+}
   
   private func assignbackground(){
     let background = UIImage(named: "mainBackground")
@@ -95,7 +95,8 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     recommendModalVC.transitioningDelegate = customNavigationDelegate
     recommendModalVC.modalPresentationStyle = .custom
     // networking
-    networkManager.request(apiModel: GetApi.infoGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImlhdCI6MTY0MDUxMTA0OSwiZXhwIjoxNjQwNzcwMjQ5LCJpc3MiOiJtb21vIn0.Z52lgsVvt9deFR7E94rTVNgLEdl4DNWKZGxI8NlgB54", start: "4", end: "5")) { (result) in
+    guard let token = UserManager.shared.token else {return}
+    networkManager.request(apiModel: GetApi.infoGet(token: token, start: "4", end: "5")) { (result) in
       switch result {
       case .success(let data):
         let parsingmanager = ParsingManager()

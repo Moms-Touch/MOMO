@@ -32,8 +32,8 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
   private func getData() {
     
     var bookmarkData: [BookmarkData] = []
-    
-    networkManager.request(apiModel: GetApi.bookmarkGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImlhdCI6MTY0MDUxMTA0OSwiZXhwIjoxNjQwNzcwMjQ5LCJpc3MiOiJtb21vIn0.Z52lgsVvt9deFR7E94rTVNgLEdl4DNWKZGxI8NlgB54")) { (result) in
+    guard let token = UserManager.shared.token else {return}
+    networkManager.request(apiModel: GetApi.bookmarkGet(token: token)) { (result) in
       switch result {
       case .success(let data):
         let parsingManager = ParsingManager()

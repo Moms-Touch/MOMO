@@ -97,6 +97,8 @@
 		28A9995D2778808800459D19 /* BookmarkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9995C2778808800459D19 /* BookmarkData.swift */; };
 		28A9995F277880D300459D19 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9995E277880D300459D19 /* Post.swift */; };
 		28A99961277882F600459D19 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99960277882F600459D19 /* Category.swift */; };
+		28A99963277AB78500459D19 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99962277AB78500459D19 /* LoginData.swift */; };
+		28A99965277ABAD100459D19 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99964277ABAD100459D19 /* UserManager.swift */; };
 		28B192C22769685C00BAF93B /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B192C12769685C00BAF93B /* KeyChainService.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
@@ -232,6 +234,8 @@
 		28A9995C2778808800459D19 /* BookmarkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkData.swift; sourceTree = "<group>"; };
 		28A9995E277880D300459D19 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		28A99960277882F600459D19 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		28A99962277AB78500459D19 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
+		28A99964277ABAD100459D19 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		28B192C12769685C00BAF93B /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
@@ -496,6 +500,7 @@
 			children = (
 				285209DB2753329600AB8BAC /* StorageService.swift */,
 				28B192C12769685C00BAF93B /* KeyChainService.swift */,
+				28A99964277ABAD100459D19 /* UserManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -515,6 +520,7 @@
 				28F4FE1A27610E5A00E699FC /* BabyData.swift */,
 				28A9995E277880D300459D19 /* Post.swift */,
 				28A99960277882F600459D19 /* Category.swift */,
+				28A99962277AB78500459D19 /* LoginData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -955,6 +961,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */,
+				28A99963277AB78500459D19 /* LoginData.swift in Sources */,
 				28CA30742753357300EF071E /* QuestionTableViewCell.swift in Sources */,
 				28B63E98276DED4D00CB5EBF /* CustomNavigationManager.swift in Sources */,
 				285209F52753329600AB8BAC /* StorageService.swift in Sources */,
@@ -962,6 +969,7 @@
 				2852099A2753325F00AB8BAC /* DiaryInputOptionViewController.swift in Sources */,
 				288ED76927428C1E00C5178D /* PolicyBookmarkTableViewController.swift in Sources */,
 				28F4715C273BE3E90074D148 /* MyActivityViewController.swift in Sources */,
+				28A99965277ABAD100459D19 /* UserManager.swift in Sources */,
 				28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */,
 				281D353F27647FD500A128A5 /* BannerCell.swift in Sources */,
 				289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */,
