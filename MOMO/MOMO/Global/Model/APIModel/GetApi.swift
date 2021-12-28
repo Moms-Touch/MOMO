@@ -15,7 +15,7 @@ import Foundation
 
 enum GetApi: APIable {
   
-  case login
+  case loginGet(token: String)
   case babyGet
   case bookmarkGet(token: String)
   case communityGet
@@ -29,7 +29,7 @@ extension GetApi {
   
   var contentType: ContentType {
     switch self {
-    case .noticeGet, .policyGet, .infoGet, .bookmarkGet:
+    case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet:
       return .noBody
     default:
       return .noBody
@@ -38,7 +38,7 @@ extension GetApi {
   
   var encodingType: EncodingType {
     switch self {
-    case .noticeGet, .bookmarkGet:
+    case .noticeGet, .bookmarkGet, .loginGet:
       return .JSONEncoding
     case .policyGet, .infoGet:
       return .URLEncoding
@@ -61,6 +61,8 @@ extension GetApi {
       return makePathtoURL(path: "/policy")
     case .bookmarkGet:
       return makePathtoURL(path: "/bookmark")
+    case .loginGet:
+      return makePathtoURL(path: "/auth/login")
     default:
       return " "
     }
@@ -68,7 +70,7 @@ extension GetApi {
   
   var param: [String : String?]? {
     switch self {
-    case .noticeGet, .bookmarkGet(_):
+    case .noticeGet, .bookmarkGet(_), .loginGet(_):
       return nil
     case .policyGet(_, let keyword, let location, let category, let page):
       return ["keyword": keyword, "location": location, "category": category, "page": page]
@@ -83,7 +85,7 @@ extension GetApi {
     switch self {
     case .noticeGet:
       return nil
-    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _), .bookmarkGet(let token):
+    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _), .bookmarkGet(let token), .loginGet(let token):
       return [ "Authorization" : "Bearer \(token)"]
     default:
       return nil

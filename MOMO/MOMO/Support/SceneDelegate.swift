@@ -16,38 +16,95 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
     
-//    // keychain에 토큰 유무 확인
-//    if let accessToken = KeyChainService.shared.loadFromKeychain(account: "accessToken") {
-//      // TODO: 토큰검증
-//      if true { // TODO: res로 토큰을 받았다면
-//        // TODO: keychain에서 삭제 후 저장 실시(삭제 무조건 실시해야함)
-//        KeyChainService.shared.deleteFromKeyChain(account: "accessToken") //지우고
-//        KeyChainService.shared.saveInKeychain(account: "accessToken", value: accessToken)
-//        //TODO: userId와 토큰값을 저장
-//        //TODO: user가져오기를 통해서 Userdata에 추가
-//        let home = TabBar()
-//        home.selectedIndex = 0
-//        self.window?.rootViewController = home
-//      }
-//    } else {
+    if let accessToken = KeyChainService.shared.loadFromKeychain(account: "accessToken") {
+      
+      // 토큰 검증
+      let networkManager = NetworkManager()
+      
+      networkManager.request(apiModel: GetApi.loginGet(token: accessToken)) { [weak self] (result) in
+        guard let self = self else { return }
+        switch result {
+        case .success(let data):
+          let parsingManager = ParsingManager()
+          parsingManager.judgeGenericResponse(data: data, model: LoginData.self) { (body) in
+            
+            let newAccessToken = body.accesstoken
+            let userId = body.id
+          
+            KeyChainService.shared.deleteFromKeyChain(account: "accessToken") //지우고
+            
+            //keychain에서 삭제 후 저장 실시(삭제 무조건 실시해야함)
+            KeyChainService.shared.saveInKeychain(account: "accessToken", value: newAccessToken)
+            
+            //TODO: userId와 토큰값을 저장
+            UserManager.shared.token = newAccessToken
+            UserManager.shared.userId = userId
+            
+            //TODO: user가져오기를 통해서 Userdata에 추가
+            
+            
+            DispatchQueue.main.async {
+              let home = TabBar()
+              home.selectedIndex = 0
+              self.window?.rootViewController = home
+            }
+          }
+        case .failure(_):
+         // 토큰이 만료되었다 -> 로그인으로 보낸다
+          self.isLogged = false
+          DispatchQueue.main.async {
+            self.window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
+            self.window?.windowScene = windowScene
+            self.window?.makeKeyAndVisible()
+          }
+        }
+      }
+    } else {
+      // REAL CODE
 //      isLogged = false
 //      window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
-//    }
-    
-    if !isLogged {
-      window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
-    } else {
-      let home = TabBar()
-      home.selectedIndex = 0
-      self.window?.rootViewController = home
+//      window?.windowScene = windowScene
+//      self.window?.makeKeyAndVisible()
+      
+      //TESTCODE
+      let networkManager = NetworkManager()
+      
+      networkManager.request(apiModel: GetApi.loginGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImVtYWlsIjoiZG9oeXVuQG5hdmVyLmNvbSIsIm5hbWUiOiJkb2h5dW4iLCJpYXQiOjE2NDA2NjM5ODAsImV4cCI6MTY0MDkyMzE4MCwiaXNzIjoibW9tbyJ9.AbP-nogLjH68pAWhJrNzFT4M_kOCkrbMTFb4h_zoMkk")) {(result) in
+        switch result {
+        case .success(let data):
+          let parsingManager = ParsingManager()
+          parsingManager.judgeGenericResponse(data: data, model: LoginData.self) { [weak self] (body) in
+            guard let self = self else { return }
+            //TODO: userId와 토큰값을 저장
+            UserManager.shared.token = body.accesstoken
+            UserManager.shared.userId = body.id
+            
+            //TODO: user가져오기를 통해서 Userdata에 추가
+            
+            DispatchQueue.main.async {
+              let home = TabBar()
+              home.selectedIndex = 0
+              self.window?.rootViewController = home
+              self.window?.windowScene = windowScene
+              self.window?.makeKeyAndVisible()
+            }
+          }
+        case .failure(let error):
+         // 토큰이 만료되었다 -> 로그인으로 보낸다
+          print(error)
+          self.isLogged = false
+          DispatchQueue.main.async {
+//            self.window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
+            let home = TabBar()
+            home.selectedIndex = 0
+            self.window?.rootViewController = home
+            self.window?.windowScene = windowScene
+            self.window?.makeKeyAndVisible()
+          }
+        }
+      }
+      
     }
-//    window?.rootViewController = CreateQuestionViewController.loadFromStoryboard()
-//    window?.rootViewController = CreateDiaryViewController.loadFromStoryboard()
-//    window?.rootViewController = WithTextViewController.loadFromStoryboard()
-    
-//    window?.rootViewController = DiaryInputOptionViewController.loadFromStoryboard()
-    window?.windowScene = windowScene
-    self.window?.makeKeyAndVisible()
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
