@@ -69,7 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       //TESTCODE
       let networkManager = NetworkManager()
       
-      networkManager.request(apiModel: GetApi.loginGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImVtYWlsIjoiZG9oeXVuQG5hdmVyLmNvbSIsIm5hbWUiOiJkb2h5dW4iLCJpYXQiOjE2NDA2NjM5ODAsImV4cCI6MTY0MDkyMzE4MCwiaXNzIjoibW9tbyJ9.AbP-nogLjH68pAWhJrNzFT4M_kOCkrbMTFb4h_zoMkk")) {(result) in
+      networkManager.request(apiModel: GetApi.loginGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDksImlhdCI6MTY0MDY4MjU4MiwiZXhwIjoxNjQwOTQxNzgyLCJpc3MiOiJtb21vIn0.nd0nCb5K5SXLoR8stpVf07K8HfvnPYtPMh5fWagneUc")) {(result) in
         switch result {
         case .success(let data):
           let parsingManager = ParsingManager()

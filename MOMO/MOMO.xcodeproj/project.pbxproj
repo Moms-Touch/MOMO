@@ -99,6 +99,9 @@
 		28A99961277882F600459D19 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99960277882F600459D19 /* Category.swift */; };
 		28A99963277AB78500459D19 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99962277AB78500459D19 /* LoginData.swift */; };
 		28A99965277ABAD100459D19 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99964277ABAD100459D19 /* UserManager.swift */; };
+		28A99967277AE5BB00459D19 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99966277AE5BB00459D19 /* UserData.swift */; };
+		28A99969277AF4B400459D19 /* PutApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99968277AF4B400459D19 /* PutApi.swift */; };
+		28A9996B277AF53A00459D19 /* DeleteApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9996A277AF53A00459D19 /* DeleteApi.swift */; };
 		28B192C22769685C00BAF93B /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B192C12769685C00BAF93B /* KeyChainService.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
@@ -236,6 +239,9 @@
 		28A99960277882F600459D19 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		28A99962277AB78500459D19 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		28A99964277ABAD100459D19 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		28A99966277AE5BB00459D19 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		28A99968277AF4B400459D19 /* PutApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutApi.swift; sourceTree = "<group>"; };
+		28A9996A277AF53A00459D19 /* DeleteApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteApi.swift; sourceTree = "<group>"; };
 		28B192C12769685C00BAF93B /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
@@ -521,6 +527,7 @@
 				28A9995E277880D300459D19 /* Post.swift */,
 				28A99960277882F600459D19 /* Category.swift */,
 				28A99962277AB78500459D19 /* LoginData.swift */,
+				28A99966277AE5BB00459D19 /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -666,6 +673,8 @@
 				75BF0C0E276B851800C2D0C1 /* GetApi.swift */,
 				75BF0C10276CA01B00C2D0C1 /* PostApi.swift */,
 				286DDE182771ADC3003E9563 /* GenericResponse.swift */,
+				28A99968277AF4B400459D19 /* PutApi.swift */,
+				28A9996A277AF53A00459D19 /* DeleteApi.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -989,6 +998,7 @@
 				288EFD112754F27C000D1617 /* AlertPageViewController.swift in Sources */,
 				285209F02753329600AB8BAC /* simpleContent.swift in Sources */,
 				285209E62753329600AB8BAC /* UITableView+Extension.swift in Sources */,
+				28A9996B277AF53A00459D19 /* DeleteApi.swift in Sources */,
 				28F471452738B8D10074D148 /* PolicyMainViewController.swift in Sources */,
 				285209EC2753329600AB8BAC /* Scrollable.swift in Sources */,
 				285209F42753329600AB8BAC /* StoryboardInstantiable.swift in Sources */,
@@ -1038,6 +1048,8 @@
 				285209A22753325F00AB8BAC /* DiaryReportViewController.swift in Sources */,
 				288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */,
 				28A9995F277880D300459D19 /* Post.swift in Sources */,
+				28A99969277AF4B400459D19 /* PutApi.swift in Sources */,
+				28A99967277AE5BB00459D19 /* UserData.swift in Sources */,
 				285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */,
 				75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */,
 				28B63E9A276DF17D00CB5EBF /* CustomNavigationPresentationController.swift in Sources */,
