@@ -33,14 +33,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //      isLogged = false
 //      window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
 //    }
-    
-    if !isLogged {
-      window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
-    } else {
-      let home = TabBar()
-      home.selectedIndex = 0
-      self.window?.rootViewController = home
-    }
+      window?.rootViewController = UINavigationController(rootViewController: PolicyMainViewController.loadFromStoryboard())
+//    if !isLogged {
+//      window?.rootViewController = UINavigationController(rootViewController: LoginViewController.loadFromStoryboard())
+//    } else {
+//      let home = TabBar()
+//      home.selectedIndex = 0
+//      self.window?.rootViewController = home
+//    }
 //    window?.rootViewController = CreateQuestionViewController.loadFromStoryboard()
 //    window?.rootViewController = CreateDiaryViewController.loadFromStoryboard()
 //    window?.rootViewController = WithTextViewController.loadFromStoryboard()

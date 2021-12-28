@@ -9,7 +9,15 @@ import UIKit
 
 class DetailViewController: UIViewController {
   
-  var content: Any?
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var hostAssocitationLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var policyImageView: UIImageView!
+    @IBOutlet weak var policyContentView: UIView!
+    @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var goButton: UIButton!
+    
+    var content: Any?
 
     override func viewDidLoad() {
         super.viewDidLoad()

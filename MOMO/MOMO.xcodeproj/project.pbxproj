@@ -123,6 +123,10 @@
 		28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE162760CA7900E699FC /* NoticeData.swift */; };
 		28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1827610E3800E699FC /* NotificationData.swift */; };
 		28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1A27610E5A00E699FC /* BabyData.swift */; };
+		759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A731427788FDC00E549F6 /* PolicyMain.storyboard */; };
+		759A7319277890ED00E549F6 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A7318277890ED00E549F6 /* Detail.storyboard */; };
+		759A731F2778BBD100E549F6 /* PolicyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A731D2778BBD100E549F6 /* PolicyTableViewCell.swift */; };
+		759A73202778BBD100E549F6 /* PolicyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 759A731E2778BBD100E549F6 /* PolicyTableViewCell.xib */; };
 		75BF0C0B276B489900C2D0C1 /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0A276B489900C2D0C1 /* LoginApi.swift */; };
 		75BF0C0D276B495000C2D0C1 /* SignUpApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0C276B495000C2D0C1 /* SignUpApi.swift */; };
 		75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0E276B851800C2D0C1 /* GetApi.swift */; };
@@ -250,6 +254,10 @@
 		28F4FE162760CA7900E699FC /* NoticeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeData.swift; sourceTree = "<group>"; };
 		28F4FE1827610E3800E699FC /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		28F4FE1A27610E5A00E699FC /* BabyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyData.swift; sourceTree = "<group>"; };
+		759A731427788FDC00E549F6 /* PolicyMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyMain.storyboard; sourceTree = "<group>"; };
+		759A7318277890ED00E549F6 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		759A731D2778BBD100E549F6 /* PolicyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyTableViewCell.swift; sourceTree = "<group>"; };
+		759A731E2778BBD100E549F6 /* PolicyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PolicyTableViewCell.xib; sourceTree = "<group>"; };
 		75BF0C0A276B489900C2D0C1 /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		75BF0C0C276B495000C2D0C1 /* SignUpApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpApi.swift; sourceTree = "<group>"; };
 		75BF0C0E276B851800C2D0C1 /* GetApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetApi.swift; sourceTree = "<group>"; };
@@ -617,6 +625,33 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		759A731627788FED00E549F6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				759A731427788FDC00E549F6 /* PolicyMain.storyboard */,
+				759A7318277890ED00E549F6 /* Detail.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		759A731727788FFE00E549F6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				28F471442738B8D10074D148 /* PolicyMainViewController.swift */,
+				280BEFD4274BA35900F031A7 /* DetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		759A731C2778BB9800E549F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				759A731D2778BBD100E549F6 /* PolicyTableViewCell.swift */,
+				759A731E2778BBD100E549F6 /* PolicyTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		75BF0C09276B484900C2D0C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -750,8 +785,9 @@
 		DD43E8E8270B4EFC00699DA1 /* Policy */ = {
 			isa = PBXGroup;
 			children = (
-				28F471442738B8D10074D148 /* PolicyMainViewController.swift */,
-				280BEFD4274BA35900F031A7 /* DetailViewController.swift */,
+				759A731C2778BB9800E549F6 /* View */,
+				759A731727788FFE00E549F6 /* ViewController */,
+				759A731627788FED00E549F6 /* Storyboard */,
 			);
 			path = Policy;
 			sourceTree = "<group>";
@@ -858,9 +894,12 @@
 				285209B82753327200AB8BAC /* PregnantStatus.storyboard in Resources */,
 				DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */,
 				2852099F2753325F00AB8BAC /* WithText.storyboard in Resources */,
+				759A7319277890ED00E549F6 /* Detail.storyboard in Resources */,
 				28CA30782753357300EF071E /* CreateQuestion.storyboard in Resources */,
 				281D35412764B17A00A128A5 /* MyInfoEdit.storyboard in Resources */,
 				280BEFBB274B319500F031A7 /* PolicyBookmark.storyboard in Resources */,
+				759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */,
+				759A73202778BBD100E549F6 /* PolicyTableViewCell.xib in Resources */,
 				280BEFBF274B647900F031A7 /* GoogleService-Info.plist in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
 				28F4715A273BE3D90074D148 /* MyActivity.storyboard in Resources */,
@@ -938,6 +977,7 @@
 				75BF0C0B276B489900C2D0C1 /* LoginApi.swift in Sources */,
 				2852097427522C1300AB8BAC /* PresentationController.swift in Sources */,
 				DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */,
+				759A731F2778BBD100E549F6 /* PolicyTableViewCell.swift in Sources */,
 				285209BC2753327200AB8BAC /* FindPasswordViewController.swift in Sources */,
 				285209DF2753329600AB8BAC /* UIImageView+Extension.swift in Sources */,
 				285209BF2753327200AB8BAC /* NewPasswordInputViewController.swift in Sources */,
