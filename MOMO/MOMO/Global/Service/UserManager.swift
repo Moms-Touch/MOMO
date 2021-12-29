@@ -36,4 +36,24 @@ final class UserManager {
     }
   }
   
+  var appUser: UserData? {
+    didSet {
+      NotificationCenter.default.post(name: UserManager.didSetAppUserNotification, object: nil)
+    }
+  }
+  
+  var userInfo: UserData? {
+    get {
+      return appUser
+    }
+    set {
+      appUser = newValue
+    }
+  }
+  
+  func deleteUser() {
+    appUser = nil
+    KeyChainService.shared.deleteFromKeyChain(account: "accessToken")
+  }
+  
 }
