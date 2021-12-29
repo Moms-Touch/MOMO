@@ -36,7 +36,7 @@ final class UserManager {
     }
   }
   
-  var appUser: UserData? {
+  private var appUser: UserData? {
     didSet {
       NotificationCenter.default.post(name: UserManager.didSetAppUserNotification, object: nil)
     }

@@ -11,11 +11,13 @@ final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
   
   @IBOutlet weak var nicknameLabel: UILabel! {
     didSet {
+      print(UserManager.shared.userInfo?.nickname)
       nicknameLabel.text = UserManager.shared.userInfo?.nickname
     }
   }
   @IBOutlet weak var emailLabel: UILabel! {
     didSet {
+      print(UserManager.shared.userInfo?.email)
       emailLabel.text = UserManager.shared.userInfo?.email
     }
   }

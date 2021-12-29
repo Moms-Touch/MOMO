@@ -26,7 +26,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       babyProfileImageView.isUserInteractionEnabled = true
       let tapgesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gotoMyProfile(_:)))
       babyProfileImageView.addGestureRecognizer(tapgesture)
-      //Usermodel을 observing 하고 있어야함
     }
   }
   
@@ -51,6 +50,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     super.viewDidLoad()
     assignbackground()
     getNotice()
+    changeBabyName()
     NotificationCenter.default.addObserver(self, selector: #selector(changeBabyName), name: UserManager.didSetAppUserNotification, object: nil)
   }
   
@@ -59,7 +59,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       print("로그인을 해주세요")
       return}
     guard let babyBirth = UserManager.shared.babyInWeek else {
-      dateWithBabyButton.setTitle("아이의 생일을 등록해주세요", for: .normal)
+      dateWithBabyButton.setTitle("생일 등록하기", for: .normal)
       return}
     guard let imageUrl = userInfo.baby?.first?.imageURL else {
       babyProfileImageView.image = UIImage(named: "Logo")

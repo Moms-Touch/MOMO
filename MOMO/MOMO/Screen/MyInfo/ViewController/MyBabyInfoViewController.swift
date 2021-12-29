@@ -19,8 +19,6 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
         let textfield = myBabyInfoTextFields[index]
         textfield.attributedPlaceholder = NSAttributedString(string: placeholders[index], attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
         textfield.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        textfield.addLeftPadding(width: 20)
-        textfield.layer.borderColor = Asset.Colors.pink4.color.cgColor
       }
     }
   }
@@ -64,7 +62,10 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
   override func viewDidLayoutSubviews() {
     myBabyImageView.setRound()
-    myBabyInfoTextFields.forEach {$0.setRound()}
+    myBabyInfoTextFields.forEach {$0.setRound()
+      $0.addLeftPadding(width: 20)
+      $0.layer.borderColor = Asset.Colors.pink4.color.cgColor
+    }
     scrollingKeyboard()
   }
 }
