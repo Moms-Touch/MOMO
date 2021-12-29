@@ -49,7 +49,7 @@ extension String {
     let todayInCal = calendar.dateComponents([.year, .month, .day], from: today)
     
     if todayInCal.year! > dateInCal.year! {
-      return "\(todayInCal.year! - dateInCal.year!)살"
+      return "\(todayInCal.year! - dateInCal.year! + 1)살"
     } else if todayInCal.year! == dateInCal.year! {
       let dateWeek = calendar.component(.weekOfYear, from: date)
       let todayWeek = calendar.component(.weekOfYear, from: today)
