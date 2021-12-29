@@ -81,6 +81,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             //TODO: user가져오기를 통해서 Userdata에 추가
             
+            
             DispatchQueue.main.async {
               let home = TabBar()
               home.selectedIndex = 0
