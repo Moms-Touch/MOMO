@@ -34,6 +34,7 @@ extension UIImageView {
           storage.reference(forURL: imageUrl).downloadURL { (url, error) in
             if let error = error {
               print("ERROR \(error.localizedDescription)")
+              self.image = UIImage(named: "Logo")
               return
             }
             guard let url = url else {
