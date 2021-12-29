@@ -43,7 +43,6 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
       return
     }
     myBabyImageView.setImage(with: babyViewModel.babyImageUrl)
-    scrollingKeyboard()
     scrollView.delegate = self
     picker.delegate = self
   }
@@ -66,6 +65,7 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   override func viewDidLayoutSubviews() {
     myBabyImageView.setRound()
     myBabyInfoTextFields.forEach {$0.setRound()}
+    scrollingKeyboard()
   }
 }
 
