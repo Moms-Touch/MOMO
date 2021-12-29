@@ -7,50 +7,17 @@
 
 import UIKit
 
-enum BabyInfo: CaseIterable {
-  
-  static var allCases: [BabyInfo] = [ .babyName(name: nil), .birth(date: nil), .babyImage(imageURL: nil)]
-  
-  case babyImage(imageURL: String?)
-  case babyName(name: String?)
-  case birth(date: String?)
-  
-  var result: String? {
-    switch self {
-    case .babyImage(let imageURL):
-      return imageURL
-    case .babyName(let name):
-      return name
-    case .birth(let date):
-      return date
-    }
-  }
-  
-  var placeholder: String? {
-    switch self {
-    case .babyImage:
-      return nil
-    case .babyName:
-      return "아기이름"
-    case .birth:
-      return "출생일/출생예정일"
-    }
-  }
-}
-
-struct BabyInfoViewModel {
-  
-}
-
 class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
   @IBOutlet weak var babyInfoScrollview: UIScrollView!
   @IBOutlet weak var myBabyImageView: UIImageView!
   @IBOutlet var myBabyInfoTextFields: [UITextField]! {
     didSet {
+      guard let babyViewModel = babyViewModel else {return}
+      let placeholders = [babyViewModel.babyName, babyViewModel.babyBirth]
       for index in myBabyInfoTextFields.indices {
         let textfield = myBabyInfoTextFields[index]
-        textfield.attributedPlaceholder = NSAttributedString(string: BabyInfo.allCases[index].placeholder!, attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
+        textfield.attributedPlaceholder = NSAttributedString(string: placeholders[index], attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
         textfield.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         textfield.addLeftPadding(width: 20)
         textfield.layer.borderColor = Asset.Colors.pink4.color.cgColor
@@ -65,12 +32,17 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   @IBOutlet var constraints: [NSLayoutConstraint]!
   
   fileprivate let picker = UIImagePickerController()
+  var babyViewModel: BabyInfoViewModel?
   private var flag = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addBabyImage))
     myBabyImageView.addGestureRecognizer(tapGesture)
+    guard let babyViewModel = babyViewModel else {
+      return
+    }
+    myBabyImageView.setImage(with: babyViewModel.babyImageUrl)
     scrollingKeyboard()
     scrollView.delegate = self
     picker.delegate = self
