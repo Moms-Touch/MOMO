@@ -21,7 +21,7 @@ extension String {
   }
   
   // 임신중인 아이의 주차
-  func fetusInWeek() -> Int? {
+  func fetusInWeek() -> String? {
     guard let date = self.toDate() else {
         return nil
     }
@@ -32,7 +32,7 @@ extension String {
     }
     // 52 - 버림((출산예정일 - 오늘) / 7)
     let distanceWeek = 52 - (distanceDay / 7)
-    return distanceWeek
+    return "\(distanceWeek)주차"
   }
   
   // 태어난 아이의 주차
@@ -53,7 +53,7 @@ extension String {
     } else if todayInCal.year! == dateInCal.year! {
       let dateWeek = calendar.component(.weekOfYear, from: date)
       let todayWeek = calendar.component(.weekOfYear, from: today)
-      return "\(todayWeek - dateWeek)주"
+      return "\(todayWeek - dateWeek)주차"
     } else {
       return nil
     }
