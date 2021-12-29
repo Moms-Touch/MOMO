@@ -9,9 +9,23 @@ import UIKit
 
 final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
   
-  @IBOutlet weak var nicknameLabel: UILabel!
-  @IBOutlet weak var emailLabel: UILabel!
-  @IBOutlet weak var infoLabel: UILabel!
+  @IBOutlet weak var nicknameLabel: UILabel! {
+    didSet {
+      nicknameLabel.text = UserManager.shared.userInfo?.nickname
+    }
+  }
+  @IBOutlet weak var emailLabel: UILabel! {
+    didSet {
+      emailLabel.text = UserManager.shared.userInfo?.email
+    }
+  }
+  @IBOutlet weak var infoLabel: UILabel! {
+    didSet {
+      let location: String = UserManager.shared.userInfo?.location ?? "대한민국"
+      let babyBirth: String = UserManager.shared.babyInWeek ?? ""
+      infoLabel.text = "\(location)에 사는 \(babyBirth) 엄마"
+    }
+  }
   @IBOutlet weak var infoView: UIView! {
     didSet {
       infoView.setRound(20)

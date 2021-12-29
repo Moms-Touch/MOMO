@@ -34,6 +34,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     didSet {
       dateWithBabyButton.setRound()
       dateWithBabyButton.backgroundColor = .white
+      
       //Usermodel을 observing 하고 있어야함
     }
   }
@@ -50,6 +51,22 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     super.viewDidLoad()
     assignbackground()
     getNotice()
+    NotificationCenter.default.addObserver(self, selector: #selector(changeBabyName), name: UserManager.didSetAppUserNotification, object: nil)
+  }
+  
+  @objc func changeBabyName() {
+    guard let userInfo = UserManager.shared.userInfo else {
+      print("로그인을 해주세요")
+      return}
+    guard let babyBirth = UserManager.shared.babyInWeek else {
+      dateWithBabyButton.setTitle("아이의 생일을 등록해주세요", for: .normal)
+      return}
+    guard let imageUrl = userInfo.baby?.first?.imageURL else {
+      babyProfileImageView.image = UIImage(named: "Logo")
+      return
+    }
+    babyProfileImageView.setImage(with: imageUrl)
+    dateWithBabyButton.setTitle(babyBirth, for: .normal)
   }
   
   override func viewDidLayoutSubviews() {

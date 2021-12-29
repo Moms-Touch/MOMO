@@ -8,12 +8,20 @@
 import UIKit
 
 class TabBar: UITabBarController {
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
     UITabBar.appearance().barTintColor = .white
     UITabBar.appearance().isTranslucent = false
+    if #available(iOS 15.0, *) {
+      let appearance = UITabBarAppearance()
+      appearance.configureWithOpaqueBackground()
+      appearance.backgroundColor = .white
+      tabBar.standardAppearance = appearance
+      tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+    }
+    
     tabBar.tintColor = UIColor(named: "Pink1")
     setupVCs()
   }
@@ -34,5 +42,5 @@ class TabBar: UITabBarController {
       createNavController(for: CommunityMainViewController(), image: UIImage(named: "people")!, title: "커뮤니티")
     ]
   }
-
+  
 }

@@ -102,6 +102,8 @@
 		28A99967277AE5BB00459D19 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99966277AE5BB00459D19 /* UserData.swift */; };
 		28A99969277AF4B400459D19 /* PutApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A99968277AF4B400459D19 /* PutApi.swift */; };
 		28A9996B277AF53A00459D19 /* DeleteApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9996A277AF53A00459D19 /* DeleteApi.swift */; };
+		28A9996D277C685C00459D19 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9996C277C685C00459D19 /* String+Extension.swift */; };
+		28A99970277C6B2500459D19 /* BabyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9996F277C6B2500459D19 /* BabyInfoViewModel.swift */; };
 		28B192C22769685C00BAF93B /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B192C12769685C00BAF93B /* KeyChainService.swift */; };
 		28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49140274BB12C002BA67A /* DeviceGroup.swift */; };
 		28B49143274BB160002BA67A /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B49142274BB160002BA67A /* DeviceManager.swift */; };
@@ -242,6 +244,8 @@
 		28A99966277AE5BB00459D19 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		28A99968277AF4B400459D19 /* PutApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutApi.swift; sourceTree = "<group>"; };
 		28A9996A277AF53A00459D19 /* DeleteApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteApi.swift; sourceTree = "<group>"; };
+		28A9996C277C685C00459D19 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		28A9996F277C6B2500459D19 /* BabyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyInfoViewModel.swift; sourceTree = "<group>"; };
 		28B192C12769685C00BAF93B /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		28B49140274BB12C002BA67A /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		28B49142274BB160002BA67A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 				285209C82753329600AB8BAC /* UITextfield+Extension.swift */,
 				285209C92753329600AB8BAC /* UITableView+Extension.swift */,
 				288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */,
+				28A9996C277C685C00459D19 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -550,6 +555,14 @@
 				28A9995A2778793300459D19 /* InfoViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		28A9996E277C6B0D00459D19 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				28A9996F277C6B2500459D19 /* BabyInfoViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		28CA30662753357300EF071E /* Community */ = {
@@ -803,6 +816,7 @@
 		DD43E8EA270B4F2600699DA1 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				28A9996E277C6B0D00459D19 /* ViewModel */,
 				28F47155273BE0500074D148 /* Storyboard */,
 				28F47156273BE05F0074D148 /* ViewController */,
 			);
@@ -1049,11 +1063,13 @@
 				288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */,
 				28A9995F277880D300459D19 /* Post.swift in Sources */,
 				28A99969277AF4B400459D19 /* PutApi.swift in Sources */,
+				28A99970277C6B2500459D19 /* BabyInfoViewModel.swift in Sources */,
 				28A99967277AE5BB00459D19 /* UserData.swift in Sources */,
 				285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */,
 				75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */,
 				28B63E9A276DF17D00CB5EBF /* CustomNavigationPresentationController.swift in Sources */,
 				288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */,
+				28A9996D277C685C00459D19 /* String+Extension.swift in Sources */,
 				285209BE2753327200AB8BAC /* PregnantStatusViewController.swift in Sources */,
 				28A99961277882F600459D19 /* Category.swift in Sources */,
 				28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */,
@@ -1212,7 +1228,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 693WY75AQY;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = MOMO/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1235,7 +1250,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 693WY75AQY;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = MOMO/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
