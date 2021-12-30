@@ -120,6 +120,7 @@
 		28CA30762753357300EF071E /* QuestionsMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CA306E2753357300EF071E /* QuestionsMain.storyboard */; };
 		28CA30772753357300EF071E /* CreateQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA30702753357300EF071E /* CreateQuestionViewController.swift */; };
 		28CA30782753357300EF071E /* CreateQuestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CA30712753357300EF071E /* CreateQuestion.storyboard */; };
+		28F139E0277DC5D400B78774 /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F139DF277DC5D400B78774 /* SimpleResponse.swift */; };
 		28F4713F2738A4020074D148 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4713E2738A4020074D148 /* TabBar.swift */; };
 		28F471412738B3090074D148 /* HomeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471402738B3090074D148 /* HomeMainViewController.swift */; };
 		28F471452738B8D10074D148 /* PolicyMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471442738B8D10074D148 /* PolicyMainViewController.swift */; };
@@ -263,6 +264,7 @@
 		28CA306E2753357300EF071E /* QuestionsMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionsMain.storyboard; sourceTree = "<group>"; };
 		28CA30702753357300EF071E /* CreateQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewController.swift; sourceTree = "<group>"; };
 		28CA30712753357300EF071E /* CreateQuestion.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateQuestion.storyboard; sourceTree = "<group>"; };
+		28F139DF277DC5D400B78774 /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
 		28F4713E2738A4020074D148 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		28F471402738B3090074D148 /* HomeMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainViewController.swift; sourceTree = "<group>"; };
 		28F471442738B8D10074D148 /* PolicyMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyMainViewController.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				286DDE182771ADC3003E9563 /* GenericResponse.swift */,
 				28A99968277AF4B400459D19 /* PutApi.swift */,
 				28A9996A277AF53A00459D19 /* DeleteApi.swift */,
+				28F139DF277DC5D400B78774 /* SimpleResponse.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -1052,6 +1055,7 @@
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
 				281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */,
 				28A9995D2778808800459D19 /* BookmarkData.swift in Sources */,
+				28F139E0277DC5D400B78774 /* SimpleResponse.swift in Sources */,
 				288EFD192754F476000D1617 /* SegControlCustomable.swift in Sources */,
 				288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */,
 				28F47160273BE4700074D148 /* MySettingViewController.swift in Sources */,

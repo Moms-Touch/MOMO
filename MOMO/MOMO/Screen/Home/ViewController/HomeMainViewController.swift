@@ -29,6 +29,11 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     }
   }
   
+  @IBOutlet weak var bellButton: UIButton! {
+    didSet {
+      bellButton.isHidden = true
+    }
+  }
   @IBOutlet weak var dateWithBabyButton: UIButton! {
     didSet {
       dateWithBabyButton.setRound()
@@ -61,12 +66,17 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       guard let babyBirth = UserManager.shared.babyInWeek else {
         self.dateWithBabyButton.setTitle("생일 등록하기", for: .normal)
         return}
+      guard let babyName = userInfo.baby?.first?.name else {
+        self.dateWithBabyButton.setTitle("아이 이름 등록하기", for: .normal)
+        return
+      }
       guard let imageUrl = userInfo.baby?.first?.imageUrl else {
         self.babyProfileImageView.image = UIImage(named: "Logo")
         return
       }
       self.babyProfileImageView.setImage(with: imageUrl)
-      self.dateWithBabyButton.setTitle(babyBirth, for: .normal)
+      self.dateWithBabyButton.setTitle("\(babyName) \(babyBirth)", for: .normal)
+      self.dateWithBabyButton.sizeToFit()
   }
   
   override func viewDidLayoutSubviews() {

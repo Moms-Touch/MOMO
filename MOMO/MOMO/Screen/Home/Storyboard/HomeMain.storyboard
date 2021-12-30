@@ -167,6 +167,7 @@
                     <connections>
                         <outlet property="babyProfileImageView" destination="lJe-gp-myE" id="N3U-TK-htE"/>
                         <outlet property="bannerCollectionView" destination="jpF-y4-GV9" id="Rn6-eL-Qyd"/>
+                        <outlet property="bellButton" destination="PKa-eB-caM" id="jR1-H4-8RT"/>
                         <outlet property="dateWithBabyButton" destination="GYb-h2-mqL" id="FoU-eS-67P"/>
                         <outlet property="imageHuggingView" destination="i7N-2r-EST" id="gKg-ij-gMS"/>
                     </connections>
