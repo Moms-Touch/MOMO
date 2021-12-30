@@ -13,6 +13,7 @@ struct InfoData: simpleContent, Codable {
   var title: String
   var url: String?
   var thumbnailImageUrl: String?
+  var isBookmark: Bool
   let week: Int
   var createdAt: String
   let updatedAt: String
@@ -20,7 +21,7 @@ struct InfoData: simpleContent, Codable {
 
 extension InfoData{
   enum CodingKeys: String, CodingKey {
-    case id, author, title, url, thumbnailImageUrl, week, createdAt, updatedAt
+    case id, author, title, url, thumbnailImageUrl, week, createdAt, updatedAt, isBookmark
   }
 }
 
@@ -35,5 +36,6 @@ extension InfoData {
     week = (try? container.decodeIfPresent(Int.self, forKey: .week)) ?? 0
     createdAt = (try? container.decodeIfPresent(String.self, forKey: .createdAt)) ?? ""
     updatedAt = (try? container.decodeIfPresent(String.self, forKey: .updatedAt)) ?? ""
+    isBookmark = (try? container.decodeIfPresent(Bool.self, forKey: .updatedAt)) ?? false
   }
 }
