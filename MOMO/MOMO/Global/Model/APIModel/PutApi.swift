@@ -9,6 +9,7 @@ import Foundation
 
 enum PutApi {
   case putBaby(token: String, id: Int, name: String, birth: String?, imageUrl: String?)
+  case putUser(token: String, email: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String)
 }
 
 extension PutApi: APIable {
@@ -17,7 +18,7 @@ extension PutApi: APIable {
   }
   
   var requestType: RequestType {
-    .patch
+    .put
   }
   
   var encodingType: EncodingType {
@@ -26,7 +27,7 @@ extension PutApi: APIable {
   
   var header: [String : String]? {
     switch self {
-    case .putBaby(let token, _, _, _, _):
+    case .putBaby(let token, _, _, _, _), .putUser(let token, _, _, _, _, _, _):
       return [ "Authorization" : "Bearer \(token)"]
     }
   }
@@ -35,6 +36,8 @@ extension PutApi: APIable {
     switch self {
     case .putBaby:
       return makePathtoURL(path: "/baby")
+    case .putUser:
+      return makePathtoURL(path: "/member")
     }
   }
   
@@ -42,6 +45,9 @@ extension PutApi: APIable {
     switch self {
     case .putBaby(_, let id, let name, let birth, let imageUrl) :
       return ["id": String(id), "name": name, "birth": birth, "imageUrl": imageUrl]
+    case .putUser(_, let email,let nickname, let isPregnant, let hasChild, let age, let location):
+      return ["email": email, "nickname": nickname, "isPregnant": String(isPregnant),
+              "hasChild": String(isPregnant), "age": "\(age)", "location": location]
     }
   }
   
