@@ -14,11 +14,27 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   @IBOutlet var myBabyInfoTextFields: [UITextField]! {
     didSet {
       guard let babyViewModel = babyViewModel else {return}
-      let placeholders = [babyViewModel.babyName, babyViewModel.babyBirth]
+      let placeholders = babyViewModel.placeholders
       for index in myBabyInfoTextFields.indices {
         let textfield = myBabyInfoTextFields[index]
-        textfield.attributedPlaceholder = NSAttributedString(string: placeholders[index], attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
+        textfield.textColor = Asset.Colors.pink1.color
         textfield.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        if index == 0 {
+          if babyViewModel.babyName != "" {
+            textfield.text = babyViewModel.babyName
+          } else {
+            textfield.attributedPlaceholder = NSAttributedString(string: placeholders[index], attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
+            textfield.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+          }
+        } else {
+          textfield.inputView = datePicker
+          if babyViewModel.babyBirth != "" {
+            textfield.text = babyViewModel.babyBirth
+          } else {
+            textfield.attributedPlaceholder = NSAttributedString(string: placeholders[index], attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
+            textfield.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+          }
+        }
       }
     }
   }
@@ -31,7 +47,9 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
   fileprivate let picker = UIImagePickerController()
   var babyViewModel: BabyInfoViewModel?
+  private var imageUrl = "default"
   private var flag = false
+  private let datePicker = UIDatePicker()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -40,9 +58,15 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
     guard let babyViewModel = babyViewModel else {
       return
     }
-    myBabyImageView.setImage(with: babyViewModel.babyImageUrl)
+    imageUrl = babyViewModel.babyImageUrl
+    myBabyImageView.setImage(with: imageUrl)
+    configureDatePicker()
     scrollView.delegate = self
     picker.delegate = self
+  }
+  
+  deinit {
+    print(#function, self)
   }
   
   @IBAction private func didTapBackButton(sender: UIButton) {
@@ -50,7 +74,25 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   }
   
   @IBAction private func didTapSaveButton(sender: UIButton) {
-    
+    guard let token = UserManager.shared.token else {return}
+    guard let babyViewModel = babyViewModel else {
+      return
+    }
+    babyViewModel.completionHandler = { [weak self] in
+      guard let self = self else {return}
+      self.myBabyInfoTextFields[0].text = babyViewModel.babyName
+      self.myBabyInfoTextFields[1].text = babyViewModel.babyBirth
+      self.myBabyImageView.setImage(with: babyViewModel.babyImageUrl)
+    }
+    guard let name = myBabyInfoTextFields[0].text else {return}
+    let birth: String?
+    if myBabyInfoTextFields[1].text == "" {
+      birth = nil
+    } else {
+      birth = myBabyInfoTextFields[1].text
+    }
+    babyViewModel.updateBaby(token: token, name: name, birthday: birth, imageUrl: imageUrl)
+    self.navigationController?.popViewController(animated: true)
   }
     
   override func viewWillLayoutSubviews() {
@@ -62,6 +104,7 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
   override func viewDidLayoutSubviews() {
     myBabyImageView.setRound()
+    myBabyImageView.isUserInteractionEnabled = true
     myBabyInfoTextFields.forEach {$0.setRound()
       $0.addLeftPadding(width: 20)
       $0.layer.borderColor = Asset.Colors.pink4.color.cgColor
@@ -108,7 +151,8 @@ extension MyBabyInfoViewController: UIImagePickerControllerDelegate, UINavigatio
       guard let newImageData = newImageData else {
         return
       }
-      let imageURL: String = "userID_\(Date())"
+      let imageURL: String = "\(UserManager.shared.userId)_\(Date())"
+      self.imageUrl = imageURL
       StorageService.shared.uploadImageWithData(imageData: newImageData, imageName: imageURL) {
         print("uploadCompleted")
       }
@@ -126,4 +170,49 @@ extension MyBabyInfoViewController: KeyboardScrollable, UIScrollViewDelegate {
   
 }
 
+//MARK: - Datepicker
 
+extension MyBabyInfoViewController {
+  
+  private func addToolbar() {
+    let toolbar = UIToolbar()
+    toolbar.frame = CGRect(x: 0, y: 0, width: 0, height: 35)
+    toolbar.barTintColor = .white
+    self.myBabyInfoTextFields[1].inputAccessoryView = toolbar
+    
+    let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    
+    let done = UIBarButtonItem()
+    done.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color], for: .normal)
+    done.title = "완료"
+    done.target = self
+    done.action = #selector(datePickerDismiss)
+    
+    toolbar.setItems([flexSpace, done], animated: true)
+  }
+  
+  private func configureDatePicker() {
+    addToolbar()
+    setAttributes()
+  }
+  
+  private func setAttributes() {
+    if #available(iOS 13.4, *) {
+      datePicker.preferredDatePickerStyle = .wheels
+    }
+    datePicker.backgroundColor = .white
+    datePicker.datePickerMode = .date
+    datePicker.locale = Locale(identifier: "ko-KR")
+    datePicker.timeZone = .autoupdatingCurrent
+    datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
+  }
+  
+  @objc func datePickerDismiss() {
+    self.view.endEditing(true)
+  }
+  
+  @objc func handleDatePicker(_ sender: UIDatePicker) {
+    self.myBabyInfoTextFields[1].text = sender.date.toString()
+  }
+  
+}

@@ -48,7 +48,9 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
               let baby = body[0]
               DispatchQueue.main.async {
                 guard let babyInfoVC = MyBabyInfoViewController.loadFromStoryboard() as? MyBabyInfoViewController else {return}
+                babyInfoVC.babyViewModel = BabyInfoViewModel()
                 babyInfoVC.babyViewModel?.model = baby
+                print(baby)
                 self.navigationController?.pushViewController(babyInfoVC, animated: true)
               }
             }
