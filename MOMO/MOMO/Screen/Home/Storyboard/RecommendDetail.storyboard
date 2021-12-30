@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -48,13 +48,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNe-xD-Jj8">
                                 <rect key="frame" x="0.0" y="710" width="375" height="102"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiK-2S-vE2">
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiK-2S-vE2">
                                         <rect key="frame" x="20" y="25" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="Gjl-dp-QFe"/>
                                             <constraint firstAttribute="width" constant="38" id="JO9-kr-uVK"/>
                                         </constraints>
-                                        <color key="tintColor" name="Pink4"/>
+                                        <color key="tintColor" name="Pink2"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="bookmark_big"/>
                                         <state key="selected" image="bookmarkPinkLine"/>
@@ -132,7 +132,10 @@
     <resources>
         <image name="bookmarkPinkLine" width="38" height="38"/>
         <image name="bookmark_big" width="38" height="38"/>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.left" catalog="system" width="32" height="32"/>
+        <namedColor name="Pink2">
+            <color red="1" green="0.41176470588235292" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
