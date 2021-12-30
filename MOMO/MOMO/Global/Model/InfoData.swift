@@ -36,6 +36,6 @@ extension InfoData {
     week = (try? container.decodeIfPresent(Int.self, forKey: .week)) ?? 0
     createdAt = (try? container.decodeIfPresent(String.self, forKey: .createdAt)) ?? ""
     updatedAt = (try? container.decodeIfPresent(String.self, forKey: .updatedAt)) ?? ""
-    isBookmark = (try? container.decodeIfPresent(Bool.self, forKey: .updatedAt)) ?? false
+    isBookmark = try container.decodeIfPresent(Bool.self, forKey: .isBookmark) ?? false
   }
 }

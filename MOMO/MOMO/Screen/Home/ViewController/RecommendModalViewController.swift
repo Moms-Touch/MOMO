@@ -178,10 +178,33 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
     selectedCell = collectionView.cellForItem(at: indexPath) as? RecommendCollectionViewCell
     guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController else {return}
     if let data = selectedCell?.data {
-      let viewmodel = InfoDataViewModel(model: data)
-      vc.viewModel = viewmodel
-    } else {
-      vc.viewModel = nil
+      vc.data = data
+    }
+    vc.postCompletionHandler = { [weak self] id in
+      print(id)
+      guard let self = self else {return}
+//      guard var data = self.selectedCell?.data else {return}
+//      data.isBookmark = true
+      for index in self.datasource.indices {
+        if self.datasource[index].id == id {
+          self.datasource[index].isBookmark = true
+          self.recommendCollectionView.reloadData()
+          return
+        }
+      }
+    }
+    vc.deleteCompletionHandler = { [weak self] id in
+      print(id)
+      guard let self = self else {return}
+//      guard var data = self.selectedCell?.data else {return}
+//      data.isBookmark = false
+      for index in self.datasource.indices {
+        if self.datasource[index].id == id {
+          self.datasource[index].isBookmark = false
+          self.recommendCollectionView.reloadData()
+          return
+        }
+      }
     }
     vc.transitioningDelegate = self
     present(vc, animated: true, completion: nil)
