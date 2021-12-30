@@ -181,10 +181,7 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
       vc.data = data
     }
     vc.postCompletionHandler = { [weak self] id in
-      print(id)
       guard let self = self else {return}
-//      guard var data = self.selectedCell?.data else {return}
-//      data.isBookmark = true
       for index in self.datasource.indices {
         if self.datasource[index].id == id {
           self.datasource[index].isBookmark = true
@@ -194,10 +191,7 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
       }
     }
     vc.deleteCompletionHandler = { [weak self] id in
-      print(id)
       guard let self = self else {return}
-//      guard var data = self.selectedCell?.data else {return}
-//      data.isBookmark = false
       for index in self.datasource.indices {
         if self.datasource[index].id == id {
           self.datasource[index].isBookmark = false
