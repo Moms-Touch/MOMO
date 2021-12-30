@@ -39,7 +39,7 @@ class TabBar: UITabBarController {
       createNavController(for: HomeMainViewController.loadFromStoryboard(), image: UIImage(named: "home")!, title: "홈"),
       createNavController(for: DiaryMainViewController(), image: UIImage(named: "calendar")!, title: "오늘 일기"),
       createNavController(for: PolicyMainViewController(), image: UIImage(named: "policy")!, title: "정책"),
-      createNavController(for: CommunityMainViewController(), image: UIImage(named: "people")!, title: "커뮤니티")
+//      createNavController(for: CommunityMainViewController(), image: UIImage(named: "people")!, title: "커뮤니티")
     ]
   }
   

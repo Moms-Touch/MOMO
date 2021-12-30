@@ -40,7 +40,8 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
         parsingManager.judgeGenericResponse(data: data, model: [BookmarkData].self) { [weak self] (body) in
           guard let self = self else {return}
           bookmarkData = body
-          let postData = bookmarkData.filter { $0.post.category == Category.community }.sorted { $0.createdAt < $1.createdAt }.map { return $0.post }
+          // 잠시 정책으로 변경
+          let postData = bookmarkData.filter { $0.post.category == Category.policy }.sorted { $0.createdAt < $1.createdAt }.map { return $0.post }
           if postData.count == self.datasource.count {
             return
           } else {
@@ -77,4 +78,9 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     scrollView.bounces = scrollView.contentOffset.y > 0
   }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // 여기에 정책 추가
+  }
+  
 }
