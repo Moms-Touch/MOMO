@@ -26,14 +26,19 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       babyProfileImageView.isUserInteractionEnabled = true
       let tapgesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gotoMyProfile(_:)))
       babyProfileImageView.addGestureRecognizer(tapgesture)
-      //Usermodel을 observing 하고 있어야함
     }
   }
   
+  @IBOutlet weak var bellButton: UIButton! {
+    didSet {
+      bellButton.isHidden = true
+    }
+  }
   @IBOutlet weak var dateWithBabyButton: UIButton! {
     didSet {
       dateWithBabyButton.setRound()
       dateWithBabyButton.backgroundColor = .white
+      
       //Usermodel을 observing 하고 있어야함
     }
   }
@@ -50,6 +55,28 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     super.viewDidLoad()
     assignbackground()
     getNotice()
+    changeBabyName()
+    NotificationCenter.default.addObserver(self, selector: #selector(changeBabyName), name: UserManager.didSetAppUserNotification, object: nil)
+  }
+  
+  @objc func changeBabyName() {
+    guard let userInfo = UserManager.shared.userInfo else {
+      print("로그인을 해주세요")
+      return}
+      guard let babyBirth = UserManager.shared.babyInWeek else {
+        self.dateWithBabyButton.setTitle("생일 등록하기", for: .normal)
+        return}
+      guard let babyName = userInfo.baby?.first?.name else {
+        self.dateWithBabyButton.setTitle("아이 이름 등록하기", for: .normal)
+        return
+      }
+      guard let imageUrl = userInfo.baby?.first?.imageUrl else {
+        self.babyProfileImageView.image = UIImage(named: "Logo")
+        return
+      }
+      self.babyProfileImageView.setImage(with: imageUrl)
+      self.dateWithBabyButton.setTitle("\(babyName) \(babyBirth)", for: .normal)
+      self.dateWithBabyButton.sizeToFit()
   }
   
   override func viewDidLayoutSubviews() {
@@ -74,7 +101,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
         print(error)
       }
     }
-}
+  }
   
   private func assignbackground(){
     let background = UIImage(named: "mainBackground")
@@ -185,8 +212,8 @@ extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
   //배너가 돌아가는 애니메이션 + 페이지네이션하는 로직
   private func bannerMove() {
     if currentPage == datasource.count - 1 {
-     
-     currentPage = 0
+      
+      currentPage = 0
       UIView.animate(withDuration: 0.3) { [weak self] in
         guard let self = self else {return}
         self.bannerCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: false)
@@ -205,12 +232,12 @@ extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension HomeMainViewController {
-    @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
-      let destinationVC = BookmarkListViewController.loadFromStoryboard()
-      customNavigationDelegate.direction = .left
-      destinationVC.transitioningDelegate = customNavigationDelegate
-      destinationVC.modalPresentationStyle = .custom
-      present(destinationVC, animated: true, completion: nil)
-    }
+  @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
+    let destinationVC = BookmarkListViewController.loadFromStoryboard()
+    customNavigationDelegate.direction = .left
+    destinationVC.transitioningDelegate = customNavigationDelegate
+    destinationVC.modalPresentationStyle = .custom
+    present(destinationVC, animated: true, completion: nil)
+  }
 }
 

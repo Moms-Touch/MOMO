@@ -34,6 +34,11 @@ struct ParsingManager {
     completion(bodyData)
   }
   
+  func judgeSimpleResponse(data: Data, completion: @escaping(() -> Void)) {
+    let body = try? decoder.decode(SimpleResponse.self, from: data)
+    completion()
+  }
+  
   
   func encodingModel(parameters: [String: String?]?) -> Data? {
     let convertedData = try? encoder.encode(parameters)

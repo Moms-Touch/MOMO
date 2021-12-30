@@ -23,6 +23,7 @@ enum RequestType: String {
   case post = "POST"
   case delete = "DELETE"
   case patch = "PATCH"
+  case put = "PUT"
   
   var method: String {
     return self.rawValue

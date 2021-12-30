@@ -41,12 +41,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UserManager.shared.userId = userId
             
             //TODO: user가져오기를 통해서 Userdata에 추가
-            
-            
-            DispatchQueue.main.async {
-              let home = TabBar()
-              home.selectedIndex = 0
-              self.window?.rootViewController = home
+            networkManager.request(apiModel: GetApi.userGet(token: newAccessToken)) { (result) in
+              switch result {
+              case .success(let data):
+                parsingManager.judgeGenericResponse(data: data, model: UserData.self) { (body) in
+                  UserManager.shared.userInfo = body
+                  DispatchQueue.main.async {
+                    let home = TabBar()
+                    home.selectedIndex = 0
+                    self.window?.rootViewController = home
+                    self.window?.windowScene = windowScene
+                    self.window?.makeKeyAndVisible()
+                  }
+                }
+              case .failure(let error):
+                print(error)
+              }
             }
           }
         case .failure(_):
@@ -81,13 +91,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UserManager.shared.userId = body.id
             
             //TODO: user가져오기를 통해서 Userdata에 추가
-            
-            DispatchQueue.main.async {
-              let home = TabBar()
-              home.selectedIndex = 0
-              self.window?.rootViewController = home
-              self.window?.windowScene = windowScene
-              self.window?.makeKeyAndVisible()
+            networkManager.request(apiModel: GetApi.userGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDksImlhdCI6MTY0MDY4MjU4MiwiZXhwIjoxNjQwOTQxNzgyLCJpc3MiOiJtb21vIn0.nd0nCb5K5SXLoR8stpVf07K8HfvnPYtPMh5fWagneUc")) { (result) in
+              switch result {
+              case .success(let data):
+                parsingManager.judgeGenericResponse(data: data, model: UserData.self) { (body) in
+                  UserManager.shared.userInfo = body
+                  DispatchQueue.main.async {
+                    let home = TabBar()
+                    home.selectedIndex = 0
+                    self.window?.rootViewController = home
+                    self.window?.windowScene = windowScene
+                    self.window?.makeKeyAndVisible()
+                  }
+                }
+              case .failure(let error):
+                print(error)
+              }
             }
           }
         case .failure(let error):

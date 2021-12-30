@@ -36,4 +36,34 @@ final class UserManager {
     }
   }
   
+  private var appUser: UserData? {
+    didSet {
+      NotificationCenter.default.post(name: UserManager.didSetAppUserNotification, object: nil)
+    }
+  }
+  
+  var userInfo: UserData? {
+    get {
+      return appUser
+    }
+    set {
+      appUser = newValue
+    }
+  }
+  
+  var babyInWeek: String? {
+    if userInfo?.isPregnant == true { // 임신 중
+      guard let babyBirth = userInfo?.baby?.first?.birthday else {return nil}
+      return babyBirth.trimStringDate().fetusInWeek()
+    } else { //출산 후
+      guard let babyBirth = userInfo?.baby?.first?.birthday else {return nil}
+      return babyBirth.trimStringDate().babyInWeek()
+    }
+  }
+  
+  func deleteUser() {
+    appUser = nil
+    KeyChainService.shared.deleteFromKeyChain(account: "accessToken")
+  }
+  
 }

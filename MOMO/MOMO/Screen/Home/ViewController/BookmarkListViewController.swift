@@ -34,6 +34,7 @@ final class BookmarkListViewController: UIViewController, StoryboardInstantiable
     setBorder(color: Asset.Colors.pink5.color)
   }
   
+  internal var mode = true
   
   @objc func getpageIndex(_ notification: Notification) {
     var getValue = notification.object as! Int
@@ -55,6 +56,10 @@ final class BookmarkListViewController: UIViewController, StoryboardInstantiable
 
 extension BookmarkListViewController {
   @IBAction func didTapBackButton(_ sender: UIButton) {
-    dismiss(animated: true, completion: nil)
+    if mode {
+      dismiss(animated: true, completion: nil)
+    } else {
+      self.navigationController?.popViewController(animated: true)
+    }
   }
 }

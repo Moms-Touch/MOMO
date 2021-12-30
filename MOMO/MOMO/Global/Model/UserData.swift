@@ -28,7 +28,7 @@ extension UserData {
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     id = (try? container.decode(Int.self, forKey: .id)) ?? -1
-    email = (try? container.decode(String.self, forKey: .id)) ?? ""
+    email = (try? container.decode(String.self, forKey: .email)) ?? ""
     age = (try? container.decode(Int.self, forKey: .age)) ?? 24
     location = (try? container.decode(String.self, forKey: .location)) ?? "Seoul"
     nickname = (try? container.decode(String.self, forKey: .nickname)) ?? "모모"
