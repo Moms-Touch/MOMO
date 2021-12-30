@@ -8,16 +8,21 @@
 import Foundation
 
 enum DeleteApi {
-  
+  case deleteUser(token: String)
 }
 
 extension DeleteApi: APIable {
   var contentType: ContentType {
-    return .jsonData
+    switch self {
+    case .deleteUser:
+      return .noBody
+    default:
+      return .noBody
+    }
   }
   
   var requestType: RequestType {
-    .patch
+    .delete
   }
   
   var encodingType: EncodingType {
@@ -25,11 +30,17 @@ extension DeleteApi: APIable {
   }
   
   var header: [String : String]? {
-    return nil
+    switch self {
+    case .deleteUser(let token):
+      return [ "Authorization" : "Bearer \(token)"]
+    }
   }
   
   var url: String {
-    return makePathtoURL(path: "")
+    switch self {
+    case .deleteUser:
+      return makePathtoURL(path: "/memeber")
+    }
   }
   
   var param: [String : String?]? {
