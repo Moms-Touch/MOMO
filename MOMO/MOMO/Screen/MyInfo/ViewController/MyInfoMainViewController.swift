@@ -25,6 +25,17 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
   
   lazy var networkManager = NetworkManager()
   
+  @IBOutlet weak var loginLabel: UILabel! {
+    didSet {
+      if let token = UserManager.shared.token {
+        loginLabel.text = "로그아웃"
+      } else {
+        loginLabel.text == "로그인"
+      }
+    }
+  }
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     if #available(iOS 15.0, *) {
@@ -65,10 +76,51 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
       self.navigationController?.pushViewController(MyActivityViewController.loadFromStoryboard(), animated: true)
     case 3: // MySetting
       self.navigationController?.pushViewController(MySettingViewController.loadFromStoryboard(), animated: true)
-    case 4:
-      print(#function)
+    case 4: //로그인 로그아웃
+      if loginLabel.text == "로그아웃" {
+        let alert = UIAlertController(title: "로그아웃", message: "로그아웃을 하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "네", style: .default, handler: {
+          [weak self] (action) in
+//          UserManager.shared.deleteUser()
+          guard let loginVC = LoginViewController.loadFromStoryboard() as? LoginViewController else {return}
+          let newNaviController = UINavigationController(rootViewController: loginVC)
+          newNaviController.isNavigationBarHidden = true
+          let sceneDelegate = UIApplication.shared.connectedScenes
+                  .first!.delegate as! SceneDelegate
+          sceneDelegate.window!.rootViewController = newNaviController
+        }))
+        alert.addAction(UIAlertAction(title: "아니오", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
+      } else {
+        guard let loginVC = LoginViewController.loadFromStoryboard() as? LoginViewController else {return}
+        let newNaviController = UINavigationController(rootViewController: loginVC)
+        newNaviController.isNavigationBarHidden = true
+        let sceneDelegate = UIApplication.shared.connectedScenes
+                .first!.delegate as! SceneDelegate
+        sceneDelegate.window!.rootViewController = newNaviController
+      }
     case 5:
-      print(#function)
+      guard let token = UserManager.shared.token else {return}
+      networkManager.request(apiModel: DeleteApi.deleteUser(token: token)) { (result) in
+        switch result {
+        case .success(let data):
+          let parsingManager = ParsingManager()
+          parsingManager.judgeSimpleResponse(data: data) {
+            DispatchQueue.main.async { [weak self] in
+              guard let self = self else {return}
+              UserManager.shared.deleteUser()
+              guard let loginVC = LoginViewController.loadFromStoryboard() as? LoginViewController else {return}
+              let newNaviController = UINavigationController(rootViewController: loginVC)
+              newNaviController.isNavigationBarHidden = true
+              let sceneDelegate = UIApplication.shared.connectedScenes
+                      .first!.delegate as! SceneDelegate
+              sceneDelegate.window!.rootViewController = newNaviController
+            }
+          }
+        case .failure(let error):
+          print(error)
+        }
+      }
     default:
       return
     }
