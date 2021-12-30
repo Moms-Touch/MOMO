@@ -8,7 +8,7 @@
 import Foundation
 
 enum PutApi {
-  case putBaby(token: String, id: Int, name: String, birth: String?, imageUrl: String?)
+  case putBaby(token: String, id: Int, name: String, birthday: String?, imageUrl: String?)
   case putUser(token: String, email: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String)
 }
 
@@ -43,8 +43,8 @@ extension PutApi: APIable {
   
   var param: [String : String?]? {
     switch self {
-    case .putBaby(_, let id, let name, let birth, let imageUrl) :
-      return ["id": String(id), "name": name, "birth": birth, "imageUrl": imageUrl]
+    case .putBaby(_, let id, let name, let birthday, let imageUrl) :
+      return ["id": String(id), "name": name, "birthday": birthday, "imageUrl": imageUrl]
     case .putUser(_, let email,let nickname, let isPregnant, let hasChild, let age, let location):
       return ["email": email, "nickname": nickname, "isPregnant": String(isPregnant),
               "hasChild": String(isPregnant), "age": "\(age)", "location": location]

@@ -61,7 +61,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       guard let babyBirth = UserManager.shared.babyInWeek else {
         self.dateWithBabyButton.setTitle("생일 등록하기", for: .normal)
         return}
-      guard let imageUrl = userInfo.baby?.first?.imageURL else {
+      guard let imageUrl = userInfo.baby?.first?.imageUrl else {
         self.babyProfileImageView.image = UIImage(named: "Logo")
         return
       }
