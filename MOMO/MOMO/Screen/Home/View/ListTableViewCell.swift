@@ -16,7 +16,12 @@ class ListTableViewCell: UITableViewCell, NibLoadableView, simpleContentContaine
   
   internal var data: simpleContent? {
     didSet {
-      titleLabel.text = data?.title
+      titleLabel.text = data?.title ?? "준비중입니다."
+      if let title = data?.title {
+        if title == "" {
+          titleLabel.text = "준비중입니다."
+        }
+      }
       organizationLabel.text = data?.author ?? "모모관리자"
       dateLabel.text = data?.createdAt
       guard let thumbnailImageUrl = data?.thumbnailImageUrl else {
