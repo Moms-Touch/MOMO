@@ -58,6 +58,12 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
     guard let babyViewModel = babyViewModel else {
       return
     }
+    babyViewModel.completionHandler = { [weak self] in
+      guard let self = self else {return}
+      self.myBabyInfoTextFields[0].text = babyViewModel.babyName
+      self.myBabyInfoTextFields[1].text = babyViewModel.babyBirth
+      self.myBabyImageView.setImage(with: babyViewModel.babyImageUrl)
+    }
     imageUrl = babyViewModel.babyImageUrl
     myBabyImageView.setImage(with: imageUrl)
     configureDatePicker()
@@ -77,12 +83,6 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
     guard let token = UserManager.shared.token else {return}
     guard let babyViewModel = babyViewModel else {
       return
-    }
-    babyViewModel.completionHandler = { [weak self] in
-      guard let self = self else {return}
-      self.myBabyInfoTextFields[0].text = babyViewModel.babyName
-      self.myBabyInfoTextFields[1].text = babyViewModel.babyBirth
-      self.myBabyImageView.setImage(with: babyViewModel.babyImageUrl)
     }
     guard let name = myBabyInfoTextFields[0].text else {return}
     let birth: String?
