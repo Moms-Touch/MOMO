@@ -42,7 +42,6 @@
 		285209B62753327200AB8BAC /* NewPasswordInput.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209A92753327200AB8BAC /* NewPasswordInput.storyboard */; };
 		285209B72753327200AB8BAC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209AA2753327200AB8BAC /* Login.storyboard */; };
 		285209B82753327200AB8BAC /* PregnantStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209AB2753327200AB8BAC /* PregnantStatus.storyboard */; };
-		285209B92753327200AB8BAC /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209AC2753327200AB8BAC /* SignUp.storyboard */; };
 		285209BA2753327200AB8BAC /* FindPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209AD2753327200AB8BAC /* FindPassword.storyboard */; };
 		285209BB2753327200AB8BAC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209AF2753327200AB8BAC /* SignUpViewController.swift */; };
 		285209BC2753327200AB8BAC /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209B02753327200AB8BAC /* FindPasswordViewController.swift */; };
@@ -140,10 +139,12 @@
 		28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE162760CA7900E699FC /* NoticeData.swift */; };
 		28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1827610E3800E699FC /* NotificationData.swift */; };
 		28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1A27610E5A00E699FC /* BabyData.swift */; };
+		758F519A277E112100DA88BE /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758F5199277E112100DA88BE /* SignUp.storyboard */; };
 		759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A731427788FDC00E549F6 /* PolicyMain.storyboard */; };
 		759A7319277890ED00E549F6 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A7318277890ED00E549F6 /* Detail.storyboard */; };
 		759A731F2778BBD100E549F6 /* PolicyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A731D2778BBD100E549F6 /* PolicyTableViewCell.swift */; };
 		759A73202778BBD100E549F6 /* PolicyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 759A731E2778BBD100E549F6 /* PolicyTableViewCell.xib */; };
+		75AF4A7C277EB30C00F3A041 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4A7B277EB30C00F3A041 /* ViewController.swift */; };
 		75BF0C0B276B489900C2D0C1 /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0A276B489900C2D0C1 /* LoginApi.swift */; };
 		75BF0C0D276B495000C2D0C1 /* SignUpApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0C276B495000C2D0C1 /* SignUpApi.swift */; };
 		75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0E276B851800C2D0C1 /* GetApi.swift */; };
@@ -191,7 +192,6 @@
 		285209A92753327200AB8BAC /* NewPasswordInput.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewPasswordInput.storyboard; sourceTree = "<group>"; };
 		285209AA2753327200AB8BAC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		285209AB2753327200AB8BAC /* PregnantStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PregnantStatus.storyboard; sourceTree = "<group>"; };
-		285209AC2753327200AB8BAC /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		285209AD2753327200AB8BAC /* FindPassword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindPassword.storyboard; sourceTree = "<group>"; };
 		285209AF2753327200AB8BAC /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		285209B02753327200AB8BAC /* FindPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
@@ -288,10 +288,12 @@
 		28F4FE162760CA7900E699FC /* NoticeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeData.swift; sourceTree = "<group>"; };
 		28F4FE1827610E3800E699FC /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		28F4FE1A27610E5A00E699FC /* BabyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyData.swift; sourceTree = "<group>"; };
+		758F5199277E112100DA88BE /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		759A731427788FDC00E549F6 /* PolicyMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyMain.storyboard; sourceTree = "<group>"; };
 		759A7318277890ED00E549F6 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		759A731D2778BBD100E549F6 /* PolicyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyTableViewCell.swift; sourceTree = "<group>"; };
 		759A731E2778BBD100E549F6 /* PolicyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PolicyTableViewCell.xib; sourceTree = "<group>"; };
+		75AF4A7B277EB30C00F3A041 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		75BF0C0A276B489900C2D0C1 /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		75BF0C0C276B495000C2D0C1 /* SignUpApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpApi.swift; sourceTree = "<group>"; };
 		75BF0C0E276B851800C2D0C1 /* GetApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetApi.swift; sourceTree = "<group>"; };
@@ -450,7 +452,7 @@
 				285209A92753327200AB8BAC /* NewPasswordInput.storyboard */,
 				285209AA2753327200AB8BAC /* Login.storyboard */,
 				285209AB2753327200AB8BAC /* PregnantStatus.storyboard */,
-				285209AC2753327200AB8BAC /* SignUp.storyboard */,
+				758F5199277E112100DA88BE /* SignUp.storyboard */,
 				285209AD2753327200AB8BAC /* FindPassword.storyboard */,
 			);
 			path = Storyboard;
@@ -496,6 +498,7 @@
 				28B63E97276DED4D00CB5EBF /* CustomNavigationManager.swift */,
 				28B63E99276DF17D00CB5EBF /* CustomNavigationPresentationController.swift */,
 				28B63E9B276DF53600CB5EBF /* CustomNavigationAnimator.swift */,
+				75AF4A7B277EB30C00F3A041 /* ViewController.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -945,6 +948,7 @@
 			files = (
 				288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */,
 				28F47164273BE5500074D148 /* MyBabyInfo.storyboard in Resources */,
+				758F519A277E112100DA88BE /* SignUp.storyboard in Resources */,
 				2852099C2753325F00AB8BAC /* CreateDiary.storyboard in Resources */,
 				28F47158273BE0780074D148 /* MyInfoMain.storyboard in Resources */,
 				285209BA2753327200AB8BAC /* FindPassword.storyboard in Resources */,
@@ -955,7 +959,6 @@
 				285209A12753325F00AB8BAC /* WithTextCollectionViewCell.xib in Resources */,
 				285209A32753325F00AB8BAC /* DiaryReport.storyboard in Resources */,
 				28A99972277D98EE00459D19 /* CommonList.storyboard in Resources */,
-				285209B92753327200AB8BAC /* SignUp.storyboard in Resources */,
 				28CA30762753357300EF071E /* QuestionsMain.storyboard in Resources */,
 				285209B72753327200AB8BAC /* Login.storyboard in Resources */,
 				DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */,
@@ -1134,6 +1137,7 @@
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,
 				28492614273F666F00FA2072 /* InfoBaseTableViewController.swift in Sources */,
 				75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */,
+				75AF4A7C277EB30C00F3A041 /* ViewController.swift in Sources */,
 				75BF0C11276CA01B00C2D0C1 /* PostApi.swift in Sources */,
 				28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */,
 				28A99974277D9A2500459D19 /* CommonListViewController.swift in Sources */,
