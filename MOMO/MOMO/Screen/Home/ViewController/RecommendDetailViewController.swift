@@ -28,6 +28,7 @@ class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigatio
     }
   }
   var data: InfoData?
+  var index: Int = 0
   lazy var networkingManager = NetworkManager()
   
   override func viewDidLoad() {
@@ -35,6 +36,8 @@ class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigatio
     guard let data = data else {
       return
     }
+    
+    print("ㄸ", data.id)
     let url = URL(string: data.url!)
     loadURL(url: url)
   }
@@ -95,7 +98,7 @@ class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigatio
               guard let deleteCompletionHandler = self.deleteCompletionHandler else {
                 return
               }
-              deleteCompletionHandler(data.id)
+              deleteCompletionHandler(self.index)
             }
           case .failure(let error):
             print(error)

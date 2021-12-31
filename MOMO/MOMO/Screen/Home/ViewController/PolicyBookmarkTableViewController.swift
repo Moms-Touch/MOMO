@@ -98,14 +98,18 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
             guard let self = self else {return}
             guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController else {return}
             vc.data = body
-            vc.deleteCompletionHandler = { id in
-              for index in self.datasource.indices {
-                if self.datasource[index].id == id {
-                  self.datasource.remove(at: index)
-                  self.tableView.reloadData()
-                  return
-                }
-              }
+            vc.index = indexPath.section
+            vc.deleteCompletionHandler = { index in
+              self.datasource.remove(at: index)
+              self.tableView.reloadData()
+              return
+//              for index in self.datasource.indices {
+//                if self.datasource[index].id == id{
+//                  self.datasource.remove(at: index)
+//                  self.tableView.reloadData()
+//                  return
+//                }
+//              }
             }
             self.present(vc, animated: true, completion: nil)
           }
