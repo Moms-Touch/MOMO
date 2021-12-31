@@ -41,7 +41,9 @@ class RecommendModalViewController: UIViewController {
   
   lazy var titleLabel: UILabel = {
     let label = UILabel()
-    label.text = "12주차 소미님을 위한 추천 정보"
+    let birth = UserManager.shared.babyInWeek
+    let name = UserManager.shared.userInfo?.nickname
+    label.text = "\(birth ?? "0주차") \(name ?? "모모")님을 위한 추천 정보"
     label.font = .systemFont(ofSize: 16, weight: .bold)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
