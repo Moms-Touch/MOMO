@@ -32,6 +32,9 @@
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="dismiss:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5bE-mj-1qX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -54,27 +57,43 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="bird.happy">
+                                        <state key="normal" image="bird.happy.default">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
+                                        <state key="selected" image="bird.happy"/>
+                                        <connections>
+                                            <action selector="didSelectEmotionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GWW-pq-n3n"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXU-x0-VgQ">
                                         <rect key="frame" x="98.666666666666686" y="0.0" width="78.333333333333314" height="73"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="bird.angry">
+                                        <state key="normal" image="bird.angry.default">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
+                                        <state key="selected" image="bird.angry"/>
+                                        <connections>
+                                            <action selector="didSelectEmotionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FDn-31-xSU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUO-UX-b0M">
                                         <rect key="frame" x="197" y="0.0" width="78.666666666666686" height="73"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="bird.sad"/>
+                                        <state key="normal" image="bird.sad.default"/>
+                                        <state key="selected" image="bird.sad"/>
+                                        <connections>
+                                            <action selector="didSelectEmotionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HdY-vb-Jcz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSn-HC-Zcx">
                                         <rect key="frame" x="295.66666666666669" y="0.0" width="78.333333333333314" height="73"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="bird.blue"/>
+                                        <state key="normal" image="bird.blue.default"/>
+                                        <state key="selected" image="bird.blue"/>
+                                        <connections>
+                                            <action selector="didSelectEmotionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FNq-dw-wK0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -104,6 +123,9 @@
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="completeDiary:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vSa-Jd-X3a"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -114,15 +136,8 @@
                                     <constraint firstItem="2Kh-kq-0K7" firstAttribute="leading" secondItem="hYj-XV-3tx" secondAttribute="leading" constant="20" id="xgk-if-kfb"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WF9-WC-CKS">
-                                <rect key="frame" x="20" y="267" width="374" height="81"/>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="81" id="ayR-FM-M4i"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-Ae-Rvu">
-                                <rect key="frame" x="20" y="376" width="374" height="384"/>
+                                <rect key="frame" x="20" y="277" width="374" height="384"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                             </view>
                         </subviews>
@@ -131,27 +146,30 @@
                         <constraints>
                             <constraint firstItem="hYj-XV-3tx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0L9-wf-FrA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Tkc-Ae-Rvu" secondAttribute="trailing" constant="20" id="3N2-KP-lvT"/>
+                            <constraint firstItem="hYj-XV-3tx" firstAttribute="top" secondItem="Tkc-Ae-Rvu" secondAttribute="bottom" constant="99" id="3QI-ib-1kV"/>
                             <constraint firstItem="0uq-4i-tBW" firstAttribute="top" secondItem="Yk9-Gs-ryA" secondAttribute="bottom" constant="38" id="3i9-Gh-ysw"/>
                             <constraint firstItem="cmL-hR-Z4d" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7VP-0a-5R1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Yk9-Gs-ryA" secondAttribute="trailing" constant="20" id="8qd-97-oVe"/>
-                            <constraint firstItem="WF9-WC-CKS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="96I-hx-pq4"/>
                             <constraint firstItem="0uq-4i-tBW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="17" id="Bbi-BX-wL8"/>
-                            <constraint firstItem="WF9-WC-CKS" firstAttribute="top" secondItem="0uq-4i-tBW" secondAttribute="bottom" constant="28" id="GwE-Nx-x1I"/>
-                            <constraint firstItem="Tkc-Ae-Rvu" firstAttribute="top" secondItem="WF9-WC-CKS" secondAttribute="bottom" constant="28" id="HeG-lI-Sdg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0uq-4i-tBW" secondAttribute="trailing" constant="17" id="I7c-VX-Yy0"/>
                             <constraint firstItem="Yk9-Gs-ryA" firstAttribute="top" secondItem="cmL-hR-Z4d" secondAttribute="bottom" constant="39" id="LpG-Hb-oLQ"/>
                             <constraint firstItem="hYj-XV-3tx" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="Ur2-rQ-bN4"/>
                             <constraint firstItem="Tkc-Ae-Rvu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="WT7-mw-r9T"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="WF9-WC-CKS" secondAttribute="trailing" constant="20" id="azS-R0-NqD"/>
+                            <constraint firstItem="Tkc-Ae-Rvu" firstAttribute="top" secondItem="0uq-4i-tBW" secondAttribute="bottom" constant="38" id="YwZ-84-GLS"/>
                             <constraint firstItem="cmL-hR-Z4d" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="fap-HK-1zA"/>
                             <constraint firstItem="cmL-hR-Z4d" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="gjG-0r-6wM"/>
                             <constraint firstItem="Yk9-Gs-ryA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="mKN-le-SGx"/>
-                            <constraint firstItem="hYj-XV-3tx" firstAttribute="top" secondItem="Tkc-Ae-Rvu" secondAttribute="bottom" id="qrW-VW-X1O"/>
                             <constraint firstItem="hYj-XV-3tx" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="xX1-MY-MZO"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="diaryInputView" destination="Tkc-Ae-Rvu" id="x50-HI-la6"/>
+                        <outlet property="completeDiaryButton" destination="2Kh-kq-0K7" id="qgD-fr-yc0"/>
+                        <outlet property="dateLabel" destination="Rcn-zN-wlD" id="YfL-Ae-sJc"/>
+                        <outlet property="diaryInputContainerView" destination="Tkc-Ae-Rvu" id="x50-HI-la6"/>
+                        <outletCollection property="emotionButtons" destination="GUb-gL-sxW" collectionClass="NSMutableArray" id="N8h-YA-I2A"/>
+                        <outletCollection property="emotionButtons" destination="xXU-x0-VgQ" collectionClass="NSMutableArray" id="ctC-1B-QWt"/>
+                        <outletCollection property="emotionButtons" destination="NUO-UX-b0M" collectionClass="NSMutableArray" id="rT6-yu-GAf"/>
+                        <outletCollection property="emotionButtons" destination="gSn-HC-Zcx" collectionClass="NSMutableArray" id="0Zh-xS-zSf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -161,9 +179,13 @@
     </scenes>
     <resources>
         <image name="bird.angry" width="70" height="65"/>
+        <image name="bird.angry.default" width="70" height="65"/>
         <image name="bird.blue" width="70" height="65"/>
+        <image name="bird.blue.default" width="70" height="65"/>
         <image name="bird.happy" width="69" height="65"/>
+        <image name="bird.happy.default" width="69" height="65"/>
         <image name="bird.sad" width="69" height="65"/>
+        <image name="bird.sad.default" width="69" height="65"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -9,6 +9,7 @@ import Foundation
 
 enum DeleteApi {
   case deleteUser(token: String)
+  case deleteBookmark(token: String, postId: Int, postCategory: Category)
 }
 
 extension DeleteApi: APIable {
@@ -16,6 +17,8 @@ extension DeleteApi: APIable {
     switch self {
     case .deleteUser:
       return .noBody
+    case .deleteBookmark:
+      return .jsonData
     default:
       return .noBody
     }
@@ -31,7 +34,7 @@ extension DeleteApi: APIable {
   
   var header: [String : String]? {
     switch self {
-    case .deleteUser(let token):
+    case .deleteUser(let token), .deleteBookmark(let token, _, _):
       return [ "Authorization" : "Bearer \(token)"]
     }
   }
@@ -40,11 +43,18 @@ extension DeleteApi: APIable {
     switch self {
     case .deleteUser:
       return makePathtoURL(path: "/memeber")
+    case .deleteBookmark:
+      return makePathtoURL(path: "/bookmark")
     }
   }
   
   var param: [String : String?]? {
-    return nil
+    switch self {
+    case .deleteBookmark(_, let postId, let postCategory):
+      return ["postId": String(postId), "postCategory": postCategory.rawValue]
+    default:
+      return nil
+    }
   }
   
   func makePathtoURL(path: String?) -> String {

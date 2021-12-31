@@ -34,8 +34,9 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
         parsingManager.judgeGenericResponse(data: data, model: [BookmarkData].self) { [weak self]  (body) in
           guard let self = self else {return}
           bookmarkData = body
-          let policyBookmark = bookmarkData.filter { $0.post.category != Category.community }
-          let postData = policyBookmark.sorted { $0.createdAt < $1.createdAt }.map { return $0.post }
+          // 잠시 정보만으로 변경
+          let infoBookmark = bookmarkData.filter { $0.post.category == Category.info }
+          let postData = infoBookmark.sorted { $0.createdAt < $1.createdAt }.map { return $0.post }
           
           // 현재 갯수와 동일한지 확인, 동일하다면 -> 버린다.
           if postData.count == self.datasource.count {
@@ -83,6 +84,40 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
   
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     scrollView.bounces = scrollView.contentOffset.y > 0
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let infoId = datasource[indexPath.row].id
+    guard let token = UserManager.shared.token else {return}
+    networkManager.request(apiModel: GetApi.infoDetailGet(token: token, id: infoId)) { (result) in
+      switch result {
+      case .success(let data):
+        let parsingManager = ParsingManager()
+        parsingManager.judgeGenericResponse(data: data, model: InfoData.self) { (body) in
+          DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController else {return}
+            vc.data = body
+            vc.index = indexPath.section
+            vc.deleteCompletionHandler = { index in
+              self.datasource.remove(at: index)
+              self.tableView.reloadData()
+              return
+//              for index in self.datasource.indices {
+//                if self.datasource[index].id == id{
+//                  self.datasource.remove(at: index)
+//                  self.tableView.reloadData()
+//                  return
+//                }
+//              }
+            }
+            self.present(vc, animated: true, completion: nil)
+          }
+        }
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
   
 }

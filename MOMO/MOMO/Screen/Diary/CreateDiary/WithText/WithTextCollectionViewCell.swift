@@ -11,13 +11,13 @@ class WithTextCollectionViewCell: UICollectionViewCell, NibInstantiatable {
   
   static var identifier = String(describing: self)
   
+  @IBOutlet weak var questionLabel: UILabel!
+  
+  @IBOutlet weak var answerTextView: UITextView!
+  
   required init?(coder: NSCoder) {
     super.init(coder: coder)
     
     self.translatesAutoresizingMaskIntoConstraints = false
   }
-  
-  @IBOutlet weak var questionLabel: UILabel!
-  
-  @IBOutlet weak var answerTextView: UITextView!
 }

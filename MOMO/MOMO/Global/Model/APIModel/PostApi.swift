@@ -19,6 +19,7 @@ enum PostApi: APIable {
     case registProfile(email: String, password: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String, contentType: ContentType)
     case login(email: String, password: String, contentType: ContentType)
     case findPassword(email: String, contentType: ContentType)
+  case postBookmark(token: String, postId: Int, postCategory: Category)
     
     var contentType: ContentType {
         switch self {
@@ -28,12 +29,14 @@ enum PostApi: APIable {
             return contentType
         case .findPassword( _, contentType: let contentType):
             return contentType
+        case .postBookmark:
+          return .jsonData
         }
     }
   
   var encodingType: EncodingType {
     switch self {
-    case .registProfile:
+    case .registProfile, .postBookmark:
       return .JSONEncoding
     default:
       return .JSONEncoding
@@ -52,6 +55,8 @@ enum PostApi: APIable {
             return makePathtoURL(path: "/auth/login")
         case .findPassword(email: let email, contentType: let contentType):
             return makePathtoURL(path: "/auth/password")
+        case .postBookmark:
+          return makePathtoURL(path: "/bookmark")
         }
     }
     
@@ -71,11 +76,15 @@ enum PostApi: APIable {
                     "password": password]
         case .findPassword(email: let email, contentType: _):
             return ["email": email]
+        case .postBookmark(_, let postId, let postCategory):
+          return ["postId": String(postId), "postCategory": postCategory.rawValue]
         }
     }
   
   var header: [String : String]? {
     switch self {
+    case .postBookmark(let token, _, _):
+      return [ "Authorization" : "Bearer \(token)"]
     default:
       return nil
     }

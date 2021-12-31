@@ -50,8 +50,8 @@
                                     <constraint firstAttribute="height" constant="40" id="PvG-Ws-7qE"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="정보/정책"/>
-                                    <segment title="커뮤니티"/>
+                                    <segment title="정보"/>
+                                    <segment title="정책"/>
                                 </segments>
                                 <connections>
                                     <action selector="didChangeBookmarkSegControl:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Qcd-db-D6E"/>
