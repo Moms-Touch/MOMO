@@ -118,7 +118,13 @@ final class LoginViewController: ViewController {
                             parsingManager.judgeGenericResponse(data: data, model: UserData.self) { body in
                                 UserManager.shared.userInfo = body
                                 DispatchQueue.main.async { [weak self] in
-                                    self?.moveToHomeMainView()
+                                    let home = TabBar()
+                                    home.selectedIndex = 0
+                                    let newNaviController = UINavigationController(rootViewController: home)
+                                    newNaviController.isNavigationBarHidden = true
+                                    let sceneDelegate = UIApplication.shared.connectedScenes
+                                            .first!.delegate as! SceneDelegate
+                                    sceneDelegate.window!.rootViewController = newNaviController
                                 }
                             }
                         case .failure(_):

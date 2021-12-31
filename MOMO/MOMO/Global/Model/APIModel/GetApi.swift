@@ -42,7 +42,6 @@ extension GetApi {
   
   var encodingType: EncodingType {
     switch self {
-<<<<<<< HEAD
     case .noticeGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet:
       return .JSONEncoding
     case .policyGet, .infoGet:
