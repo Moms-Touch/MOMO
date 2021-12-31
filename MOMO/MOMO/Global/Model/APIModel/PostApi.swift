@@ -17,18 +17,20 @@ import Foundation
 
 enum PostApi: APIable {
     case registProfile(email: String, password: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String, contentType: ContentType)
-
+  case postBookmark(token: String, postId: Int, postCategory: Category)
     
     var contentType: ContentType {
         switch self {
         case .registProfile(email: _, password: _, nickname: _, isPregnant: _, hasChild: _, age: _, location: _, contentType: let contentType):
             return contentType
+        case .postBookmark:
+          return .jsonData
         }
     }
   
   var encodingType: EncodingType {
     switch self {
-    case .registProfile:
+    case .registProfile, .postBookmark:
       return .JSONEncoding
     default:
       return .JSONEncoding
@@ -36,16 +38,15 @@ enum PostApi: APIable {
   }
     
     var requestType: RequestType {
-        switch self {
-        case .registProfile:
-            return RequestType.post
-        }
+      return .post
     }
     
     var url: String {
         switch self {
         case .registProfile:
             return makePathtoURL(path: "auth/signup")
+        case .postBookmark:
+          return makePathtoURL(path: "/bookmark")
         }
     }
     
@@ -60,11 +61,15 @@ enum PostApi: APIable {
                     "age": age.description,
                     "location": location
                     ]
+        case .postBookmark(_, let postId, let postCategory):
+          return ["postId": String(postId), "postCategory": postCategory.rawValue]
         }
     }
   
   var header: [String : String]? {
     switch self {
+    case .postBookmark(let token, _, _):
+      return [ "Authorization" : "Bearer \(token)"]
     default:
       return nil
     }

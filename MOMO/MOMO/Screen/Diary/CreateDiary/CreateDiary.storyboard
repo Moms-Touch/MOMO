@@ -166,10 +166,10 @@
                         <outlet property="completeDiaryButton" destination="2Kh-kq-0K7" id="qgD-fr-yc0"/>
                         <outlet property="dateLabel" destination="Rcn-zN-wlD" id="YfL-Ae-sJc"/>
                         <outlet property="diaryInputContainerView" destination="Tkc-Ae-Rvu" id="x50-HI-la6"/>
-                        <outletCollection property="emotionButtons" destination="NUO-UX-b0M" collectionClass="NSMutableArray" id="gVI-Qh-n1w"/>
-                        <outletCollection property="emotionButtons" destination="gSn-HC-Zcx" collectionClass="NSMutableArray" id="gg8-X1-eqc"/>
-                        <outletCollection property="emotionButtons" destination="xXU-x0-VgQ" collectionClass="NSMutableArray" id="bee-M7-d4O"/>
-                        <outletCollection property="emotionButtons" destination="GUb-gL-sxW" collectionClass="NSMutableArray" id="qRB-RN-kx9"/>
+                        <outletCollection property="emotionButtons" destination="GUb-gL-sxW" collectionClass="NSMutableArray" id="N8h-YA-I2A"/>
+                        <outletCollection property="emotionButtons" destination="xXU-x0-VgQ" collectionClass="NSMutableArray" id="ctC-1B-QWt"/>
+                        <outletCollection property="emotionButtons" destination="NUO-UX-b0M" collectionClass="NSMutableArray" id="rT6-yu-GAf"/>
+                        <outletCollection property="emotionButtons" destination="gSn-HC-Zcx" collectionClass="NSMutableArray" id="0Zh-xS-zSf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

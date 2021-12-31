@@ -15,11 +15,15 @@ class InfoDataViewModel {
     self.model = model
   }
   
+  var infoId: Int {
+    return model?.id ?? -1
+  }
+  
   var url: URL? {
-    guard let model = model else {
+    guard let url = model?.url else {
       return nil
     }
-    return URL(string: model.url)!
+    return URL(string: url)!
   }
   
   var thumbNailImageURL: URL? {
@@ -28,6 +32,6 @@ class InfoDataViewModel {
   }
   
   var isbookMark: Bool {
-    return false
+    return model?.isBookmark ?? false
   }
 }

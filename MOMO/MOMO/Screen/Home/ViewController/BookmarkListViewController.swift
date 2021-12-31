@@ -25,15 +25,16 @@ final class BookmarkListViewController: UIViewController, StoryboardInstantiable
   @IBOutlet weak var bookmarkSegControl: UISegmentedControl!
   
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      NotificationCenter.default.addObserver(self, selector: #selector(getpageIndex(_:)),
-                                             name: NSNotification.Name("SegControlNotification"),
-                                             object: nil)
-      setupSegmentedControl()
-      setBorder(color: Asset.Colors.pink5.color)
-    }
-    
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    NotificationCenter.default.addObserver(self, selector: #selector(getpageIndex(_:)),
+                                           name: NSNotification.Name("SegControlNotification"),
+                                           object: nil)
+    setupSegmentedControl()
+    setBorder(color: Asset.Colors.pink5.color)
+  }
+  
+  internal var mode = true
   
   @objc func getpageIndex(_ notification: Notification) {
     var getValue = notification.object as! Int
@@ -45,7 +46,7 @@ final class BookmarkListViewController: UIViewController, StoryboardInstantiable
     }
     bookmarkSegControl.selectedSegmentIndex = getValue
   }
-
+  
   @IBAction func didChangeBookmarkSegControl(_ sender: UISegmentedControl) {
     NotificationCenter.default.post(name: NSNotification.Name("PageControlNotification"),
                                     object: bookmarkSegControl.selectedSegmentIndex)
@@ -54,7 +55,11 @@ final class BookmarkListViewController: UIViewController, StoryboardInstantiable
 }
 
 extension BookmarkListViewController {
-    @IBAction func didTapBackButton(_ sender: UIButton) {
+  @IBAction func didTapBackButton(_ sender: UIButton) {
+    if mode {
       dismiss(animated: true, completion: nil)
+    } else {
+      self.navigationController?.popViewController(animated: true)
     }
+  }
 }

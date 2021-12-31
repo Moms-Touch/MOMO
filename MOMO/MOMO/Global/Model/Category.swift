@@ -11,4 +11,5 @@ enum Category: String, Codable {
   case community
   case policy
   case info
+  case unknown
 }

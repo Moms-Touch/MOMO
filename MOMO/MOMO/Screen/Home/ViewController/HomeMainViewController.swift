@@ -26,29 +26,57 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       babyProfileImageView.isUserInteractionEnabled = true
       let tapgesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gotoMyProfile(_:)))
       babyProfileImageView.addGestureRecognizer(tapgesture)
-      //Usermodel을 observing 하고 있어야함
     }
   }
   
+  @IBOutlet weak var bellButton: UIButton! {
+    didSet {
+      bellButton.isHidden = true
+    }
+  }
   @IBOutlet weak var dateWithBabyButton: UIButton! {
     didSet {
       dateWithBabyButton.setRound()
       dateWithBabyButton.backgroundColor = .white
+      
       //Usermodel을 observing 하고 있어야함
     }
   }
   
+  //banner의 현재 페이지
   private var currentPage = 0
+  private var datasource: [NoticeData] = []
+  
+  //networking
   lazy var networkManager = NetworkManager()
   lazy var customNavigationDelegate = CustomNavigationManager()
-  private var datasource: [NoticeData] = [NoticeData(id: 1, author: "관리자", title: "공지사항1", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 2, author: "관리자", title: "공지사항2", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 3, author: "관리자", title: "공지사항3", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 4, author: "관리자", title: "공지사항4", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12"), NoticeData(id: 5, author: "관리자", title: "공지사항5", url: "www.naver.com", createdAt: "2012.11.12", updatedAt: "2012.11.12")]
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
     assignbackground()
-    bannerTimer()
     getNotice()
+    changeBabyName()
+    NotificationCenter.default.addObserver(self, selector: #selector(changeBabyName), name: UserManager.didSetAppUserNotification, object: nil)
+  }
+  
+  @objc func changeBabyName() {
+    guard let userInfo = UserManager.shared.userInfo else {
+      print("로그인을 해주세요")
+      return}
+      guard let babyBirth = UserManager.shared.babyInWeek else {
+        self.dateWithBabyButton.setTitle("생일 등록하기", for: .normal)
+        return}
+      guard let babyName = userInfo.baby?.first?.name else {
+        self.dateWithBabyButton.setTitle("아이 이름 등록하기", for: .normal)
+        return
+      }
+      guard let imageUrl = userInfo.baby?.first?.imageUrl else {
+        self.babyProfileImageView.image = UIImage(named: "Logo")
+        return
+      }
+      self.babyProfileImageView.setImage(with: imageUrl)
+      self.dateWithBabyButton.setTitle("\(babyName) \(babyBirth)", for: .normal)
+      self.dateWithBabyButton.sizeToFit()
   }
   
   override func viewDidLayoutSubviews() {
@@ -66,6 +94,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
             guard let self = self else {return}
             self.datasource = data
             self.bannerCollectionView.reloadData()
+            self.bannerTimer()
           }
         }
       case .failure(let error):
@@ -93,7 +122,8 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     recommendModalVC.transitioningDelegate = customNavigationDelegate
     recommendModalVC.modalPresentationStyle = .custom
     // networking
-    networkManager.request(apiModel: GetApi.infoGet(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImlhdCI6MTY0MDUxMTA0OSwiZXhwIjoxNjQwNzcwMjQ5LCJpc3MiOiJtb21vIn0.Z52lgsVvt9deFR7E94rTVNgLEdl4DNWKZGxI8NlgB54", start: "4", end: "5")) { (result) in
+    guard let token = UserManager.shared.token else {return}
+    networkManager.request(apiModel: GetApi.infoGet(token: token, start: "4", end: "5")) { (result) in
       switch result {
       case .success(let data):
         let parsingmanager = ParsingManager()
@@ -149,7 +179,11 @@ extension HomeMainViewController: UICollectionViewDelegate, UICollectionViewData
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //여기서 바로 safari로 넘겨야할듯
+    let url = datasource[indexPath.row].url
+    let storyboard = UIStoryboard.init(name: "MySetting", bundle: nil)
+    guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingWebViewController") as? SettingWebViewController else {return}
+    vc.targetURL = URL(string: url)!
+    present(vc, animated: true, completion: nil)
   }
 }
 
@@ -168,16 +202,18 @@ extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
     return 0
   }
   
+  // 배너 타이머
   private func bannerTimer() {
     let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] (timer) in
       self?.bannerMove()
     }
   }
   
+  //배너가 돌아가는 애니메이션 + 페이지네이션하는 로직
   private func bannerMove() {
     if currentPage == datasource.count - 1 {
-     
-     currentPage = 0
+      
+      currentPage = 0
       UIView.animate(withDuration: 0.3) { [weak self] in
         guard let self = self else {return}
         self.bannerCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: false)
@@ -196,12 +232,12 @@ extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension HomeMainViewController {
-    @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
-      let destinationVC = BookmarkListViewController.loadFromStoryboard()
-      customNavigationDelegate.direction = .left
-      destinationVC.transitioningDelegate = customNavigationDelegate
-      destinationVC.modalPresentationStyle = .custom
-      present(destinationVC, animated: true, completion: nil)
-    }
+  @IBAction private func didTapBookmarkListButton(_ sender: UIButton) {
+    let destinationVC = BookmarkListViewController.loadFromStoryboard()
+    customNavigationDelegate.direction = .left
+    destinationVC.transitioningDelegate = customNavigationDelegate
+    destinationVC.modalPresentationStyle = .custom
+    present(destinationVC, animated: true, completion: nil)
+  }
 }
 

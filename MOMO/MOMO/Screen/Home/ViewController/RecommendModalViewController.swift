@@ -41,7 +41,9 @@ class RecommendModalViewController: UIViewController {
   
   lazy var titleLabel: UILabel = {
     let label = UILabel()
-    label.text = "12주차 소미님을 위한 추천 정보"
+    let birth = UserManager.shared.babyInWeek
+    let name = UserManager.shared.userInfo?.nickname
+    label.text = "\(birth ?? "0주차") \(name ?? "모모")님을 위한 추천 정보"
     label.font = .systemFont(ofSize: 16, weight: .bold)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -95,17 +97,6 @@ extension RecommendModalViewController {
       
       // 원래 크기의 반보다 아래라면?
       if translation.y > view.frame.height / 2, let completion = completionHandler{
-        completion()
-        self.dismiss(animated: true, completion: nil)
-      } else {
-        UIView.animate(withDuration: 0.3) {
-          self.view.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 400)
-        }
-      }
-      
-      // 내리는 속도에 따라서
-      let dragVelocity = sender.velocity(in: view)
-      if dragVelocity.y >= 1300, let completion = completionHandler {
         completion()
         self.dismiss(animated: true, completion: nil)
       } else {
@@ -178,10 +169,24 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
     selectedCell = collectionView.cellForItem(at: indexPath) as? RecommendCollectionViewCell
     guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController else {return}
     if let data = selectedCell?.data {
-      let viewmodel = InfoDataViewModel(model: data)
-      vc.viewModel = viewmodel
-    } else {
-      vc.viewModel = nil
+      vc.data = data
+      vc.index = indexPath.item
+    }
+    vc.postCompletionHandler = { [weak self] id in
+      guard let self = self else {return}
+      for index in self.datasource.indices {
+        if self.datasource[index].id == id {
+          self.datasource[index].isBookmark = true
+          self.recommendCollectionView.reloadData()
+          return
+        }
+      }
+    }
+    vc.deleteCompletionHandler = { [weak self] index in
+      guard let self = self else {return}
+      self.datasource.remove(at: index)
+      self.recommendCollectionView.reloadData()
+      return
     }
     vc.transitioningDelegate = self
     present(vc, animated: true, completion: nil)

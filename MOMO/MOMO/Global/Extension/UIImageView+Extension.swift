@@ -12,6 +12,13 @@ import FirebaseStorage
 // imageview.setImage(여기에 urlstring) 넣으면 캐싱하면서 없으면 storage에서 이미지다운로드
 extension UIImageView {
   func setImage(with UrlString: String) {
+    
+    // 이미지가 default면 이미지 다운로드가 아닌 바로 로고를 사용한다.
+    if UrlString == "default" {
+      self.image = UIImage(named: "Logo")
+      return
+    }
+    
     let cache = ImageCache.default
     guard let newUrlString = UrlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {return}
     let imageUrl  = "\(StorageService.shared.imageBaseUrl)\(newUrlString)"
@@ -27,6 +34,7 @@ extension UIImageView {
           storage.reference(forURL: imageUrl).downloadURL { (url, error) in
             if let error = error {
               print("ERROR \(error.localizedDescription)")
+              self.image = UIImage(named: "Logo")
               return
             }
             guard let url = url else {
@@ -38,7 +46,8 @@ extension UIImageView {
           }
         }
       case .failure(let error):
-        print("error \(error.localizedDescription)")
+        print(error)
+        self.image = UIImage(named: "Logo")
       }
     }
   }

@@ -8,21 +8,19 @@
 import Foundation
 
 struct LikeData: Codable {
-  let commmunityData: SimpleCommunityData?
+  let community: SimpleCommunityData?
   let createdAt: String
-  let updatedAt: String
 }
 
 extension LikeData {
   enum CodingKeys: String, CodingKey {
-    case commmunityData, createdAt, updatedAt
+    case community, createdAt
   }
   
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    commmunityData = try? container.decode(SimpleCommunityData.self, forKey: .commmunityData)
+    community = try? container.decode(SimpleCommunityData.self, forKey: .community)
     createdAt = (try? container.decodeIfPresent(String.self, forKey: .createdAt)) ?? ""
-    updatedAt = (try? container.decodeIfPresent(String.self, forKey: .updatedAt)) ?? ""
   }
 
 }
