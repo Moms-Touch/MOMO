@@ -102,17 +102,6 @@ extension RecommendModalViewController {
           self.view.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 400)
         }
       }
-      
-      // 내리는 속도에 따라서
-      let dragVelocity = sender.velocity(in: view)
-      if dragVelocity.y >= 1300, let completion = completionHandler {
-        completion()
-        self.dismiss(animated: true, completion: nil)
-      } else {
-        UIView.animate(withDuration: 0.3) {
-          self.view.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 400)
-        }
-      }
     }
   }
 }
@@ -179,6 +168,7 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
     guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController else {return}
     if let data = selectedCell?.data {
       vc.data = data
+      vc.index = indexPath.item
     }
     vc.postCompletionHandler = { [weak self] id in
       guard let self = self else {return}
@@ -190,15 +180,11 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
         }
       }
     }
-    vc.deleteCompletionHandler = { [weak self] id in
+    vc.deleteCompletionHandler = { [weak self] index in
       guard let self = self else {return}
-      for index in self.datasource.indices {
-        if self.datasource[index].id == id {
-          self.datasource[index].isBookmark = false
-          self.recommendCollectionView.reloadData()
-          return
-        }
-      }
+      self.datasource.remove(at: index)
+      self.recommendCollectionView.reloadData()
+      return
     }
     vc.transitioningDelegate = self
     present(vc, animated: true, completion: nil)
