@@ -46,9 +46,10 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     return true
   }
   
-  let realm = try! Realm()
+  var datesWithDiray: [Date] = []
   
   override func viewDidLoad() {
+    
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
@@ -57,6 +58,14 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     
     print(Realm.Configuration.defaultConfiguration.fileURL)
     
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    setUpEventsInCalendar()
+    
+    calendarView.reloadData()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -95,6 +104,8 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     
     calendarView.appearance.selectionColor = Asset.Colors.pink5.color
     
+    calendarView.appearance.eventDefaultColor = Asset.Colors.pink2.color
+    
   }
   
   @IBAction func showDiaryReport(_ sender: UIButton) {
@@ -109,17 +120,18 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     let realm = try! Realm()
     
     /// 오늘 날짜의 00시 00분
-    let todayZero = Date().timeToZero()
+    let targetDate = Date().timeToZero()
     
-    let target = realm.objects(Diary.self).where {
-      $0.date == todayZero
+    let targetDiary = realm.objects(Diary.self).where {
+      $0.date == targetDate
     }
     
     /// 이미 일기를 작성했다면
-    guard let diary = target.first else {
+    guard let diary = targetDiary.first else {
       
       /// 작성된 일기가 없다면
       /// 일기 작성 화면
+      
       // FIXME: Input Option 선택
       self.show(DiaryInputOptionViewController.loadFromStoryboard(), sender: nil)
       
@@ -132,7 +144,10 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     let okAction = UIAlertAction(title: "보러갈래요", style: .default) { action in
       
       /// 일기 상세 화면
-      self.navigationController?.pushViewController(ReadDiaryViewController.loadFromStoryboard(), animated: true)
+      
+      let readDiaryVC = ReadDiaryViewController.make(with: diary)
+      
+      self.show(readDiaryVC, sender: nil)
     }
     
     let cancelAction = UIAlertAction(title: "아니요", style: .cancel, handler: nil)
@@ -141,6 +156,24 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     alertVC.addAction(cancelAction)
     
     self.present(alertVC, animated: true, completion: nil)
+  }
+  
+  func setUpEventsInCalendar() {
+    
+    datesWithDiray = []
+    
+    do {
+      
+      let realm = try Realm()
+      
+      realm.objects(Diary.self).forEach {
+        self.datesWithDiray.append($0.date)
+      }
+      
+    } catch {
+      
+      print(error.localizedDescription)
+    }
   }
   
   
@@ -180,7 +213,16 @@ extension DiaryMainViewController : FSCalendarDelegate, FSCalendarDataSource, FS
     
     /// 작성된 일기가 있다면
     /// 일기 상세 화면
-    self.navigationController?.pushViewController(ReadDiaryViewController.loadFromStoryboard(), animated: true)
+    ///
+    let readDiaryVC = ReadDiaryViewController.make(with: diary)
+    
+    self.show(readDiaryVC, sender: nil)
+  }
+  
+  
+  func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+    
+    return datesWithDiray.contains(date) ? 1 : 0
   }
   
 }

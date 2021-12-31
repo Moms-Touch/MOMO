@@ -165,6 +165,8 @@
 		DDE31704277F24140033FEF4 /* WithVoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE31703277F24140033FEF4 /* WithVoiceViewController.swift */; };
 		DDE31706277F3CD10033FEF4 /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE31705277F3CD10033FEF4 /* UIAlertAction+Extension.swift */; };
 		DDE31709277F41E10033FEF4 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = DDE31708277F41E10033FEF4 /* OrderedCollections */; };
+		DDE3170B277F4F0E0033FEF4 /* QnAView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE3170A277F4F0E0033FEF4 /* QnAView.xib */; };
+		DDE3170D277F57500033FEF4 /* QnAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3170C277F57500033FEF4 /* QnAView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -325,6 +327,8 @@
 		DDE31701277F1A030033FEF4 /* DiaryQuestionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryQuestionManager.swift; sourceTree = "<group>"; };
 		DDE31703277F24140033FEF4 /* WithVoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceViewController.swift; sourceTree = "<group>"; };
 		DDE31705277F3CD10033FEF4 /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
+		DDE3170A277F4F0E0033FEF4 /* QnAView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QnAView.xib; sourceTree = "<group>"; };
+		DDE3170C277F57500033FEF4 /* QnAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnAView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -846,6 +850,8 @@
 			children = (
 				DDE316FA277EF5270033FEF4 /* ReadDiary.storyboard */,
 				DDE316FC277EF53B0033FEF4 /* ReadDiaryViewController.swift */,
+				DDE3170A277F4F0E0033FEF4 /* QnAView.xib */,
+				DDE3170C277F57500033FEF4 /* QnAView.swift */,
 			);
 			path = ReadDiary;
 			sourceTree = "<group>";
@@ -949,6 +955,7 @@
 				28F4714E2738F67A0074D148 /* HomeMain.storyboard in Resources */,
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
 				285209A12753325F00AB8BAC /* WithTextCollectionViewCell.xib in Resources */,
+				DDE3170B277F4F0E0033FEF4 /* QnAView.xib in Resources */,
 				285209A32753325F00AB8BAC /* DiaryReport.storyboard in Resources */,
 				28A99972277D98EE00459D19 /* CommonList.storyboard in Resources */,
 				285209B92753327200AB8BAC /* SignUp.storyboard in Resources */,
@@ -1103,6 +1110,7 @@
 				288EFD252758E8D2000D1617 /* CGFloat+Extension.swift in Sources */,
 				285209F22753329600AB8BAC /* ReusableView.swift in Sources */,
 				285209E82753329600AB8BAC /* MomoBaseTextField.swift in Sources */,
+				DDE3170D277F57500033FEF4 /* QnAView.swift in Sources */,
 				285209E12753329600AB8BAC /* UIView+Extension.swift in Sources */,
 				28B49143274BB160002BA67A /* DeviceManager.swift in Sources */,
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,

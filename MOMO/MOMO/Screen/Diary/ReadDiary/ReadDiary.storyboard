@@ -62,6 +62,9 @@
                                         <state key="normal" title="삭제">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteDiary:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lJo-0P-clw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -72,90 +75,47 @@
                                     <constraint firstItem="i5d-Qq-KFh" firstAttribute="top" secondItem="qwC-KG-9kU" secondAttribute="top" constant="14" id="Ywk-X3-h8l"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lcs-tk-ZgY">
-                                <rect key="frame" x="20" y="105" width="374" height="559.5"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dL9-DM-Phf">
+                                <rect key="frame" x="20" y="96" width="374" height="656"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7lO-Y7-cD4">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3Ul-hd-72R">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                        <color key="backgroundColor" red="0.99607843159999998" green="0.97647058959999999" blue="0.97254908080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="rFO-ey-jOS"/>
+                                            <constraint firstAttribute="height" priority="999" id="tqd-QM-klj"/>
                                         </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="첫번째 질문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn4-ji-Kod">
-                                        <rect key="frame" x="0.0" y="20" width="374" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <color key="textColor" name="Pink4"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대답" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIZ-bV-ifd">
-                                        <rect key="frame" x="0.0" y="51.5" width="374" height="135"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="135" id="68s-kb-CtO"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="두번째 질문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErA-TT-ngo">
-                                        <rect key="frame" x="0.0" y="196.5" width="374" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <color key="textColor" name="Pink4"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대답" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAW-N4-Ge7">
-                                        <rect key="frame" x="0.0" y="228" width="374" height="135"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="135" id="c3f-bS-Xkq"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="세번째 질문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4en-L4-9vl">
-                                        <rect key="frame" x="0.0" y="373" width="374" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <color key="textColor" name="Pink4"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대답" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWX-9L-BKM">
-                                        <rect key="frame" x="0.0" y="404.5" width="374" height="135"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="135" id="rpL-Ls-gpK"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVA-XH-lrz">
-                                        <rect key="frame" x="0.0" y="549.5" width="374" height="10"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="yN6-9m-b06"/>
-                                        </constraints>
-                                    </view>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.99607843159999998" green="0.97647058959999999" blue="0.97254908080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="3Ul-hd-72R" firstAttribute="trailing" secondItem="q3N-v1-kGQ" secondAttribute="trailing" id="6vc-Ys-lTe"/>
+                                    <constraint firstItem="3Ul-hd-72R" firstAttribute="width" secondItem="MLw-Uf-Mq4" secondAttribute="width" id="7Tu-vf-W1W"/>
+                                    <constraint firstItem="3Ul-hd-72R" firstAttribute="top" secondItem="q3N-v1-kGQ" secondAttribute="top" id="Swh-0A-xGK"/>
+                                    <constraint firstItem="3Ul-hd-72R" firstAttribute="leading" secondItem="q3N-v1-kGQ" secondAttribute="leading" id="kp9-Cf-wok"/>
+                                    <constraint firstItem="3Ul-hd-72R" firstAttribute="bottom" secondItem="q3N-v1-kGQ" secondAttribute="bottom" id="uLW-LX-nBo"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="q3N-v1-kGQ"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="MLw-Uf-Mq4"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wcA-hG-Zzr" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="5YD-7I-CQN"/>
+                            <constraint firstItem="dL9-DM-Phf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="7oV-R8-nqK"/>
                             <constraint firstItem="wcA-hG-Zzr" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="8M9-oQ-8NV"/>
                             <constraint firstItem="wcA-hG-Zzr" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Dy5-a3-XxH"/>
-                            <constraint firstItem="lcs-tk-ZgY" firstAttribute="top" secondItem="wcA-hG-Zzr" secondAttribute="bottom" constant="17" id="Mke-62-Uy9"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lcs-tk-ZgY" secondAttribute="trailing" constant="20" id="RcO-uW-PzI"/>
-                            <constraint firstItem="lcs-tk-ZgY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="djq-u1-Eb1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dL9-DM-Phf" secondAttribute="trailing" constant="20" id="VcP-Fi-WkI"/>
+                            <constraint firstItem="dL9-DM-Phf" firstAttribute="top" secondItem="wcA-hG-Zzr" secondAttribute="bottom" constant="8" symbolic="YES" id="Vl6-mX-Xkm"/>
+                            <constraint firstItem="qwC-KG-9kU" firstAttribute="top" secondItem="dL9-DM-Phf" secondAttribute="bottom" constant="8" symbolic="YES" id="jAl-Uh-wUf"/>
                             <constraint firstItem="qwC-KG-9kU" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="odS-rV-73f"/>
                             <constraint firstItem="qwC-KG-9kU" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="smP-hz-hob"/>
                             <constraint firstItem="qwC-KG-9kU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xeB-kw-a3x"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="firstQuestionLabel" destination="Fn4-ji-Kod" id="eAF-1S-I0u"/>
-                        <outlet property="secondQuestionLabel" destination="ErA-TT-ngo" id="6x7-jc-pso"/>
-                        <outlet property="thirdQuestionLabel" destination="HWX-9L-BKM" id="cKs-nI-zi4"/>
+                        <outlet property="dateLabel" destination="GpJ-AZ-QMs" id="xDa-U3-5HE"/>
+                        <outlet property="deleteButton" destination="i5d-Qq-KFh" id="Gns-Hf-liJ"/>
+                        <outlet property="qnaContainerStackView" destination="3Ul-hd-72R" id="qiy-nu-Bbq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
