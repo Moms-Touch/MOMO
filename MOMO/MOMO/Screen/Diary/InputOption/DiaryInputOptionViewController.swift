@@ -7,6 +7,21 @@
 
 import UIKit
 
+/// DiaryInputOption 에서 사용자가 선택한 옵션들로 이 구조체를 구성함
+/// 이 구조체를 기반으로 CreateDiaryVC 의 모양이 달라지게됨
+///
+// FIXME: Naming 이 중복되어서 마음에 안듬
+struct DiaryInputType {
+  
+  enum InputType {
+    case text
+    case voice
+  }
+  
+  var inputType: InputType?
+  var hasGuide: Bool?
+}
+
 enum InputOptionErrorType: Error {
   
   case unspecifiedButton
@@ -14,7 +29,7 @@ enum InputOptionErrorType: Error {
 
 class DiaryInputOptionViewController: UIViewController, StoryboardInstantiable {
   
-  var creationType: DiaryCreationType?
+  var inputType: DiaryInputType?
   
   /// [ 작성 방식 (글, 목소리) 버튼들을 담고 있는 스택 뷰
   /// - 첫번째 단계 에 화면에 나타난다
@@ -72,15 +87,26 @@ class DiaryInputOptionViewController: UIViewController, StoryboardInstantiable {
     switch sender {
         
       case textOptionButton:
-        creationType = DiaryCreationType(inputType: .text, hasGuide: nil)
+        
+        inputType = DiaryInputType(inputType: .text, hasGuide: nil)
+        
+        onSecondStep()
         
       case voiceOptionButton:
-        creationType = DiaryCreationType(inputType: .voice, hasGuide: nil)
+        
+        inputType = DiaryInputType(inputType: .voice, hasGuide: nil)
+        
+        let createDiaryVC = CreateDiaryViewController.loadFromStoryboard() as! CreateDiaryViewController
+        
+        guard let inputType = inputType else { return }
+        
+        createDiaryVC.inputType = inputType
+        
+        self.show(createDiaryVC, sender: nil)
+        
       default:
         fatalError("Error: Unspecified Button")
     }
-    
-    onSecondStep()
   }
   
   @IBAction func selectSecondStepOption(_ sender: UIButton) {
@@ -88,18 +114,30 @@ class DiaryInputOptionViewController: UIViewController, StoryboardInstantiable {
     switch sender {
         
       case guideOptionButton:
-        creationType?.hasGuide = true
+        
+        inputType?.hasGuide = true
         
       case noGuideOptionButton:
-        creationType?.hasGuide = false
+        
+        inputType?.hasGuide = false
       
       default:
         fatalError("Error: Unspecified Button")
     }
     
-    // Navigation에 CreateDiaryViewController push
+    let createDiaryVC = CreateDiaryViewController.loadFromStoryboard() as! CreateDiaryViewController
     
+    guard let inputType = inputType else { return }
+    
+    createDiaryVC.inputType = inputType
+    
+    // Navigation에 CreateDiaryViewController push
+    self.show(createDiaryVC, sender: nil)
   }
   
+  @IBAction func dismiss(_ sender: UIButton) {
+    
+    self.navigationController?.popViewController(animated: true)
+  }
   
 }

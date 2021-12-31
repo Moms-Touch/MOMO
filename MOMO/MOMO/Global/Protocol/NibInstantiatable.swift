@@ -23,7 +23,7 @@ extension NibInstantiatable {
     
     let nib = UINib(nibName: String(describing: self), bundle: nil)
     
-    return nib.instantiate(withOwner: self, options: nil).first as! Self
+    return nib.instantiate(withOwner: self, options: nil).first! as! Self
   }
 }
 

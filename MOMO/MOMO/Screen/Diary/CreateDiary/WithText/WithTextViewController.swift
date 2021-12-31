@@ -15,13 +15,26 @@ class WithTextViewController: UIViewController, StoryboardInstantiable {
   
   @IBOutlet weak var pageControl: UIPageControl!
   
+  var hasGuide: Bool {
+    
+    return numOfCells == 3 ? true : false
+  }
+  
+  var numOfCells: Int?
+  
+  var defaultQuestion = "자유롭게 일기를 작성해주세요."
+  
+  var questionManager = DiaryQuestionManager.shared
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     setUpCollectionView()
+    
+    setUpPageControl()
   }
   
-  func setUpCollectionView() {
+  private func setUpCollectionView() {
     
     collectionView.dataSource = self
     collectionView.delegate = self
@@ -36,6 +49,18 @@ class WithTextViewController: UIViewController, StoryboardInstantiable {
     layout.minimumInteritemSpacing = 0
     layout.minimumLineSpacing = 0
   }
+  
+  
+  private func setUpPageControl() {
+    
+    ///numOfCells 는 inputType 의 hasGuide 로 정해진다
+    ///
+    /// 가이드가 있으면 컬렉션 뷰셀의 개수는 3
+    ///
+    /// 가이드가 없으면 컬렉션 뷰셀의 개수는 1 + 페이지 컨트롤은 숨겨져야한다
+
+    pageControl.isHidden = hasGuide ? false : true
+  }
 
 
 }
@@ -43,7 +68,8 @@ class WithTextViewController: UIViewController, StoryboardInstantiable {
 extension WithTextViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 3
+    
+    return numOfCells ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -52,8 +78,15 @@ extension WithTextViewController: UICollectionViewDataSource {
     
     cell.backgroundColor = Asset.Colors.pink5.color
     
-    cell.questionLabel.text = "질문+\(indexPath.row)"
-    cell.answerTextView.text = "대답대답"
+    if hasGuide {
+      
+      cell.questionLabel.text = questionManager.guideQuestionList[indexPath.row]
+      
+    } else {
+      
+      cell.questionLabel.text = defaultQuestion
+      
+    }
     
     cell.widthAnchor.constraint(equalToConstant: collectionView.frame.width).isActive = true
     cell.heightAnchor.constraint(equalToConstant: collectionView.frame.height).isActive = true
