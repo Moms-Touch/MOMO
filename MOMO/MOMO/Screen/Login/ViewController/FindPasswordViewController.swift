@@ -7,28 +7,35 @@
 
 import UIKit
 
+protocol emailable: AnyObject {
+    func convey(with emailAddress: String?)
+}
+
 final class FindPasswordViewController: UIViewController {
     @IBOutlet private weak var emailTextField: MomoBaseTextField!
     @IBOutlet private weak var temporaryPasswordButton: UIButton!
-    @IBOutlet private weak var temporaryPasswordBottomConstraint: NSLayoutConstraint!
     
-    private var bottomConstant: CGFloat = 0.0
-    private var isExistKeyboard = false
+    weak var delegate: emailable?
+    private let networkManager = NetworkManager()
+    private var emailAddress: String = ""{
+        willSet {
+            emailAddress = newValue
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        addKeyboardObserver()
+        hideKeyboard()
     }
     
-    //emailRegEx (x) -> emailRex or ...RegularExpression
-    //emailTest -> emailCheck
-    //함수이름이랑 파라미터명 안맞음 >.<
-    func isValidEmail(testString: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testString)
+    private func isValidEmail(_ address: String) -> Bool {
+        let emailRex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailCheck = NSPredicate(format:"SELF MATCHES %@", emailRex)
+        return emailCheck.evaluate(with: address)
     }
+    
+    
     
     @IBAction func editEmailTextField(_ sender: MomoBaseTextField) {
         guard let text = sender.text else {
@@ -36,12 +43,26 @@ final class FindPasswordViewController: UIViewController {
             return
         }
         
-        if isValidEmail(testString: text) {
+        if isValidEmail(text) {
             temporaryPasswordButton.alpha = 1.0
             temporaryPasswordButton.isUserInteractionEnabled = true
+            emailAddress = text
         } else {
             temporaryPasswordButton.alpha = 0.5
             temporaryPasswordButton.isUserInteractionEnabled = false
+        }
+    }
+    
+    @IBAction func didTapTemporaryPasswordButton(_ sender: UIButton) {
+        networkManager.request(apiModel: PostApi.findPassword(email: emailAddress, contentType: .jsonData)) { [weak self] networkResult in
+            print(networkResult)
+            switch networkResult {
+            case .success:
+                self?.navigationController?.pushViewController(NewPasswordInputViewController.loadFromStoryboard(), animated: true)
+                self?.delegate?.convey(with: self?.emailAddress)
+            case .failure:
+                print("fail")
+            }
         }
     }
     
@@ -50,33 +71,6 @@ final class FindPasswordViewController: UIViewController {
         emailTextField.addLeftPadding(width: 10)
         temporaryPasswordButton.alpha = 0.5
     }
-    
-    private func addKeyboardObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(addKeyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(addKeyboardWiilHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
-    
-    @objc private func addKeyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            if !isExistKeyboard {
-                bottomConstant = temporaryPasswordBottomConstraint.constant
-                temporaryPasswordBottomConstraint.constant = keyboardFrame.cgRectValue.height
-                isExistKeyboard = true
-            }
-        }
-    }
-    
-    @objc private func addKeyboardWiilHide(_ notification: Notification) {
-        if isExistKeyboard {
-            temporaryPasswordBottomConstraint.constant = bottomConstant
-            isExistKeyboard = false
-        }
-    }
 }
+
+extension FindPasswordViewController: StoryboardInstantiable { }

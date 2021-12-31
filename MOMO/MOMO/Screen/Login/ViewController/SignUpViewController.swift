@@ -12,65 +12,55 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var explanationLabel: UILabel!
     @IBOutlet private weak var emailTextField: MomoBaseTextField!
     @IBOutlet private weak var passwordTextField: MomoBaseTextField!
+    @IBOutlet weak var nicknameTextField: MomoBaseTextField!
     @IBOutlet private weak var nextButton: UIButton!
-    @IBOutlet private weak var nextButtonConstraint: NSLayoutConstraint!
-    
-    private var bottomConstant: CGFloat = 0
-    private var isExistKeyboard = false
-    let networkManager = NetworkManager()
-    let parsingManager = ParsingManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        addKeyboardObserver()
+        hideKeyboard()
     }
     
     private func setUpView() {
         emailTextField.setBorderColor(to: Asset.Colors.pink2.color)
         passwordTextField.setBorderColor(to: Asset.Colors.pink2.color)
-      emailTextField.addLeftPadding(width: 10)
+        nicknameTextField.setBorderColor(to: Asset.Colors.pink2.color)
+        emailTextField.addLeftPadding(width: 10)
         passwordTextField.addLeftPadding(width: 10)
+        nicknameTextField.addLeftPadding(width: 10)
     }
     
-    private func addKeyboardObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(addKeyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(addKeyboardWiilHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
-    
-    @objc private func addKeyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            if !isExistKeyboard {
-                bottomConstant = nextButtonConstraint.constant
-                nextButtonConstraint.constant = keyboardFrame.cgRectValue.height
-                isExistKeyboard = true
-            }
-        }
-    }
-    
-    @objc private func addKeyboardWiilHide(_ notification: Notification) {
-        if isExistKeyboard {
-            nextButtonConstraint.constant = bottomConstant
-            isExistKeyboard = false
-        }
-    }
     @IBAction func didTapLocationButton(_ sender: UIButton) {
-        navigationController?.pushViewController(LocationViewController.loadFromStoryboard(), animated: true)
-        let test = PostApi.registProfile(email: "ohsg0272@naver.com", password: "123", nickname: "12", isPregnant: true, hasChild: true, age: 123, location: "seoul", contentType: .jsonData)
-        networkManager.request(apiModel: test) { networkResult  in
-            switch networkResult {
-            case .success(let data):
-                print(data)
-                print(test)
-            case .failure(_):
-                print("error")
+        guard let locationVC = LocationViewController.loadFromStoryboard() as? LocationViewController else {
+            print("locationVC empty")
+            return
+        }
+        locationVC.email = emailTextField.text ?? ""
+        locationVC.password = passwordTextField.text ?? ""
+        locationVC.nickname = nicknameTextField.text ?? ""
+        navigationController?.pushViewController(locationVC, animated: true)
+    }
+    
+    @IBAction func didTapBackButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func didTapDoubleCheck(_ sender: UIButton) {
+        guard let nickname = nicknameTextField.text else {
+            print("닉네임을 입력안함")
+            return
+        }
+        let networkManager = NetworkManager()
+        networkManager.request(apiModel: GetApi.nicknameGet(nickname: nickname)) { [weak self] result in
+            print(result)
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self?.nextButton.alpha = 1
+                    self?.nextButton.isUserInteractionEnabled = true
+                }
+            case .failure:
+                print("닉네임이 중복되었습니다 다시 입력해주세요.")
             }
         }
     }

@@ -26,14 +26,14 @@ enum GetApi: APIable {
   case infoGet(token: String, start: String, end: String)
   case infoDetailGet(token: String, id: Int)
   case likeGet(token: String)
+  case nicknameGet(nickname: String)
 }
 
 extension GetApi {
   
   var contentType: ContentType {
     switch self {
-    case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet,
-        .infoDetailGet:
+    case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet:
       return .noBody
     default:
       return .noBody
@@ -42,7 +42,7 @@ extension GetApi {
   
   var encodingType: EncodingType {
     switch self {
-    case .noticeGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .infoDetailGet:
+    case .noticeGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet:
       return .JSONEncoding
     case .policyGet, .infoGet:
       return .URLEncoding
@@ -73,6 +73,8 @@ extension GetApi {
       return makePathtoURL(path: "/baby")
     case .likeGet:
       return makePathtoURL(path: "/like")
+    case .nicknameGet:
+        return makePathtoURL(path: "/member/checkNickname")
     case .infoDetailGet(_, let id):
       return makePathtoURL(path: "/info/\(id)")
     default:
@@ -89,6 +91,8 @@ extension GetApi {
       return ["keyword": keyword, "location": location, "category": category, "page": page]
     case .infoGet(_, let start, let end):
       return ["start": start, "end": end]
+    case .nicknameGet(let nickname):
+        return ["nickname": nickname]
     default:
       return nil
     }

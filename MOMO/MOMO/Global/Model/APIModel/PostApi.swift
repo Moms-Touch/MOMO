@@ -17,11 +17,17 @@ import Foundation
 
 enum PostApi: APIable {
     case registProfile(email: String, password: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String, contentType: ContentType)
+    case login(email: String, password: String, contentType: ContentType)
+    case findPassword(email: String, contentType: ContentType)
   case postBookmark(token: String, postId: Int, postCategory: Category)
     
     var contentType: ContentType {
         switch self {
         case .registProfile(email: _, password: _, nickname: _, isPregnant: _, hasChild: _, age: _, location: _, contentType: let contentType):
+            return contentType
+        case .login(_, _, contentType: let contentType):
+            return contentType
+        case .findPassword( _, contentType: let contentType):
             return contentType
         case .postBookmark:
           return .jsonData
@@ -38,13 +44,17 @@ enum PostApi: APIable {
   }
     
     var requestType: RequestType {
-      return .post
+        return RequestType.post
     }
     
     var url: String {
         switch self {
         case .registProfile:
-            return makePathtoURL(path: "auth/signup")
+            return makePathtoURL(path: "/auth/signup")
+        case .login(email: let email, password: let password, contentType: let contentType):
+            return makePathtoURL(path: "/auth/login")
+        case .findPassword(email: let email, contentType: let contentType):
+            return makePathtoURL(path: "/auth/password")
         case .postBookmark:
           return makePathtoURL(path: "/bookmark")
         }
@@ -61,6 +71,11 @@ enum PostApi: APIable {
                     "age": age.description,
                     "location": location
                     ]
+        case .login(email: let email, password: let password, contentType: _):
+            return ["email": email,
+                    "password": password]
+        case .findPassword(email: let email, contentType: _):
+            return ["email": email]
         case .postBookmark(_, let postId, let postCategory):
           return ["postId": String(postId), "postCategory": postCategory.rawValue]
         }

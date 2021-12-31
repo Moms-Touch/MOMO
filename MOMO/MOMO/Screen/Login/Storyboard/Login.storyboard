@@ -34,6 +34,9 @@
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapLoginButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4BW-Dy-3kM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afn-T5-O3z">
                                 <rect key="frame" x="40" y="500.5" width="295" height="60"/>
@@ -53,11 +56,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2V-lX-weM">
-                                <rect key="frame" x="125" y="570.5" width="125" height="31"/>
+                                <rect key="frame" x="137" y="570.5" width="101" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="가입없이 둘러보기">
+                                <buttonConfiguration key="configuration" style="plain" title="비밀번호 찾기">
                                     <color key="baseForegroundColor" systemColor="systemGray2Color"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapFindPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xjQ-zt-D7p"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbY-p8-Xzd" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                 <rect key="frame" x="40" y="276.5" width="295" height="47"/>
@@ -150,6 +156,7 @@
                             <constraint firstItem="Afn-T5-O3z" firstAttribute="trailing" secondItem="HbY-p8-Xzd" secondAttribute="trailing" id="xsG-D8-I8Q"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Crj-Rx-v2I"/>
                     <connections>
                         <outlet property="checkBoxLabel" destination="tLB-cb-e8g" id="pB9-04-Rzm"/>
                         <outlet property="checkBoxView" destination="c7R-KX-rXD" id="ASy-uH-9UG"/>
@@ -162,7 +169,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-172.46376811594203" y="83.705357142857139"/>
+            <point key="canvasLocation" x="765.60000000000002" y="83.208395802098963"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="L40-Ig-m3u">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="oow-mG-k2c" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Br7-lE-CKA">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Vmm-u5-bWF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rGj-n3-qXS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-173.59999999999999" y="83.208395802098963"/>
         </scene>
     </scenes>
     <resources>
