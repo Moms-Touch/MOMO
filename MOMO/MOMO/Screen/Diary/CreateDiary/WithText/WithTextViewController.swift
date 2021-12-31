@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OrderedCollections
 
 class WithTextViewController: UIViewController, StoryboardInstantiable {
   
@@ -20,11 +21,14 @@ class WithTextViewController: UIViewController, StoryboardInstantiable {
     return numOfCells == 3 ? true : false
   }
   
-  var numOfCells: Int?
+  var numOfCells: Int!
   
   var defaultQuestion = "자유롭게 일기를 작성해주세요."
   
   var questionManager = DiaryQuestionManager.shared
+  
+//  var qnaList: [String: String] = [:]
+  var qnaList: OrderedDictionary<String, String> = [:]
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -85,8 +89,9 @@ extension WithTextViewController: UICollectionViewDataSource {
     } else {
       
       cell.questionLabel.text = defaultQuestion
-      
     }
+    
+    cell.answerTextView.delegate = self
     
     cell.widthAnchor.constraint(equalToConstant: collectionView.frame.width).isActive = true
     cell.heightAnchor.constraint(equalToConstant: collectionView.frame.height).isActive = true
@@ -115,4 +120,25 @@ extension WithTextViewController {
 
     pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
   }
+}
+
+extension WithTextViewController: UITextViewDelegate {
+  
+  func textViewDidChange(_ textView: UITextView) {
+    
+    /// textView -> contentView -> Cell
+    guard let cell = textView.superview?.superview as? WithTextCollectionViewCell else { return }
+    
+    /// 가이드가 있으면
+    if hasGuide {
+      
+      qnaList.updateValue(textView.text, forKey: cell.questionLabel.text!)
+
+      /// 가이드가 없으면
+    } else {
+      
+      qnaList.updateValue(textView.text, forKey: defaultQuestion)
+    }
+  }
+  
 }

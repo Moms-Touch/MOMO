@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class CreateDiaryViewController: UIViewController, StoryboardInstantiable {
   
@@ -30,13 +31,7 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
     }
   }
   
-  var inputType: DiaryInputType?
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    setUpInputContainerView()
-  }
+  var inputType: DiaryInputType!
   
   private let dateFormatter: DateFormatter = {
     
@@ -45,8 +40,19 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
     return formatter
   }()
   
+  // MARK: - Life Cycle
+  
+  override func viewDidLoad() {
+    
+    super.viewDidLoad()
+    
+    setUpInputContainerView()
+  }
+  
+  // MARK: - Method
+
+  
   /// inputType 에 따라 InPutContainerView 를 채운다
-  ///
   private func setUpInputContainerView() {
     
     var inputVC: UIViewController
@@ -122,17 +128,132 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
     
     /// 감정
     
-    /// 가이드인지 확인
+    var emotion: DiaryEmotion
     
-    /// 대답이 비어있으면 비어있다고 알려주고 return
+    var buttonIndex: Int = -1
     
-    /// 가이드라면 for 문으로 QNA 인스턴스 3개 만들기
-    ///
-    /// 가이드아니면 QNA 인스턴스 1개 만들기
+    for (index, button) in emotionButtons.enumerated() {
+      if button.isSelected {
+        buttonIndex = index
+        break
+      }
+    }
     
-    /// Diary 객체 만들기
+    switch buttonIndex {
+      case 0:
+        emotion = DiaryEmotion.happy
+        break
+      case 1 :
+        emotion = DiaryEmotion.angry
+        break
+      case 2 :
+        emotion = DiaryEmotion.sad
+        break
+      case 3 :
+        emotion = DiaryEmotion.blue
+        break
+      default:
+      fatalError("Invalid Button Index")
+        
+    }
     
-    /// Realm 에 넣기
+    
+    /// 텍스트와 음성에 따라 다르게 처리
+    switch inputType.inputType {
+        
+      case .text:
+        
+        guard let withTextVC = self.children.first as? WithTextViewController else { return }
+        
+        guard let hasGuide = inputType.hasGuide else { return }
+        
+        var qnaList: List<QNA> = List<QNA>()
+        
+        if hasGuide {
+          
+          /// 가이드가 있다면
+          /// 질문은 3개일 것이다
+          guard withTextVC.qnaList.count == 3 else {
+            
+            /// 3가지 질문을 모두 작성하지 않았다면
+            /// 알림 후 종료
+            
+            let alertVC = UIAlertController(title: "다 채워지지 않음", message: "모든 답변을 채워주세요", preferredStyle: .alert)
+            
+            alertVC.addAction(UIAlertAction.okAction)
+            
+            self.present(alertVC, animated: true, completion: nil)
+            
+            return
+          }
+          
+          /// 가이드가 없다면
+          /// 질문은 1개일 것이다
+        } else {
+          
+          guard withTextVC.qnaList.count == 1 else {
+            
+            /// 1가지 질문을 모두 작성하지 않았다면
+            /// 알림 후 종료
+            
+            let alertVC = UIAlertController(title: "다 채워지지 않음", message: "모든 답변을 채워주세요", preferredStyle: .alert)
+            
+            alertVC.addAction(UIAlertAction.okAction)
+            
+            self.present(alertVC, animated: true, completion: nil)
+            
+            return
+          }
+          
+        }
+        
+        for (question, answer) in withTextVC.qnaList {
+          
+          qnaList.append(QNA(question: question, answer: answer))
+          
+        }
+        
+        let diary = Diary(date: Date(), emotion: emotion, contentType: inputType.inputType, qnaList: qnaList)
+        
+        /// DB 에 넣기 ^^..
+        
+        do {
+          
+          let realm = try Realm()
+          
+          try realm.write {
+            realm.add(diary)
+          }
+          
+        } catch {
+          
+          let alertVC = UIAlertController(title: "ERROR", message: error.localizedDescription, preferredStyle: .alert)
+          
+          alertVC.addAction(UIAlertAction.okAction)
+          
+          present(alertVC, animated: true)
+        }
+        
+      case .voice:
+        
+        guard let withVoiceVC = self.children.first as? WithVoiceViewController else { return }
+        
+        break
+      default:
+        fatalError("Invalid Input Type")
+    }
+    
+    let alertVC = UIAlertController(title: "일기 저장 성공!", message: "일기가 잘 저장되었어요.", preferredStyle: .alert)
+    
+    let okAction = UIAlertAction(title: "알겠어요", style: .default) { _ in
+      
+      self.navigationController?.popToRootViewController(animated: true)
+      
+    }
+    
+    alertVC.addAction(okAction)
+    
+    self.present(alertVC, animated: true, completion: nil)
     
   }
   

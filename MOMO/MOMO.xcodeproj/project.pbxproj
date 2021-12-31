@@ -163,6 +163,8 @@
 		DDE31700277F13C90033FEF4 /* WithVoice.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE316FF277F13C90033FEF4 /* WithVoice.xib */; };
 		DDE31702277F1A040033FEF4 /* DiaryQuestionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE31701277F1A030033FEF4 /* DiaryQuestionManager.swift */; };
 		DDE31704277F24140033FEF4 /* WithVoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE31703277F24140033FEF4 /* WithVoiceViewController.swift */; };
+		DDE31706277F3CD10033FEF4 /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE31705277F3CD10033FEF4 /* UIAlertAction+Extension.swift */; };
+		DDE31709277F41E10033FEF4 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = DDE31708277F41E10033FEF4 /* OrderedCollections */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -322,6 +324,7 @@
 		DDE316FF277F13C90033FEF4 /* WithVoice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithVoice.xib; sourceTree = "<group>"; };
 		DDE31701277F1A030033FEF4 /* DiaryQuestionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryQuestionManager.swift; sourceTree = "<group>"; };
 		DDE31703277F24140033FEF4 /* WithVoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceViewController.swift; sourceTree = "<group>"; };
+		DDE31705277F3CD10033FEF4 /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE31709277F41E10033FEF4 /* OrderedCollections in Frameworks */,
 				280BEFC6274B65F100F031A7 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				285209842753307100AB8BAC /* SnapKit in Frameworks */,
 				280BEFC4274B65F100F031A7 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
@@ -479,6 +483,7 @@
 				285209C92753329600AB8BAC /* UITableView+Extension.swift */,
 				288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */,
 				28A9996C277C685C00459D19 /* String+Extension.swift */,
+				DDE31705277F3CD10033FEF4 /* UIAlertAction+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -882,6 +887,7 @@
 				28CA3064275334DA00EF071E /* FSCalendar */,
 				DDE316F3277C94D70033FEF4 /* Realm */,
 				DDE316F5277C94D70033FEF4 /* RealmSwift */,
+				DDE31708277F41E10033FEF4 /* OrderedCollections */,
 			);
 			productName = MOMO;
 			productReference = DD43E8BE270B4A2100699DA1 /* MOMO.app */;
@@ -916,6 +922,7 @@
 				285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */,
 				28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = DD43E8BF270B4A2100699DA1 /* Products */;
 			projectDirPath = "";
@@ -1011,6 +1018,7 @@
 				281D353F27647FD500A128A5 /* BannerCell.swift in Sources */,
 				289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */,
 				75BF0C0B276B489900C2D0C1 /* LoginApi.swift in Sources */,
+				DDE31706277F3CD10033FEF4 /* UIAlertAction+Extension.swift in Sources */,
 				DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */,
 				285209BC2753327200AB8BAC /* FindPasswordViewController.swift in Sources */,
 				285209DF2753329600AB8BAC /* UIImageView+Extension.swift in Sources */,
@@ -1347,6 +1355,14 @@
 				minimumVersion = 10.20.2;
 			};
 		};
+		DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1399,6 +1415,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		DDE31708277F41E10033FEF4 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

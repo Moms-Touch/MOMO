@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WithVoiceViewController: UIViewController {
+class WithVoiceViewController: UIViewController, StoryboardInstantiable {
 
   override func viewDidLoad() {
       super.viewDidLoad()

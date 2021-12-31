@@ -25,10 +25,10 @@ class Diary: Object {
   /// 이 때 contentType 이 음성이라면 음성 파일의 URL path 가 들어 있다.
   @Persisted var qnaList: List<QNA>
   
-  convenience init(date: Date, emotion: Emotion, contentType: DiaryContentType, qnaList: List<QNA>) {
+  convenience init(date: Date, emotion: DiaryEmotion, contentType: DiaryInputType.InputType, qnaList: List<QNA>) {
     
     self.init()
-    self.date = date
+    self.date = date.timeToZero()
     self.emotion = emotion.rawValue
     self.contentType = contentType.rawValue
     self.qnaList = qnaList
@@ -38,6 +38,7 @@ class Diary: Object {
 
 /*
  한 쌍의 질문과 대답을 표현하는 Realm 모델
+ 음성의 경우 answer 에 음성파일의 경로가 들어있다
  */
 class QNA: Object {
   
@@ -55,21 +56,10 @@ class QNA: Object {
  일기 중 감정 상태를 표현하는 열거형
  */
 
-enum Emotion: String {
+enum DiaryEmotion: String {
   
   case happy
   case angry
   case sad
   case blue
-}
-
-/*
- 일기의 작성 방식을 표현하는 열거형
- 텍스트 / 음성
- */
-
-enum DiaryContentType: String {
-  
-  case text
-  case voice
 }

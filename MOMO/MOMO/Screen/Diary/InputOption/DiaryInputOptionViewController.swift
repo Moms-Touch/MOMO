@@ -13,12 +13,12 @@ import UIKit
 // FIXME: Naming 이 중복되어서 마음에 안듬
 struct DiaryInputType {
   
-  enum InputType {
+  enum InputType: String {
     case text
     case voice
   }
   
-  var inputType: InputType?
+  var inputType: InputType
   var hasGuide: Bool?
 }
 
