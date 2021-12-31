@@ -14,6 +14,11 @@ final class LocationViewController: UIViewController {
     @IBOutlet private weak var LocationTextField: MomoBaseTextField!
     @IBOutlet private weak var cityNamePickerView: UIPickerView!
     
+    var email: String = ""
+    var password: String = ""
+    var nickname: String = ""
+    
+    
     private let cityName = ["서울", "대전", "대구", "부산", "광주", "울산", "인천"]
     private var selectedCity = ""           // nil or seoul
     
@@ -44,7 +49,19 @@ final class LocationViewController: UIViewController {
         cityNamePickerView.isHidden = true
     }
     @IBAction func didTapPregnantButton(_ sender: UIButton) {
+        guard let pregnantVC = PregnantStatusViewController.loadFromStoryboard() as? PregnantStatusViewController else {
+                print("pregnantVC empty")
+                return
+            }
+        pregnantVC.email = email
+        pregnantVC.password = password
+        pregnantVC.nickname = nickname
+        pregnantVC.location = LocationTextField.text ?? ""
         navigationController?.pushViewController(PregnantStatusViewController.loadFromStoryboard(), animated: true)
+    }
+    
+    @IBAction func didTapBackButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
 }
 

@@ -14,15 +14,11 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var passwordTextField: MomoBaseTextField!
     @IBOutlet weak var nicknameTextField: MomoBaseTextField!
     @IBOutlet private weak var nextButton: UIButton!
-    @IBOutlet private weak var nextButtonConstraint: NSLayoutConstraint!
-    
-    private var bottomConstant: CGFloat = 0
-    private var isExistKeyboard = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        addKeyboardObserver()
+        hideKeyboard()
     }
     
     private func setUpView() {
@@ -34,37 +30,39 @@ final class SignUpViewController: UIViewController {
         nicknameTextField.addLeftPadding(width: 10)
     }
     
-    private func addKeyboardObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(addKeyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(addKeyboardWiilHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
+    @IBAction func didTapLocationButton(_ sender: UIButton) {
+        guard let locationVC = LocationViewController.loadFromStoryboard() as? LocationViewController else {
+            print("locationVC empty")
+            return
+        }
+        locationVC.email = emailTextField.text ?? ""
+        locationVC.password = passwordTextField.text ?? ""
+        locationVC.nickname = nicknameTextField.text ?? ""
+        navigationController?.pushViewController(locationVC, animated: true)
     }
     
-    @objc private func addKeyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            if !isExistKeyboard {
-                bottomConstant = nextButtonConstraint.constant
-                nextButtonConstraint.constant = keyboardFrame.cgRectValue.height
-                isExistKeyboard = true
+    @IBAction func didTapBackButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func didTapDoubleCheck(_ sender: UIButton) {
+        guard let nickname = nicknameTextField.text else {
+            print("닉네임을 입력안함")
+            return
+        }
+        let networkManager = NetworkManager()
+        networkManager.request(apiModel: GetApi.nicknameGet(nickname: nickname)) { [weak self] result in
+            print(result)
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self?.nextButton.alpha = 1
+                    self?.nextButton.isUserInteractionEnabled = true
+                }
+            case .failure:
+                print("닉네임이 중복되었습니다 다시 입력해주세요.")
             }
         }
-    }
-    
-    @objc private func addKeyboardWiilHide(_ notification: Notification) {
-        if isExistKeyboard {
-            nextButtonConstraint.constant = bottomConstant
-            isExistKeyboard = false
-        }
-    }
-    
-    @IBAction func didTapLocationButton(_ sender: UIButton) {
-        navigationController?.pushViewController(LocationViewController.loadFromStoryboard(), animated: true)
     }
 }
 

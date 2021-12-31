@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-final class LoginViewController: UIViewController {
+final class LoginViewController: ViewController {
     
     @IBOutlet private weak var idTextField: MomoBaseTextField!
     @IBOutlet private weak var passwordTextField: MomoBaseTextField!
@@ -30,6 +30,7 @@ final class LoginViewController: UIViewController {
         idTextField.addLeftPadding(width: 10)
         passwordTextField.addLeftPadding(width: 10)
         checkBoxView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(checkBoxClicked)))
+        hideKeyboard()
     }
     
     @objc func checkBoxClicked() {
@@ -100,8 +101,32 @@ final class LoginViewController: UIViewController {
         let loginData = PostApi.login(email: id, password: password, contentType: .jsonData)
         networkManager.request(apiModel: loginData) { [weak self] networkResult in
             switch networkResult {
-            case .success:
-                self?.moveToHomeMainView()
+            case .success(let data):
+                let parsingManager = ParsingManager()
+                parsingManager.judgeGenericResponse(data: data, model: LoginData.self) { body in
+                    let newAccessToken = body.accesstoken
+                    let userId = body.id
+                    if KeyChainService.shared.loadFromKeychain(account: "accessToken") != nil {
+                        KeyChainService.shared.deleteFromKeyChain(account: "accessToken")
+                    }
+                    KeyChainService.shared.saveInKeychain(account: "accessToken", value: newAccessToken)
+                    UserManager.shared.userId = userId
+                    UserManager.shared.token = newAccessToken
+                    self?.networkManager.request(apiModel: GetApi.userGet(token: newAccessToken)) { result in
+                        switch result {
+                        case .success(let data):
+                            parsingManager.judgeGenericResponse(data: data, model: UserData.self) { body in
+                                UserManager.shared.userInfo = body
+                                DispatchQueue.main.async { [weak self] in
+                                    self?.moveToHomeMainView()
+                                }
+                            }
+                        case .failure(_):
+                            print("error in userdata get에서")
+                            return
+                        }
+                    }
+                }
             case .failure:
                 self?.failLogin()
             }

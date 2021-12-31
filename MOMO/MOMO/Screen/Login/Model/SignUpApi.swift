@@ -11,7 +11,7 @@ struct SignUpApi {
     var email: String
     var password: String
     var nickname: String
-    var isPregnant: String
+    var isPregnant: Bool
     var hasChild: Bool
     var age: Int
     var location: String

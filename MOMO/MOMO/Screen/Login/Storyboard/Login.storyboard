@@ -156,6 +156,7 @@
                             <constraint firstItem="Afn-T5-O3z" firstAttribute="trailing" secondItem="HbY-p8-Xzd" secondAttribute="trailing" id="xsG-D8-I8Q"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Crj-Rx-v2I"/>
                     <connections>
                         <outlet property="checkBoxLabel" destination="tLB-cb-e8g" id="pB9-04-Rzm"/>
                         <outlet property="checkBoxView" destination="c7R-KX-rXD" id="ASy-uH-9UG"/>
@@ -168,7 +169,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-172.46376811594203" y="83.705357142857139"/>
+            <point key="canvasLocation" x="765.60000000000002" y="83.208395802098963"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="L40-Ig-m3u">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="oow-mG-k2c" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Br7-lE-CKA">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Vmm-u5-bWF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rGj-n3-qXS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-173.59999999999999" y="83.208395802098963"/>
         </scene>
     </scenes>
     <resources>
