@@ -69,12 +69,10 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
         
       case .voice:
         
-//        inputVC =
-        
-        return
+        inputVC = WithVoiceViewController.loadFromStoryboard()
         
       default:
-        return
+        fatalError("Invalid Input Type")
     }
 
     addChild(inputVC)
@@ -91,7 +89,6 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
     ])
     
     inputVC.didMove(toParent: self)
-    
   }
   
   
@@ -238,7 +235,11 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
         
         guard let withVoiceVC = self.children.first as? WithVoiceViewController else { return }
         
+        
+        
+        
         break
+        
       default:
         fatalError("Invalid Input Type")
     }

@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>일기 음성 녹음을 위해 필요합니다</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>hello</string>
 	<key>NSCameraUsageDescription</key>
