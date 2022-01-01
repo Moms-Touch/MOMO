@@ -218,7 +218,11 @@ extension PolicyMainViewController {
         }
       case .failure(let error):
         DispatchQueue.main.async { [weak self] in
-          self?.view.makeToast("결과가 없습니다.🥲")
+          if error as! NetworkError == NetworkError.failResponse {
+            self?.view.makeToast("결과가 없습니다.🥲")
+          } else {
+            self?.view.makeToast("인터넷을 확인해주세요!🥲")
+          }
           self?.clearSearch()
           self?.tableView.reloadData()
         }
@@ -248,7 +252,11 @@ extension PolicyMainViewController {
         }
       case .failure(let error):
         DispatchQueue.main.async { [weak self] in
-          self?.view.makeToast("결과가 없습니다.🥲")
+          if error as! NetworkError == NetworkError.failResponse {
+            self?.view.makeToast("결과가 없습니다.🥲")
+          } else {
+            self?.view.makeToast("인터넷을 확인해주세요!🥲")
+          }
           self?.clearSearch()
           self?.tableView.reloadData()
         }
