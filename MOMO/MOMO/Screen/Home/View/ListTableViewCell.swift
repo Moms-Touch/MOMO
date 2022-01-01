@@ -23,7 +23,7 @@ class ListTableViewCell: UITableViewCell, NibLoadableView, simpleContentContaine
         }
       }
       organizationLabel.text = data?.author ?? "모모관리자"
-      dateLabel.text = data?.createdAt
+      dateLabel.text = (data?.createdAt ?? "").trimStringDate()
       guard let thumbnailImageUrl = data?.thumbnailImageUrl else {
         thumbnailImageView.image = UIImage(named: "Logo")!
         return

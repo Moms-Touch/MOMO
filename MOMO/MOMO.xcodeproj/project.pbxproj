@@ -72,6 +72,7 @@
 		285209F52753329600AB8BAC /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DB2753329600AB8BAC /* StorageService.swift */; };
 		285209F62753329600AB8BAC /* InfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DD2753329600AB8BAC /* InfoData.swift */; };
 		286DDE192771ADC3003E9563 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286DDE182771ADC3003E9563 /* GenericResponse.swift */; };
+		2879A9BA27800E3D00A0BE21 /* PolicyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2879A9B927800E3D00A0BE21 /* PolicyData.swift */; };
 		288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288ED75927427CC200C5178D /* BookmarkList.storyboard */; };
 		288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED75B27427CD000C5178D /* BookmarkListViewController.swift */; };
 		288ED76027427D5800C5178D /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288ED75E27427D5800C5178D /* ListTableViewCell.swift */; };
@@ -232,6 +233,7 @@
 		285209DB2753329600AB8BAC /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		285209DD2753329600AB8BAC /* InfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoData.swift; sourceTree = "<group>"; };
 		286DDE182771ADC3003E9563 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		2879A9B927800E3D00A0BE21 /* PolicyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyData.swift; sourceTree = "<group>"; };
 		288ED75927427CC200C5178D /* BookmarkList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarkList.storyboard; sourceTree = "<group>"; };
 		288ED75B27427CD000C5178D /* BookmarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewController.swift; sourceTree = "<group>"; };
 		288ED75E27427D5800C5178D /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 				28A99960277882F600459D19 /* Category.swift */,
 				28A99962277AB78500459D19 /* LoginData.swift */,
 				28A99966277AE5BB00459D19 /* UserData.swift */,
+				2879A9B927800E3D00A0BE21 /* PolicyData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1133,6 +1136,7 @@
 				288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */,
 				28A9996D277C685C00459D19 /* String+Extension.swift in Sources */,
 				285209BE2753327200AB8BAC /* PregnantStatusViewController.swift in Sources */,
+				2879A9BA27800E3D00A0BE21 /* PolicyData.swift in Sources */,
 				28A99961277882F600459D19 /* Category.swift in Sources */,
 				28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */,
 				28B192C22769685C00BAF93B /* KeyChainService.swift in Sources */,

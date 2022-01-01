@@ -35,7 +35,7 @@ extension PolicyData {
     id = (try? container.decode(Int.self, forKey: .id)) ?? -1
     title = (try? container.decode(String.self, forKey: .title)) ?? ""
     author = try? container.decode(String?.self, forKey: .author)
-    location = (try? container.decode(String.self, forKey: .location)) ?? "Seoul"
+    location = (try? container.decode(String.self, forKey: .location)) ?? "seoul"
     filter = (try? container.decode([Filter].self, forKey: .filter)) ?? []
     thumbnailImageUrl = try? container.decode(String?.self, forKey: .thumbnailImageUrl)
     url = try? container.decode(String?.self, forKey: .url)
@@ -53,4 +53,20 @@ enum Filter: String, Codable {
   case economy
   case medical
   case home
+  case unknown
+  
+  static func getCase(korean: String) -> Filter {
+    switch korean {
+    case "법률":
+      return Filter.law
+    case "경제":
+      return Filter.economy
+    case "의료":
+      return Filter.medical
+    case "주거":
+      return Filter.home
+    default:
+      return Filter.unknown
+    }
+  }
 }
