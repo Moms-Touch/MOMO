@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class PolicyMainViewController: ViewController, UITextFieldDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var searchFieldBackView: UIView!
-  @IBOutlet weak var searchField: UITextField!
+  @IBOutlet weak var searchField: UITextField! {
+    didSet {
+      searchField.delegate = self
+    }
+  }
   @IBOutlet var filterButtons: [UIButton]!
   @IBOutlet weak var locationTextField: UITextField! {
     didSet {
@@ -119,11 +124,11 @@ extension PolicyMainViewController: StoryboardInstantiable {}
 
 extension PolicyMainViewController: TableViewGappable {
   var headerHeight: CGFloat {
-      return gapBWTCell
+    return gapBWTCell
   }
   
   var footerHeight: CGFloat {
-      return gapBWTCell
+    return gapBWTCell
   }
 }
 
@@ -208,17 +213,20 @@ extension PolicyMainViewController {
             }
             self.datasource += body
             self.tableView.reloadData()
+            self.fetchMore = true
           }
         }
       case .failure(let error):
-        print(error)
+        DispatchQueue.main.async { [weak self] in
+          self?.clearSearch()
+          self?.tableView.reloadData()
+        }
       }
     }
   }
   
   private func getPolicyData(category: String, page: Int) {
     let category = category.components(separatedBy: " ").last!
-    print(Filter.getCase(korean: category))
     guard let token = UserManager.shared.token else {return}
     networkManager.request(apiModel: GetApi.policyGet(token: token, keyword: searchField.text, location: locationTextField.text, category: Filter.getCase(korean: category), page: page)) { (result) in
       switch result {
@@ -234,10 +242,14 @@ extension PolicyMainViewController {
             }
             self.datasource += body
             self.tableView.reloadData()
+            self.fetchMore = true
           }
         }
       case .failure(let error):
-        print(error)
+        DispatchQueue.main.async { [weak self] in
+          self?.clearSearch()
+          self?.tableView.reloadData()
+        }
       }
     }
   }
@@ -290,5 +302,16 @@ extension PolicyMainViewController: UIPickerViewDataSource, UIPickerViewDelegate
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     locationTextField.text = cityName[row]
+  }
+}
+
+extension PolicyMainViewController {
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == searchField {
+      clearSearch()
+      getPolicy(page: 1)
+    }
+    return true
   }
 }
