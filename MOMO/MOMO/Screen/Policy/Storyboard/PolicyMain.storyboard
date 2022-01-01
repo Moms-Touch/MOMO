@@ -55,8 +55,8 @@
                                             <constraint firstItem="e4G-9B-tRV" firstAttribute="centerY" secondItem="6f5-Ms-yBl" secondAttribute="centerY" id="y3c-gS-bFt"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="송파구" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="m1Y-K9-mPf">
-                                        <rect key="frame" x="174.5" y="29.5" width="95" height="25.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="서울" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="m1Y-K9-mPf">
+                                        <rect key="frame" x="189.5" y="29.5" width="95" height="25.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="95" id="BoR-tm-UId"/>
                                         </constraints>
@@ -122,7 +122,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="m1Y-K9-mPf" firstAttribute="centerX" secondItem="L0w-tf-l7Z" secondAttribute="centerX" constant="15" id="0jl-rN-h4Y"/>
+                                    <constraint firstItem="m1Y-K9-mPf" firstAttribute="centerX" secondItem="L0w-tf-l7Z" secondAttribute="centerX" constant="30" id="0jl-rN-h4Y"/>
                                     <constraint firstItem="cQW-ux-i05" firstAttribute="leading" secondItem="L0w-tf-l7Z" secondAttribute="leading" constant="35" id="1OE-Ik-KYl"/>
                                     <constraint firstItem="MMO-Bg-kfc" firstAttribute="top" secondItem="L0w-tf-l7Z" secondAttribute="centerY" multiplier="0.85" id="8ms-rf-xEw"/>
                                     <constraint firstItem="g5L-lL-EKN" firstAttribute="top" secondItem="L0w-tf-l7Z" secondAttribute="top" constant="30" id="JYR-CH-l6r"/>
