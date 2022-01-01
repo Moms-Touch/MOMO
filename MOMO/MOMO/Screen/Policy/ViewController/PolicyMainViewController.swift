@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import AudioToolbox
+import Toast
 
 class PolicyMainViewController: ViewController, UITextFieldDelegate {
   
@@ -218,6 +218,7 @@ extension PolicyMainViewController {
         }
       case .failure(let error):
         DispatchQueue.main.async { [weak self] in
+          self?.view.makeToast("결과가 없습니다.🥲")
           self?.clearSearch()
           self?.tableView.reloadData()
         }
@@ -247,6 +248,7 @@ extension PolicyMainViewController {
         }
       case .failure(let error):
         DispatchQueue.main.async { [weak self] in
+          self?.view.makeToast("결과가 없습니다.🥲")
           self?.clearSearch()
           self?.tableView.reloadData()
         }
@@ -312,6 +314,7 @@ extension PolicyMainViewController {
       clearSearch()
       getPolicy(page: 1)
     }
+    textField.resignFirstResponder()
     return true
   }
 }
