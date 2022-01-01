@@ -53,4 +53,20 @@ enum Filter: String, Codable {
   case economy
   case medical
   case home
+  case unknown
+  
+  static func getCase(korean: String) -> Filter {
+    switch korean {
+    case "법률":
+      return Filter.law
+    case "경제":
+      return Filter.economy
+    case "의료":
+      return Filter.medical
+    case "주거":
+      return Filter.home
+    default:
+      return Filter.unknown
+    }
+  }
 }

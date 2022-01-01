@@ -22,7 +22,7 @@ enum GetApi: APIable {
   case communityGet
   case communityDetailGet
   case noticeGet
-  case policyGet(token: String, keyword: String?, location: String?, category: String?, page: String?)
+  case policyGet(token: String, keyword: String?, location: String?, category: Filter?, page: Int)
   case infoGet(token: String, start: String, end: String)
   case infoDetailGet(token: String, id: Int)
   case likeGet(token: String)
@@ -33,7 +33,7 @@ extension GetApi {
   
   var contentType: ContentType {
     switch self {
-    case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet:
+    case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet, .policyGet:
       return .noBody
     default:
       return .noBody
@@ -88,7 +88,7 @@ extension GetApi {
         .infoDetailGet(_, _):
       return nil
     case .policyGet(_, let keyword, let location, let category, let page):
-      return ["keyword": keyword, "location": location, "category": category, "page": page]
+      return ["keyword": keyword, "location": location, "category": category?.rawValue, "page": String(page)]
     case .infoGet(_, let start, let end):
       return ["start": start, "end": end]
     case .nicknameGet(let nickname):
