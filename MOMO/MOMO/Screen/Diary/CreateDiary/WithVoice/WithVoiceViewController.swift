@@ -8,13 +8,15 @@
 import UIKit
 import AVFoundation
 
-class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
+final class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
   
   @IBOutlet weak var recordButton: UIButton!
   
   var recordingSession: AVAudioSession!
   
   var audioRecorder: AVAudioRecorder!
+  
+  let voiceRecordsDirectoryName: String = "VoiceRecords"
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,57 +34,61 @@ class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
               
                 if allowed {
                   
-//                    self.loadRecordingUI()
-                  
                 } else {
                   
                   // failed to record!
                   
-                  //You should replace the
-                  // failed to record! comment with a meaningful error alert to your user, or perhaps an on-screen label.
+                  let alertVC = UIAlertController(title: "에러 발생", message: "마이크 사용을 허가해 주세요.", preferredStyle: .alert)
+                  
+                  alertVC.addAction(UIAlertAction.okAction)
+                  
+                  present(alertVC, animated: true)
                   
                 }
             }
         }
     } catch {
+      
         // failed to record!
+      
+      let alertVC = UIAlertController(title: "에러 발생", message: "잠시 뒤에 다시 시도해 주세요", preferredStyle: .alert)
+      
+      alertVC.addAction(UIAlertAction.okAction)
+      
+      present(alertVC, animated: true)
     }
   }
   
   @IBAction func didTapRecordButton(_ sender: UIButton) {
     
+    /// 녹음이 시작되지 않았다면 nil 이다
     if audioRecorder == nil {
       
         startRecording()
       
     } else {
       
-      finishRecording(success: true)
-      
-//      let alertVC = UIAlertController(title: "녹음 종료", message: "녹음을 끝내실건가요?", preferredStyle: .alert)
-//
-//      let okAction = UIAlertAction(title: "네", style: .default) { _ in
-//        self.finishRecording(success: true)
-//      }
-//
-//      let pauseAction = UIAlertAction(title: "일시 정지", style: .default) { _ in
-//
-//        self.pauseRecording()
-//      }
-//
-//      alertVC.addAction(okAction)
-//
-//      alertVC.addAction(pauseAction)
-//
-//      present(alertVC, animated: true, completion: nil)
-
+      if audioRecorder.isRecording {
+        
+        pauseRecording()
+      } else {
+        
+        startRecording()
+      }
     }
-    
   }
   
+  @IBAction func didTapFinishButton(_ sender: Any) {
+    
+    guard let _ = audioRecorder else { return }
+    
+    finishRecording(success: true)
+    
+  }
   func startRecording() {
     
-      let audioFilename = getDocumentsDirectory().appendingPathComponent("0시로 맞춘 데이트 가 들어가야함.m4a")
+    let audioFilename = getVoiceDirectory()
+      .appendingPathComponent("\(Date().timeToZero()).m4a")
 
       let settings = [
           AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -96,7 +102,7 @@ class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
           audioRecorder.delegate = self
           audioRecorder.record()
         
-          recordButton.setImage(pauseImage, for: .selected)
+          recordButton.setImage(stopImage, for: .selected)
           recordButton.isSelected = true
         
       } catch {
@@ -109,11 +115,37 @@ class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
       return paths[0]
   }
   
+  /// 녹음 저장 경로가 없다면 새로 만든다
+  private func makeVoiceDirectoryIfNotExists() {
+    
+    let docURL = getDocumentsDirectory()
+    
+    let dataPath = docURL.appendingPathComponent(voiceRecordsDirectoryName)
+    
+    if !FileManager.default.fileExists(atPath: dataPath.path) {
+        do {
+            try FileManager.default.createDirectory(atPath: dataPath.path, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+  }
+  
+  /// 녹음 저장 경로를 가져온다
+  private func getVoiceDirectory() -> URL {
+    
+    makeVoiceDirectoryIfNotExists()
+    
+    let docURL = getDocumentsDirectory()
+    
+    return docURL.appendingPathComponent(voiceRecordsDirectoryName, isDirectory: true)
+  }
+  
   func pauseRecording() {
     
     audioRecorder.pause()
     
-    recordButton.setImage(pauseImage, for: .selected)
+    recordButton.setImage(playImage, for: .selected)
   }
   
   func finishRecording(success: Bool) {
@@ -121,16 +153,8 @@ class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
       audioRecorder.stop()
       audioRecorder = nil
     
-    recordButton.isSelected = false
+      recordButton.isSelected = false
 
-//      if success {
-////          recordButton.setTitle("Tap to Re-record", for: .normal)
-//        recor
-//      } else {
-//          recordButton.setTitle("Tap to Record", for: .normal)
-//          // recording failed :(
-//      }
-    
   }
   
 }
@@ -145,7 +169,7 @@ extension WithVoiceViewController: AVAudioRecorderDelegate {
 
 extension WithVoiceViewController {
   
-  var recordImage: UIImage {
+  var playImage: UIImage {
     
     return UIImage(systemName: "record.circle")!
   }
