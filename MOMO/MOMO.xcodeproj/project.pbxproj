@@ -171,6 +171,8 @@
 		DDE3170B277F4F0E0033FEF4 /* QnAView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE3170A277F4F0E0033FEF4 /* QnAView.xib */; };
 		DDE3170D277F57500033FEF4 /* QnAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3170C277F57500033FEF4 /* QnAView.swift */; };
 		DDE3170F27802A320033FEF4 /* WithVoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDE3170E27802A310033FEF4 /* WithVoice.storyboard */; };
+		DDE317112781A08D0033FEF4 /* VoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE317102781A08D0033FEF4 /* VoiceView.xib */; };
+		DDE317142781A1700033FEF4 /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE317132781A1700033FEF4 /* VoiceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -336,6 +338,8 @@
 		DDE3170A277F4F0E0033FEF4 /* QnAView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QnAView.xib; sourceTree = "<group>"; };
 		DDE3170C277F57500033FEF4 /* QnAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnAView.swift; sourceTree = "<group>"; };
 		DDE3170E27802A310033FEF4 /* WithVoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WithVoice.storyboard; sourceTree = "<group>"; };
+		DDE317102781A08D0033FEF4 /* VoiceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceView.xib; sourceTree = "<group>"; };
+		DDE317132781A1700033FEF4 /* VoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -867,10 +871,9 @@
 		DDE316F9277EF5130033FEF4 /* ReadDiary */ = {
 			isa = PBXGroup;
 			children = (
+				DDE317122781A1530033FEF4 /* View */,
 				DDE316FA277EF5270033FEF4 /* ReadDiary.storyboard */,
 				DDE316FC277EF53B0033FEF4 /* ReadDiaryViewController.swift */,
-				DDE3170A277F4F0E0033FEF4 /* QnAView.xib */,
-				DDE3170C277F57500033FEF4 /* QnAView.swift */,
 			);
 			path = ReadDiary;
 			sourceTree = "<group>";
@@ -882,6 +885,17 @@
 				DDE3170E27802A310033FEF4 /* WithVoice.storyboard */,
 			);
 			path = WithVoice;
+			sourceTree = "<group>";
+		};
+		DDE317122781A1530033FEF4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDE3170A277F4F0E0033FEF4 /* QnAView.xib */,
+				DDE317132781A1700033FEF4 /* VoiceView.swift */,
+				DDE3170C277F57500033FEF4 /* QnAView.swift */,
+				DDE317102781A08D0033FEF4 /* VoiceView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -988,6 +1002,7 @@
 				2852099F2753325F00AB8BAC /* WithText.storyboard in Resources */,
 				759A7319277890ED00E549F6 /* Detail.storyboard in Resources */,
 				28CA30782753357300EF071E /* CreateQuestion.storyboard in Resources */,
+				DDE317112781A08D0033FEF4 /* VoiceView.xib in Resources */,
 				281D35412764B17A00A128A5 /* MyInfoEdit.storyboard in Resources */,
 				280BEFBB274B319500F031A7 /* PolicyBookmark.storyboard in Resources */,
 				759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */,
@@ -1087,6 +1102,7 @@
 				28CA30732753357300EF071E /* QuestionsMainViewController.swift in Sources */,
 				DDE316FD277EF53B0033FEF4 /* ReadDiaryViewController.swift in Sources */,
 				285209A02753325F00AB8BAC /* WithTextCollectionViewCell.swift in Sources */,
+				DDE317142781A1700033FEF4 /* VoiceView.swift in Sources */,
 				285209BD2753327200AB8BAC /* LocationViewController.swift in Sources */,
 				288EFD0B27548476000D1617 /* CommunityMainViewController.swift in Sources */,
 				288ED76727428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift in Sources */,

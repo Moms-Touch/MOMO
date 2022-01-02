@@ -8,6 +8,12 @@
 import UIKit
 import AVFoundation
 
+
+
+/// 참고
+/* https://www.hackingwithswift.com/example-code/media/how-to-record-audio-using-avaudiorecorder
+*/
+
 final class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
   
   @IBOutlet weak var recordButton: UIButton!
@@ -85,7 +91,8 @@ final class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
     finishRecording(success: true)
     
   }
-  func startRecording() {
+  
+  private func startRecording() {
     
     let audioFilename = getVoiceDirectory()
       .appendingPathComponent("\(Date().timeToZero()).m4a")
@@ -110,7 +117,7 @@ final class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
       }
   }
   
-  func getDocumentsDirectory() -> URL {
+  private func getDocumentsDirectory() -> URL {
       let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
       return paths[0]
   }

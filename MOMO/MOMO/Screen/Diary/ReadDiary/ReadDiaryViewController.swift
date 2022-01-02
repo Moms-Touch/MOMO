@@ -8,6 +8,8 @@
 import UIKit
 import RealmSwift
 import FSCalendar
+import AVFoundation
+
 
 class ReadDiaryViewController: UIViewController, StoryboardInstantiable {
   
@@ -31,6 +33,10 @@ class ReadDiaryViewController: UIViewController, StoryboardInstantiable {
     }
   }
   
+  private var player: AVQueuePlayer?
+  
+  var observation: NSKeyValueObservation?
+  
   private let dateFormatter: DateFormatter = {
     
     let formatter = DateFormatter()
@@ -38,6 +44,7 @@ class ReadDiaryViewController: UIViewController, StoryboardInstantiable {
     return formatter
   }()
   
+  // MARK: - Life Cycle
   /// 1회성
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -90,9 +97,62 @@ class ReadDiaryViewController: UIViewController, StoryboardInstantiable {
         }
         
       case .voice:
-        break
+        
+        /// 음원이 경로에 있는지 확인
+        ///
+        // FIXME: AVPlayerItem 을 옵셔널 변수로 가지고 있으면
+        // line:113 에서의 코드 중복을 줄일 수 있을 것 같다.
+        let dataURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("VoiceRecords", isDirectory: true).appendingPathComponent("\(diary.date)").appendingPathExtension("m4a")
+        
+        guard FileManager.default.fileExists(atPath: dataURL.path) else { return }
+        
+        
+        /// 플레이어 생성
+        
+        player = AVQueuePlayer(url: dataURL)
+        
+        observation = player?.observe(\.currentItem, options: [.new], changeHandler: { [unowned self] object, change in
+          
+          let dataURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("VoiceRecords", isDirectory: true).appendingPathComponent("\(self.diary.date)").appendingPathExtension("m4a")
+          
+          guard FileManager.default.fileExists(atPath: dataURL.path) else { return }
+          
+          self.player?.insert(AVPlayerItem.init(url: dataURL), after: nil)
+          
+          self.player?.pause()
+          
+          (self.qnaContainerStackView.arrangedSubviews.last as? VoiceView)?.playButton.isSelected = false
+        })
+        
+        let voiceView = VoiceView.make()
+        
+        voiceView.playButton.addTarget(self, action: #selector(didTapPlayBuntton), for: .touchUpInside)
+        
+        qnaContainerStackView.addArrangedSubview(voiceView)
     }
     
+  }
+  
+  @objc func didTapPlayBuntton(_ sender: UIButton) {
+    
+    guard let player = player else {
+      return
+    }
+    
+    if sender.isSelected {
+      
+    /// 음성 중지
+      player.pause()
+      
+    } else {
+      
+    /// 음성 실행
+      player.play()
+      
+      
+    }
+    
+    sender.isSelected.toggle()
   }
   
   @IBAction func deleteDiary(_ sender: UIButton) {
