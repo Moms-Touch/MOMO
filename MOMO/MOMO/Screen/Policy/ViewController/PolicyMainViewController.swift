@@ -152,6 +152,16 @@ extension PolicyMainViewController: UITableViewDataSource, UITableViewDelegate {
     
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    print("select cell")
+    guard let detailVC = storyboard?.instantiateViewController(withIdentifier: ListTableViewCell.identifier) as? DetailViewController else {
+      print("detailVC is nil")
+      return
+    }
+    detailVC.configure(policyData: datasource[indexPath.row])
+    navigationController?.pushViewController(detailVC, animated: true)
+  }
 }
 
 //MARK: - 무한스크롤

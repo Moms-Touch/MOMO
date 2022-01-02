@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -32,7 +32,7 @@
                                         <state key="normal" image="bookmark_big"/>
                                         <state key="selected" image="bookmarkPinkLine"/>
                                         <connections>
-                                            <action selector="didTapBookmarkButton:" destination="w5o-jG-zaa" eventType="touchUpInside" id="EZC-di-sNz"/>
+                                            <action selector="didTapBookmarkButton:" destination="w5o-jG-zaa" eventType="touchUpInside" id="eLr-3p-oqd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDQ-yb-84J">
@@ -55,6 +55,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="didTapDirectToLink:" destination="w5o-jG-zaa" eventType="touchUpInside" id="N80-VZ-Jg1"/>
+                                            <action selector="didTapShorcutButton:" destination="w5o-jG-zaa" eventType="touchUpInside" id="sqI-Fw-zNM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -74,7 +75,7 @@
                                         <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="chevron.left" catalog="system"/>
                                         <connections>
-                                            <action selector="didTapBackButton:" destination="w5o-jG-zaa" eventType="touchUpInside" id="kIB-Ga-kHh"/>
+                                            <action selector="didTapBackButton:" destination="w5o-jG-zaa" eventType="touchUpInside" id="2US-He-J9O"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fj4-Cm-0rB">
@@ -110,7 +111,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qxp-d5-bbO">
-                                        <rect key="frame" x="0.0" y="31.999999999999996" width="374" height="14.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="32" width="374" height="14.333333333333332"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="주관: 미혼모 네트워크 협회 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssK-e4-ghD">
                                                 <rect key="frame" x="0.0" y="0.0" width="290.33333333333331" height="14.333333333333334"/>
@@ -180,7 +181,7 @@
     <resources>
         <image name="bookmarkPinkLine" width="38" height="38"/>
         <image name="bookmark_big" width="38" height="38"/>
-        <image name="chevron.left" catalog="system" width="32" height="32"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
