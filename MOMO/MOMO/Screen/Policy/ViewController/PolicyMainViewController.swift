@@ -10,7 +10,11 @@ import Toast
 
 class PolicyMainViewController: ViewController, UITextFieldDelegate {
   
-  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var tableView: UITableView! {
+    didSet {
+      tableView.allowsSelection = true
+    }
+  }
   @IBOutlet weak var searchFieldBackView: UIView!
   @IBOutlet weak var searchField: UITextField! {
     didSet {
@@ -48,6 +52,7 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
     addToolbar()
     getPolicyData(page: 1)
   }
+
   
   private func setUpTableView() {
     
@@ -152,6 +157,12 @@ extension PolicyMainViewController: UITableViewDataSource, UITableViewDelegate {
     
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    print(indexPath.section)
+  }
+  
+ 
 }
 
 //MARK: - 무한스크롤

@@ -87,7 +87,7 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let infoId = datasource[indexPath.row].id
+    let infoId = datasource[indexPath.section].id
     guard let token = UserManager.shared.token else {return}
     networkManager.request(apiModel: GetApi.infoDetailGet(token: token, id: infoId)) { (result) in
       switch result {
