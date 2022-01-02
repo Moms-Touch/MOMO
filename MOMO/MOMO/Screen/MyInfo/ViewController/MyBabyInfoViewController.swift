@@ -84,14 +84,22 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
     guard let babyViewModel = babyViewModel else {
       return
     }
-    guard let name = myBabyInfoTextFields[0].text else {return}
+    guard let name = myBabyInfoTextFields[0].text else {
+      self.view.makeToast("아이 이름을 입력해주세요!")
+      return}
     let birth: String?
-    if myBabyInfoTextFields[1].text == "" {
+    if myBabyInfoTextFields[1].text == "" || myBabyInfoTextFields[1].text == nil {
       birth = nil
     } else {
-      birth = myBabyInfoTextFields[1].text
+      birth = myBabyInfoTextFields[1].text!
     }
-    babyViewModel.updateBaby(token: token, name: name, birthday: birth, imageUrl: imageUrl)
+    if babyViewModel.model != nil {
+      babyViewModel.updateBaby(token: token, name: name, birthday: birth, imageUrl: imageUrl)
+    } else {
+      babyViewModel.createBaby(token: token, name: name, birthday: birth, imageUrl: imageUrl)
+    }
+    
+    
     self.navigationController?.popViewController(animated: true)
   }
     

@@ -16,23 +16,26 @@
 import Foundation
 
 enum PostApi: APIable {
-    case registProfile(email: String, password: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String, contentType: ContentType)
-    case login(email: String, password: String, contentType: ContentType)
-    case findPassword(email: String, contentType: ContentType)
+  case registProfile(email: String, password: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String, contentType: ContentType)
+  case login(email: String, password: String, contentType: ContentType)
+  case findPassword(email: String, contentType: ContentType)
   case postBookmark(token: String, postId: Int, postCategory: Category)
-    
-    var contentType: ContentType {
-        switch self {
-        case .registProfile(email: _, password: _, nickname: _, isPregnant: _, hasChild: _, age: _, location: _, contentType: let contentType):
-            return contentType
-        case .login(_, _, contentType: let contentType):
-            return contentType
-        case .findPassword( _, contentType: let contentType):
-            return contentType
-        case .postBookmark:
-          return .jsonData
-        }
+  case postBaby(token: String, name: String, birth: String?, imageUrl: String?)
+  
+  var contentType: ContentType {
+    switch self {
+    case .registProfile(email: _, password: _, nickname: _, isPregnant: _, hasChild: _, age: _, location: _, contentType: let contentType):
+      return contentType
+    case .login(_, _, contentType: let contentType):
+      return contentType
+    case .findPassword( _, contentType: let contentType):
+      return contentType
+    case .postBookmark:
+      return .jsonData
+    case .postBaby:
+      return .jsonData
     }
+  }
   
   var encodingType: EncodingType {
     switch self {
@@ -42,48 +45,52 @@ enum PostApi: APIable {
       return .JSONEncoding
     }
   }
-    
-    var requestType: RequestType {
-        return RequestType.post
+  
+  var requestType: RequestType {
+    return RequestType.post
+  }
+  
+  var url: String {
+    switch self {
+    case .registProfile:
+      return makePathtoURL(path: "/auth/signup")
+    case .login(email: let email, password: let password, contentType: let contentType):
+      return makePathtoURL(path: "/auth/login")
+    case .findPassword(email: let email, contentType: let contentType):
+      return makePathtoURL(path: "/auth/password")
+    case .postBookmark:
+      return makePathtoURL(path: "/bookmark")
+    case .postBaby:
+      return makePathtoURL(path: "/baby")
     }
-    
-    var url: String {
-        switch self {
-        case .registProfile:
-            return makePathtoURL(path: "/auth/signup")
-        case .login(email: let email, password: let password, contentType: let contentType):
-            return makePathtoURL(path: "/auth/login")
-        case .findPassword(email: let email, contentType: let contentType):
-            return makePathtoURL(path: "/auth/password")
-        case .postBookmark:
-          return makePathtoURL(path: "/bookmark")
-        }
+  }
+  
+  var param: [String : String?]? {
+    switch self {
+    case .registProfile(email: let email, password: let password, nickname: let nickname, isPregnant: let isPregnant, hasChild: let hasChild, age: let age, location: let location, contentType: _):
+      return ["email": email,
+              "password": password,
+              "nickname": nickname,
+              "isPregnant": isPregnant.description,
+              "hasChild": hasChild.description,
+              "age": age.description,
+              "location": location
+      ]
+    case .login(email: let email, password: let password, contentType: _):
+      return ["email": email,
+              "password": password]
+    case .findPassword(email: let email, contentType: _):
+      return ["email": email]
+    case .postBookmark(_, let postId, let postCategory):
+      return ["postId": String(postId), "postCategory": postCategory.rawValue]
+    case .postBaby(_, let name, let birth, let imageUrl):
+      return ["name": name, "birthday": birth, "iamgeUrl": imageUrl]
     }
-    
-    var param: [String : String?]? {
-        switch self {
-        case .registProfile(email: let email, password: let password, nickname: let nickname, isPregnant: let isPregnant, hasChild: let hasChild, age: let age, location: let location, contentType: _):
-            return ["email": email,
-                    "password": password,
-                    "nickname": nickname,
-                    "isPregnant": isPregnant.description,
-                    "hasChild": hasChild.description,
-                    "age": age.description,
-                    "location": location
-                    ]
-        case .login(email: let email, password: let password, contentType: _):
-            return ["email": email,
-                    "password": password]
-        case .findPassword(email: let email, contentType: _):
-            return ["email": email]
-        case .postBookmark(_, let postId, let postCategory):
-          return ["postId": String(postId), "postCategory": postCategory.rawValue]
-        }
-    }
+  }
   
   var header: [String : String]? {
     switch self {
-    case .postBookmark(let token, _, _):
+    case .postBookmark(let token, _, _), .postBaby(let token,_, _, _):
       return [ "Authorization" : "Bearer \(token)"]
     default:
       return nil
