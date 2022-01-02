@@ -144,6 +144,8 @@
 		759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A731427788FDC00E549F6 /* PolicyMain.storyboard */; };
 		759A7319277890ED00E549F6 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A7318277890ED00E549F6 /* Detail.storyboard */; };
 		75AF4A7C277EB30C00F3A041 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4A7B277EB30C00F3A041 /* ViewController.swift */; };
+		75BA37FA2781F5940035F886 /* PolicyMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA37F82781F5940035F886 /* PolicyMainTableViewCell.swift */; };
+		75BA37FB2781F5940035F886 /* PolicyMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BA37F92781F5940035F886 /* PolicyMainTableViewCell.xib */; };
 		75BF0C0B276B489900C2D0C1 /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0A276B489900C2D0C1 /* LoginApi.swift */; };
 		75BF0C0D276B495000C2D0C1 /* SignUpApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0C276B495000C2D0C1 /* SignUpApi.swift */; };
 		75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF0C0E276B851800C2D0C1 /* GetApi.swift */; };
@@ -171,6 +173,8 @@
 		DDE3170B277F4F0E0033FEF4 /* QnAView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE3170A277F4F0E0033FEF4 /* QnAView.xib */; };
 		DDE3170D277F57500033FEF4 /* QnAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3170C277F57500033FEF4 /* QnAView.swift */; };
 		DDE3170F27802A320033FEF4 /* WithVoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDE3170E27802A310033FEF4 /* WithVoice.storyboard */; };
+		DDE317112781A08D0033FEF4 /* VoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE317102781A08D0033FEF4 /* VoiceView.xib */; };
+		DDE317142781A1700033FEF4 /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE317132781A1700033FEF4 /* VoiceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -302,6 +306,8 @@
 		759A731427788FDC00E549F6 /* PolicyMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyMain.storyboard; sourceTree = "<group>"; };
 		759A7318277890ED00E549F6 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		75AF4A7B277EB30C00F3A041 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75BA37F82781F5940035F886 /* PolicyMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyMainTableViewCell.swift; sourceTree = "<group>"; };
+		75BA37F92781F5940035F886 /* PolicyMainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PolicyMainTableViewCell.xib; sourceTree = "<group>"; };
 		75BF0C0A276B489900C2D0C1 /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		75BF0C0C276B495000C2D0C1 /* SignUpApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpApi.swift; sourceTree = "<group>"; };
 		75BF0C0E276B851800C2D0C1 /* GetApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetApi.swift; sourceTree = "<group>"; };
@@ -336,6 +342,8 @@
 		DDE3170A277F4F0E0033FEF4 /* QnAView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QnAView.xib; sourceTree = "<group>"; };
 		DDE3170C277F57500033FEF4 /* QnAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnAView.swift; sourceTree = "<group>"; };
 		DDE3170E27802A310033FEF4 /* WithVoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WithVoice.storyboard; sourceTree = "<group>"; };
+		DDE317102781A08D0033FEF4 /* VoiceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceView.xib; sourceTree = "<group>"; };
+		DDE317132781A1700033FEF4 /* VoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -713,6 +721,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		75BA37F52781F5490035F886 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75BA37F82781F5940035F886 /* PolicyMainTableViewCell.swift */,
+				75BA37F92781F5940035F886 /* PolicyMainTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		75BF0C09276B484900C2D0C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -848,6 +865,7 @@
 		DD43E8E8270B4EFC00699DA1 /* Policy */ = {
 			isa = PBXGroup;
 			children = (
+				75BA37F52781F5490035F886 /* View */,
 				759A731727788FFE00E549F6 /* ViewController */,
 				759A731627788FED00E549F6 /* Storyboard */,
 			);
@@ -867,10 +885,9 @@
 		DDE316F9277EF5130033FEF4 /* ReadDiary */ = {
 			isa = PBXGroup;
 			children = (
+				DDE317122781A1530033FEF4 /* View */,
 				DDE316FA277EF5270033FEF4 /* ReadDiary.storyboard */,
 				DDE316FC277EF53B0033FEF4 /* ReadDiaryViewController.swift */,
-				DDE3170A277F4F0E0033FEF4 /* QnAView.xib */,
-				DDE3170C277F57500033FEF4 /* QnAView.swift */,
 			);
 			path = ReadDiary;
 			sourceTree = "<group>";
@@ -882,6 +899,17 @@
 				DDE3170E27802A310033FEF4 /* WithVoice.storyboard */,
 			);
 			path = WithVoice;
+			sourceTree = "<group>";
+		};
+		DDE317122781A1530033FEF4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDE3170A277F4F0E0033FEF4 /* QnAView.xib */,
+				DDE317132781A1700033FEF4 /* VoiceView.swift */,
+				DDE3170C277F57500033FEF4 /* QnAView.swift */,
+				DDE317102781A08D0033FEF4 /* VoiceView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -988,8 +1016,10 @@
 				2852099F2753325F00AB8BAC /* WithText.storyboard in Resources */,
 				759A7319277890ED00E549F6 /* Detail.storyboard in Resources */,
 				28CA30782753357300EF071E /* CreateQuestion.storyboard in Resources */,
+				DDE317112781A08D0033FEF4 /* VoiceView.xib in Resources */,
 				281D35412764B17A00A128A5 /* MyInfoEdit.storyboard in Resources */,
 				280BEFBB274B319500F031A7 /* PolicyBookmark.storyboard in Resources */,
+				75BA37FB2781F5940035F886 /* PolicyMainTableViewCell.xib in Resources */,
 				759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */,
 				280BEFBF274B647900F031A7 /* GoogleService-Info.plist in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
@@ -1087,6 +1117,7 @@
 				28CA30732753357300EF071E /* QuestionsMainViewController.swift in Sources */,
 				DDE316FD277EF53B0033FEF4 /* ReadDiaryViewController.swift in Sources */,
 				285209A02753325F00AB8BAC /* WithTextCollectionViewCell.swift in Sources */,
+				DDE317142781A1700033FEF4 /* VoiceView.swift in Sources */,
 				285209BD2753327200AB8BAC /* LocationViewController.swift in Sources */,
 				288EFD0B27548476000D1617 /* CommunityMainViewController.swift in Sources */,
 				288ED76727428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift in Sources */,
@@ -1116,6 +1147,7 @@
 				288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */,
 				28A9995F277880D300459D19 /* Post.swift in Sources */,
 				28A99969277AF4B400459D19 /* PutApi.swift in Sources */,
+				75BA37FA2781F5940035F886 /* PolicyMainTableViewCell.swift in Sources */,
 				28A99970277C6B2500459D19 /* BabyInfoViewModel.swift in Sources */,
 				28A99967277AE5BB00459D19 /* UserData.swift in Sources */,
 				285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */,

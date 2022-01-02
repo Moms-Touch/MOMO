@@ -156,6 +156,10 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
     
     
     /// 텍스트와 음성에 따라 다르게 처리
+    ///
+    
+    var diary: Diary
+    
     switch inputType.inputType {
         
       case .text:
@@ -210,38 +214,42 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
           
         }
         
-        let diary = Diary(date: Date(), emotion: emotion, contentType: inputType.inputType, qnaList: qnaList)
-        
-        /// DB 에 넣기 ^^..
-        
-        do {
-          
-          let realm = try Realm()
-          
-          try realm.write {
-            realm.add(diary)
-          }
-          
-        } catch {
-          
-          let alertVC = UIAlertController(title: "ERROR", message: error.localizedDescription, preferredStyle: .alert)
-          
-          alertVC.addAction(UIAlertAction.okAction)
-          
-          present(alertVC, animated: true)
-        }
+        diary = Diary(date: Date(), emotion: emotion, contentType: inputType.inputType, qnaList: qnaList)
         
       case .voice:
         
         guard let withVoiceVC = self.children.first as? WithVoiceViewController else { return }
         
-        
-        
-        
-        break
+        /// 아직 녹음 중이라면 종료한다
+        if let audioRecorder = withVoiceVC.audioRecorder {
+          
+          withVoiceVC.finishRecording(success: true)
+          
+        }
+
+        diary = Diary(date: Date(), emotion: emotion, contentType: inputType.inputType, qnaList: List<QNA>())
+      
         
       default:
         fatalError("Invalid Input Type")
+    }
+    
+    /// DB 에 넣기 ^^..
+    do {
+      
+      let realm = try Realm()
+      
+      try realm.write {
+        realm.add(diary)
+      }
+      
+    } catch {
+      
+      let alertVC = UIAlertController(title: "ERROR", message: error.localizedDescription, preferredStyle: .alert)
+      
+      alertVC.addAction(UIAlertAction.okAction)
+      
+      present(alertVC, animated: true)
     }
     
     let alertVC = UIAlertController(title: "일기 저장 성공!", message: "일기가 잘 저장되었어요.", preferredStyle: .alert)

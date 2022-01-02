@@ -71,4 +71,24 @@ class BabyInfoViewModel {
       }
     }
   }
+  
+  func createBaby(token: String, name: String, birthday: String?, imageUrl: String?) {
+    let networkManager = NetworkManager()
+    networkManager.request(apiModel: PostApi.postBaby(token: token, name: name, birth: birthday, imageUrl: imageUrl))
+    {  [weak self] (result) in
+      guard let self = self else {return}
+      switch result {
+      case .success(let data):
+        let parsingManager = ParsingManager()
+        parsingManager.judgeGenericResponse(data: data, model: BabyData.self) { (body) in
+          DispatchQueue.main.async {
+            let baby = body
+            self.model = baby
+          }
+        }
+      case .failure(let error):
+          print(error)
+      }
+    }
+  }
 }

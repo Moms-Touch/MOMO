@@ -10,7 +10,11 @@ import Toast
 
 class PolicyMainViewController: ViewController, UITextFieldDelegate {
   
-  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var tableView: UITableView! {
+    didSet {
+      tableView.allowsSelection = true
+    }
+  }
   @IBOutlet weak var searchFieldBackView: UIView!
   @IBOutlet weak var searchField: UITextField! {
     didSet {
@@ -54,7 +58,7 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
     tableView.dataSource = self
     tableView.delegate = self
     
-    tableView.register(ListTableViewCell.self)
+    tableView.register(PolicyMainTableViewCell.self)
   }
   
   private lazy var downButton: UIButton = {
@@ -146,7 +150,7 @@ extension PolicyMainViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else { return ListTableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: PolicyMainTableViewCell.identifier, for: indexPath) as? PolicyMainTableViewCell else { return PolicyMainTableViewCell() }
     
     cell.getSimpleData(data: datasource[indexPath.section])
     
@@ -154,8 +158,11 @@ extension PolicyMainViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("select cell")
-    guard let detailVC = storyboard?.instantiateViewController(withIdentifier: ListTableViewCell.identifier) as? DetailViewController else {
+//    guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+//      print("detailVC is nil")
+//      return
+//    }
+    guard let detailVC = DetailViewController.loadFromStoryboard() as? DetailViewController else {
       print("detailVC is nil")
       return
     }

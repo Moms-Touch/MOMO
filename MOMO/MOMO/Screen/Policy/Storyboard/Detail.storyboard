@@ -13,7 +13,7 @@
         <!--Detail View Controller-->
         <scene sceneID="0pU-V1-kh9">
             <objects>
-                <viewController storyboardIdentifier="RecommendDetailViewController" id="w5o-jG-zaa" customClass="DetailViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="w5o-jG-zaa" customClass="DetailViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SHB-Gp-rbc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,7 +111,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qxp-d5-bbO">
-                                        <rect key="frame" x="0.0" y="32" width="374" height="14.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="31.999999999999996" width="374" height="14.333333333333332"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="주관: 미혼모 네트워크 협회 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssK-e4-ghD">
                                                 <rect key="frame" x="0.0" y="0.0" width="290.33333333333331" height="14.333333333333334"/>

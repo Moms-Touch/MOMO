@@ -132,8 +132,11 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
       /// 작성된 일기가 없다면
       /// 일기 작성 화면
       
-      // FIXME: Input Option 선택
-      self.show(DiaryInputOptionViewController.loadFromStoryboard(), sender: nil)
+      let diaryInputOptionVC = DiaryInputOptionViewController.loadFromStoryboard()
+
+      diaryInputOptionVC.hidesBottomBarWhenPushed = true
+      
+      self.show(diaryInputOptionVC, sender: nil)
       
       return
     }
