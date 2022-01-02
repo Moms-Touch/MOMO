@@ -42,16 +42,16 @@ class MySettingTableViewController: InfoBaseTableViewController {
     
     switch cellType {
     case .termsAndConditions: //이용약관
-      let targetURL = URL(string: "https://zolle.tistory.com/8")
+      let targetURL = URL(string: "https://momo-official.tistory.com/30")
       performSegue(withIdentifier: SettingWebViewController.identifier, sender: (targetURL, name))
     case .privacyPolicy: //개인정보 처리방침
-      let targetURL = URL(string: "https://zolle.tistory.com/8")
+      let targetURL = URL(string: "https://momo-official.tistory.com/29")
       performSegue(withIdentifier: SettingWebViewController.identifier, sender: (targetURL, name))
     case .openSourceLicense: //오픈소스 라이센스
       let targetURL = URL(string: "https://zolle.tistory.com/8")
       performSegue(withIdentifier: SettingWebViewController.identifier, sender: (targetURL, name))
-    case .alarmSetting: // 알림설정
-      print("알림설정")
+//    case .alarmSetting: // 알림설정
+//      print("알림설정")
     case .versionInfo:
       print(name)
     }
@@ -64,7 +64,7 @@ extension MySettingTableViewController {
     case termsAndConditions
     case privacyPolicy
     case openSourceLicense
-    case alarmSetting
+//    case alarmSetting
     case versionInfo
     
     var description: String {
@@ -72,11 +72,11 @@ extension MySettingTableViewController {
       case .termsAndConditions :
         return "이용약관"
       case .privacyPolicy:
-        return "개인정보 처리방침"
+        return "개인정보 취급방침"
       case .openSourceLicense:
         return "오픈소스 라이센스"
-      case .alarmSetting:
-        return "알림설정"
+//      case .alarmSetting:
+//        return "알림설정"
       case .versionInfo:
         return "1.0.0"
       }
