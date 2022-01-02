@@ -66,4 +66,27 @@ final class UserManager {
     KeyChainService.shared.deleteFromKeyChain(account: "accessToken")
   }
   
+  var periodOfWeek: (Int, Int)? {
+    if userInfo?.isPregnant == true { //임신중
+      guard let babyInWeek = babyInWeek else {
+        return nil
+      }
+      switch Int(babyInWeek.components(separatedBy: "주차")[0])! {
+      case 1...8:
+        return (1, 8)
+      case 9...16:
+        return (9, 16)
+      case 17...24:
+        return (17, 24)
+      case 25...32:
+        return (25, 32)
+      case 33...40:
+        return (33, 40)
+      default:
+        return (1, 8)
+      }
+    }
+    return (1, 8)
+  }
+  
 }

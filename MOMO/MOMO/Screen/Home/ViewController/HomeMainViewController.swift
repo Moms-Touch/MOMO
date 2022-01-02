@@ -123,7 +123,8 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     recommendModalVC.modalPresentationStyle = .custom
     // networking
     guard let token = UserManager.shared.token else {return}
-    networkManager.request(apiModel: GetApi.infoGet(token: token, start: "4", end: "5")) { (result) in
+    guard let period = UserManager.shared.periodOfWeek else {return}
+    networkManager.request(apiModel: GetApi.infoGet(token: token, start: "\(period.0)", end: "\(period.1)")) { (result) in
       switch result {
       case .success(let data):
         let parsingmanager = ParsingManager()
