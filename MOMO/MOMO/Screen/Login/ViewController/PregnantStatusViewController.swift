@@ -9,7 +9,12 @@ import UIKit
 
 final class PregnantStatusViewController: UIViewController {
   @IBOutlet private weak var nextButton: UIButton!
-  @IBOutlet private weak var expectedBirthdayField: UITextField!
+  @IBOutlet private weak var expectedBirthdayField: UITextField! {
+    didSet {
+      expectedBirthdayField.inputView = calenderDatePicker
+      expectedBirthdayField.inputAccessoryView = toolbar
+    }
+  }
   @IBOutlet private weak var babyNameTextField: UITextField!
   @IBOutlet private weak var pregnantButton: UIButton!
   @IBOutlet private weak var birthButton: UIButton!

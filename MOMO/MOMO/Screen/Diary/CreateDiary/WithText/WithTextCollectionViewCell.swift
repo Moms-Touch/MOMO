@@ -13,11 +13,19 @@ class WithTextCollectionViewCell: UICollectionViewCell, NibInstantiatable {
   
   @IBOutlet weak var questionLabel: UILabel!
   
-  @IBOutlet weak var answerTextView: UITextView!
+  @IBOutlet weak var answerTextView: UITextView! {
+    didSet {
+      answerTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+    }
+  }
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
     
     self.translatesAutoresizingMaskIntoConstraints = false
+  }
+  
+  @objc func tapDone(sender: Any) {
+    self.contentView.endEditing(true)
   }
 }

@@ -8,7 +8,7 @@
 import UIKit
 import OrderedCollections
 
-class WithTextViewController: UIViewController, StoryboardInstantiable {
+class WithTextViewController: ViewController, StoryboardInstantiable {
   
   static var storyboardName: String = "WithText"
 
@@ -34,7 +34,7 @@ class WithTextViewController: UIViewController, StoryboardInstantiable {
     super.viewDidLoad()
     
     setUpCollectionView()
-    
+    hideKeyboard()
     setUpPageControl()
   }
   

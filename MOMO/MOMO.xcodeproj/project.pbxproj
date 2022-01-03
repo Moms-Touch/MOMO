@@ -140,6 +140,7 @@
 		28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE162760CA7900E699FC /* NoticeData.swift */; };
 		28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1827610E3800E699FC /* NotificationData.swift */; };
 		28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1A27610E5A00E699FC /* BabyData.swift */; };
+		28F9B2582783A18A00D7EF7A /* extension+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */; };
 		758F519A277E112100DA88BE /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758F5199277E112100DA88BE /* SignUp.storyboard */; };
 		759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A731427788FDC00E549F6 /* PolicyMain.storyboard */; };
 		759A7319277890ED00E549F6 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A7318277890ED00E549F6 /* Detail.storyboard */; };
@@ -302,6 +303,7 @@
 		28F4FE162760CA7900E699FC /* NoticeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeData.swift; sourceTree = "<group>"; };
 		28F4FE1827610E3800E699FC /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		28F4FE1A27610E5A00E699FC /* BabyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyData.swift; sourceTree = "<group>"; };
+		28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+UITextView.swift"; sourceTree = "<group>"; };
 		758F5199277E112100DA88BE /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		759A731427788FDC00E549F6 /* PolicyMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyMain.storyboard; sourceTree = "<group>"; };
 		759A7318277890ED00E549F6 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 				288EFD242758E8D2000D1617 /* CGFloat+Extension.swift */,
 				28A9996C277C685C00459D19 /* String+Extension.swift */,
 				DDE31705277F3CD10033FEF4 /* UIAlertAction+Extension.swift */,
+				28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1099,6 +1102,7 @@
 				285209EC2753329600AB8BAC /* Scrollable.swift in Sources */,
 				285209F42753329600AB8BAC /* StoryboardInstantiable.swift in Sources */,
 				285209E22753329600AB8BAC /* UIImage+Extension.swift in Sources */,
+				28F9B2582783A18A00D7EF7A /* extension+UITextView.swift in Sources */,
 				288EFD132754F2AE000D1617 /* AlertTableViewController.swift in Sources */,
 				285209EB2753329600AB8BAC /* CanShowDetailView.swift in Sources */,
 				75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */,
