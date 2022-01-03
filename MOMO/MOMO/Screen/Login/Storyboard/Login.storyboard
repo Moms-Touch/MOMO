@@ -81,6 +81,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="figMaDefinedHeightValue">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" name="Pink1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVf-p1-N2o" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
@@ -191,6 +194,9 @@
     </scenes>
     <resources>
         <image name="로그인" width="375" height="812"/>
+        <namedColor name="Pink1">
+            <color red="0.77647058823529413" green="0.23921568627450981" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

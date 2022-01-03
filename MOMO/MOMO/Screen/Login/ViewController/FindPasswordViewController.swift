@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 protocol emailable: AnyObject {
     func convey(with emailAddress: String?)
@@ -61,7 +62,7 @@ final class FindPasswordViewController: UIViewController {
                 self?.navigationController?.pushViewController(NewPasswordInputViewController.loadFromStoryboard(), animated: true)
                 self?.delegate?.convey(with: self?.emailAddress)
             case .failure:
-                print("fail")
+              self?.view.makeToast("네트워크 통신이 실패했습니다")
             }
         }
     }
