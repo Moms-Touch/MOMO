@@ -48,7 +48,7 @@ class MySettingTableViewController: InfoBaseTableViewController {
       let targetURL = URL(string: "https://momo-official.tistory.com/29")
       performSegue(withIdentifier: SettingWebViewController.identifier, sender: (targetURL, name))
     case .openSourceLicense: //오픈소스 라이센스
-      let targetURL = URL(string: "https://zolle.tistory.com/8")
+      let targetURL = URL(string: "https://momo-official.tistory.com/29")
       performSegue(withIdentifier: SettingWebViewController.identifier, sender: (targetURL, name))
 //    case .alarmSetting: // 알림설정
 //      print("알림설정")
