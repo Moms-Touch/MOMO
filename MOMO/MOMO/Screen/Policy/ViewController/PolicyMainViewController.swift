@@ -74,7 +74,7 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
     button.setImage(UIImage(named: "Polygon 3"), for: .focused)
     button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
     button.contentEdgeInsets = UIEdgeInsets(top: 5, left: spacing, bottom: 5, right: spacing)
-    button.addTarget(self, action: #selector(dipTapDownButton(_:)), for: .touchDown)
+    button.addTarget(self, action: #selector(dipTapDownButton(_:)), for: .touchUpInside)
     locationTextField.rightView = button
     locationTextField.rightViewMode = .always
     return button
