@@ -29,6 +29,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     let imageview = UIImageView(frame: CGRect(x: 0, y: 0, width: 103, height: 103))
     imageview.isUserInteractionEnabled = true
     imageview.image = UIImage(named: "Logo")!
+    imageview.setRound(5)
     imageview.translatesAutoresizingMaskIntoConstraints = false
     return imageview
   }()
@@ -48,11 +49,10 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     contentView.setRound(5)
     contentView.addSubview(titleLabel)
     contentView.addSubview(thumbNailImageView)
-    thumbNailImageView.snp.makeConstraints { make in
-      make.top.equalTo(contentView)
-      make.right.equalTo(contentView)
-      make.left.equalTo(contentView)
-    }
+    thumbNailImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+    thumbNailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+    thumbNailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+    thumbNailImageView.heightAnchor.constraint(equalToConstant: contentView.frame.height * 0.7).isActive = true
     titleLabel.topAnchor.constraint(equalTo: thumbNailImageView.bottomAnchor, constant: 10).isActive = true
     titleLabel.leadingAnchor.constraint(equalTo: thumbNailImageView.leadingAnchor).isActive = true
     titleLabel.trailingAnchor.constraint(equalTo: thumbNailImageView.trailingAnchor).isActive = true
