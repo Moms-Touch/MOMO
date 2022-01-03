@@ -16,7 +16,7 @@
 import Foundation
 
 enum PostApi: APIable {
-  case registProfile(email: String, password: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String, contentType: ContentType)
+  case registProfile(email: String, password: String, nickname: String, isPregnant: Bool, hasChild: Bool, age: Int, location: String, babyName: String, babyBirth: String, contentType: ContentType)
   case login(email: String, password: String, contentType: ContentType)
   case findPassword(email: String, contentType: ContentType)
   case postBookmark(token: String, postId: Int, postCategory: Category)
@@ -24,7 +24,7 @@ enum PostApi: APIable {
   
   var contentType: ContentType {
     switch self {
-    case .registProfile(email: _, password: _, nickname: _, isPregnant: _, hasChild: _, age: _, location: _, contentType: let contentType):
+    case .registProfile(email: _, password: _, nickname: _, isPregnant: _, hasChild: _, age: _, location: _, babyName: _, babyBirth: _, contentType: let contentType):
       return contentType
     case .login(_, _, contentType: let contentType):
       return contentType
@@ -67,15 +67,17 @@ enum PostApi: APIable {
   
   var param: [String : String?]? {
     switch self {
-    case .registProfile(email: let email, password: let password, nickname: let nickname, isPregnant: let isPregnant, hasChild: let hasChild, age: let age, location: let location, contentType: _):
-      return ["email": email,
-              "password": password,
-              "nickname": nickname,
-              "isPregnant": isPregnant.description,
-              "hasChild": hasChild.description,
-              "age": age.description,
-              "location": location
-      ]
+    case .registProfile(email: let email, password: let password, nickname: let nickname, isPregnant: let isPregnant, hasChild: let hasChild, age: let age, location: let location, babyName: let babyName, babyBirth: let babyBirth, contentType: _):
+          return ["email": email,
+                  "password": password,
+                  "nickname": nickname,
+                  "isPregnant": isPregnant.description,
+                  "hasChild": hasChild.description,
+                  "age": age.description,
+                  "location": location,
+                  "babyName": babyName,
+                  "babyBirth": babyBirth
+          ]
     case .login(email: let email, password: let password, contentType: _):
       return ["email": email,
               "password": password]

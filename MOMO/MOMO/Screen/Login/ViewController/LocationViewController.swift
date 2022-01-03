@@ -56,8 +56,9 @@ final class LocationViewController: UIViewController {
         pregnantVC.email = email
         pregnantVC.password = password
         pregnantVC.nickname = nickname
-        pregnantVC.location = LocationTextField.text ?? ""
-        navigationController?.pushViewController(PregnantStatusViewController.loadFromStoryboard(), animated: true)
+        pregnantVC.location = LocationTextField.text ?? "전국"
+      
+        navigationController?.pushViewController(pregnantVC, animated: true)
     }
     
     @IBAction func didTapBackButton(_ sender: UIButton) {

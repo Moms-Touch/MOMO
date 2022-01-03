@@ -56,28 +56,34 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     super.viewDidLoad()
     assignbackground()
     getNotice()
-    changeBabyName()
+    changeButtonTitle()
+
     NotificationCenter.default.addObserver(self, selector: #selector(changeBabyName), name: UserManager.didSetAppUserNotification, object: nil)
   }
   
   @objc func changeBabyName() {
+    changeButtonTitle()
+  }
+  
+  private func changeButtonTitle() {
     guard let userInfo = UserManager.shared.userInfo else {
       print("로그인을 해주세요")
       return}
-      guard let babyBirth = UserManager.shared.babyInWeek else {
-        self.dateWithBabyButton.setTitle("생일 등록하기", for: .normal)
-        return}
-      guard let babyName = userInfo.baby?.first?.name else {
-        self.dateWithBabyButton.setTitle("아이 이름 등록하기", for: .normal)
-        return
-      }
-      guard let imageUrl = userInfo.baby?.first?.imageUrl else {
-        self.babyProfileImageView.image = UIImage(named: "Logo")
-        return
-      }
+    
+    guard let babyBirth = UserManager.shared.babyInWeek else {
+      self.dateWithBabyButton.setTitle("생일 등록하기", for: .normal)
+      return}
+    guard let babyName = userInfo.baby?.first?.name else {
+      self.dateWithBabyButton.setTitle("아이 이름 등록하기", for: .normal)
+      return
+    }
+    if let imageUrl = userInfo.baby?.first?.imageUrl {
       self.babyProfileImageView.setImage(with: imageUrl)
-      self.dateWithBabyButton.setTitle("\(babyName) \(babyBirth)", for: .normal)
-      self.dateWithBabyButton.sizeToFit()
+    } else {
+      self.babyProfileImageView.image = UIImage(named: "Logo")
+    }
+    self.dateWithBabyButton.setTitle("\(babyName) \(babyBirth)", for: .normal)
+    self.dateWithBabyButton.sizeToFit()
   }
   
   override func viewDidLayoutSubviews() {
@@ -99,7 +105,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
           }
         }
       case .failure(let error):
-        print(error)
+        print("notice 없다")
       }
     }
   }
@@ -166,7 +172,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       /// 일기 작성 화면
       
       let diaryInputOptionVC = DiaryInputOptionViewController.loadFromStoryboard()
-
+      
       diaryInputOptionVC.hidesBottomBarWhenPushed = true
       
       self.show(diaryInputOptionVC, sender: nil)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -40,8 +40,11 @@
                                                 <color key="value" name="Pink1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didchangeTextfieldValue:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="STg-we-FkC"/>
+                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clb-SM-pET" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호(특수문자 포함 8자 이상)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clb-SM-pET" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="73" width="295" height="47"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -50,12 +53,15 @@
                                                 <color key="value" name="Pink1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didchangeTextfieldValue:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="8de-Po-Rc2"/>
+                                        </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-r4-vFc">
                                         <rect key="frame" x="0.0" y="146" width="295" height="47"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GF4-BZ-pkh" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="217.5" height="47"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="47"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <userDefinedRuntimeAttributes>
@@ -63,9 +69,12 @@
                                                         <color key="value" name="Pink1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didchangeTextfieldValue:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="SVl-b9-eBU"/>
+                                                </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN8-yQ-0iN">
-                                                <rect key="frame" x="222.5" y="0.0" width="72.5" height="47"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN8-yQ-0iN">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="47"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="중복확인">
                                                     <color key="baseForegroundColor" name="Pink4"/>
@@ -82,7 +91,7 @@
                                     <constraint firstItem="2ob-r4-vFc" firstAttribute="height" secondItem="clb-SM-pET" secondAttribute="height" id="Npu-6P-uY4"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk9-K4-Iyx" customClass="MomoBaseButton" customModule="MOMO" customModuleProvider="target">
+                            <button opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk9-K4-Iyx">
                                 <rect key="frame" x="40" y="578" width="295" height="59"/>
                                 <color key="backgroundColor" name="Pink4"/>
                                 <constraints>
@@ -94,7 +103,7 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="didTapLocationButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6nR-Gn-2Vh"/>
+                                    <action selector="didTapNextbutton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UDc-Bg-hkw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOt-iv-AgQ">
