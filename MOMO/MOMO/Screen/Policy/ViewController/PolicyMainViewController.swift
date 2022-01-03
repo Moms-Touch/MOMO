@@ -158,15 +158,11 @@ extension PolicyMainViewController: UITableViewDataSource, UITableViewDelegate {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else { return ListTableViewCell() }
     
     cell.getSimpleData(data: datasource[indexPath.section])
-    
+    cell.selectionStyle = .none
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
-//      print("detailVC is nil")
-//      return
-//    }
     guard let detailVC = DetailViewController.loadFromStoryboard() as? DetailViewController else {
       print("detailVC is nil")
       return

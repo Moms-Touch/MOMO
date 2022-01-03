@@ -78,7 +78,7 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
     //TODO: data 넣어주기
     //section으로 어레이 참조하기
     cell.getSimpleData(data: datasource[indexPath.section])
-
+    cell.selectionStyle = .none
     return cell
   }
   

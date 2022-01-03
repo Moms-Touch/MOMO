@@ -72,6 +72,7 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
 
     //TODO: 데이터 넣어주기
     cell.getSimpleData(data: datasource[indexPath.section])
+    cell.selectionStyle = .none
     return cell
   }
   

@@ -30,6 +30,7 @@ class DetailViewController: UIViewController {
   
   var content: Any?
   private var policyData: PolicyData?
+  private var url: String = ""
   private var index: Int = 0
   private var postCompletionHandler: ((Int)->Void)?
   private var deleteCompletionHandler: ((Int)->Void)?
@@ -51,6 +52,12 @@ class DetailViewController: UIViewController {
     }
     titleLabel.text = policyData.title
     hostAssocitationLabel.text = policyData.author
+    let urlsplit = policyData.url?.components(separatedBy: "\"") ?? []
+    if urlsplit.count > 1 {
+      url = urlsplit[1]
+    } else {
+      url = urlsplit.first ?? ""
+    }
     dateLabel.text = policyData.createdAt.trimStringDate()
     policyContentView.text = EnterString(content: policyData.content)
     if let image = policyData.thumbnailImageUrl {
@@ -75,12 +82,14 @@ class DetailViewController: UIViewController {
   }
   
   @IBAction func didTapShorcutButton(_ sender: UIButton) {
-    guard let policyURL = policyData?.url else {
-      print("유효하지 않은 URL입니다")
+    if url == "" {
+      self.view.makeToast("URL 업데이트를 진행하고 있어요😀")
       return
     }
-    if let url = URL(string: policyURL) {
+    if let url = URL(string: url) {
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    } else {
+      self.view.makeToast("URL 업데이트를 진행하고 있어요😀")
     }
   }
   
