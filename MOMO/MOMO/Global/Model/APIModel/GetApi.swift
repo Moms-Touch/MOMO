@@ -73,8 +73,8 @@ extension GetApi {
       return makePathtoURL(path: "/baby")
     case .likeGet:
       return makePathtoURL(path: "/like")
-    case .nicknameGet:
-        return makePathtoURL(path: "/member/checkNickname")
+    case .nicknameGet(let checkNickname):
+        return makePathtoURL(path: "/member/\(checkNickname)")
     case .infoDetailGet(_, let id):
       return makePathtoURL(path: "/info/\(id)")
     default:

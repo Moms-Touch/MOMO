@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 final class SignUpViewController: UIViewController {
     
@@ -52,7 +53,6 @@ final class SignUpViewController: UIViewController {
         }
         let networkManager = NetworkManager()
         networkManager.request(apiModel: GetApi.nicknameGet(nickname: nickname)) { [weak self] result in
-            print(result)
             switch result {
             case .success:
                 DispatchQueue.main.async {
@@ -60,7 +60,7 @@ final class SignUpViewController: UIViewController {
                     self?.nextButton.isUserInteractionEnabled = true
                 }
             case .failure:
-                print("닉네임이 중복되었습니다 다시 입력해주세요.")
+              self?.view.makeToast("닉네임이 중복되었습니다 다시 입력해주세요.")
             }
         }
     }
