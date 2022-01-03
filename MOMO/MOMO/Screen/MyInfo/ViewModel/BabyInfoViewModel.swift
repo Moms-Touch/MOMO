@@ -64,6 +64,18 @@ class BabyInfoViewModel {
           DispatchQueue.main.async {
             let baby = body
             self.model = baby
+            networkManager.request(apiModel: GetApi.userGet(token: token)) { (result) in
+              switch result {
+              case .success(let data):
+                parsingManager.judgeGenericResponse(data: data, model: UserData.self) { (body) in
+                  DispatchQueue.main.async {
+                    UserManager.shared.userInfo = body
+                  }
+                }
+              case .failure(let error):
+                print(error)
+              }
+            }
           }
         }
       case .failure(let error):
@@ -84,6 +96,18 @@ class BabyInfoViewModel {
           DispatchQueue.main.async {
             let baby = body
             self.model = baby
+            networkManager.request(apiModel: GetApi.userGet(token: token)) { (result) in
+              switch result {
+              case .success(let data):
+                parsingManager.judgeGenericResponse(data: data, model: UserData.self) { (body) in
+                  DispatchQueue.main.async {
+                    UserManager.shared.userInfo = body
+                  }
+                }
+              case .failure(let error):
+                print(error)
+              }
+            }
           }
         }
       case .failure(let error):
