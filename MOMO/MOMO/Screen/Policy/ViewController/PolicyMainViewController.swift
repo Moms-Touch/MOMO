@@ -58,7 +58,7 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
     tableView.dataSource = self
     tableView.delegate = self
     
-    tableView.register(PolicyMainTableViewCell.self)
+    tableView.register(ListTableViewCell.self)
   }
   
   private lazy var downButton: UIButton = {
@@ -150,7 +150,7 @@ extension PolicyMainViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: PolicyMainTableViewCell.identifier, for: indexPath) as? PolicyMainTableViewCell else { return PolicyMainTableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else { return ListTableViewCell() }
     
     cell.getSimpleData(data: datasource[indexPath.section])
     
@@ -166,7 +166,7 @@ extension PolicyMainViewController: UITableViewDataSource, UITableViewDelegate {
       print("detailVC is nil")
       return
     }
-    detailVC.configure(policyData: datasource[indexPath.row])
+    detailVC.configure(policyData: datasource[indexPath.section])
     navigationController?.pushViewController(detailVC, animated: true)
   }
 }
