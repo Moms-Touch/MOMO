@@ -52,10 +52,22 @@ class DetailViewController: UIViewController {
     titleLabel.text = policyData.title
     hostAssocitationLabel.text = policyData.author
     dateLabel.text = policyData.createdAt.trimStringDate()
-    policyContentView.text = policyData.content
+    policyContentView.text = EnterString(content: policyData.content)
     if let image = policyData.thumbnailImageUrl {
       policyImageView.image = UIImage(named: image)
     }
+  }
+  
+  private func EnterString(content: String) -> String {
+    var stringMap = content.map {$0}
+    while index < stringMap.count {
+      if stringMap[index] == "►" && index != 0 {
+        stringMap.insert("\n", at: index)
+        index += 1
+      }
+      index += 1
+    }
+    return String(stringMap)
   }
   
   @IBAction func didTapBackButton(_ sender: UIButton) {
