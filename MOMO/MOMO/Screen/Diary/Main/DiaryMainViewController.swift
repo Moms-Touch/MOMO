@@ -104,7 +104,46 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
   
   @IBAction func showDiaryReport(_ sender: UIButton) {
     
-    print(#function)
+    let realm = try! Realm()
+    
+    let calendar = Calendar.current
+    
+    guard let thisMonth = calendar.dateComponents([.month], from: Date()).month else { return }
+    
+    let targetDiarys = realm.objects(Diary.self).filter {
+      
+      guard let writtenMonth = calendar.dateComponents([.month], from: $0.date).month else { return false }
+      
+      return writtenMonth == thisMonth
+    }
+    
+    var emotions: [String: Int] = [:]
+    
+    targetDiarys.forEach {
+      emotions.updateValue((emotions[$0.emotion] ?? 0) + 1 , forKey: $0.emotion)
+    }
+    
+    
+    let message = """
+
+    이번 달 쓴 일기 수 : \(targetDiarys.count)회
+
+    행복 : \(emotions[DiaryEmotion.happy.rawValue] ?? 0)회
+
+    분노 : \(emotions[DiaryEmotion.angry.rawValue] ?? 0)회
+
+    슬픔 : \(emotions[DiaryEmotion.sad.rawValue] ?? 0)회
+    
+    우울 : \(emotions[DiaryEmotion.blue.rawValue] ?? 0)회
+
+    """
+    
+    
+    let alertVC = UIAlertController(title: "요약", message: message, preferredStyle: .alert)
+    
+    alertVC.addAction(UIAlertAction.okAction)
+    
+    present(alertVC, animated: true, completion: nil)
   }
   
   @IBAction func makeNewDiary(_ sender: UIButton) {
