@@ -82,6 +82,10 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
     return cell
   }
   
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 73
+  }
+  
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     scrollView.bounces = scrollView.contentOffset.y > 0
   }
@@ -103,13 +107,6 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
               self.datasource.remove(at: index)
               self.tableView.reloadData()
               return
-//              for index in self.datasource.indices {
-//                if self.datasource[index].id == id{
-//                  self.datasource.remove(at: index)
-//                  self.tableView.reloadData()
-//                  return
-//                }
-//              }
             }
             self.present(vc, animated: true, completion: nil)
           }
