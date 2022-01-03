@@ -15,11 +15,6 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
   @IBOutlet weak var calendarView:
   FSCalendar!
   
-  /// 오늘 일기를 작성했는지 확인하는 로직
-  /// 상태로 갈껀지 확인할 때마다 DB에 접근할 것인지?
-  /// 상태로 관리하면 계속 동기화에 신경써주어야한다
-  
-  
   @IBOutlet weak var showReportButton: UIButton! {
     didSet {
       showReportButton.layer.borderColor = Asset.Colors.borderYellow.color.cgColor
@@ -29,22 +24,22 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     }
   }
   
-  var didMakeDiaryToday: Bool {
-    ///
-    /// Realm 접근해서 확인하는 코드
-    ///
-    ///오늘
-    let currentDate = Date()
-    let calendar = Calendar.current
-    
-    /// Date 에서 DateComponents 로 변환해주었다
-    /// DateComponents 에서는 년, 월 , 일
-    let date = calendar.dateComponents(in: .current, from: currentDate)
-    
-    let todayComponents = DateComponents(year: date.year, month: date.month, day: date.day)
-    
-    return true
-  }
+//  var didMakeDiaryToday: Bool {
+//    ///
+//    /// Realm 접근해서 확인하는 코드
+//    ///
+//    ///오늘
+//    let currentDate = Date()
+//    let calendar = Calendar.current
+//
+//    /// Date 에서 DateComponents 로 변환해주었다
+//    /// DateComponents 에서는 년, 월 , 일
+//    let date = calendar.dateComponents(in: .current, from: currentDate)
+//
+//    let todayComponents = DateComponents(year: date.year, month: date.month, day: date.day)
+//
+//    return true
+//  }
   
   var datesWithDiray: [Date] = []
   
@@ -72,7 +67,6 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     super.viewDidAppear(animated)
     
   }
-  
   
   private func setUpCalendar() {
     
@@ -178,8 +172,6 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
       print(error.localizedDescription)
     }
   }
-  
-  
 }
 
 extension DiaryMainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
@@ -216,7 +208,6 @@ extension DiaryMainViewController : FSCalendarDelegate, FSCalendarDataSource, FS
     
     /// 작성된 일기가 있다면
     /// 일기 상세 화면
-    ///
     let readDiaryVC = ReadDiaryViewController.make(with: diary)
     
     self.show(readDiaryVC, sender: nil)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable, UIViewControllerTransitioningDelegate {
   
@@ -145,7 +146,52 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   }
   
   @IBAction private func didTapTodayButton(_ sender: UIButton) {
-    print(#function)
+    
+    /// 이미 일기를 작성했는지 확인
+    /// Realm 에 데이터가 있는지?
+    let realm = try! Realm()
+    
+    /// 오늘 날짜의 00시 00분
+    let targetDate = Date().timeToZero()
+    
+    let targetDiary = realm.objects(Diary.self).where {
+      $0.date == targetDate
+    }
+    
+    /// 이미 일기를 작성했다면
+    guard let diary = targetDiary.first else {
+      
+      /// 작성된 일기가 없다면
+      /// 일기 작성 화면
+      
+      let diaryInputOptionVC = DiaryInputOptionViewController.loadFromStoryboard()
+
+      diaryInputOptionVC.hidesBottomBarWhenPushed = true
+      
+      self.show(diaryInputOptionVC, sender: nil)
+      
+      return
+    }
+    
+    // FIXME: AlertVC 모듈화
+    let alertVC = UIAlertController(title: "작성한 일기 있음", message: "오늘은 이미 일기를 작성하셨습니다. 보러가실래요?", preferredStyle: .alert)
+    
+    let okAction = UIAlertAction(title: "보러갈래요", style: .default) { action in
+      
+      /// 일기 상세 화면
+      
+      let readDiaryVC = ReadDiaryViewController.make(with: diary)
+      
+      self.show(readDiaryVC, sender: nil)
+    }
+    
+    let cancelAction = UIAlertAction(title: "아니요", style: .cancel, handler: nil)
+    
+    alertVC.addAction(okAction)
+    alertVC.addAction(cancelAction)
+    
+    self.present(alertVC, animated: true, completion: nil)
+    
   }
   
   
