@@ -24,6 +24,7 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
   @IBOutlet var filterButtons: [UIButton]!
   @IBOutlet weak var locationTextField: UITextField! {
     didSet {
+      locationTextField.text = "전국"
       locationTextField.inputView = locationPickerView
       locationTextField.tintColor = UIColor.clear
       locationTextField.delegate = self
@@ -31,9 +32,13 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
   }
   
   private var datasource: [PolicyData] = []
-  private let cityName = ["서울", "대전", "대구", "부산", "광주", "울산", "인천"]
+  private let cityName = ["전국", "서울", "대전", "대구", "부산", "광주", "울산", "인천"]
   lazy var networkManager = NetworkManager()
-  private var locationPickerView = UIPickerView()
+  private var locationPickerView = UIPickerView() {
+    didSet {
+      locationPickerView.selectRow(0, inComponent: 0, animated: true)
+    }
+  }
   
   private var gapBWTCell:CGFloat = 10;
   lazy var customNavigationDelegate = CustomNavigationManager()
@@ -210,7 +215,11 @@ extension PolicyMainViewController {
   
   private func getPolicyData(page: Int) {
     guard let token = UserManager.shared.token else {return}
-    networkManager.request(apiModel: GetApi.policyGet(token: token, keyword: searchField.text, location: nil, category: nil, page: page)) { (result) in
+    var location: String? = locationTextField.text
+    if locationTextField.text == "전국" { // 전국이면 전체를 다 빼준다.
+        location = nil
+    }
+    networkManager.request(apiModel: GetApi.policyGet(token: token, keyword: searchField.text, location: location, category: nil, page: page)) { (result) in
       switch result {
       case .success(let data):
         let parsingManager = ParsingManager()
@@ -244,7 +253,11 @@ extension PolicyMainViewController {
   private func getPolicyData(category: String, page: Int) {
     let category = category.components(separatedBy: " ").last!
     guard let token = UserManager.shared.token else {return}
-    networkManager.request(apiModel: GetApi.policyGet(token: token, keyword: searchField.text, location: locationTextField.text, category: Filter.getCase(korean: category), page: page)) { (result) in
+    var location: String? = locationTextField.text
+    if locationTextField.text == "전국" { // 전국이면 전체를 다 빼준다.
+        location = nil
+    }
+    networkManager.request(apiModel: GetApi.policyGet(token: token, keyword: searchField.text, location: location, category: Filter.getCase(korean: category), page: page)) { (result) in
       switch result {
       case .success(let data):
         let parsingManager = ParsingManager()
