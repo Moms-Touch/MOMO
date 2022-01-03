@@ -15,11 +15,6 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
   @IBOutlet weak var calendarView:
   FSCalendar!
   
-  /// 오늘 일기를 작성했는지 확인하는 로직
-  /// 상태로 갈껀지 확인할 때마다 DB에 접근할 것인지?
-  /// 상태로 관리하면 계속 동기화에 신경써주어야한다
-  
-  
   @IBOutlet weak var showReportButton: UIButton! {
     didSet {
       showReportButton.layer.borderColor = Asset.Colors.borderYellow.color.cgColor
@@ -29,22 +24,22 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     }
   }
   
-  var didMakeDiaryToday: Bool {
-    ///
-    /// Realm 접근해서 확인하는 코드
-    ///
-    ///오늘
-    let currentDate = Date()
-    let calendar = Calendar.current
-    
-    /// Date 에서 DateComponents 로 변환해주었다
-    /// DateComponents 에서는 년, 월 , 일
-    let date = calendar.dateComponents(in: .current, from: currentDate)
-    
-    let todayComponents = DateComponents(year: date.year, month: date.month, day: date.day)
-    
-    return true
-  }
+//  var didMakeDiaryToday: Bool {
+//    ///
+//    /// Realm 접근해서 확인하는 코드
+//    ///
+//    ///오늘
+//    let currentDate = Date()
+//    let calendar = Calendar.current
+//
+//    /// Date 에서 DateComponents 로 변환해주었다
+//    /// DateComponents 에서는 년, 월 , 일
+//    let date = calendar.dateComponents(in: .current, from: currentDate)
+//
+//    let todayComponents = DateComponents(year: date.year, month: date.month, day: date.day)
+//
+//    return true
+//  }
   
   var datesWithDiray: [Date] = []
   
@@ -72,7 +67,6 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     super.viewDidAppear(animated)
     
   }
-  
   
   private func setUpCalendar() {
     
@@ -110,7 +104,46 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
   
   @IBAction func showDiaryReport(_ sender: UIButton) {
     
-    print(#function)
+    let realm = try! Realm()
+    
+    let calendar = Calendar.current
+    
+    guard let thisMonth = calendar.dateComponents([.month], from: Date()).month else { return }
+    
+    let targetDiarys = realm.objects(Diary.self).filter {
+      
+      guard let writtenMonth = calendar.dateComponents([.month], from: $0.date).month else { return false }
+      
+      return writtenMonth == thisMonth
+    }
+    
+    var emotions: [String: Int] = [:]
+    
+    targetDiarys.forEach {
+      emotions.updateValue((emotions[$0.emotion] ?? 0) + 1 , forKey: $0.emotion)
+    }
+    
+    
+    let message = """
+
+    이번 달 쓴 일기 수 : \(targetDiarys.count)회
+
+    행복 : \(emotions[DiaryEmotion.happy.rawValue] ?? 0)회
+
+    분노 : \(emotions[DiaryEmotion.angry.rawValue] ?? 0)회
+
+    슬픔 : \(emotions[DiaryEmotion.sad.rawValue] ?? 0)회
+    
+    우울 : \(emotions[DiaryEmotion.blue.rawValue] ?? 0)회
+
+    """
+    
+    
+    let alertVC = UIAlertController(title: "요약", message: message, preferredStyle: .alert)
+    
+    alertVC.addAction(UIAlertAction.okAction)
+    
+    present(alertVC, animated: true, completion: nil)
   }
   
   @IBAction func makeNewDiary(_ sender: UIButton) {
@@ -178,8 +211,6 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
       print(error.localizedDescription)
     }
   }
-  
-  
 }
 
 extension DiaryMainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
@@ -216,7 +247,6 @@ extension DiaryMainViewController : FSCalendarDelegate, FSCalendarDataSource, FS
     
     /// 작성된 일기가 있다면
     /// 일기 상세 화면
-    ///
     let readDiaryVC = ReadDiaryViewController.make(with: diary)
     
     self.show(readDiaryVC, sender: nil)
