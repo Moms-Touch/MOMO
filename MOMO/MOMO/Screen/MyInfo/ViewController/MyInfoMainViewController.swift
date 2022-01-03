@@ -55,7 +55,7 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
           let parsingManager = ParsingManager()
           parsingManager.judgeGenericResponse(data: data, model: [BabyData].self) { [weak self] (body) in
             guard let self = self else {return}
-            if body.count != 0 {
+            if body.count > 0 {
               let baby = body[0]
               DispatchQueue.main.async {
                 guard let babyInfoVC = MyBabyInfoViewController.loadFromStoryboard() as? MyBabyInfoViewController else {return}
@@ -64,7 +64,14 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
                 print(baby)
                 self.navigationController?.pushViewController(babyInfoVC, animated: true)
               }
+            } else  {
+              DispatchQueue.main.async {
+                guard let babyInfoVC = MyBabyInfoViewController.loadFromStoryboard() as? MyBabyInfoViewController else {return}
+                babyInfoVC.babyViewModel = BabyInfoViewModel()
+                self.navigationController?.pushViewController(babyInfoVC, animated: true)
+              }
             }
+            
           }
         case .failure(let error):
           print(error)

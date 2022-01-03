@@ -27,11 +27,17 @@ extension String {
     }
     let today = Date()
   
-    guard let distanceDay = Calendar.current.dateComponents([.day], from: date, to: today).day else {
+    guard let distanceDay = Calendar.current.dateComponents([.day], from: today, to: date).day else {
         return nil
     }
-    // 52 - 버림((출산예정일 - 오늘) / 7)
-    let distanceWeek = 52 - (distanceDay / 7)
+    print(distanceDay)
+    print(distanceDay / 7)
+    print(40 - (distanceDay / 7))
+    // 40 - 버림((출산예정일 - 오늘) / 7)
+    var distanceWeek = 40 - (distanceDay / 7)
+    if distanceWeek < 0 {
+      distanceWeek = 1
+    }
     return "\(distanceWeek)주차"
   }
   
