@@ -138,7 +138,9 @@ extension EditInfoTableViewController {
         alertVC.addAction(ok)
         return alertVC
       case .location:
-        return LocationViewController.loadFromStoryboard()
+        guard let locationvc = LocationViewController.loadFromStoryboard() as? LocationViewController else {return nil}
+        locationvc.editMode = true
+        return locationvc
       case .currentStatus:
         return PregnantStatusViewController.loadFromStoryboard()
       }

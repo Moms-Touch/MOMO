@@ -24,7 +24,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-pr-eq4" customClass="MomoBaseButton" customModule="MOMO" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-pr-eq4">
                                 <rect key="frame" x="38" y="578" width="299" height="59"/>
                                 <color key="backgroundColor" name="Pink4"/>
                                 <constraints>
@@ -53,9 +53,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ne-6b-KJi">
-                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OQ-Jm-HHt">
                                 <rect key="frame" x="20" y="30" width="12.5" height="22"/>
                                 <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -71,23 +68,19 @@
                             <constraint firstItem="5OQ-Jm-HHt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="1bh-XV-8HD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="G5q-pr-eq4" secondAttribute="bottom" constant="30" id="51p-8L-lFd"/>
                             <constraint firstAttribute="trailing" secondItem="ofc-36-CfB" secondAttribute="trailing" constant="50" id="9tS-aT-tzk"/>
-                            <constraint firstAttribute="bottom" secondItem="6ne-6b-KJi" secondAttribute="bottom" id="C2M-3l-aCJ"/>
                             <constraint firstItem="5OQ-Jm-HHt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="bbz-Td-MLk"/>
                             <constraint firstItem="ofc-36-CfB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="cly-rz-Jq6"/>
-                            <constraint firstItem="6ne-6b-KJi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fFf-VB-H21"/>
                             <constraint firstItem="G5q-pr-eq4" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="hFM-vz-ink"/>
                             <constraint firstItem="Pro-a2-pE3" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kVb-GJ-oIH"/>
                             <constraint firstItem="ofc-36-CfB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.4" id="nAy-b2-YKq"/>
                             <constraint firstItem="G5q-pr-eq4" firstAttribute="trailing" secondItem="Pro-a2-pE3" secondAttribute="trailing" id="qh7-0x-vJI"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6ne-6b-KJi" secondAttribute="trailing" id="rGn-u2-99q"/>
                             <constraint firstItem="Pro-a2-pE3" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="uaQ-sC-Mlw"/>
                             <constraint firstItem="Pro-a2-pE3" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.7" id="vEJ-Vr-roa"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="LocationTextField" destination="Pro-a2-pE3" id="9uk-fg-5Gp"/>
-                        <outlet property="cityNamePickerView" destination="6ne-6b-KJi" id="LTG-S5-0Oe"/>
                         <outlet property="explanationLabel" destination="ofc-36-CfB" id="XfH-Vx-X2F"/>
+                        <outlet property="locationTextField" destination="Pro-a2-pE3" id="9uk-fg-5Gp"/>
                         <outlet property="nextButton" destination="G5q-pr-eq4" id="py3-vr-3t0"/>
                         <outlet property="nextButtonBottomConstraint" destination="51p-8L-lFd" id="hap-wX-9C7"/>
                     </connections>
