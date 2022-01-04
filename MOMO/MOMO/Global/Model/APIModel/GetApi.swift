@@ -23,6 +23,7 @@ enum GetApi: APIable {
   case communityDetailGet
   case noticeGet
   case policyGet(token: String, keyword: String?, location: String?, category: Filter?, page: Int)
+  case policyDetailGet(token: String, id: Int)
   case infoGet(token: String, start: String, end: String)
   case infoDetailGet(token: String, id: Int)
   case likeGet(token: String)
@@ -33,7 +34,7 @@ extension GetApi {
   
   var contentType: ContentType {
     switch self {
-    case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet:
+    case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet, .policyDetailGet:
       return .noBody
     default:
       return .noBody
@@ -42,7 +43,7 @@ extension GetApi {
   
   var encodingType: EncodingType {
     switch self {
-    case .noticeGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet:
+    case .noticeGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet, .policyDetailGet:
       return .JSONEncoding
     case .policyGet, .infoGet:
       return .URLEncoding
@@ -63,6 +64,8 @@ extension GetApi {
       return makePathtoURL(path: "/info")
     case .policyGet:
       return makePathtoURL(path: "/policy")
+    case .policyDetailGet(_, let id):
+      return makePathtoURL(path: "/policy\(id)")
     case .bookmarkGet:
       return makePathtoURL(path: "/bookmark")
     case .loginGet:
@@ -77,15 +80,17 @@ extension GetApi {
         return makePathtoURL(path: "/member/\(checkNickname)")
     case .infoDetailGet(_, let id):
       return makePathtoURL(path: "/info/\(id)")
-    default:
-      return " "
+    case .communityGet:
+      return makePathtoURL(path: "/community")
+    case .communityDetailGet:
+      return makePathtoURL(path: "/community")
     }
   }
   
   var param: [String : String?]? {
     switch self {
     case .noticeGet, .bookmarkGet(_), .loginGet(_), .userGet(_), .babyGet(_), .likeGet(_),
-        .infoDetailGet(_, _):
+        .infoDetailGet(_, _), .policyDetailGet:
       return nil
     case .policyGet(_, let keyword, let location, let category, let page):
       return ["keyword": keyword, "location": location, "category": category?.rawValue, "page": String(page)]
@@ -102,7 +107,7 @@ extension GetApi {
     switch self {
     case .noticeGet:
       return nil
-    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _), .bookmarkGet(let token), .loginGet(let token), .userGet(let token), .babyGet(let token), .likeGet(let token), .infoDetailGet(let token, _):
+    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _), .bookmarkGet(let token), .loginGet(let token), .userGet(let token), .babyGet(let token), .likeGet(let token), .infoDetailGet(let token, _), policyDetailGet(let token, _):
       return [ "Authorization" : "Bearer \(token)"]
     default:
       return nil
