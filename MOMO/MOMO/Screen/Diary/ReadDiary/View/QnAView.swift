@@ -14,6 +14,7 @@ final class QnAView: UIView, NibInstantiatable {
   @IBOutlet weak var answerTextView: UITextView! {
     didSet {
       answerTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+      answerTextView.isUserInteractionEnabled = false
     }
   }
   
@@ -30,6 +31,5 @@ final class QnAView: UIView, NibInstantiatable {
   
   @objc func tapDone(sender: Any) {
     self.answerTextView.endEditing(true)
-    //저장시킨다?
   }
 }
