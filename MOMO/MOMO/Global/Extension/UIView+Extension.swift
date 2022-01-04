@@ -47,6 +47,10 @@ extension UIView {
     layer.mask = mask
   }
   
+  func momoButtonStyle() {
+    self.setRound(5)
+  }
+  
 }
 
 
