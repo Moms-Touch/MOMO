@@ -23,7 +23,7 @@ final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
     didSet {
       let location: String = UserManager.shared.userInfo?.location ?? "대한민국"
       let babyBirth: String = UserManager.shared.babyInWeek ?? ""
-      infoLabel.text = "\(location)에 사는 \(babyBirth) 엄마"
+      infoLabel.text = "\(location)에 사는 엄마"
     }
   }
   @IBOutlet weak var infoView: UIView! {
@@ -46,8 +46,8 @@ final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
     self.nicknameLabel.text = userInfo.nickname
     self.emailLabel.text = userInfo.email
     let location: String = userInfo.location
-    let babyBirth: String = UserManager.shared.babyInWeek ?? ""
-    self.infoLabel.text = "\(location)에 사는 \(babyBirth) 엄마"
+    let babyBirth: String = UserManager.shared.babyInWeek ?? "0주차"
+    self.infoLabel.text = "\(location)에 사는 엄마"
   }
   
   @IBAction func didTapBackButton(_ sender: UIButton) {
@@ -85,7 +85,6 @@ final class EditInfoTableViewController: InfoBaseTableViewController {
 extension EditInfoTableViewController {
   enum SettingTableName: Int, CaseIterable {
     case nickname
-    case password
     case location
     case currentStatus
     
@@ -115,23 +114,6 @@ extension EditInfoTableViewController {
               print(error)
             }
           }
-        }
-        alertVC.addAction(cancel)
-        alertVC.addAction(ok)
-        return alertVC
-      case .password:
-        let alertVC = UIAlertController(title: "비밀번호 변경", message: nil, preferredStyle: .alert)
-        alertVC.addTextField { $0.placeholder = "현재 비밀번호" }
-        alertVC.addTextField { $0.placeholder = "새로운 비밀번호"}
-        let cancel = UIAlertAction(title: "취소", style: .destructive) { action in
-          return
-        }
-        let ok = UIAlertAction(title: "변경", style: .default) { action in
-          guard let oldPassword = alertVC.textFields?[0].text else { return }
-          guard let newPassword = alertVC.textFields?[1].text else { return }
-          print(oldPassword)
-          print(newPassword)
-          // api 생기면 추가하기
         }
         alertVC.addAction(cancel)
         alertVC.addAction(ok)

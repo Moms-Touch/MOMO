@@ -56,10 +56,15 @@ extension String {
     
     if todayInCal.year! > dateInCal.year! {
       return "\(todayInCal.year! - dateInCal.year! + 1)살"
-    } else if todayInCal.year! == dateInCal.year! {
-      let dateWeek = calendar.component(.weekOfYear, from: date)
-      let todayWeek = calendar.component(.weekOfYear, from: today)
-      return "\(todayWeek - dateWeek)주차"
+    } else if todayInCal.year! == dateInCal.year! { //올해 태어난 애
+      let dateWeek = calendar.component(.weekOfYear, from: date) // 올해 몇주차에 태어났는지
+      let todayWeek = calendar.component(.weekOfYear, from: today) // 오늘 몇주차인지
+      let result = todayWeek - dateWeek
+      if result < 0{
+        return nil
+      } else { //이게 진짜
+        return "\(result)주차"
+      }
     } else {
       return nil
     }

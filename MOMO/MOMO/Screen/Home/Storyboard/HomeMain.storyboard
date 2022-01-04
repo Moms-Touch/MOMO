@@ -104,7 +104,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7N-2r-EST">
                                 <rect key="frame" x="121" y="194" width="133" height="133"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="lJe-gp-myE">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="lJe-gp-myE">
                                         <rect key="frame" x="4" y="4" width="125" height="125"/>
                                     </imageView>
                                 </subviews>

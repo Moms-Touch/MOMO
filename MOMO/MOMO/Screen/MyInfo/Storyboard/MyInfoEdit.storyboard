@@ -150,28 +150,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="hdk-VV-jfo">
-                                        <rect key="frame" x="16" y="84.666667938232422" width="303" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdk-VV-jfo" id="Hkd-AS-YFi">
-                                            <rect key="frame" x="0.0" y="0.0" width="303" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 변경" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFh-lS-hRX">
-                                                    <rect key="frame" x="11.000000000000007" y="13" width="108.66666666666669" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                    <color key="textColor" name="Pink4"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="FFh-lS-hRX" firstAttribute="leading" secondItem="Hkd-AS-YFi" secondAttribute="leadingMargin" constant="-5" id="I5u-JZ-YP1"/>
-                                                <constraint firstItem="FFh-lS-hRX" firstAttribute="centerY" secondItem="Hkd-AS-YFi" secondAttribute="centerY" id="rC3-OD-IZE"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="Ng2-zD-jOh">
-                                        <rect key="frame" x="16" y="134.66666793823242" width="303" height="50"/>
+                                        <rect key="frame" x="16" y="84.666667938232422" width="303" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ng2-zD-jOh" id="HUk-MS-4Kg">
                                             <rect key="frame" x="0.0" y="0.0" width="303" height="50"/>
@@ -191,7 +171,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="hTe-vg-ccs">
-                                        <rect key="frame" x="16" y="184.66666793823242" width="303" height="50"/>
+                                        <rect key="frame" x="16" y="134.66666793823242" width="303" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hTe-vg-ccs" id="STV-Hg-f8o">
                                             <rect key="frame" x="0.0" y="0.0" width="303" height="50"/>
@@ -225,7 +205,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.left" catalog="system" width="32" height="32"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
