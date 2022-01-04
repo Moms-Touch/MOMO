@@ -33,6 +33,7 @@
                                             <constraint firstAttribute="width" constant="295" id="8n2-Oz-Yq4"/>
                                             <constraint firstAttribute="height" constant="47" id="QA0-Zr-cxU"/>
                                         </constraints>
+                                        <color key="textColor" name="Pink4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
@@ -46,6 +47,7 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호(특수문자 포함 8자 이상)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clb-SM-pET" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="73" width="295" height="47"/>
+                                        <color key="textColor" name="Pink4"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -62,6 +64,7 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GF4-BZ-pkh" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="295" height="47"/>
+                                                <color key="textColor" name="Pink4"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <userDefinedRuntimeAttributes>

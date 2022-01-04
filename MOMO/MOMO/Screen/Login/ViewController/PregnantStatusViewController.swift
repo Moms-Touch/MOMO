@@ -8,22 +8,19 @@
 import UIKit
 
 final class PregnantStatusViewController: UIViewController {
-  @IBOutlet private weak var nextButton: UIButton!
+  @IBOutlet private weak var nextButton: UIButton! {
+    didSet {
+      nextButton.momoButtonStyle()
+    }
+  }
   @IBOutlet private weak var expectedBirthdayField: UITextField! {
     didSet {
       expectedBirthdayField.inputView = calenderDatePicker
-      expectedBirthdayField.inputAccessoryView = toolbar
     }
   }
   @IBOutlet private weak var babyNameTextField: UITextField!
   @IBOutlet private weak var pregnantButton: UIButton!
   @IBOutlet private weak var birthButton: UIButton!
-  @IBOutlet weak var calenderDatePicker: UIDatePicker! {
-    didSet {
-      calenderDatePicker.setValue(UIColor.white, forKey: "backgroundColor")
-    }
-  }
-  @IBOutlet weak var toolbar: UIToolbar!
   
   private var isOnPregnantButton = false
   private var isOnBirthButton = false
@@ -31,6 +28,7 @@ final class PregnantStatusViewController: UIViewController {
   private var age = 0
   
   private let formatter = DateFormatter()
+  private var calenderDatePicker = UIDatePicker()
   private var networkManager = NetworkManager()
   private var expectedDate: String? = nil
   var email: String = ""
@@ -43,27 +41,7 @@ final class PregnantStatusViewController: UIViewController {
     expectedBirthdayField.setBottomBorder()
     babyNameTextField.setBottomBorder()
     hideKeyboard()
-  }
-  
-  @IBAction func editExpectedBirthDate(_ sender: UITextField) {
-    calenderDatePicker.isHidden = false
-    toolbar.isHidden = false
-  }
-  
-  @IBAction func tappedCancel(_ sender: UIBarButtonItem) {
-    calenderDatePicker.isHidden = true
-    expectedBirthdayField.text = expectedDate
-    toolbar.isHidden = true
-  }
-  
-  @IBAction func tappedComplete(_ sender: UIBarButtonItem) {
-    calenderDatePicker.isHidden = true
-    toolbar.isHidden = true
-  }
-  
-  @IBAction func calendarPickerDidChange(_ sender: UIDatePicker) {
-    expectedBirthdayField.text = sender.date.toString()
-    expectedDate = sender.date.toString()
+    configureDatePicker()
   }
   
   @IBAction func tappedPregnantButton() {
@@ -80,8 +58,6 @@ final class PregnantStatusViewController: UIViewController {
     changeButtonStyle()
   }
   
-  
-  
   //data 전달방식 실패 && token값 받아오는 방법 모름
   @IBAction func tappedMomoStartButton(_ sender: UIButton) {
     var babybirthday: String = ""
@@ -92,15 +68,12 @@ final class PregnantStatusViewController: UIViewController {
       return
     }
     
-    
     if let babybirth = expectedBirthdayField.text {
         babybirthday = babybirth
     } else {
       self.view.makeToast("태어날 날짜를 모르신다면, 현재부터 6개월 뒤로 잡을게요👶")
       babybirthday = (Calendar.current.date(byAdding: .month, value: 6, to: Date()) ?? Date()).toString()
     }
-    
-    print(email, password, nickname, checkPregnant, location, babyname, babybirthday)
     
     networkManager.request(apiModel: PostApi.registProfile(email: email, password: password, nickname: nickname, isPregnant: checkPregnant, hasChild: true, age: 0, location: location, babyName: babyname, babyBirth: babybirthday,  contentType: .jsonData)) { data in
       switch data {
@@ -175,29 +148,59 @@ final class PregnantStatusViewController: UIViewController {
       birthButton.isSelected = true
     }
   }
-  
-  private func setUpView() {
-    pregnantButton.definedButtonDesign()
-    birthButton.definedButtonDesign()
-  }
 }
 
 extension UITextField {
   func setBottomBorder() {
-    self.layer.shadowColor = UIColor.darkGray.cgColor
+    self.layer.shadowColor = Asset.Colors.pink1.color.cgColor
     self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
     self.layer.shadowOpacity = 1.0
     self.layer.shadowRadius = 0.0
   }
 }
 
-extension UIButton {
-  func definedButtonDesign() {
-    backgroundColor = .white
-    layer.borderColor = UIColor.systemPink.cgColor
-    layer.borderWidth = 1.0
-    layer.cornerRadius = 4.0
+extension PregnantStatusViewController: StoryboardInstantiable {}
+
+extension PregnantStatusViewController {
+  
+  private func addToolbar() {
+    let toolbar = UIToolbar()
+    toolbar.frame = CGRect(x: 0, y: 0, width: 0, height: 35)
+    toolbar.barTintColor = .white
+    self.expectedBirthdayField.inputAccessoryView = toolbar
+    
+    let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    
+    let done = UIBarButtonItem()
+    done.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color], for: .normal)
+    done.title = "완료"
+    done.target = self
+    done.action = #selector(datePickerDismiss)
+    
+    toolbar.setItems([flexSpace, done], animated: true)
+  }
+  
+  private func configureDatePicker() {
+    addToolbar()
+    setAttributes()
+  }
+  
+  private func setAttributes() {
+    if #available(iOS 13.4, *) {
+      calenderDatePicker.preferredDatePickerStyle = .wheels
+    }
+    calenderDatePicker.backgroundColor = .white
+    calenderDatePicker.datePickerMode = .date
+    calenderDatePicker.locale = Locale(identifier: "ko-KR")
+    calenderDatePicker.timeZone = .autoupdatingCurrent
+    calenderDatePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
+  }
+  
+  @objc func datePickerDismiss() {
+    self.view.endEditing(true)
+  }
+  
+  @objc func handleDatePicker(_ sender: UIDatePicker) {
+    self.expectedBirthdayField.text = sender.date.toString()
   }
 }
-
-extension PregnantStatusViewController: StoryboardInstantiable {}

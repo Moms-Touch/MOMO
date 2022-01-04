@@ -18,12 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 상태는 ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgI-6M-abU">
-                                <rect key="frame" x="38" y="112.5" width="186" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상태에 맞는 정보를 추천드려요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPb-wx-J4j">
                                 <rect key="frame" x="38" y="159.5" width="239.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -31,11 +25,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ib-CC-w5a">
-                                <rect key="frame" x="38" y="578" width="295" height="59"/>
+                                <rect key="frame" x="38" y="578" width="299" height="59"/>
                                 <color key="backgroundColor" name="Pink4"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="Ekl-hJ-cWE"/>
-                                    <constraint firstAttribute="width" constant="295" id="b2P-v5-dSU"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="모모 시작하기">
@@ -49,6 +42,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="출산예정일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gB9-Hq-lJd">
                                 <rect key="frame" x="40" y="311" width="295" height="18.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="Pink4"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -56,14 +50,12 @@
                                         <color key="value" name="Pink1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="editExpectedBirthDate:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="PR7-ZS-S7g"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="아기이름 / 태명" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q4R-Mx-WDa">
-                                <rect key="frame" x="40" y="355.5" width="295" height="18.5"/>
+                                <rect key="frame" x="40" y="355.5" width="295" height="19.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" name="Pink4"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
@@ -93,31 +85,6 @@
                                     <action selector="tappedBirthButton" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gMC-GP-VGf"/>
                                 </connections>
                             </button>
-                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="8hn-kE-2MS">
-                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="calendarPickerDidChange:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Xgk-Zu-Nd7"/>
-                                </connections>
-                            </datePicker>
-                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bw-qj-JDC">
-                                <rect key="frame" x="0.0" y="451" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="취소" id="KO5-Cd-6G0">
-                                        <color key="tintColor" systemColor="systemRedColor"/>
-                                        <connections>
-                                            <action selector="tappedCancel:" destination="Y6W-OH-hqX" id="Usc-Vd-gWg"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ai5-aE-Qlt"/>
-                                    <barButtonItem title="완료" id="vaS-6X-cIN">
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <action selector="tappedComplete:" destination="Y6W-OH-hqX" id="eYg-WF-2do"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96A-Bb-Dz0">
                                 <rect key="frame" x="20" y="30" width="12.5" height="22"/>
                                 <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -126,31 +93,32 @@
                                     <action selector="tappedBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ggB-wY-miA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 상태는 ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgI-6M-abU">
+                                <rect key="frame" x="38" y="112.5" width="186" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aVc-xG-y1R" firstAttribute="top" secondItem="bPb-wx-J4j" secondAttribute="bottom" constant="48.5" id="0Yi-4C-h0e"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gB9-Hq-lJd" secondAttribute="trailing" constant="40" id="2SB-pe-HZ2"/>
-                            <constraint firstItem="3bw-qj-JDC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4eC-bp-pcd"/>
-                            <constraint firstItem="3bw-qj-JDC" firstAttribute="top" secondItem="8hn-kE-2MS" secondAttribute="top" id="8AZ-Wx-NTA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8ib-CC-w5a" secondAttribute="bottom" constant="30" id="8Fb-ZT-frH"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8ib-CC-w5a" secondAttribute="trailing" constant="38" id="93F-65-zpG"/>
                             <constraint firstItem="aVc-xG-y1R" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="0.6" id="HQR-Hi-SXv"/>
                             <constraint firstItem="8ib-CC-w5a" firstAttribute="leading" secondItem="OgI-6M-abU" secondAttribute="leading" id="L1j-vX-mS3"/>
                             <constraint firstItem="bPb-wx-J4j" firstAttribute="top" secondItem="OgI-6M-abU" secondAttribute="bottom" constant="5" id="M40-af-51I"/>
-                            <constraint firstItem="8hn-kE-2MS" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="NDu-Bz-4Mg"/>
                             <constraint firstItem="96A-Bb-Dz0" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="Nis-X0-eFE"/>
                             <constraint firstItem="q4R-Mx-WDa" firstAttribute="top" secondItem="gB9-Hq-lJd" secondAttribute="bottom" constant="26" id="Owr-UX-600"/>
-                            <constraint firstItem="3bw-qj-JDC" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Pwf-82-nmB"/>
                             <constraint firstItem="6sk-Hh-e7b" firstAttribute="top" secondItem="bPb-wx-J4j" secondAttribute="bottom" constant="48.5" id="R7O-Up-ks8"/>
                             <constraint firstItem="OgI-6M-abU" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.4" id="Sov-92-j1A"/>
                             <constraint firstItem="6sk-Hh-e7b" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="1.4" id="Vgy-KN-cTq"/>
                             <constraint firstItem="96A-Bb-Dz0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Wil-bC-X5x"/>
                             <constraint firstItem="gB9-Hq-lJd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="XS9-lN-SU1"/>
-                            <constraint firstItem="8hn-kE-2MS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="XZK-sG-zFw"/>
                             <constraint firstItem="q4R-Mx-WDa" firstAttribute="leading" secondItem="gB9-Hq-lJd" secondAttribute="leading" id="bqA-Zy-OLf"/>
                             <constraint firstItem="OgI-6M-abU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="j5T-1d-50y"/>
-                            <constraint firstItem="8hn-kE-2MS" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="prM-Eb-a9F"/>
                             <constraint firstItem="q4R-Mx-WDa" firstAttribute="trailing" secondItem="gB9-Hq-lJd" secondAttribute="trailing" id="qOd-gp-729"/>
                             <constraint firstItem="bPb-wx-J4j" firstAttribute="leading" secondItem="OgI-6M-abU" secondAttribute="leading" id="vOb-wZ-bh8"/>
                             <constraint firstItem="gB9-Hq-lJd" firstAttribute="top" secondItem="aVc-xG-y1R" secondAttribute="bottom" constant="32" id="xQM-mc-c4c"/>
@@ -159,11 +127,9 @@
                     <connections>
                         <outlet property="babyNameTextField" destination="q4R-Mx-WDa" id="pMH-7y-Ybo"/>
                         <outlet property="birthButton" destination="6sk-Hh-e7b" id="NiB-sx-xJl"/>
-                        <outlet property="calenderDatePicker" destination="8hn-kE-2MS" id="N2H-Bn-4Rf"/>
                         <outlet property="expectedBirthdayField" destination="gB9-Hq-lJd" id="1Rw-Lw-JRL"/>
                         <outlet property="nextButton" destination="8ib-CC-w5a" id="g0I-ff-EJh"/>
                         <outlet property="pregnantButton" destination="aVc-xG-y1R" id="enC-3e-MU6"/>
-                        <outlet property="toolbar" destination="3bw-qj-JDC" id="eXB-xY-WYQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -185,9 +151,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

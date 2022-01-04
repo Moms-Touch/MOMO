@@ -15,7 +15,6 @@ protocol emailable: AnyObject {
 final class FindPasswordViewController: UIViewController {
   @IBOutlet private weak var emailTextField: MomoBaseTextField!
   @IBOutlet private weak var temporaryPasswordButton: UIButton!
-  
   weak var delegate: emailable?
   private let networkManager = NetworkManager()
   private var emailAddress: String = ""{

@@ -109,12 +109,12 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   }
   
   override func viewDidLayoutSubviews() {
-    myBabyImageView.setRound()
-    myBabyImageView.isUserInteractionEnabled = true
     myBabyInfoTextFields.forEach {$0.setRound()
       $0.addLeftPadding(width: 20)
       $0.layer.borderColor = Asset.Colors.pink4.color.cgColor
     }
+    myBabyImageView.setRound()
+    myBabyImageView.isUserInteractionEnabled = true
     scrollingKeyboard()
   }
 }

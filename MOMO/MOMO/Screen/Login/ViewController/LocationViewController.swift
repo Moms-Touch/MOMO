@@ -9,7 +9,11 @@ import UIKit
 
 final class LocationViewController: UIViewController {
     @IBOutlet private weak var explanationLabel: UILabel!
-    @IBOutlet private weak var nextButton: UIButton!
+  @IBOutlet private weak var nextButton: UIButton! {
+    didSet {
+      nextButton.momoButtonStyle()
+    }
+  }
     @IBOutlet private weak var nextButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var LocationTextField: MomoBaseTextField!
     @IBOutlet private weak var cityNamePickerView: UIPickerView!
