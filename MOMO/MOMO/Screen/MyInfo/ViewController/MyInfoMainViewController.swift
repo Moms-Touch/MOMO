@@ -107,27 +107,29 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
         sceneDelegate.window!.rootViewController = newNaviController
       }
     case 5:
-      guard let token = UserManager.shared.token else {return}
-      networkManager.request(apiModel: DeleteApi.deleteUser(token: token)) { (result) in
-        switch result {
-        case .success(let data):
-          let parsingManager = ParsingManager()
-          parsingManager.judgeSimpleResponse(data: data) {
-            DispatchQueue.main.async { [weak self] in
-              guard let self = self else {return}
-              UserManager.shared.deleteUser()
-              guard let loginVC = LoginViewController.loadFromStoryboard() as? LoginViewController else {return}
-              let newNaviController = UINavigationController(rootViewController: loginVC)
-              newNaviController.isNavigationBarHidden = true
-              let sceneDelegate = UIApplication.shared.connectedScenes
-                      .first!.delegate as! SceneDelegate
-              sceneDelegate.window!.rootViewController = newNaviController
-            }
+      let alert = UIAlertController(title: "회원탈퇴", message: "회원탈퇴하시겠습니까?", preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "네", style: .default, handler: {
+        (action) in
+        guard let token = UserManager.shared.token else {return}
+        self.networkManager.request(apiModel: DeleteApi.deleteUser(token: token)) { (result) in
+          switch result {
+          case .success(let data):
+              DispatchQueue.main.async { [weak self] in
+                guard let self = self else {return}
+                UserManager.shared.deleteUser()
+                guard let loginVC = LoginViewController.loadFromStoryboard() as? LoginViewController else {return}
+                let newNaviController = UINavigationController(rootViewController: loginVC)
+                newNaviController.isNavigationBarHidden = true
+                let sceneDelegate = UIApplication.shared.connectedScenes
+                        .first!.delegate as! SceneDelegate
+                sceneDelegate.window!.rootViewController = newNaviController
+              }
+          case .failure(let error):
+            self.view.makeToast("회원탈퇴에 실패했어요. 다시 시도해주세요")
           }
-        case .failure(let error):
-          print(error)
-        }
-      }
+        }}))
+      alert.addAction(UIAlertAction(title: "아니오", style: .cancel))
+      self.present(alert, animated: true, completion: nil)
     default:
       return
     }

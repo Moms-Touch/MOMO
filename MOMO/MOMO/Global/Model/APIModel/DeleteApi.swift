@@ -42,7 +42,7 @@ extension DeleteApi: APIable {
   var url: String {
     switch self {
     case .deleteUser:
-      return makePathtoURL(path: "/memeber")
+      return makePathtoURL(path: "/member")
     case .deleteBookmark:
       return makePathtoURL(path: "/bookmark")
     }
