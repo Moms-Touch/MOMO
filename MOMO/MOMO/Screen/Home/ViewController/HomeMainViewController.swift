@@ -71,6 +71,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       return}
     
     guard let babyBirth = UserManager.shared.babyInWeek else {
+      self.view.makeToast("아이의 생일을 다시 입력해주세요")
       self.dateWithBabyButton.setTitle("생일 등록하기", for: .normal)
       return}
     guard let babyName = userInfo.baby?.first?.name else {
