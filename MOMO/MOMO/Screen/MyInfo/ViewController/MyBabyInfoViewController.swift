@@ -98,8 +98,6 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
     } else {
       babyViewModel.createBaby(token: token, name: name, birthday: birth, imageUrl: imageUrl)
     }
-    
-    
     self.navigationController?.popViewController(animated: true)
   }
     

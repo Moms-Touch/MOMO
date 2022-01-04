@@ -80,7 +80,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     if let imageUrl = userInfo.baby?.first?.imageUrl {
       self.babyProfileImageView.setImage(with: imageUrl)
     } else {
-      self.babyProfileImageView.image = UIImage(named: "Logo")
+      self.babyProfileImageView.image = UIImage(named: "mascot")
       self.view.makeToast("가운데 버튼을 눌러서, 아이의 사진으로 변경해보아요🤰")
     }
     self.dateWithBabyButton.setTitle("\(babyName) \(babyBirth)", for: .normal)

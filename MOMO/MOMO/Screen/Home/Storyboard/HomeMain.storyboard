@@ -104,7 +104,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7N-2r-EST">
                                 <rect key="frame" x="121" y="194" width="133" height="133"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="lJe-gp-myE">
+                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="lJe-gp-myE">
                                         <rect key="frame" x="4" y="4" width="125" height="125"/>
                                     </imageView>
                                 </subviews>
@@ -182,6 +182,7 @@
         <image name="Logo" width="84" height="16"/>
         <image name="bell" width="24" height="24"/>
         <image name="bookmark" width="24" height="24"/>
+        <image name="mascot" width="153" height="141"/>
         <image name="recommendBtn" width="60" height="60"/>
         <image name="todayBtn" width="60" height="60"/>
         <namedColor name="45">

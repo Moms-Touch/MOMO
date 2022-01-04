@@ -95,8 +95,8 @@
                                                     <action selector="didTapSaveButtonWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0QH-vu-i2U"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4dR-9R-BYJ">
-                                                <rect key="frame" x="81" y="51.999999999999986" width="213" height="209.66666666666669"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="4dR-9R-BYJ">
+                                                <rect key="frame" x="81" y="50" width="213" height="213"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="4dR-9R-BYJ" secondAttribute="height" multiplier="1:1" id="WDl-XK-kqi"/>
                                                 </constraints>
@@ -160,8 +160,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.left" catalog="system" width="32" height="32"/>
-        <image name="person.fill" catalog="system" width="32" height="32"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="mascot" width="153" height="141"/>
         <namedColor name="Pink4">
             <color red="0.8784313725490196" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
