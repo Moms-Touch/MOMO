@@ -30,5 +30,6 @@ final class QnAView: UIView, NibInstantiatable {
   
   @objc func tapDone(sender: Any) {
     self.answerTextView.endEditing(true)
+    //저장시킨다?
   }
 }

@@ -43,7 +43,6 @@ final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
   
   @objc func changeInfo() {
     guard let userInfo = UserManager.shared.userInfo else {return}
-    print(userInfo)
     self.nicknameLabel.text = userInfo.nickname
     self.emailLabel.text = userInfo.email
     let location: String = userInfo.location
