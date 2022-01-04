@@ -26,6 +26,6 @@ class WithTextCollectionViewCell: UICollectionViewCell, NibInstantiatable {
   }
   
   @objc func tapDone(sender: Any) {
-    self.contentView.endEditing(true)
+    self.answerTextView.endEditing(true)
   }
 }

@@ -11,7 +11,11 @@ final class QnAView: UIView, NibInstantiatable {
   
   @IBOutlet weak var questionLabel: UILabel!
   
-  @IBOutlet weak var answerTextView: UITextView!
+  @IBOutlet weak var answerTextView: UITextView! {
+    didSet {
+      answerTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+    }
+  }
   
   static func make(question: String, answer: String) -> QnAView {
     
@@ -22,5 +26,9 @@ final class QnAView: UIView, NibInstantiatable {
     view.answerTextView.text = answer
     
     return view
+  }
+  
+  @objc func tapDone(sender: Any) {
+    self.answerTextView.endEditing(true)
   }
 }

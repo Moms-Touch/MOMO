@@ -28,7 +28,11 @@ class ListTableViewCell: UITableViewCell, NibLoadableView, simpleContentContaine
         thumbnailImageView.image = UIImage(named: "Logo")!
         return
       }
-      thumbnailImageView.setImage(with: thumbnailImageUrl)
+      if let author = data?.author, author.contains("여성가족부") == true {
+        thumbnailImageView.image = UIImage(named: "governmentLogo")!
+      } else {
+        thumbnailImageView.setImage(with: thumbnailImageUrl)
+      }
     }
   }
   
