@@ -15,25 +15,15 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var policyImageView: UIImageView!
   @IBOutlet weak var policyContentView: UILabel!
   @IBOutlet weak var goButton: UIButton!
-  @IBOutlet weak var bookmarkButton: UIButton! {
-    didSet {
-      guard let data = policyData else {
-        return
-      }
-      if data.isBookmark == true {
-        bookmarkButton.isSelected = true
-      } else {
-        bookmarkButton.isSelected = false
-      }
-    }
-  }
+  @IBOutlet weak var bookmarkButton: UIButton!
   
   var content: Any?
+  var mode = false
   private var policyData: PolicyData?
   private var url: String = ""
-  private var index: Int = 0
+  var index: Int = 0
   private var postCompletionHandler: ((Int)->Void)?
-  private var deleteCompletionHandler: ((Int)->Void)?
+  var deleteCompletionHandler: ((Int)->Void)?
   lazy var networkingManager = NetworkManager()
   
   override func viewDidLoad() {
@@ -52,12 +42,20 @@ class DetailViewController: UIViewController {
     }
     titleLabel.text = policyData.title
     hostAssocitationLabel.text = policyData.author
+    
+    if policyData.isBookmark == true {
+      bookmarkButton.isSelected = true
+    } else {
+      bookmarkButton.isSelected = false
+    }
+    
     let urlsplit = policyData.url?.components(separatedBy: "\"") ?? []
     if urlsplit.count > 1 {
       url = urlsplit[1]
     } else {
       url = urlsplit.first ?? ""
     }
+    
     dateLabel.text = policyData.createdAt.trimStringDate()
     policyContentView.text = EnterString(content: policyData.content)
     if let image = policyData.thumbnailImageUrl {
@@ -65,20 +63,26 @@ class DetailViewController: UIViewController {
     }
   }
   
+  
   private func EnterString(content: String) -> String {
     var stringMap = content.map {$0}
-    while index < stringMap.count {
-      if stringMap[index] == "►" && index != 0 {
-        stringMap.insert("\n", at: index)
-        index += 1
+    var stringIndex = 0
+    while stringIndex < stringMap.count {
+      if stringMap[stringIndex] == "►" && stringIndex != 0 {
+        stringMap.insert("\n", at: stringIndex)
+        stringIndex += 1
       }
-      index += 1
+      stringIndex += 1
     }
     return String(stringMap)
   }
   
   @IBAction func didTapBackButton(_ sender: UIButton) {
-    navigationController?.popViewController(animated: true)
+    if mode == true {
+      self.dismiss(animated: true, completion: nil)
+    } else {
+      navigationController?.popViewController(animated: true)
+    }
   }
   
   @IBAction func didTapShorcutButton(_ sender: UIButton) {

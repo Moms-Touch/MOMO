@@ -163,12 +163,26 @@ extension PolicyMainViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let detailVC = DetailViewController.loadFromStoryboard() as? DetailViewController else {
-      print("detailVC is nil")
-      return
+    guard let token = UserManager.shared.token else {return}
+    networkManager.request(apiModel: GetApi.policyDetailGet(token: token, id: datasource[indexPath.section].id)) { result in
+      switch result {
+      case .success(let data):
+        let parsingmanager = ParsingManager()
+        parsingmanager.judgeGenericResponse(data: data, model: PolicyData.self) { [weak self] (body) in
+          guard let self = self else { return }
+          DispatchQueue.main.async {
+            guard let vc = DetailViewController.loadFromStoryboard() as? DetailViewController else {return}
+            vc.configure(policyData: body)
+            self.navigationController?.pushViewController(vc, animated: true)
+          }
+        }
+      case .failure(let error):
+        print("communitybookmarkVC", error)
+        DispatchQueue.main.async { [weak self] in
+          self?.view.makeToast("오류가 발생했습니다. 다시 시도해주세요😂")
+        }
+      }
     }
-    detailVC.configure(policyData: datasource[indexPath.section])
-    navigationController?.pushViewController(detailVC, animated: true)
   }
 }
 
@@ -279,7 +293,11 @@ extension PolicyMainViewController {
       case .failure(let error):
         DispatchQueue.main.async { [weak self] in
           if error as! NetworkError == NetworkError.failResponse {
-            self?.view.makeToast("결과가 없습니다.🥲")
+            if self?.locationTextField.text != "전국"  {
+              self?.view.makeToast("지방단위로 정책을 모으는 중이에요\n전국으로 설정한뒤 이용해주세요\n불편을 드려서 죄송합니다🥲")
+            } else {
+              self?.view.makeToast("결과가 없습니다.🥲")
+            }
           } else {
             self?.view.makeToast("인터넷을 확인해주세요!🥲")
           }

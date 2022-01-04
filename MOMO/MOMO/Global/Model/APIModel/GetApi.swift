@@ -65,7 +65,7 @@ extension GetApi {
     case .policyGet:
       return makePathtoURL(path: "/policy")
     case .policyDetailGet(_, let id):
-      return makePathtoURL(path: "/policy\(id)")
+      return makePathtoURL(path: "/policy/\(id)")
     case .bookmarkGet:
       return makePathtoURL(path: "/bookmark")
     case .loginGet:
@@ -107,7 +107,7 @@ extension GetApi {
     switch self {
     case .noticeGet:
       return nil
-    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _), .bookmarkGet(let token), .loginGet(let token), .userGet(let token), .babyGet(let token), .likeGet(let token), .infoDetailGet(let token, _), policyDetailGet(let token, _):
+    case .policyGet(let token, _, _, _, _), .infoGet(let token, _, _), .bookmarkGet(let token), .loginGet(let token), .userGet(let token), .babyGet(let token), .likeGet(let token), .infoDetailGet(let token, _), .policyDetailGet(let token, _):
       return [ "Authorization" : "Bearer \(token)"]
     default:
       return nil
