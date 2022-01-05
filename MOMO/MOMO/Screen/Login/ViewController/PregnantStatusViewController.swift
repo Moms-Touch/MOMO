@@ -99,13 +99,21 @@ final class PregnantStatusViewController: UIViewController {
                 }
               }
             case .failure(_):
-              print("error in userdata get에서")
-              return
+              DispatchQueue.main.async { [weak self] in
+                guard let self = self else {return}
+                self.view.makeToast("네트워크 오류입니다.")
+              }
             }
           }
         }
       case .failure:
-        return
+        DispatchQueue.main.async { [weak self] in
+          guard let self = self else {return}
+          guard let viewcontrollers: [UIViewController] = self.navigationController?.viewControllers else {return}
+          self.navigationController?.popToViewController(viewcontrollers[viewcontrollers.count - 3], animated: false, completion: {
+            viewcontrollers[viewcontrollers.count - 3].view.makeToast("다른 닉네임 혹은 다른 이메일로 다시 설정해주세요")
+          })
+        }
       }
     }
   }
