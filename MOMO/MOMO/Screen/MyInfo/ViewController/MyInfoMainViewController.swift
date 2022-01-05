@@ -88,7 +88,7 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
         let alert = UIAlertController(title: "로그아웃", message: "로그아웃을 하시겠습니까?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "네", style: .default, handler: {
           [weak self] (action) in
-//          UserManager.shared.deleteUser()
+          UserManager.shared.deleteUser()
           guard let loginVC = LoginViewController.loadFromStoryboard() as? LoginViewController else {return}
           let newNaviController = UINavigationController(rootViewController: loginVC)
           newNaviController.isNavigationBarHidden = true

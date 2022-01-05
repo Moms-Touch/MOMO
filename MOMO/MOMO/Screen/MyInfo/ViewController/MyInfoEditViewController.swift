@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
   
@@ -58,8 +59,6 @@ final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
 
 final class EditInfoTableViewController: InfoBaseTableViewController {
   
-  lazy var networkManager = NetworkManager()
-  
   override func viewDidLoad() {
     tableView.setRound(20)
     tableView.layer.borderColor = Asset.Colors.pink4.color.cgColor
@@ -69,8 +68,89 @@ final class EditInfoTableViewController: InfoBaseTableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     guard let cell = SettingTableName(rawValue: indexPath.row) else {return}
-    guard let alertVC = cell.destination else {return}
-    present(alertVC, animated: true, completion: nil)
+    guard let token = UserManager.shared.token else {return }
+    guard let userInfo = UserManager.shared.userInfo else {return}
+    let networkManager = NetworkManager()
+    
+    switch cell {
+    case .nickname:
+      let alertVC = UIAlertController(title: "닉네임 변경", message: nil, preferredStyle: .alert)
+      alertVC.addTextField { $0.placeholder = "닉네임을 입력해주세요" }
+      let cancel = UIAlertAction(title: "취소", style: .destructive) { action in
+        return
+      }
+      let ok = UIAlertAction(title: "변경", style: .default) { action in
+        guard let newNick = alertVC.textFields?[0].text else { return }
+        networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: newNick, isPregnant: userInfo.isPregnant, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
+          switch result {
+          case .success(let data):
+            let parsingManager = ParsingManager()
+            parsingManager.judgeGenericResponse(data: data, model: UserData.self) { (body) in
+              DispatchQueue.main.async {  [weak self] in
+                self?.view.makeToast("\(newNick)으로 닉네임 변경되었습니다")
+                UserManager.shared.userInfo = body
+              }
+            }
+          case .failure:
+            DispatchQueue.main.async { [weak self] in
+              self?.view.makeToast("닉네임이 중복되었습니다.\n다른 닉네임으로 변경해주세요")
+            }
+          }
+        }
+      }
+      alertVC.addAction(cancel)
+      alertVC.addAction(ok)
+      present(alertVC, animated: true, completion: nil)
+    case .location:
+      guard let locationvc = LocationViewController.loadFromStoryboard() as? LocationViewController else {return}
+      locationvc.editMode = true
+      present(locationvc, animated: true, completion: nil)
+    case .currentStatus:
+      let alertVC = UIAlertController(title: "임신/출산 여부 변경", message: nil, preferredStyle: .actionSheet)
+      let isPregnant = UIAlertAction(title: "임신 중", style: .default) { action in
+        networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: userInfo.nickname, isPregnant: true, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
+          switch result {
+          case .success(let data):
+            let parsingManager = ParsingManager()
+            parsingManager.judgeGenericResponse(data: data, model: UserData.self) { [ weak self] (body) in
+              DispatchQueue.main.async {
+                self?.view.makeToast("임신중으로 변경되었습니다.")
+                UserManager.shared.userInfo = body
+              }
+            }
+          case .failure(_):
+            DispatchQueue.main.async { [weak self] in
+              self?.view.makeToast("변경 실패입니다. 다시 시도해주세요")
+            }
+          }
+        }
+      }
+      let isNotPregnant = UIAlertAction(title: "출산 후", style: .default) { action in
+        networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: userInfo.nickname, isPregnant: false, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
+          switch result {
+          case .success(let data):
+            let parsingManager = ParsingManager()
+            parsingManager.judgeGenericResponse(data: data, model: UserData.self) { [weak self](body) in
+              DispatchQueue.main.async {
+                self?.view.makeToast("출산 후로 변경되었습니다.")
+                UserManager.shared.userInfo = body
+              }
+            }
+          case .failure(_):
+            DispatchQueue.main.async { [weak self] in
+              self?.view.makeToast("변경 실패입니다. 다시 시도해주세요")
+            }
+          }
+        }
+      }
+      let cancel = UIAlertAction(title: "취소", style: .cancel) { action in
+        return
+      }
+      alertVC.addAction(isPregnant)
+      alertVC.addAction(isNotPregnant)
+      alertVC.addAction(cancel)
+      self.present(alertVC, animated: true, completion: nil)
+    }
   }
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -87,83 +167,6 @@ extension EditInfoTableViewController {
     case nickname
     case location
     case currentStatus
-    
-    var destination: UIViewController? {
-      let networkManager = NetworkManager()
-      guard let token = UserManager.shared.token else {return nil}
-      guard let userInfo = UserManager.shared.userInfo else {return nil}
-      switch self {
-      case .nickname:
-        let alertVC = UIAlertController(title: "닉네임 변경", message: nil, preferredStyle: .alert)
-        alertVC.addTextField { $0.placeholder = "닉네임을 입력해주세요" }
-        let cancel = UIAlertAction(title: "취소", style: .destructive) { action in
-          return
-        }
-        let ok = UIAlertAction(title: "변경", style: .default) { action in
-          guard let newNick = alertVC.textFields?[0].text else { return }
-          networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: newNick, isPregnant: userInfo.isPregnant, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
-            switch result {
-            case .success(let data):
-              let parsingManager = ParsingManager()
-              parsingManager.judgeGenericResponse(data: data, model: UserData.self) { (body) in
-                DispatchQueue.main.async {
-                  UserManager.shared.userInfo = body
-                }
-              }
-            case .failure(let error):
-              print(error)
-            }
-          }
-        }
-        alertVC.addAction(cancel)
-        alertVC.addAction(ok)
-        return alertVC
-      case .location:
-        guard let locationvc = LocationViewController.loadFromStoryboard() as? LocationViewController else {return nil}
-        locationvc.editMode = true
-        return locationvc
-      case .currentStatus:
-        guard let user = UserManager.shared.userInfo else {return nil}
-        let alertVC = UIAlertController(title: "임신/출산 여부 변경", message: nil, preferredStyle: .actionSheet)
-        let isPregnant = UIAlertAction(title: "임신 중", style: .default) { action in
-          networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: userInfo.nickname, isPregnant: true, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
-            switch result {
-            case .success(let data):
-              let parsingManager = ParsingManager()
-              parsingManager.judgeGenericResponse(data: data, model: UserData.self) { (body) in
-                DispatchQueue.main.async {
-                  UserManager.shared.userInfo = body
-                }
-              }
-            case .failure(let error):
-              print(error)
-            }
-          }
-        }
-        let isNotPregnant = UIAlertAction(title: "출산 후", style: .default) { action in
-          networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: userInfo.nickname, isPregnant: false, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
-            switch result {
-            case .success(let data):
-              let parsingManager = ParsingManager()
-              parsingManager.judgeGenericResponse(data: data, model: UserData.self) { (body) in
-                DispatchQueue.main.async {
-                  UserManager.shared.userInfo = body
-                }
-              }
-            case .failure(let error):
-              print(error)
-            }
-          }
-        }
-        let cancel = UIAlertAction(title: "취소", style: .cancel) { action in
-          return
-        }
-        alertVC.addAction(isPregnant)
-        alertVC.addAction(isNotPregnant)
-        alertVC.addAction(cancel)
-        return alertVC
-      }
-    }
   }
 }
 
