@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
@@ -127,7 +128,7 @@ extension MyBabyInfoViewController: UIImagePickerControllerDelegate, UINavigatio
   }
   
   private func openCamera() {
-    guard !UIImagePickerController.isSourceTypeAvailable(.camera) else {
+    guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
       print("Camera is not availble")
       return
     }
@@ -135,10 +136,25 @@ extension MyBabyInfoViewController: UIImagePickerControllerDelegate, UINavigatio
     present(picker, animated: false, completion: nil)
   }
   
+  private func checkCameraPermission() {
+    AVCaptureDevice.requestAccess(for: .video) { [weak self] (granted) in
+      guard let self = self else {return}
+      if granted {
+        print("Camera: 권한 허용")
+        DispatchQueue.main.async {
+          self.openCamera()
+        }
+      } else {
+        print("Camera: 권한 거부")
+        return
+      }
+    }
+  }
+  
   @objc private func addBabyImage(sender: UIImageView) {
     let alert = UIAlertController(title: "아기 사진을 불러와주세요", message: nil, preferredStyle: .actionSheet)
     let library = UIAlertAction(title: "사진앨범", style: .default, handler: {_ in self.openLibrary()})
-    let camera = UIAlertAction(title: "카메라", style: .default, handler:{ _ in self.openCamera()})
+    let camera = UIAlertAction(title: "카메라", style: .default, handler:{ _ in self.checkCameraPermission()})
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
     alert.addAction(library)
     alert.addAction(camera)
