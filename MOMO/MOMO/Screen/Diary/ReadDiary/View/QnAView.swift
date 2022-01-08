@@ -9,7 +9,11 @@ import UIKit
 
 final class QnAView: UIView, NibInstantiatable {
   
-  @IBOutlet weak var questionLabel: UILabel!
+  @IBOutlet weak var questionLabel: UILabel! {
+    didSet {
+      questionLabel.font = UIFont.customFont(forTextStyle: .title3)
+    }
+  }
   
   @IBOutlet weak var answerTextView: UITextView! {
     didSet {

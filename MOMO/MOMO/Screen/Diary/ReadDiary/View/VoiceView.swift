@@ -9,6 +9,12 @@ import UIKit
 
 final class VoiceView: UIView, NibInstantiatable {
 
+  @IBOutlet weak var titleLabel: UILabel! {
+    didSet {
+      titleLabel.font = UIFont.customFont(forTextStyle: .title3)
+    }
+  }
+  
   @IBOutlet weak var playButton: UIButton! {
     didSet {
       playButton.accessibilityLabel = "음성녹음 재생"

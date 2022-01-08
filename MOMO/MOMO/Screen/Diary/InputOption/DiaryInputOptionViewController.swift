@@ -34,6 +34,14 @@ class DiaryInputOptionViewController: UIViewController, StoryboardInstantiable {
   /// [ 작성 방식 (글, 목소리) 버튼들을 담고 있는 스택 뷰
   /// - 첫번째 단계 에 화면에 나타난다
 
+  @IBOutlet var labelList: [UILabel]! {
+    didSet {
+      labelList.forEach {
+        $0.font = UIFont.customFont(forTextStyle: .title3)
+      }
+    }
+  }
+  
   @IBOutlet weak var inputOptionStack: UIStackView!
   
   /// [ 가이드 여부 선택 버튼들을 담고 있는 스택 뷰
