@@ -8,11 +8,7 @@
 import UIKit
 
 final class PregnantStatusViewController: UIViewController {
-  @IBOutlet private weak var nextButton: UIButton! {
-    didSet {
-      nextButton.momoButtonStyle()
-    }
-  }
+  @IBOutlet private weak var nextButton: UIButton! 
   @IBOutlet private weak var expectedBirthdayField: UITextField! {
     didSet {
       expectedBirthdayField.inputView = calenderDatePicker
@@ -42,6 +38,7 @@ final class PregnantStatusViewController: UIViewController {
     babyNameTextField.setBottomBorder()
     hideKeyboard()
     configureDatePicker()
+    setUpButtonUI()
   }
   
   @IBAction func tappedPregnantButton() {
@@ -133,6 +130,10 @@ final class PregnantStatusViewController: UIViewController {
       return -1
     }
     return currentYear - birthYear + 1
+  }
+  
+  private func setUpButtonUI() {
+    nextButton.momoButtonStyle()
   }
   
   private func moveToHomeMainView() {

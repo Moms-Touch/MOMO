@@ -32,6 +32,7 @@ final class LoginViewController: ViewController {
     checkBoxView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(checkBoxClicked)))
     hideKeyboard()
     setTextFieldDelegate()
+    setUpButtonUI()
   }
   
   @objc func checkBoxClicked() {
@@ -42,6 +43,11 @@ final class LoginViewController: ViewController {
       checkBoxLabel.isHidden = false
       passwordTextField.isSecureTextEntry = false
     }
+  }
+  
+  private func setUpButtonUI() {
+    loginButton.momoButtonStyle()
+    signUpButton.momoButtonStyle()
   }
   
   private func showActivityIndicator() {

@@ -142,6 +142,8 @@
 		28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1827610E3800E699FC /* NotificationData.swift */; };
 		28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1A27610E5A00E699FC /* BabyData.swift */; };
 		28F9B2582783A18A00D7EF7A /* extension+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */; };
+		3AF3731F2789C9390007752E /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF3731E2789C9390007752E /* CustomFont.swift */; };
+		3AF373212789CFA70007752E /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF373202789CFA70007752E /* UIButton + Extension.swift */; };
 		758F519A277E112100DA88BE /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758F5199277E112100DA88BE /* SignUp.storyboard */; };
 		759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A731427788FDC00E549F6 /* PolicyMain.storyboard */; };
 		759A7319277890ED00E549F6 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A7318277890ED00E549F6 /* Detail.storyboard */; };
@@ -308,6 +310,8 @@
 		28F4FE1A27610E5A00E699FC /* BabyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyData.swift; sourceTree = "<group>"; };
 		28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+UITextView.swift"; sourceTree = "<group>"; };
 		29571FE8D5CCF400013C2EA7 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
+		3AF3731E2789C9390007752E /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		3AF373202789CFA70007752E /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		445731CECCD50B4197977B82 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		758F5199277E112100DA88BE /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		759A731427788FDC00E549F6 /* PolicyMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyMain.storyboard; sourceTree = "<group>"; };
@@ -506,6 +510,7 @@
 				DDE31705277F3CD10033FEF4 /* UIAlertAction+Extension.swift */,
 				28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */,
 				284BEBC02785CF01002C5A9E /* UINavigationController+Extension.swift */,
+				3AF373202789CFA70007752E /* UIButton + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 				28B63E99276DF17D00CB5EBF /* CustomNavigationPresentationController.swift */,
 				28B63E9B276DF53600CB5EBF /* CustomNavigationAnimator.swift */,
 				75AF4A7B277EB30C00F3A041 /* ViewController.swift */,
+				3AF3731E2789C9390007752E /* CustomFont.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -995,12 +1001,12 @@
 			mainGroup = DD43E8B5270B4A2100699DA1;
 			packageReferences = (
 				280BEFC0274B65F100F031A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
-				285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit.git" */,
-				28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar.git" */,
-				DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */,
-				DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections.git" */,
-				284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */,
+				280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */,
+				28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = DD43E8BF270B4A2100699DA1 /* Products */;
 			projectDirPath = "";
@@ -1175,6 +1181,7 @@
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
 				281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */,
 				28A9995D2778808800459D19 /* BookmarkData.swift in Sources */,
+				3AF373212789CFA70007752E /* UIButton + Extension.swift in Sources */,
 				28F139E0277DC5D400B78774 /* SimpleResponse.swift in Sources */,
 				288EFD192754F476000D1617 /* SegControlCustomable.swift in Sources */,
 				288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */,
@@ -1198,6 +1205,7 @@
 				28A99970277C6B2500459D19 /* BabyInfoViewModel.swift in Sources */,
 				28A99967277AE5BB00459D19 /* UserData.swift in Sources */,
 				285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */,
+				3AF3731F2789C9390007752E /* CustomFont.swift in Sources */,
 				75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */,
 				28B63E9A276DF17D00CB5EBF /* CustomNavigationPresentationController.swift in Sources */,
 				288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */,
@@ -1440,7 +1448,7 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
+		280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -1448,7 +1456,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */ = {
+		284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
 			requirement = {
@@ -1456,7 +1464,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+		285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -1464,7 +1472,7 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar.git" */ = {
+		28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
 			requirement = {
@@ -1472,7 +1480,7 @@
 				minimumVersion = 2.8.2;
 			};
 		};
-		DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */ = {
+		DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -1480,7 +1488,7 @@
 				minimumVersion = 10.20.2;
 			};
 		};
-		DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections.git" */ = {
+		DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
@@ -1518,37 +1526,37 @@
 		};
 		280BEFCC274B7B9400F031A7 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
+			package = 280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 		284C7C3F2780930C008A5374 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */;
+			package = 284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
 		};
 		285209832753307100AB8BAC /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		28CA3064275334DA00EF071E /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar.git" */;
+			package = 28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
 		};
 		DDE316F3277C94D70033FEF4 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
 		DDE316F5277C94D70033FEF4 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 		DDE31708277F41E10033FEF4 /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections.git" */;
+			package = DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */

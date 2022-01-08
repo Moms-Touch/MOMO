@@ -9,14 +9,7 @@ import UIKit
 
 final class LocationViewController: UIViewController {
   @IBOutlet private weak var explanationLabel: UILabel!
-  @IBOutlet private weak var nextButton: UIButton! {
-    didSet {
-      if editMode == true {
-        nextButton.setTitle("저장", for: .normal)
-      }
-      nextButton.momoButtonStyle()
-    }
-  }
+  @IBOutlet private weak var nextButton: UIButton!
   @IBOutlet private weak var nextButtonBottomConstraint: NSLayoutConstraint!
   @IBOutlet private weak var locationTextField: MomoBaseTextField! {
     didSet {
@@ -48,8 +41,15 @@ final class LocationViewController: UIViewController {
     configurePickerView()
     addToolbar()
     hideKeyboard()
+    setUpButtonUI()
   }
   
+  private func setUpButtonUI() {
+    if editMode == true {
+      nextButton.setTitle("저장", for: .normal)
+    }
+    nextButton.momoButtonStyle()
+  }
   
   private func setUpView() {
     locationTextField.setBorderColor(to: Asset.Colors.pink2.color)

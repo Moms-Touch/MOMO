@@ -16,17 +16,19 @@ final class SignUpViewController: UIViewController {
   @IBOutlet private weak var emailTextField: MomoBaseTextField!
   @IBOutlet private weak var passwordTextField: MomoBaseTextField!
   @IBOutlet weak var nicknameTextField: MomoBaseTextField!
-  @IBOutlet private weak var nextButton: UIButton! {
-    didSet {
-      nextButton.momoButtonStyle()
-    }
-  }
+  @IBOutlet private weak var nextButton: UIButton! 
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setTextFieldDelegate()
     setUpView()
     hideKeyboard()
+    explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
+    setUpButtonUI()
+  }
+  
+  private func setUpButtonUI() {
+    nextButton.momoButtonStyle()
   }
   
   private func setUpView() {
