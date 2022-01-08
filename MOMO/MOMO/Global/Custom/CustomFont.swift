@@ -16,12 +16,12 @@ struct CustomFont {
     .title2: UIFont.systemFont(ofSize: 18, weight: .bold),    // Button
     .title3: UIFont.systemFont(ofSize: 16, weight: .bold),
     .headline: UIFont.systemFont(ofSize: 14, weight: .bold), //Cell 제목
-//    .body: UIFont(name: "Merriweather-Regular", size: 17)!,
+    .body: UIFont.systemFont(ofSize: 16, weight: .medium),
 //    .callout: UIFont(name: "Merriweather-Regular", size: 16)!,
     .subheadline: UIFont.systemFont(ofSize: 12, weight: .bold), //Cell 부제목
     .footnote: UIFont.systemFont(ofSize: 18, weight: .medium),  //로그인하는곳 text입력필드
     .caption1: UIFont.systemFont(ofSize: 12, weight: .medium), 
-//    .caption2: UIFont(name: "Merriweather-Regular", size: 11)!
+    .caption2: UIFont.systemFont(ofSize: 14, weight: .medium)
   ]
 }
 

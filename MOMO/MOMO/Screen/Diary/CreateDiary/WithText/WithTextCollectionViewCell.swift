@@ -20,6 +20,7 @@ class WithTextCollectionViewCell: UICollectionViewCell, NibInstantiatable {
   @IBOutlet weak var answerTextView: UITextView! {
     didSet {
       answerTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+      answerTextView.font = UIFont.customFont(forTextStyle: .body)
     }
   }
   
