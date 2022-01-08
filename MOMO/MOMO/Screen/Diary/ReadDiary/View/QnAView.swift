@@ -15,6 +15,7 @@ final class QnAView: UIView, NibInstantiatable {
     didSet {
       answerTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
       answerTextView.isUserInteractionEnabled = false
+      answerTextView.isAccessibilityElement = true
     }
   }
   
@@ -25,6 +26,8 @@ final class QnAView: UIView, NibInstantiatable {
     view.questionLabel.text = question
     
     view.answerTextView.text = answer
+    
+    view.isAccessibilityElement = false
     
     return view
   }

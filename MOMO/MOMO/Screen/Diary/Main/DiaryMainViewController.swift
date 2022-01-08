@@ -88,6 +88,8 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     
     calendarView.appearance.caseOptions = .weekdayUsesUpperCase
     
+    calendarView.locale = Locale(identifier: "ko_KR")
+    
     calendarView.appearance.weekdayTextColor = Asset.Colors._71.color
     
     calendarView.appearance.borderRadius = 0
@@ -140,6 +142,8 @@ class DiaryMainViewController: UIViewController, StoryboardInstantiable {
     
     
     let alertVC = UIAlertController(title: "요약", message: message, preferredStyle: .alert)
+    
+    alertVC.isAccessibilityElement = false
     
     alertVC.addAction(UIAlertAction.okAction)
     
