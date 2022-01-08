@@ -41,7 +41,7 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   }
   @IBOutlet weak var saveButton: UIButton! {
     didSet {
-      saveButton.setRound(5)
+      saveButton.momoButtonStyle()
     }
   }
   @IBOutlet var constraints: [NSLayoutConstraint]!

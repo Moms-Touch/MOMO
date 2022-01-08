@@ -27,7 +27,7 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
   
   @IBOutlet weak var completeDiaryButton: UIButton! {
     didSet {
-      completeDiaryButton.layer.cornerRadius = 4
+      completeDiaryButton.momoButtonStyle()
     }
   }
   

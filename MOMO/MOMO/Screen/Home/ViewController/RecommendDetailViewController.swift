@@ -14,6 +14,11 @@ class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigatio
   var postCompletionHandler: ((Int)->Void)?
   var deleteCompletionHandler: ((Int)->Void)?
   
+  @IBOutlet weak var goButton: UIButton! {
+    didSet {
+      goButton.momoButtonStyle()
+    }
+  }
   @IBOutlet weak var webView: WKWebView!
   @IBOutlet weak var bookmarkButton: UIButton! {
     didSet {

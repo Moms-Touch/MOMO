@@ -14,7 +14,11 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var policyImageView: UIImageView!
   @IBOutlet weak var policyContentView: UILabel!
-  @IBOutlet weak var goButton: UIButton!
+  @IBOutlet weak var goButton: UIButton! {
+    didSet {
+      goButton.momoButtonStyle()
+    }
+  }
   @IBOutlet weak var bookmarkButton: UIButton!
   
   var content: Any?

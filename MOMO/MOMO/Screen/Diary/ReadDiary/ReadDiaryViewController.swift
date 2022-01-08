@@ -19,7 +19,7 @@ class ReadDiaryViewController: UIViewController, StoryboardInstantiable {
   
   @IBOutlet weak var deleteButton: UIButton! {
     didSet {
-      deleteButton.layer.cornerRadius = 5
+      deleteButton.momoButtonStyle()
     }
   }
   
