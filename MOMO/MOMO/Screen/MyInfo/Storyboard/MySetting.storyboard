@@ -76,6 +76,9 @@
                             <constraint firstItem="ojR-6D-GGv" firstAttribute="top" secondItem="OVe-8x-2F8" secondAttribute="top" id="gkD-vD-2us"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="navTitle" destination="dEk-Nc-Jp7" id="IWt-gf-SE4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCc-ip-e29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

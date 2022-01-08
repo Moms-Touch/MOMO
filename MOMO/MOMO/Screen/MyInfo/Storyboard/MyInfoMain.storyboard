@@ -74,6 +74,9 @@
                             <constraint firstItem="u4C-jg-YUu" firstAttribute="trailing" secondItem="ibF-RB-4c8" secondAttribute="trailing" id="eze-GH-aBV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="myLabel" destination="5x1-T1-zTi" id="X56-Fu-UjB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="flu-GX-O2h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

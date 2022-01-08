@@ -13,6 +13,11 @@ class MyInfoMainViewController: UIViewController, StoryboardInstantiable {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
   }
+  @IBOutlet weak var myLabel: UILabel! {
+    didSet {
+      myLabel.navTitleStyle()
+    }
+  }
   
   @IBAction func didTapBackButton(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)

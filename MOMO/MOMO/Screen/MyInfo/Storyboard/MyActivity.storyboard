@@ -74,6 +74,9 @@
                             <constraint firstItem="jrX-rL-J2S" firstAttribute="trailing" secondItem="W7p-Cl-No3" secondAttribute="trailing" id="jJi-na-bx1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="navTitle" destination="1Ko-xX-jY4" id="BO9-FN-EJ2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bqn-6N-Qaw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

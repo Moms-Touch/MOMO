@@ -13,6 +13,7 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
   @IBOutlet weak var dateLabel: UILabel! {
     didSet {
       dateLabel.text = dateFormatter.string(from: Date())
+      dateLabel.navTitleStyle()
     }
   }
   

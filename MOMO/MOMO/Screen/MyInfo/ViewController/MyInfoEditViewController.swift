@@ -10,6 +10,11 @@ import Toast
 
 final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
   
+  @IBOutlet weak var navTitle: UILabel! {
+    didSet {
+      navTitle.navTitleStyle()
+    }
+  }
   @IBOutlet weak var nicknameLabel: UILabel! {
     didSet {
       nicknameLabel.text = UserManager.shared.userInfo?.nickname

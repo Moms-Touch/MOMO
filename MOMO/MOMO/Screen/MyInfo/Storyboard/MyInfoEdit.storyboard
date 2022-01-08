@@ -116,6 +116,7 @@
                         <outlet property="emailLabel" destination="huY-S6-8Nb" id="nGX-Qe-6A6"/>
                         <outlet property="infoLabel" destination="RZM-sz-hM4" id="6cp-eB-9Lr"/>
                         <outlet property="infoView" destination="4aT-Fc-f3P" id="7vH-wn-TBY"/>
+                        <outlet property="navTitle" destination="qhE-ne-w7S" id="c22-QY-WsV"/>
                         <outlet property="nicknameLabel" destination="Lbz-GZ-0Gx" id="ewH-ON-qbc"/>
                     </connections>
                 </viewController>

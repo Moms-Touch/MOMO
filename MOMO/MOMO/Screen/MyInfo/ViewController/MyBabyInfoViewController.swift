@@ -10,6 +10,11 @@ import AVFoundation
 
 class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
+  @IBOutlet weak var navTitle: UILabel! {
+    didSet {
+      navTitle.navTitleStyle()
+    }
+  }
   @IBOutlet weak var babyInfoScrollview: UIScrollView!
   @IBOutlet weak var myBabyImageView: UIImageView!
   @IBOutlet var myBabyInfoTextFields: [UITextField]! {

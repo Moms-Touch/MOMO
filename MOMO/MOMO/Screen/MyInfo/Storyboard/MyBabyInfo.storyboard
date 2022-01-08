@@ -155,6 +155,7 @@
                     <connections>
                         <outlet property="babyInfoScrollview" destination="5cd-kK-Eg9" id="NYa-IW-JzK"/>
                         <outlet property="myBabyImageView" destination="4dR-9R-BYJ" id="mAn-ed-bkg"/>
+                        <outlet property="navTitle" destination="GFO-Uz-BoR" id="YyY-RB-EDx"/>
                         <outlet property="saveButton" destination="mbl-XL-Cab" id="u9d-TI-DPB"/>
                         <outletCollection property="myBabyInfoTextFields" destination="WHO-pU-FdP" collectionClass="NSMutableArray" id="Yt8-cf-57I"/>
                         <outletCollection property="myBabyInfoTextFields" destination="wXC-7C-W9f" collectionClass="NSMutableArray" id="Iqn-Ig-Z7K"/>
