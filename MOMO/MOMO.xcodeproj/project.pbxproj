@@ -145,6 +145,7 @@
 		3AF3731F2789C9390007752E /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF3731E2789C9390007752E /* CustomFont.swift */; };
 		3AF373212789CFA70007752E /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF373202789CFA70007752E /* UIButton + Extension.swift */; };
 		3AF373232789D5440007752E /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF373222789D5440007752E /* UILabel + Extension.swift */; };
+		3AF8059A2789DDA600D80F68 /* MyPageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF805992789DDA600D80F68 /* MyPageLabel.swift */; };
 		758F519A277E112100DA88BE /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758F5199277E112100DA88BE /* SignUp.storyboard */; };
 		759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A731427788FDC00E549F6 /* PolicyMain.storyboard */; };
 		759A7319277890ED00E549F6 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A7318277890ED00E549F6 /* Detail.storyboard */; };
@@ -314,6 +315,7 @@
 		3AF3731E2789C9390007752E /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		3AF373202789CFA70007752E /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		3AF373222789D5440007752E /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		3AF805992789DDA600D80F68 /* MyPageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageLabel.swift; sourceTree = "<group>"; };
 		445731CECCD50B4197977B82 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		758F5199277E112100DA88BE /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		759A731427788FDC00E549F6 /* PolicyMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyMain.storyboard; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				28B63E9B276DF53600CB5EBF /* CustomNavigationAnimator.swift */,
 				75AF4A7B277EB30C00F3A041 /* ViewController.swift */,
 				3AF3731E2789C9390007752E /* CustomFont.swift */,
+				3AF805992789DDA600D80F68 /* MyPageLabel.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1159,6 +1162,7 @@
 				75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */,
 				28F4713F2738A4020074D148 /* TabBar.swift in Sources */,
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
+				3AF8059A2789DDA600D80F68 /* MyPageLabel.swift in Sources */,
 				75BF0C0D276B495000C2D0C1 /* SignUpApi.swift in Sources */,
 				285209F12753329600AB8BAC /* TableViewGappable.swift in Sources */,
 				288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */,

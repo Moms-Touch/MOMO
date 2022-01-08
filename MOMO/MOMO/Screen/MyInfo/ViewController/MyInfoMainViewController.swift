@@ -13,9 +13,9 @@ class MyInfoMainViewController: UIViewController, StoryboardInstantiable {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
   }
-  @IBOutlet weak var myLabel: UILabel! {
+  @IBOutlet weak var navTitle: UILabel! {
     didSet {
-      myLabel.navTitleStyle()
+      navTitle.navTitleStyle()
     }
   }
   
@@ -30,7 +30,7 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
   
   lazy var networkManager = NetworkManager()
   
-  @IBOutlet weak var loginLabel: UILabel! {
+  @IBOutlet weak var loginLabel: MyPageLabel! {
     didSet {
       if let token = UserManager.shared.token {
         loginLabel.text = "로그아웃"
