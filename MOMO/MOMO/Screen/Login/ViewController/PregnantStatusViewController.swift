@@ -12,9 +12,14 @@ final class PregnantStatusViewController: UIViewController {
   @IBOutlet private weak var expectedBirthdayField: UITextField! {
     didSet {
       expectedBirthdayField.inputView = calenderDatePicker
+      expectedBirthdayField.setUpFontStyle()
     }
   }
-  @IBOutlet private weak var babyNameTextField: UITextField!
+  @IBOutlet private weak var babyNameTextField: UITextField! {
+    didSet {
+      babyNameTextField.setUpFontStyle()
+    }
+  }
   @IBOutlet private weak var pregnantButton: UIButton!
   @IBOutlet private weak var birthButton: UIButton!
   

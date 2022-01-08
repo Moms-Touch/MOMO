@@ -19,6 +19,7 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
   @IBOutlet weak var searchField: UITextField! {
     didSet {
       searchField.delegate = self
+      searchField.setUpFontStyle()
     }
   }
   @IBOutlet var filterButtons: [UIButton]!
@@ -27,6 +28,7 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
       locationTextField.text = "전국"
       locationTextField.inputView = locationPickerView
       locationTextField.tintColor = UIColor.clear
+      locationTextField.setUpFontStyle()
       locationTextField.delegate = self
     }
   }

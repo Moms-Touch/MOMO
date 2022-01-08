@@ -19,7 +19,7 @@ struct CustomFont {
 //    .body: UIFont(name: "Merriweather-Regular", size: 17)!,
 //    .callout: UIFont(name: "Merriweather-Regular", size: 16)!,
 //    .subheadline: UIFont(name: "Merriweather-Regular", size: 15)!,
-//    .footnote: UIFont.systemFont(ofSize: 16, weight: .medium),      //로그인하는곳 text입력필드
+    .footnote: UIFont.systemFont(ofSize: 18, weight: .medium),      //로그인하는곳 text입력필드
 //    .caption1: UIFont(name: "Merriweather-Regular", size: 12)!,
 //    .caption2: UIFont(name: "Merriweather-Regular", size: 11)!
   ]

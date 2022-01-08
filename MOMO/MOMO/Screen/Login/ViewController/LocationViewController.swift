@@ -14,6 +14,7 @@ final class LocationViewController: UIViewController {
   @IBOutlet private weak var locationTextField: MomoBaseTextField! {
     didSet {
       locationTextField.inputView = cityNamePickerView
+      locationTextField.setUpFontStyle()
     }
   }
 

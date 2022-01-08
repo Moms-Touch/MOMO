@@ -13,5 +13,9 @@ extension UITextField {
     self.leftView = padding
     self.leftViewMode = ViewMode.always
   }
+  
+  func setUpFontStyle() {
+    self.font = UIFont.customFont(forTextStyle: .footnote)
+  }
 }
 

@@ -10,8 +10,16 @@ import UIKit
 @IBDesignable
 final class LoginViewController: ViewController {
   
-  @IBOutlet private weak var idTextField: MomoBaseTextField!
-  @IBOutlet private weak var passwordTextField: MomoBaseTextField!
+  @IBOutlet private weak var idTextField: MomoBaseTextField! {
+    didSet {
+      idTextField.setUpFontStyle()
+    }
+  }
+  @IBOutlet private weak var passwordTextField: MomoBaseTextField! {
+    didSet {
+      passwordTextField.setUpFontStyle()
+    }
+  }
   @IBOutlet private weak var loginButton: UIButton!
   @IBOutlet private weak var signUpButton: UIButton!
   @IBOutlet private weak var passThroughButton: UIButton!

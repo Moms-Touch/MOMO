@@ -13,9 +13,21 @@ import Toast
 final class SignUpViewController: UIViewController {
   
   @IBOutlet private weak var explanationLabel: UILabel!
-  @IBOutlet private weak var emailTextField: MomoBaseTextField!
-  @IBOutlet private weak var passwordTextField: MomoBaseTextField!
-  @IBOutlet weak var nicknameTextField: MomoBaseTextField!
+  @IBOutlet private weak var emailTextField: MomoBaseTextField! {
+    didSet {
+      emailTextField.setUpFontStyle()
+    }
+  }
+  @IBOutlet private weak var passwordTextField: MomoBaseTextField! {
+    didSet {
+      passwordTextField.setUpFontStyle()
+    }
+  }
+  @IBOutlet weak var nicknameTextField: MomoBaseTextField! {
+    didSet {
+      nicknameTextField.setUpFontStyle()
+    }
+  }
   @IBOutlet private weak var nextButton: UIButton! 
   
   override func viewDidLoad() {
