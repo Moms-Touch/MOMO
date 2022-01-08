@@ -45,6 +45,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wfy-1u-fgY">
                                 <rect key="frame" x="20" y="59" width="24" height="24"/>
+                                <accessibility key="accessibilityConfiguration" label="북마크"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="G9H-FJ-n7Z"/>
                                     <constraint firstAttribute="width" constant="24" id="ygb-zv-cFD"/>
@@ -61,6 +62,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BN5-lx-hwb">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        <accessibility key="accessibilityConfiguration" label="추천정보 보기"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="8CZ-PZ-3Hg"/>
                                             <constraint firstAttribute="width" secondItem="BN5-lx-hwb" secondAttribute="height" multiplier="1:1" id="zoP-M0-3ew"/>
@@ -73,6 +75,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMt-7h-60l">
                                         <rect key="frame" x="0.0" y="84" width="70" height="70"/>
+                                        <accessibility key="accessibilityConfiguration" label="오늘 하루 일기 쓰기"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="7pg-ru-n7e"/>
                                             <constraint firstAttribute="width" secondItem="CMt-7h-60l" secondAttribute="height" multiplier="1:1" id="AFB-Fs-ocR"/>
@@ -88,6 +91,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-h2-mqL">
                                 <rect key="frame" x="106" y="317" width="163" height="45"/>
                                 <color key="backgroundColor" red="0.61597608010000005" green="0.31984402680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration" hint="설정화면 "/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="YyB-zQ-cBd"/>
                                 </constraints>
@@ -106,6 +110,10 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="lJe-gp-myE">
                                         <rect key="frame" x="4" y="4" width="125" height="125"/>
+                                        <accessibility key="accessibilityConfiguration" hint="아기 사진 및 설정화면" label="아기 사진">
+                                            <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

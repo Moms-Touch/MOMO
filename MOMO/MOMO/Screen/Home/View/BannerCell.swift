@@ -21,6 +21,8 @@ class BannerCell: UICollectionViewCell {
     label.textColor = .label
     label.numberOfLines = 0
     label.text = "[필독] 임산부가\n 주의해야할 약 10가지"
+    label.accessibilityHint = "모모 공지사항입니다."
+    label.accessibilityTraits = .link
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()

@@ -57,6 +57,10 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     titleLabel.leadingAnchor.constraint(equalTo: thumbNailImageView.leadingAnchor).isActive = true
     titleLabel.trailingAnchor.constraint(equalTo: thumbNailImageView.trailingAnchor).isActive = true
     titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    
+    contentView.isAccessibilityElement = false
+    thumbNailImageView.isAccessibilityElement = false
+    titleLabel.isAccessibilityElement = true
   }
   
   required init?(coder: NSCoder) {
