@@ -212,3 +212,20 @@ extension PregnantStatusViewController {
     self.expectedBirthdayField.text = sender.date.toString()
   }
 }
+
+extension PregnantStatusViewController: UITextFieldDelegate {
+//  expectedBirthdayField
+//  babyNameTextField
+  private func setTextFieldDelegate() {
+    babyNameTextField.delegate = self
+    expectedBirthdayField.delegate = self
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == babyNameTextField {
+      textField.resignFirstResponder()
+    }
+    return true
+  }
+  
+}

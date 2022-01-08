@@ -172,6 +172,7 @@ extension LocationViewController {
     let done = UIBarButtonItem()
     done.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color], for: .normal)
     done.title = "완료"
+    done.accessibilityLabel = "완료하기 버튼"
     done.target = self
     done.action = #selector(pickerDone(_:))
     

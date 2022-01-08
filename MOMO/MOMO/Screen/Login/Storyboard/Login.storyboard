@@ -23,6 +23,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3P-Ve-OxF">
                                 <rect key="frame" x="40" y="420.5" width="295" height="60"/>
+                                <accessibility key="accessibilityConfiguration" label="로그인 버튼"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xuK-jH-w5j"/>
                                 </constraints>
@@ -40,6 +41,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afn-T5-O3z">
                                 <rect key="frame" x="40" y="500.5" width="295" height="60"/>
+                                <accessibility key="accessibilityConfiguration" label="회원가입 버튼"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="5Eo-YY-pXR"/>
                                 </constraints>
@@ -65,15 +67,16 @@
                                     <action selector="didTapFindPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xjQ-zt-D7p"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbY-p8-Xzd" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbY-p8-Xzd" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                 <rect key="frame" x="40" y="276.5" width="295" height="47"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" label="이메일 작성하기"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="UQi-f2-bKr"/>
                                     <constraint firstAttribute="width" constant="295" id="vOa-pO-cit"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="figMaDefinedWidthValue">
                                         <real key="value" value="0.0"/>
@@ -86,11 +89,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVf-p1-N2o" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVf-p1-N2o" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                 <rect key="frame" x="40" y="333.5" width="295" height="47"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" label="비밀번호 작성하기"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="figMaDefinedWidthValue">
                                         <real key="value" value="0.0"/>
@@ -105,6 +109,7 @@
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLB-cb-e8g">
                                         <rect key="frame" x="1.5" y="-1.5" width="15" height="21"/>
+                                        <accessibility key="accessibilityConfiguration" label="비밀번호 보기 체크박스"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -121,8 +126,9 @@
                                     <constraint firstAttribute="width" constant="18" id="l7d-Rn-WvC"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLw-Bi-JW0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLw-Bi-JW0">
                                 <rect key="frame" x="98" y="391" width="92.5" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="비밀번호 보기"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

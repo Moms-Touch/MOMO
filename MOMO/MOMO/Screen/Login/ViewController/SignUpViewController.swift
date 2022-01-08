@@ -24,6 +24,7 @@ final class SignUpViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setTextFieldDelegate()
     setUpView()
     hideKeyboard()
   }
@@ -59,6 +60,7 @@ final class SignUpViewController: UIViewController {
   @IBAction func didTapDoubleCheck(_ sender: UIButton) {
     guard let nickname = nicknameTextField.text else {
       self.view.makeToast("닉네임을 입력안했습니다.")
+      
       return
     }
     let networkManager = NetworkManager()
@@ -137,4 +139,28 @@ extension SignUpViewController {
   }
   
   
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+  private func setTextFieldDelegate() {
+    emailTextField.delegate = self
+    nicknameTextField.delegate = self
+    passwordTextField.delegate = self
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    switch textField {
+    case emailTextField:
+      emailTextField.resignFirstResponder()
+      passwordTextField.becomeFirstResponder()
+    case passwordTextField:
+      passwordTextField.resignFirstResponder()
+      nicknameTextField.becomeFirstResponder()
+    case nicknameTextField:
+      nicknameTextField.resignFirstResponder()
+    default:
+      break
+    }
+    return true
+  }
 }

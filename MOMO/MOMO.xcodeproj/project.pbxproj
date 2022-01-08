@@ -177,6 +177,7 @@
 		DDE3170F27802A320033FEF4 /* WithVoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDE3170E27802A310033FEF4 /* WithVoice.storyboard */; };
 		DDE317112781A08D0033FEF4 /* VoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE317102781A08D0033FEF4 /* VoiceView.xib */; };
 		DDE317142781A1700033FEF4 /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE317132781A1700033FEF4 /* VoiceView.swift */; };
+		E465A2011BDB160659FCDCD1 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F0250A2819775CDE029D2B3 /* Pods_MOMO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -306,6 +307,8 @@
 		28F4FE1827610E3800E699FC /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		28F4FE1A27610E5A00E699FC /* BabyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyData.swift; sourceTree = "<group>"; };
 		28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+UITextView.swift"; sourceTree = "<group>"; };
+		29571FE8D5CCF400013C2EA7 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
+		445731CECCD50B4197977B82 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		758F5199277E112100DA88BE /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		759A731427788FDC00E549F6 /* PolicyMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyMain.storyboard; sourceTree = "<group>"; };
 		759A7318277890ED00E549F6 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -319,6 +322,7 @@
 		75CE01C427661C0F0057CF9B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		75CE01C627662CAC0057CF9B /* ParsingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingManager.swift; sourceTree = "<group>"; };
 		75CE01C927662CE00057CF9B /* APIable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIable.swift; sourceTree = "<group>"; };
+		8F0250A2819775CDE029D2B3 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		DD1C24F727518C0700CDD64F /* WithTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextViewController.swift; sourceTree = "<group>"; };
@@ -367,6 +371,7 @@
 				280BEFCA274B65F100F031A7 /* FirebaseStorageSwift-Beta in Frameworks */,
 				DDE316F6277C94D70033FEF4 /* RealmSwift in Frameworks */,
 				280BEFC8274B65F100F031A7 /* FirebaseStorage in Frameworks */,
+				E465A2011BDB160659FCDCD1 /* Pods_MOMO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,9 +764,19 @@
 			path = APIModel;
 			sourceTree = "<group>";
 		};
+		8D1E6D24EC3B5CB7722C106C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F0250A2819775CDE029D2B3 /* Pods_MOMO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B941767FC29939FBBCF33955 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				29571FE8D5CCF400013C2EA7 /* Pods-MOMO.debug.xcconfig */,
+				445731CECCD50B4197977B82 /* Pods-MOMO.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -784,6 +799,7 @@
 				DD43E8BF270B4A2100699DA1 /* Products */,
 				2852097927532CCB00AB8BAC /* Recovered References */,
 				B941767FC29939FBBCF33955 /* Pods */,
+				8D1E6D24EC3B5CB7722C106C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -925,6 +941,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD43E8D2270B4A2300699DA1 /* Build configuration list for PBXNativeTarget "MOMO" */;
 			buildPhases = (
+				C0C3705E2458945A3E060360 /* [CP] Check Pods Manifest.lock */,
 				DD43E8BA270B4A2100699DA1 /* Sources */,
 				DD43E8BB270B4A2100699DA1 /* Frameworks */,
 				DD43E8BC270B4A2100699DA1 /* Resources */,
@@ -978,12 +995,12 @@
 			mainGroup = DD43E8B5270B4A2100699DA1;
 			packageReferences = (
 				280BEFC0274B65F100F031A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */,
-				28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */,
-				DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */,
-				284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
+				285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit.git" */,
+				28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar.git" */,
+				DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */,
+				DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections.git" */,
+				284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */,
 			);
 			productRefGroup = DD43E8BF270B4A2100699DA1 /* Products */;
 			projectDirPath = "";
@@ -1046,6 +1063,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		C0C3705E2458945A3E060360 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MOMO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DD1356F8270B51B8003BAB4A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1322,6 +1361,7 @@
 		};
 		DD43E8D3270B4A2300699DA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29571FE8D5CCF400013C2EA7 /* Pods-MOMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1345,6 +1385,7 @@
 		};
 		DD43E8D4270B4A2300699DA1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 445731CECCD50B4197977B82 /* Pods-MOMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1399,7 +1440,7 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -1407,7 +1448,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+		284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
 			requirement = {
@@ -1415,7 +1456,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -1423,7 +1464,7 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+		28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
 			requirement = {
@@ -1431,7 +1472,7 @@
 				minimumVersion = 2.8.2;
 			};
 		};
-		DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -1439,7 +1480,7 @@
 				minimumVersion = 10.20.2;
 			};
 		};
-		DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+		DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
@@ -1477,37 +1518,37 @@
 		};
 		280BEFCC274B7B9400F031A7 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
 			productName = Kingfisher;
 		};
 		284C7C3F2780930C008A5374 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			package = 284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */;
 			productName = Toast;
 		};
 		285209832753307100AB8BAC /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit.git" */;
 			productName = SnapKit;
 		};
 		28CA3064275334DA00EF071E /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			package = 28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar.git" */;
 			productName = FSCalendar;
 		};
 		DDE316F3277C94D70033FEF4 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
 			productName = Realm;
 		};
 		DDE316F5277C94D70033FEF4 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
 			productName = RealmSwift;
 		};
 		DDE31708277F41E10033FEF4 /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			package = DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections.git" */;
 			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */
