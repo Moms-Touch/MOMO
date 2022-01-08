@@ -10,8 +10,16 @@ import UIKit
 @IBDesignable
 final class LoginViewController: ViewController {
   
-  @IBOutlet private weak var idTextField: MomoBaseTextField!
-  @IBOutlet private weak var passwordTextField: MomoBaseTextField!
+  @IBOutlet private weak var idTextField: MomoBaseTextField! {
+    didSet {
+      idTextField.setUpFontStyle()
+    }
+  }
+  @IBOutlet private weak var passwordTextField: MomoBaseTextField! {
+    didSet {
+      passwordTextField.setUpFontStyle()
+    }
+  }
   @IBOutlet private weak var loginButton: UIButton!
   @IBOutlet private weak var signUpButton: UIButton!
   @IBOutlet private weak var passThroughButton: UIButton!
@@ -32,6 +40,7 @@ final class LoginViewController: ViewController {
     checkBoxView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(checkBoxClicked)))
     hideKeyboard()
     setTextFieldDelegate()
+    setUpButtonUI()
   }
   
   @objc func checkBoxClicked() {
@@ -42,6 +51,11 @@ final class LoginViewController: ViewController {
       checkBoxLabel.isHidden = false
       passwordTextField.isSecureTextEntry = false
     }
+  }
+  
+  private func setUpButtonUI() {
+    loginButton.momoButtonStyle()
+    signUpButton.momoButtonStyle()
   }
   
   private func showActivityIndicator() {

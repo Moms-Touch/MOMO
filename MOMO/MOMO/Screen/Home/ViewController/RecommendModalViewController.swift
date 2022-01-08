@@ -44,7 +44,7 @@ class RecommendModalViewController: UIViewController {
     let birth = UserManager.shared.babyInWeek
     let name = UserManager.shared.userInfo?.nickname
     label.text = "\(birth ?? "0주차") \(name ?? "모모")님을 위한 추천 정보"
-    label.font = .systemFont(ofSize: 16, weight: .bold)
+    label.font = UIFont.customFont(forTextStyle: .title3)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()

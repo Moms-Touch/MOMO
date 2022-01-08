@@ -13,13 +13,17 @@ import AVFoundation
 
 class ReadDiaryViewController: UIViewController, StoryboardInstantiable {
   
-  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel! {
+    didSet {
+      dateLabel.navTitleStyle()
+    }
+  }
   
   @IBOutlet weak var qnaContainerStackView: UIStackView!
   
   @IBOutlet weak var deleteButton: UIButton! {
     didSet {
-      deleteButton.layer.cornerRadius = 5
+      deleteButton.momoButtonStyle()
     }
   }
   

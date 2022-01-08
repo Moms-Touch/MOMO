@@ -10,17 +10,22 @@ import Toast
 
 final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
   
-  @IBOutlet weak var nicknameLabel: UILabel! {
+  @IBOutlet weak var navTitle: UILabel! {
+    didSet {
+      navTitle.navTitleStyle()
+    }
+  }
+  @IBOutlet weak var nicknameLabel: MyPageLabel! {
     didSet {
       nicknameLabel.text = UserManager.shared.userInfo?.nickname
     }
   }
-  @IBOutlet weak var emailLabel: UILabel! {
+  @IBOutlet weak var emailLabel: MyPageLabel! {
     didSet {
       emailLabel.text = UserManager.shared.userInfo?.email
     }
   }
-  @IBOutlet weak var infoLabel: UILabel! {
+  @IBOutlet weak var infoLabel: MyPageLabel! {
     didSet {
       let location: String = UserManager.shared.userInfo?.location ?? "대한민국"
       let babyBirth: String = UserManager.shared.babyInWeek ?? ""

@@ -10,6 +10,11 @@ import AVFoundation
 
 class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   
+  @IBOutlet weak var navTitle: UILabel! {
+    didSet {
+      navTitle.navTitleStyle()
+    }
+  }
   @IBOutlet weak var babyInfoScrollview: UIScrollView!
   @IBOutlet weak var myBabyImageView: UIImageView!
   @IBOutlet var myBabyInfoTextFields: [UITextField]! {
@@ -19,21 +24,21 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
       for index in myBabyInfoTextFields.indices {
         let textfield = myBabyInfoTextFields[index]
         textfield.textColor = Asset.Colors.pink1.color
-        textfield.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        textfield.setUpFontStyle()
         if index == 0 {
           if babyViewModel.babyName != "" {
             textfield.text = babyViewModel.babyName
           } else {
-            textfield.attributedPlaceholder = NSAttributedString(string: placeholders[index], attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
-            textfield.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+            textfield.attributedPlaceholder = NSAttributedString(string: placeholders[index], attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.customFont(forTextStyle: .footnote)])
+            textfield.setUpFontStyle()
           }
         } else {
           textfield.inputView = datePicker
           if babyViewModel.babyBirth != "" {
             textfield.text = babyViewModel.babyBirth
           } else {
-            textfield.attributedPlaceholder = NSAttributedString(string: placeholders[index], attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
-            textfield.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+            textfield.attributedPlaceholder = NSAttributedString(string: placeholders[index], attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.pink1.color, NSAttributedString.Key.font: UIFont.customFont(forTextStyle: .footnote)])
+            textfield.setUpFontStyle()
           }
         }
       }
@@ -41,7 +46,7 @@ class MyBabyInfoViewController: UIViewController, StoryboardInstantiable {
   }
   @IBOutlet weak var saveButton: UIButton! {
     didSet {
-      saveButton.setRound(5)
+      saveButton.momoButtonStyle()
     }
   }
   @IBOutlet var constraints: [NSLayoutConstraint]!

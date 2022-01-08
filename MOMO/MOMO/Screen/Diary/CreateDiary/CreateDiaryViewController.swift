@@ -13,6 +13,7 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
   @IBOutlet weak var dateLabel: UILabel! {
     didSet {
       dateLabel.text = dateFormatter.string(from: Date())
+      dateLabel.navTitleStyle()
     }
   }
   
@@ -27,7 +28,7 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
   
   @IBOutlet weak var completeDiaryButton: UIButton! {
     didSet {
-      completeDiaryButton.layer.cornerRadius = 4
+      completeDiaryButton.momoButtonStyle()
     }
   }
   

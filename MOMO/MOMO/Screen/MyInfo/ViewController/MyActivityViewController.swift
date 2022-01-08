@@ -9,7 +9,12 @@ import UIKit
 
 class MyActivityViewController: UIViewController,StoryboardInstantiable {
 
-    override func viewDidLoad() {
+  @IBOutlet weak var navTitle: UILabel! {
+    didSet {
+      navTitle.navTitleStyle()
+    }
+  }
+  override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

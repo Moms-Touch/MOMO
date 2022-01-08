@@ -13,7 +13,11 @@ class CommonListViewController: UIViewController, UITableViewDelegate, UITableVi
     return gapBWTCell
   }
   
-  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var navTitle: UILabel! {
+    didSet {
+      navTitle.navTitleStyle()
+    }
+  }
   
   var footerHeight: CGFloat {
     return gapBWTCell

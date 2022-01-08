@@ -9,12 +9,32 @@ import UIKit
 
 class DetailViewController: UIViewController {
   
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var hostAssocitationLabel: UILabel!
-  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var titleLabel: UILabel! {
+    didSet {
+      titleLabel.navTitleStyle()
+    }
+  }
+  @IBOutlet weak var hostAssocitationLabel: UILabel! {
+    didSet {
+      hostAssocitationLabel.font = UIFont.customFont(forTextStyle: .body)
+    }
+  }
+  @IBOutlet weak var dateLabel: UILabel! {
+    didSet {
+      dateLabel.font = UIFont.customFont(forTextStyle: .body)
+    }
+  }
   @IBOutlet weak var policyImageView: UIImageView!
-  @IBOutlet weak var policyContentView: UILabel!
-  @IBOutlet weak var goButton: UIButton!
+  @IBOutlet weak var policyContentView: UILabel! {
+    didSet {
+      policyContentView.font = UIFont.customFont(forTextStyle: .body)
+    }
+  }
+  @IBOutlet weak var goButton: UIButton! {
+    didSet {
+      goButton.momoButtonStyle()
+    }
+  }
   @IBOutlet weak var bookmarkButton: UIButton!
   
   var content: Any?

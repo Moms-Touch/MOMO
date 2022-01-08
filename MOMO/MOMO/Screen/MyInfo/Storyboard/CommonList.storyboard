@@ -78,8 +78,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navTitle" destination="F3E-jx-kO6" id="2jf-UK-JRm"/>
                         <outlet property="tableview" destination="GZf-7l-hrY" id="yEw-mH-kmo"/>
-                        <outlet property="titleLabel" destination="F3E-jx-kO6" id="2jf-UK-JRm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p09-WV-YLv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

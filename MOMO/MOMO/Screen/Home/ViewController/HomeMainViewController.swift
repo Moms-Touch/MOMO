@@ -39,7 +39,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     didSet {
       dateWithBabyButton.setRound()
       dateWithBabyButton.backgroundColor = .white
-      
+      dateWithBabyButton.titleLabel?.font = UIFont.customFont(forTextStyle: .title3)
       //Usermodel을 observing 하고 있어야함
     }
   }

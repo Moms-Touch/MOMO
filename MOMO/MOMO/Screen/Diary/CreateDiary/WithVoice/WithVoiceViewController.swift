@@ -16,6 +16,11 @@ import AVFoundation
 
 final class WithVoiceViewController: UIViewController, StoryboardInstantiable  {
   
+  @IBOutlet weak var completeButton: UIButton! {
+    didSet {
+      completeButton.titleLabel?.font = UIFont.customFont(forTextStyle: .title3)
+    }
+  }
   @IBOutlet weak var recordButton: UIButton!
   
   var recordingSession: AVAudioSession!
