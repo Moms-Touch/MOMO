@@ -995,12 +995,12 @@
 			mainGroup = DD43E8B5270B4A2100699DA1;
 			packageReferences = (
 				280BEFC0274B65F100F031A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
-				285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit.git" */,
-				28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar.git" */,
-				DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */,
-				DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections.git" */,
-				284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */,
+				280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */,
+				28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = DD43E8BF270B4A2100699DA1 /* Products */;
 			projectDirPath = "";
@@ -1366,7 +1366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.7;
+				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = 693WY75AQY;
 				INFOPLIST_FILE = MOMO/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1374,7 +1374,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = net.momstouch.MOMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1390,7 +1390,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.7;
+				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = 693WY75AQY;
 				INFOPLIST_FILE = MOMO/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1398,7 +1398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.0.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = net.momstouch.MOMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1440,7 +1440,7 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
+		280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -1448,7 +1448,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */ = {
+		284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
 			requirement = {
@@ -1456,7 +1456,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+		285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -1464,7 +1464,7 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar.git" */ = {
+		28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
 			requirement = {
@@ -1472,7 +1472,7 @@
 				minimumVersion = 2.8.2;
 			};
 		};
-		DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */ = {
+		DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -1480,7 +1480,7 @@
 				minimumVersion = 10.20.2;
 			};
 		};
-		DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections.git" */ = {
+		DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
@@ -1518,37 +1518,37 @@
 		};
 		280BEFCC274B7B9400F031A7 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
+			package = 280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 		284C7C3F2780930C008A5374 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */;
+			package = 284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
 		};
 		285209832753307100AB8BAC /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		28CA3064275334DA00EF071E /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar.git" */;
+			package = 28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
 		};
 		DDE316F3277C94D70033FEF4 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
 		DDE316F5277C94D70033FEF4 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 		DDE31708277F41E10033FEF4 /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections.git" */;
+			package = DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */
