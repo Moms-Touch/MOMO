@@ -40,6 +40,12 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
     super.viewDidLoad()
     if #available(iOS 15.0, *) {
       tableView.sectionHeaderTopPadding = 0
+      let tableviewTitle = ["회원정보", "아기정보", "활동내역", "설정", loginLabel.text!, "회원탈퇴"]
+      for index in tableView.visibleCells.indices {
+        tableView.visibleCells[index].contentView.isAccessibilityElement = true
+        
+        tableView.visibleCells[index].contentView.accessibilityValue = "\(tableviewTitle[index])"
+      }
     }
   }
   

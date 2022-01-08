@@ -23,6 +23,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Up1-Wf-qbc">
                                         <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                        <accessibility key="accessibilityConfiguration" label="뒤로가기"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Up1-Wf-qbc" secondAttribute="height" multiplier="1:1" id="UCL-SC-bRB"/>
                                         </constraints>
@@ -58,18 +59,21 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지영맘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbz-GZ-0Gx">
                                                 <rect key="frame" x="0.0" y="0.0" width="225.33333333333334" height="24"/>
+                                                <accessibility key="accessibilityConfiguration" hint="회원님의 닉네임입니다."/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <color key="textColor" name="Pink4"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="momo@naver.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huY-S6-8Nb">
                                                 <rect key="frame" x="0.0" y="39" width="225.33333333333334" height="24"/>
+                                                <accessibility key="accessibilityConfiguration" hint="회원님의 이메일입니다."/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <color key="textColor" name="Pink4"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울에 거주하는 21주차 엄마" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZM-sz-hM4">
                                                 <rect key="frame" x="0.0" y="78" width="225.33333333333334" height="24"/>
+                                                <accessibility key="accessibilityConfiguration" hint="회원님에 대한 설명입니다."/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <color key="textColor" name="Pink4"/>
                                                 <nil key="highlightedColor"/>
@@ -139,6 +143,9 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임 변경" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ros-Gu-D9Q">
                                                     <rect key="frame" x="11" y="13" width="91.333333333333329" height="24"/>
+                                                    <accessibility key="accessibilityConfiguration" label="닉네임 변경하기">
+                                                        <accessibilityTraits key="traits" button="YES" staticText="YES"/>
+                                                    </accessibility>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <color key="textColor" name="Pink4"/>
                                                     <nil key="highlightedColor"/>
@@ -149,6 +156,10 @@
                                                 <constraint firstItem="ros-Gu-D9Q" firstAttribute="leading" secondItem="fWM-50-qy1" secondAttribute="leadingMargin" constant="-5" id="w6e-3P-6BC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="닉네임 변경하기">
+                                            <accessibilityTraits key="traits" button="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="Ng2-zD-jOh">
                                         <rect key="frame" x="16" y="84.666667938232422" width="303" height="50"/>
@@ -169,6 +180,9 @@
                                                 <constraint firstItem="BmC-eK-SQn" firstAttribute="centerY" secondItem="HUk-MS-4Kg" secondAttribute="centerY" id="vqe-2M-9ON"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="지역변경하기">
+                                            <accessibilityTraits key="traits" button="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="hTe-vg-ccs">
                                         <rect key="frame" x="16" y="134.66666793823242" width="303" height="50"/>
@@ -189,6 +203,9 @@
                                                 <constraint firstItem="0NE-KY-uFH" firstAttribute="leading" secondItem="STV-Hg-f8o" secondAttribute="leadingMargin" constant="-5" id="d7v-lV-Trp"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="현재 상태 변경하기">
+                                            <accessibilityTraits key="traits" button="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

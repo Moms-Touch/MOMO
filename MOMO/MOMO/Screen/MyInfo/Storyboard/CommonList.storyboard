@@ -22,6 +22,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVA-8A-p8l">
                                         <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                        <accessibility key="accessibilityConfiguration" label="뒤로가기"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="jVA-8A-p8l" secondAttribute="height" multiplier="1:1" id="sSk-RI-ohS"/>
                                         </constraints>
@@ -87,7 +88,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.left" catalog="system" width="32" height="32"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

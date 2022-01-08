@@ -23,6 +23,15 @@ class MySettingViewController: UIViewController, StoryboardInstantiable {
 
 class MySettingTableViewController: InfoBaseTableViewController {
   
+  private var version: String? {
+      guard let dictionary = Bundle.main.infoDictionary,
+          let version = dictionary["CFBundleShortVersionString"] as? String,
+          let build = dictionary["CFBundleVersion"] as? String else {return nil}
+      
+      let versionStr: String = "v.\(version)"
+      return versionStr
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
@@ -78,7 +87,7 @@ extension MySettingTableViewController {
 //      case .alarmSetting:
 //        return "알림설정"
       case .versionInfo:
-        return "1.0.0"
+        return "\(version)"
       }
     }
     

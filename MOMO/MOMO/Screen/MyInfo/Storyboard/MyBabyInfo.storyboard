@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -23,6 +23,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6N-gT-zgb">
                                         <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                        <accessibility key="accessibilityConfiguration" label="뒤로가기"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="a6N-gT-zgb" secondAttribute="height" multiplier="1:1" id="dlh-JR-DqZ"/>
                                         </constraints>
@@ -61,6 +62,9 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WHO-pU-FdP" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                        <accessibility key="accessibilityConfiguration" label="아이 이름">
+                                                            <accessibilityTraits key="traits" searchField="YES"/>
+                                                        </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="xWV-YE-ENa"/>
                                                         </constraints>
@@ -70,6 +74,9 @@
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wXC-7C-W9f" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="73" width="335" height="50"/>
+                                                        <accessibility key="accessibilityConfiguration" label="출생에정일 및 아이 생일">
+                                                            <accessibilityTraits key="traits" searchField="YES"/>
+                                                        </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="0St-Xa-qlR"/>
                                                         </constraints>
@@ -82,6 +89,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbl-XL-Cab">
                                                 <rect key="frame" x="20" y="616" width="335" height="60"/>
                                                 <color key="backgroundColor" name="Pink4"/>
+                                                <accessibility key="accessibilityConfiguration" label="저장하기"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="eHc-oZ-BtQ"/>
                                                 </constraints>
@@ -97,6 +105,10 @@
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="4dR-9R-BYJ">
                                                 <rect key="frame" x="81" y="50" width="213" height="213"/>
+                                                <accessibility key="accessibilityConfiguration" label="아기사진 변경">
+                                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    <bool key="isElement" value="YES"/>
+                                                </accessibility>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="4dR-9R-BYJ" secondAttribute="height" multiplier="1:1" id="WDl-XK-kqi"/>
                                                 </constraints>

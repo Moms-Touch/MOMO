@@ -30,6 +30,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sa-Jz-WxT">
                                         <rect key="frame" x="16" y="11" width="22" height="22"/>
+                                        <accessibility key="accessibilityConfiguration" label="뒤로가기"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="gNv-Jh-A06"/>
                                             <constraint firstAttribute="height" constant="22" id="jTV-Jo-AhQ"/>
@@ -110,6 +111,10 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="BY2-FG-86I" secondAttribute="bottom" constant="6" id="ruy-yu-IdX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="이용약관">
+                                            <accessibilityTraits key="traits" link="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="BZw-sl-Td2">
                                         <rect key="frame" x="20" y="108" width="374" height="90"/>
@@ -130,6 +135,10 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="ixK-AP-5oj" secondAttribute="bottom" constant="6" id="mbw-vp-BUb"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="개인정보처리방침">
+                                            <accessibilityTraits key="traits" link="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="gvs-yg-uhL">
                                         <rect key="frame" x="20" y="198" width="374" height="90"/>
@@ -150,6 +159,10 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="TRE-VY-QDK" secondAttribute="bottom" constant="6" id="bas-EQ-Zfa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="오픈소스 라이센스">
+                                            <accessibilityTraits key="traits" link="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="mF8-6L-sDj">
                                         <rect key="frame" x="20" y="288" width="374" height="90"/>
@@ -179,6 +192,10 @@
                                                 <constraint firstItem="jpo-8L-Aig" firstAttribute="leading" secondItem="2we-Mh-hfm" secondAttribute="leadingMargin" constant="20" id="vCa-n5-hja"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="앱버전">
+                                            <accessibilityTraits key="traits" staticText="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="AWo-Ml-hy3">
                                         <rect key="frame" x="20" y="378" width="374" height="90"/>
