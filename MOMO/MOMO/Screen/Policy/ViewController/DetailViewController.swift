@@ -29,10 +29,23 @@ class DetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     showDetailPolicy()
+    setAccessability()
   }
   
   func configure(policyData: PolicyData) {
     self.policyData = policyData
+  }
+  
+  private func setAccessability() {
+    setLabelAccessability()
+  }
+  
+  private func setLabelAccessability(){
+    let accessabilityList = [titleLabel, hostAssocitationLabel, dateLabel, policyContentView]
+    accessabilityList.compactMap{$0}.forEach({ label in
+      label.isAccessibilityElement = true
+      label.accessibilityLabel = label.text
+    })
   }
  
   private func showDetailPolicy() {

@@ -64,7 +64,6 @@ class ListTableViewCell: UITableViewCell, NibLoadableView, simpleContentContaine
         
         return
       }
-      
       guard let thumbnailImageUrl = data?.thumbnailImageUrl else {
         thumbnailImageView.image = UIImage(named: "Logo")!
         return
@@ -74,9 +73,18 @@ class ListTableViewCell: UITableViewCell, NibLoadableView, simpleContentContaine
     }
   }
   
+  private func setAccessability(){
+    self.isAccessibilityElement = false
+    let accessabilityList = [titleLabel, organizationLabel, dateLabel]
+    accessabilityList.compactMap{$0}.forEach({ label in
+      label.isAccessibilityElement = true
+    })
+    thumbnailImageView.isAccessibilityElement = false
+  }
+  
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
+    setAccessability()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
