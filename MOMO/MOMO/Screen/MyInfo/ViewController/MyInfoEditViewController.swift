@@ -75,6 +75,7 @@ final class EditInfoTableViewController: InfoBaseTableViewController {
     switch cell {
     case .nickname:
       let alertVC = UIAlertController(title: "닉네임 변경", message: nil, preferredStyle: .alert)
+      alertVC.isAccessibilityElement = false
       alertVC.addTextField { $0.placeholder = "닉네임을 입력해주세요" }
       let cancel = UIAlertAction(title: "취소", style: .destructive) { action in
         return
@@ -107,6 +108,7 @@ final class EditInfoTableViewController: InfoBaseTableViewController {
       present(locationvc, animated: true, completion: nil)
     case .currentStatus:
       let alertVC = UIAlertController(title: "임신/출산 여부 변경", message: nil, preferredStyle: .actionSheet)
+      alertVC.isAccessibilityElement = false
       let isPregnant = UIAlertAction(title: "임신 중", style: .default) { action in
         networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: userInfo.nickname, isPregnant: true, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
           switch result {
