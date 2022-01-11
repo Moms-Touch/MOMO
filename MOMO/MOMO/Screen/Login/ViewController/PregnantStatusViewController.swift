@@ -8,7 +8,8 @@
 import UIKit
 import SwiftUI
 
-final class PregnantStatusViewController: UIViewController {
+final class PregnantStatusViewController: UIViewController, KeyboardScrollable {
+  @IBOutlet weak var pregnantVCScrollview: UIScrollView!
   @IBOutlet weak var explanationLabel: UILabel! {
     didSet {
       explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
@@ -33,6 +34,7 @@ final class PregnantStatusViewController: UIViewController {
   }
   @IBOutlet private weak var pregnantButton: UIButton!
   @IBOutlet private weak var birthButton: UIButton!
+  @IBOutlet var constraint: [NSLayoutConstraint]!
   
   private var isOnPregnantButton = false
   private var isOnBirthButton = false
@@ -43,10 +45,15 @@ final class PregnantStatusViewController: UIViewController {
   private var calenderDatePicker = UIDatePicker()
   private var networkManager = NetworkManager()
   private var expectedDate: String? = nil
+  private var flag = false
+
   var email: String = ""
   var password: String = ""
   var nickname: String = ""
   var location = ""
+  var scrollView: UIScrollView {
+    return pregnantVCScrollview
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -55,6 +62,14 @@ final class PregnantStatusViewController: UIViewController {
     hideKeyboard()
     configureDatePicker()
     setUpButtonUI()
+    scrollingKeyboard()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    if !flag {
+      constraint.forEach { $0.constant = $0.constant.fit(self)}
+      flag = true
+    }
   }
   
   @IBAction func tappedPregnantButton() {

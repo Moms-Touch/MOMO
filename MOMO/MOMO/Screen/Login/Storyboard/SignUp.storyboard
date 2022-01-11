@@ -18,6 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOt-iv-AgQ">
+                                <rect key="frame" x="20" y="30" width="12.5" height="22"/>
+                                <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="chevron.left" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="14u-Qu-Z7M"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본 정보를 입력해주세요" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heT-O1-VZe">
                                 <rect key="frame" x="40" y="91.5" width="285" height="84"/>
                                 <accessibility key="accessibilityConfiguration" label="기본 정보를 입력해주세요"/>
@@ -112,14 +120,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="didTapNextbutton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UDc-Bg-hkw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOt-iv-AgQ">
-                                <rect key="frame" x="20" y="30" width="12.5" height="22"/>
-                                <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="chevron.left" catalog="system"/>
-                                <connections>
-                                    <action selector="didTapBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="14u-Qu-Z7M"/>
                                 </connections>
                             </button>
                         </subviews>
