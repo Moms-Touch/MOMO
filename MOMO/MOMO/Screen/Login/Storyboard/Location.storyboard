@@ -70,15 +70,15 @@
                         <constraints>
                             <constraint firstItem="5OQ-Jm-HHt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="1bh-XV-8HD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="G5q-pr-eq4" secondAttribute="bottom" constant="30" id="51p-8L-lFd"/>
+                            <constraint firstItem="ofc-36-CfB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="96.5" id="7bd-ok-uRr"/>
                             <constraint firstAttribute="trailing" secondItem="ofc-36-CfB" secondAttribute="trailing" constant="50" id="9tS-aT-tzk"/>
                             <constraint firstItem="5OQ-Jm-HHt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="bbz-Td-MLk"/>
                             <constraint firstItem="ofc-36-CfB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="cly-rz-Jq6"/>
+                            <constraint firstItem="Pro-a2-pE3" firstAttribute="top" secondItem="ofc-36-CfB" secondAttribute="bottom" constant="39.5" id="fxL-Hq-CoN"/>
                             <constraint firstItem="G5q-pr-eq4" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="hFM-vz-ink"/>
                             <constraint firstItem="Pro-a2-pE3" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kVb-GJ-oIH"/>
-                            <constraint firstItem="ofc-36-CfB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.4" id="nAy-b2-YKq"/>
                             <constraint firstItem="G5q-pr-eq4" firstAttribute="trailing" secondItem="Pro-a2-pE3" secondAttribute="trailing" id="qh7-0x-vJI"/>
                             <constraint firstItem="Pro-a2-pE3" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="uaQ-sC-Mlw"/>
-                            <constraint firstItem="Pro-a2-pE3" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.7" id="vEJ-Vr-roa"/>
                         </constraints>
                     </view>
                     <connections>

@@ -6,9 +6,20 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class PregnantStatusViewController: UIViewController {
-  @IBOutlet private weak var nextButton: UIButton! 
+  @IBOutlet weak var explanationLabel: UILabel! {
+    didSet {
+      explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
+    }
+  }
+  @IBOutlet weak var subExplanationLabel: UILabel! {
+    didSet {
+      subExplanationLabel.font = UIFont.customFont(forTextStyle: .callout)
+    }
+  }
+  @IBOutlet private weak var nextButton: UIButton!
   @IBOutlet private weak var expectedBirthdayField: UITextField! {
     didSet {
       expectedBirthdayField.inputView = calenderDatePicker

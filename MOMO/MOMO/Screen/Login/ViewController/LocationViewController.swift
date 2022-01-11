@@ -8,7 +8,11 @@
 import UIKit
 
 final class LocationViewController: UIViewController {
-  @IBOutlet private weak var explanationLabel: UILabel!
+  @IBOutlet private weak var explanationLabel: UILabel! {
+    didSet {
+      explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
+    }
+  }
   @IBOutlet private weak var nextButton: UIButton!
   @IBOutlet private weak var nextButtonBottomConstraint: NSLayoutConstraint!
   @IBOutlet private weak var locationTextField: MomoBaseTextField! {
@@ -17,7 +21,7 @@ final class LocationViewController: UIViewController {
       locationTextField.setUpFontStyle()
     }
   }
-
+  
   //false이면 회원가입
   //true이면 회원수정
   

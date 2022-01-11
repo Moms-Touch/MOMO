@@ -11,8 +11,11 @@ import CryptoKit
 import Toast
 
 final class SignUpViewController: UIViewController {
-  
-  @IBOutlet private weak var explanationLabel: UILabel!
+  @IBOutlet private weak var explanationLabel: UILabel! {
+    didSet {
+      explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
+    }
+  }
   @IBOutlet private weak var emailTextField: MomoBaseTextField! {
     didSet {
       emailTextField.setUpFontStyle()
