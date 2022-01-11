@@ -98,6 +98,7 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
       $0.layer.cornerRadius = $0.frame.height / 2
       $0.setTitleColor(.white, for: .selected)
       $0.tintColor = ThemeColor.pink3.color
+      $0.titleLabel?.adjustsFontSizeToFitWidth = true
       $0.titleLabel?.font = UIFont.customFont(forTextStyle: .caption2)
     }
   }
