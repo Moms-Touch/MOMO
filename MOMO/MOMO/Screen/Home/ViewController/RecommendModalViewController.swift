@@ -41,6 +41,7 @@ class RecommendModalViewController: UIViewController {
   
   lazy var titleLabel: UILabel = {
     let label = UILabel()
+    label.numberOfLines = 0
     let birth = UserManager.shared.babyInWeek
     let name = UserManager.shared.userInfo?.nickname
     label.text = "\(birth ?? "0주차") \(name ?? "모모")님을 위한 추천 정보"
@@ -58,7 +59,6 @@ class RecommendModalViewController: UIViewController {
     
     setDelegate()
     setuplayout()
-    print("숫자", datasource.count)
     recommendCollectionView.register(RecommendCollectionViewCell.self)
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
     view.addGestureRecognizer(panGesture)
