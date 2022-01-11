@@ -55,6 +55,7 @@ class PolicyMainViewController: ViewController, UITextFieldDelegate {
     locationTextField.addSubview(downButton)
     locationPickerView.delegate = self
     locationPickerView.dataSource = self
+    tableView.sectionHeaderHeight = UITableView.automaticDimension
     hideKeyboard()
     addToolbar()
     getPolicyData(page: 1)

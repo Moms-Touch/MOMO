@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -88,23 +87,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYb-h2-mqL">
-                                <rect key="frame" x="106" y="317" width="163" height="45"/>
-                                <color key="backgroundColor" red="0.61597608010000005" green="0.31984402680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <accessibility key="accessibilityConfiguration" hint="설정화면 "/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="YyB-zQ-cBd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="tintColor" name="45"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="튼튼이랑 90일째">
-                                    <color key="titleColor" name="45"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapProfile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WCY-ed-1p7"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7N-2r-EST">
                                 <rect key="frame" x="121" y="194" width="133" height="133"/>
                                 <subviews>
@@ -129,7 +111,7 @@
                                 <rect key="frame" x="0.0" y="98" width="375" height="26"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="chy-Um-gdV"/>
+                                    <constraint firstAttribute="height" constant="26" id="si4-LL-PlA"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AUV-0x-ULR">
                                     <size key="itemSize" width="128" height="35"/>
@@ -149,34 +131,56 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Lo-PL-Y53">
+                                <rect key="frame" x="106" y="317" width="163" height="45"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="didTapProfile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="C5a-Io-mMo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hub-s9-kv4">
+                                <rect key="frame" x="106" y="317" width="163" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="TuH-bB-tXz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jpF-y4-GV9" secondAttribute="trailing" id="7Tm-tr-WLe"/>
+                            <constraint firstItem="Hub-s9-kv4" firstAttribute="leading" secondItem="i7N-2r-EST" secondAttribute="leading" constant="-15" id="8P7-hj-yGY"/>
                             <constraint firstItem="i7N-2r-EST" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8Vo-3m-6qy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9Ei-lu-XKr" secondAttribute="trailing" constant="20" id="9Et-sL-0oa"/>
-                            <constraint firstItem="GYb-h2-mqL" firstAttribute="trailing" secondItem="i7N-2r-EST" secondAttribute="trailing" constant="15" id="AMU-ha-0YC"/>
                             <constraint firstItem="PKa-eB-caM" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="CEs-zJ-aK1"/>
+                            <constraint firstItem="5Lo-PL-Y53" firstAttribute="top" secondItem="Hub-s9-kv4" secondAttribute="top" id="CG7-UU-l4z"/>
                             <constraint firstItem="Wfy-1u-fgY" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="IVc-wL-3zS"/>
                             <constraint firstItem="jpF-y4-GV9" firstAttribute="top" secondItem="Vtj-m1-iDU" secondAttribute="bottom" constant="10" id="Jmd-3x-7WM"/>
                             <constraint firstItem="i7N-2r-EST" firstAttribute="top" secondItem="jpF-y4-GV9" secondAttribute="bottom" constant="70" id="Kg8-AN-Xqt"/>
+                            <constraint firstItem="Hub-s9-kv4" firstAttribute="top" secondItem="i7N-2r-EST" secondAttribute="bottom" constant="-10" id="P81-4e-ySu"/>
                             <constraint firstItem="Wfy-1u-fgY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="QAq-OB-0wb"/>
+                            <constraint firstItem="5Lo-PL-Y53" firstAttribute="trailing" secondItem="Hub-s9-kv4" secondAttribute="trailing" id="Qej-FV-xD8"/>
                             <constraint firstItem="jpF-y4-GV9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="SB7-6d-inM"/>
+                            <constraint firstItem="5Lo-PL-Y53" firstAttribute="leading" secondItem="Hub-s9-kv4" secondAttribute="leading" id="Vjd-CC-eAu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PKa-eB-caM" secondAttribute="trailing" constant="20" id="WV3-4X-7VP"/>
-                            <constraint firstItem="GYb-h2-mqL" firstAttribute="leading" secondItem="i7N-2r-EST" secondAttribute="leading" constant="-15" id="Y0E-42-TQn"/>
                             <constraint firstItem="lJe-gp-myE" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="1/3" id="YPa-yI-3Nl"/>
-                            <constraint firstItem="GYb-h2-mqL" firstAttribute="top" secondItem="i7N-2r-EST" secondAttribute="bottom" constant="-10" id="ZKH-KE-1Yn"/>
+                            <constraint firstItem="5Lo-PL-Y53" firstAttribute="bottom" secondItem="Hub-s9-kv4" secondAttribute="bottom" id="cQp-NS-d8t"/>
                             <constraint firstItem="Vtj-m1-iDU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="d8n-qD-aFj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9Ei-lu-XKr" secondAttribute="bottom" constant="20" id="lmD-Fe-CTX"/>
                             <constraint firstItem="Vtj-m1-iDU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="sr3-ty-Rmm"/>
+                            <constraint firstItem="Hub-s9-kv4" firstAttribute="trailing" secondItem="i7N-2r-EST" secondAttribute="trailing" constant="15" id="x7P-EZ-cXI"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="babyProfileImageView" destination="lJe-gp-myE" id="N3U-TK-htE"/>
                         <outlet property="bannerCollectionView" destination="jpF-y4-GV9" id="Rn6-eL-Qyd"/>
                         <outlet property="bellButton" destination="PKa-eB-caM" id="jR1-H4-8RT"/>
-                        <outlet property="dateWithBabyButton" destination="GYb-h2-mqL" id="FoU-eS-67P"/>
+                        <outlet property="dateWithBabyButton" destination="5Lo-PL-Y53" id="Bd7-FQ-FVd"/>
+                        <outlet property="dateWithBabyLabel" destination="Hub-s9-kv4" id="gkK-pm-hHi"/>
                         <outlet property="imageHuggingView" destination="i7N-2r-EST" id="gKg-ij-gMS"/>
                     </connections>
                 </viewController>
@@ -193,9 +197,6 @@
         <image name="mascot" width="153" height="141"/>
         <image name="recommendBtn" width="60" height="60"/>
         <image name="todayBtn" width="60" height="60"/>
-        <namedColor name="45">
-            <color red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

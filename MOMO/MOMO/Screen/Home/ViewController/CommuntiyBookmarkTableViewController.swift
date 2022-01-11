@@ -76,10 +76,6 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
     return cell
   }
   
-  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 73
-  }
-  
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     scrollView.bounces = scrollView.contentOffset.y > 0
   }

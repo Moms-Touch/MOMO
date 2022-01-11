@@ -57,6 +57,7 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(ListTableViewCell.self)
+    tableView.sectionHeaderHeight = UITableView.automaticDimension
     getData()
   }
   
@@ -82,10 +83,10 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
     return cell
   }
   
-  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 73
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return UITableView.automaticDimension
   }
-  
+ 
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     scrollView.bounces = scrollView.contentOffset.y > 0
   }
