@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -15,127 +15,154 @@
             <objects>
                 <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SignUpViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본 정보를 입력해주세요" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heT-O1-VZe">
-                                <rect key="frame" x="40" y="91.5" width="285" height="84"/>
-                                <accessibility key="accessibilityConfiguration" label="기본 정보를 입력해주세요"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Byn-7j-ppw">
-                                <rect key="frame" x="40" y="184" width="295" height="193"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qF1-Cm-Aqb" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="47"/>
-                                        <accessibility key="accessibilityConfiguration" label="이메일 작성란"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="295" id="8n2-Oz-Yq4"/>
-                                            <constraint firstAttribute="height" constant="47" id="QA0-Zr-cxU"/>
-                                        </constraints>
-                                        <color key="textColor" name="Pink4"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
-                                                <color key="value" name="Pink1"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="didchangeTextfieldValue:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="STg-we-FkC"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호(특수문자, 숫자 포함 8자 이상)" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clb-SM-pET" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="73" width="295" height="47"/>
-                                        <accessibility key="accessibilityConfiguration" label="비밀번호 작성란"/>
-                                        <color key="textColor" name="Pink4"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
-                                                <color key="value" name="Pink1"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="didchangeTextfieldValue:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="8de-Po-Rc2"/>
-                                        </connections>
-                                    </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-r4-vFc">
-                                        <rect key="frame" x="0.0" y="146" width="295" height="47"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GF4-BZ-pkh" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="47"/>
-                                                <accessibility key="accessibilityConfiguration" label="닉네임 작성란"/>
-                                                <color key="textColor" name="Pink4"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
-                                                        <color key="value" name="Pink1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="didchangeTextfieldValue:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="SVl-b9-eBU"/>
-                                                </connections>
-                                            </textField>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN8-yQ-0iN">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="47"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="중복확인">
-                                                    <color key="baseForegroundColor" name="Pink4"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="didTapDoubleCheck:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="iBn-PL-yG8"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="clb-SM-pET" firstAttribute="height" secondItem="qF1-Cm-Aqb" secondAttribute="height" id="LOP-it-X9g"/>
-                                    <constraint firstItem="2ob-r4-vFc" firstAttribute="height" secondItem="clb-SM-pET" secondAttribute="height" id="Npu-6P-uY4"/>
-                                </constraints>
-                            </stackView>
-                            <button opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk9-K4-Iyx">
-                                <rect key="frame" x="40" y="578" width="295" height="59"/>
-                                <color key="backgroundColor" name="Pink4"/>
-                                <accessibility key="accessibilityConfiguration" label="다음 버튼"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="eOC-Yz-ArJ"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="다음">
-                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="didTapNextbutton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UDc-Bg-hkw"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOt-iv-AgQ">
-                                <rect key="frame" x="20" y="30" width="12.5" height="22"/>
+                                <rect key="frame" x="20" y="74" width="12.666666666666664" height="22"/>
                                 <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="chevron.left" catalog="system"/>
                                 <connections>
                                     <action selector="didTapBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="14u-Qu-Z7M"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-R9-syK">
+                                <rect key="frame" x="0.0" y="96" width="375" height="682"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBP-X4-nwq">
+                                        <rect key="frame" x="0.0" y="0.0" width="367" height="677.33333333333337"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기본 정보를입력해주세요" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heT-O1-VZe">
+                                                <rect key="frame" x="36" y="0.0" width="295" height="83.666666666666671"/>
+                                                <accessibility key="accessibilityConfiguration" label="기본 정보를 입력해주세요"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Byn-7j-ppw">
+                                                <rect key="frame" x="36" y="123.66666666666666" width="295" height="192.99999999999997"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="soomi94@momo.co.kr" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qF1-Cm-Aqb" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="47"/>
+                                                        <accessibility key="accessibilityConfiguration" label="이메일 작성란"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="295" id="8n2-Oz-Yq4"/>
+                                                            <constraint firstAttribute="height" constant="47" id="QA0-Zr-cxU"/>
+                                                        </constraints>
+                                                        <color key="textColor" name="Pink4"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                                <color key="value" name="Pink1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="didchangeTextfieldValue:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="STg-we-FkC"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호(특수문자 포함 8자 이상)" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clb-SM-pET" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="73.000000000000028" width="295" height="47"/>
+                                                        <accessibility key="accessibilityConfiguration" label="비밀번호 작성란"/>
+                                                        <color key="textColor" name="Pink4"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                                <color key="value" name="Pink1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="didchangeTextfieldValue:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="8de-Po-Rc2"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-r4-vFc">
+                                                        <rect key="frame" x="0.0" y="146.00000000000003" width="295" height="47"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GF4-BZ-pkh" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="295" height="47"/>
+                                                                <accessibility key="accessibilityConfiguration" label="닉네임 작성란"/>
+                                                                <color key="textColor" name="Pink4"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                                        <color key="value" name="Pink1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="didchangeTextfieldValue:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="SVl-b9-eBU"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN8-yQ-0iN">
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="47"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="중복확인">
+                                                                    <color key="baseForegroundColor" name="Pink4"/>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="didTapDoubleCheck:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="iBn-PL-yG8"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="clb-SM-pET" firstAttribute="height" secondItem="qF1-Cm-Aqb" secondAttribute="height" id="LOP-it-X9g"/>
+                                                    <constraint firstItem="2ob-r4-vFc" firstAttribute="height" secondItem="clb-SM-pET" secondAttribute="height" id="Npu-6P-uY4"/>
+                                                </constraints>
+                                            </stackView>
+                                            <button opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk9-K4-Iyx">
+                                                <rect key="frame" x="36" y="588.33333333333337" width="295" height="59"/>
+                                                <color key="backgroundColor" name="Pink4"/>
+                                                <accessibility key="accessibilityConfiguration" label="다음 버튼"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="59" id="eOC-Yz-ArJ"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="다음">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="didTapNextbutton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UDc-Bg-hkw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Byn-7j-ppw" firstAttribute="trailing" secondItem="heT-O1-VZe" secondAttribute="trailing" id="0DZ-UI-Ah7"/>
+                                            <constraint firstItem="heT-O1-VZe" firstAttribute="leading" secondItem="Byn-7j-ppw" secondAttribute="leading" id="5v0-4u-3bo"/>
+                                            <constraint firstItem="heT-O1-VZe" firstAttribute="top" secondItem="dBP-X4-nwq" secondAttribute="top" id="DfE-5C-zop"/>
+                                            <constraint firstAttribute="trailing" secondItem="heT-O1-VZe" secondAttribute="trailing" constant="36" id="Fp2-Kx-uWy"/>
+                                            <constraint firstItem="Byn-7j-ppw" firstAttribute="top" secondItem="heT-O1-VZe" secondAttribute="bottom" constant="40" id="TUR-ee-fLz"/>
+                                            <constraint firstAttribute="bottom" secondItem="Mk9-K4-Iyx" secondAttribute="bottom" constant="30" id="TnR-hy-yTh"/>
+                                            <constraint firstItem="Mk9-K4-Iyx" firstAttribute="top" secondItem="Byn-7j-ppw" secondAttribute="bottom" constant="271.66666666666669" id="esS-fb-S3G"/>
+                                            <constraint firstItem="heT-O1-VZe" firstAttribute="leading" secondItem="dBP-X4-nwq" secondAttribute="leading" constant="36" id="jWT-e7-p1n"/>
+                                            <constraint firstItem="Mk9-K4-Iyx" firstAttribute="leading" secondItem="heT-O1-VZe" secondAttribute="leading" id="pei-gw-0Ba"/>
+                                            <constraint firstItem="Mk9-K4-Iyx" firstAttribute="trailing" secondItem="heT-O1-VZe" secondAttribute="trailing" id="rDt-Bg-mNo"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wIB-kj-nNY" firstAttribute="leading" secondItem="dBP-X4-nwq" secondAttribute="leading" id="6uG-Bd-xtF"/>
+                                    <constraint firstItem="dBP-X4-nwq" firstAttribute="top" secondItem="QXd-R9-syK" secondAttribute="top" id="KXE-hb-DBz"/>
+                                    <constraint firstAttribute="trailing" secondItem="dBP-X4-nwq" secondAttribute="trailing" id="VzL-zX-wY3"/>
+                                    <constraint firstItem="dBP-X4-nwq" firstAttribute="bottom" secondItem="wIB-kj-nNY" secondAttribute="bottom" id="Xj7-Au-qeV"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="wIB-kj-nNY"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="RjU-lI-PQd"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="heT-O1-VZe" firstAttribute="leading" secondItem="Byn-7j-ppw" secondAttribute="leading" id="5Mt-Rf-gBQ"/>
-                            <constraint firstItem="Mk9-K4-Iyx" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="PaB-5z-mRf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QXd-R9-syK" secondAttribute="trailing" id="09c-Io-5RG"/>
+                            <constraint firstItem="QXd-R9-syK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="AtK-n4-h2t"/>
+                            <constraint firstItem="QXd-R9-syK" firstAttribute="top" secondItem="nOt-iv-AgQ" secondAttribute="bottom" id="Eqn-Bf-lit"/>
                             <constraint firstItem="nOt-iv-AgQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="SFT-yd-mQV"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Mk9-K4-Iyx" secondAttribute="bottom" constant="30" id="TmG-XQ-8rj"/>
                             <constraint firstItem="nOt-iv-AgQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Uot-LZ-G6o"/>
-                            <constraint firstItem="Byn-7j-ppw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="YEn-qg-uKC"/>
-                            <constraint firstItem="heT-O1-VZe" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.4" id="aYh-cC-fXg"/>
-                            <constraint firstItem="Mk9-K4-Iyx" firstAttribute="width" secondItem="qF1-Cm-Aqb" secondAttribute="width" id="fc2-Mf-GK9"/>
-                            <constraint firstAttribute="trailing" secondItem="heT-O1-VZe" secondAttribute="trailing" constant="50" id="mpJ-aP-VtL"/>
-                            <constraint firstItem="Byn-7j-ppw" firstAttribute="centerY" secondItem="heT-O1-VZe" secondAttribute="bottom" multiplier="1.6" id="nnG-xZ-BMi"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="QXd-R9-syK" secondAttribute="bottom" id="Zdb-YT-RD4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qqw-kU-H5e"/>
@@ -146,6 +173,10 @@
                         <outlet property="nextButton" destination="Mk9-K4-Iyx" id="fcf-cW-MBZ"/>
                         <outlet property="nicknameTextField" destination="GF4-BZ-pkh" id="rIM-ji-q7a"/>
                         <outlet property="passwordTextField" destination="clb-SM-pET" id="h25-yB-WNP"/>
+                        <outlet property="signUpVCScroll" destination="QXd-R9-syK" id="RyB-0T-uHA"/>
+                        <outletCollection property="constraint" destination="TUR-ee-fLz" collectionClass="NSMutableArray" id="sLr-KA-O3w"/>
+                        <outletCollection property="constraint" destination="esS-fb-S3G" collectionClass="NSMutableArray" id="W8P-23-AWV"/>
+                        <outletCollection property="constraint" destination="TnR-hy-yTh" collectionClass="NSMutableArray" id="T3Z-5m-LID"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

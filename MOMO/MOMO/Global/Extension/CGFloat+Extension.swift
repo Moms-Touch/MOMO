@@ -13,6 +13,10 @@ extension CGFloat {
     return self * viewcontroller.view.frame.height / 812
   }
   
+  func seFit<T: UIViewController>(_ viewcontroller: T) -> CGFloat{
+    return self * viewcontroller.view.frame.height / 667
+  }
+  
   var ratio: CGFloat {
     let ratio = UIScreen.main.bounds.width / 414
     return self * ratio

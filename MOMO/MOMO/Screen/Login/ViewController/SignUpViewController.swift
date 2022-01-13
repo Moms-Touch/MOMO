@@ -10,9 +10,13 @@ import Security
 import CryptoKit
 import Toast
 
-final class SignUpViewController: UIViewController {
-  
-  @IBOutlet private weak var explanationLabel: UILabel!
+final class SignUpViewController: UIViewController, KeyboardScrollable {
+  @IBOutlet weak var signUpVCScroll: UIScrollView!
+  @IBOutlet private weak var explanationLabel: UILabel! {
+    didSet {
+      explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
+    }
+  }
   @IBOutlet private weak var emailTextField: MomoBaseTextField! {
     didSet {
       emailTextField.setUpFontStyle()
@@ -29,7 +33,13 @@ final class SignUpViewController: UIViewController {
     }
   }
   @IBOutlet private weak var nextButton: UIButton! 
+  @IBOutlet var constraint: [NSLayoutConstraint]!
   
+  private var flag = false
+  var scrollView: UIScrollView {
+    return signUpVCScroll
+  }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     setTextFieldDelegate()
@@ -37,6 +47,14 @@ final class SignUpViewController: UIViewController {
     hideKeyboard()
     explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
     setUpButtonUI()
+    scrollingKeyboard()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    if !flag {
+      constraint.forEach { $0.constant = $0.constant.fit(self)}
+      flag = true
+    }
   }
   
   private func setUpButtonUI() {

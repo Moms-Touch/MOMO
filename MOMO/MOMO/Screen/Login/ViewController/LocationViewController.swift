@@ -7,17 +7,22 @@
 
 import UIKit
 
-final class LocationViewController: UIViewController {
-  @IBOutlet private weak var explanationLabel: UILabel!
+final class LocationViewController: UIViewController, KeyboardScrollable {
+  @IBOutlet weak var locationVCScroll: UIScrollView!
+  @IBOutlet private weak var explanationLabel: UILabel! {
+    didSet {
+      explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
+    }
+  }
+  @IBOutlet var constraint: [NSLayoutConstraint]!
   @IBOutlet private weak var nextButton: UIButton!
-  @IBOutlet private weak var nextButtonBottomConstraint: NSLayoutConstraint!
   @IBOutlet private weak var locationTextField: MomoBaseTextField! {
     didSet {
       locationTextField.inputView = cityNamePickerView
       locationTextField.setUpFontStyle()
     }
   }
-
+  
   //false이면 회원가입
   //true이면 회원수정
   
@@ -26,11 +31,14 @@ final class LocationViewController: UIViewController {
   var email: String = ""
   var password: String = ""
   var nickname: String = ""
+  var scrollView: UIScrollView {
+    return locationVCScroll
+  }
   
   private var cityNamePickerView = UIPickerView()
   private let cityName = ["서울", "대전", "대구", "부산", "광주", "울산", "인천"]
   private var selectedCity = ""           // nil or seoul
-  
+  private var flag = false
   
   private var bottomConstant: CGFloat = 0
   private var isExistPickerView = false
@@ -43,6 +51,14 @@ final class LocationViewController: UIViewController {
     addToolbar()
     hideKeyboard()
     setUpButtonUI()
+    scrollingKeyboard()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    if !flag {
+      constraint.forEach { $0.constant = $0.constant.fit(self)}
+      flag = true
+    }
   }
   
   private func setUpButtonUI() {

@@ -14,16 +14,8 @@ class DetailViewController: UIViewController {
       titleLabel.navTitleStyle()
     }
   }
-  @IBOutlet weak var hostAssocitationLabel: UILabel! {
-    didSet {
-      hostAssocitationLabel.font = UIFont.customFont(forTextStyle: .body)
-    }
-  }
-  @IBOutlet weak var dateLabel: UILabel! {
-    didSet {
-      dateLabel.font = UIFont.customFont(forTextStyle: .body)
-    }
-  }
+  @IBOutlet weak var hostAssocitationLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel! 
   @IBOutlet weak var policyImageView: UIImageView!
   @IBOutlet weak var policyContentView: UILabel! {
     didSet {
