@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3R-lW-YuN">
-                                <rect key="frame" x="0.0" y="164.33333333333337" width="414" height="599"/>
+                                <rect key="frame" x="0.0" y="178.66666666666669" width="414" height="584.66666666666652"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7z-MF-7Wn" userLabel="BottomView">
@@ -102,7 +102,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Czi-BM-LmK">
-                                <rect key="frame" x="20" y="98" width="374" height="46.333333333333343"/>
+                                <rect key="frame" x="20" y="98.000000000000014" width="374" height="60.666666666666671"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목 지역 미혼모 협회 출산 장려금" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuT-Jb-Lha">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="23"/>
@@ -117,17 +117,17 @@
                                             <constraint firstAttribute="height" constant="1" id="4sv-3J-som"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qxp-d5-bbO">
-                                        <rect key="frame" x="0.0" y="31.999999999999996" width="374" height="14.333333333333332"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qxp-d5-bbO">
+                                        <rect key="frame" x="0.0" y="32" width="374" height="28.666666666666671"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="주관: 미혼모 네트워크 협회 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssK-e4-ghD">
-                                                <rect key="frame" x="0.0" y="0.0" width="290.33333333333331" height="14.333333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="2021.06.29" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ue-jw-Eoi">
-                                                <rect key="frame" x="310.33333333333331" y="0.0" width="63.666666666666686" height="14.333333333333334"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="2021.06.29" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ue-jw-Eoi">
+                                                <rect key="frame" x="0.0" y="14.333333333333343" width="374" height="14.333333333333336"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
                                 </subviews>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uS3-G0-p2U">
-                                <rect key="frame" x="0.0" y="164.33333333333337" width="414" height="599"/>
+                                <rect key="frame" x="0.0" y="178.66666666666669" width="414" height="584.66666666666652"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="sYj-tS-mC1">
                                         <rect key="frame" x="10" y="0.0" width="394" height="158"/>
