@@ -17,7 +17,7 @@ class BannerCell: UICollectionViewCell {
   
   lazy var titleLabel: UILabel = {
     let label = UILabel()
-    label.font = UIFont.customFont(forTextStyle: .caption1)
+//    label.font = UIFont.customFont(forTextStyle: .caption1)
     label.textColor = .label
     label.numberOfLines = 0
     label.text = "[필독] 임산부가\n 주의해야할 약 10가지"
