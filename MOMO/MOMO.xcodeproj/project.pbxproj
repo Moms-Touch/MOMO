@@ -142,6 +142,10 @@
 		28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1827610E3800E699FC /* NotificationData.swift */; };
 		28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE1A27610E5A00E699FC /* BabyData.swift */; };
 		28F9B2582783A18A00D7EF7A /* extension+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */; };
+		3AF3731F2789C9390007752E /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF3731E2789C9390007752E /* CustomFont.swift */; };
+		3AF373212789CFA70007752E /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF373202789CFA70007752E /* UIButton + Extension.swift */; };
+		3AF373232789D5440007752E /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF373222789D5440007752E /* UILabel + Extension.swift */; };
+		3AF8059A2789DDA600D80F68 /* MyPageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF805992789DDA600D80F68 /* MyPageLabel.swift */; };
 		758F519A277E112100DA88BE /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758F5199277E112100DA88BE /* SignUp.storyboard */; };
 		759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A731427788FDC00E549F6 /* PolicyMain.storyboard */; };
 		759A7319277890ED00E549F6 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 759A7318277890ED00E549F6 /* Detail.storyboard */; };
@@ -155,6 +159,7 @@
 		75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C427661C0F0057CF9B /* NetworkManager.swift */; };
 		75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C627662CAC0057CF9B /* ParsingManager.swift */; };
 		75CE01CA27662CE00057CF9B /* APIable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C927662CE00057CF9B /* APIable.swift */; };
+		A86C55A0DD29584DC2A63F02 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15BE6E33015FCA40DD6FAD5 /* Pods_MOMO.framework */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
 		DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */; };
@@ -177,7 +182,6 @@
 		DDE3170F27802A320033FEF4 /* WithVoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDE3170E27802A310033FEF4 /* WithVoice.storyboard */; };
 		DDE317112781A08D0033FEF4 /* VoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE317102781A08D0033FEF4 /* VoiceView.xib */; };
 		DDE317142781A1700033FEF4 /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE317132781A1700033FEF4 /* VoiceView.swift */; };
-		E465A2011BDB160659FCDCD1 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F0250A2819775CDE029D2B3 /* Pods_MOMO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -307,8 +311,11 @@
 		28F4FE1827610E3800E699FC /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		28F4FE1A27610E5A00E699FC /* BabyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyData.swift; sourceTree = "<group>"; };
 		28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+UITextView.swift"; sourceTree = "<group>"; };
-		29571FE8D5CCF400013C2EA7 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
-		445731CECCD50B4197977B82 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
+		3AF3731E2789C9390007752E /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		3AF373202789CFA70007752E /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
+		3AF373222789D5440007752E /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		3AF805992789DDA600D80F68 /* MyPageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageLabel.swift; sourceTree = "<group>"; };
+		42828D31E336D8C06C9908C8 /* Pods-MOMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.debug.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.debug.xcconfig"; sourceTree = "<group>"; };
 		758F5199277E112100DA88BE /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		759A731427788FDC00E549F6 /* PolicyMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyMain.storyboard; sourceTree = "<group>"; };
 		759A7318277890ED00E549F6 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -322,7 +329,8 @@
 		75CE01C427661C0F0057CF9B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		75CE01C627662CAC0057CF9B /* ParsingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingManager.swift; sourceTree = "<group>"; };
 		75CE01C927662CE00057CF9B /* APIable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIable.swift; sourceTree = "<group>"; };
-		8F0250A2819775CDE029D2B3 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15BE6E33015FCA40DD6FAD5 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAF7C93A0B4B51C742DB4659 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		DD1C24F727518C0700CDD64F /* WithTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextViewController.swift; sourceTree = "<group>"; };
@@ -371,13 +379,21 @@
 				280BEFCA274B65F100F031A7 /* FirebaseStorageSwift-Beta in Frameworks */,
 				DDE316F6277C94D70033FEF4 /* RealmSwift in Frameworks */,
 				280BEFC8274B65F100F031A7 /* FirebaseStorage in Frameworks */,
-				E465A2011BDB160659FCDCD1 /* Pods_MOMO.framework in Frameworks */,
+				A86C55A0DD29584DC2A63F02 /* Pods_MOMO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D79FD5B63E2820E1659B891 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A15BE6E33015FCA40DD6FAD5 /* Pods_MOMO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2852097927532CCB00AB8BAC /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,6 +522,8 @@
 				DDE31705277F3CD10033FEF4 /* UIAlertAction+Extension.swift */,
 				28F9B2572783A18A00D7EF7A /* extension+UITextView.swift */,
 				284BEBC02785CF01002C5A9E /* UINavigationController+Extension.swift */,
+				3AF373202789CFA70007752E /* UIButton + Extension.swift */,
+				3AF373222789D5440007752E /* UILabel + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -522,6 +540,8 @@
 				28B63E99276DF17D00CB5EBF /* CustomNavigationPresentationController.swift */,
 				28B63E9B276DF53600CB5EBF /* CustomNavigationAnimator.swift */,
 				75AF4A7B277EB30C00F3A041 /* ViewController.swift */,
+				3AF3731E2789C9390007752E /* CustomFont.swift */,
+				3AF805992789DDA600D80F68 /* MyPageLabel.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -764,19 +784,11 @@
 			path = APIModel;
 			sourceTree = "<group>";
 		};
-		8D1E6D24EC3B5CB7722C106C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8F0250A2819775CDE029D2B3 /* Pods_MOMO.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B941767FC29939FBBCF33955 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				29571FE8D5CCF400013C2EA7 /* Pods-MOMO.debug.xcconfig */,
-				445731CECCD50B4197977B82 /* Pods-MOMO.release.xcconfig */,
+				42828D31E336D8C06C9908C8 /* Pods-MOMO.debug.xcconfig */,
+				BAF7C93A0B4B51C742DB4659 /* Pods-MOMO.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -799,7 +811,7 @@
 				DD43E8BF270B4A2100699DA1 /* Products */,
 				2852097927532CCB00AB8BAC /* Recovered References */,
 				B941767FC29939FBBCF33955 /* Pods */,
-				8D1E6D24EC3B5CB7722C106C /* Frameworks */,
+				0D79FD5B63E2820E1659B891 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -941,7 +953,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD43E8D2270B4A2300699DA1 /* Build configuration list for PBXNativeTarget "MOMO" */;
 			buildPhases = (
-				C0C3705E2458945A3E060360 /* [CP] Check Pods Manifest.lock */,
+				977CBA6FB5B1110DDB1EA466 /* [CP] Check Pods Manifest.lock */,
 				DD43E8BA270B4A2100699DA1 /* Sources */,
 				DD43E8BB270B4A2100699DA1 /* Frameworks */,
 				DD43E8BC270B4A2100699DA1 /* Resources */,
@@ -1063,7 +1075,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C0C3705E2458945A3E060360 /* [CP] Check Pods Manifest.lock */ = {
+		977CBA6FB5B1110DDB1EA466 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1150,6 +1162,7 @@
 				75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */,
 				28F4713F2738A4020074D148 /* TabBar.swift in Sources */,
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
+				3AF8059A2789DDA600D80F68 /* MyPageLabel.swift in Sources */,
 				75BF0C0D276B495000C2D0C1 /* SignUpApi.swift in Sources */,
 				285209F12753329600AB8BAC /* TableViewGappable.swift in Sources */,
 				288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */,
@@ -1175,6 +1188,8 @@
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
 				281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */,
 				28A9995D2778808800459D19 /* BookmarkData.swift in Sources */,
+				3AF373232789D5440007752E /* UILabel + Extension.swift in Sources */,
+				3AF373212789CFA70007752E /* UIButton + Extension.swift in Sources */,
 				28F139E0277DC5D400B78774 /* SimpleResponse.swift in Sources */,
 				288EFD192754F476000D1617 /* SegControlCustomable.swift in Sources */,
 				288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */,
@@ -1198,6 +1213,7 @@
 				28A99970277C6B2500459D19 /* BabyInfoViewModel.swift in Sources */,
 				28A99967277AE5BB00459D19 /* UserData.swift in Sources */,
 				285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */,
+				3AF3731F2789C9390007752E /* CustomFont.swift in Sources */,
 				75CE01C727662CAC0057CF9B /* ParsingManager.swift in Sources */,
 				28B63E9A276DF17D00CB5EBF /* CustomNavigationPresentationController.swift in Sources */,
 				288EFD152754F2E5000D1617 /* MessageTableViewController.swift in Sources */,
@@ -1361,12 +1377,12 @@
 		};
 		DD43E8D3270B4A2300699DA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29571FE8D5CCF400013C2EA7 /* Pods-MOMO.debug.xcconfig */;
+			baseConfigurationReference = 42828D31E336D8C06C9908C8 /* Pods-MOMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.8;
+				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_TEAM = 693WY75AQY;
 				INFOPLIST_FILE = MOMO/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1374,7 +1390,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = net.momstouch.MOMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1385,12 +1401,12 @@
 		};
 		DD43E8D4270B4A2300699DA1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 445731CECCD50B4197977B82 /* Pods-MOMO.release.xcconfig */;
+			baseConfigurationReference = BAF7C93A0B4B51C742DB4659 /* Pods-MOMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.8;
+				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_TEAM = 693WY75AQY;
 				INFOPLIST_FILE = MOMO/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1398,7 +1414,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = net.momstouch.MOMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

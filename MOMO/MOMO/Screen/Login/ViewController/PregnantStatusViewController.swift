@@ -6,21 +6,35 @@
 //
 
 import UIKit
+import SwiftUI
 
-final class PregnantStatusViewController: UIViewController {
-  @IBOutlet private weak var nextButton: UIButton! {
+final class PregnantStatusViewController: UIViewController, KeyboardScrollable {
+  @IBOutlet weak var pregnantVCScrollview: UIScrollView!
+  @IBOutlet weak var explanationLabel: UILabel! {
     didSet {
-      nextButton.momoButtonStyle()
+      explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
     }
   }
+  @IBOutlet weak var subExplanationLabel: UILabel! {
+    didSet {
+      subExplanationLabel.font = UIFont.customFont(forTextStyle: .callout)
+    }
+  }
+  @IBOutlet private weak var nextButton: UIButton!
   @IBOutlet private weak var expectedBirthdayField: UITextField! {
     didSet {
       expectedBirthdayField.inputView = calenderDatePicker
+      expectedBirthdayField.setUpFontStyle()
     }
   }
-  @IBOutlet private weak var babyNameTextField: UITextField!
+  @IBOutlet private weak var babyNameTextField: UITextField! {
+    didSet {
+      babyNameTextField.setUpFontStyle()
+    }
+  }
   @IBOutlet private weak var pregnantButton: UIButton!
   @IBOutlet private weak var birthButton: UIButton!
+  @IBOutlet var constraint: [NSLayoutConstraint]!
   
   private var isOnPregnantButton = false
   private var isOnBirthButton = false
@@ -31,10 +45,15 @@ final class PregnantStatusViewController: UIViewController {
   private var calenderDatePicker = UIDatePicker()
   private var networkManager = NetworkManager()
   private var expectedDate: String? = nil
+  private var flag = false
+
   var email: String = ""
   var password: String = ""
   var nickname: String = ""
   var location = ""
+  var scrollView: UIScrollView {
+    return pregnantVCScrollview
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,6 +61,15 @@ final class PregnantStatusViewController: UIViewController {
     babyNameTextField.setBottomBorder()
     hideKeyboard()
     configureDatePicker()
+    setUpButtonUI()
+    scrollingKeyboard()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    if !flag {
+      constraint.forEach { $0.constant = $0.constant.fit(self)}
+      flag = true
+    }
   }
   
   @IBAction func tappedPregnantButton() {
@@ -133,6 +161,10 @@ final class PregnantStatusViewController: UIViewController {
       return -1
     }
     return currentYear - birthYear + 1
+  }
+  
+  private func setUpButtonUI() {
+    nextButton.momoButtonStyle()
   }
   
   private func moveToHomeMainView() {

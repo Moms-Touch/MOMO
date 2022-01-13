@@ -13,6 +13,7 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
   @IBOutlet weak var dateLabel: UILabel! {
     didSet {
       dateLabel.text = dateFormatter.string(from: Date())
+      dateLabel.navTitleStyle()
     }
   }
   
@@ -27,7 +28,7 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
   
   @IBOutlet weak var completeDiaryButton: UIButton! {
     didSet {
-      completeDiaryButton.layer.cornerRadius = 4
+      completeDiaryButton.momoButtonStyle()
     }
   }
   
@@ -47,6 +48,26 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
     super.viewDidLoad()
     
     setUpInputContainerView()
+    
+    
+    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { [weak self] noti in
+      
+      guard let self = self else { return }
+      
+      if let keyboardFrame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+         let keybaordRectangle = keyboardFrame.cgRectValue
+         let keyboardHeight = keybaordRectangle.height
+         
+        self.view.bounds = CGRect(x: 0, y: keyboardHeight / 2, width: self.view.bounds.width, height: self.view.bounds.height)
+       }
+    }
+    
+    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main) { [weak self] noti in
+      
+      guard let self = self else { return }
+      
+      self.view.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+    }
   }
   
   // MARK: - Method

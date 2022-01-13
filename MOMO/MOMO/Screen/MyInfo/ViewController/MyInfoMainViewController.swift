@@ -13,6 +13,11 @@ class MyInfoMainViewController: UIViewController, StoryboardInstantiable {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
   }
+  @IBOutlet weak var navTitle: UILabel! {
+    didSet {
+      navTitle.navTitleStyle()
+    }
+  }
   
   @IBAction func didTapBackButton(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
@@ -25,7 +30,7 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
   
   lazy var networkManager = NetworkManager()
   
-  @IBOutlet weak var loginLabel: UILabel! {
+  @IBOutlet weak var loginLabel: MyPageLabel! {
     didSet {
       if let token = UserManager.shared.token {
         loginLabel.text = "로그아웃"

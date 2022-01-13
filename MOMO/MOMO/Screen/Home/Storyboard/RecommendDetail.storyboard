@@ -121,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="bookmarkButton" destination="XiK-2S-vE2" id="RGU-lQ-8iM"/>
+                        <outlet property="goButton" destination="3Io-N9-geY" id="19K-MZ-kP2"/>
                         <outlet property="webView" destination="b63-0m-HdD" id="Jvh-pR-TVn"/>
                     </connections>
                 </viewController>
@@ -132,7 +133,7 @@
     <resources>
         <image name="bookmarkPinkLine" width="38" height="38"/>
         <image name="bookmark_big" width="38" height="38"/>
-        <image name="chevron.left" catalog="system" width="32" height="32"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <namedColor name="Pink2">
             <color red="1" green="0.41176470588235292" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

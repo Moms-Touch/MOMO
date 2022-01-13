@@ -10,23 +10,55 @@ import Security
 import CryptoKit
 import Toast
 
-final class SignUpViewController: UIViewController {
-  
-  @IBOutlet private weak var explanationLabel: UILabel!
-  @IBOutlet private weak var emailTextField: MomoBaseTextField!
-  @IBOutlet private weak var passwordTextField: MomoBaseTextField!
-  @IBOutlet weak var nicknameTextField: MomoBaseTextField!
-  @IBOutlet private weak var nextButton: UIButton! {
+final class SignUpViewController: UIViewController, KeyboardScrollable {
+  @IBOutlet weak var signUpVCScroll: UIScrollView!
+  @IBOutlet private weak var explanationLabel: UILabel! {
     didSet {
-      nextButton.momoButtonStyle()
+      explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
     }
   }
+  @IBOutlet private weak var emailTextField: MomoBaseTextField! {
+    didSet {
+      emailTextField.setUpFontStyle()
+    }
+  }
+  @IBOutlet private weak var passwordTextField: MomoBaseTextField! {
+    didSet {
+      passwordTextField.setUpFontStyle()
+    }
+  }
+  @IBOutlet weak var nicknameTextField: MomoBaseTextField! {
+    didSet {
+      nicknameTextField.setUpFontStyle()
+    }
+  }
+  @IBOutlet private weak var nextButton: UIButton! 
+  @IBOutlet var constraint: [NSLayoutConstraint]!
   
+  private var flag = false
+  var scrollView: UIScrollView {
+    return signUpVCScroll
+  }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     setTextFieldDelegate()
     setUpView()
     hideKeyboard()
+    explanationLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
+    setUpButtonUI()
+    scrollingKeyboard()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    if !flag {
+      constraint.forEach { $0.constant = $0.constant.fit(self)}
+      flag = true
+    }
+  }
+  
+  private func setUpButtonUI() {
+    nextButton.momoButtonStyle()
   }
   
   private func setUpView() {

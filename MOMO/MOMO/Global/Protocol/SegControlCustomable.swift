@@ -28,8 +28,8 @@ extension SegControlCustomable {
   }
   
   func setTextColor() {
-    segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : segmentedControlTextColor.selected, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .bold)], for: .selected)
-    segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : segmentedControlTextColor.unselected, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 24, weight: .bold)], for: .normal)
+    segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : segmentedControlTextColor.selected, NSAttributedString.Key.font: UIFont.customFont(forTextStyle: .title1)], for: .selected)
+    segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : segmentedControlTextColor.unselected, NSAttributedString.Key.font : UIFont.customFont(forTextStyle: .title1)], for: .normal)
   }
   
   func setBorder(color: UIColor) {

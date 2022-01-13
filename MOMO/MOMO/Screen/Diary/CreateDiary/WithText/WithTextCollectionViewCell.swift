@@ -11,11 +11,16 @@ class WithTextCollectionViewCell: UICollectionViewCell, NibInstantiatable {
   
   static var identifier = String(describing: self)
   
-  @IBOutlet weak var questionLabel: UILabel!
+  @IBOutlet weak var questionLabel: UILabel! {
+    didSet {
+      questionLabel.font = UIFont.customFont(forTextStyle: .title3)
+    }
+  }
   
   @IBOutlet weak var answerTextView: UITextView! {
     didSet {
       answerTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+      answerTextView.font = UIFont.customFont(forTextStyle: .body)
     }
   }
   

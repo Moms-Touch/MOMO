@@ -35,12 +35,15 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       bellButton.isHidden = true
     }
   }
+  @IBOutlet weak var dateWithBabyLabel: UILabel! {
+    didSet {
+      dateWithBabyLabel.setRound()
+      dateWithBabyLabel.font = UIFont.customFont(forTextStyle: .title3)
+    }
+  }
   @IBOutlet weak var dateWithBabyButton: UIButton! {
     didSet {
       dateWithBabyButton.setRound()
-      dateWithBabyButton.backgroundColor = .white
-      
-      //Usermodel을 observing 하고 있어야함
     }
   }
   
@@ -72,10 +75,10 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     
     guard let babyBirth = UserManager.shared.babyInWeek else {
       self.view.makeToast("아이의 생일을 다시 입력해주세요")
-      self.dateWithBabyButton.setTitle("생일 등록하기", for: .normal)
+      self.dateWithBabyLabel.text = "생일 등록하기"
       return}
     guard let babyName = userInfo.baby?.first?.name else {
-      self.dateWithBabyButton.setTitle("아이 이름 등록하기", for: .normal)
+      self.dateWithBabyLabel.text = "아이 이름 등록하기"
       return
     }
     if let imageUrl = userInfo.baby?.first?.imageUrl {
@@ -84,8 +87,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       self.babyProfileImageView.image = UIImage(named: "mascot")
       self.view.makeToast("가운데 버튼을 눌러서, 아이의 사진으로 변경해보아요🤰")
     }
-    self.dateWithBabyButton.setTitle("\(babyName) \(babyBirth)", for: .normal)
-    self.dateWithBabyButton.sizeToFit()
+    self.dateWithBabyLabel.text = "\(babyName) \(babyBirth)"
   }
   
   override func viewDidLayoutSubviews() {

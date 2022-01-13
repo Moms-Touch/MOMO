@@ -9,9 +9,21 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell, NibLoadableView, simpleContentContainer {
   
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var organizationLabel: UILabel!
-  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var titleLabel: UILabel! {
+    didSet {
+      titleLabel.headLineStyle()
+    }
+  }
+  @IBOutlet weak var organizationLabel: UILabel! {
+    didSet {
+      organizationLabel.subHeadLineStyle()
+    }
+  }
+  @IBOutlet weak var dateLabel: UILabel! {
+    didSet {
+      dateLabel.subHeadLineStyle()
+    }
+  }
   @IBOutlet weak var thumbnailImageView: UIImageView!
   
   internal var data: simpleContent? {

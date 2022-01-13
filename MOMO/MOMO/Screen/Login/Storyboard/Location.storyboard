@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -15,49 +15,80 @@
             <objects>
                 <viewController storyboardIdentifier="LocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="LocationViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 지역의  정책정보를 알려드려요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofc-36-CfB">
-                                <rect key="frame" x="38" y="96.5" width="287" height="74"/>
-                                <accessibility key="accessibilityConfiguration" label="내 지역의 정책 정보를 알려들려요"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-pr-eq4">
-                                <rect key="frame" x="38" y="578" width="299" height="59"/>
-                                <color key="backgroundColor" name="Pink4"/>
-                                <accessibility key="accessibilityConfiguration" label="다음 버튼"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-1R-bwl">
+                                <rect key="frame" x="0.0" y="96" width="375" height="682"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xV-Gp-eNk">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="669.66666666666663"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 지역의  정책정보를 알려드려요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofc-36-CfB">
+                                                <rect key="frame" x="36" y="20" width="307" height="74"/>
+                                                <accessibility key="accessibilityConfiguration" label="내 지역의 정책 정보를 알려들려요"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-pr-eq4">
+                                                <rect key="frame" x="36" y="580.66666666666663" width="303" height="59"/>
+                                                <color key="backgroundColor" name="Pink4"/>
+                                                <accessibility key="accessibilityConfiguration" label="다음 버튼"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="59" id="Nq2-r4-x9a"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="다음">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="didTapPregnantButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ssa-sa-0YM"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="지역" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pro-a2-pE3" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
+                                                <rect key="frame" x="36" y="133.66666666666666" width="303" height="47"/>
+                                                <accessibility key="accessibilityConfiguration" hint="작성 후 완료를 눌러주세요" label="지역란"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="47" id="NAt-qX-oxZ"/>
+                                                </constraints>
+                                                <color key="textColor" name="Pink4"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                        <color key="value" name="Pink1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Pro-a2-pE3" firstAttribute="centerX" secondItem="5xV-Gp-eNk" secondAttribute="centerX" id="5Ih-Uy-9Vv"/>
+                                            <constraint firstItem="G5q-pr-eq4" firstAttribute="top" secondItem="Pro-a2-pE3" secondAttribute="bottom" constant="400" id="9eS-gX-l7R"/>
+                                            <constraint firstItem="Pro-a2-pE3" firstAttribute="top" secondItem="ofc-36-CfB" secondAttribute="bottom" constant="39.5" id="CXy-oo-8mW"/>
+                                            <constraint firstItem="Pro-a2-pE3" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="FBN-09-Yzg"/>
+                                            <constraint firstItem="ofc-36-CfB" firstAttribute="leading" secondItem="5xV-Gp-eNk" secondAttribute="leading" constant="36" id="Fvy-rU-6J7"/>
+                                            <constraint firstItem="G5q-pr-eq4" firstAttribute="trailing" secondItem="Pro-a2-pE3" secondAttribute="trailing" id="MQo-vI-nrL"/>
+                                            <constraint firstItem="ofc-36-CfB" firstAttribute="top" secondItem="5xV-Gp-eNk" secondAttribute="top" constant="20" symbolic="YES" id="XfQ-CF-YUb"/>
+                                            <constraint firstAttribute="trailing" secondItem="ofc-36-CfB" secondAttribute="trailing" constant="32" id="jZm-66-Dcc"/>
+                                            <constraint firstAttribute="bottom" secondItem="G5q-pr-eq4" secondAttribute="bottom" constant="30" id="phc-FZ-sh4"/>
+                                            <constraint firstItem="G5q-pr-eq4" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="uRk-6t-W2X"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="Nq2-r4-x9a"/>
+                                    <constraint firstItem="5xV-Gp-eNk" firstAttribute="trailing" secondItem="vx3-6G-ABR" secondAttribute="trailing" id="Avz-gq-CBA"/>
+                                    <constraint firstItem="vx3-6G-ABR" firstAttribute="leading" secondItem="5xV-Gp-eNk" secondAttribute="leading" id="hKv-YR-3Rm"/>
+                                    <constraint firstItem="vx3-6G-ABR" firstAttribute="top" secondItem="5xV-Gp-eNk" secondAttribute="top" id="lfx-JC-daz"/>
+                                    <constraint firstItem="5xV-Gp-eNk" firstAttribute="bottom" secondItem="vx3-6G-ABR" secondAttribute="bottom" id="w7c-hO-RiP"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="다음">
-                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="didTapPregnantButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ssa-sa-0YM"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="지역" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pro-a2-pE3" customClass="MomoBaseTextField" customModule="MOMO" customModuleProvider="target">
-                                <rect key="frame" x="38" y="210" width="299" height="47"/>
-                                <accessibility key="accessibilityConfiguration" hint="작성 후 완료를 눌러주세요" label="지역란"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="NAt-qX-oxZ"/>
-                                </constraints>
-                                <color key="textColor" name="Pink4"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
-                                        <color key="value" name="Pink1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
+                                <viewLayoutGuide key="contentLayoutGuide" id="vx3-6G-ABR"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="g0O-yf-anR"/>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OQ-Jm-HHt">
-                                <rect key="frame" x="20" y="30" width="12.5" height="22"/>
+                                <rect key="frame" x="20" y="74" width="12.666666666666664" height="22"/>
                                 <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="chevron.left" catalog="system"/>
                                 <connections>
@@ -69,28 +100,27 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5OQ-Jm-HHt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="1bh-XV-8HD"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="G5q-pr-eq4" secondAttribute="bottom" constant="30" id="51p-8L-lFd"/>
-                            <constraint firstAttribute="trailing" secondItem="ofc-36-CfB" secondAttribute="trailing" constant="50" id="9tS-aT-tzk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5xV-Gp-eNk" secondAttribute="trailing" id="Dgn-PJ-DAV"/>
+                            <constraint firstItem="QGo-1R-bwl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="OSw-MF-lrU"/>
+                            <constraint firstItem="QGo-1R-bwl" firstAttribute="top" secondItem="5OQ-Jm-HHt" secondAttribute="bottom" id="S0U-9q-g4T"/>
                             <constraint firstItem="5OQ-Jm-HHt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="bbz-Td-MLk"/>
-                            <constraint firstItem="ofc-36-CfB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="cly-rz-Jq6"/>
-                            <constraint firstItem="G5q-pr-eq4" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="hFM-vz-ink"/>
-                            <constraint firstItem="Pro-a2-pE3" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kVb-GJ-oIH"/>
-                            <constraint firstItem="ofc-36-CfB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.4" id="nAy-b2-YKq"/>
-                            <constraint firstItem="G5q-pr-eq4" firstAttribute="trailing" secondItem="Pro-a2-pE3" secondAttribute="trailing" id="qh7-0x-vJI"/>
-                            <constraint firstItem="Pro-a2-pE3" firstAttribute="leading" secondItem="ofc-36-CfB" secondAttribute="leading" id="uaQ-sC-Mlw"/>
-                            <constraint firstItem="Pro-a2-pE3" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.7" id="vEJ-Vr-roa"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QGo-1R-bwl" secondAttribute="trailing" id="idE-NU-fMe"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="QGo-1R-bwl" secondAttribute="bottom" id="oRE-1Y-Oam"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="explanationLabel" destination="ofc-36-CfB" id="XfH-Vx-X2F"/>
                         <outlet property="locationTextField" destination="Pro-a2-pE3" id="9uk-fg-5Gp"/>
+                        <outlet property="locationVCScroll" destination="QGo-1R-bwl" id="tAx-16-fnW"/>
                         <outlet property="nextButton" destination="G5q-pr-eq4" id="py3-vr-3t0"/>
-                        <outlet property="nextButtonBottomConstraint" destination="51p-8L-lFd" id="hap-wX-9C7"/>
+                        <outletCollection property="constraint" destination="phc-FZ-sh4" collectionClass="NSMutableArray" id="VdM-Ew-Ljb"/>
+                        <outletCollection property="constraint" destination="9eS-gX-l7R" collectionClass="NSMutableArray" id="mEe-fK-2qi"/>
+                        <outletCollection property="constraint" destination="CXy-oo-8mW" collectionClass="NSMutableArray" id="8Kx-ir-BRX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="139"/>
+            <point key="canvasLocation" x="138.40000000000001" y="138.91625615763547"/>
         </scene>
     </scenes>
     <resources>
