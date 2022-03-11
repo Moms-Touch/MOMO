@@ -74,6 +74,10 @@
 		285209F52753329600AB8BAC /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DB2753329600AB8BAC /* StorageService.swift */; };
 		285209F62753329600AB8BAC /* InfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DD2753329600AB8BAC /* InfoData.swift */; };
 		286193F227DB6E9A0012250F /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F127DB6E9A0012250F /* FSCalendar */; };
+		286193F527DB71B60012250F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F427DB71B60012250F /* RxCocoa */; };
+		286193F727DB71B60012250F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F627DB71B60012250F /* RxRelay */; };
+		286193F927DB71B60012250F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F827DB71B60012250F /* RxSwift */; };
+		286193FC27DB71DC0012250F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 286193FB27DB71DC0012250F /* Then */; };
 		286DDE192771ADC3003E9563 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286DDE182771ADC3003E9563 /* GenericResponse.swift */; };
 		2879A9BA27800E3D00A0BE21 /* PolicyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2879A9B927800E3D00A0BE21 /* PolicyData.swift */; };
 		288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288ED75927427CC200C5178D /* BookmarkList.storyboard */; };
@@ -367,6 +371,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286193FC27DB71DC0012250F /* Then in Frameworks */,
+				286193F727DB71B60012250F /* RxRelay in Frameworks */,
 				284C7C402780930C008A5374 /* Toast in Frameworks */,
 				286193F227DB6E9A0012250F /* FSCalendar in Frameworks */,
 				DDE31709277F41E10033FEF4 /* OrderedCollections in Frameworks */,
@@ -377,8 +383,10 @@
 				280BEFC2274B65F100F031A7 /* FirebaseAnalytics in Frameworks */,
 				DDE316F4277C94D70033FEF4 /* Realm in Frameworks */,
 				280BEFCA274B65F100F031A7 /* FirebaseStorageSwift-Beta in Frameworks */,
+				286193F527DB71B60012250F /* RxCocoa in Frameworks */,
 				DDE316F6277C94D70033FEF4 /* RealmSwift in Frameworks */,
 				280BEFC8274B65F100F031A7 /* FirebaseStorage in Frameworks */,
+				286193F927DB71B60012250F /* RxSwift in Frameworks */,
 				FDAAA80B02FEAB2316525BC4 /* Pods_MOMO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -977,6 +985,10 @@
 				DDE31708277F41E10033FEF4 /* OrderedCollections */,
 				284C7C3F2780930C008A5374 /* Toast */,
 				286193F127DB6E9A0012250F /* FSCalendar */,
+				286193F427DB71B60012250F /* RxCocoa */,
+				286193F627DB71B60012250F /* RxRelay */,
+				286193F827DB71B60012250F /* RxSwift */,
+				286193FB27DB71DC0012250F /* Then */,
 			);
 			productName = MOMO;
 			productReference = DD43E8BE270B4A2100699DA1 /* MOMO.app */;
@@ -1013,6 +1025,8 @@
 				DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				286193F327DB71B60012250F /* XCRemoteSwiftPackageReference "RxSwift" */,
+				286193FA27DB71DC0012250F /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = DD43E8BF270B4A2100699DA1 /* Products */;
 			projectDirPath = "";
@@ -1480,6 +1494,22 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		286193F327DB71B60012250F /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		286193FA27DB71DC0012250F /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
@@ -1551,6 +1581,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		286193F427DB71B60012250F /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 286193F327DB71B60012250F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		286193F627DB71B60012250F /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 286193F327DB71B60012250F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		286193F827DB71B60012250F /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 286193F327DB71B60012250F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		286193FB27DB71DC0012250F /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 286193FA27DB71DC0012250F /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 		DDE316F3277C94D70033FEF4 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
