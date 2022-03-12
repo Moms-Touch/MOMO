@@ -219,7 +219,9 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   }
   
   private func gotoMyProfile() {
-    self.navigationController?.pushViewController(MyInfoMainViewController.loadFromStoryboard(), animated: true)
+    let vc = MyInfoMainViewController()
+    vc.modalPresentationStyle = .overFullScreen
+    present(vc, animated: true, completion: nil)
   }
 }
 

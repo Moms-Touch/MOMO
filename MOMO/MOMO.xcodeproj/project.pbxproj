@@ -78,6 +78,7 @@
 		286193F727DB71B60012250F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F627DB71B60012250F /* RxRelay */; };
 		286193F927DB71B60012250F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F827DB71B60012250F /* RxSwift */; };
 		286193FC27DB71DC0012250F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 286193FB27DB71DC0012250F /* Then */; };
+		286193FE27DB7F590012250F /* MyInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286193FD27DB7F590012250F /* MyInfoCollectionViewCell.swift */; };
 		286DDE192771ADC3003E9563 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286DDE182771ADC3003E9563 /* GenericResponse.swift */; };
 		2879A9BA27800E3D00A0BE21 /* PolicyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2879A9B927800E3D00A0BE21 /* PolicyData.swift */; };
 		288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288ED75927427CC200C5178D /* BookmarkList.storyboard */; };
@@ -132,7 +133,6 @@
 		28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471462738B8DC0074D148 /* MyInfoMainViewController.swift */; };
 		28F4714E2738F67A0074D148 /* HomeMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F4714D2738F67A0074D148 /* HomeMain.storyboard */; };
 		28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4714F273912220074D148 /* RecommendModalViewController.swift */; };
-		28F47158273BE0780074D148 /* MyInfoMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47157273BE0780074D148 /* MyInfoMain.storyboard */; };
 		28F4715A273BE3D90074D148 /* MyActivity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47159273BE3D90074D148 /* MyActivity.storyboard */; };
 		28F4715C273BE3E90074D148 /* MyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4715B273BE3E90074D148 /* MyActivityViewController.swift */; };
 		28F4715E273BE4620074D148 /* MySetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F4715D273BE4620074D148 /* MySetting.storyboard */; };
@@ -247,6 +247,7 @@
 		285209D92753329600AB8BAC /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		285209DB2753329600AB8BAC /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		285209DD2753329600AB8BAC /* InfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoData.swift; sourceTree = "<group>"; };
+		286193FD27DB7F590012250F /* MyInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		286DDE182771ADC3003E9563 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		2879A9B927800E3D00A0BE21 /* PolicyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyData.swift; sourceTree = "<group>"; };
 		288ED75927427CC200C5178D /* BookmarkList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarkList.storyboard; sourceTree = "<group>"; };
@@ -301,7 +302,6 @@
 		28F471462738B8DC0074D148 /* MyInfoMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainViewController.swift; sourceTree = "<group>"; };
 		28F4714D2738F67A0074D148 /* HomeMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeMain.storyboard; sourceTree = "<group>"; };
 		28F4714F273912220074D148 /* RecommendModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModalViewController.swift; sourceTree = "<group>"; };
-		28F47157273BE0780074D148 /* MyInfoMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoMain.storyboard; sourceTree = "<group>"; };
 		28F47159273BE3D90074D148 /* MyActivity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyActivity.storyboard; sourceTree = "<group>"; };
 		28F4715B273BE3E90074D148 /* MyActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivityViewController.swift; sourceTree = "<group>"; };
 		28F4715D273BE4620074D148 /* MySetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MySetting.storyboard; sourceTree = "<group>"; };
@@ -717,7 +717,6 @@
 		28F47155273BE0500074D148 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				28F47157273BE0780074D148 /* MyInfoMain.storyboard */,
 				28F47159273BE3D90074D148 /* MyActivity.storyboard */,
 				28F4715D273BE4620074D148 /* MySetting.storyboard */,
 				28F47163273BE5500074D148 /* MyBabyInfo.storyboard */,
@@ -738,6 +737,7 @@
 				28492611273BF9E000FA2072 /* SettingWebViewController.swift */,
 				28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */,
 				28A99973277D9A2500459D19 /* CommonListViewController.swift */,
+				286193FD27DB7F590012250F /* MyInfoCollectionViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1047,7 +1047,6 @@
 				28F47164273BE5500074D148 /* MyBabyInfo.storyboard in Resources */,
 				758F519A277E112100DA88BE /* SignUp.storyboard in Resources */,
 				2852099C2753325F00AB8BAC /* CreateDiary.storyboard in Resources */,
-				28F47158273BE0780074D148 /* MyInfoMain.storyboard in Resources */,
 				285209BA2753327200AB8BAC /* FindPassword.storyboard in Resources */,
 				28CA30752753357300EF071E /* QuestionTableViewCell.xib in Resources */,
 				288ED76127427D5800C5178D /* ListTableViewCell.xib in Resources */,
@@ -1145,6 +1144,7 @@
 				288ED76927428C1E00C5178D /* PolicyBookmarkTableViewController.swift in Sources */,
 				28F4715C273BE3E90074D148 /* MyActivityViewController.swift in Sources */,
 				28A99965277ABAD100459D19 /* UserManager.swift in Sources */,
+				286193FE27DB7F590012250F /* MyInfoCollectionViewCell.swift in Sources */,
 				28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */,
 				281D353F27647FD500A128A5 /* BannerCell.swift in Sources */,
 				289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */,

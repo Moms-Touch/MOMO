@@ -6,24 +6,124 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
-class MyInfoMainViewController: UIViewController, StoryboardInstantiable {
+class MyInfoMainViewController: UIViewController {
+  
+  //MARK: - UI
+  
+  let collectionView : UICollectionView = {
+    
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .vertical
+    layout.minimumLineSpacing = InfoMainConstant.lineSpacing
+    let collectionView = UICollectionView(frame: .zero,
+                                          collectionViewLayout: layout)
+    
+    collectionView.backgroundColor = .clear
+    collectionView.register(MyInfoCollectionViewCell.self)
+    collectionView.isPagingEnabled = true
+    collectionView.showsVerticalScrollIndicator = false
+    collectionView.showsHorizontalScrollIndicator = false
+    
+    return collectionView
+  }()
+  
+  let navTitle = UILabel().then {
+    $0.navTitleStyle()
+    $0.text = InfoMainConstant.navTitle
+  }
+  
+  let closeBar = UIView().then {
+    $0.setRound()
+    $0.backgroundColor = .systemGray3
+  }
+  
+  let closeButton = UIButton().then {
+    $0.setImage(InfoMainConstant.backbutton, for: .normal)
+    $0.tintColor = Asset.Colors._45.color
+  }
+  
+  private func setupUI() {
+    
+    view.addSubview(closeButton)
+    view.backgroundColor = InfoMainConstant.backgroundColor
+    
+    closeButton.snp.makeConstraints { make in
+      make.left.equalToSuperview().inset(InfoMainConstant.verticalSpaing)
+      make.width.height.equalTo(InfoMainConstant.buttonSize)
+    }
+    
+    view.addSubview(navTitle)
+    navTitle.snp.makeConstraints { make in
+      make.top.equalToSuperview().inset(InfoMainConstant.navTitleSpacing)
+      make.centerX.equalToSuperview()
+      make.centerY.equalTo(closeButton)
+    }
+    
+    view.addSubview(collectionView)
+    collectionView.snp.makeConstraints { make in
+      make.left.right.equalToSuperview()
+      make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+      make.top.equalTo(self.navTitle.snp.bottom).offset(InfoMainConstant.verticalSpaing)
+    }
+    
+    setupCollectionView()
+  }
+  
+  private func setupCollectionView() {
+    collectionView.dataSource = self
+    collectionView.delegate = self
+  }
+  
+
+  //MARK: - LifeCycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
-  }
-  @IBOutlet weak var navTitle: UILabel! {
-    didSet {
-      navTitle.navTitleStyle()
-    }
+    setupUI()
   }
   
-  @IBAction func didTapBackButton(_ sender: Any) {
-    self.navigationController?.popViewController(animated: true)
+  //MARK: - Init
+  init() {
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  //MARK: - Private
+}
+
+extension MyInfoMainViewController: UICollectionViewDataSource {
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return InfoMainConstant.menuNum
   }
   
   
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyInfoCollectionViewCell.identifier, for: indexPath) as! MyInfoCollectionViewCell
+    cell.configure(with: InfoMainConstant.menuName[indexPath.item])
+    return cell
+  }
+}
+
+extension MyInfoMainViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let width = view.frame.size.width * InfoMainConstant.ratio
+    let estimatedHeight: CGFloat = 50
+    
+    //더미셀을 활용해서 Cell의 최적화된 높이를 찾는다.
+    let dummyCell = MyInfoCollectionViewCell(frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
+    dummyCell.configure(with: InfoMainConstant.menuName[indexPath.item])
+    dummyCell.layoutIfNeeded()
+    let estimatedSize = dummyCell.systemLayoutSizeFitting(CGSize(width: width, height: estimatedHeight))
+    
+    return CGSize(width: width, height: estimatedSize.height)
+  }
 }
 
 class MyInfoMainTableViewController: InfoBaseTableViewController {
@@ -148,3 +248,57 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
   
   
 }
+
+
+//MARK: - Constant
+
+enum InfoMainConstant {
+  
+  static var menuNum: Int {
+    return 3
+  }
+  
+  static var lineSpacing: CGFloat {
+    return 35
+  }
+  
+  static var navTitle: String {
+    return "마이 페이지"
+  }
+  
+  static var navTitleSpacing: CGFloat {
+    return 50
+  }
+  
+  static var backbutton: UIImage {
+    return UIImage(systemName: "chevron.left")!
+  }
+  
+  static var buttonSize: CGFloat {
+    return 24
+  }
+  
+  static var verticalSpaing: CGFloat {
+    return 20
+  }
+  
+  static var backgroundColor: UIColor {
+    return Asset.Colors.fa.color.withAlphaComponent(0.8)
+  }
+  
+  static var ratio: Double {
+    return 0.8
+  }
+  
+  static var menuName: [Int: [String]] {
+    return [0: ["지영맘", "momo@momo.com", "서울에 사는 21주차 엄마"],
+            1: ["현재 상태 변경\n임신중과 출산 후를 선택할 수 있어요",
+                "지역 변경\n현재 살고 있는 위치가 변경되었을 경우, 위치를 변경해주세요",
+                "비밀변호 변경\n비밀번호를 변경하고 싶다면 말씀해주세요",
+                "닉네임 변경\n커뮤니티에서 사용되는 닉네임을 변경해요"],
+            2: ["로그아웃", "회원탈퇴", "Contact"]
+    ]
+  }
+  
+}
+
