@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BabyData: Codable {
+struct BabyData: Codable, Equatable {
   let id: Int
   let name: String
   let birthday: String?
