@@ -18,6 +18,11 @@ protocol APIable {
   var param: [String: String?]? { get }
 }
 
+enum EncodingType {
+  case URLEncoding
+  case JSONEncoding
+}
+
 enum RequestType: String {
   case get = "GET"
   case post = "POST"
