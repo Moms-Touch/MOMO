@@ -100,6 +100,6 @@ enum PostApi: APIable {
   }
   
   func makePathtoURL(path: String?) -> String {
-    return NetworkManager.baseUrl + "\(path ?? "")"
+    return APIInfo.baseURL + "\(path ?? "")"
   }
 }
