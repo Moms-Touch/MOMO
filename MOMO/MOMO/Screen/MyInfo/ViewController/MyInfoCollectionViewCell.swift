@@ -7,6 +7,8 @@
 
 import UIKit
 import Then
+import RxSwift
+import RxCocoa
 import SnapKit
 
 class MyInfoCollectionViewCell: UICollectionViewCell {
@@ -59,6 +61,9 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
   }
   
   private func makeAttributed(label: UILabel) {
+    if let text = label.text, !text.contains("\n") {
+        return
+    }
     let fontSize = UIFont.customFont(forTextStyle: .caption1)
     let attributedStr = NSMutableAttributedString(string: label.text!)
     let selectedStr = label.text!.components(separatedBy: "\n")
@@ -66,6 +71,9 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
     label.attributedText = attributedStr
   }
   
+  //MARK: - Private
+
+  private var disposeBag = DisposeBag()
 
   //MARK: - Init
   override init(frame: CGRect) {
@@ -76,23 +84,24 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
   required init?(coder: NSCoder) {
     super.init(coder: coder)
   }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    disposeBag = DisposeBag()
+  }
 
 }
 
 extension MyInfoCollectionViewCell {
-  func configure(with options: [String]?) {
+  func configure(with options: [String]?, index: Int) {
     guard let options = options else {
       return
     }
     if options.count > 3 {
       firstOptionLabel?.text = options[0]
-      makeAttributed(label: firstOptionLabel!)
       secondOptionLabel?.text = options[1]
-      makeAttributed(label: secondOptionLabel!)
       thirdOptionLabel?.text = options[2]
-      makeAttributed(label: thirdOptionLabel!)
       forthOptionLabel?.text = options[3]
-      makeAttributed(label: forthOptionLabel!)
     } else {
       firstOptionLabel?.text = options[0]
       secondOptionLabel?.text = options[1]

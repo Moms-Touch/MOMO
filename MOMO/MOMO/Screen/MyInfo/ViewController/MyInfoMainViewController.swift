@@ -8,9 +8,49 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
-class MyInfoMainViewController: UIViewController {
+class MyInfoMainViewController: UIViewController, ViewModelBindableType {
   
+  //MARK: - ViewModelBindableType
+
+  func bindViewModel() {
+    viewModel.output.nickName
+      .drive(nickname)
+      .disposed(by: disposeBag)
+    viewModel.output.email
+    viewModel.output.description
+    viewModel.output.isLoggedIn
+  }
+  
+  var viewModel: MyInfoViewModel
+  //MARK: - LifeCycle
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupUI()
+  }
+  
+  //MARK: - Init
+  init(viewModel: MyInfoViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+    self.bind(viewModel: self.viewModel)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  //MARK: - Private
+  
+  private var nickname = BehaviorRelay<String?>(value: nil)
+  private var email = BehaviorRelay<String?>(value: nil)
+  private var userDescription = BehaviorRelay<String>(value: "대한민국에 사는 엄마")
+  private var isLoggedIn = BehaviorRelay<Bool>(value: true)
+  private var disposeBag = DisposeBag()
+
   //MARK: - UI
   
   let collectionView : UICollectionView = {
@@ -76,40 +116,27 @@ class MyInfoMainViewController: UIViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
   }
-  
-
-  //MARK: - LifeCycle
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setupUI()
-  }
-  
-  //MARK: - Init
-  init() {
-    super.init(nibName: nil, bundle: nil)
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  //MARK: - Private
 }
+
+//MARK: - CollectionViewDatasource
 
 extension MyInfoMainViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return InfoMainConstant.menuNum
+    return viewModel.infoOptionContent.count
   }
-  
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyInfoCollectionViewCell.identifier, for: indexPath) as! MyInfoCollectionViewCell
-    cell.configure(with: InfoMainConstant.menuName[indexPath.item])
+   
+    cell.configure(with: viewModel.infoOptionContent[indexPath.item], index: indexPath.item)
+    
     return cell
   }
 }
+
+
+//MARK: - CollectionViewDelegateFlowLayout
 
 extension MyInfoMainViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -118,7 +145,7 @@ extension MyInfoMainViewController: UICollectionViewDelegateFlowLayout {
     
     //더미셀을 활용해서 Cell의 최적화된 높이를 찾는다.
     let dummyCell = MyInfoCollectionViewCell(frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
-    dummyCell.configure(with: InfoMainConstant.menuName[indexPath.item])
+    dummyCell.configure(with: viewModel.infoOptionContent[indexPath.item], index: indexPath.item)
     dummyCell.layoutIfNeeded()
     let estimatedSize = dummyCell.systemLayoutSizeFitting(CGSize(width: width, height: estimatedHeight))
     
@@ -254,10 +281,6 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
 
 enum InfoMainConstant {
   
-  static var menuNum: Int {
-    return 3
-  }
-  
   static var lineSpacing: CGFloat {
     return 35
   }
@@ -288,16 +311,6 @@ enum InfoMainConstant {
   
   static var ratio: Double {
     return 0.8
-  }
-  
-  static var menuName: [Int: [String]] {
-    return [0: ["지영맘", "momo@momo.com", "서울에 사는 21주차 엄마"],
-            1: ["현재 상태 변경\n임신중과 출산 후를 선택할 수 있어요",
-                "지역 변경\n현재 살고 있는 위치가 변경되었을 경우, 위치를 변경해주세요",
-                "비밀변호 변경\n비밀번호를 변경하고 싶다면 말씀해주세요",
-                "닉네임 변경\n커뮤니티에서 사용되는 닉네임을 변경해요"],
-            2: ["로그아웃", "회원탈퇴", "Contact"]
-    ]
   }
   
 }

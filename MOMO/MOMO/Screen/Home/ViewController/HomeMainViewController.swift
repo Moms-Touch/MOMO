@@ -218,8 +218,14 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     gotoMyProfile()
   }
   
+  func makeMyInfoViewModel() -> MyInfoViewModel {
+    let repository = MomoUserSessionRepository()
+    return MyInfoViewModel(repository: repository)
+  }
+  
   private func gotoMyProfile() {
-    let vc = MyInfoMainViewController()
+    let viewModel = makeMyInfoViewModel()
+    let vc = MyInfoMainViewController(viewModel: viewModel)
     vc.modalPresentationStyle = .overFullScreen
     present(vc, animated: true, completion: nil)
   }
