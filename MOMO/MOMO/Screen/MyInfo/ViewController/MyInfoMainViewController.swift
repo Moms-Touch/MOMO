@@ -190,7 +190,7 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
       networkManager.request(apiModel: GetApi.babyGet(token: token)) { (result) in
         switch result {
         case .success(let data):
-          let parsingManager = ParsingManager()
+          let parsingManager = NetworkCoder()
           parsingManager.judgeGenericResponse(data: data, model: [BabyData].self) { [weak self] (body) in
             guard let self = self else {return}
             if body.count > 0 {

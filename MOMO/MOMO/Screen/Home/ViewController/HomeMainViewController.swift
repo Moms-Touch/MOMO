@@ -99,7 +99,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     networkManager.request(apiModel: GetApi.noticeGet) { result in
       switch result {
       case.success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: [NoticeData].self) { data in
           DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
@@ -138,7 +138,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     networkManager.request(apiModel: GetApi.infoGet(token: token, start: "\(period.0)", end: "\(period.1)")) { (result) in
       switch result {
       case .success(let data):
-        let parsingmanager = ParsingManager()
+        let parsingmanager = NetworkCoder()
         parsingmanager.judgeGenericResponse(data: data, model: [InfoData].self) { [weak self] body in
           guard let self = self else {return}
           recommendModalVC.setData(data: body)

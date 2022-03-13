@@ -110,7 +110,7 @@ final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
       self.networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: newNick, isPregnant: userInfo.isPregnant, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
         switch result {
         case .success(let data):
-          let parsingManager = ParsingManager()
+          let parsingManager = NetworkCoder()
           parsingManager.judgeGenericResponse(data: data, model: UserData.self) { (body) in
             DispatchQueue.main.async {  [weak self] in
               self?.view.makeToast("\(newNick)으로 닉네임 변경되었습니다")
@@ -144,7 +144,7 @@ final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
       self.networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: userInfo.nickname, isPregnant: true, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
         switch result {
         case .success(let data):
-          let parsingManager = ParsingManager()
+          let parsingManager = NetworkCoder()
           parsingManager.judgeGenericResponse(data: data, model: UserData.self) { [ weak self] (body) in
             DispatchQueue.main.async {
               self?.view.makeToast("임신중으로 변경되었습니다.")
@@ -162,7 +162,7 @@ final class MyInfoEditViewController: UIViewController, StoryboardInstantiable {
       self.networkManager.request(apiModel: PutApi.putUser(token: token, email: userInfo.email, nickname: userInfo.nickname, isPregnant: false, hasChild: userInfo.hasChild, age: userInfo.age, location: userInfo.location)) { (result) in
         switch result {
         case .success(let data):
-          let parsingManager = ParsingManager()
+          let parsingManager = NetworkCoder()
           parsingManager.judgeGenericResponse(data: data, model: UserData.self) { [weak self](body) in
             DispatchQueue.main.async {
               self?.view.makeToast("출산 후로 변경되었습니다.")

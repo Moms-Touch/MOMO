@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let self = self else { return }
         switch result {
         case .success(let data):
-          let parsingManager = ParsingManager()
+          let parsingManager = NetworkCoder()
           parsingManager.judgeGenericResponse(data: data, model: LoginData.self) { (body) in
 
             let newAccessToken = body.accesstoken
