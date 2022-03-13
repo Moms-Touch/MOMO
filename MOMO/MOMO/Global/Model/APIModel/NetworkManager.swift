@@ -6,56 +6,65 @@
 //
 
 import Foundation
+import RxSwift
 
-enum NetworkError: Error {
-  case invalidURL
-  case failResponse
-  case invalidData
-}
-
-protocol Networkable {
-  func dataTask(with request: URLRequest, completionHandler: @escaping(Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
-}
-
-extension URLSession: Networkable {}
 
 typealias URLSessionResult = ((Result<Data, Error>) -> Void)
 
 class NetworkManager {
-  static let baseUrl = "https://asia-northeast3-momo-test-a4b5f.cloudfunctions.net/api"
+  
+  static let baseUrl = APIInfo.baseURL
+  
   private let boundary = "Boundary-\(UUID().uuidString)"
   private let parsingManager = ParsingManager()
-  private let session: Networkable
+  private let session: URLSessionProtocol
   
-  init(session: Networkable = URLSession.shared) {
+  
+  init(session: URLSessionProtocol = URLSession.shared) {
     self.session = session
   }
   
+  func request(apiModel: APIable) -> Single<Data> {
+    return Single<Data>.create { (single) -> Disposable in
+      let request = self.request(apiModel: apiModel) { result in
+        switch result {
+        case .success(let data):
+          single(.success(data))
+        case .failure(let error):
+          single(.failure(error))
+        }
+      }
+    }
+  }
   
-  func request(apiModel: APIable, completion: @escaping URLSessionResult) {
+// TODO: refactor 끝난뒤에는 private으로 바꾸기
+  @discardableResult
+  func request(apiModel: APIable, completion: @escaping URLSessionResult) -> URLSessionTaskProtocol? {
     
     var url: URL!
     
+    //MARK: - EncodingType
     switch apiModel.encodingType {
     case .URLEncoding:
       guard let tempUrl = parsingManager.URLEncoding(parameters: apiModel.param, url: apiModel.url) else {
         completion(.failure(NetworkError.invalidURL))
-        return
+        return nil
       }
       url = tempUrl
     case .JSONEncoding:
       guard let tempUrl = URL(string: apiModel.url) else {
         completion(.failure(NetworkError.invalidURL))
-        return
+        return nil
       }
       url = tempUrl
     }
-   
+       
+    //MARK: - URLRequest
     var request = URLRequest(url: url)
     request.httpMethod = apiModel.requestType.method
     request.httpBody = createDataBody(parameter: apiModel.param, contentType: apiModel.contentType, url: apiModel.url)
     
-    // 컨텐트 타입 추가
+    //MARK: - ContentType
     switch apiModel.contentType {
     case .multiPartForm:
       request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
@@ -67,12 +76,15 @@ class NetworkManager {
       break
     }
     
-    // header 추가
+    //MARK: - Headers
+
     if let header = apiModel.header {
       header.forEach { request.addValue($1, forHTTPHeaderField: $0)}
     }
-    
-    session.dataTask(with: request) { data, response, error in
+
+    //MARK: - Task
+    let task = session.makeDataTask(with: request) { data, response, error in
+      
       if let error = error {
         completion(.failure(error))
         return
@@ -88,7 +100,11 @@ class NetworkManager {
         return
       }
       completion(.success(data))
-    } .resume()
+      
+    }
+    
+    task.resume()
+    return task
   }
 }
 
