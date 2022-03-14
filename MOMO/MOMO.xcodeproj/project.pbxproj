@@ -96,6 +96,11 @@
 		2861942A27DE44EA0012250F /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861942927DE44EA0012250F /* URL+Extension.swift */; };
 		2861942C27DE46850012250F /* NetworkEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861942B27DE46850012250F /* NetworkEncoding.swift */; };
 		2861942E27DE468E0012250F /* NetworkDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861942D27DE468E0012250F /* NetworkDecoding.swift */; };
+		2861943427DEF00B0012250F /* InfoChangeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861943327DEF00B0012250F /* InfoChangeCellViewModel.swift */; };
+		2861943627DEF05D0012250F /* InfoUserManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861943527DEF05D0012250F /* InfoUserManageViewModel.swift */; };
+		2861943A27DF0B1A0012250F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861943927DF0B1A0012250F /* NetworkProtocol.swift */; };
+		2861943F27DF209C0012250F /* AuthRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861943E27DF209C0012250F /* AuthRemoteAPI.swift */; };
+		2861944227DF219A0012250F /* MomoAuthRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861944127DF219A0012250F /* MomoAuthRemoteAPI.swift */; };
 		286DDE192771ADC3003E9563 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286DDE182771ADC3003E9563 /* GenericResponse.swift */; };
 		2879A9BA27800E3D00A0BE21 /* PolicyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2879A9B927800E3D00A0BE21 /* PolicyData.swift */; };
 		288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288ED75927427CC200C5178D /* BookmarkList.storyboard */; };
@@ -281,6 +286,11 @@
 		2861942927DE44EA0012250F /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		2861942B27DE46850012250F /* NetworkEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEncoding.swift; sourceTree = "<group>"; };
 		2861942D27DE468E0012250F /* NetworkDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDecoding.swift; sourceTree = "<group>"; };
+		2861943327DEF00B0012250F /* InfoChangeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoChangeCellViewModel.swift; sourceTree = "<group>"; };
+		2861943527DEF05D0012250F /* InfoUserManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserManageViewModel.swift; sourceTree = "<group>"; };
+		2861943927DF0B1A0012250F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		2861943E27DF209C0012250F /* AuthRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRemoteAPI.swift; sourceTree = "<group>"; };
+		2861944127DF219A0012250F /* MomoAuthRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoAuthRemoteAPI.swift; sourceTree = "<group>"; };
 		286DDE182771ADC3003E9563 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		2879A9B927800E3D00A0BE21 /* PolicyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyData.swift; sourceTree = "<group>"; };
 		288ED75927427CC200C5178D /* BookmarkList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarkList.storyboard; sourceTree = "<group>"; };
@@ -645,15 +655,16 @@
 		2861943027DE4A250012250F /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				2861943D27DF208B0012250F /* AuthRemoteAPI */,
 				285209DB2753329600AB8BAC /* StorageService.swift */,
-				2861940C27DCDEA60012250F /* UserRemoteAPI.swift */,
-				2861941F27DE2DB20012250F /* MomoUserRemoteAPI.swift */,
+				2861943B27DF0C270012250F /* UserRemoteAPI */,
 				2861942327DE319D0012250F /* URLSessionProtocol.swift */,
 				2861942B27DE46850012250F /* NetworkEncoding.swift */,
 				2861942D27DE468E0012250F /* NetworkDecoding.swift */,
 				2861942527DE32440012250F /* APIInfo.swift */,
 				75CE01C427661C0F0057CF9B /* NetworkManager.swift */,
 				75CE01C627662CAC0057CF9B /* NetworkCoder.swift */,
+				2861943927DF0B1A0012250F /* NetworkProtocol.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -677,6 +688,40 @@
 				28A99964277ABAD100459D19 /* UserManager.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		2861943B27DF0C270012250F /* UserRemoteAPI */ = {
+			isa = PBXGroup;
+			children = (
+				2861940C27DCDEA60012250F /* UserRemoteAPI.swift */,
+				2861943C27DF0C300012250F /* Implementation */,
+			);
+			path = UserRemoteAPI;
+			sourceTree = "<group>";
+		};
+		2861943C27DF0C300012250F /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				2861941F27DE2DB20012250F /* MomoUserRemoteAPI.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		2861943D27DF208B0012250F /* AuthRemoteAPI */ = {
+			isa = PBXGroup;
+			children = (
+				2861944027DF21830012250F /* Implementation */,
+				2861943E27DF209C0012250F /* AuthRemoteAPI.swift */,
+			);
+			path = AuthRemoteAPI;
+			sourceTree = "<group>";
+		};
+		2861944027DF21830012250F /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				2861944127DF219A0012250F /* MomoAuthRemoteAPI.swift */,
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 		288ED75D27427D2A00C5178D /* View */ = {
@@ -706,6 +751,8 @@
 				286193FF27DCA4BA0012250F /* MyInfoCellViewModel.swift */,
 				2861940827DCD0720012250F /* MyInfoViewModel.swift */,
 				2861941B27DE0E590012250F /* ViewModelBindableType.swift */,
+				2861943327DEF00B0012250F /* InfoChangeCellViewModel.swift */,
+				2861943527DEF05D0012250F /* InfoUserManageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1218,6 +1265,7 @@
 				28A99965277ABAD100459D19 /* UserManager.swift in Sources */,
 				286193FE27DB7F590012250F /* MyInfoCollectionViewCell.swift in Sources */,
 				2861941127DCE0380012250F /* UserSession.swift in Sources */,
+				2861944227DF219A0012250F /* MomoAuthRemoteAPI.swift in Sources */,
 				28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */,
 				281D353F27647FD500A128A5 /* BannerCell.swift in Sources */,
 				289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */,
@@ -1250,7 +1298,9 @@
 				288EFD132754F2AE000D1617 /* AlertTableViewController.swift in Sources */,
 				285209EB2753329600AB8BAC /* CanShowDetailView.swift in Sources */,
 				75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */,
+				2861943A27DF0B1A0012250F /* NetworkProtocol.swift in Sources */,
 				28F4713F2738A4020074D148 /* TabBar.swift in Sources */,
+				2861943427DEF00B0012250F /* InfoChangeCellViewModel.swift in Sources */,
 				2861940027DCA4BA0012250F /* MyInfoCellViewModel.swift in Sources */,
 				DD43E8C4270B4A2100699DA1 /* SceneDelegate.swift in Sources */,
 				3AF8059A2789DDA600D80F68 /* MyPageLabel.swift in Sources */,
@@ -1293,6 +1343,7 @@
 				28F4FE1927610E3800E699FC /* NotificationData.swift in Sources */,
 				2861940D27DCDEA60012250F /* UserRemoteAPI.swift in Sources */,
 				285209C02753327200AB8BAC /* LoginViewController.swift in Sources */,
+				2861943627DEF05D0012250F /* InfoUserManageViewModel.swift in Sources */,
 				288ED76027427D5800C5178D /* ListTableViewCell.swift in Sources */,
 				286DDE192771ADC3003E9563 /* GenericResponse.swift in Sources */,
 				2852099E2753325F00AB8BAC /* WithTextViewController.swift in Sources */,
@@ -1343,6 +1394,7 @@
 				28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */,
 				28A99974277D9A2500459D19 /* CommonListViewController.swift in Sources */,
 				285209BB2753327200AB8BAC /* SignUpViewController.swift in Sources */,
+				2861943F27DF209C0012250F /* AuthRemoteAPI.swift in Sources */,
 				28F47162273BE5480074D148 /* MyInfoEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,7 @@ import RxSwift
 
 typealias URLSessionResult = ((Result<Data, Error>) -> Void)
 
-class NetworkManager {
+class NetworkManager: NetworkProtocol {
   
   //MARK: - init
   
