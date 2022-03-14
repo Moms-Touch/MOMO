@@ -23,7 +23,7 @@ protocol UserSessionRepository {
   func changePassword(from old: String, with new: String) ->  Completable
   
   @discardableResult
-  func changeCurrentStatus(with new: String) -> Observable<UserData>
+  func changeCurrentStatus(isPregnant: Bool) -> Observable<UserData>
   
   @discardableResult
   func deleteUser() -> Completable
