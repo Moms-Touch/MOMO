@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol NetworkDecoding {
   func decode<T>(data: Data, model: T.Type) -> Observable<T> where T : Decodable, T : Encodable
