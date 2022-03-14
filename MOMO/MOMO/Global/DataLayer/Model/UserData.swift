@@ -9,12 +9,12 @@ import Foundation
 
 struct UserData: Codable, Equatable {
   let id: Int
-  let email: String
-  let nickname: String
-  let isPregnant: Bool
+  var email: String
+  var nickname: String
+  var isPregnant: Bool
   let hasChild: Bool
-  let age: Int
-  let location: String
+  var age: Int
+  var location: String
   let createdAt: String
   let updatedAt: String
   let baby: [BabyData]?

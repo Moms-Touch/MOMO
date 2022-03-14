@@ -11,10 +11,10 @@ import RxSwift
 protocol UserSessionRepository {
   
   @discardableResult
-  func readUserSession() -> Observable<UserSession?>
+  func readUserSession() -> Observable<UserSession>
   
   @discardableResult
-  func renameNickname(with new: String) -> Observable<String>
+  func renameNickname(with new: String) -> Observable<UserData>
   
   @discardableResult
   func changeLocation(with new: String) -> Observable<UserData>
