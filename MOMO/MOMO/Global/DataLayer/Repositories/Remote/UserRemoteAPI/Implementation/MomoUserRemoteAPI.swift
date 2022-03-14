@@ -10,8 +10,20 @@ import RxSwift
 
 final class MomoUserRemoteAPI: UserRemoteAPI {
   
+  //MARK: - Private Properties
+  private let networkManager: NetworkProtocol
+  private let decoder: NetworkDecoding
+  
+  //MARK: - init
+  public init(networkManager: NetworkProtocol, decoder: NetworkDecoding) {
+    self.networkManager = networkManager
+    self.decoder = decoder
+  }
+
+  //MARK: - Methods
+
   func readUserSession() -> Observable<UserSession> {
-    <#code#>
+    
   }
   
   
