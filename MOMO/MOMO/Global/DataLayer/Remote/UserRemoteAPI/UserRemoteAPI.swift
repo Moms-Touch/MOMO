@@ -11,9 +11,6 @@ import RxSwift
 protocol UserRemoteAPI {
   
   @discardableResult
-  func readUserSession() -> Observable<UserSession>
-  
-  @discardableResult
   func deleteUser() -> Completable
   
   @discardableResult

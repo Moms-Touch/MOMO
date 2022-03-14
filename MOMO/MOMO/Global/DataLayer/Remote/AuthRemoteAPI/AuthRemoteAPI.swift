@@ -15,4 +15,7 @@ protocol AuthRemoteAPI {
   
   @discardableResult
   func authenticateToken(token: Token) -> Observable<LoginData>
+  
+  @discardableResult
+  func readUserSession(token: Token) -> Observable<UserSession>
 }

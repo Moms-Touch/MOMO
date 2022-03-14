@@ -13,10 +13,28 @@ final class MomoAuthRemoteAPI: AuthRemoteAPI {
   //MARK: - Private Properties
   private let decoder: NetworkDecoding
   private let networkManager: NetworkProtocol
+  private var token: Token = ""
+  
   
   public init(networkManager: NetworkProtocol, decoder: NetworkDecoding) {
     self.networkManager = networkManager
     self.decoder = decoder
+  }
+  
+  func readUserSession(token: Token) -> Observable<UserSession> {
+
+    return networkManager.request(apiModel: GetApi.userGet(token: token))
+      .asObservable()
+      .flatMap { [weak self] data -> Observable<UserSession> in
+        guard let self = self else { return Observable.error(CodingError.decodingError)}
+        
+        let observable = self.decoder.decode(data: data, model: UserData.self)
+          .map {
+            return UserSession(profile: $0, token: token)
+          }
+        
+        return observable
+      }
   }
   
   func signIn(email: String, password: String) -> Observable<Token> {
@@ -26,7 +44,11 @@ final class MomoAuthRemoteAPI: AuthRemoteAPI {
         guard let self = self else { return Observable.error(CodingError.decodingError)}
         let loginObservable = self.decoder.decode(data: data, model: LoginData.self)
         return loginObservable
-          .map { $0.accesstoken }
+          .map {
+            let token = $0.accesstoken
+            self.token = token
+            return token
+          }
       }
   }
   

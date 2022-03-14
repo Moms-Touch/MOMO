@@ -24,22 +24,6 @@ final class MomoUserRemoteAPI: UserRemoteAPI {
   
   //MARK: - Methods
   
-  func readUserSession() -> Observable<UserSession> {
-    let token = userSession.token
-    return networkManager.request(apiModel: GetApi.userGet(token: token))
-      .asObservable()
-      .flatMap { [weak self] data -> Observable<UserSession> in
-        guard let self = self else { return Observable.error(CodingError.decodingError)}
-        
-        let observable = self.decoder.decode(data: data, model: UserData.self)
-          .map {
-            return UserSession(profile: $0, token: token)
-          }
-        
-        return observable
-      }
-  }
-  
   func deleteUser() -> Completable {
     let token = userSession.token
     return networkManager.request(apiModel: DeleteApi.deleteUser(token: token))

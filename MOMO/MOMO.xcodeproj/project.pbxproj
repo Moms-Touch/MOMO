@@ -101,6 +101,9 @@
 		2861943A27DF0B1A0012250F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861943927DF0B1A0012250F /* NetworkProtocol.swift */; };
 		2861943F27DF209C0012250F /* AuthRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861943E27DF209C0012250F /* AuthRemoteAPI.swift */; };
 		2861944227DF219A0012250F /* MomoAuthRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861944127DF219A0012250F /* MomoAuthRemoteAPI.swift */; };
+		2861944827DF45880012250F /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861944727DF45880012250F /* AuthRepository.swift */; };
+		2861944A27DF475D0012250F /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861944927DF475D0012250F /* AppError.swift */; };
+		2861944F27DF49710012250F /* MomoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2861944E27DF49710012250F /* MomoAuthRepository.swift */; };
 		286DDE192771ADC3003E9563 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286DDE182771ADC3003E9563 /* GenericResponse.swift */; };
 		2879A9BA27800E3D00A0BE21 /* PolicyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2879A9B927800E3D00A0BE21 /* PolicyData.swift */; };
 		288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288ED75927427CC200C5178D /* BookmarkList.storyboard */; };
@@ -291,6 +294,9 @@
 		2861943927DF0B1A0012250F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		2861943E27DF209C0012250F /* AuthRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRemoteAPI.swift; sourceTree = "<group>"; };
 		2861944127DF219A0012250F /* MomoAuthRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoAuthRemoteAPI.swift; sourceTree = "<group>"; };
+		2861944727DF45880012250F /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		2861944927DF475D0012250F /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		2861944E27DF49710012250F /* MomoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoAuthRepository.swift; sourceTree = "<group>"; };
 		286DDE182771ADC3003E9563 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		2879A9B927800E3D00A0BE21 /* PolicyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyData.swift; sourceTree = "<group>"; };
 		288ED75927427CC200C5178D /* BookmarkList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarkList.storyboard; sourceTree = "<group>"; };
@@ -638,6 +644,7 @@
 				28A99962277AB78500459D19 /* LoginData.swift */,
 				28A99966277AE5BB00459D19 /* UserData.swift */,
 				2879A9B927800E3D00A0BE21 /* PolicyData.swift */,
+				2861944927DF475D0012250F /* AppError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -645,6 +652,8 @@
 		2861942F27DE497E0012250F /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				2861943027DE4A250012250F /* Remote */,
+				2861943227DE4A8D0012250F /* Persistence */,
 				2861943127DE4A3D0012250F /* Repositories */,
 				75CE01C827662CCF0057CF9B /* APIModel */,
 				285209DC2753329600AB8BAC /* Model */,
@@ -656,15 +665,10 @@
 			isa = PBXGroup;
 			children = (
 				2861943D27DF208B0012250F /* AuthRemoteAPI */,
-				285209DB2753329600AB8BAC /* StorageService.swift */,
+				2861944D27DF482C0012250F /* CloudStorage */,
 				2861943B27DF0C270012250F /* UserRemoteAPI */,
-				2861942327DE319D0012250F /* URLSessionProtocol.swift */,
-				2861942B27DE46850012250F /* NetworkEncoding.swift */,
-				2861942D27DE468E0012250F /* NetworkDecoding.swift */,
-				2861942527DE32440012250F /* APIInfo.swift */,
-				75CE01C427661C0F0057CF9B /* NetworkManager.swift */,
-				75CE01C627662CAC0057CF9B /* NetworkCoder.swift */,
-				2861943927DF0B1A0012250F /* NetworkProtocol.swift */,
+				2861944C27DF48200012250F /* NetworkManager */,
+				2861944B27DF47F80012250F /* NetworkCoder */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -672,10 +676,10 @@
 		2861943127DE4A3D0012250F /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				2861943227DE4A8D0012250F /* Persistence */,
-				2861943027DE4A250012250F /* Remote */,
 				2861940427DCA8D10012250F /* UserSessionRepository.swift */,
+				2861944727DF45880012250F /* AuthRepository.swift */,
 				2861940627DCAAA30012250F /* MomoUserSessionRepository.swift */,
+				2861944E27DF49710012250F /* MomoAuthRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -710,8 +714,8 @@
 		2861943D27DF208B0012250F /* AuthRemoteAPI */ = {
 			isa = PBXGroup;
 			children = (
-				2861944027DF21830012250F /* Implementation */,
 				2861943E27DF209C0012250F /* AuthRemoteAPI.swift */,
+				2861944027DF21830012250F /* Implementation */,
 			);
 			path = AuthRemoteAPI;
 			sourceTree = "<group>";
@@ -722,6 +726,34 @@
 				2861944127DF219A0012250F /* MomoAuthRemoteAPI.swift */,
 			);
 			path = Implementation;
+			sourceTree = "<group>";
+		};
+		2861944B27DF47F80012250F /* NetworkCoder */ = {
+			isa = PBXGroup;
+			children = (
+				2861942B27DE46850012250F /* NetworkEncoding.swift */,
+				2861942D27DE468E0012250F /* NetworkDecoding.swift */,
+				75CE01C627662CAC0057CF9B /* NetworkCoder.swift */,
+			);
+			path = NetworkCoder;
+			sourceTree = "<group>";
+		};
+		2861944C27DF48200012250F /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				2861942327DE319D0012250F /* URLSessionProtocol.swift */,
+				75CE01C427661C0F0057CF9B /* NetworkManager.swift */,
+				2861943927DF0B1A0012250F /* NetworkProtocol.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		2861944D27DF482C0012250F /* CloudStorage */ = {
+			isa = PBXGroup;
+			children = (
+				285209DB2753329600AB8BAC /* StorageService.swift */,
+			);
+			path = CloudStorage;
 			sourceTree = "<group>";
 		};
 		288ED75D27427D2A00C5178D /* View */ = {
@@ -903,6 +935,7 @@
 		75CE01C827662CCF0057CF9B /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
+				2861942527DE32440012250F /* APIInfo.swift */,
 				75CE01C927662CE00057CF9B /* APIable.swift */,
 				75BF0C0E276B851800C2D0C1 /* GetApi.swift */,
 				75BF0C10276CA01B00C2D0C1 /* PostApi.swift */,
@@ -1280,12 +1313,14 @@
 				285209E02753329600AB8BAC /* Date+Extension.swift in Sources */,
 				285209F62753329600AB8BAC /* InfoData.swift in Sources */,
 				28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */,
+				2861944A27DF475D0012250F /* AppError.swift in Sources */,
 				28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */,
 				285209E52753329600AB8BAC /* UITextfield+Extension.swift in Sources */,
 				28F4FE132760C3BA00E699FC /* LikeData.swift in Sources */,
 				281D35382761EF3F00A128A5 /* DiaryMainViewController.swift in Sources */,
 				288EFD112754F27C000D1617 /* AlertPageViewController.swift in Sources */,
 				285209F02753329600AB8BAC /* simpleContent.swift in Sources */,
+				2861944827DF45880012250F /* AuthRepository.swift in Sources */,
 				285209E62753329600AB8BAC /* UITableView+Extension.swift in Sources */,
 				28A9996B277AF53A00459D19 /* DeleteApi.swift in Sources */,
 				28F471452738B8D10074D148 /* PolicyMainViewController.swift in Sources */,
@@ -1312,6 +1347,7 @@
 				284BEBC12785CF01002C5A9E /* UINavigationController+Extension.swift in Sources */,
 				285209E72753329600AB8BAC /* PopAnimator.swift in Sources */,
 				285209EA2753329600AB8BAC /* Dimmable.swift in Sources */,
+				2861944F27DF49710012250F /* MomoAuthRepository.swift in Sources */,
 				DDA9999A2767946D00A21D9B /* XCAssetTypeAlias.swift in Sources */,
 				28F4FE152760C82F00E699FC /* SimpleCommunityData.swift in Sources */,
 				28B63E9C276DF53600CB5EBF /* CustomNavigationAnimator.swift in Sources */,
