@@ -37,6 +37,7 @@ class NetworkManager: NetworkProtocol {
           single(.failure(error))
         }
       }
+      return Disposables.create()
     }
   }
 
