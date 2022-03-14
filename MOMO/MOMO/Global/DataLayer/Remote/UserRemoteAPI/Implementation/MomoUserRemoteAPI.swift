@@ -13,25 +13,21 @@ final class MomoUserRemoteAPI: UserRemoteAPI {
   //MARK: - Private Properties
   private let networkManager: NetworkProtocol
   private let decoder: NetworkDecoding
-  private let userSession: UserSession
   
   //MARK: - init
-  public init(networkManager: NetworkProtocol, decoder: NetworkDecoding, userSession: UserSession) {
+  public init(networkManager: NetworkProtocol, decoder: NetworkDecoding) {
     self.networkManager = networkManager
     self.decoder = decoder
-    self.userSession = userSession
   }
   
   //MARK: - Methods
   
-  func deleteUser() -> Completable {
-    let token = userSession.token
+  func deleteUser(token: Token) -> Completable {
     return networkManager.request(apiModel: DeleteApi.deleteUser(token: token))
       .asCompletable()
   }
   
-  func updateUserInfo(with info: UserData) -> Observable<UserData> {
-    let token = userSession.token
+  func updateUserInfo(with info: UserData, token: Token) -> Observable<UserData> {
     return networkManager.request(apiModel: PutApi.putUser(token: token, email: info.email , nickname: info.nickname, isPregnant: info.isPregnant, hasChild: info.hasChild, age: info.age, location: info.location))
       .asObservable()
       .flatMap { [weak self] data -> Observable<UserData> in
@@ -42,7 +38,7 @@ final class MomoUserRemoteAPI: UserRemoteAPI {
   
   // cloud API not yet
   @available(*, deprecated)
-  func updatePassword(from old: String, with new: String) -> Completable {
+  func updatePassword(from old: String, with new: String, token: Token) -> Completable {
     return Completable.create { complete in
       complete(.completed) as! Disposable
     }

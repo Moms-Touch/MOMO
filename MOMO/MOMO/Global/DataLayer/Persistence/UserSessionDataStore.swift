@@ -19,7 +19,7 @@ protocol UserSessionDataStore {
   func save(userSession: UserSession) -> Observable<UserSession>
   
   @discardableResult
-  func delete(userSession: UserSession) -> Observable<UserSession>
+  func delete(userSession: UserSession) -> Completable
 }
 
 

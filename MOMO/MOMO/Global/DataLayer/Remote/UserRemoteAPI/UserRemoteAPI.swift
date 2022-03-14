@@ -11,11 +11,11 @@ import RxSwift
 protocol UserRemoteAPI {
   
   @discardableResult
-  func deleteUser() -> Completable
+  func deleteUser(token: Token) -> Completable
   
   @discardableResult
-  func updateUserInfo(with info: UserData) -> Observable<UserData>
+  func updateUserInfo(with info: UserData, token: Token) -> Observable<UserData>
   
   @discardableResult
-  func updatePassword(from old: String, with new: String) -> Completable
+  func updatePassword(from old: String, with new: String, token: Token) -> Completable
 }
