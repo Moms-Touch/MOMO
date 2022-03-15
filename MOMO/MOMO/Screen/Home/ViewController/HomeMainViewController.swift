@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable, UIViewControllerTransitioningDelegate {
+final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable, UIViewControllerTransitioningDelegate, BackgroundPureable {
   
   @IBOutlet weak var bannerCollectionView: UICollectionView! {
     didSet {
@@ -30,22 +30,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     }
   }
   
-  @IBOutlet weak var bellButton: UIButton! {
-    didSet {
-      bellButton.isHidden = true
-    }
-  }
-  @IBOutlet weak var dateWithBabyLabel: UILabel! {
-    didSet {
-      dateWithBabyLabel.setRound()
-      dateWithBabyLabel.font = UIFont.customFont(forTextStyle: .title3)
-    }
-  }
-  @IBOutlet weak var dateWithBabyButton: UIButton! {
-    didSet {
-      dateWithBabyButton.setRound()
-    }
-  }
+  @IBOutlet weak var settingButton: UIButton!
   
   //banner의 현재 페이지
   private var currentPage = 0
@@ -65,7 +50,9 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   }
   
   @objc func changeBabyName() {
-    changeButtonTitle()
+    DispatchQueue.main.async {
+      self.changeButtonTitle()
+    }
   }
   
   private func changeButtonTitle() {
@@ -75,10 +62,8 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     
     guard let babyBirth = UserManager.shared.babyInWeek else {
       self.view.makeToast("아이의 생일을 다시 입력해주세요")
-      self.dateWithBabyLabel.text = "생일 등록하기"
       return}
     guard let babyName = userInfo.baby?.first?.name else {
-      self.dateWithBabyLabel.text = "아이 이름 등록하기"
       return
     }
     if let imageUrl = userInfo.baby?.first?.imageUrl {
@@ -87,7 +72,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       self.babyProfileImageView.image = UIImage(named: "mascot")
       self.view.makeToast("가운데 버튼을 눌러서, 아이의 사진으로 변경해보아요🤰")
     }
-    self.dateWithBabyLabel.text = "\(babyName) \(babyBirth)"
   }
   
   override func viewDidLayoutSubviews() {
@@ -207,10 +191,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   
   
   @IBAction func didTapBellButton(_ sender: UIButton) {
-    self.navigationController?.pushViewController(AlertViewController.loadFromStoryboard(), animated: true)
-  }
-  
-  @IBAction private func didTapProfile(_ sender: Any) {
     gotoMyProfile()
   }
   
@@ -233,6 +213,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   private func gotoMyProfile() {
     let viewModel = makeMyInfoViewModel()
     let vc = MyInfoMainViewController(viewModel: viewModel)
+    self.pure(direction: .In, alpha: 1, speed: 0.3)
     vc.modalPresentationStyle = .overFullScreen
     present(vc, animated: true, completion: nil)
   }
