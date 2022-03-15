@@ -150,8 +150,12 @@ extension MyInfoMainViewController: UICollectionViewDataSource {
       
     } else if indexPath.item == InfoMainConstant.status.changeCell.rawValue {
       cell.findCellheight(with: viewModel.defaultContent[indexPath.item])
+      let cellmodel = InfoChangeCellViewModel(index: indexPath.item, content: viewModel.defaultContent[indexPath.item]!)
+      cell.viewModel = cellmodel
     } else {
       cell.findCellheight(with: viewModel.defaultContent[indexPath.item])
+      let cellmodel = InfoUserManageViewModel(index: indexPath.item, repository: viewModel.repository)
+      cell.viewModel = cellmodel
     }
 
     return cell

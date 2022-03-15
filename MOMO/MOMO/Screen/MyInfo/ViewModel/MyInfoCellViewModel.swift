@@ -9,16 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class cellModel {
-  
-  var index: Int
-  
-  init(index: Int) {
-    self.index = index
-  }
-}
-
-class MyInfoCellViewModel: cellModel, ViewModelType {
+class MyInfoCellViewModel: InfoCellViewModel, ViewModelType {
   
   //MARK: - Input
   struct Input {
@@ -40,9 +31,6 @@ class MyInfoCellViewModel: cellModel, ViewModelType {
   //MARK: - private
 
   private var disposeBag = DisposeBag()
-//  private let emailSubject = BehaviorSubject<String?>(value: nil)
-//  private let nicknameSubject = BehaviorSubject<String?>(value: nil)
-//  private let descriptionSubject = BehaviorSubject<String>(value: "")
   
   //MARK: - init
   

@@ -17,10 +17,11 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
   
   
   //MARK: - UI
-  var firstOptionLabel: UILabel?
-  var secondOptionLabel: UILabel?
-  var thirdOptionLabel: UILabel?
+  private var firstOptionLabel: UILabel?
+  private var secondOptionLabel: UILabel?
+  private var thirdOptionLabel: UILabel?
   private var forthOptionLabel: UILabel?
+  private var labels: [UILabel] = []
   private var stackView: UIStackView?
   
   private func buildLabels() -> [UILabel] {
@@ -39,15 +40,14 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
     self.secondOptionLabel = labels[1]
     self.thirdOptionLabel = labels[2]
     self.forthOptionLabel = labels[3]
-   
+    
     return labels
   }
   
   private func setupUI() {
     let labels = buildLabels()
-    labels.forEach {
-      makeAttributed(label: $0)
-    }
+    self.labels = labels
+    makeAttributed()
     let stackView = UIStackView(arrangedSubviews: labels).then {
       $0.axis = .vertical
       $0.distribution = .equalSpacing
@@ -63,15 +63,31 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
     }
   }
   
-  private func makeAttributed(label: UILabel) {
-    if let text = label.text, !text.contains("\n") {
+  //MARK: - Private
+  
+  private var disposeBag = DisposeBag()
+  
+  private func gotoLoginVC() {
+    guard let loginVC = LoginViewController.loadFromStoryboard() as? LoginViewController else {return}
+    let newNaviController = UINavigationController(rootViewController: loginVC)
+    newNaviController.isNavigationBarHidden = true
+    let sceneDelegate = UIApplication.shared.connectedScenes
+      .first!.delegate as! SceneDelegate
+    sceneDelegate.window!.rootViewController = newNaviController
+  }
+  
+  private func makeAttributed() {
+    guard let viewmodel = viewModel, viewmodel.index == 1 else { return }
+    self.labels.forEach { label in
+      if let text = label.text, !text.contains("\n") {
         return
+      }
+      let fontSize = UIFont.customFont(forTextStyle: .caption1)
+      let attributedStr = NSMutableAttributedString(string: label.text!)
+      let selectedStr = label.text!.components(separatedBy: "\n")
+      attributedStr.addAttribute(.font, value: fontSize, range: (label.text! as NSString).range(of: selectedStr[1]))
+      label.attributedText = attributedStr
     }
-    let fontSize = UIFont.customFont(forTextStyle: .caption1)
-    let attributedStr = NSMutableAttributedString(string: label.text!)
-    let selectedStr = label.text!.components(separatedBy: "\n")
-    attributedStr.addAttribute(.font, value: fontSize, range: (label.text! as NSString).range(of: selectedStr[1]))
-    label.attributedText = attributedStr
   }
   
   private func removeLastLabel() {
@@ -80,10 +96,6 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
     forthOptionLabel?.removeFromSuperview()
   }
   
-  //MARK: - Private
-
-  private var disposeBag = DisposeBag()
-
   
   //MARK: - Binding
   
@@ -137,16 +149,55 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
           print(self.firstOptionLabel?.text)
         })
         .disposed(by: disposeBag)
-
+      
     } else {
-
+      guard let viewModel = viewModel as? InfoUserManageViewModel else {return}
+      firstOptionLabel?.rx
+        .tapGesture()
+        .when(.recognized)
+        .subscribe(onNext: { [unowned self] _ in
+          self.alert(title: "로그아웃", text: "로그아웃을 하시겠습니까?")
+            .observe(on: MainScheduler.instance)
+            .subscribe(onCompleted: {
+              self.gotoLoginVC()
+            })
+            .disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
+      
+      secondOptionLabel?.rx
+        .tapGesture()
+        .when(.recognized)
+        .subscribe(onNext: { [unowned self] _ in
+          self.alert(title: "회원탈퇴", text: "회원탈퇴를 하시겠습니까?")
+            .subscribe(onCompleted: {
+              viewModel.output.withdrawalUser
+                .observe(on: MainScheduler.instance)
+                .subscribe(onCompleted: {
+                  self.gotoLoginVC()
+                })
+                .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
+      
+      thirdOptionLabel?.rx
+        .tapGesture()
+        .when(.recognized)
+        .subscribe(onNext: { [unowned self] _ in
+          
+        })
+        .disposed(by: disposeBag)
+      
     }
   }
   
-  var viewModel: cellModel? {
+  var viewModel: InfoCellViewModel? {
     didSet {
       self.bindViewModel()
       self.removeLastLabel()
+      self.makeAttributed()
     }
   }
   
@@ -165,7 +216,7 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
     viewModel = nil
     disposeBag = DisposeBag()
   }
-
+  
 }
 
 extension MyInfoCollectionViewCell {
@@ -178,6 +229,7 @@ extension MyInfoCollectionViewCell {
       secondOptionLabel?.text = options[1]
       thirdOptionLabel?.text = options[2]
       forthOptionLabel?.text = options[3]
+      stackView?.spacing = 0
     } else {
       firstOptionLabel?.text = options[0]
       secondOptionLabel?.text = options[1]

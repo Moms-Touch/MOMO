@@ -43,7 +43,7 @@ final class MyInfoViewModel: ViewModelType {
   }
 
   //MARK: - Private
-  private var repository: UserSessionRepository
+  var repository: UserSessionRepository
   private var disposeBag = DisposeBag()
   private let nickName: BehaviorSubject<String?>
   private let email: BehaviorSubject<String?>
@@ -92,12 +92,6 @@ final class MyInfoViewModel: ViewModelType {
       }
       .debug()
       .bind(to: descriptionText)
-      .disposed(by: disposeBag)
-    
-    emailText
-      .subscribe(onNext: {
-        print($0)
-      })
       .disposed(by: disposeBag)
     
     self.input = Input(nickNameText: nickNameText.asObserver(),
