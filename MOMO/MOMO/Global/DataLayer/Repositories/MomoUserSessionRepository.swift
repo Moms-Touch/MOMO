@@ -19,15 +19,27 @@ final class MomoUserSessionRepository: UserSessionRepository {
     self.userDataStore = dataStore
     self.userRemoteAPI = remoteAPI
     self.userSession = BehaviorSubject<UserSession?>(value: nil)
-    self.readUserSession()
-      .bind(to: self.userSession)
-      .disposed(by: disposeBag)
+    let userManager = UserManager.shared
+    
+    //Test
+    guard let userinfo = userManager.userInfo, let token = userManager.token else {
+      return
+    }
+    self.userSession.onNext(UserSession(profile: userinfo, token: token))
+    
+//    self.readUserSession()
+//      .bind(to: self.userSession)
+//      .disposed(by: disposeBag)
   }
   
   @discardableResult
   func readUserSession() -> Observable<UserSession> {
-    self.userDataStore.readUserSession()
-      .compactMap { $0 }
+//    self.userDataStore.readUserSession()
+//      .compactMap { $0 }
+//      .share()
+    return self.userSession
+      .compactMap{$0}
+      .asObservable()
       .share()
   }
 

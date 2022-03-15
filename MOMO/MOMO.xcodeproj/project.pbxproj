@@ -452,6 +452,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		281A90F027E07D040019B690 /* UserSessionDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				2861940E27DCDEEC0012250F /* UserSessionDataStore.swift */,
+				2861945227E069EA0012250F /* MomoUserSessionDataStore.swift */,
+			);
+			path = UserSessionDataStore;
+			sourceTree = "<group>";
+		};
 		2852097927532CCB00AB8BAC /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -689,10 +698,9 @@
 		2861943227DE4A8D0012250F /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				2861940E27DCDEEC0012250F /* UserSessionDataStore.swift */,
+				281A90F027E07D040019B690 /* UserSessionDataStore */,
 				28B192C12769685C00BAF93B /* KeyChainService.swift */,
 				28A99964277ABAD100459D19 /* UserManager.swift */,
-				2861945227E069EA0012250F /* MomoUserSessionDataStore.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
