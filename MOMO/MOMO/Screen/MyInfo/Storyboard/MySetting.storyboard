@@ -87,6 +87,7 @@
         <!--My Setting Table View Controller-->
         <scene sceneID="pBD-ta-yl3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CAj-PR-Hrw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="gzj-94-7G7" customClass="MySettingTableViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="rRe-ci-oqQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
@@ -220,7 +221,6 @@
                         <segue destination="zem-TH-7V2" kind="presentation" identifier="ShowSettingWebViewController" id="UtS-0a-PL6"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CAj-PR-Hrw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="633" y="-104"/>
         </scene>
