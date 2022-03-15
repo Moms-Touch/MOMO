@@ -10,3 +10,7 @@ import Foundation
 enum AppError: Error {
   case invalidToken
 }
+
+enum KeyChainError: Error {
+  case noValue
+}

@@ -13,6 +13,12 @@ public typealias Token = String
 protocol UserSessionDataStore {
   
   @discardableResult
+  func readToken() -> Observable<Token?>
+  
+  @discardableResult
+  func readUserData() -> Observable<UserData?>
+  
+  @discardableResult
   func readUserSession() -> Observable<UserSession?>
   
   @discardableResult
