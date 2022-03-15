@@ -47,8 +47,9 @@ class MyInfoMainViewController: UIViewController, ViewModelBindableType {
   }
   
   //MARK: - Init
-  init(viewModel: MyInfoViewModel) {
+  init(viewModel: MyInfoViewModel, completion: @escaping ()->()?) {
     self.viewModel = viewModel
+    self.completion = completion
     super.init(nibName: nil, bundle: nil)
     self.bind(viewModel: self.viewModel)
   }
@@ -63,6 +64,7 @@ class MyInfoMainViewController: UIViewController, ViewModelBindableType {
   private var email = BehaviorRelay<String?>(value: nil)
   private var userDescription = BehaviorRelay<String>(value: "대한민국에 사는 엄마")
   private var isLoggedIn = BehaviorRelay<Bool>(value: true)
+  private var completion: () -> Void?
   private var disposeBag = DisposeBag()
 
   //MARK: - UI
@@ -122,6 +124,14 @@ class MyInfoMainViewController: UIViewController, ViewModelBindableType {
       make.bottom.equalTo(self.view.safeAreaLayoutGuide)
       make.top.equalTo(self.navTitle.snp.bottom).offset(InfoMainConstant.verticalSpaing)
     }
+    
+    closeButton.rx.tap
+      .withUnretained(self)
+      .subscribe(onNext: { vc, _ in
+        vc.completion()
+        vc.dismiss(animated: true, completion: nil)
+      })
+      .disposed(by: disposeBag)
     
     setupCollectionView()
   }

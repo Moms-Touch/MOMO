@@ -35,6 +35,7 @@ extension BackgroundPureable where Self: UIViewController {
       
     case .Out:
       UIView.animate(withDuration: speed) {
+        self.navigationController?.tabBarController?.tabBar.isHidden = false
         self.view.subviews.last?.alpha = alpha ?? 0
       } completion: { finished in
         self.view.subviews.last?.removeFromSuperview()

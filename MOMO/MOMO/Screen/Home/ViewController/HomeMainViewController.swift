@@ -243,7 +243,10 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   
   private func gotoMyProfile() {
     let viewModel = makeMyInfoViewModel()
-    let vc = MyInfoMainViewController(viewModel: viewModel)
+    let pureCompletionHandler = { [weak self] in
+      self?.pure(direction: .Out)
+    }
+    let vc = MyInfoMainViewController(viewModel: viewModel, completion: pureCompletionHandler)
     self.pure(direction: .In, alpha: 1, speed: 0.3)
     vc.modalPresentationStyle = .overFullScreen
     present(vc, animated: true, completion: nil)
