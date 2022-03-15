@@ -6,17 +6,20 @@
 //
 
 import UIKit
+
 import Then
 import RxSwift
 import RxCocoa
+import RxGesture
 import SnapKit
 
 class MyInfoCollectionViewCell: UICollectionViewCell {
   
+  
   //MARK: - UI
-  private var firstOptionLabel: UILabel?
-  private var secondOptionLabel: UILabel?
-  private var thirdOptionLabel: UILabel?
+  var firstOptionLabel: UILabel?
+  var secondOptionLabel: UILabel?
+  var thirdOptionLabel: UILabel?
   private var forthOptionLabel: UILabel?
   private var stackView: UIStackView?
   
@@ -71,10 +74,82 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
     label.attributedText = attributedStr
   }
   
+  private func removeLastLabel() {
+    guard let viewmodel = viewModel, viewmodel.index != 1 else { return }
+    forthOptionLabel?.isHidden = true
+    forthOptionLabel?.removeFromSuperview()
+  }
+  
   //MARK: - Private
 
   private var disposeBag = DisposeBag()
 
+  
+  //MARK: - Binding
+  
+  func bindViewModel() {
+    guard let viewModel = viewModel else {return}
+    if viewModel.index == 0 {
+      guard let viewModel = viewModel as? MyInfoCellViewModel else {return}
+      
+      viewModel.output.nick
+        .drive(self.firstOptionLabel!.rx.text)
+        .disposed(by: disposeBag)
+      
+      viewModel.output.email
+        .drive(self.secondOptionLabel!.rx.text)
+        .disposed(by: disposeBag)
+      
+      viewModel.output.description
+        .drive(self.thirdOptionLabel!.rx.text)
+        .disposed(by: disposeBag)
+      
+    } else if viewModel.index == 1 {
+      
+      firstOptionLabel?.rx
+        .tapGesture()
+        .when(.recognized)
+        .subscribe(onNext: { [unowned self] _ in
+          print(self.firstOptionLabel?.text)
+        })
+        .disposed(by: disposeBag)
+      
+      secondOptionLabel?.rx
+        .tapGesture()
+        .when(.recognized)
+        .subscribe(onNext: { [unowned self] _ in
+          print(self.secondOptionLabel?.text)
+        })
+        .disposed(by: disposeBag)
+      
+      thirdOptionLabel?.rx
+        .tapGesture()
+        .when(.recognized)
+        .subscribe(onNext: { [unowned self] _ in
+          print(self.thirdOptionLabel?.text)
+        })
+        .disposed(by: disposeBag)
+      
+      forthOptionLabel?.rx
+        .tapGesture()
+        .when(.recognized)
+        .subscribe(onNext: { [unowned self] _ in
+          print(self.firstOptionLabel?.text)
+        })
+        .disposed(by: disposeBag)
+
+    } else {
+
+    }
+  }
+  
+  var viewModel: cellModel? {
+    didSet {
+      self.bindViewModel()
+      self.removeLastLabel()
+    }
+  }
+  
   //MARK: - Init
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -87,13 +162,14 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
+    viewModel = nil
     disposeBag = DisposeBag()
   }
 
 }
 
 extension MyInfoCollectionViewCell {
-  func configure(with options: [String]?, index: Int) {
+  func findCellheight(with options: [String]?) {
     guard let options = options else {
       return
     }
@@ -109,6 +185,5 @@ extension MyInfoCollectionViewCell {
       forthOptionLabel?.isHidden = true
       forthOptionLabel?.removeFromSuperview()
     }
-    
   }
 }

@@ -32,7 +32,7 @@ final class MyInfoViewModel: ViewModelType {
 
   //MARK: - Others
   
-  var infoOptionContent: [Int: [String]] {
+  var defaultContent: [Int: [String]] {
     return [0: ["지영맘", "momo@momo.com", "서울에 사는 21주차 엄마"],
             1: ["현재 상태 변경\n임신중과 출산 후를 선택할 수 있어요",
                 "지역 변경\n현재 살고 있는 위치가 변경되었을 경우, 위치를 변경해주세요",

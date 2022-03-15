@@ -9,18 +9,47 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class MyInfoCellViewModel {
+class cellModel {
+  
+  var index: Int
+  
+  init(index: Int) {
+    self.index = index
+  }
+}
+
+class MyInfoCellViewModel: cellModel, ViewModelType {
+  
+  //MARK: - Input
+  struct Input {
+    
+  }
+  
+  var input: Input
+  
+  //MARK: - OutPut
+
+  struct Output {
+    var email: Driver<String?>
+    var nick: Driver<String?>
+    var description: Driver<String>
+  }
+
+  var output: Output
   
   //MARK: - private
-  
-  private var index: Int
-  private var content: [String]
+
+  private var disposeBag = DisposeBag()
+//  private let emailSubject = BehaviorSubject<String?>(value: nil)
+//  private let nicknameSubject = BehaviorSubject<String?>(value: nil)
+//  private let descriptionSubject = BehaviorSubject<String>(value: "")
   
   //MARK: - init
   
-  init(index: Int, content: [String]) {
-    self.index = index
-    self.content = content
+  init(index: Int, email:BehaviorRelay<String?>, nickname: BehaviorRelay<String?>, description: BehaviorRelay<String>) {
+    self.output = Output(email: email.asDriver(onErrorJustReturn: nil), nick: nickname.asDriver(onErrorJustReturn: nil), description: description.asDriver(onErrorJustReturn: "대한민국에 사는 엄마"))
+    self.input = Input()
+    super.init(index: index)
   }
   
 }

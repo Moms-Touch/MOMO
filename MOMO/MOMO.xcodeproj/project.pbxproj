@@ -17,6 +17,7 @@
 		280BEFCA274B65F100F031A7 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 280BEFC9274B65F100F031A7 /* FirebaseStorageSwift-Beta */; };
 		280BEFCD274B7B9400F031A7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 280BEFCC274B7B9400F031A7 /* Kingfisher */; };
 		280BEFD5274BA35900F031A7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280BEFD4274BA35900F031A7 /* DetailViewController.swift */; };
+		281A90F327E099600019B690 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 281A90F227E099600019B690 /* RxGesture */; };
 		281D35382761EF3F00A128A5 /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209972753325F00AB8BAC /* DiaryMainViewController.swift */; };
 		281D35392761EF4200A128A5 /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209982753325F00AB8BAC /* DiaryMain.storyboard */; };
 		281D353B27622C5600A128A5 /* RecommendDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D353A27622C5600A128A5 /* RecommendDetail.storyboard */; };
@@ -431,6 +432,7 @@
 				280BEFC4274B65F100F031A7 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				280BEFCD274B7B9400F031A7 /* Kingfisher in Frameworks */,
 				280BEFC2274B65F100F031A7 /* FirebaseAnalytics in Frameworks */,
+				281A90F327E099600019B690 /* RxGesture in Frameworks */,
 				DDE316F4277C94D70033FEF4 /* Realm in Frameworks */,
 				280BEFCA274B65F100F031A7 /* FirebaseStorageSwift-Beta in Frameworks */,
 				286193F527DB71B60012250F /* RxCocoa in Frameworks */,
@@ -1152,6 +1154,7 @@
 				286193F627DB71B60012250F /* RxRelay */,
 				286193F827DB71B60012250F /* RxSwift */,
 				286193FB27DB71DC0012250F /* Then */,
+				281A90F227E099600019B690 /* RxGesture */,
 			);
 			productName = MOMO;
 			productReference = DD43E8BE270B4A2100699DA1 /* MOMO.app */;
@@ -1190,6 +1193,7 @@
 				284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				286193F327DB71B60012250F /* XCRemoteSwiftPackageReference "RxSwift" */,
 				286193FA27DB71DC0012250F /* XCRemoteSwiftPackageReference "Then" */,
+				281A90F127E0995F0019B690 /* XCRemoteSwiftPackageReference "RxGesture" */,
 			);
 			productRefGroup = DD43E8BF270B4A2100699DA1 /* Products */;
 			projectDirPath = "";
@@ -1666,6 +1670,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		281A90F127E0995F0019B690 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.3;
+			};
+		};
 		284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
@@ -1754,6 +1766,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		281A90F227E099600019B690 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 281A90F127E0995F0019B690 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
 		};
 		284C7C3F2780930C008A5374 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;

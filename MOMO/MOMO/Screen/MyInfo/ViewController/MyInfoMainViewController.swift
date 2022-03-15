@@ -16,12 +16,26 @@ class MyInfoMainViewController: UIViewController, ViewModelBindableType {
   //MARK: - ViewModelBindableType
 
   func bindViewModel() {
+    
     viewModel.output.nickName
+      .distinctUntilChanged()
       .drive(nickname)
       .disposed(by: disposeBag)
+    
     viewModel.output.email
+      .distinctUntilChanged()
+      .drive(email)
+      .disposed(by: disposeBag)
+    
     viewModel.output.description
+      .distinctUntilChanged()
+      .drive(userDescription)
+      .disposed(by: disposeBag)
+    
     viewModel.output.isLoggedIn
+      .distinctUntilChanged()
+      .drive(isLoggedIn)
+      .disposed(by: disposeBag)
   }
   
   var viewModel: MyInfoViewModel
@@ -123,14 +137,23 @@ class MyInfoMainViewController: UIViewController, ViewModelBindableType {
 extension MyInfoMainViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewModel.infoOptionContent.count
+    return viewModel.defaultContent.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyInfoCollectionViewCell.identifier, for: indexPath) as! MyInfoCollectionViewCell
    
-    cell.configure(with: viewModel.infoOptionContent[indexPath.item], index: indexPath.item)
-    
+    if indexPath.item == InfoMainConstant.status.infoCell.rawValue {
+            
+      let cellmodel = MyInfoCellViewModel(index: indexPath.item, email: email, nickname: nickname, description: userDescription)
+      cell.viewModel = cellmodel
+      
+    } else if indexPath.item == InfoMainConstant.status.changeCell.rawValue {
+      cell.findCellheight(with: viewModel.defaultContent[indexPath.item])
+    } else {
+      cell.findCellheight(with: viewModel.defaultContent[indexPath.item])
+    }
+
     return cell
   }
 }
@@ -145,7 +168,7 @@ extension MyInfoMainViewController: UICollectionViewDelegateFlowLayout {
     
     //더미셀을 활용해서 Cell의 최적화된 높이를 찾는다.
     let dummyCell = MyInfoCollectionViewCell(frame: CGRect(x: 0, y: 0, width: width, height: estimatedHeight))
-    dummyCell.configure(with: viewModel.infoOptionContent[indexPath.item], index: indexPath.item)
+    dummyCell.findCellheight(with: viewModel.defaultContent[indexPath.item])
     dummyCell.layoutIfNeeded()
     let estimatedSize = dummyCell.systemLayoutSizeFitting(CGSize(width: width, height: estimatedHeight))
     
@@ -157,28 +180,11 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
   
   lazy var networkManager = NetworkManager()
   
-  @IBOutlet weak var loginLabel: MyPageLabel! {
-    didSet {
-      if let token = UserManager.shared.token {
-        loginLabel.text = "로그아웃"
-      } else {
-        loginLabel.text == "로그인"
-      }
-    }
-  }
+  @IBOutlet weak var loginLabel: MyPageLabel!
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    if #available(iOS 15.0, *) {
-      tableView.sectionHeaderTopPadding = 0
-      let tableviewTitle = ["회원정보", "아기정보", "활동내역", "설정", loginLabel.text!, "회원탈퇴"]
-      for index in tableView.visibleCells.indices {
-        tableView.visibleCells[index].contentView.isAccessibilityElement = true
-        
-        tableView.visibleCells[index].contentView.accessibilityValue = "\(tableviewTitle[index])"
-      }
-    }
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -280,6 +286,12 @@ class MyInfoMainTableViewController: InfoBaseTableViewController {
 //MARK: - Constant
 
 enum InfoMainConstant {
+  
+  enum status: Int {
+    case infoCell
+    case changeCell
+    case loggoutCell
+  }
   
   static var lineSpacing: CGFloat {
     return 35
