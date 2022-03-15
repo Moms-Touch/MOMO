@@ -23,9 +23,7 @@
 		281D353B27622C5600A128A5 /* RecommendDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D353A27622C5600A128A5 /* RecommendDetail.storyboard */; };
 		281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281D353C2762313700A128A5 /* RecommendDetailViewController.swift */; };
 		281D353F27647FD500A128A5 /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281D353E27647FD500A128A5 /* BannerCell.swift */; };
-		281D35412764B17A00A128A5 /* MyInfoEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D35402764B17A00A128A5 /* MyInfoEdit.storyboard */; };
 		28492612273BF9E000FA2072 /* SettingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28492611273BF9E000FA2072 /* SettingWebViewController.swift */; };
-		28492614273F666F00FA2072 /* InfoBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */; };
 		284BEBC12785CF01002C5A9E /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284BEBC02785CF01002C5A9E /* UINavigationController+Extension.swift */; };
 		284C7C402780930C008A5374 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 284C7C3F2780930C008A5374 /* Toast */; };
 		28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */; };
@@ -162,11 +160,7 @@
 		28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471462738B8DC0074D148 /* MyInfoMainViewController.swift */; };
 		28F4714E2738F67A0074D148 /* HomeMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F4714D2738F67A0074D148 /* HomeMain.storyboard */; };
 		28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4714F273912220074D148 /* RecommendModalViewController.swift */; };
-		28F4715A273BE3D90074D148 /* MyActivity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47159273BE3D90074D148 /* MyActivity.storyboard */; };
-		28F4715C273BE3E90074D148 /* MyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4715B273BE3E90074D148 /* MyActivityViewController.swift */; };
 		28F4715E273BE4620074D148 /* MySetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F4715D273BE4620074D148 /* MySetting.storyboard */; };
-		28F47160273BE4700074D148 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4715F273BE4700074D148 /* MySettingViewController.swift */; };
-		28F47162273BE5480074D148 /* MyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F47161273BE5480074D148 /* MyInfoEditViewController.swift */; };
 		28F47164273BE5500074D148 /* MyBabyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47163273BE5500074D148 /* MyBabyInfo.storyboard */; };
 		28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */; };
 		28F4FE132760C3BA00E699FC /* LikeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4FE122760C3BA00E699FC /* LikeData.swift */; };
@@ -225,9 +219,7 @@
 		281D353A27622C5600A128A5 /* RecommendDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecommendDetail.storyboard; sourceTree = "<group>"; };
 		281D353C2762313700A128A5 /* RecommendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewController.swift; sourceTree = "<group>"; };
 		281D353E27647FD500A128A5 /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
-		281D35402764B17A00A128A5 /* MyInfoEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoEdit.storyboard; sourceTree = "<group>"; };
 		28492611273BF9E000FA2072 /* SettingWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebViewController.swift; sourceTree = "<group>"; };
-		28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBaseTableViewController.swift; sourceTree = "<group>"; };
 		284BEBC02785CF01002C5A9E /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellPresentationController.swift; sourceTree = "<group>"; };
 		285209872753325F00AB8BAC /* DiaryInputOption.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiaryInputOption.storyboard; sourceTree = "<group>"; };
@@ -359,11 +351,7 @@
 		28F471462738B8DC0074D148 /* MyInfoMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainViewController.swift; sourceTree = "<group>"; };
 		28F4714D2738F67A0074D148 /* HomeMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeMain.storyboard; sourceTree = "<group>"; };
 		28F4714F273912220074D148 /* RecommendModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModalViewController.swift; sourceTree = "<group>"; };
-		28F47159273BE3D90074D148 /* MyActivity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyActivity.storyboard; sourceTree = "<group>"; };
-		28F4715B273BE3E90074D148 /* MyActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivityViewController.swift; sourceTree = "<group>"; };
 		28F4715D273BE4620074D148 /* MySetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MySetting.storyboard; sourceTree = "<group>"; };
-		28F4715F273BE4700074D148 /* MySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
-		28F47161273BE5480074D148 /* MyInfoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoEditViewController.swift; sourceTree = "<group>"; };
 		28F47163273BE5500074D148 /* MyBabyInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBabyInfo.storyboard; sourceTree = "<group>"; };
 		28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBabyInfoViewController.swift; sourceTree = "<group>"; };
 		28F4FE122760C3BA00E699FC /* LikeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeData.swift; sourceTree = "<group>"; };
@@ -900,10 +888,8 @@
 		28F47155273BE0500074D148 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				28F47159273BE3D90074D148 /* MyActivity.storyboard */,
 				28F4715D273BE4620074D148 /* MySetting.storyboard */,
 				28F47163273BE5500074D148 /* MyBabyInfo.storyboard */,
-				281D35402764B17A00A128A5 /* MyInfoEdit.storyboard */,
 				28A99971277D98EE00459D19 /* CommonList.storyboard */,
 			);
 			path = Storyboard;
@@ -913,12 +899,8 @@
 			isa = PBXGroup;
 			children = (
 				28F471462738B8DC0074D148 /* MyInfoMainViewController.swift */,
-				28F4715B273BE3E90074D148 /* MyActivityViewController.swift */,
-				28F4715F273BE4700074D148 /* MySettingViewController.swift */,
-				28F47161273BE5480074D148 /* MyInfoEditViewController.swift */,
 				28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */,
 				28492611273BF9E000FA2072 /* SettingWebViewController.swift */,
-				28492613273F666F00FA2072 /* InfoBaseTableViewController.swift */,
 				28A99973277D9A2500459D19 /* CommonListViewController.swift */,
 				286193FD27DB7F590012250F /* MyInfoCollectionViewCell.swift */,
 			);
@@ -1249,13 +1231,11 @@
 				759A7319277890ED00E549F6 /* Detail.storyboard in Resources */,
 				28CA30782753357300EF071E /* CreateQuestion.storyboard in Resources */,
 				DDE317112781A08D0033FEF4 /* VoiceView.xib in Resources */,
-				281D35412764B17A00A128A5 /* MyInfoEdit.storyboard in Resources */,
 				280BEFBB274B319500F031A7 /* PolicyBookmark.storyboard in Resources */,
 				75BA37FB2781F5940035F886 /* PolicyMainTableViewCell.xib in Resources */,
 				759A731527788FDC00E549F6 /* PolicyMain.storyboard in Resources */,
 				280BEFBF274B647900F031A7 /* GoogleService-Info.plist in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
-				28F4715A273BE3D90074D148 /* MyActivity.storyboard in Resources */,
 				280BEFBD274B31B700F031A7 /* CommuntiyBookmark.storyboard in Resources */,
 				DDE3170F27802A320033FEF4 /* WithVoice.storyboard in Resources */,
 				28F4715E273BE4620074D148 /* MySetting.storyboard in Resources */,
@@ -1327,7 +1307,6 @@
 				28492612273BF9E000FA2072 /* SettingWebViewController.swift in Sources */,
 				2852099A2753325F00AB8BAC /* DiaryInputOptionViewController.swift in Sources */,
 				288ED76927428C1E00C5178D /* PolicyBookmarkTableViewController.swift in Sources */,
-				28F4715C273BE3E90074D148 /* MyActivityViewController.swift in Sources */,
 				28A99965277ABAD100459D19 /* UserManager.swift in Sources */,
 				286193FE27DB7F590012250F /* MyInfoCollectionViewCell.swift in Sources */,
 				2861941127DCE0380012250F /* UserSession.swift in Sources */,
@@ -1406,7 +1385,6 @@
 				2861940227DCA7C40012250F /* ViewModelType.swift in Sources */,
 				288EFD192754F476000D1617 /* SegControlCustomable.swift in Sources */,
 				288ED75C27427CD000C5178D /* BookmarkListViewController.swift in Sources */,
-				28F47160273BE4700074D148 /* MySettingViewController.swift in Sources */,
 				285209E92753329600AB8BAC /* MomoBaseSearchField.swift in Sources */,
 				285209EF2753329600AB8BAC /* simpleContentContainer.swift in Sources */,
 				285209F32753329600AB8BAC /* NibInstantiatable.swift in Sources */,
@@ -1456,7 +1434,6 @@
 				2861941C27DE0E590012250F /* ViewModelBindableType.swift in Sources */,
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,
 				DDE316F8277C94FB0033FEF4 /* Diary.swift in Sources */,
-				28492614273F666F00FA2072 /* InfoBaseTableViewController.swift in Sources */,
 				2861942C27DE46850012250F /* NetworkEncoding.swift in Sources */,
 				2861945327E069EA0012250F /* MomoUserSessionDataStore.swift in Sources */,
 				75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */,
@@ -1467,7 +1444,6 @@
 				28A99974277D9A2500459D19 /* CommonListViewController.swift in Sources */,
 				285209BB2753327200AB8BAC /* SignUpViewController.swift in Sources */,
 				2861943F27DF209C0012250F /* AuthRemoteAPI.swift in Sources */,
-				28F47162273BE5480074D148 /* MyInfoEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
