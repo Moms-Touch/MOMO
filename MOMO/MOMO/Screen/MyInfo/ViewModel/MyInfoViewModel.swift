@@ -12,6 +12,8 @@ import RxCocoa
 final class MyInfoViewModel: ViewModelType {
   
   //MARK: - Input & OutPut
+  
+  //TODO: 여기서 셀모델 3개 만들어서 가고, viewmodel 많이 고고
 
   struct Input {
     var nickNameText: AnyObserver<String?>
@@ -57,30 +59,45 @@ final class MyInfoViewModel: ViewModelType {
     let nickNameText = BehaviorSubject<String?>(value: "지영맘")
     let emailText = BehaviorSubject<String?>(value: "momo@momo.com")
     let descriptionText = BehaviorSubject<String>(value: "서울에 사는 21주차 엄마")
+    let userSession = BehaviorSubject<UserSession?>(value: nil)
     let isLoggedIn = BehaviorSubject<Bool>(value: true)
     
-    let userSession = repository.readUserSession()
-    
-    userSession
-      .map { return $0 == nil}
-      .bind(to: isLoggedIn)
+    repository.readUserSession()
+      .bind(to: userSession)
       .disposed(by: disposeBag)
-    
+      
+//    userSession
+//      .map { return $0 == nil}
+//      .bind(to: isLoggedIn)
+//      .disposed(by: disposeBag)
+
     userSession
-      .map { $0?.profile.nickname}
+      .compactMap {$0}
+      .map {
+        $0.profile.nickname
+      }
       .bind(to: nickNameText)
       .disposed(by: disposeBag)
     
     userSession
-      .map { $0?.profile.email}
+      .compactMap {$0}
+      .map { $0.profile.email}
       .bind(to: emailText)
       .disposed(by: disposeBag)
     
     userSession
+      .compactMap {$0}
       .map {
-        return "\($0?.profile.location ?? "대한민국")에 사는 엄마"
+        return "\($0.profile.location)에 사는 엄마"
       }
+      .debug()
       .bind(to: descriptionText)
+      .disposed(by: disposeBag)
+    
+    emailText
+      .subscribe(onNext: {
+        print($0)
+      })
       .disposed(by: disposeBag)
     
     self.input = Input(nickNameText: nickNameText.asObserver(),
