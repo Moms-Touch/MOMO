@@ -25,7 +25,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   @IBOutlet weak var babyProfileImageView: UIImageView! {
     didSet {
       babyProfileImageView.isUserInteractionEnabled = true
-      let tapgesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gotoMyProfile(_:)))
+      let tapgesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gotoBabyVC(_:)))
       babyProfileImageView.addGestureRecognizer(tapgesture)
     }
   }
@@ -194,8 +194,39 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     gotoMyProfile()
   }
   
-  @objc private func gotoMyProfile(_ sender: Any?) {
-    gotoMyProfile()
+  @objc private func gotoBabyVC(_ sender: Any?) {
+    gotoBabyVC()
+  }
+  
+  private func gotoBabyVC() {
+    
+    guard let token = UserManager.shared.token else { return }
+    networkManager.request(apiModel: GetApi.babyGet(token: token)) { (result) in
+      switch result {
+      case .success(let data):
+        let parsingManager = NetworkCoder()
+        parsingManager.judgeGenericResponse(data: data, model: [BabyData].self) { [weak self] (body) in
+          guard let self = self else {return}
+          if body.count > 0 {
+            let baby = body[0]
+            DispatchQueue.main.async {
+              guard let babyInfoVC = MyBabyInfoViewController.loadFromStoryboard() as? MyBabyInfoViewController else {return}
+              babyInfoVC.babyViewModel = BabyInfoViewModel()
+              babyInfoVC.babyViewModel?.model = baby
+              self.present(babyInfoVC, animated: true, completion: nil)
+            }
+          } else  {
+            DispatchQueue.main.async {
+              guard let babyInfoVC = MyBabyInfoViewController.loadFromStoryboard() as? MyBabyInfoViewController else {return}
+              babyInfoVC.babyViewModel = BabyInfoViewModel()
+              self.present(babyInfoVC, animated: true, completion: nil)
+            }
+          }
+        }
+      case .failure(_):
+        return
+      }
+    }
   }
   
   func makeMyInfoViewModel() -> MyInfoViewModel {
