@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 extension UIView {
   
@@ -46,6 +47,22 @@ extension UIView {
     mask.path = path.cgPath
     layer.mask = mask
   }
+  
+  /*
+   View에서도 Alert를 올릴 수 있도록 함
+   */
+  func alert(title: String, text: String?) -> Completable {
+    return Completable.create { completable in
+      let alertVC = UIAlertController(title: title, message: text, preferredStyle: .alert)
+      alertVC.addAction(UIAlertAction.cancelAction)
+      alertVC.addAction(UIAlertAction(title: "네", style: .default, handler: { _ in
+        completable(.completed)
+      }))
+      UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController?.presentedViewController?.present(alertVC, animated: true, completion: nil)
+      return Disposables.create()
+      }
+    }
+  
 }
 
 

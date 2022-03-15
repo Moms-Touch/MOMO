@@ -74,6 +74,8 @@
 		285209F42753329600AB8BAC /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209D92753329600AB8BAC /* StoryboardInstantiable.swift */; };
 		285209F52753329600AB8BAC /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DB2753329600AB8BAC /* StorageService.swift */; };
 		285209F62753329600AB8BAC /* InfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DD2753329600AB8BAC /* InfoData.swift */; };
+		285D0DC727E0C3FA00B22287 /* InfoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DC627E0C3FA00B22287 /* InfoCellViewModel.swift */; };
+		285D0DC927E0C58500B22287 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DC827E0C58500B22287 /* UIViewController+Extension.swift */; };
 		286193F227DB6E9A0012250F /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F127DB6E9A0012250F /* FSCalendar */; };
 		286193F527DB71B60012250F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F427DB71B60012250F /* RxCocoa */; };
 		286193F727DB71B60012250F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F627DB71B60012250F /* RxRelay */; };
@@ -273,6 +275,8 @@
 		285209D92753329600AB8BAC /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		285209DB2753329600AB8BAC /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		285209DD2753329600AB8BAC /* InfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoData.swift; sourceTree = "<group>"; };
+		285D0DC627E0C3FA00B22287 /* InfoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCellViewModel.swift; sourceTree = "<group>"; };
+		285D0DC827E0C58500B22287 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		286193FD27DB7F590012250F /* MyInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		286193FF27DCA4BA0012250F /* MyInfoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoCellViewModel.swift; sourceTree = "<group>"; };
 		2861940127DCA7C40012250F /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
@@ -603,6 +607,7 @@
 				3AF373202789CFA70007752E /* UIButton + Extension.swift */,
 				3AF373222789D5440007752E /* UILabel + Extension.swift */,
 				2861942927DE44EA0012250F /* URL+Extension.swift */,
+				285D0DC827E0C58500B22287 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -805,6 +810,7 @@
 				2861941B27DE0E590012250F /* ViewModelBindableType.swift */,
 				2861943327DEF00B0012250F /* InfoChangeCellViewModel.swift */,
 				2861943527DEF05D0012250F /* InfoUserManageViewModel.swift */,
+				285D0DC627E0C3FA00B22287 /* InfoCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1367,6 +1373,7 @@
 				2861942827DE3ED80012250F /* CodingError.swift in Sources */,
 				288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */,
 				2861940927DCD0720012250F /* MyInfoViewModel.swift in Sources */,
+				285D0DC727E0C3FA00B22287 /* InfoCellViewModel.swift in Sources */,
 				284BEBC12785CF01002C5A9E /* UINavigationController+Extension.swift in Sources */,
 				285209E72753329600AB8BAC /* PopAnimator.swift in Sources */,
 				285209EA2753329600AB8BAC /* Dimmable.swift in Sources */,
@@ -1417,6 +1424,7 @@
 				2861942E27DE468E0012250F /* NetworkDecoding.swift in Sources */,
 				28A99970277C6B2500459D19 /* BabyInfoViewModel.swift in Sources */,
 				28A99967277AE5BB00459D19 /* UserData.swift in Sources */,
+				285D0DC927E0C58500B22287 /* UIViewController+Extension.swift in Sources */,
 				285209E42753329600AB8BAC /* UICollectionView+Extension.swift in Sources */,
 				3AF3731F2789C9390007752E /* CustomFont.swift in Sources */,
 				75CE01C727662CAC0057CF9B /* NetworkCoder.swift in Sources */,
