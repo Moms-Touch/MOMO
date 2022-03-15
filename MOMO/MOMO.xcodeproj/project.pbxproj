@@ -463,6 +463,15 @@
 			path = UserSessionDataStore;
 			sourceTree = "<group>";
 		};
+		281A90F427E0A3BB0019B690 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				2861942127DE311A0012250F /* NetworkError.swift */,
+				2861942727DE3ED80012250F /* CodingError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		2852097927532CCB00AB8BAC /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,8 +651,6 @@
 			children = (
 				2861941027DCE0380012250F /* UserSession.swift */,
 				286DDE182771ADC3003E9563 /* GenericResponse.swift */,
-				2861942127DE311A0012250F /* NetworkError.swift */,
-				2861942727DE3ED80012250F /* CodingError.swift */,
 				285209DD2753329600AB8BAC /* InfoData.swift */,
 				28A9995C2778808800459D19 /* BookmarkData.swift */,
 				28F4FE122760C3BA00E699FC /* LikeData.swift */,
@@ -1042,6 +1049,7 @@
 		DD43E8D7270B4B0600699DA1 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				281A90F427E0A3BB0019B690 /* Error */,
 				2861942F27DE497E0012250F /* DataLayer */,
 				285209CA2753329600AB8BAC /* Custom */,
 				285209C12753329600AB8BAC /* Extension */,
