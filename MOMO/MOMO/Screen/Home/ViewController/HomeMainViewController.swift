@@ -219,7 +219,14 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   }
   
   func makeMyInfoViewModel() -> MyInfoViewModel {
-    let repository = MomoUserSessionRepository()
+    
+    //Dependencies
+    let coder = NetworkCoder()
+    let networkManager = NetworkManager(session: URLSession.shared, coder: coder)
+    let remoteAPI = MomoUserRemoteAPI(networkManager: networkManager, decoder: coder)
+    let datastore = MomoUserSessionDataStore()
+    let repository = MomoUserSessionRepository(remoteAPI: remoteAPI, dataStore: datastore)
+
     return MyInfoViewModel(repository: repository)
   }
   
