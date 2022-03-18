@@ -12,15 +12,17 @@ enum DatastoreConstant {
   static var tokenKey: String {
     return "accessToken"
   }
-  static var userDataKey: String {
-    return "profile"
-  }
 }
 
 final class MomoUserSessionDataStore: UserSessionDataStore {
   
-  private let userDefault = UserDefaults.standard
-  private let keychainService = KeyChainService.shared
+  private let userManager: UserManager
+  private let keychainService: KeyChainService
+  
+  init(userManager: UserManager, keychainService: KeyChainService) {
+    self.userManager = userManager
+    self.keychainService = keychainService
+  }
   
   func readUserSession() -> Observable<UserSession?> {
     
@@ -40,7 +42,7 @@ final class MomoUserSessionDataStore: UserSessionDataStore {
   }
   
   func readUserData() -> Observable<UserData?> {
-    Observable.just(userDefault.object(forKey: DatastoreConstant.userDataKey) as? UserData)
+    Observable .just(userManager.userInfo)
       .share()
   }
   
@@ -61,8 +63,8 @@ final class MomoUserSessionDataStore: UserSessionDataStore {
       keychainService.saveInKeychain(account: DatastoreConstant.tokenKey, value: token)
     }
     
-    //Userdata 저장 - 키는 token
-    userDefault.set(profile, forKey: DatastoreConstant.userDataKey)
+    //Userdata 저장
+    userManager.userInfo = profile
     
     return Observable.just(userSession)
       .share()
@@ -78,7 +80,7 @@ final class MomoUserSessionDataStore: UserSessionDataStore {
     }
     
     keychainService.deleteFromKeyChain(account: DatastoreConstant.tokenKey)
-    userDefault.removeObject(forKey: DatastoreConstant.userDataKey)
+    userManager.deleteUser()
     
     return Completable.create { completable in
       completable(.completed) as! Disposable
