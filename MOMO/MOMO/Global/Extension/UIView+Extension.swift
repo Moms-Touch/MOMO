@@ -63,6 +63,23 @@ extension UIView {
       }
     }
   
+  func textfieldAlert(title: String, text: String?) -> Observable<String> {
+    return Observable.create { observer in
+      let alertVC = UIAlertController(title: title, message: text, preferredStyle: .alert)
+      alertVC.addTextField()
+      alertVC.addAction(UIAlertAction.cancelAction)
+      alertVC.addAction(UIAlertAction(title: "네", style: .default, handler: { _ in
+        observer.onNext(alertVC.textFields?[0].text ?? "")
+      }))
+      UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController?.presentedViewController?.present(alertVC, animated: true, completion: nil)
+      return Disposables.create()
+      }
+    }
+  
+  func present(viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
+    UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController?.presentedViewController?.present(viewController, animated: animated, completion: completion)
+  }
+  
 }
 
 
