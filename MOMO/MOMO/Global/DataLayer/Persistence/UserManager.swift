@@ -63,7 +63,7 @@ final class UserManager {
   
   func deleteUser() {
     appUser = nil
-    KeyChainService.shared.deleteFromKeyChain(account: "accessToken")
+//    KeyChainService.shared.deleteFromKeyChain(account: "accessToken")
   }
   
   var periodOfWeek: (Int, Int)? {
