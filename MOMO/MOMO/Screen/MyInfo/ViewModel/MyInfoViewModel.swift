@@ -16,8 +16,8 @@ final class MyInfoViewModel: ViewModelType {
   //TODO: 여기서 셀모델 3개 만들어서 가고, viewmodel 많이 고고
 
   struct Input {
-    var nickNameText: AnyObserver<String?>
-    var emailText: AnyObserver<String?>
+    var nickNameText: BehaviorRelay<String?>
+    var emailText: BehaviorRelay<String?>
   }
   
   struct Output {
@@ -45,44 +45,30 @@ final class MyInfoViewModel: ViewModelType {
   //MARK: - Private
   var repository: UserSessionRepository
   private var disposeBag = DisposeBag()
-  private let nickName: BehaviorSubject<String?>
-  private let email: BehaviorSubject<String?>
-  private let description: BehaviorSubject<String>
-  private let isLoggedIn: BehaviorSubject<Bool>
+  
+  private let nickName = BehaviorRelay<String?>(value: "지영맘")
+  private let email = BehaviorRelay<String?>(value: "momo@momo.com")
+  private let description = BehaviorRelay<String>(value: "서울에 사는 21주차 엄마")
+  private let userSession = BehaviorSubject<UserSession?>(value: nil)
+  private let isLoggedIn = BehaviorSubject<Bool>(value: true)
   
   
   //MARK: - Init
   
   init(repository: UserSessionRepository) {
     self.repository = repository
+    let observable = repository.readUserSession()
     
-    let nickNameText = BehaviorSubject<String?>(value: "지영맘")
-    let emailText = BehaviorSubject<String?>(value: "momo@momo.com")
-    let descriptionText = BehaviorSubject<String>(value: "서울에 사는 21주차 엄마")
-    let userSession = BehaviorSubject<UserSession?>(value: nil)
-    let isLoggedIn = BehaviorSubject<Bool>(value: true)
-    
-    repository.readUserSession()
-      .bind(to: userSession)
-      .disposed(by: disposeBag)
-      
-//    userSession
-//      .map { return $0 == nil}
-//      .bind(to: isLoggedIn)
-//      .disposed(by: disposeBag)
-
     userSession
       .compactMap {$0}
-      .map {
-        $0.profile.nickname
-      }
-      .bind(to: nickNameText)
+      .map { $0.profile.nickname }
+      .bind(to: nickName)
       .disposed(by: disposeBag)
     
     userSession
       .compactMap {$0}
       .map { $0.profile.email}
-      .bind(to: emailText)
+      .bind(to: email)
       .disposed(by: disposeBag)
     
     userSession
@@ -90,25 +76,22 @@ final class MyInfoViewModel: ViewModelType {
       .map {
         return "\($0.profile.location)에 사는 엄마"
       }
-      .debug()
-      .bind(to: descriptionText)
+      .bind(to: description)
       .disposed(by: disposeBag)
     
-    self.input = Input(nickNameText: nickNameText.asObserver(),
-                       emailText: emailText.asObserver()
+    self.input = Input(nickNameText: nickName,
+                       emailText: email
                       )
-    self.output = Output(nickName: nickNameText.asDriver(onErrorJustReturn: ""),
-                         email: emailText.asDriver(onErrorJustReturn: ""),
-                         description: descriptionText.asDriver(onErrorJustReturn: ""),
+    self.output = Output(nickName: self.nickName.asDriver(onErrorJustReturn: ""),
+                         email: self.email.asDriver(onErrorJustReturn: ""),
+                         description: self.description.asDriver(onErrorJustReturn: ""),
                          isLoggedIn: isLoggedIn.asDriver(onErrorJustReturn: true)
                         )
     
-    self.nickName = nickNameText
-    self.email = emailText
-    self.description = descriptionText
-    self.isLoggedIn = isLoggedIn
+    observable
+      .bind(to: userSession)
+      .disposed(by: disposeBag)
     
   }
-  
 
 }
