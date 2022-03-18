@@ -35,11 +35,13 @@ class NetworkCoder: NetworkEncoding, NetworkDecoding {
     return Observable<T>.create { observer in
       
       let decoder = JSONDecoder()
-      guard let body = try? decoder.decode(T.self, from: data) else {
+      guard let body = try? decoder.decode(GenericResponse<T>.self, from: data) else {
         return observer.onError(NetworkError.invalidData) as! Disposable
       }
-      
-      observer.onNext(body)
+      guard let bodyData = body.data else {
+        return observer.onError(NetworkError.invalidData) as! Disposable
+      }
+      observer.onNext(bodyData)
       observer.onCompleted()
       
       return Disposables.create()
