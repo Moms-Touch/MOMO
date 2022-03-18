@@ -235,7 +235,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     let coder = NetworkCoder()
     let networkManager = NetworkManager(session: URLSession.shared, coder: coder)
     let remoteAPI = MomoUserRemoteAPI(networkManager: networkManager, decoder: coder)
-    let datastore = MomoUserSessionDataStore()
+    let datastore = MomoUserSessionDataStore(userManager: UserManager.shared, keychainService: KeyChainService.shared)
     let repository = MomoUserSessionRepository(remoteAPI: remoteAPI, dataStore: datastore)
 
     return MyInfoViewModel(repository: repository)
