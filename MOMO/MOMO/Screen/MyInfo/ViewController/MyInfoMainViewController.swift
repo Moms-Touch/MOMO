@@ -18,17 +18,16 @@ class MyInfoMainViewController: UIViewController, ViewModelBindableType {
   func bindViewModel() {
     
     viewModel.output.nickName
-      .distinctUntilChanged()
+      .debug()
       .drive(nickname)
       .disposed(by: disposeBag)
     
     viewModel.output.email
-      .distinctUntilChanged()
+      .debug()
       .drive(email)
       .disposed(by: disposeBag)
     
     viewModel.output.description
-      .distinctUntilChanged()
       .drive(userDescription)
       .disposed(by: disposeBag)
     
@@ -154,18 +153,13 @@ extension MyInfoMainViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyInfoCollectionViewCell.identifier, for: indexPath) as! MyInfoCollectionViewCell
    
     if indexPath.item == InfoMainConstant.status.infoCell.rawValue {
-            
-      let cellmodel = MyInfoCellViewModel(index: indexPath.item, email: email, nickname: nickname, description: userDescription)
-      cell.viewModel = cellmodel
-      
+      cell.viewModel = viewModel.output.firstCellModel
     } else if indexPath.item == InfoMainConstant.status.changeCell.rawValue {
       cell.findCellheight(with: viewModel.defaultContent[indexPath.item])
-      let cellmodel = InfoChangeCellViewModel(index: indexPath.item, content: viewModel.defaultContent[indexPath.item]!)
-      cell.viewModel = cellmodel
+      cell.viewModel = viewModel.output.infoChangecellModel
     } else {
       cell.findCellheight(with: viewModel.defaultContent[indexPath.item])
-      let cellmodel = InfoUserManageViewModel(index: indexPath.item, repository: viewModel.repository)
-      cell.viewModel = cellmodel
+      cell.viewModel = viewModel.output.infoUserManageCellModel
     }
 
     return cell

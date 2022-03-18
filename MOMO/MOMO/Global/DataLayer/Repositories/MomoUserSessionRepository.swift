@@ -24,19 +24,21 @@ final class MomoUserSessionRepository: UserSessionRepository {
   @discardableResult
   func readUserSession() -> Observable<UserSession> {
     
-  let observable = self.userDataStore.readUserSession()
+    let observable = self.userDataStore.readUserSession()
       .compactMap { $0 }
       .share()
     
     return observable
   }
-
+  
   
   @discardableResult
   func renameNickname(with new: String) -> Observable<UserData> {
     let userdata = PublishSubject<(UserData, Token)>()
+//    let userdata = BehaviorSubject<(UserData, Token)>(value: (UserData(id: -1, email: "", nickname: "", isPregnant: true, hasChild: true, age: 1, location: "", createdAt: "", updatedAt: "", baby: nil), ""))
     
-    let observable = userSession
+    let observable =  userSession
+      .debug()
       .compactMap { $0 }
       .map { session -> (UserData, Token) in
         var profile = session.profile
@@ -46,28 +48,22 @@ final class MomoUserSessionRepository: UserSessionRepository {
       .flatMap({ (profile, token) -> Observable<(UserData, Token)> in
         let left = self.userRemoteAPI.updateUserInfo(with: profile, token: token)
         let right = Observable.just(token)
-        let ziped = Observable.zip(left, right)
-        return ziped
+        return Observable.zip(left, right)
       })
-    
-    // datastorage에 저장하기
-    userdata
-      .debug()
-      .subscribe(onNext: { [weak self] profile, token in
-        guard let self = self else {return}
-        let session =  UserSession(profile: profile, token: token)
-        //데이터 저장
-        self.userDataStore.save(userSession: session)
-        //변경된 데이터 저장
-//        self.userSession.onNext(session)
-      })
-      .disposed(by: disposeBag)
-      
+  
     observable
-//      .debug()
+      .debug()
       .bind(to: userdata)
       .disposed(by: disposeBag)
-      
+    
+    userdata
+      .flatMap({ profile, token in
+        return self.userDataStore.save(userSession: UserSession(profile: profile, token: token))
+      })
+      .debug()
+      .bind(to: userSession)
+      .disposed(by: disposeBag)
+    
     readUserSession()
       .debug()
       .bind(to: userSession)
@@ -111,7 +107,7 @@ final class MomoUserSessionRepository: UserSessionRepository {
         //데이터 저장
         self.userDataStore.save(userSession: session)
         //변경된 데이터 저장
-//        self.userSession.onNext(session)
+        //        self.userSession.onNext(session)
       })
       .disposed(by: disposeBag)
     
@@ -119,7 +115,7 @@ final class MomoUserSessionRepository: UserSessionRepository {
       .compactMap { $0.0}
       .asObservable()
       .share()
-
+    
     
   }
   
@@ -159,7 +155,7 @@ final class MomoUserSessionRepository: UserSessionRepository {
         //데이터 저장
         self.userDataStore.save(userSession: session)
         //변경된 데이터 저장
-//        self.userSession.onNext(session)
+        //        self.userSession.onNext(session)
       })
       .disposed(by: disposeBag)
     
@@ -167,7 +163,7 @@ final class MomoUserSessionRepository: UserSessionRepository {
       .compactMap { $0.0}
       .asObservable()
       .share()
-
+    
   }
   
   //TODO: 이게 되는 코드인지 확인 필요
@@ -195,7 +191,7 @@ final class MomoUserSessionRepository: UserSessionRepository {
             .disposed(by: self.disposeBag)
         })
         .disposed(by: self.disposeBag)
-     
+      
       return Disposables.create()
     }
   }

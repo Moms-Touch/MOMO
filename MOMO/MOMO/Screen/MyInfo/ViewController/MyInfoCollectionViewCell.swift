@@ -96,6 +96,12 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
     forthOptionLabel?.removeFromSuperview()
   }
   
+  private func presentLocationVC() {
+    let vc = LocationViewController.loadFromStoryboard() as! LocationViewController
+    vc.editMode = true
+    self.present(viewController: vc, animated: true, completion: nil)
+  }
+  
   
   //MARK: - Binding
   
@@ -117,38 +123,58 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
         .disposed(by: disposeBag)
       
     } else if viewModel.index == 1 {
+      guard let viewModel = viewModel as? InfoChangeCellViewModel else {return}
+      
+      viewModel.output.goToChangeNickname
+        .filter { $0 == true }
+        .drive(onNext: { _ in
+          presentNicknameChangeAlertVC()
+        })
+        .disposed(by: disposeBag)
+      
+      viewModel.output.goToChangeLocation
+        .filter { $0 == true }
+        .drive(onNext: { [unowned self] _ in
+          self.presentLocationVC()
+        })
+        .disposed(by: disposeBag)
+            
+      //input
       
       firstOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
-        .subscribe(onNext: { [unowned self] _ in
-          print(self.firstOptionLabel?.text)
-        })
+        .map { _ in return true }
+        .bind(to: viewModel.input.isPregnantClicked)
         .disposed(by: disposeBag)
       
       secondOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
-        .subscribe(onNext: { [unowned self] _ in
-          print(self.secondOptionLabel?.text)
-        })
+        .map { _ in return true }
+        .bind(to: viewModel.input.locationClicked)
         .disposed(by: disposeBag)
       
       thirdOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
         .subscribe(onNext: { [unowned self] _ in
-          print(self.thirdOptionLabel?.text)
+          // 비밀번호 변경
         })
         .disposed(by: disposeBag)
       
       forthOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
-        .subscribe(onNext: { [unowned self] _ in
-          print(self.firstOptionLabel?.text)
-        })
+        .map { _ in return true }
+        .bind(to: viewModel.input.nicknameClicked)
         .disposed(by: disposeBag)
+      
+      func presentNicknameChangeAlertVC() {
+        self.textfieldAlert(title: "닉네임 변경하기", text: "닉네임 변경하시겠습니까")
+          .bind(to: viewModel.input.newNickname)
+          .disposed(by: disposeBag)
+      }
       
     } else {
       guard let viewModel = viewModel as? InfoUserManageViewModel else {return}
@@ -200,6 +226,8 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
       self.makeAttributed()
     }
   }
+  
+  private var nick = BehaviorRelay<String?>(value: nil)
   
   //MARK: - Init
   override init(frame: CGRect) {

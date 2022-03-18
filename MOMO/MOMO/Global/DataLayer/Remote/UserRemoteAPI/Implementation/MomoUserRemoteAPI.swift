@@ -30,6 +30,7 @@ final class MomoUserRemoteAPI: UserRemoteAPI {
   func updateUserInfo(with info: UserData, token: Token) -> Observable<UserData> {
     return networkManager.request(apiModel: PutApi.putUser(token: token, email: info.email , nickname: info.nickname, isPregnant: info.isPregnant, hasChild: info.hasChild, age: info.age, location: info.location))
       .asObservable()
+      .debug()
       .flatMap { [weak self] data -> Observable<UserData> in
         guard let self = self else {return Observable.error(CodingError.decodingError)}
         return self.decoder.decode(data: data, model: UserData.self)
