@@ -79,6 +79,18 @@ extension UIView {
       }
     }
   
+  func alertWithObservable(title: String, text: String?) -> Observable<Bool> {
+    return Observable.create { observer in
+      let alertVC = UIAlertController(title: title, message: text, preferredStyle: .alert)
+      alertVC.addAction(UIAlertAction.cancelAction)
+      alertVC.addAction(UIAlertAction(title: "네", style: .default, handler: { _ in
+        observer.onNext(true)
+      }))
+      UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController?.presentedViewController?.present(alertVC, animated: true, completion: nil)
+      return Disposables.create()
+      }
+    }
+  
   func actionSheet(title: String, text: String?, contents: [String]) -> Observable<Int> {
     return Observable.create { observer in
       let actionSheet = UIAlertController(title: title,
