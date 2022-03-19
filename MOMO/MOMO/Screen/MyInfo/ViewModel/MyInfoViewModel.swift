@@ -92,6 +92,7 @@ final class MyInfoViewModel: ViewModelType {
                                                       repository: repository )
     
     self.infoChangeCellModel = infoChangeCellModel
+    
     self.infoChangeCellModel.output.newNickname
       .drive(self.nickName)
       .disposed(by: disposeBag)
@@ -102,6 +103,12 @@ final class MyInfoViewModel: ViewModelType {
         return repository.readUserSession()
       })
       .bind(to: userSession)
+      .disposed(by: disposeBag)
+    
+    self.infoChangeCellModel.output.newPregnant
+      .drive(onNext: {
+        print($0)
+      })
       .disposed(by: disposeBag)
     
     

@@ -138,6 +138,14 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
           self.presentLocationVC()
         })
         .disposed(by: disposeBag)
+      
+      viewModel.output.goToChangeIspregnant
+        .filter {$0 == true}
+        .drive(onNext: { _ in
+          presentPregnantStatusChangeActionSheet()
+        })
+        .disposed(by: disposeBag)
+      
             
       //input
       
@@ -173,6 +181,17 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
       func presentNicknameChangeAlertVC() {
         self.textfieldAlert(title: "닉네임 변경하기", text: "닉네임 변경하시겠습니까")
           .bind(to: viewModel.input.newNickname)
+          .disposed(by: disposeBag)
+      }
+      
+      func presentPregnantStatusChangeActionSheet() {
+        self.actionSheet(title: "임신/출산 여부 변경",
+                         text: "임신/출산 여부를 선택해주세요",
+                         contents: ["임신 중", "출산 후"])
+          .map { options in
+            return options == 0 ? true : false
+          }
+          .bind(to: viewModel.input.newIsPregnant)
           .disposed(by: disposeBag)
       }
       

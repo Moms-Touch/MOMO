@@ -30,6 +30,7 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
     var goToChangeNickname: Driver<Bool>
     var goToChangeIspregnant: Driver<Bool>
     var newNickname: Driver<String>
+    var newPregnant: Driver<Bool>
   }
   
   var output: Output
@@ -41,6 +42,7 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
   private var changeLocationClick: BehaviorSubject<Bool>
   
   private var newNickname = BehaviorSubject<String>(value: "")
+  private var newPregnant = BehaviorSubject<Bool>(value: true)
   private var isPregnantPublishSubject: PublishSubject<Bool>
   private var disposeBag = DisposeBag()
   
@@ -49,7 +51,7 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
   init(index: Int, content: [String], repository: UserSessionRepository) {
     self.content = content
     
-    let isPregnantClick = BehaviorSubject<Bool>(value: true)
+    let isPregnantClick = BehaviorSubject<Bool>(value: false)
     let changeNickNameClick = BehaviorSubject<Bool>(value: false)
     let changeLocationClick = BehaviorSubject<Bool>(value: false)
     let isPregnantPublishSubject = PublishSubject<Bool>()
@@ -64,7 +66,8 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
     self.output = Output(goToChangeLocation: changeLocationClick.asDriver(onErrorJustReturn: false),
                          goToChangeNickname: changeNickNameClick.asDriver(onErrorJustReturn: false),
                          goToChangeIspregnant: isPregnantClick.asDriver(onErrorJustReturn: false),
-                         newNickname: newNickname.asDriver(onErrorJustReturn: "")
+                         newNickname: newNickname.asDriver(onErrorJustReturn: ""),
+                         newPregnant: newPregnant.asDriver(onErrorJustReturn: true)
     )
     
     self.input = Input(isPregnantClicked: isPregnantClick.asObserver(),
@@ -75,30 +78,22 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
     
     super.init(index: index)
     
+    //input -> Outeput
+    
     nicknameBehaviorSubject
       .asObservable()
-      .flatMap { return repository.renameNickname(with: $0)}
+      .flatMapLatest { return repository.renameNickname(with: $0)}
       .map { $0.nickname}
       .bind(to: newNickname)
       .disposed(by: disposeBag)
 
-    
     isPregnantPublishSubject
-      .debug()
-      .withUnretained(self)
-      .bind(onNext: { vm, ispregnantStatus in
-        repository.changeCurrentStatus(isPregnant: ispregnantStatus)
-          .subscribe(onNext: {
-            print($0)
-          })
-          .disposed(by: vm.disposeBag)
-      })
+      .asObservable()
+      .flatMapLatest {return repository.changeCurrentStatus(isPregnant: $0)}
+      .map{ $0.isPregnant }
+      .bind(to: newPregnant)
       .disposed(by: disposeBag)
     
-    
   }
-
-
-  
   
 }
