@@ -71,20 +71,22 @@ final class MomoUserSessionDataStore: UserSessionDataStore {
   }
   
   func delete(userSession: UserSession) -> Completable {
-    let token = userSession.token
     
-    guard let accessToken = keychainService.loadFromKeychain(account: DatastoreConstant.tokenKey), accessToken == token else {
-      return Completable.create { Completable in
-        Completable(.error(KeyChainError.noValue)) as! Disposable
+    return Completable.create { [weak self] completable in
+      
+      guard let self = self else {return completable(.error(AppError.noSelf)) as! Disposable}
+    
+      let token = userSession.token
+      
+      guard let accessToken = self.keychainService.loadFromKeychain(account: DatastoreConstant.tokenKey), accessToken == token else {
+        return completable(.error(KeyChainError.noValue)) as! Disposable
       }
+      
+      self.keychainService.deleteFromKeyChain(account: DatastoreConstant.tokenKey)
+      self.userManager.deleteUser()
+      completable(.completed)
+      return Disposables.create {}
     }
-    
-    keychainService.deleteFromKeyChain(account: DatastoreConstant.tokenKey)
-    userManager.deleteUser()
-    
-    return Completable.create { completable in
-      completable(.completed) as! Disposable
-    }
-    
+     
   }
 }

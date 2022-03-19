@@ -129,7 +129,7 @@ final class MomoUserSessionRepository: UserSessionRepository {
         return Disposables.create()
       }
       
-      self.userSession
+      self.readUserSession()
         .compactMap { $0}
         .subscribe(onNext: {
           self.userRemoteAPI.deleteUser(token: $0.token)
