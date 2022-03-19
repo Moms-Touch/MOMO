@@ -9,6 +9,7 @@ import Foundation
 
 enum AppError: Error {
   case invalidToken
+  case noSelf
 }
 
 enum KeyChainError: Error {
