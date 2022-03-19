@@ -34,10 +34,8 @@ final class MomoUserSessionRepository: UserSessionRepository {
   
   @discardableResult
   func renameNickname(with new: String) -> Observable<UserData> {
-    let userdata = PublishSubject<(UserData, Token)>()
-    let userSession = PublishSubject<UserSession>()
     
-    userSession
+    return readUserSession()
       .compactMap { $0 }
       .map { session -> (UserData, Token) in
         var profile = session.profile
@@ -55,28 +53,17 @@ final class MomoUserSessionRepository: UserSessionRepository {
       .map({ session in
         return (session.profile, session.token)
       })
-      .bind(to: userdata)
-      .disposed(by: disposeBag)
-    
-    readUserSession()
-      .bind(to: userSession)
-      .disposed(by: disposeBag)
-    
-    return userdata
       .compactMap { $0.0}
       .asObservable()
       .share()
+      
   }
   
   @discardableResult
   func changeLocation(with new: String) -> Observable<UserData> {
-    let userdata = PublishSubject<(UserData, Token)>()
-    let userSession = PublishSubject<UserSession>()
     
-    // 통신
-    let observable = userSession
+    return readUserSession()
       .compactMap { $0 }
-      .debug()
       .map { session -> (UserData, Token) in
         var profile = session.profile
         profile.location = new
@@ -93,14 +80,6 @@ final class MomoUserSessionRepository: UserSessionRepository {
       .map({ session in
         return (session.profile, session.token)
       })
-      .bind(to: userdata)
-      .disposed(by: disposeBag)
-    
-    readUserSession()
-      .bind(to: userSession)
-      .disposed(by: disposeBag)
-    
-    return userdata
       .compactMap { $0.0}
       .asObservable()
       .share()
@@ -115,10 +94,8 @@ final class MomoUserSessionRepository: UserSessionRepository {
   
   @discardableResult
   func changeCurrentStatus(isPregnant: Bool) -> Observable<UserData> {
-    let userdata = BehaviorSubject<(UserData?, Token?)>(value: (nil, nil))
     
-    // 통신
-    userSession
+    return readUserSession()
       .compactMap { $0 }
       .map { session -> (UserData, Token) in
         var profile = session.profile
@@ -136,18 +113,10 @@ final class MomoUserSessionRepository: UserSessionRepository {
       .map({ session in
         return (session.profile, session.token)
       })
-      .bind(to: userdata)
-      .disposed(by: disposeBag)
-    
-    readUserSession()
-      .bind(to: userSession)
-      .disposed(by: disposeBag)
-    
-    return userdata
       .compactMap { $0.0}
       .asObservable()
       .share()
-    
+
   }
   
   //TODO: 이게 되는 코드인지 확인 필요
