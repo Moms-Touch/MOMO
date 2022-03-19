@@ -35,37 +35,33 @@ final class MomoUserSessionRepository: UserSessionRepository {
   @discardableResult
   func renameNickname(with new: String) -> Observable<UserData> {
     let userdata = PublishSubject<(UserData, Token)>()
-//    let userdata = BehaviorSubject<(UserData, Token)>(value: (UserData(id: -1, email: "", nickname: "", isPregnant: true, hasChild: true, age: 1, location: "", createdAt: "", updatedAt: "", baby: nil), ""))
+    let userSession = PublishSubject<UserSession>()
     
     let observable =  userSession
-      .debug()
       .compactMap { $0 }
       .map { session -> (UserData, Token) in
         var profile = session.profile
         profile.nickname = new
         return (profile, session.token)
       }
-      .flatMap({ (profile, token) -> Observable<(UserData, Token)> in
+      .flatMapLatest({ (profile, token) -> Observable<(UserData, Token)> in
         let left = self.userRemoteAPI.updateUserInfo(with: profile, token: token)
         let right = Observable.just(token)
         return Observable.zip(left, right)
       })
   
     observable
-      .debug()
       .bind(to: userdata)
       .disposed(by: disposeBag)
     
     userdata
-      .flatMap({ profile, token in
+      .flatMapLatest({ profile, token in
         return self.userDataStore.save(userSession: UserSession(profile: profile, token: token))
       })
-      .debug()
       .bind(to: userSession)
       .disposed(by: disposeBag)
     
     readUserSession()
-      .debug()
       .bind(to: userSession)
       .disposed(by: disposeBag)
     
