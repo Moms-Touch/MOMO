@@ -50,7 +50,6 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
 
   init(index: Int, content: [String], repository: UserSessionRepository) {
     self.content = content
-    
     let isPregnantClick = BehaviorSubject<Bool>(value: false)
     let changeNickNameClick = BehaviorSubject<Bool>(value: false)
     let changeLocationClick = BehaviorSubject<Bool>(value: false)

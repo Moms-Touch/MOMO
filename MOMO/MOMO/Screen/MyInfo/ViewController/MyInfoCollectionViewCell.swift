@@ -167,7 +167,7 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
         .tapGesture()
         .when(.recognized)
         .subscribe(onNext: { [unowned self] _ in
-          // 비밀번호 변경
+          print("비밀번호 변경 clicked")
         })
         .disposed(by: disposeBag)
       
@@ -197,6 +197,24 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
       
     } else {
       guard let viewModel = viewModel as? InfoUserManageViewModel else {return}
+      
+      //output
+      viewModel.output.goToWithdrawal
+        .filter { $0 == true }
+        .drive(onNext: { _ in
+          goToWithdrawalUser()
+        })
+        .disposed(by: disposeBag)
+      
+      viewModel.output.withDrawalCompleted
+        .filter { $0 == true }
+        .drive(onNext: { [weak self] _ in
+          self?.gotoLoginVC()
+        })
+        .disposed(by: disposeBag)
+      
+      //input
+      
       firstOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
@@ -213,27 +231,26 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
       secondOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
-        .subscribe(onNext: { [unowned self] _ in
-          self.alert(title: "회원탈퇴", text: "회원탈퇴를 하시겠습니까?")
-            .subscribe(onCompleted: {
-              viewModel.output.withdrawalUser
-                .observe(on: MainScheduler.instance)
-                .subscribe(onCompleted: {
-                  self.gotoLoginVC()
-                })
-                .disposed(by: disposeBag)
-            })
-            .disposed(by: disposeBag)
-        })
+        .map { _ in true }
+        .bind(to: viewModel.input.withdrawalClick)
         .disposed(by: disposeBag)
       
       thirdOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
-        .subscribe(onNext: { [unowned self] _ in
-          
+        .subscribe(onNext: { _ in
+          let url = viewModel.output.contactURL
+          if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+          }
         })
         .disposed(by: disposeBag)
+      
+      func goToWithdrawalUser() {
+        self.alertWithObservable(title: "회원탈퇴", text: "회원탈퇴를 하시겠습니까?")
+          .bind(to: viewModel.input.withdrawApproved)
+          .disposed(by: disposeBag)
+      }
       
     }
   }
