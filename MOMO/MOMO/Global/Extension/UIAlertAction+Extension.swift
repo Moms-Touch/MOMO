@@ -19,7 +19,7 @@ extension UIAlertAction {
   /// Cancel Action with No Handler
   static var cancelAction: UIAlertAction {
     
-    return UIAlertAction(title: "아니오", style: .default, handler: nil)
+    return UIAlertAction(title: "아니오", style: .cancel, handler: nil)
   }
   
 }
