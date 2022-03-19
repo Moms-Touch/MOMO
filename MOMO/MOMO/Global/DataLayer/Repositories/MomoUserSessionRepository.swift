@@ -37,7 +37,7 @@ final class MomoUserSessionRepository: UserSessionRepository {
     let userdata = PublishSubject<(UserData, Token)>()
     let userSession = PublishSubject<UserSession>()
     
-    let observable =  userSession
+    userSession
       .compactMap { $0 }
       .map { session -> (UserData, Token) in
         var profile = session.profile
@@ -49,16 +49,13 @@ final class MomoUserSessionRepository: UserSessionRepository {
         let right = Observable.just(token)
         return Observable.zip(left, right)
       })
-  
-    observable
-      .bind(to: userdata)
-      .disposed(by: disposeBag)
-    
-    userdata
       .flatMapLatest({ profile, token in
         return self.userDataStore.save(userSession: UserSession(profile: profile, token: token))
       })
-      .bind(to: userSession)
+      .map({ session in
+        return (session.profile, session.token)
+      })
+      .bind(to: userdata)
       .disposed(by: disposeBag)
     
     readUserSession()
@@ -73,10 +70,11 @@ final class MomoUserSessionRepository: UserSessionRepository {
   
   @discardableResult
   func changeLocation(with new: String) -> Observable<UserData> {
-    let userdata = BehaviorSubject<(UserData?, Token?)>(value: (nil, nil))
+    let userdata = PublishSubject<(UserData, Token)>()
+    let userSession = PublishSubject<UserSession>()
     
     // 통신
-    userSession
+    let observable = userSession
       .compactMap { $0 }
       .debug()
       .map { session -> (UserData, Token) in
@@ -84,35 +82,29 @@ final class MomoUserSessionRepository: UserSessionRepository {
         profile.location = new
         return (profile, session.token)
       }
-      .subscribe(onNext: { [weak self] profile, token in
-        guard let self = self else {return}
-        self.userRemoteAPI.updateUserInfo(with: profile, token: token)
-          .map{ return ($0, token)}
-          .bind(to: userdata)
-          .disposed(by: self.disposeBag)
+      .flatMapLatest({ (profile, token) -> Observable<(UserData, Token)> in
+        let left = self.userRemoteAPI.updateUserInfo(with: profile, token: token)
+        let right = Observable.just(token)
+        return Observable.zip(left, right)
       })
+      .flatMapLatest({ profile, token in
+        return self.userDataStore.save(userSession: UserSession(profile: profile, token: token))
+      })
+      .map({ session in
+        return (session.profile, session.token)
+      })
+      .bind(to: userdata)
       .disposed(by: disposeBag)
     
-    // datastorage에 저장하기
-    userdata
-      .debug()
-      .subscribe(onNext: { [weak self] profile, token in
-        guard let self = self else {return}
-        guard let profile = profile, let token = token else {return}
-        let session =  UserSession(profile: profile, token: token)
-        //데이터 저장
-        self.userDataStore.save(userSession: session)
-        //변경된 데이터 저장
-        //        self.userSession.onNext(session)
-      })
+    readUserSession()
+      .bind(to: userSession)
       .disposed(by: disposeBag)
     
     return userdata
       .compactMap { $0.0}
       .asObservable()
       .share()
-    
-    
+
   }
   
   @discardableResult
@@ -133,26 +125,22 @@ final class MomoUserSessionRepository: UserSessionRepository {
         profile.isPregnant = isPregnant
         return (profile, session.token)
       }
-      .subscribe(onNext: { [weak self] profile, token in
-        guard let self = self else {return}
-        self.userRemoteAPI.updateUserInfo(with: profile, token: token)
-          .map{ return ($0, token)}
-          .bind(to: userdata)
-          .disposed(by: self.disposeBag)
+      .flatMapLatest({ (profile, token) -> Observable<(UserData, Token)> in
+        let left = self.userRemoteAPI.updateUserInfo(with: profile, token: token)
+        let right = Observable.just(token)
+        return Observable.zip(left, right)
       })
+      .flatMapLatest({ profile, token in
+        return self.userDataStore.save(userSession: UserSession(profile: profile, token: token))
+      })
+      .map({ session in
+        return (session.profile, session.token)
+      })
+      .bind(to: userdata)
       .disposed(by: disposeBag)
     
-    // datastorage에 저장하기
-    userdata
-      .subscribe(onNext: { [weak self] profile, token in
-        guard let self = self else {return}
-        guard let profile = profile, let token = token else {return}
-        let session =  UserSession(profile: profile, token: token)
-        //데이터 저장
-        self.userDataStore.save(userSession: session)
-        //변경된 데이터 저장
-        //        self.userSession.onNext(session)
-      })
+    readUserSession()
+      .bind(to: userSession)
       .disposed(by: disposeBag)
     
     return userdata
