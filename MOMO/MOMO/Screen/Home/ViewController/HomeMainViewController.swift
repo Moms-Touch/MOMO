@@ -128,32 +128,39 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   }
   
   @IBAction private func didTapRecommendButton(_ sender: UIButton) {
-    let recommendModalVC = RecommendModalViewController()
-    customNavigationDelegate.direction = .bottom
-    recommendModalVC.transitioningDelegate = customNavigationDelegate
-    recommendModalVC.modalPresentationStyle = .custom
-    // networking
-    guard let token = UserManager.shared.token else {return}
-    guard let period = UserManager.shared.periodOfWeek else {return}
-    networkManager.request(apiModel: GetApi.infoGet(token: token, start: "\(period.0)", end: "\(period.1)")) { (result) in
-      switch result {
-      case .success(let data):
-        let parsingmanager = ParsingManager()
-        parsingmanager.judgeGenericResponse(data: data, model: [InfoData].self) { [weak self] body in
-          guard let self = self else {return}
-          recommendModalVC.setData(data: body)
-          DispatchQueue.main.async {
-            self.dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
-            recommendModalVC.completionHandler = { [weak self] in
-              self?.dim(direction: .Out)
-            }
-            self.present(recommendModalVC, animated: true, completion: nil)
-          }
-        }
-      case .failure(let error):
-        fatalError("\(error)")
-      }
-    }
+    
+    let remoteAPI = MomoRecommendRemoteAPI(networkManager: networkManager)
+    let repository = MomoRecommendRepository(remoteAPI: remoteAPI)
+    let viewmodel = RecommendViewModel(reposoitory: repository)
+    let recommendVC = RecommendViewController(viewModel: viewmodel)
+    self.present(recommendVC, animated: true, completion: nil)
+    
+//    let recommendModalVC = RecommendModalViewController()
+//    customNavigationDelegate.direction = .bottom
+//    recommendModalVC.transitioningDelegate = customNavigationDelegate
+//    recommendModalVC.modalPresentationStyle = .custom
+//    // networking
+//    guard let token = UserManager.shared.token else {return}
+//    guard let period = UserManager.shared.periodOfWeek else {return}
+//    networkManager.request(apiModel: GetApi.infoGet(token: token, start: "\(period.0)", end: "\(period.1)")) { (result) in
+//      switch result {
+//      case .success(let data):
+//        let parsingmanager = ParsingManager()
+//        parsingmanager.judgeGenericResponse(data: data, model: [InfoData].self) { [weak self] body in
+//          guard let self = self else {return}
+//          recommendModalVC.setData(data: body)
+//          DispatchQueue.main.async {
+//            self.dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
+//            recommendModalVC.completionHandler = { [weak self] in
+//              self?.dim(direction: .Out)
+//            }
+//            self.present(recommendModalVC, animated: true, completion: nil)
+//          }
+//        }
+//      case .failure(let error):
+//        fatalError("\(error)")
+//      }
+//    }
   }
   
   @IBAction private func didTapTodayButton(_ sender: UIButton) {
