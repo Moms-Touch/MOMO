@@ -73,6 +73,12 @@
 		285209F42753329600AB8BAC /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209D92753329600AB8BAC /* StoryboardInstantiable.swift */; };
 		285209F52753329600AB8BAC /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DB2753329600AB8BAC /* StorageService.swift */; };
 		285209F62753329600AB8BAC /* InfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209DD2753329600AB8BAC /* InfoData.swift */; };
+		285D0DDA27E7060400B22287 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DD927E7060400B22287 /* RecommendViewModel.swift */; };
+		285D0DDD27E7089C00B22287 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DDC27E7089C00B22287 /* RecommendViewController.swift */; };
+		285D0DDF27E7105900B22287 /* RecommendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DDE27E7105900B22287 /* RecommendRepository.swift */; };
+		285D0DE127E712B400B22287 /* MomoRecommendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DE027E712B400B22287 /* MomoRecommendRepository.swift */; };
+		285D0DE327E7163800B22287 /* RecommendRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DE227E7163800B22287 /* RecommendRemoteAPI.swift */; };
+		285D0DE527E718FA00B22287 /* MomoRecommendRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DE427E718FA00B22287 /* MomoRecommendRemoteAPI.swift */; };
 		286193F227DB6E9A0012250F /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F127DB6E9A0012250F /* FSCalendar */; };
 		286193F527DB71B60012250F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F427DB71B60012250F /* RxCocoa */; };
 		286193F727DB71B60012250F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F627DB71B60012250F /* RxRelay */; };
@@ -247,6 +253,12 @@
 		285209D92753329600AB8BAC /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		285209DB2753329600AB8BAC /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		285209DD2753329600AB8BAC /* InfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoData.swift; sourceTree = "<group>"; };
+		285D0DD927E7060400B22287 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
+		285D0DDC27E7089C00B22287 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		285D0DDE27E7105900B22287 /* RecommendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendRepository.swift; sourceTree = "<group>"; };
+		285D0DE027E712B400B22287 /* MomoRecommendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoRecommendRepository.swift; sourceTree = "<group>"; };
+		285D0DE227E7163800B22287 /* RecommendRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendRemoteAPI.swift; sourceTree = "<group>"; };
+		285D0DE427E718FA00B22287 /* MomoRecommendRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoRecommendRemoteAPI.swift; sourceTree = "<group>"; };
 		286DDE182771ADC3003E9563 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		2879A9B927800E3D00A0BE21 /* PolicyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyData.swift; sourceTree = "<group>"; };
 		288ED75927427CC200C5178D /* BookmarkList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarkList.storyboard; sourceTree = "<group>"; };
@@ -607,6 +619,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		285D0DD827E705F000B22287 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				285D0DD927E7060400B22287 /* RecommendViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		285D0DDB27E7081B00B22287 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				285D0DDE27E7105900B22287 /* RecommendRepository.swift */,
+				285D0DE027E712B400B22287 /* MomoRecommendRepository.swift */,
+				285D0DE227E7163800B22287 /* RecommendRemoteAPI.swift */,
+				285D0DE427E718FA00B22287 /* MomoRecommendRemoteAPI.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		288ED75D27427D2A00C5178D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,6 +728,7 @@
 				288EFD122754F2AE000D1617 /* AlertTableViewController.swift */,
 				288EFD142754F2E5000D1617 /* MessageTableViewController.swift */,
 				281D353C2762313700A128A5 /* RecommendDetailViewController.swift */,
+				285D0DDC27E7089C00B22287 /* RecommendViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -888,6 +920,8 @@
 		DD43E8E5270B4EBE00699DA1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				285D0DDB27E7081B00B22287 /* Repository */,
+				285D0DD827E705F000B22287 /* ViewModel */,
 				28A999592778791D00459D19 /* Model */,
 				288ED75D27427D2A00C5178D /* View */,
 				28F4714C2738F66C0074D148 /* Storyboard */,
@@ -1152,7 +1186,9 @@
 				DDE31706277F3CD10033FEF4 /* UIAlertAction+Extension.swift in Sources */,
 				DD43E8C2270B4A2100699DA1 /* AppDelegate.swift in Sources */,
 				285209BC2753327200AB8BAC /* FindPasswordViewController.swift in Sources */,
+				285D0DDD27E7089C00B22287 /* RecommendViewController.swift in Sources */,
 				285209DF2753329600AB8BAC /* UIImageView+Extension.swift in Sources */,
+				285D0DE527E718FA00B22287 /* MomoRecommendRemoteAPI.swift in Sources */,
 				285209BF2753327200AB8BAC /* NewPasswordInputViewController.swift in Sources */,
 				285209ED2753329600AB8BAC /* NibLoadableView.swift in Sources */,
 				285209E02753329600AB8BAC /* Date+Extension.swift in Sources */,
@@ -1160,6 +1196,7 @@
 				28F4FE1B27610E5A00E699FC /* BabyData.swift in Sources */,
 				28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */,
 				285209E52753329600AB8BAC /* UITextfield+Extension.swift in Sources */,
+				285D0DDF27E7105900B22287 /* RecommendRepository.swift in Sources */,
 				28F4FE132760C3BA00E699FC /* LikeData.swift in Sources */,
 				281D35382761EF3F00A128A5 /* DiaryMainViewController.swift in Sources */,
 				288EFD112754F27C000D1617 /* AlertPageViewController.swift in Sources */,
@@ -1171,6 +1208,7 @@
 				285209F42753329600AB8BAC /* StoryboardInstantiable.swift in Sources */,
 				285209E22753329600AB8BAC /* UIImage+Extension.swift in Sources */,
 				28F9B2582783A18A00D7EF7A /* extension+UITextView.swift in Sources */,
+				285D0DE127E712B400B22287 /* MomoRecommendRepository.swift in Sources */,
 				288EFD132754F2AE000D1617 /* AlertTableViewController.swift in Sources */,
 				285209EB2753329600AB8BAC /* CanShowDetailView.swift in Sources */,
 				75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */,
@@ -1199,6 +1237,7 @@
 				28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */,
 				28A9995B2778793300459D19 /* InfoViewModel.swift in Sources */,
 				28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */,
+				285D0DE327E7163800B22287 /* RecommendRemoteAPI.swift in Sources */,
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
 				281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */,
 				28A9995D2778808800459D19 /* BookmarkData.swift in Sources */,
@@ -1244,6 +1283,7 @@
 				285209E82753329600AB8BAC /* MomoBaseTextField.swift in Sources */,
 				DDE3170D277F57500033FEF4 /* QnAView.swift in Sources */,
 				285209E12753329600AB8BAC /* UIView+Extension.swift in Sources */,
+				285D0DDA27E7060400B22287 /* RecommendViewModel.swift in Sources */,
 				28B49143274BB160002BA67A /* DeviceManager.swift in Sources */,
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,
 				DDE316F8277C94FB0033FEF4 /* Diary.swift in Sources */,
