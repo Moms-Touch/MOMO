@@ -34,10 +34,18 @@ class TabBar: UITabBarController {
     return navController
   }
   
+  private func makeRecommendViewController() -> UIViewController {
+    let networkManager = NetworkManager()
+    let remoteAPI = MomoRecommendRemoteAPI(networkManager: networkManager)
+    let repository = MomoRecommendRepository(remoteAPI: remoteAPI)
+    let viewmodel = RecommendViewModel(reposoitory: repository)
+    return RecommendViewController(viewModel: viewmodel)
+  }
+  
   func setupVCs() {
     viewControllers = [
       createNavController(for: HomeMainViewController.loadFromStoryboard(), image: UIImage(named: "home")!, title: "홈"),
-      createNavController(for: DiaryMainViewController.loadFromStoryboard(), image: UIImage(named: "calendar")!, title: "오늘 일기"),
+      createNavController(for: makeRecommendViewController(), image: UIImage(named: "calendar")!, title: "추천 정보"),
       createNavController(for: PolicyMainViewController.loadFromStoryboard(), image: UIImage(named: "policy")!, title: "정책"),
 //      createNavController(for: CommunityMainViewController(), image: UIImage(named: "people")!, title: "커뮤니티")
     ]
