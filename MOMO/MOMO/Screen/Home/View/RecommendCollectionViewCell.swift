@@ -15,7 +15,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         thumbNailImageView.setImage(with:thumbnailImageUrl)
         titleLabel.text = data?.title
       } else {
-        thumbNailImageView.image = UIImage(named: "Logo")!
+        thumbNailImageView.image = UIImage(named: "mascot")
         titleLabel.text = data?.title
       }
     }
@@ -28,7 +28,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
   lazy var thumbNailImageView: UIImageView = {
     let imageview = UIImageView(frame: CGRect(x: 0, y: 0, width: 103, height: 103))
     imageview.isUserInteractionEnabled = true
-    imageview.image = UIImage(named: "Logo")!
+    imageview.image = UIImage(named: "mascot")
     imageview.setRound(5)
     imageview.translatesAutoresizingMaskIntoConstraints = false
     return imageview
