@@ -30,9 +30,6 @@ extension String {
     guard let distanceDay = Calendar.current.dateComponents([.day], from: today, to: date).day else {
         return nil
     }
-    print(distanceDay)
-    print(distanceDay / 7)
-    print(40 - (distanceDay / 7))
     // 40 - 버림((출산예정일 - 오늘) / 7)
     var distanceWeek = 40 - (distanceDay / 7)
     if distanceWeek < 0 {
