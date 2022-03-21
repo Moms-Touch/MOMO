@@ -53,17 +53,26 @@ class MomoRecommendRepository: RecommendRepository {
       
   }
   
-  func bookmark(id: Int, category: Category) -> Observable<Bool> {
+  func bookmark(id: Int, category: Category) -> Completable {
     return readUserSession()
       .map { $0.token }
       .withUnretained(self)
       .flatMap { repo, token in
-        return repo.remoteAPI.
+        return repo.remoteAPI.bookmark(token: token, id: id, category: category)
       }
+      .asCompletable()
+      
+      
   }
   
-  func unBookmark(id: Int, category: String) -> Observable<Bool> {
-    return Observable.empty()
+  func unBookmark(id: Int, category: Category) -> Completable {
+    return readUserSession()
+      .map { $0.token }
+      .withUnretained(self)
+      .flatMap { repo, token in
+        return repo.remoteAPI.unbookmark(token: token, id: id, category: category)
+      }
+      .asCompletable()
   }
   
 }

@@ -17,9 +17,9 @@ protocol RecommendRepository {
   func getDetailRecommendedInfo(id: Int) -> Observable<InfoData>
   
   @discardableResult
-  func bookmark(id: Int, category: Category) -> Observable<Bool>
+  func bookmark(id: Int, category: Category) -> Completable
   
   @discardableResult
-  func unBookmark(id: Int, category: Category) -> Observable<Bool>
+  func unBookmark(id: Int, category: Category) -> Completable
   
 }
