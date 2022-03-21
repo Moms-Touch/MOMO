@@ -202,7 +202,6 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
       
       //output
       viewModel.output.goToWithdrawal
-        .filter { $0 == true }
         .drive(onNext: { _ in
           goToWithdrawalUser()
         })
@@ -215,25 +214,34 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
         })
         .disposed(by: disposeBag)
       
+      viewModel.output.gotoLogout
+        .drive(onNext: {
+          gotoLogout()
+          })
+        .disposed(by: disposeBag)
+      
+      viewModel.output.logoutCompleted
+        .filter { $0 == true }
+        .drive(onNext: { [weak self] _ in
+          self?.gotoLoginVC()
+        })
+        .disposed(by: disposeBag)
+      
       //input
       
       firstOptionLabel?.rx
         .tapGesture()
+        .debug()
         .when(.recognized)
-        .subscribe(onNext: { [unowned self] _ in
-          self.alert(title: "로그아웃", text: "로그아웃을 하시겠습니까?")
-            .observe(on: MainScheduler.instance)
-            .subscribe(onCompleted: {
-              self.gotoLoginVC()
-            })
-            .disposed(by: disposeBag)
-        })
+        .map {_ in ()}
+        .bind(to: viewModel.input.logoutClick)
         .disposed(by: disposeBag)
       
       secondOptionLabel?.rx
         .tapGesture()
+        .debug()
         .when(.recognized)
-        .map { _ in true }
+        .map { _ in ()}
         .bind(to: viewModel.input.withdrawalClick)
         .disposed(by: disposeBag)
       
@@ -253,6 +261,13 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
         self?.alertWithObservable(title: "회원탈퇴", text: "회원탈퇴를 하시겠습니까?")
           .bind(to: viewModel.input.withdrawApproved)
           .disposed(by: disposeBag)
+      }
+      
+      func gotoLogout() {
+        weak var `self` = self
+        self?.alertWithObservable(title: "로그아웃", text: "로그아웃을 하시겠습니까?")
+          .bind(to: viewModel.input.logoutApproved)
+        .disposed(by: disposeBag)
       }
       
     }

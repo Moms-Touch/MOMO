@@ -14,7 +14,9 @@ class InfoUserManageViewModel: InfoCellViewModel, ViewModelType {
   //MARK: - Input
   
   struct Input {
-    var withdrawalClick: AnyObserver<Bool>
+    var logoutClick: AnyObserver<Void>
+    var logoutApproved: AnyObserver<Bool>
+    var withdrawalClick: AnyObserver<Void>
     var withdrawApproved: AnyObserver<Bool>
   }
   
@@ -23,8 +25,10 @@ class InfoUserManageViewModel: InfoCellViewModel, ViewModelType {
   //MARK: - Output
   
   struct Output {
-    var goToWithdrawal: Driver<Bool>
+    var gotoLogout: Driver<Void>
+    var goToWithdrawal: Driver<Void>
     var withDrawalCompleted: Driver<Bool>
+    var logoutCompleted: Driver<Bool>
     var contactURL: URL
   }
   
@@ -33,9 +37,11 @@ class InfoUserManageViewModel: InfoCellViewModel, ViewModelType {
   
   //MARK: - Private properties
   private var repository: UserSessionRepository
-  private let goToWithdrawal = BehaviorRelay<Bool>(value: false)
-  
-  private let withDrawalClicked = BehaviorSubject<Bool>(value: false)
+  private let goToWithdrawal = PublishRelay<Void>()
+  private let logoutClicked = PublishSubject<Void>()
+  private let gotoLogout = PublishRelay<Void>()
+  private let logoutApproved = BehaviorSubject<Bool>(value: false)
+  private let withDrawalClicked = PublishSubject<Void>()
   private let withDrawalApproved = BehaviorSubject<Bool>(value: false)
   private var disposeBag = DisposeBag()
   
@@ -44,14 +50,29 @@ class InfoUserManageViewModel: InfoCellViewModel, ViewModelType {
   init(index: Int, repository: UserSessionRepository) {
     self.repository = repository
     let withDrawalCompleted = BehaviorSubject<Bool>(value: false)
+    let logoutCompleted = BehaviorRelay<Bool>(value: false)
+    
     let url =  URL(string: "https://momo-official.tistory.com/guestbook")!
-    self.output = Output(goToWithdrawal: goToWithdrawal.asDriver(onErrorJustReturn: false), withDrawalCompleted: withDrawalCompleted.asDriver(onErrorJustReturn: false), contactURL: url)
-    self.input = Input(withdrawalClick: withDrawalClicked.asObserver(), withdrawApproved: withDrawalApproved.asObserver())
+    self.output = Output(gotoLogout: gotoLogout.asDriver(onErrorJustReturn: ()),
+                         goToWithdrawal: goToWithdrawal.asDriver(onErrorJustReturn: ()),
+                         withDrawalCompleted: withDrawalCompleted.asDriver(onErrorJustReturn: false), logoutCompleted: logoutCompleted.asDriver(onErrorJustReturn: false),
+                         contactURL: url)
+    self.input = Input(logoutClick: logoutClicked.asObserver(),
+                       logoutApproved: logoutApproved.asObserver(),
+                       withdrawalClick: withDrawalClicked.asObserver(),
+                       withdrawApproved: withDrawalApproved.asObserver())
     super.init(index: index)
     
-    
-    
     //MARK: - Input -> Output
+    
+    logoutClicked
+      .debug()
+      .bind(to: gotoLogout)
+      .disposed(by: disposeBag)
+    
+    logoutApproved
+      .bind(to: logoutCompleted)
+      .disposed(by: disposeBag)
     
     withDrawalClicked
       .bind(to: goToWithdrawal)
