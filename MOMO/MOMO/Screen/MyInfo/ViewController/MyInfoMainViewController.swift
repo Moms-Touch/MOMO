@@ -153,7 +153,7 @@ extension MyInfoMainViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyInfoCollectionViewCell.identifier, for: indexPath) as! MyInfoCollectionViewCell
    
     if indexPath.item == InfoMainConstant.status.infoCell.rawValue {
-      cell.viewModel = viewModel.output.firstCellModel
+      cell.viewModel = viewModel.output.myInfoCellViewModel
     } else if indexPath.item == InfoMainConstant.status.changeCell.rawValue {
       cell.findCellheight(with: viewModel.defaultContent[indexPath.item])
       cell.viewModel = viewModel.output.infoChangecellModel
