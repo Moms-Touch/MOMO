@@ -685,17 +685,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		285D0DDB27E7081B00B22287 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				285D0DDE27E7105900B22287 /* RecommendRepository.swift */,
-				285D0DE027E712B400B22287 /* MomoRecommendRepository.swift */,
-				285D0DE227E7163800B22287 /* RecommendRemoteAPI.swift */,
-				285D0DE427E718FA00B22287 /* MomoRecommendRemoteAPI.swift */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
 		2861942F27DE497E0012250F /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,6 +700,7 @@
 		2861943027DE4A250012250F /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				28F6972227E89944006C429E /* RecommendRemoteAPI */,
 				2861943D27DF208B0012250F /* AuthRemoteAPI */,
 				2861944D27DF482C0012250F /* CloudStorage */,
 				2861943B27DF0C270012250F /* UserRemoteAPI */,
@@ -723,6 +713,8 @@
 		2861943127DE4A3D0012250F /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				285D0DDE27E7105900B22287 /* RecommendRepository.swift */,
+				285D0DE027E712B400B22287 /* MomoRecommendRepository.swift */,
 				2861940427DCA8D10012250F /* UserSessionRepository.swift */,
 				2861944727DF45880012250F /* AuthRepository.swift */,
 				2861940627DCAAA30012250F /* MomoUserSessionRepository.swift */,
@@ -939,6 +931,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		28F6972227E89944006C429E /* RecommendRemoteAPI */ = {
+			isa = PBXGroup;
+			children = (
+				285D0DE227E7163800B22287 /* RecommendRemoteAPI.swift */,
+				285D0DE427E718FA00B22287 /* MomoRecommendRemoteAPI.swift */,
+			);
+			path = RecommendRemoteAPI;
+			sourceTree = "<group>";
+		};
 		759A731627788FED00E549F6 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1084,7 +1085,6 @@
 		DD43E8E5270B4EBE00699DA1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				285D0DDB27E7081B00B22287 /* Repository */,
 				285D0DD827E705F000B22287 /* ViewModel */,
 				28A999592778791D00459D19 /* Model */,
 				288ED75D27427D2A00C5178D /* View */,
