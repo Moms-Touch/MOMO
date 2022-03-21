@@ -13,12 +13,10 @@ final class MomoUserSessionRepository: UserSessionRepository {
   private var userRemoteAPI: UserRemoteAPI
   private var userDataStore: UserSessionDataStore
   private var disposeBag = DisposeBag()
-  private var userSession: BehaviorSubject<UserSession?>
   
   init(remoteAPI: UserRemoteAPI, dataStore: UserSessionDataStore) {
     self.userDataStore = dataStore
     self.userRemoteAPI = remoteAPI
-    self.userSession = BehaviorSubject<UserSession?>(value: nil)
   }
   
   @discardableResult
@@ -42,12 +40,12 @@ final class MomoUserSessionRepository: UserSessionRepository {
         profile.nickname = new
         return (profile, session.token)
       }
-      .flatMapLatest({ (profile, token) -> Observable<(UserData, Token)> in
+      .flatMap({ (profile, token) -> Observable<(UserData, Token)> in
         let left = self.userRemoteAPI.updateUserInfo(with: profile, token: token)
         let right = Observable.just(token)
         return Observable.zip(left, right)
       })
-      .flatMapLatest({ profile, token in
+      .flatMap({ profile, token in
         return self.userDataStore.save(userSession: UserSession(profile: profile, token: token))
       })
       .map({ session in
@@ -69,12 +67,12 @@ final class MomoUserSessionRepository: UserSessionRepository {
         profile.location = new
         return (profile, session.token)
       }
-      .flatMapLatest({ (profile, token) -> Observable<(UserData, Token)> in
+      .flatMap({ (profile, token) -> Observable<(UserData, Token)> in
         let left = self.userRemoteAPI.updateUserInfo(with: profile, token: token)
         let right = Observable.just(token)
         return Observable.zip(left, right)
       })
-      .flatMapLatest({ profile, token in
+      .flatMap({ profile, token in
         return self.userDataStore.save(userSession: UserSession(profile: profile, token: token))
       })
       .map({ session in
@@ -102,12 +100,12 @@ final class MomoUserSessionRepository: UserSessionRepository {
         profile.isPregnant = isPregnant
         return (profile, session.token)
       }
-      .flatMapLatest({ (profile, token) -> Observable<(UserData, Token)> in
+      .flatMap({ (profile, token) -> Observable<(UserData, Token)> in
         let left = self.userRemoteAPI.updateUserInfo(with: profile, token: token)
         let right = Observable.just(token)
         return Observable.zip(left, right)
       })
-      .flatMapLatest({ profile, token in
+      .flatMap({ profile, token in
         return self.userDataStore.save(userSession: UserSession(profile: profile, token: token))
       })
       .map({ session in
