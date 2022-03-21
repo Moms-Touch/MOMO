@@ -25,7 +25,7 @@ final class MyInfoViewModel: ViewModelType {
     var email: Driver<String?>
     var description: Driver<String>
     var isLoggedIn: Driver<Bool>
-    var firstCellModel: MyInfoCellViewModel
+    var myInfoCellViewModel: MyInfoCellViewModel
     var infoChangecellModel: InfoChangeCellViewModel
     var infoUserManageCellModel: InfoUserManageViewModel
   }
@@ -82,40 +82,39 @@ final class MyInfoViewModel: ViewModelType {
       .bind(to: description)
       .disposed(by: disposeBag)
     
-    let firstCellModel = MyInfoCellViewModel(index: 0,
+    //MARK: - 1st child ViewModel - MyInfoCellViewModel
+
+    let myInfoCellViewModel = MyInfoCellViewModel(index: 0,
                                              email: self.email,
                                              nickname: self.nickName,
                                              description: self.description)
+
+    //MARK: - 2nd child ViewModel - InfoChangeCellModel
     
     let infoChangeCellModel = InfoChangeCellViewModel(index: 1,
                                                       content: defaultContent[1]!,
                                                       repository: repository )
     
     self.infoChangeCellModel = infoChangeCellModel
-    
-    self.infoChangeCellModel.output.newNickname
-      .drive(self.nickName)
-      .disposed(by: disposeBag)
-    
+
     self.infoChangeCellModel.output.newNickname
       .asObservable()
       .flatMap({ _ -> Observable<UserSession> in
         return repository.readUserSession()
       })
-      .bind(to: userSession)
+      .map { $0.profile.nickname}
+      .asDriver(onErrorJustReturn: "")
+      .drive(self.nickName)
       .disposed(by: disposeBag)
     
-    self.infoChangeCellModel.output.newPregnant
-      .drive(onNext: {
-        print($0)
-      })
-      .disposed(by: disposeBag)
-    
-    
-    
-    let infoUserCellModel = InfoUserManageViewModel(index: 2, repository: repository)
+    //MARK: - 3rd Child ViewModel - infoUsermanageViewModel
+
+    let infoUserCellModel = InfoUserManageViewModel(index: 2,
+                                                    repository: repository)
     self.infoUserManageCellModel = infoUserCellModel
     
+    
+    //MARK: - Input, Output
     
     self.input = Input(nickNameText: nickName,
                        emailText: email
@@ -124,7 +123,7 @@ final class MyInfoViewModel: ViewModelType {
                          email: self.email.asDriver(onErrorJustReturn: ""),
                          description: self.description.asDriver(onErrorJustReturn: ""),
                          isLoggedIn: isLoggedIn.asDriver(onErrorJustReturn: true),
-                         firstCellModel: firstCellModel,
+                         myInfoCellViewModel: myInfoCellViewModel,
                          infoChangecellModel: infoChangeCellModel,
                          infoUserManageCellModel: infoUserCellModel
                         )
