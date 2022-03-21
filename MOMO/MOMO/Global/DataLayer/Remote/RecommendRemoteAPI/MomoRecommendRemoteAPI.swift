@@ -45,19 +45,12 @@ final class MomoRecommendRemoteAPI: RecommendRemoteAPI {
   
   func bookmark(token: String, id: Int, category: Category) -> Completable {
     return networkManager.request(apiModel: PostApi.postBookmark(token: token, postId: id, postCategory: category))
-      
-      .withUnretained(self)
-      .flatMap { remoteAPI, data -> Observable<Bool> in
-        return Observable.just(true)
-      }
+      .asCompletable()
   }
   
-  func unbookmark(token: String, id: Int, category: Category) -> Observable<Bool> {
+  func unbookmark(token: String, id: Int, category: Category) -> Completable {
     return networkManager.request(apiModel: DeleteApi.deleteBookmark(token: token, postId: id, postCategory: category))
-      .asObservable()
-      .flatMap { data -> Observable<Bool> in
-        return Observable.just
-      }
+      .asCompletable()
   }
 
 }

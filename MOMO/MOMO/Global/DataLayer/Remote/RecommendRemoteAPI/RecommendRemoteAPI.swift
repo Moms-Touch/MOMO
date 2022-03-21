@@ -17,9 +17,9 @@ protocol RecommendRemoteAPI {
   func fetch(token: String, id: Int) -> Observable<InfoData>
   
   @discardableResult
-  func bookmark(token: String, id: Int, category: String) -> Observable<Bool>
+  func bookmark(token: String, id: Int, category: Category) -> Completable
   
   @discardableResult
-  func unbookmark(token: String, id: Int, category: String) -> Observable<Bool>
+  func unbookmark(token: String, id: Int, category: Category) -> Completable
   
 }
