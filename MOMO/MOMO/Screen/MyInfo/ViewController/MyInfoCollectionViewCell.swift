@@ -126,21 +126,18 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
       guard let viewModel = viewModel as? InfoChangeCellViewModel else {return}
       
       viewModel.output.goToChangeNickname
-        .filter { $0 == true }
         .drive(onNext: { _ in
           presentNicknameChangeAlertVC()
         })
         .disposed(by: disposeBag)
       
       viewModel.output.goToChangeLocation
-        .filter { $0 == true }
         .drive(onNext: { [unowned self] _ in
           self.presentLocationVC()
         })
         .disposed(by: disposeBag)
       
       viewModel.output.goToChangeIspregnant
-        .filter {$0 == true}
         .drive(onNext: { _ in
           presentPregnantStatusChangeActionSheet()
         })
@@ -152,14 +149,14 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
       firstOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
-        .map { _ in return true }
+        .map { _ in () }
         .bind(to: viewModel.input.isPregnantClicked)
         .disposed(by: disposeBag)
       
       secondOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
-        .map { _ in return true }
+        .map { _ in () }
         .bind(to: viewModel.input.locationClicked)
         .disposed(by: disposeBag)
       
@@ -174,7 +171,7 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
       forthOptionLabel?.rx
         .tapGesture()
         .when(.recognized)
-        .map { _ in return true }
+        .map { _ in () }
         .bind(to: viewModel.input.nicknameClicked)
         .disposed(by: disposeBag)
       

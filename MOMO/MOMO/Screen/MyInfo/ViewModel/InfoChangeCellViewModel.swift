@@ -14,9 +14,9 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
   //MARK: - Input
 
   struct Input {
-    var isPregnantClicked: AnyObserver<Bool>
-    var locationClicked: AnyObserver<Bool>
-    var nicknameClicked: AnyObserver<Bool>
+    var isPregnantClicked: AnyObserver<Void>
+    var locationClicked: AnyObserver<Void>
+    var nicknameClicked: AnyObserver<Void>
     var newNickname: AnyObserver<String>
     var newIsPregnant: AnyObserver<Bool>
   }
@@ -26,9 +26,9 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
   //MARK: - Output
   
   struct Output {
-    var goToChangeLocation: Driver<Bool>
-    var goToChangeNickname: Driver<Bool>
-    var goToChangeIspregnant: Driver<Bool>
+    var goToChangeLocation: Driver<Void>
+    var goToChangeNickname: Driver<Void>
+    var goToChangeIspregnant: Driver<Void>
     var newNickname: Driver<String>
     var newPregnant: Driver<Bool>
   }
@@ -37,9 +37,9 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
   
   //MARK: - Private properties
   private var content: [String]
-  private var isPregnantClick: BehaviorSubject<Bool>
-  private var changeNickNameClick: BehaviorSubject<Bool>
-  private var changeLocationClick: BehaviorSubject<Bool>
+  private var isPregnantClick: PublishSubject<Void>
+  private var changeNickNameClick: PublishSubject<Void>
+  private var changeLocationClick: PublishSubject<Void>
   
   private var newNickname = BehaviorSubject<String>(value: "")
   private var newPregnant = BehaviorSubject<Bool>(value: true)
@@ -50,11 +50,11 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
 
   init(index: Int, content: [String], repository: UserSessionRepository) {
     self.content = content
-    let isPregnantClick = BehaviorSubject<Bool>(value: false)
-    let changeNickNameClick = BehaviorSubject<Bool>(value: false)
-    let changeLocationClick = BehaviorSubject<Bool>(value: false)
+    let isPregnantClick = PublishSubject<Void>()
+    let changeNickNameClick = PublishSubject<Void>()
+    let changeLocationClick = PublishSubject<Void>()
     let isPregnantPublishSubject = PublishSubject<Bool>()
-    let nicknameBehaviorSubject = PublishSubject<String>()
+    let nicknamePublishSubject = PublishSubject<String>()
     
     self.isPregnantPublishSubject = isPregnantPublishSubject
     self.changeLocationClick = changeLocationClick
@@ -62,9 +62,9 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
     self.isPregnantClick = isPregnantClick
     
 
-    self.output = Output(goToChangeLocation: changeLocationClick.asDriver(onErrorJustReturn: false),
-                         goToChangeNickname: changeNickNameClick.asDriver(onErrorJustReturn: false),
-                         goToChangeIspregnant: isPregnantClick.asDriver(onErrorJustReturn: false),
+    self.output = Output(goToChangeLocation: changeLocationClick.asDriver(onErrorJustReturn: ()),
+                         goToChangeNickname: changeNickNameClick.asDriver(onErrorJustReturn: ()),
+                         goToChangeIspregnant: isPregnantClick.asDriver(onErrorJustReturn: ()),
                          newNickname: newNickname.asDriver(onErrorJustReturn: ""),
                          newPregnant: newPregnant.asDriver(onErrorJustReturn: true)
     )
@@ -72,14 +72,14 @@ class InfoChangeCellViewModel: InfoCellViewModel, ViewModelType {
     self.input = Input(isPregnantClicked: isPregnantClick.asObserver(),
                        locationClicked: changeLocationClick.asObserver(),
                        nicknameClicked: changeNickNameClick.asObserver(),
-                       newNickname: nicknameBehaviorSubject.asObserver(),
+                       newNickname: nicknamePublishSubject.asObserver(),
                        newIsPregnant: isPregnantPublishSubject.asObserver())
     
     super.init(index: index)
     
     //input -> Outeput
     
-    nicknameBehaviorSubject
+    nicknamePublishSubject
       .asObservable()
       .flatMapLatest { return repository.renameNickname(with: $0)}
       .map { $0.nickname}
