@@ -179,13 +179,15 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
         .disposed(by: disposeBag)
       
       func presentNicknameChangeAlertVC() {
-        self.textfieldAlert(title: "닉네임 변경하기", text: "닉네임 변경하시겠습니까")
+        weak var `self` = self
+        self?.textfieldAlert(title: "닉네임 변경하기", text: "닉네임 변경하시겠습니까")
           .bind(to: viewModel.input.newNickname)
           .disposed(by: disposeBag)
       }
       
       func presentPregnantStatusChangeActionSheet() {
-        self.actionSheet(title: "임신/출산 여부 변경",
+        weak var `self` = self
+        self?.actionSheet(title: "임신/출산 여부 변경",
                          text: "임신/출산 여부를 선택해주세요",
                          contents: ["임신 중", "출산 후"])
           .map { options in
@@ -247,7 +249,8 @@ class MyInfoCollectionViewCell: UICollectionViewCell {
         .disposed(by: disposeBag)
       
       func goToWithdrawalUser() {
-        self.alertWithObservable(title: "회원탈퇴", text: "회원탈퇴를 하시겠습니까?")
+        weak var `self` = self
+        self?.alertWithObservable(title: "회원탈퇴", text: "회원탈퇴를 하시겠습니까?")
           .bind(to: viewModel.input.withdrawApproved)
           .disposed(by: disposeBag)
       }
