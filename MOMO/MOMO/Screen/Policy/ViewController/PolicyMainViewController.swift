@@ -175,7 +175,7 @@ extension PolicyMainViewController: UITableViewDataSource, UITableViewDelegate {
     networkManager.request(apiModel: GetApi.policyDetailGet(token: token, id: datasource[indexPath.section].id)) { result in
       switch result {
       case .success(let data):
-        let parsingmanager = ParsingManager()
+        let parsingmanager = NetworkCoder()
         parsingmanager.judgeGenericResponse(data: data, model: PolicyData.self) { [weak self] (body) in
           guard let self = self else { return }
           DispatchQueue.main.async {
@@ -246,7 +246,7 @@ extension PolicyMainViewController {
     networkManager.request(apiModel: GetApi.policyGet(token: token, keyword: searchField.text, location: location, category: nil, page: page)) { (result) in
       switch result {
       case .success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: [PolicyData].self) { [weak self] (body) in
           guard let self = self else {return}
           DispatchQueue.main.async {
@@ -284,7 +284,7 @@ extension PolicyMainViewController {
     networkManager.request(apiModel: GetApi.policyGet(token: token, keyword: searchField.text, location: location, category: Filter.getCase(korean: category), page: page)) { (result) in
       switch result {
       case .success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: [PolicyData].self) { [weak self] (body) in
           guard let self = self else {return}
           DispatchQueue.main.async {

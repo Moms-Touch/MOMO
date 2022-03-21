@@ -106,7 +106,7 @@ final class PregnantStatusViewController: UIViewController, KeyboardScrollable {
     networkManager.request(apiModel: PostApi.registProfile(email: email, password: password, nickname: nickname, isPregnant: checkPregnant, hasChild: true, age: 0, location: location, babyName: babyname, babyBirth: babybirthday,  contentType: .jsonData)) { data in
       switch data {
       case .success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: LoginData.self) { [weak self] body in
           let newAccessToken = body.accesstoken
           let userId = body.id

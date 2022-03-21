@@ -100,8 +100,8 @@ final class LocationViewController: UIViewController, KeyboardScrollable {
         guard let self = self else { return }
         switch result {
         case .success(let data):
-          let parsingmanager = ParsingManager()
-          parsingmanager.judgeGenericResponse(data: data, model: UserData.self) { (userdata) in
+          let coder = NetworkCoder()
+          coder.judgeGenericResponse(data: data, model: UserData.self) { (userdata) in
             DispatchQueue.main.async {
               UserManager.shared.userInfo = userdata
               self.dismiss(animated: true, completion: nil)
