@@ -36,7 +36,8 @@ class TabBar: UITabBarController {
   
   private func makeRecommendViewController() -> UIViewController {
     let networkManager = NetworkManager()
-    let remoteAPI = MomoRecommendRemoteAPI(networkManager: networkManager)
+    let decoder = NetworkCoder()
+    let remoteAPI = MomoRecommendRemoteAPI(networkManager: networkManager, decoder: decoder)
     let repository = MomoRecommendRepository(remoteAPI: remoteAPI)
     let viewmodel = RecommendViewModel(reposoitory: repository)
     return RecommendViewController(viewModel: viewmodel)

@@ -11,12 +11,15 @@ import RxSwift
 protocol RecommendRepository {
   
   @discardableResult
-  func getRecommendInfo() -> Observable<InfoData>
+  func getRecommendInfo(start: Int, end: Int) -> Observable<[InfoData]>
   
   @discardableResult
-  func bookmark(id: Int, category: String) -> Observable<Bool>
+  func getDetailRecommendedInfo(id: Int) -> Observable<InfoData>
   
   @discardableResult
-  func unBookmark(id: Int, category: String) -> Observable<Bool>
+  func bookmark(id: Int, category: Category) -> Observable<Bool>
+  
+  @discardableResult
+  func unBookmark(id: Int, category: Category) -> Observable<Bool>
   
 }
