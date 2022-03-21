@@ -117,7 +117,7 @@ final class LoginViewController: ViewController {
     networkManager.request(apiModel: loginData) { [weak self] networkResult in
       switch networkResult {
       case .success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: LoginData.self) { body in
           let newAccessToken = body.accesstoken
           let userId = body.id

@@ -36,7 +36,7 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
     networkManager.request(apiModel: GetApi.bookmarkGet(token: token)) { (result) in
       switch result {
       case .success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: [BookmarkData].self) { [weak self] (body) in
           guard let self = self else {return}
           bookmarkData = body
@@ -88,7 +88,7 @@ final class CommuntiyBookmarkTableViewController: UITableViewController, Storybo
     networkManager.request(apiModel: GetApi.policyDetailGet(token: token, id: datasource[indexPath.section].id)) { result in
       switch result {
       case .success(let data):
-        let parsingmanager = ParsingManager()
+        let parsingmanager = NetworkCoder()
         parsingmanager.judgeGenericResponse(data: data, model: PolicyData.self) { [weak self] (body) in
           guard let self = self else { return }
           DispatchQueue.main.async {

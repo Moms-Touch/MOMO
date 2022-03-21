@@ -59,7 +59,7 @@ class BabyInfoViewModel {
       guard let self = self else {return}
       switch result {
       case .success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: BabyData.self) { (body) in
           DispatchQueue.main.async {
             let baby = body
@@ -91,7 +91,7 @@ class BabyInfoViewModel {
       guard let self = self else {return}
       switch result {
       case .success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: BabyData.self) { (body) in
           DispatchQueue.main.async {
             let baby = body

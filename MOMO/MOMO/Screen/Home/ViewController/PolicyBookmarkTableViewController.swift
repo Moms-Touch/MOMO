@@ -30,7 +30,7 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
     networkManager.request(apiModel: GetApi.bookmarkGet(token: token)) { (result) in
       switch result {
       case .success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: [BookmarkData].self) { [weak self]  (body) in
           guard let self = self else {return}
           bookmarkData = body
@@ -97,7 +97,7 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
     networkManager.request(apiModel: GetApi.infoDetailGet(token: token, id: infoId)) { (result) in
       switch result {
       case .success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: InfoData.self) { (body) in
           DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}

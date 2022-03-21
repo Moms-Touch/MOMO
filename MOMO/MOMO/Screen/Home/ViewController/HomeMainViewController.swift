@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable, UIViewControllerTransitioningDelegate {
+final class HomeMainViewController: UIViewController, StoryboardInstantiable, Dimmable, UIViewControllerTransitioningDelegate, BackgroundPureable {
   
   @IBOutlet weak var bannerCollectionView: UICollectionView! {
     didSet {
@@ -25,27 +25,12 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   @IBOutlet weak var babyProfileImageView: UIImageView! {
     didSet {
       babyProfileImageView.isUserInteractionEnabled = true
-      let tapgesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gotoMyProfile(_:)))
+      let tapgesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(gotoBabyVC(_:)))
       babyProfileImageView.addGestureRecognizer(tapgesture)
     }
   }
   
-  @IBOutlet weak var bellButton: UIButton! {
-    didSet {
-      bellButton.isHidden = true
-    }
-  }
-  @IBOutlet weak var dateWithBabyLabel: UILabel! {
-    didSet {
-      dateWithBabyLabel.setRound()
-      dateWithBabyLabel.font = UIFont.customFont(forTextStyle: .title3)
-    }
-  }
-  @IBOutlet weak var dateWithBabyButton: UIButton! {
-    didSet {
-      dateWithBabyButton.setRound()
-    }
-  }
+  @IBOutlet weak var settingButton: UIButton!
   
   //banner의 현재 페이지
   private var currentPage = 0
@@ -65,7 +50,9 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   }
   
   @objc func changeBabyName() {
-    changeButtonTitle()
+    DispatchQueue.main.async {
+      self.changeButtonTitle()
+    }
   }
   
   private func changeButtonTitle() {
@@ -75,10 +62,8 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     
     guard let babyBirth = UserManager.shared.babyInWeek else {
       self.view.makeToast("아이의 생일을 다시 입력해주세요")
-      self.dateWithBabyLabel.text = "생일 등록하기"
       return}
     guard let babyName = userInfo.baby?.first?.name else {
-      self.dateWithBabyLabel.text = "아이 이름 등록하기"
       return
     }
     if let imageUrl = userInfo.baby?.first?.imageUrl {
@@ -87,7 +72,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       self.babyProfileImageView.image = UIImage(named: "mascot")
       self.view.makeToast("가운데 버튼을 눌러서, 아이의 사진으로 변경해보아요🤰")
     }
-    self.dateWithBabyLabel.text = "\(babyName) \(babyBirth)"
   }
   
   override func viewDidLayoutSubviews() {
@@ -99,7 +83,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     networkManager.request(apiModel: GetApi.noticeGet) { result in
       switch result {
       case.success(let data):
-        let parsingManager = ParsingManager()
+        let parsingManager = NetworkCoder()
         parsingManager.judgeGenericResponse(data: data, model: [NoticeData].self) { data in
           DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
@@ -138,7 +122,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     networkManager.request(apiModel: GetApi.infoGet(token: token, start: "\(period.0)", end: "\(period.1)")) { (result) in
       switch result {
       case .success(let data):
-        let parsingmanager = ParsingManager()
+        let parsingmanager = NetworkCoder()
         parsingmanager.judgeGenericResponse(data: data, model: [InfoData].self) { [weak self] body in
           guard let self = self else {return}
           recommendModalVC.setData(data: body)
@@ -207,19 +191,65 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   
   
   @IBAction func didTapBellButton(_ sender: UIButton) {
-    self.navigationController?.pushViewController(AlertViewController.loadFromStoryboard(), animated: true)
-  }
-  
-  @IBAction private func didTapProfile(_ sender: Any) {
     gotoMyProfile()
   }
   
-  @objc private func gotoMyProfile(_ sender: Any?) {
-    gotoMyProfile()
+  @objc private func gotoBabyVC(_ sender: Any?) {
+    gotoBabyVC()
+  }
+  
+  private func gotoBabyVC() {
+    
+    guard let token = UserManager.shared.token else { return }
+    networkManager.request(apiModel: GetApi.babyGet(token: token)) { (result) in
+      switch result {
+      case .success(let data):
+        let parsingManager = NetworkCoder()
+        parsingManager.judgeGenericResponse(data: data, model: [BabyData].self) { [weak self] (body) in
+          guard let self = self else {return}
+          if body.count > 0 {
+            let baby = body[0]
+            DispatchQueue.main.async {
+              guard let babyInfoVC = MyBabyInfoViewController.loadFromStoryboard() as? MyBabyInfoViewController else {return}
+              babyInfoVC.babyViewModel = BabyInfoViewModel()
+              babyInfoVC.babyViewModel?.model = baby
+              self.present(babyInfoVC, animated: true, completion: nil)
+            }
+          } else  {
+            DispatchQueue.main.async {
+              guard let babyInfoVC = MyBabyInfoViewController.loadFromStoryboard() as? MyBabyInfoViewController else {return}
+              babyInfoVC.babyViewModel = BabyInfoViewModel()
+              self.present(babyInfoVC, animated: true, completion: nil)
+            }
+          }
+        }
+      case .failure(_):
+        return
+      }
+    }
+  }
+  
+  func makeMyInfoViewModel() -> MyInfoViewModel {
+    
+    //Dependencies
+    let coder = NetworkCoder()
+    let networkManager = NetworkManager(session: URLSession.shared, coder: coder)
+    let remoteAPI = MomoUserRemoteAPI(networkManager: networkManager, decoder: coder)
+    let datastore = MomoUserSessionDataStore(userManager: UserManager.shared, keychainService: KeyChainService.shared)
+    let repository = MomoUserSessionRepository(remoteAPI: remoteAPI, dataStore: datastore)
+
+    return MyInfoViewModel(repository: repository)
   }
   
   private func gotoMyProfile() {
-    self.navigationController?.pushViewController(MyInfoMainViewController.loadFromStoryboard(), animated: true)
+    let viewModel = makeMyInfoViewModel()
+    let pureCompletionHandler = { [weak self] in
+      self?.pure(direction: .Out)
+    }
+    let vc = MyInfoMainViewController(viewModel: viewModel, completion: pureCompletionHandler)
+    self.pure(direction: .In, alpha: 1, speed: 0.3)
+    vc.modalPresentationStyle = .overFullScreen
+    present(vc, animated: true, completion: nil)
   }
 }
 

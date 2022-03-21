@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -35,8 +36,8 @@
                                 <state key="normal" title="" image="bell">
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <buttonConfiguration key="configuration" style="plain" image="bell" title="">
-                                    <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system" title="">
+                                    <color key="baseForegroundColor" name="45"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="didTapBellButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qUG-64-sFn"/>
@@ -131,57 +132,31 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Lo-PL-Y53">
-                                <rect key="frame" x="106" y="317" width="163" height="45"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <connections>
-                                    <action selector="didTapProfile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="C5a-Io-mMo"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hub-s9-kv4">
-                                <rect key="frame" x="106" y="317" width="163" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="TuH-bB-tXz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jpF-y4-GV9" secondAttribute="trailing" id="7Tm-tr-WLe"/>
-                            <constraint firstItem="Hub-s9-kv4" firstAttribute="leading" secondItem="i7N-2r-EST" secondAttribute="leading" constant="-15" id="8P7-hj-yGY"/>
                             <constraint firstItem="i7N-2r-EST" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8Vo-3m-6qy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9Ei-lu-XKr" secondAttribute="trailing" constant="20" id="9Et-sL-0oa"/>
                             <constraint firstItem="PKa-eB-caM" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="CEs-zJ-aK1"/>
-                            <constraint firstItem="5Lo-PL-Y53" firstAttribute="top" secondItem="Hub-s9-kv4" secondAttribute="top" id="CG7-UU-l4z"/>
                             <constraint firstItem="Wfy-1u-fgY" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="IVc-wL-3zS"/>
                             <constraint firstItem="jpF-y4-GV9" firstAttribute="top" secondItem="Vtj-m1-iDU" secondAttribute="bottom" constant="10" id="Jmd-3x-7WM"/>
                             <constraint firstItem="i7N-2r-EST" firstAttribute="top" secondItem="jpF-y4-GV9" secondAttribute="bottom" constant="70" id="Kg8-AN-Xqt"/>
-                            <constraint firstItem="Hub-s9-kv4" firstAttribute="top" secondItem="i7N-2r-EST" secondAttribute="bottom" constant="-10" id="P81-4e-ySu"/>
                             <constraint firstItem="Wfy-1u-fgY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="QAq-OB-0wb"/>
-                            <constraint firstItem="5Lo-PL-Y53" firstAttribute="trailing" secondItem="Hub-s9-kv4" secondAttribute="trailing" id="Qej-FV-xD8"/>
                             <constraint firstItem="jpF-y4-GV9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="SB7-6d-inM"/>
-                            <constraint firstItem="5Lo-PL-Y53" firstAttribute="leading" secondItem="Hub-s9-kv4" secondAttribute="leading" id="Vjd-CC-eAu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PKa-eB-caM" secondAttribute="trailing" constant="20" id="WV3-4X-7VP"/>
                             <constraint firstItem="lJe-gp-myE" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="1/3" id="YPa-yI-3Nl"/>
-                            <constraint firstItem="5Lo-PL-Y53" firstAttribute="bottom" secondItem="Hub-s9-kv4" secondAttribute="bottom" id="cQp-NS-d8t"/>
                             <constraint firstItem="Vtj-m1-iDU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="d8n-qD-aFj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9Ei-lu-XKr" secondAttribute="bottom" constant="20" id="lmD-Fe-CTX"/>
                             <constraint firstItem="Vtj-m1-iDU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="sr3-ty-Rmm"/>
-                            <constraint firstItem="Hub-s9-kv4" firstAttribute="trailing" secondItem="i7N-2r-EST" secondAttribute="trailing" constant="15" id="x7P-EZ-cXI"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="babyProfileImageView" destination="lJe-gp-myE" id="N3U-TK-htE"/>
                         <outlet property="bannerCollectionView" destination="jpF-y4-GV9" id="Rn6-eL-Qyd"/>
-                        <outlet property="bellButton" destination="PKa-eB-caM" id="jR1-H4-8RT"/>
-                        <outlet property="dateWithBabyButton" destination="5Lo-PL-Y53" id="Bd7-FQ-FVd"/>
-                        <outlet property="dateWithBabyLabel" destination="Hub-s9-kv4" id="gkK-pm-hHi"/>
                         <outlet property="imageHuggingView" destination="i7N-2r-EST" id="gKg-ij-gMS"/>
+                        <outlet property="settingButton" destination="PKa-eB-caM" id="jR1-H4-8RT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -194,9 +169,13 @@
         <image name="Logo" width="84" height="16"/>
         <image name="bell" width="24" height="24"/>
         <image name="bookmark" width="24" height="24"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="mascot" width="153" height="141"/>
         <image name="recommendBtn" width="60" height="60"/>
         <image name="todayBtn" width="60" height="60"/>
+        <namedColor name="45">
+            <color red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
