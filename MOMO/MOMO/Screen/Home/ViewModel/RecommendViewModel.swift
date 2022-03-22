@@ -12,7 +12,7 @@ import RxCocoa
 final class RecommendViewModel {
   
   //MARK: - Input
-
+  
   struct Input {
     var tappedInfoData: AnyObserver<InfoData?>
   }
@@ -30,7 +30,7 @@ final class RecommendViewModel {
   
   //MARK: - Private
   private let repository: RecommendRepository
-  private let datasource = BehaviorSubject<[InfoData]>(value: [])
+  
   private let tappedInfoData = BehaviorSubject<InfoData?>(value: nil)
   private let goToDetail = PublishRelay<InfoData?>()
   private var disposeBag = DisposeBag()
@@ -38,23 +38,15 @@ final class RecommendViewModel {
   
   init(reposoitory: RecommendRepository) {
     self.repository = reposoitory
+    let datasource = BehaviorRelay<[InfoData]>(value: [])
+    
+    self.repository.getRecommendInfo()
+      .bind(to: datasource)
+      .disposed(by: disposeBag)
     
     tappedInfoData
       .bind(to: goToDetail)
       .disposed(by: disposeBag)
-    
-    datasource.onNext([
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: ""),
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: ""),
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: ""),
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: ""),
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: ""),
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: ""),
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: ""),
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: ""),
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: ""),
-      InfoData(id: 1, author: "hi", title: "hi", url: nil, thumbnailImageUrl: nil, isBookmark: false, week: 1, createdAt: "", updatedAt: "")
-                    ])
     
     self.input = Input(tappedInfoData: tappedInfoData.asObserver())
     self.output = Output(datasource: datasource.asDriver(onErrorJustReturn: []),

@@ -14,6 +14,9 @@ protocol RecommendRepository {
   func getRecommendInfo(start: Int, end: Int) -> Observable<[InfoData]>
   
   @discardableResult
+  func getRecommendInfo() -> Observable<[InfoData]>
+  
+  @discardableResult
   func getDetailRecommendedInfo(id: Int) -> Observable<InfoData>
   
   @discardableResult
