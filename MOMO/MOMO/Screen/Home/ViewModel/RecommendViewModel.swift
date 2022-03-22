@@ -48,6 +48,7 @@ final class RecommendViewModel {
       .bind(to: goToDetail)
       .disposed(by: disposeBag)
     
+
     self.input = Input(tappedInfoData: tappedInfoData.asObserver())
     self.output = Output(datasource: datasource.asDriver(onErrorJustReturn: []),
                          gotoDetail: goToDetail.asDriver(onErrorJustReturn: nil))

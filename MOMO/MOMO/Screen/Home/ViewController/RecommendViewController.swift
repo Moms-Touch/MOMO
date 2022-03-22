@@ -18,13 +18,13 @@ class RecommendViewController: UIViewController {
   let collectionView : UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     layout.scrollDirection = .vertical
-    layout.minimumLineSpacing = 10
+    layout.minimumLineSpacing = 30
     layout.minimumInteritemSpacing = 10
     
     let twoCardWidth: CGFloat = UIScreen.main.bounds.width / 2
-    layout.itemSize = CGSize(width: twoCardWidth - 50, height: 240)
+    layout.itemSize = CGSize(width: twoCardWidth - 40, height: twoCardWidth - 20)
     
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -41,6 +41,14 @@ class RecommendViewController: UIViewController {
     $0.text = "12주차 모모님을 위한 추천정보"
     $0.font = .customFont(forTextStyle: .title1)
   }
+  
+  func goToDetail(info: InfoData) {
+    guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController
+    else {return}
+    vc.transitioningDelegate = self
+    vc.data = info
+    present(vc, animated: true, completion: nil)
+  }
 
   
   //MARK: - BindViewModel
@@ -48,27 +56,26 @@ class RecommendViewController: UIViewController {
   
   func bindViewModel() {
     
-    func goToDetail(info: InfoData) {
-      guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController
-      else {return}
-      vc.data = info
-      self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     viewModel.output.gotoDetail
       .compactMap { $0 }
       .throttle(.seconds(1))
-      .drive(onNext: {
-//        goToDetail(info: $0)
-        print($0)
+      .drive(onNext: { [weak self] in
+        self?.goToDetail(info: $0)
       })
       .disposed(by: disposeBag)
     
     viewModel.output.datasource
       .drive(collectionView.rx.items(cellIdentifier: RecommendCollectionViewCell.identifier, cellType: RecommendCollectionViewCell.self)) {
         index, data, cell in
-        cell.data = data
+        cell.configure(data: data)
       }
+      .disposed(by: disposeBag)
+    
+    collectionView.rx.itemSelected
+      .withUnretained(self)
+      .subscribe(onNext: { vc, indexpath in
+        vc.selectedCell = vc.collectionView.cellForItem(at: indexpath) as? RecommendCollectionViewCell
+      })
       .disposed(by: disposeBag)
     
     collectionView.rx.modelSelected(InfoData.self)
@@ -79,6 +86,9 @@ class RecommendViewController: UIViewController {
   
   //MARK: - Private Properties
   private var disposeBag = DisposeBag()
+  private var selectedCell: RecommendCollectionViewCell?
+  private let transition = PopAnimator()
+
   
   //MARK: - Init
 
@@ -95,6 +105,9 @@ class RecommendViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
+    transition.dismissCompletion = {
+      self.selectedCell?.isHidden = false
+    }
   }
   
 }
@@ -105,7 +118,7 @@ extension RecommendViewController {
     view.addSubview(titleLabel)
     titleLabel.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
-      make.top.equalTo(self.view.safeAreaLayoutGuide).inset(20)
+      make.top.equalTo(self.view.safeAreaLayoutGuide).inset(30)
     }
     
     view.addSubview(collectionView)
@@ -116,3 +129,23 @@ extension RecommendViewController {
     
   }
 }
+
+
+extension RecommendViewController: UIViewControllerTransitioningDelegate {
+  
+  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    transition.originFrame = selectedCell!.superview!.convert(selectedCell!.frame, to: nil)
+    transition.presenting = true
+    selectedCell!.isHidden = true
+    
+    return transition
+  }
+  
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    transition.presenting = false
+    return transition
+  }
+  
+}
+
+
