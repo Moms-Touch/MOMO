@@ -38,9 +38,11 @@ class TabBar: UITabBarController {
     let networkManager = NetworkManager()
     let decoder = NetworkCoder()
     let remoteAPI = MomoRecommendRemoteAPI(networkManager: networkManager, decoder: decoder)
+    let userRemoteAPI = MomoUserRemoteAPI(networkManager: networkManager, decoder: decoder)
     let datastore = MomoUserSessionDataStore(userManager: UserManager.shared, keychainService: KeyChainService.shared)
     let repository = MomoRecommendRepository(remoteAPI: remoteAPI, userSessionDataStore: datastore)
-    let viewmodel = RecommendViewModel(reposoitory: repository)
+    let userRepository = MomoUserSessionRepository(remoteAPI: userRemoteAPI, dataStore: datastore)
+    let viewmodel = RecommendViewModel(reposoitory: repository, userRepository: userRepository)
     return RecommendViewController(viewModel: viewmodel)
   }
   

@@ -56,6 +56,10 @@ class RecommendViewController: UIViewController {
   
   func bindViewModel() {
     
+    viewModel.output.title
+      .drive(titleLabel.rx.text)
+      .disposed(by: disposeBag)
+    
     viewModel.output.gotoDetail
       .compactMap { $0 }
       .throttle(.seconds(1))
