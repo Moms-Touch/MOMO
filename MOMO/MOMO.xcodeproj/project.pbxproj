@@ -192,6 +192,7 @@
 		75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C427661C0F0057CF9B /* NetworkManager.swift */; };
 		75CE01C727662CAC0057CF9B /* NetworkCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C627662CAC0057CF9B /* NetworkCoder.swift */; };
 		75CE01CA27662CE00057CF9B /* APIable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C927662CE00057CF9B /* APIable.swift */; };
+		B1B9AE9727EA16DD006E01E1 /* RecommendDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */; };
 		CC766167614CF2CC3FDB4E83 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893E087FF19826B888D50EC3 /* Pods_MOMO.framework */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
@@ -390,6 +391,7 @@
 		75CE01C627662CAC0057CF9B /* NetworkCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCoder.swift; sourceTree = "<group>"; };
 		75CE01C927662CE00057CF9B /* APIable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIable.swift; sourceTree = "<group>"; };
 		893E087FF19826B888D50EC3 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewModel.swift; sourceTree = "<group>"; };
 		C08A9C8A34F7064BEC0846A8 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
@@ -681,6 +683,7 @@
 			isa = PBXGroup;
 			children = (
 				285D0DD927E7060400B22287 /* RecommendViewModel.swift */,
+				B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1466,6 +1469,7 @@
 				28A99961277882F600459D19 /* Category.swift in Sources */,
 				28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */,
 				2861940F27DCDEEC0012250F /* UserSessionDataStore.swift in Sources */,
+				B1B9AE9727EA16DD006E01E1 /* RecommendDetailViewModel.swift in Sources */,
 				28B192C22769685C00BAF93B /* KeyChainService.swift in Sources */,
 				DDE31702277F1A040033FEF4 /* DiaryQuestionManager.swift in Sources */,
 				288EFD0D2754F217000D1617 /* AlertViewController.swift in Sources */,
