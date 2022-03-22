@@ -14,6 +14,9 @@ protocol UserSessionDataStore {
   
   @discardableResult
   func readToken() -> Observable<Token?>
+    
+  @discardableResult
+  func readBabyData() -> Observable<BabyData?>
   
   @discardableResult
   func readUserData() -> Observable<UserData?>
