@@ -39,7 +39,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     thumbNailImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
     thumbNailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
     thumbNailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-    thumbNailImageView.heightAnchor.constraint(equalToConstant: contentView.frame.height * 0.7).isActive = true
+    thumbNailImageView.heightAnchor.constraint(equalTo: thumbNailImageView.widthAnchor).isActive = true
     titleLabel.topAnchor.constraint(equalTo: thumbNailImageView.bottomAnchor, constant: 10).isActive = true
     
     
@@ -76,3 +76,11 @@ extension RecommendCollectionViewCell {
     }
   }
 }
+
+extension RecommendCollectionViewCell {
+  func findCellHeight(title: String = "[필독] 임산부가\n 주의해야할 약 10가지") {
+    thumbNailImageView.image = UIImage.colorImage(color: Asset.Colors.pink5.color.cgColor, size: self.frame.size)
+    titleLabel.text = title
+  }
+}
+
