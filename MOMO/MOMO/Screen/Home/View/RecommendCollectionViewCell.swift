@@ -40,11 +40,11 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     thumbNailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
     thumbNailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     thumbNailImageView.heightAnchor.constraint(equalTo: thumbNailImageView.widthAnchor).isActive = true
+    
     titleLabel.topAnchor.constraint(equalTo: thumbNailImageView.bottomAnchor, constant: 10).isActive = true
-    
-    
     titleLabel.leadingAnchor.constraint(equalTo: thumbNailImageView.leadingAnchor).isActive = true
     titleLabel.trailingAnchor.constraint(equalTo: thumbNailImageView.trailingAnchor).isActive = true
+    titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     
     contentView.isAccessibilityElement = false
     thumbNailImageView.isAccessibilityElement = false
@@ -60,6 +60,13 @@ class RecommendCollectionViewCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
+  }
+  
+  static func fittingSize(width: CGFloat) -> CGSize {
+    let cell = RecommendCollectionViewCell()
+    cell.findCellHeight()
+    let targetSize = CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)
+    return cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
   }
   
 }

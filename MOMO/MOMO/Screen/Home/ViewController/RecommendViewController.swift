@@ -24,7 +24,8 @@ class RecommendViewController: UIViewController {
     layout.minimumInteritemSpacing = 10
     
     let twoCardWidth: CGFloat = UIScreen.main.bounds.width / 2
-    layout.itemSize = CGSize(width: twoCardWidth - 40, height: twoCardWidth + 5)
+    let size = RecommendCollectionViewCell.fittingSize(width: twoCardWidth - 40)
+    layout.itemSize = size
     
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
