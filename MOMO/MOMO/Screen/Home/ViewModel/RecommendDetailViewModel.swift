@@ -31,34 +31,44 @@ class RecommendDetailViewModel: ViewModelType {
   // Private Properities
   private var disposeBag = DisposeBag()
   private let repository: RecommendRepository
-  private let infoData: BehaviorSubject<InfoData>
+  private let infoData: BehaviorSubject<InfoData?>
   
   init(repository: RecommendRepository, info: BehaviorSubject<InfoData>) {
     self.repository = repository
-    self.infoData = info
+    let infoData = BehaviorSubject<InfoData?>(value: nil)
+    self.infoData = infoData
     let bookmarkButtonClick = PublishSubject<Void>()
     let bookmark = BehaviorRelay<Bool>(value: false)
     let url = BehaviorRelay<URL?>(value: nil)
     
-    self.infoData
-      .take(1)
+    self.input = Input(bookmarkButtonClick: bookmarkButtonClick.asObserver())
+    self.output = Output(url: url.asDriver(onErrorJustReturn: nil), bookmark: bookmark.asDriver(onErrorJustReturn: false))
+    
+    info
       .map { URL(string: $0.url!) }
       .bind(to: url)
       .disposed(by: disposeBag)
     
-    // 현재 북마크를 받아오기
-    self.infoData
-      .map { $0.isBookmark }
-      .bind(to: bookmark)
+    info
+      .withUnretained(self)
+      .flatMap({ vm, infoData in
+        return vm.repository.getDetailRecommendedInfo(id: infoData.id)
+      })
+      .bind(to: self.infoData)
       .disposed(by: disposeBag)
     
-    self.input = Input(bookmarkButtonClick: bookmarkButtonClick.asObserver())
-    
-    self.output = Output(url: url.asDriver(onErrorJustReturn: nil), bookmark: bookmark.asDriver(onErrorJustReturn: false))
+    // 현재 북마크를 받아오기
+    self.infoData
+      .compactMap { $0 }
+      .withUnretained(self)
+      .map { $0.1.isBookmark }
+      .bind(to: bookmark)
+      .disposed(by: disposeBag)
   
     // MARK: input -> output
     // bookmark 처리
-    bookmarkButtonClick.withLatestFrom(info)
+    bookmarkButtonClick.withLatestFrom(self.infoData)
+      .compactMap { $0 }
       .withUnretained(self)
       .flatMapLatest { vm, infoData -> Observable<(RecommendDetailViewModel, Int)> in
         return infoData.isBookmark == true ? vm.repository
@@ -71,7 +81,6 @@ class RecommendDetailViewModel: ViewModelType {
       .flatMapLatest { vm, id in
         return vm.repository.getDetailRecommendedInfo(id: id)
       }
-    // infodata에서 bookmark로 연결되기 때문에 infodata로 보내기
       .bind(to: self.infoData)
       .disposed(by: disposeBag)
       
