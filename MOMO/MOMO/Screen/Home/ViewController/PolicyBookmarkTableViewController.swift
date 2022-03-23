@@ -102,13 +102,13 @@ final class PolicyBookmarkTableViewController: UITableViewController, Storyboard
           DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
             guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController else {return}
-            vc.data = body
-            vc.index = indexPath.section
-            vc.deleteCompletionHandler = { index in
-              self.datasource.remove(at: index)
-              self.tableView.reloadData()
-              return
-            }
+//            vc.data = body
+//            vc.index = indexPath.section
+//            vc.deleteCompletionHandler = { index in
+//              self.datasource.remove(at: index)
+//              self.tableView.reloadData()
+//              return
+//            }
             self.present(vc, animated: true, completion: nil)
           }
         }

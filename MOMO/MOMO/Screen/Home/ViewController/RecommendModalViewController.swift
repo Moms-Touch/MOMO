@@ -156,7 +156,7 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
       cell.thumbNailImageView.image = UIImage(named: "Logo")
       cell.titleLabel.text = "도레미"
       cell.isUserInteractionEnabled = true
-      cell.getData(data: datasource[indexPath.row])
+//      cell.getData(data: datasource[indexPath.row])
     }
     return cell
   }
@@ -168,45 +168,29 @@ extension RecommendModalViewController: UICollectionViewDelegate, UICollectionVi
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     selectedCell = collectionView.cellForItem(at: indexPath) as? RecommendCollectionViewCell
     guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController else {return}
-    if let data = selectedCell?.data {
-      vc.data = data
-      vc.index = indexPath.item
-    }
-    vc.postCompletionHandler = { [weak self] id in
-      guard let self = self else {return}
-      for index in self.datasource.indices {
-        if self.datasource[index].id == id {
-          self.datasource[index].isBookmark = true
-          self.recommendCollectionView.reloadData()
-          return
-        }
-      }
-    }
-    vc.deleteCompletionHandler = { [weak self] index in
-      guard let self = self else {return}
-      self.datasource.remove(at: index)
-      self.recommendCollectionView.reloadData()
-      return
-    }
-    vc.transitioningDelegate = self
+//    if let data = selectedCell?.data {
+//      vc.data = data
+//      vc.index = indexPath.item
+//    }
+//    vc.postCompletionHandler = { [weak self] id in
+//      guard let self = self else {return}
+//      for index in self.datasource.indices {
+//        if self.datasource[index].id == id {
+//          self.datasource[index].isBookmark = true
+//          self.recommendCollectionView.reloadData()
+//          return
+//        }
+//      }
+//    }
+//    vc.deleteCompletionHandler = { [weak self] index in
+//      guard let self = self else {return}
+//      self.datasource.remove(at: index)
+//      self.recommendCollectionView.reloadData()
+//      return
+//    }
+//    vc.transitioningDelegate = self
     present(vc, animated: true, completion: nil)
   }
   
 }
 
-extension RecommendModalViewController: UIViewControllerTransitioningDelegate {
-  
-  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    transition.originFrame = selectedCell!.superview!.convert(selectedCell!.frame, to: nil)
-    transition.presenting = true
-    selectedCell!.isHidden = true
-    
-    return transition
-  }
-  
-  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    transition.presenting = false
-    return transition
-  }
-  
-}
