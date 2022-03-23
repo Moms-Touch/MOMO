@@ -42,15 +42,15 @@ class RecommendViewController: UIViewController {
     $0.font = .customFont(forTextStyle: .title1)
   }
   
-  func goToDetail(info: InfoData) {
+  func goToDetail(viewModel: RecommendDetailViewModel) {
     guard let vc = RecommendDetailViewController.loadFromStoryboard() as? RecommendDetailViewController
     else {return}
     vc.transitioningDelegate = self
-    vc.data = info
+    vc.viewModel = viewModel
     present(vc, animated: true, completion: nil)
   }
-
   
+ 
   //MARK: - BindViewModel
   var viewModel: RecommendViewModel
   
@@ -61,10 +61,10 @@ class RecommendViewController: UIViewController {
       .disposed(by: disposeBag)
     
     viewModel.output.gotoDetail
-      .compactMap { $0 }
       .throttle(.seconds(1))
+      .compactMap {$0}
       .drive(onNext: { [weak self] in
-        self?.goToDetail(info: $0)
+        self?.goToDetail(viewModel: $0)
       })
       .disposed(by: disposeBag)
     

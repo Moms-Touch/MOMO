@@ -23,7 +23,7 @@ final class RecommendViewModel {
   
   struct Output {
     var datasource: Driver<[InfoData]>
-    var gotoDetail: Driver<InfoData?>
+    var gotoDetail: Driver<RecommendDetailViewModel?>
     var title: Driver<String>
   }
   
@@ -34,7 +34,7 @@ final class RecommendViewModel {
   private let userRepository: UserSessionRepository
   
   private let tappedInfoData = BehaviorSubject<InfoData?>(value: nil)
-  private let goToDetail = PublishRelay<InfoData?>()
+  private let goToDetail = PublishRelay<RecommendDetailViewModel?>()
   private var disposeBag = DisposeBag()
   //MARK: - Init
   
@@ -56,14 +56,23 @@ final class RecommendViewModel {
       .bind(to: datasource)
       .disposed(by: disposeBag)
     
+    self.input = Input(tappedInfoData: tappedInfoData.asObserver())
+    self.output = Output(datasource: datasource.asDriver(onErrorJustReturn: []),
+                         gotoDetail: goToDetail.asDriver(onErrorJustReturn: nil),
+                         title: titleRelay.asDriver(onErrorJustReturn: ""))
+    
+    //input -> Output
+    
     tappedInfoData
+      .compactMap {$0}
+      .withUnretained(self)
+      .flatMap { vm, infoData -> Observable<RecommendDetailViewModel> in
+        let info = BehaviorSubject<InfoData>(value: infoData)
+        return Observable.just(RecommendDetailViewModel(repository: vm.repository, info: info))
+      }
       .bind(to: goToDetail)
       .disposed(by: disposeBag)
     
-
-    self.input = Input(tappedInfoData: tappedInfoData.asObserver())
-    self.output = Output(datasource: datasource.asDriver(onErrorJustReturn: []),
-                         gotoDetail: goToDetail.asDriver(onErrorJustReturn: nil), title: titleRelay.asDriver(onErrorJustReturn: ""))
   }
   
   
