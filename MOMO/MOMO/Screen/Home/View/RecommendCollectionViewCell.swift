@@ -15,7 +15,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
   lazy var thumbNailImageView: UIImageView = {
     let imageview = UIImageView(frame: CGRect(x: 0, y: 0, width: 103, height: 103))
     imageview.isUserInteractionEnabled = true
-    imageview.image = UIImage(named: "mascot")
+    imageview.image = UIImage.colorImage(color: Asset.Colors.pink5.color.cgColor, size: self.frame.size)
     imageview.setRound(5)
     imageview.translatesAutoresizingMaskIntoConstraints = false
     return imageview
@@ -71,7 +71,7 @@ extension RecommendCollectionViewCell {
       thumbNailImageView.setImage(with:thumbnailImageUrl)
       titleLabel.text = data.title
     } else {
-      thumbNailImageView.image = UIImage(named: "mascot")
+      thumbNailImageView.image = UIImage.colorImage(color: Asset.Colors.pink5.color.cgColor, size: self.frame.size)
       titleLabel.text = data.title
     }
   }
