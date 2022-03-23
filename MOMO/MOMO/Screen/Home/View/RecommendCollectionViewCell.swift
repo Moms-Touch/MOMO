@@ -56,12 +56,16 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
     
   }
-  
+}
+
+
+extension RecommendCollectionViewCell {
+  // MARK: 최적화된 Cell 크기구하기
   static func fittingSize(width: CGFloat) -> CGSize {
     let cell = RecommendCollectionViewCell()
     cell.findCellHeight()
@@ -69,10 +73,6 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     return cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
   }
   
-}
-
-
-extension RecommendCollectionViewCell {
   func configure(data: InfoData) {
     if let thumbnailImageUrl = data.thumbnailImageUrl {
       thumbNailImageView.setImage(with:thumbnailImageUrl)

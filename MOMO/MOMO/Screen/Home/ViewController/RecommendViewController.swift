@@ -23,6 +23,7 @@ class RecommendViewController: UIViewController {
     layout.minimumLineSpacing = 30
     layout.minimumInteritemSpacing = 10
     
+    // 콜랙션뷰는 한 화면에 2개씩 + 크기는 미리 구한다음에 정한다.
     let twoCardWidth: CGFloat = UIScreen.main.bounds.width / 2
     let size = RecommendCollectionViewCell.fittingSize(width: twoCardWidth - 40)
     layout.itemSize = size
