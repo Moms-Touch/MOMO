@@ -165,7 +165,6 @@
 		28F471452738B8D10074D148 /* PolicyMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471442738B8D10074D148 /* PolicyMainViewController.swift */; };
 		28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F471462738B8DC0074D148 /* MyInfoMainViewController.swift */; };
 		28F4714E2738F67A0074D148 /* HomeMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F4714D2738F67A0074D148 /* HomeMain.storyboard */; };
-		28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4714F273912220074D148 /* RecommendModalViewController.swift */; };
 		28F4715E273BE4620074D148 /* MySetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F4715D273BE4620074D148 /* MySetting.storyboard */; };
 		28F47164273BE5500074D148 /* MyBabyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F47163273BE5500074D148 /* MyBabyInfo.storyboard */; };
 		28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */; };
@@ -363,7 +362,6 @@
 		28F471442738B8D10074D148 /* PolicyMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyMainViewController.swift; sourceTree = "<group>"; };
 		28F471462738B8DC0074D148 /* MyInfoMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainViewController.swift; sourceTree = "<group>"; };
 		28F4714D2738F67A0074D148 /* HomeMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeMain.storyboard; sourceTree = "<group>"; };
-		28F4714F273912220074D148 /* RecommendModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModalViewController.swift; sourceTree = "<group>"; };
 		28F4715D273BE4620074D148 /* MySetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MySetting.storyboard; sourceTree = "<group>"; };
 		28F47163273BE5500074D148 /* MyBabyInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBabyInfo.storyboard; sourceTree = "<group>"; };
 		28F47167273BE7150074D148 /* MyBabyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBabyInfoViewController.swift; sourceTree = "<group>"; };
@@ -891,7 +889,6 @@
 			isa = PBXGroup;
 			children = (
 				28F471402738B3090074D148 /* HomeMainViewController.swift */,
-				28F4714F273912220074D148 /* RecommendModalViewController.swift */,
 				288ED75B27427CD000C5178D /* BookmarkListViewController.swift */,
 				288ED76627428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift */,
 				288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */,
@@ -1356,7 +1353,6 @@
 				286193FE27DB7F590012250F /* MyInfoCollectionViewCell.swift in Sources */,
 				2861941127DCE0380012250F /* UserSession.swift in Sources */,
 				2861944227DF219A0012250F /* MomoAuthRemoteAPI.swift in Sources */,
-				28F47150273912220074D148 /* RecommendModalViewController.swift in Sources */,
 				281D353F27647FD500A128A5 /* BannerCell.swift in Sources */,
 				289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */,
 				75BF0C0B276B489900C2D0C1 /* LoginApi.swift in Sources */,
