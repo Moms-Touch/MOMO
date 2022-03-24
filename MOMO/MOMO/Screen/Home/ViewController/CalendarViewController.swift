@@ -73,12 +73,12 @@ extension CalendarViewController {
 extension CalendarViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    <#code#>
+    1
   }
 
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    <#code#>
+    return UICollectionViewCell()
   }
   
   

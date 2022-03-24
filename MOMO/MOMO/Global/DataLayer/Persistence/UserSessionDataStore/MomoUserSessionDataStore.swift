@@ -41,6 +41,16 @@ final class MomoUserSessionDataStore: UserSessionDataStore {
     return combinedObservable
   }
   
+  func readBabyData() -> Observable<BabyData?> {
+    readUserData()
+      .compactMap { $0 }
+      .map { profile in
+        profile.baby?.first
+      }
+      .asObservable()
+      .share()
+  }
+  
   func readUserData() -> Observable<UserData?> {
     Observable .just(userManager.userInfo)
       .share()

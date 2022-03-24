@@ -60,8 +60,8 @@ extension UIView {
       }))
       UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController?.presentedViewController?.present(alertVC, animated: true, completion: nil)
       return Disposables.create()
-      }
     }
+  }
   
   func textfieldAlert(title: String, text: String?) -> Observable<String> {
     return Observable.create { observer in
@@ -72,12 +72,12 @@ extension UIView {
       alertVC.addAction(UIAlertAction.cancelAction)
       alertVC.addAction(UIAlertAction(title: "네", style: .default,
                                       handler: { _ in
-      observer.onNext(alertVC.textFields?[0].text ?? "")
+        observer.onNext(alertVC.textFields?[0].text ?? "")
       }))
       UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController?.presentedViewController?.present(alertVC, animated: true, completion: nil)
       return Disposables.create()
-      }
     }
+  }
   
   func alertWithObservable(title: String, text: String?) -> Observable<Bool> {
     return Observable.create { observer in
@@ -88,8 +88,8 @@ extension UIView {
       }))
       UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController?.presentedViewController?.present(alertVC, animated: true, completion: nil)
       return Disposables.create()
-      }
     }
+  }
   
   func actionSheet(title: String, text: String?, contents: [String]) -> Observable<Int> {
     return Observable.create { observer in

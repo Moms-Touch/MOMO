@@ -47,6 +47,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     changeButtonTitle()
 
     NotificationCenter.default.addObserver(self, selector: #selector(changeBabyName), name: UserManager.didSetAppUserNotification, object: nil)
+    bannerCollectionView.isHidden = true
   }
   
   @objc func changeBabyName() {
@@ -109,35 +110,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     imageView.center = view.center
     view.addSubview(imageView)
     self.view.sendSubviewToBack(imageView)
-  }
-  
-  @IBAction private func didTapRecommendButton(_ sender: UIButton) {
-    let recommendModalVC = RecommendModalViewController()
-    customNavigationDelegate.direction = .bottom
-    recommendModalVC.transitioningDelegate = customNavigationDelegate
-    recommendModalVC.modalPresentationStyle = .custom
-    // networking
-    guard let token = UserManager.shared.token else {return}
-    guard let period = UserManager.shared.periodOfWeek else {return}
-    networkManager.request(apiModel: GetApi.infoGet(token: token, start: "\(period.0)", end: "\(period.1)")) { (result) in
-      switch result {
-      case .success(let data):
-        let parsingmanager = NetworkCoder()
-        parsingmanager.judgeGenericResponse(data: data, model: [InfoData].self) { [weak self] body in
-          guard let self = self else {return}
-          recommendModalVC.setData(data: body)
-          DispatchQueue.main.async {
-            self.dim(direction: .In, color: .black, alpha: 0.5, speed: 0.3)
-            recommendModalVC.completionHandler = { [weak self] in
-              self?.dim(direction: .Out)
-            }
-            self.present(recommendModalVC, animated: true, completion: nil)
-          }
-        }
-      case .failure(let error):
-        fatalError("\(error)")
-      }
-    }
   }
   
   @IBAction private func didTapTodayButton(_ sender: UIButton) {

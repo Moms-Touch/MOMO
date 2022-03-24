@@ -54,9 +54,9 @@ enum PostApi: APIable {
     switch self {
     case .registProfile:
       return makePathtoURL(path: "/auth/signup")
-    case .login(email: let email, password: let password, contentType: let contentType):
+    case .login:
       return makePathtoURL(path: "/auth/login")
-    case .findPassword(email: let email, contentType: let contentType):
+    case .findPassword:
       return makePathtoURL(path: "/auth/password")
     case .postBookmark:
       return makePathtoURL(path: "/bookmark")

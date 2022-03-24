@@ -27,11 +27,11 @@ final class MomoCalendarUseCase: CalendarUseCase {
   // MARK: - Methods
   
   func monthMetadata(for baseDate: Date) -> Observable<MonthMetadata> {
-    <#code#>
+    return Observable.empty()
   }
   
   func generateDaysInMonth(for baseDate: Date) -> Observable<[Day]> {
-    <#code#>
+    return Observable.empty()
   }
   
   
@@ -49,7 +49,7 @@ final class MomoCalendarUseCase: CalendarUseCase {
   private func generatedDay(offsetBy dayOffset: Int, for baseDate: Date, isWithinDisplayedMonth: Bool) -> Day {
     let date = calendar.date(byAdding: .day, value: dayOffset, to: baseDate) ?? baseDate
     
-    return Day(date: date, number: <#T##String#>, isSelected: <#T##Bool#>, isWithDisplayMonth: <#T##Bool#>, mood: <#T##String?#>)
+    return Day(date: date, number: "", isSelected: true, isWithDisplayMonth: true, mood: nil)
   }
   
 }
