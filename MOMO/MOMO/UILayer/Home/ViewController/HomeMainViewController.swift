@@ -237,13 +237,6 @@ extension HomeMainViewController: UICollectionViewDelegate, UICollectionViewData
     return cell
   }
   
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let url = datasource[indexPath.row].url
-    let storyboard = UIStoryboard.init(name: "MySetting", bundle: nil)
-    guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingWebViewController") as? SettingWebViewController else {return}
-    vc.targetURL = URL(string: url)!
-    present(vc, animated: true, completion: nil)
-  }
 }
 
 extension HomeMainViewController: UICollectionViewDelegateFlowLayout {
