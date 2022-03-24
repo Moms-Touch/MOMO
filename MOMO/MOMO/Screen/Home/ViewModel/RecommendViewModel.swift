@@ -62,7 +62,7 @@ final class RecommendViewModel {
                          title: titleRelay.asDriver(onErrorJustReturn: ""))
     
     //input -> Output
-    
+    //info data를 통해서 viewmodel을 만든다음에, viewmodel을 publishSubject로 보내서 vc에서 gotoDetail.drive에서 바로 전환할수있게 함
     tappedInfoData
       .compactMap {$0}
       .withUnretained(self)

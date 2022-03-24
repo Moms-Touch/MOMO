@@ -84,6 +84,7 @@ extension RecommendCollectionViewCell {
   }
 }
 
+// MARK: Cell의 높이를 구하게 도와주는 helper 함수
 extension RecommendCollectionViewCell {
   func findCellHeight(title: String = "[필독] 임산부가\n 주의해야할 약 10가지") {
     thumbNailImageView.image = UIImage.colorImage(color: Asset.Colors.pink5.color.cgColor, size: self.frame.size)

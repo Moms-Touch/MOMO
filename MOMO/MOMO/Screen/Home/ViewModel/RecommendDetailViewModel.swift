@@ -49,6 +49,7 @@ class RecommendDetailViewModel: ViewModelType {
       .bind(to: url)
       .disposed(by: disposeBag)
     
+    // info의 값을 통해서 detail을 가져오고, self.infoData에 바인딩
     info
       .withUnretained(self)
       .flatMap({ vm, infoData in
@@ -66,7 +67,8 @@ class RecommendDetailViewModel: ViewModelType {
       .disposed(by: disposeBag)
   
     // MARK: input -> output
-    // bookmark 처리
+    // bookmark 처리 -> 버튼이 눌리면, infodata에서 값을 가져와서 bookmark가 true -> unbookmark / false -> bookmark
+    // bookmark 후에, infodata를 다시가져와서 self.infoData에 바인딩 (이 작업이 필요가 있을까?) 
     bookmarkButtonClick.withLatestFrom(self.infoData)
       .compactMap { $0 }
       .withUnretained(self)
