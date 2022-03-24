@@ -7,50 +7,45 @@
 
 import UIKit
 import WebKit
+import RxSwift
+import RxCocoa
 
-class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, StoryboardInstantiable {
+class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, StoryboardInstantiable, ViewModelBindableType {
   
-//  var viewModel: InfoDataViewModel?
-  var postCompletionHandler: ((Int)->Void)?
-  var deleteCompletionHandler: ((Int)->Void)?
-  
-  @IBOutlet weak var goButton: UIButton! {
-    didSet {
-      goButton.momoButtonStyle()
-    }
+  // MARK: BindViewmodel
+  func bindViewModel() {
+    guard let viewModel = viewModel else {return}
+    // output
+    viewModel.output.bookmark
+      .drive(bookmarkButton.rx.isSelected)
+      .disposed(by: disposeBag)
+    
+    viewModel.output.url
+      .debug()
+      .drive(onNext: { [unowned self] url in
+        self.loadURL(url: url)
+      })
+      .disposed(by: disposeBag)
+    
+    // input
+    bookmarkButton.rx.tap
+      .bind(to: viewModel.input.bookmarkButtonClick)
+      .disposed(by: disposeBag)
+
   }
+  
+  var viewModel: RecommendDetailViewModel?
+  private var disposeBag = DisposeBag()
+  
   @IBOutlet weak var webView: WKWebView!
-  @IBOutlet weak var bookmarkButton: UIButton! {
-    didSet {
-      guard let data = data else {
-        return
-      }
-      if data.isBookmark == true {
-        bookmarkButton.isSelected = true
-      } else {
-        bookmarkButton.isSelected = false
-      }
-    }
-  }
-  var data: InfoData?
-  var index: Int = 0
-  lazy var networkingManager = NetworkManager()
+  @IBOutlet weak var bookmarkButton: UIButton!
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    guard let data = data else {
-      return
-    }
-    
-    print("ㄸ", data.id)
-    let url = URL(string: data.url!)
-    loadURL(url: url)
+    bindViewModel()
   }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-  }
-  
+
   private func loadURL(url: URL?) {
     guard let url = url else {
       return
@@ -68,59 +63,5 @@ class RecommendDetailViewController: UIViewController, WKUIDelegate, WKNavigatio
   @IBAction func didTapBackButton(_ sender: UIButton) {
     dismiss(animated: true, completion: nil)
   }
-  
-  @IBAction func didTapBookmarkButton(_ sender: UIButton) {
-    guard let token = UserManager.shared.token else {return}
-    guard var data = data else {
-      return
-    }
-    if data.id != -1 {
-      if data.isBookmark == false {
-        networkingManager.request(apiModel: PostApi.postBookmark(token: token, postId: data.id, postCategory: .info)) { [weak self] (result) in
-          guard let self = self else {return}
-          switch result {
-          case .success(_):
-            DispatchQueue.main.async {
-              self.bookmarkButton.isSelected = true
-              self.data?.isBookmark = true
-              guard let completionHandler = self.postCompletionHandler else {
-                return
-              }
-              completionHandler(data.id)
-            }
-          case .failure(let error):
-            print(error)
-          }
-        }
-      } else {
-        networkingManager.request(apiModel: DeleteApi.deleteBookmark(token: token, postId: data.id, postCategory: .info)) { [weak self] (result) in
-          guard let self = self else {return}
-          switch result {
-          case .success(_):
-            DispatchQueue.main.async {
-              self.data?.isBookmark = false 
-              self.bookmarkButton.isSelected = false
-              guard let deleteCompletionHandler = self.deleteCompletionHandler else {
-                return
-              }
-              deleteCompletionHandler(self.index)
-            }
-          case .failure(let error):
-            print(error)
-          }
-        }
-      }
-    }
-  }
-  
-  @IBAction func didTapDirectToLink(_ sender: UIButton) {
-    let storyboard = UIStoryboard(name: "MySetting", bundle: nil)
-    guard let vc = storyboard.instantiateViewController(withIdentifier: "SettingWebViewController") as? SettingWebViewController else {return}
-    guard let data = data else {
-      return
-    }
-    vc.targetURL = URL(string: data.url!)
-    present(vc, animated: true, completion: nil)
-  }
-  
+
 }
