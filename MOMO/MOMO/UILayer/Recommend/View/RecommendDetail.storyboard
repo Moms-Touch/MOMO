@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Recommend Detail View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="RecommendDetailViewController" id="Y6W-OH-hqX" customClass="RecommendDetailViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vab-BS-Isc">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7n9-zG-X7C">
+                                        <rect key="frame" x="16" y="11" width="12.666666666666664" height="22"/>
+                                        <color key="tintColor" red="0.1685813665" green="0.1725670993" blue="0.1808590293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="chevron.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="didTapBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yzK-ec-p4c"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTZ-hl-Iog">
+                                        <rect key="frame" x="187.66666666666666" y="22" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="mTZ-hl-Iog" firstAttribute="centerX" secondItem="Vab-BS-Isc" secondAttribute="centerX" id="4IY-3l-OaW"/>
+                                    <constraint firstItem="7n9-zG-X7C" firstAttribute="centerY" secondItem="Vab-BS-Isc" secondAttribute="centerY" id="GSR-xv-Ny5"/>
+                                    <constraint firstItem="mTZ-hl-Iog" firstAttribute="centerY" secondItem="Vab-BS-Isc" secondAttribute="centerY" id="Jke-kq-h1b"/>
+                                    <constraint firstAttribute="height" constant="44" id="ewm-st-m8l"/>
+                                    <constraint firstItem="7n9-zG-X7C" firstAttribute="leading" secondItem="Vab-BS-Isc" secondAttribute="leading" constant="16" id="mbl-m5-mZI"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNe-xD-Jj8">
+                                <rect key="frame" x="0.0" y="710" width="375" height="102"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiK-2S-vE2">
+                                        <rect key="frame" x="20" y="32" width="38" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="Gjl-dp-QFe"/>
+                                            <constraint firstAttribute="width" constant="38" id="JO9-kr-uVK"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="bookmark_big"/>
+                                        <state key="selected" image="bookmarkPinkLine"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="XiK-2S-vE2" firstAttribute="leading" secondItem="mNe-xD-Jj8" secondAttribute="leading" constant="20" id="Kh5-o9-FEh"/>
+                                    <constraint firstItem="XiK-2S-vE2" firstAttribute="centerY" secondItem="mNe-xD-Jj8" secondAttribute="centerY" id="fl5-0F-fLN"/>
+                                </constraints>
+                            </view>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b63-0m-HdD">
+                                <rect key="frame" x="0.0" y="88" width="375" height="622"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mNe-xD-Jj8" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="102 / 812" id="56k-Tu-S4a"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mNe-xD-Jj8" secondAttribute="trailing" id="FmA-Dy-5hb"/>
+                            <constraint firstAttribute="trailing" secondItem="Vab-BS-Isc" secondAttribute="trailing" id="LWt-5w-9hm"/>
+                            <constraint firstItem="b63-0m-HdD" firstAttribute="top" secondItem="Vab-BS-Isc" secondAttribute="bottom" id="MeT-0I-2az"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="b63-0m-HdD" secondAttribute="trailing" id="UlH-dw-X9o"/>
+                            <constraint firstItem="b63-0m-HdD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Xmq-sc-Xme"/>
+                            <constraint firstItem="Vab-BS-Isc" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="a0l-QU-phO"/>
+                            <constraint firstItem="mNe-xD-Jj8" firstAttribute="top" secondItem="b63-0m-HdD" secondAttribute="bottom" id="cbx-GR-S0K"/>
+                            <constraint firstItem="mNe-xD-Jj8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="iOR-HN-PT7"/>
+                            <constraint firstAttribute="bottom" secondItem="mNe-xD-Jj8" secondAttribute="bottom" id="rWf-go-oKJ"/>
+                            <constraint firstItem="Vab-BS-Isc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="t6z-sF-BJK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bookmarkButton" destination="XiK-2S-vE2" id="RGU-lQ-8iM"/>
+                        <outlet property="webView" destination="b63-0m-HdD" id="Jvh-pR-TVn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="118"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bookmarkPinkLine" width="38" height="38"/>
+        <image name="bookmark_big" width="38" height="38"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
