@@ -193,8 +193,13 @@
 		B1B9AEA127EC7786006E01E1 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEA027EC7786006E01E1 /* CalendarViewModel.swift */; };
 		B1B9AEA327EC7984006E01E1 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEA227EC7984006E01E1 /* CalendarHeaderView.swift */; };
 		B1B9AEA527EC7D6B006E01E1 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEA427EC7D6B006E01E1 /* CalendarCollectionViewCell.swift */; };
-		B1B9AEA727EC81E8006E01E1 /* CalendarUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEA627EC81E8006E01E1 /* CalendarUserCase.swift */; };
+		B1B9AEA727EC81E8006E01E1 /* CalendarUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEA627EC81E8006E01E1 /* CalendarUseCase.swift */; };
 		B1B9AEB127ECC429006E01E1 /* CalendarHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEB027ECC429006E01E1 /* CalendarHeaderViewModel.swift */; };
+		B1B9AEB327EDE20C006E01E1 /* DiaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEB227EDE20C006E01E1 /* DiaryRepository.swift */; };
+		B1B9AEB527EDE226006E01E1 /* MomoDiaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEB427EDE226006E01E1 /* MomoDiaryRepository.swift */; };
+		B1B9AEBA27EDE3BD006E01E1 /* DiaryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEB927EDE3BD006E01E1 /* DiaryDataStore.swift */; };
+		B1B9AEBC27EE1727006E01E1 /* MomoDiaryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEBB27EE1727006E01E1 /* MomoDiaryDataStore.swift */; };
+		B1B9AEBE27EE1D3A006E01E1 /* DataStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEBD27EE1D3A006E01E1 /* DataStoreError.swift */; };
 		CC766167614CF2CC3FDB4E83 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893E087FF19826B888D50EC3 /* Pods_MOMO.framework */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
@@ -394,8 +399,13 @@
 		B1B9AEA027EC7786006E01E1 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		B1B9AEA227EC7984006E01E1 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		B1B9AEA427EC7D6B006E01E1 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
-		B1B9AEA627EC81E8006E01E1 /* CalendarUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUserCase.swift; sourceTree = "<group>"; };
+		B1B9AEA627EC81E8006E01E1 /* CalendarUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUseCase.swift; sourceTree = "<group>"; };
 		B1B9AEB027ECC429006E01E1 /* CalendarHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderViewModel.swift; sourceTree = "<group>"; };
+		B1B9AEB227EDE20C006E01E1 /* DiaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryRepository.swift; sourceTree = "<group>"; };
+		B1B9AEB427EDE226006E01E1 /* MomoDiaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoDiaryRepository.swift; sourceTree = "<group>"; };
+		B1B9AEB927EDE3BD006E01E1 /* DiaryDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDataStore.swift; sourceTree = "<group>"; };
+		B1B9AEBB27EE1727006E01E1 /* MomoDiaryDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoDiaryDataStore.swift; sourceTree = "<group>"; };
+		B1B9AEBD27EE1D3A006E01E1 /* DataStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreError.swift; sourceTree = "<group>"; };
 		C08A9C8A34F7064BEC0846A8 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
@@ -470,7 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				2861940E27DCDEEC0012250F /* UserSessionDataStore.swift */,
-				2861945227E069EA0012250F /* MomoUserSessionDataStore.swift */,
+				B1B9AEB827EDE3A6006E01E1 /* Implementation */,
 			);
 			path = UserSessionDataStore;
 			sourceTree = "<group>";
@@ -730,6 +740,8 @@
 				2861944727DF45880012250F /* AuthRepository.swift */,
 				2861940627DCAAA30012250F /* MomoUserSessionRepository.swift */,
 				2861944E27DF49710012250F /* MomoAuthRepository.swift */,
+				B1B9AEB227EDE20C006E01E1 /* DiaryRepository.swift */,
+				B1B9AEB427EDE226006E01E1 /* MomoDiaryRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -737,6 +749,7 @@
 		2861943227DE4A8D0012250F /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				B1B9AEB627EDE395006E01E1 /* DiaryDataStore */,
 				281A90F027E07D040019B690 /* UserSessionDataStore */,
 				28B192C12769685C00BAF93B /* KeyChainService.swift */,
 				28A99964277ABAD100459D19 /* UserManager.swift */,
@@ -977,7 +990,7 @@
 		B1B9AEA827ECC26B006E01E1 /* CalendarUseCase */ = {
 			isa = PBXGroup;
 			children = (
-				B1B9AEA627EC81E8006E01E1 /* CalendarUserCase.swift */,
+				B1B9AEA627EC81E8006E01E1 /* CalendarUseCase.swift */,
 			);
 			path = CalendarUseCase;
 			sourceTree = "<group>";
@@ -1044,6 +1057,24 @@
 				B1B9AEA427EC7D6B006E01E1 /* CalendarCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B1B9AEB627EDE395006E01E1 /* DiaryDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				B1B9AEB927EDE3BD006E01E1 /* DiaryDataStore.swift */,
+				B1B9AEBB27EE1727006E01E1 /* MomoDiaryDataStore.swift */,
+				B1B9AEBD27EE1D3A006E01E1 /* DataStoreError.swift */,
+			);
+			path = DiaryDataStore;
+			sourceTree = "<group>";
+		};
+		B1B9AEB827EDE3A6006E01E1 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				2861945227E069EA0012250F /* MomoUserSessionDataStore.swift */,
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 		B941767FC29939FBBCF33955 /* Pods */ = {
@@ -1434,12 +1465,14 @@
 				285209E22753329600AB8BAC /* UIImage+Extension.swift in Sources */,
 				28F9B2582783A18A00D7EF7A /* extension+UITextView.swift in Sources */,
 				285D0DE127E712B400B22287 /* MomoRecommendRepository.swift in Sources */,
+				B1B9AEB327EDE20C006E01E1 /* DiaryRepository.swift in Sources */,
 				2861940727DCAAA30012250F /* MomoUserSessionRepository.swift in Sources */,
 				2861940527DCA8D10012250F /* UserSessionRepository.swift in Sources */,
 				288EFD132754F2AE000D1617 /* AlertTableViewController.swift in Sources */,
 				B1B9AEA527EC7D6B006E01E1 /* CalendarCollectionViewCell.swift in Sources */,
+				B1B9AEB527EDE226006E01E1 /* MomoDiaryRepository.swift in Sources */,
 				285209EB2753329600AB8BAC /* CanShowDetailView.swift in Sources */,
-				B1B9AEA727EC81E8006E01E1 /* CalendarUserCase.swift in Sources */,
+				B1B9AEA727EC81E8006E01E1 /* CalendarUseCase.swift in Sources */,
 				75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */,
 				2861943A27DF0B1A0012250F /* NetworkProtocol.swift in Sources */,
 				28F4713F2738A4020074D148 /* TabBar.swift in Sources */,
@@ -1464,6 +1497,7 @@
 				280BEFD5274BA35900F031A7 /* DetailViewController.swift in Sources */,
 				28CA30772753357300EF071E /* CreateQuestionViewController.swift in Sources */,
 				28CA30732753357300EF071E /* QuestionsMainViewController.swift in Sources */,
+				B1B9AEBA27EDE3BD006E01E1 /* DiaryDataStore.swift in Sources */,
 				DDE316FD277EF53B0033FEF4 /* ReadDiaryViewController.swift in Sources */,
 				285209A02753325F00AB8BAC /* WithTextCollectionViewCell.swift in Sources */,
 				DDE317142781A1700033FEF4 /* VoiceView.swift in Sources */,
@@ -1535,10 +1569,12 @@
 				2861941C27DE0E590012250F /* ViewModelBindableType.swift in Sources */,
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,
 				DDE316F8277C94FB0033FEF4 /* Diary.swift in Sources */,
+				B1B9AEBC27EE1727006E01E1 /* MomoDiaryDataStore.swift in Sources */,
 				2861942C27DE46850012250F /* NetworkEncoding.swift in Sources */,
 				2861945327E069EA0012250F /* MomoUserSessionDataStore.swift in Sources */,
 				75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */,
 				75AF4A7C277EB30C00F3A041 /* ViewController.swift in Sources */,
+				B1B9AEBE27EE1D3A006E01E1 /* DataStoreError.swift in Sources */,
 				DDE31704277F24140033FEF4 /* WithVoiceViewController.swift in Sources */,
 				75BF0C11276CA01B00C2D0C1 /* PostApi.swift in Sources */,
 				28F4FE172760CA7900E699FC /* NoticeData.swift in Sources */,
