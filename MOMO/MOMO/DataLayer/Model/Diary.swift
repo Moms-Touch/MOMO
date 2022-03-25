@@ -62,4 +62,5 @@ enum DiaryEmotion: String {
   case angry
   case sad
   case blue
+  case unknown
 }
