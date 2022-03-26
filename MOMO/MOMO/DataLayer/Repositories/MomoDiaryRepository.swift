@@ -17,6 +17,16 @@ final class MomoDiaryRepository: DiaryRepository {
     self.diaryDataStore = diaryDataStore
   }
   
+  // MARK: - Methods
+  
+  func save(diary: Diary) -> Observable<Diary> {
+    return diaryDataStore.create(diary: diary)
+  }
+  
+  func readDiaryDetail(date: Date) -> Observable<Diary> {
+    return diaryDataStore.read(date: date)
+  }
+  
   func readEmotionInMonth(date: Date) -> Observable<[DiaryEmotion]> {
     
     let calendar = Calendar.current
@@ -35,7 +45,15 @@ final class MomoDiaryRepository: DiaryRepository {
       .map { diarys in
         return diarys.map { DiaryEmotion(rawValue: $0.emotion) ?? .unknown}
       }
-    
   }
+  
+  func delete(diary: Diary) -> Completable {
+    return diaryDataStore.delete(diary: diary)
+  }
+  
+  func updateDiary(with new: Diary) -> Observable<Diary> {
+    return diaryDataStore.update(with: new)
+  }
+  
   
 }
