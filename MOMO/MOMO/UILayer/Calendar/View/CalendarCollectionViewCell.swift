@@ -12,17 +12,26 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class CalendarCollectionViewCell: UICollectionViewCell {
-    
+class CalendarCollectionViewCell: UICollectionViewCell{
+  
   private let numberLabel = UILabel().then {
     $0.textAlignment = .center
-    $0.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-    $0.textColor = .label
+    $0.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+    $0.textColor = Asset.Colors._45.color
+  }
+  
+  private let emojiImageView = UIImageView().then {
+    $0.image = nil
+    $0.contentMode = .scaleAspectFill
+    $0.isUserInteractionEnabled = true
   }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    contentView.backgroundColor = .clear
     contentView.addSubview(numberLabel)
+    contentView.addSubview(emojiImageView)
+    
   }
   
   required init?(coder: NSCoder) {
@@ -31,6 +40,39 @@ class CalendarCollectionViewCell: UICollectionViewCell {
   
   override func layoutSubviews() {
     super.layoutSubviews()
+    
+    let size = 45
+    
+    numberLabel.snp.makeConstraints { make in
+      make.top.equalToSuperview().inset(4)
+      make.left.equalToSuperview().inset(4)
+    }
+    
+    emojiImageView.snp.makeConstraints { make in
+      make.center.equalTo(numberLabel.snp.center)
+      make.width.height.equalTo(size)
+    }
+    
   }
   
+}
+
+extension CalendarCollectionViewCell {
+  func configure(day: Day, index: Int) {
+    
+    if index % 7 == 0 {
+      self.numberLabel.textColor = Asset.Colors.pink4.color
+    }
+    
+    if index % 7 == 6 && index < 28 {
+      contentView.addBorder([.bottom], color: Asset.Colors.pink4.color, width: 1)
+    } else {
+      if index < 28 {
+        contentView.addBorder([.bottom, .right], color: Asset.Colors.pink4.color, width: 1)
+      } else if index % 7 != 6{
+        contentView.addBorder([.right ], color: Asset.Colors.pink4.color, width: 1)
+      }
+    }
+    self.numberLabel.text = day.number
+  }
 }

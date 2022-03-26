@@ -23,27 +23,48 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.isScrollEnabled = false
     collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.backgroundColor = .clear
     return collectionView
     
   }()
   
+  private let footerView = UIImageView().then {
+    $0.image = UIImage(named: "calendarBackground")!
+    $0.contentMode = .scaleToFill
+  }
+
   
   // MARK: - Viewmodel & BindViewModel
   
   func bindViewModel() {
+    viewModel.output.days
+      .drive(collectionView.rx.items(cellIdentifier: CalendarCollectionViewCell.identifier, cellType: CalendarCollectionViewCell.self)) {
+        index, data, cell in
+        cell.configure(day: data, index: index)
+      }
+      .disposed(by: disposeBag)
     
+    viewModel.output.numberOfWeeksInBaseDate
+      .drive(numberOfWeeksInBaseDate)
+      .disposed(by: disposeBag)
+    
+    collectionView.rx.setDelegate(self)
+      .disposed(by: disposeBag)
   }
 
   var viewModel: CalendarViewModel
   
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
-
+  private let days = BehaviorRelay<[Day]>(value: [])
+  private let numberOfWeeksInBaseDate = BehaviorRelay<Int>(value: 0)
+  
   // MARK: - init
   
   init(viewModel: CalendarViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
+    bind(viewModel: self.viewModel)
   }
   
   required init?(coder: NSCoder) {
@@ -63,31 +84,55 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
 // MARK: - SetupUI
 extension CalendarViewController {
   private func setupUI() {
-    collectionView.delegate = self
-    collectionView.dataSource = self
+    view.backgroundColor = .white
     collectionView.register(CalendarCollectionViewCell.self)
+    
+    let headerview = CalendarHeaderView(viewModel: viewModel.output.calendarHeaderViewModel).then {
+      $0.backgroundColor = .white
+    }
+  
+    view.addSubview(headerview)
+    view.addSubview(footerView)
+    view.addSubview(collectionView)
+    
+    footerView.snp.makeConstraints { make in
+      make.left.right.equalToSuperview()
+      make.top.equalTo(collectionView.snp.top)
+      make.bottom.equalTo(collectionView.snp.bottom).offset(150)
+    }
+    
+    headerview.snp.makeConstraints { make in
+      make.top.left.right.equalToSuperview()
+      make.bottom.equalTo(collectionView.snp.top)
+      make.height.equalTo(110)
+    }
+    
+    collectionView.snp.makeConstraints { make in
+      make.left.right.equalToSuperview()
+      make.height.equalTo(collectionView.snp.width).multipliedBy(0.8)
+    }
   }
 }
 
-// MARK: - UICollectionViewDatasource
-extension CalendarViewController: UICollectionViewDataSource {
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    1
-  }
+// MARK: - DelegateFlowLayout
 
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    return UICollectionViewCell()
-  }
-  
-  
-
-}
-
-// MARK: - UICollctionViewDelegateFlowlayout
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
   
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return 0
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return 0
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let width = Int(collectionView.frame.width / 7)
+    let height = Int(collectionView.frame.height) / numberOfWeeksInBaseDate.value
+    return CGSize(width: width, height: height)
+  }
+  
 }
+
 
 
