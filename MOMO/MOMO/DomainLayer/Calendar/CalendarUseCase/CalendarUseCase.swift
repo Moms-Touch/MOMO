@@ -11,6 +11,7 @@ import RxCocoa
 
 protocol CalendarUseCase {
   func generateDaysInMonth(for baseDate: Date) -> Observable<[Day]>
+  var numberOfWeeksInBaseDate: Int { get }
 }
 
 enum CalendarDataError: Error {
@@ -20,11 +21,23 @@ enum CalendarDataError: Error {
 final class MomoCalendarUseCase: CalendarUseCase {
   
   // MARK: - Dependencies
+  private let repository: DiaryRepository
+  private var selectedDate: Date
+  private var baseDate: Date
+  
+  // MARK: - Private properties
+  private var disposeBag = DisposeBag()
   
   // MARK: - init
   
-  init() {
-    
+  init(repository: DiaryRepository, baseDate: Date) {
+    self.repository = repository
+    self.selectedDate = baseDate
+    self.baseDate = baseDate
+  }
+  
+  var numberOfWeeksInBaseDate: Int {
+    return calendar.range(of: .weekOfMonth, in: .month, for: baseDate)?.count ?? 0
   }
   
   // MARK: - Methods
@@ -53,9 +66,20 @@ final class MomoCalendarUseCase: CalendarUseCase {
       }
       
     days += generateStartOfNextMonth(using: firstDayOfMonth)
-    
-    return Observable.just(days)
-    
+  
+    // days는 기본Emotion은 .unknown임, readEmotion을 통해서 기간동안의 date를 가져오고, 이를 통해서 기본 days에 date를 비교한뒤에 변경한다.
+    return self.repository.readEmotions(from: days.first!.date, to: days.last!.date)
+      .map { arr  -> [Day] in
+        var newDays = days
+        arr.forEach { (date, mood) in
+          if let index = newDays.firstIndex(where: { $0.date == date}) {
+            newDays[index].mood = mood
+          }
+        }
+        return newDays
+      }
+      .share()
+
   }
   
   
@@ -85,7 +109,8 @@ final class MomoCalendarUseCase: CalendarUseCase {
   private func generatedDay(offsetBy dayOffset: Int, for baseDate: Date, isWithinDisplayedMonth: Bool) -> Day {
     let date = calendar.date(byAdding: .day, value: dayOffset, to: baseDate) ?? baseDate
     
-    return Day(date: date, number: "", isSelected: true, isWithDisplayMonth: true, mood: nil)
+    return Day(date: date, number: dateFormatter.string(from: date), isSelected: calendar.isDate(date, inSameDayAs: selectedDate), isWithDisplayMonth: isWithinDisplayedMonth, mood: .unknown)
+    
   }
   
   // 마지막날이 토요일로 끝나지 않는 이상, 다음 날의 것도 날짜를 가져와서 뒤에붙여준다.
