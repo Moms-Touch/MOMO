@@ -43,7 +43,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   override func viewDidLoad() {
     super.viewDidLoad()
     assignbackground()
-    getNotice()
     changeButtonTitle()
 
     NotificationCenter.default.addObserver(self, selector: #selector(changeBabyName), name: UserManager.didSetAppUserNotification, object: nil)
@@ -78,25 +77,6 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   override func viewDidLayoutSubviews() {
     imageHuggingView.setRound()
     babyProfileImageView.setRound()
-  }
-  
-  private func getNotice() {
-    networkManager.request(apiModel: GetApi.noticeGet) { result in
-      switch result {
-      case.success(let data):
-        let parsingManager = NetworkCoder()
-        parsingManager.judgeGenericResponse(data: data, model: [NoticeData].self) { data in
-          DispatchQueue.main.async { [weak self] in
-            guard let self = self else {return}
-            self.datasource = data
-            self.bannerCollectionView.reloadData()
-            self.bannerTimer()
-          }
-        }
-      case .failure(let error):
-        print("notice 없다")
-      }
-    }
   }
   
   private func assignbackground(){
@@ -199,6 +179,19 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
         return
       }
     }
+  }
+  
+  func makeCalendarViewModel() -> CalendarViewModel {
+    let datastore = MomoDiaryDataStore()
+    let repository = MomoDiaryRepository(diaryDataStore: datastore)
+    let usecase = MomoCalendarUseCase(repository: repository, baseDate: Date())
+    return CalendarViewModel(calendarUseCase: usecase)
+  }
+  
+  @IBAction private func gotoCalender(_ sender: UIButton) {
+    let vm = makeCalendarViewModel()
+    let vc = CalendarViewController(viewModel: vm)
+    self.present(vc, animated: true)
   }
   
   func makeMyInfoViewModel() -> MyInfoViewModel {
