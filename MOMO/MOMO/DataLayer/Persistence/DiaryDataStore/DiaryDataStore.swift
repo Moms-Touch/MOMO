@@ -14,7 +14,7 @@ protocol DiaryDataStore {
   func create(diary: Diary) -> Observable<Diary>
   
   @discardableResult
-  func read(date: Date) -> Observable<Diary>
+  func read(date: Date) -> Observable<Diary?>
   
   @discardableResult
   func read(from fromDate: Date, to toDate: Date) -> Observable<[Diary]>

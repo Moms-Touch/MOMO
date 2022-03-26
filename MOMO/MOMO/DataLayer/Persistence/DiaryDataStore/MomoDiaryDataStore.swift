@@ -24,12 +24,13 @@ final class MomoDiaryDataStore: DiaryDataStore {
         realm.add(diary)
       })
       return Observable.just(diary)
+        .share()
     } catch {
       return Observable.error(error)
     }
   }
   
-  func read(date: Date) -> Observable<Diary> {
+  func read(date: Date) -> Observable<Diary?> {
     let realm = try! Realm()
     let targetZero = date.timeToZero()
     let target = realm.objects(Diary.self).where {
@@ -37,10 +38,12 @@ final class MomoDiaryDataStore: DiaryDataStore {
     }
     
     guard let diary = target.first else {
-      return Observable.error(DataStoreError.noResult)
+      return Observable.just(nil)
+        .share()
     }
     
     return Observable.just(diary)
+      .share()
     
   }
   
@@ -51,6 +54,7 @@ final class MomoDiaryDataStore: DiaryDataStore {
         .filter("date BETWEEN {%@, %@}", fromDate, toDate))
     
       return Observable.just(result)
+        .share()
     } catch {
       return Observable.error(error)
     }
@@ -83,6 +87,7 @@ final class MomoDiaryDataStore: DiaryDataStore {
         realm.add(new, update: .modified)
       }
       return Observable.just(new)
+        .share()
     } catch {
       return Observable.error(error)
     }

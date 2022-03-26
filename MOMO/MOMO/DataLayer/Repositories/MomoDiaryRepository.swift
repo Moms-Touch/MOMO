@@ -21,13 +21,23 @@ final class MomoDiaryRepository: DiaryRepository {
   
   func save(diary: Diary) -> Observable<Diary> {
     return diaryDataStore.create(diary: diary)
+      .share()
   }
   
-  func readDiaryDetail(date: Date) -> Observable<Diary> {
+  func readDiaryDetail(date: Date) -> Observable<Diary?> {
     return diaryDataStore.read(date: date)
+      .share()
   }
   
-  func readEmotionInMonth(date: Date) -> Observable<[DiaryEmotion]> {
+  func readEmotions(from fromDate: Date, to toDate: Date) -> Observable<[(Date, DiaryEmotion)]> {
+    return diaryDataStore.read(from: fromDate, to: toDate)
+      .map { diarys in
+        return diarys.map { ($0.date, DiaryEmotion(rawValue: $0.emotion) ?? .unknown) }
+      }
+      .share()
+  }
+  
+  func readEmotionInMonth(date: Date) -> Observable<[(Date, DiaryEmotion)]> {
     
     let calendar = Calendar.current
     
@@ -43,8 +53,9 @@ final class MomoDiaryRepository: DiaryRepository {
     
     return diaryDataStore.read(from: firstDayInMonth, to: lastDayInMonth)
       .map { diarys in
-        return diarys.map { DiaryEmotion(rawValue: $0.emotion) ?? .unknown}
+        return diarys.map { ($0.date, DiaryEmotion(rawValue: $0.emotion) ?? .unknown) }
       }
+      .share()
   }
   
   func delete(diary: Diary) -> Completable {
@@ -53,6 +64,7 @@ final class MomoDiaryRepository: DiaryRepository {
   
   func updateDiary(with new: Diary) -> Observable<Diary> {
     return diaryDataStore.update(with: new)
+      .share()
   }
   
   

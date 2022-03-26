@@ -10,7 +10,7 @@ import Foundation
 struct Day {
   let date: Date
   let number: String
-  let isSelected: Bool
-  let isWithDisplayMonth: Bool
-  let mood: String? // 감정
+  var isSelected: Bool
+  var isWithDisplayMonth: Bool
+  var mood: DiaryEmotion // 감정
 }
