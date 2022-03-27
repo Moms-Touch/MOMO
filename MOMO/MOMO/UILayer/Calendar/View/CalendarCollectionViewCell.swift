@@ -41,16 +41,15 @@ class CalendarCollectionViewCell: UICollectionViewCell{
   override func layoutSubviews() {
     super.layoutSubviews()
     
-    let size = 45
-    
     numberLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().inset(4)
       make.left.equalToSuperview().inset(4)
     }
     
     emojiImageView.snp.makeConstraints { make in
-      make.center.equalTo(numberLabel.snp.center)
-      make.width.height.equalTo(size)
+      make.centerX.equalToSuperview()
+      make.centerY.equalToSuperview().offset(5)
+      make.height.width.equalToSuperview().multipliedBy(0.6)
     }
     
   }
@@ -60,19 +59,34 @@ class CalendarCollectionViewCell: UICollectionViewCell{
 extension CalendarCollectionViewCell {
   func configure(day: Day, index: Int) {
     
+    for layer in contentView.layer.sublayers ?? []{
+         if layer.name == "border" {
+              layer.removeFromSuperlayer()
+         }
+     }
+    
     if index % 7 == 0 {
       self.numberLabel.textColor = Asset.Colors.pink4.color
+    } else {
+      self.numberLabel.textColor = Asset.Colors._45.color
     }
     
-    if index % 7 == 6 && index < 28 {
-      contentView.addBorder([.bottom], color: Asset.Colors.pink4.color, width: 1)
-    } else {
-      if index < 28 {
+    if index < 28 {
+      if index % 7 == 6 {
+        contentView.addBorder([.bottom], color: Asset.Colors.pink4.color, width: 1)
+      } else {
         contentView.addBorder([.bottom, .right], color: Asset.Colors.pink4.color, width: 1)
-      } else if index % 7 != 6{
-        contentView.addBorder([.right ], color: Asset.Colors.pink4.color, width: 1)
+      }
+    } else {
+      if index % 7 == 6 {
+        contentView.addBorder([.bottom], color: Asset.Colors.pink4.color, width: 1)
+      } else {
+        contentView.addBorder([.right], color: Asset.Colors.pink4.color, width: 1)
       }
     }
+    
     self.numberLabel.text = day.number
+    self.emojiImageView.image = day.mood.image
+    
   }
 }

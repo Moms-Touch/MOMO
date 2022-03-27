@@ -41,9 +41,9 @@ final class CalendarHeaderViewModel: ViewModelType {
     let dayNumberPublishSubject = PublishSubject<Int>()
     let dayLetterBehaviorRelay = BehaviorRelay<(Int, String)>(value: (0, ""))
     let monthBehaviorRelay = BehaviorRelay<String>(value: "2021.7")
-    let nextMonthClick = BehaviorSubject<Void>(value: ())
-    let previousMonthClick = BehaviorSubject<Void>(value: ())
-    let closeButtonClick = BehaviorSubject<Void>(value: ())
+    let nextMonthClick = PublishSubject<Void>()
+    let previousMonthClick = PublishSubject<Void>()
+    let closeButtonClick = PublishSubject<Void>()
     let closeView = BehaviorRelay<Void>(value: ())
     let calender = Calendar(identifier: .gregorian)
       

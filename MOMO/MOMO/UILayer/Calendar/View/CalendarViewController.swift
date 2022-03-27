@@ -44,6 +44,13 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
       }
       .disposed(by: disposeBag)
     
+    Observable.zip(collectionView.rx.itemSelected,
+                   collectionView.rx.modelSelected(Day.self))
+    .bind {
+      print($0, $1)
+    }
+    .disposed(by: disposeBag)
+    
     viewModel.output.numberOfWeeksInBaseDate
       .drive(numberOfWeeksInBaseDate)
       .disposed(by: disposeBag)
@@ -52,6 +59,7 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
       .drive(onNext: { [unowned self] in
         self.dismiss(animated: true)
       })
+      .disposed(by: disposeBag)
     
     collectionView.rx.setDelegate(self)
       .disposed(by: disposeBag)

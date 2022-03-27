@@ -24,6 +24,7 @@ extension UIView {
   func addBorder(_ arrEdge: [UIRectEdge], color: UIColor, width: CGFloat){
     for edge in arrEdge {
       let border = CALayer()
+      border.name = "border"
       switch edge {
       case UIRectEdge.top:
         border.frame = CGRect.init(x: 0, y: 0, width: frame.width, height: width)

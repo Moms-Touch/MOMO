@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import UIKit
 
 class Diary: Object {
   
@@ -63,4 +64,19 @@ enum DiaryEmotion: String {
   case sad
   case blue
   case unknown
+  
+  var image: UIImage? {
+    switch self {
+    case .happy:
+      return UIImage(named: "bird.happy")
+    case .angry:
+      return UIImage(named: "bird.angry")
+    case .sad:
+      return UIImage(named: "bird.sad")
+    case .blue:
+      return UIImage(named: "bird.blue")
+    case .unknown:
+      return nil
+    }
+  }
 }
