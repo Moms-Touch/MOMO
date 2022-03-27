@@ -47,6 +47,7 @@ internal enum Asset {
     internal static let baby = ImageAsset(name: "baby")
     internal static let bell = ImageAsset(name: "bell")
     internal static let calendarBackground = ImageAsset(name: "calendarBackground")
+    internal static let calendarButton = ImageAsset(name: "calendarButton")
     internal static let dongkam = ImageAsset(name: "dongkam")
     internal static let governmentLogo = ImageAsset(name: "governmentLogo")
     internal static let intree = ImageAsset(name: "intree")
@@ -71,6 +72,7 @@ internal enum Asset {
     internal static let policy = ImageAsset(name: "policy")
     internal static let policySelect = ImageAsset(name: "policy_select")
     internal static let todayBtn = ImageAsset(name: "todayBtn")
+    internal static let writeButton = ImageAsset(name: "writeButton")
   }
   internal enum Colors {
     internal static let _45 = ColorAsset(name: "45")

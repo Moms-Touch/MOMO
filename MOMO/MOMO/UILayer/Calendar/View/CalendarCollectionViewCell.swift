@@ -78,9 +78,7 @@ extension CalendarCollectionViewCell {
         contentView.addBorder([.bottom, .right], color: Asset.Colors.pink4.color, width: 1)
       }
     } else {
-      if index % 7 == 6 {
-        contentView.addBorder([.bottom], color: Asset.Colors.pink4.color, width: 1)
-      } else {
+      if index % 7 != 6 {
         contentView.addBorder([.right], color: Asset.Colors.pink4.color, width: 1)
       }
     }

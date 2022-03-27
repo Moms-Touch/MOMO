@@ -57,30 +57,30 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="9Ei-lu-XKr">
-                                <rect key="frame" x="285" y="604" width="70" height="154"/>
+                                <rect key="frame" x="295" y="624" width="60" height="134"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BN5-lx-hwb">
-                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                         <accessibility key="accessibilityConfiguration" label="추천정보 보기"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="8CZ-PZ-3Hg"/>
+                                            <constraint firstAttribute="width" constant="60" id="8CZ-PZ-3Hg"/>
                                             <constraint firstAttribute="width" secondItem="BN5-lx-hwb" secondAttribute="height" multiplier="1:1" id="zoP-M0-3ew"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="" backgroundImage="recommendBtn"/>
+                                        <state key="normal" backgroundImage="calendarButton"/>
                                         <connections>
                                             <action selector="gotoCalender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="h1i-yL-UYu"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMt-7h-60l">
-                                        <rect key="frame" x="0.0" y="84" width="70" height="70"/>
+                                        <rect key="frame" x="0.0" y="74" width="60" height="60"/>
                                         <accessibility key="accessibilityConfiguration" label="오늘 하루 일기 쓰기"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="7pg-ru-n7e"/>
+                                            <constraint firstAttribute="height" constant="60" id="7pg-ru-n7e"/>
                                             <constraint firstAttribute="width" secondItem="CMt-7h-60l" secondAttribute="height" multiplier="1:1" id="AFB-Fs-ocR"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="" backgroundImage="todayBtn"/>
+                                        <state key="normal" title="" backgroundImage="writeButton"/>
                                         <connections>
                                             <action selector="didTapTodayButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YwV-jJ-VsW"/>
                                         </connections>
@@ -168,10 +168,10 @@
         <image name="Logo" width="84" height="16"/>
         <image name="bell" width="24" height="24"/>
         <image name="bookmark" width="24" height="24"/>
+        <image name="calendarButton" width="58" height="58"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="mascot" width="153" height="141"/>
-        <image name="recommendBtn" width="60" height="60"/>
-        <image name="todayBtn" width="60" height="60"/>
+        <image name="writeButton" width="58" height="58"/>
         <namedColor name="45">
             <color red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
