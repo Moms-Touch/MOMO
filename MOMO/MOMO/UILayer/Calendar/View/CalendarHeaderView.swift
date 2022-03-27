@@ -39,6 +39,16 @@ class CalendarHeaderView: UIView, ViewModelBindableType {
     $0.backgroundColor = .clear
   }
   
+  private let previousMonthButton = UIButton().then {
+    $0.setImage(UIImage(systemName: "chevron.left.circle.fill"), for: .normal)
+    $0.tintColor = Asset.Colors._71.color
+  }
+  
+  private let nextMonthButton = UIButton().then {
+    $0.setImage(UIImage(systemName: "chevron.right.circle.fill"), for: .normal)
+    $0.tintColor = Asset.Colors._71.color
+  }
+  
   var viewModel: CalendarHeaderViewModel
   private var disposeBag = DisposeBag()
   
@@ -53,6 +63,21 @@ class CalendarHeaderView: UIView, ViewModelBindableType {
       .drive(onNext: { [unowned self] in
         self.dayLabels[$0].text = $1
       })
+      .disposed(by: disposeBag)
+    
+    nextMonthButton.rx.tap
+      .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+      .bind(to: viewModel.input.nextMonthClick)
+      .disposed(by: disposeBag)
+    
+    previousMonthButton.rx.tap
+      .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+      .bind(to: viewModel.input.previousMonthClick)
+      .disposed(by: disposeBag)
+    
+    closeButton.rx.tap
+      .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+      .bind(to: viewModel.input.closeButtonClick)
       .disposed(by: disposeBag)
     
   }
@@ -75,6 +100,8 @@ class CalendarHeaderView: UIView, ViewModelBindableType {
     addSubview(closeButton)
     addSubview(dayOfWeekStackView)
     addSubview(separatorView)
+    addSubview(nextMonthButton)
+    addSubview(previousMonthButton)
     
     for dayNumber in 1...7 {
       let dayLabel = UILabel().then {
@@ -96,7 +123,6 @@ class CalendarHeaderView: UIView, ViewModelBindableType {
     dayLabels.forEach {
       self.viewModel.input.dayNumber
         .onNext(Int($0.text!)!)
-//      print()
     }
     
   }
@@ -110,6 +136,18 @@ class CalendarHeaderView: UIView, ViewModelBindableType {
     monthLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().inset(30)
       make.centerX.equalToSuperview()
+    }
+    
+    nextMonthButton.snp.makeConstraints { make in
+      make.centerY.equalTo(monthLabel)
+      make.width.height.equalTo(28)
+      make.left.equalTo(monthLabel.snp.right).inset(-10)
+    }
+    
+    previousMonthButton.snp.makeConstraints { make in
+      make.centerY.equalTo(monthLabel)
+      make.width.height.equalTo(28)
+      make.right.equalTo(monthLabel.snp.left).inset(-10)
     }
     
     closeButton.snp.makeConstraints { make in

@@ -13,9 +13,9 @@ extension String {
     return self.components(separatedBy: "T")[0].components(separatedBy: "-").joined(separator: ".")
   }
   
-  func toDate() -> Date? {
+  func toDate(format: String = "yyyy.MM.dd") -> Date? {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy.MM.dd"
+    dateFormatter.dateFormat = format
     dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
     return dateFormatter.date(from: self)
   }

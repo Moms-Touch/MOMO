@@ -48,6 +48,11 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
       .drive(numberOfWeeksInBaseDate)
       .disposed(by: disposeBag)
     
+    viewModel.output.closeView
+      .drive(onNext: { [unowned self] in
+        self.dismiss(animated: true)
+      })
+    
     collectionView.rx.setDelegate(self)
       .disposed(by: disposeBag)
   }

@@ -14,6 +14,9 @@ final class CalendarHeaderViewModel: ViewModelType {
   // MARK: - Input
   struct Input {
     var dayNumber: AnyObserver<Int>
+    var nextMonthClick: AnyObserver<Void>
+    var previousMonthClick: AnyObserver<Void>
+    var closeButtonClick: AnyObserver<Void>
   }
   
   var input: Input
@@ -22,6 +25,7 @@ final class CalendarHeaderViewModel: ViewModelType {
   struct Output {
     var dayLetter: Driver<(Int, String)>
     var month: Driver<String>
+    var closeView: Driver<Void>
   }
   
   var output: Output
@@ -37,16 +41,50 @@ final class CalendarHeaderViewModel: ViewModelType {
     let dayNumberPublishSubject = PublishSubject<Int>()
     let dayLetterBehaviorRelay = BehaviorRelay<(Int, String)>(value: (0, ""))
     let monthBehaviorRelay = BehaviorRelay<String>(value: "2021.7")
+    let nextMonthClick = BehaviorSubject<Void>(value: ())
+    let previousMonthClick = BehaviorSubject<Void>(value: ())
+    let closeButtonClick = BehaviorSubject<Void>(value: ())
+    let closeView = BehaviorRelay<Void>(value: ())
+    let calender = Calendar(identifier: .gregorian)
       
     self.baseDate = baseDate
-    self.output = Output(dayLetter: dayLetterBehaviorRelay.asDriver(onErrorJustReturn: (0, "")), month: monthBehaviorRelay.asDriver(onErrorJustReturn: "2021.7"))
-    self.input = Input(dayNumber: dayNumberPublishSubject.asObserver())
+    self.output = Output(
+        dayLetter: dayLetterBehaviorRelay.asDriver(onErrorJustReturn: (0, "")),
+        month: monthBehaviorRelay.asDriver(onErrorJustReturn: "2021.7"),
+        closeView: closeView.asDriver(onErrorJustReturn: ())
+    )
+    self.input = Input(dayNumber: dayNumberPublishSubject.asObserver(), nextMonthClick: nextMonthClick.asObserver(), previousMonthClick: previousMonthClick.asObserver(), closeButtonClick: closeButtonClick.asObserver())
     
     monthBehaviorRelay.accept(self.baseDate.toString(format: "yyyy.M"))
   
     
     // MARK: - Input -> Output
     
+    closeButtonClick
+      .bind(to: closeView)
+      .disposed(by: disposeBag)
+    
+    nextMonthClick.withLatestFrom(monthBehaviorRelay)
+      .debug()
+      .map {
+        var date = $0.toDate(format: "yyyy.M") ?? Date()
+        date = calender.date(byAdding: .month, value: 1, to: date) ?? Date()
+        return date.toString(format: "yyyy.M")
+         }
+      .debug()
+      .bind(to: monthBehaviorRelay)
+      .disposed(by: disposeBag)
+      
+    previousMonthClick.withLatestFrom(monthBehaviorRelay)
+      .debug()
+      .map {
+        var date = $0.toDate(format: "yyyy.M") ?? Date()
+        date = calender.date(byAdding: .month, value: -1, to: date) ?? Date()
+        return date.toString(format: "yyyy.M")
+         }
+      .bind(to: monthBehaviorRelay)
+      .disposed(by: disposeBag)
+      
     let right = dayNumberPublishSubject
       .withUnretained(self)
       .map{ $0.dayOfWeekLetter(for:$1) }
