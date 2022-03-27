@@ -39,8 +39,8 @@ final class CustomNavigationPresentationController: UIPresentationController {
     switch direction {
     case .bottom:
       var presentedFrame: CGRect = .zero
-      presentedFrame.origin.y = frame.size.height * 0.7
-      presentedFrame.size = CGSize(width: frame.width, height: frame.height * 0.3)
+      presentedFrame.origin.y = frame.size.height - ((frame.width * 0.8) + 260)
+      presentedFrame.size = CGSize(width: frame.width, height: (frame.width * 0.8) + 260)
       return presentedFrame
     default:
       return frame

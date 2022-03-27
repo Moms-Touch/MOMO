@@ -191,7 +191,10 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
   @IBAction private func gotoCalender(_ sender: UIButton) {
     let vm = makeCalendarViewModel()
     let vc = CalendarViewController(viewModel: vm)
-    self.present(vc, animated: true)
+    customNavigationDelegate.direction = .bottom
+    vc.transitioningDelegate = customNavigationDelegate
+    vc.modalPresentationStyle = .custom
+    present(vc, animated: true, completion: nil)
   }
   
   func makeMyInfoViewModel() -> MyInfoViewModel {
