@@ -154,7 +154,9 @@
                     <connections>
                         <outlet property="babyProfileImageView" destination="lJe-gp-myE" id="N3U-TK-htE"/>
                         <outlet property="bannerCollectionView" destination="jpF-y4-GV9" id="Rn6-eL-Qyd"/>
+                        <outlet property="bookmarkButton" destination="Wfy-1u-fgY" id="ie1-e5-phi"/>
                         <outlet property="imageHuggingView" destination="i7N-2r-EST" id="gKg-ij-gMS"/>
+                        <outlet property="logo" destination="Vtj-m1-iDU" id="JI6-de-Xwk"/>
                         <outlet property="settingButton" destination="PKa-eB-caM" id="jR1-H4-8RT"/>
                     </connections>
                 </viewController>

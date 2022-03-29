@@ -30,6 +30,8 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     }
   }
   
+  @IBOutlet weak var logo: UIImageView!
+  @IBOutlet weak var bookmarkButton: UIButton!
   @IBOutlet weak var settingButton: UIButton!
   
   //banner의 현재 페이지
@@ -110,12 +112,12 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       
       /// 작성된 일기가 없다면
       /// 일기 작성 화면
-      
-      let diaryInputOptionVC = DiaryInputOptionViewController.loadFromStoryboard()
-      
-      diaryInputOptionVC.hidesBottomBarWhenPushed = true
-      
-      self.show(diaryInputOptionVC, sender: nil)
+      let viewmodel = DiaryInputOptionViewModel()
+      guard let diaryInputOptionVC = DiaryInputOptionViewController.loadFromStoryboard() as? DiaryInputOptionViewController else { return }
+      diaryInputOptionVC.viewModel = viewmodel
+      diaryInputOptionVC.modalTransitionStyle = .crossDissolve
+      diaryInputOptionVC.modalPresentationStyle = .overFullScreen
+      self.present(diaryInputOptionVC, animated: true)
       
       return
     }

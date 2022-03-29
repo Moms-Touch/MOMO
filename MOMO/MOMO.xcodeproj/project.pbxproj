@@ -186,6 +186,8 @@
 		75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C427661C0F0057CF9B /* NetworkManager.swift */; };
 		75CE01C727662CAC0057CF9B /* NetworkCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C627662CAC0057CF9B /* NetworkCoder.swift */; };
 		75CE01CA27662CE00057CF9B /* APIable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C927662CE00057CF9B /* APIable.swift */; };
+		B1615E9C27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */; };
+		B1615E9F27F2FC1100DC4E63 /* DiaryInputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615E9E27F2FC1100DC4E63 /* DiaryInputType.swift */; };
 		B1B9AE9727EA16DD006E01E1 /* RecommendDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */; };
 		B1B9AE9B27EC767B006E01E1 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */; };
 		B1B9AE9D27EC76D9006E01E1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9C27EC76D9006E01E1 /* Day.swift */; };
@@ -201,6 +203,7 @@
 		B1B9AEBC27EE1727006E01E1 /* MomoDiaryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEBB27EE1727006E01E1 /* MomoDiaryDataStore.swift */; };
 		B1B9AEBE27EE1D3A006E01E1 /* DataStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEBD27EE1D3A006E01E1 /* DataStoreError.swift */; };
 		B1B9AEC227EF2550006E01E1 /* CalendarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEC127EF2550006E01E1 /* CalendarCellViewModel.swift */; };
+		B1B9AEC827F0D7F4006E01E1 /* DiaryInputOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AEC727F0D7F4006E01E1 /* DiaryInputOptionViewModel.swift */; };
 		CC766167614CF2CC3FDB4E83 /* Pods_MOMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893E087FF19826B888D50EC3 /* Pods_MOMO.framework */; };
 		DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD1356F9270B526A003BAB4A /* swiftgen.yml */; };
 		DD135701270B5E53003BAB4A /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */; };
@@ -393,6 +396,8 @@
 		75CE01C627662CAC0057CF9B /* NetworkCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCoder.swift; sourceTree = "<group>"; };
 		75CE01C927662CE00057CF9B /* APIable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIable.swift; sourceTree = "<group>"; };
 		893E087FF19826B888D50EC3 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiaryViewModel.swift; sourceTree = "<group>"; };
+		B1615E9E27F2FC1100DC4E63 /* DiaryInputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInputType.swift; sourceTree = "<group>"; };
 		B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewModel.swift; sourceTree = "<group>"; };
 		B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
 		B1B9AE9C27EC76D9006E01E1 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -408,6 +413,7 @@
 		B1B9AEBB27EE1727006E01E1 /* MomoDiaryDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoDiaryDataStore.swift; sourceTree = "<group>"; };
 		B1B9AEBD27EE1D3A006E01E1 /* DataStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreError.swift; sourceTree = "<group>"; };
 		B1B9AEC127EF2550006E01E1 /* CalendarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCellViewModel.swift; sourceTree = "<group>"; };
+		B1B9AEC727F0D7F4006E01E1 /* DiaryInputOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInputOptionViewModel.swift; sourceTree = "<group>"; };
 		C08A9C8A34F7064BEC0846A8 /* Pods-MOMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOMO.release.xcconfig"; path = "Target Support Files/Pods-MOMO/Pods-MOMO.release.xcconfig"; sourceTree = "<group>"; };
 		DD1356F9270B526A003BAB4A /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		DD135700270B5E53003BAB4A /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
@@ -514,6 +520,7 @@
 		285209852753325F00AB8BAC /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				B1615E9D27F2FBFD00DC4E63 /* DiaryInputType */,
 				DDE316F9277EF5130033FEF4 /* ReadDiary */,
 				285209862753325F00AB8BAC /* InputOption */,
 				2852098B2753325F00AB8BAC /* CreateDiary */,
@@ -529,6 +536,7 @@
 			children = (
 				285209872753325F00AB8BAC /* DiaryInputOption.storyboard */,
 				285209882753325F00AB8BAC /* DiaryInputOptionViewController.swift */,
+				B1B9AEC727F0D7F4006E01E1 /* DiaryInputOptionViewModel.swift */,
 			);
 			path = InputOption;
 			sourceTree = "<group>";
@@ -540,6 +548,7 @@
 				2852098D2753325F00AB8BAC /* CreateDiaryViewController.swift */,
 				2852098E2753325F00AB8BAC /* WithText */,
 				DDE316FE277F13B70033FEF4 /* WithVoice */,
+				B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */,
 			);
 			path = CreateDiary;
 			sourceTree = "<group>";
@@ -988,6 +997,14 @@
 				28A9996A277AF53A00459D19 /* DeleteApi.swift */,
 			);
 			path = APIable;
+			sourceTree = "<group>";
+		};
+		B1615E9D27F2FBFD00DC4E63 /* DiaryInputType */ = {
+			isa = PBXGroup;
+			children = (
+				B1615E9E27F2FC1100DC4E63 /* DiaryInputType.swift */,
+			);
+			path = DiaryInputType;
 			sourceTree = "<group>";
 		};
 		B1B9AEA827ECC26B006E01E1 /* CalendarUseCase */ = {
@@ -1509,6 +1526,7 @@
 				288EFD0B27548476000D1617 /* CommunityMainViewController.swift in Sources */,
 				288ED76727428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift in Sources */,
 				288EFD172754F354000D1617 /* AlertContainer.swift in Sources */,
+				B1B9AEC827F0D7F4006E01E1 /* DiaryInputOptionViewModel.swift in Sources */,
 				28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */,
 				28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */,
 				285D0DE327E7163800B22287 /* RecommendRemoteAPI.swift in Sources */,
@@ -1552,6 +1570,7 @@
 				28A9996D277C685C00459D19 /* String+Extension.swift in Sources */,
 				285209BE2753327200AB8BAC /* PregnantStatusViewController.swift in Sources */,
 				2879A9BA27800E3D00A0BE21 /* PolicyData.swift in Sources */,
+				B1615E9F27F2FC1100DC4E63 /* DiaryInputType.swift in Sources */,
 				28A99961277882F600459D19 /* Category.swift in Sources */,
 				28F471472738B8DC0074D148 /* MyInfoMainViewController.swift in Sources */,
 				2861940F27DCDEEC0012250F /* UserSessionDataStore.swift in Sources */,
@@ -1573,6 +1592,7 @@
 				2861941C27DE0E590012250F /* ViewModelBindableType.swift in Sources */,
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,
 				DDE316F8277C94FB0033FEF4 /* Diary.swift in Sources */,
+				B1615E9C27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift in Sources */,
 				B1B9AEBC27EE1727006E01E1 /* MomoDiaryDataStore.swift in Sources */,
 				2861942C27DE46850012250F /* NetworkEncoding.swift in Sources */,
 				2861945327E069EA0012250F /* MomoUserSessionDataStore.swift in Sources */,

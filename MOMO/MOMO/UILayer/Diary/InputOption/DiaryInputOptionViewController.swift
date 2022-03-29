@@ -6,41 +6,16 @@
 //
 
 import UIKit
-
-/// DiaryInputOption 에서 사용자가 선택한 옵션들로 이 구조체를 구성함
-/// 이 구조체를 기반으로 CreateDiaryVC 의 모양이 달라지게됨
-///
-// FIXME: Naming 이 중복되어서 마음에 안듬
-struct DiaryInputType {
-  
-  enum InputType: String {
-    case text
-    case voice
-  }
-  
-  var inputType: InputType
-  var hasGuide: Bool?
-}
-
-enum InputOptionErrorType: Error {
-  
-  case unspecifiedButton
-}
+import RxSwift
+import RxCocoa
 
 class DiaryInputOptionViewController: UIViewController, StoryboardInstantiable {
-  
-  var inputType: DiaryInputType?
-  
+
   /// [ 작성 방식 (글, 목소리) 버튼들을 담고 있는 스택 뷰
   /// - 첫번째 단계 에 화면에 나타난다
 
-  @IBOutlet var labelList: [UILabel]! {
-    didSet {
-      labelList.forEach {
-        $0.font = UIFont.customFont(forTextStyle: .title3)
-      }
-    }
-  }
+  @IBOutlet var labelList: [UILabel]!
+  @IBOutlet var backButton: UIButton!
   
   @IBOutlet weak var inputOptionStack: UIStackView!
   
@@ -64,18 +39,60 @@ class DiaryInputOptionViewController: UIViewController, StoryboardInstantiable {
   /// [자유롭게 남기기] 버튼
   
   @IBOutlet weak var noGuideOptionButton: UIButton!
+
+  // MARK: - ViewModel & Bind
+
+  var viewModel: DiaryInputOptionViewModel!
   
-  private var isFirstStep: Bool = true {
-    didSet {
-      isFirstStep ? onFirstStep() : onSecondStep()
-    }
+  func bindViewModel() {
+    
+  // MARK: - Input
+    Observable.merge(textOptionButton.rx.tap.map{ InputType.text },
+                     voiceOptionButton.rx.tap.map{ InputType.voice })
+              .bind(to: viewModel.input.inputOption)
+              .disposed(by: disposeBag)
+  
+    Observable.merge(guideOptionButton.rx.tap.map { true },
+                     noGuideOptionButton.rx.tap.map { false })
+              .bind(to: viewModel.input.hasGuideOption)
+              .disposed(by: disposeBag)
+    
+    backButton.rx.tap
+      .withUnretained(self)
+      .bind { vc, event in
+        vc.dismiss(animated: true)
+      }
+      .disposed(by: disposeBag)
+    
+  // MARK: - Output
+    viewModel.output.gotoSecondStep
+      .drive(onNext: { [weak self] _ in
+        self?.onSecondStep()
+      })
+      .disposed(by: disposeBag)
+    
+    viewModel.output.gotocreateDiaryVC
+      .drive(onNext: { [weak self] _ in
+        print("여기까지 통과~")
+      })
+      .disposed(by: disposeBag)
+  
   }
+  
+  // MARK: - LifeCycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.bindViewModel()
     onFirstStep()
   }
+  
+  // MARK: - Private Properties
+  
+  private var disposeBag = DisposeBag()
+  private var inputType: DiaryInputType?
+  
+  // MARK: - Private methods
   
   private func onFirstStep() {
     
@@ -85,67 +102,7 @@ class DiaryInputOptionViewController: UIViewController, StoryboardInstantiable {
   }
   
   private func onSecondStep() {
-    
     inputOptionStack.isHidden = true
     guideOptionStack.isHidden = false
   }
-    
-  @IBAction func selectFirstStepOption(_ sender: UIButton) {
-    
-    switch sender {
-        
-      case textOptionButton:
-        
-        inputType = DiaryInputType(inputType: .text, hasGuide: nil)
-        
-        onSecondStep()
-        
-      case voiceOptionButton:
-        
-        inputType = DiaryInputType(inputType: .voice, hasGuide: nil)
-        
-        let createDiaryVC = CreateDiaryViewController.loadFromStoryboard() as! CreateDiaryViewController
-        
-        guard let inputType = inputType else { return }
-        
-        createDiaryVC.inputType = inputType
-        
-        self.show(createDiaryVC, sender: nil)
-        
-      default:
-        fatalError("Error: Unspecified Button")
-    }
-  }
-  
-  @IBAction func selectSecondStepOption(_ sender: UIButton) {
-    
-    switch sender {
-        
-      case guideOptionButton:
-        
-        inputType?.hasGuide = true
-        
-      case noGuideOptionButton:
-        
-        inputType?.hasGuide = false
-      
-      default:
-        fatalError("Error: Unspecified Button")
-    }
-    
-    let createDiaryVC = CreateDiaryViewController.loadFromStoryboard() as! CreateDiaryViewController
-    
-    guard let inputType = inputType else { return }
-    
-    createDiaryVC.inputType = inputType
-    
-    // Navigation에 CreateDiaryViewController push
-    self.show(createDiaryVC, sender: nil)
-  }
-  
-  @IBAction func dismiss(_ sender: UIButton) {
-    
-    self.navigationController?.popViewController(animated: true)
-  }
-  
 }

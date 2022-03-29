@@ -26,7 +26,7 @@ class Diary: Object {
   /// 이 때 contentType 이 음성이라면 음성 파일의 URL path 가 들어 있다.
   @Persisted var qnaList: List<QNA>
   
-  convenience init(date: Date, emotion: DiaryEmotion, contentType: DiaryInputType.InputType, qnaList: List<QNA>) {
+  convenience init(date: Date, emotion: DiaryEmotion, contentType: InputType, qnaList: List<QNA>) {
     
     self.init()
     self.date = date.timeToZero()

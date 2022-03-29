@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,161 +19,149 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2P-ZN-IW3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainBackground" translatesAutoresizingMaskIntoConstraints="NO" id="thm-lr-r6A">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2P-ZN-IW3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eu3-gt-KpS">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="APL-xX-zXu">
-                                            <rect key="frame" x="61.5" y="369" width="291" height="158.5"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4LD-Na-WSi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="138" height="158.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="1000" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knk-Xn-Nzj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
-                                                            <accessibility key="accessibilityConfiguration" label="글로남길게요"/>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="Text"/>
-                                                            <connections>
-                                                                <action selector="selectFirstStepOption:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wHY-zg-ypy"/>
-                                                            </connections>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="글로 남길게요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ult-sr-2AS">
-                                                            <rect key="frame" x="0.0" y="138" width="138" height="20.5"/>
-                                                            <accessibility key="accessibilityConfiguration">
-                                                                <bool key="isElement" value="NO"/>
-                                                            </accessibility>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="M3V-fH-a2e">
-                                                    <rect key="frame" x="153" y="0.0" width="138" height="158.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="1000" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgu-WH-XMZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
-                                                            <accessibility key="accessibilityConfiguration" label="목소리로 남길게요"/>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="Voice"/>
-                                                            <connections>
-                                                                <action selector="selectFirstStepOption:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SsF-9Z-wLE"/>
-                                                            </connections>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="목소리로 남길게요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="WcG-5H-bmn">
-                                                            <rect key="frame" x="0.0" y="138" width="138" height="20.5"/>
-                                                            <accessibility key="accessibilityConfiguration">
-                                                                <bool key="isElement" value="NO"/>
-                                                            </accessibility>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                        </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cVe-Ks-q6x">
-                                            <rect key="frame" x="61" y="369" width="292" height="158.5"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1NO-4y-MWY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="138.5" height="158.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="1000" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7am-AP-vCd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="138.5" height="138"/>
-                                                            <accessibility key="accessibilityConfiguration" label="질문에 답할게요"/>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="Guide"/>
-                                                            <connections>
-                                                                <action selector="selectSecondStepOption:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="blO-dN-sqD"/>
-                                                            </connections>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="질문에 답할게요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Dgw-Ka-o1a">
-                                                            <rect key="frame" x="0.0" y="138" width="138.5" height="20.5"/>
-                                                            <accessibility key="accessibilityConfiguration">
-                                                                <bool key="isElement" value="NO"/>
-                                                            </accessibility>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rew-Zw-Wug">
-                                                    <rect key="frame" x="153.5" y="0.0" width="138.5" height="158.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="1000" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyF-Ph-281">
-                                                            <rect key="frame" x="0.0" y="0.0" width="138.5" height="138"/>
-                                                            <accessibility key="accessibilityConfiguration" label="자유롭게 적을래요"/>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="NoGuide"/>
-                                                            <connections>
-                                                                <action selector="selectSecondStepOption:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Pf2-Qk-TKd"/>
-                                                            </connections>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="자유롭게 적을래요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="cNF-OC-Sr6">
-                                                            <rect key="frame" x="0.0" y="138" width="138.5" height="20.5"/>
-                                                            <accessibility key="accessibilityConfiguration">
-                                                                <bool key="isElement" value="NO"/>
-                                                            </accessibility>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                        </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSw-gY-r4m">
-                                            <rect key="frame" x="20" y="64" width="22" height="22"/>
-                                            <accessibility key="accessibilityConfiguration" label="닫기"/>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal">
-                                                <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="dismiss:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wSa-VX-Rso"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="cVe-Ks-q6x" firstAttribute="centerY" secondItem="eu3-gt-KpS" secondAttribute="centerY" id="33L-oB-DKv"/>
-                                        <constraint firstItem="APL-xX-zXu" firstAttribute="centerY" secondItem="eu3-gt-KpS" secondAttribute="centerY" id="d4f-eV-B0w"/>
-                                        <constraint firstItem="cVe-Ks-q6x" firstAttribute="centerX" secondItem="eu3-gt-KpS" secondAttribute="centerX" id="hJs-d4-S2n"/>
-                                        <constraint firstItem="APL-xX-zXu" firstAttribute="centerX" secondItem="eu3-gt-KpS" secondAttribute="centerX" id="vWZ-VM-WB3"/>
-                                    </constraints>
                                 </view>
-                                <blurEffect style="regular"/>
+                                <blurEffect style="systemThickMaterialLight"/>
                             </visualEffectView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nBJ-st-7ox">
+                                <rect key="frame" x="61.5" y="369" width="291" height="158.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="twk-fY-eCB">
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="158.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="1000" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fvy-mS-9n7">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
+                                                <accessibility key="accessibilityConfiguration" label="글로남길게요"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="Text"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="글로 남길게요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kjg-Ej-d9a">
+                                                <rect key="frame" x="0.0" y="138" width="138" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <bool key="isElement" value="NO"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" name="45"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c75-gt-ieG">
+                                        <rect key="frame" x="153" y="0.0" width="138" height="158.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="1000" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGx-j6-c7Z">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
+                                                <accessibility key="accessibilityConfiguration" label="목소리로 남길게요"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="Voice"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="목소리로 남길게요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="4mR-AR-uNC">
+                                                <rect key="frame" x="0.0" y="138" width="138" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <bool key="isElement" value="NO"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" name="45"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Twm-2y-9A3">
+                                <rect key="frame" x="61.5" y="369" width="291" height="158.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Usl-cA-9b3">
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="158.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="1000" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHV-Vo-fJy">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
+                                                <accessibility key="accessibilityConfiguration" label="질문에 답할게요"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="Guide"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="질문에 답할게요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="vz2-YZ-p8q">
+                                                <rect key="frame" x="0.0" y="138" width="138" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <bool key="isElement" value="NO"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" name="45"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EO9-vZ-dED">
+                                        <rect key="frame" x="153" y="0.0" width="138" height="158.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="1000" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUh-6h-L36">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
+                                                <accessibility key="accessibilityConfiguration" label="자유롭게 적을래요"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="NoGuide"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="자유롭게 적을래요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="5wB-wT-jHZ">
+                                                <rect key="frame" x="0.0" y="138" width="138" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <bool key="isElement" value="NO"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="textColor" name="45"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56e-YB-6fJ">
+                                <rect key="frame" x="20" y="64" width="22" height="22"/>
+                                <accessibility key="accessibilityConfiguration" label="닫기"/>
+                                <color key="tintColor" name="45"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal">
+                                    <color key="titleColor" name="45"/>
+                                    <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
-                            <constraint firstItem="ZSw-gY-r4m" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="4AU-Ba-jeH"/>
+                            <constraint firstAttribute="bottom" secondItem="thm-lr-r6A" secondAttribute="bottom" id="5V1-Zs-oY4"/>
                             <constraint firstItem="l2P-ZN-IW3" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="6E8-YG-ohV"/>
-                            <constraint firstItem="cVe-Ks-q6x" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.705314" id="HrW-uQ-GtV"/>
+                            <constraint firstItem="nBJ-st-7ox" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="7NR-iO-ZSX"/>
+                            <constraint firstItem="Twm-2y-9A3" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="9Um-Fu-50w"/>
+                            <constraint firstItem="thm-lr-r6A" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="De3-gi-7Sr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="thm-lr-r6A" secondAttribute="trailing" id="UOn-0B-Eh8"/>
+                            <constraint firstItem="56e-YB-6fJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="dWp-d9-sQP"/>
+                            <constraint firstItem="thm-lr-r6A" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="egb-ga-wWT"/>
+                            <constraint firstItem="nBJ-st-7ox" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="hBy-NA-1lJ"/>
+                            <constraint firstItem="56e-YB-6fJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="iBo-sX-nec"/>
                             <constraint firstAttribute="trailing" secondItem="l2P-ZN-IW3" secondAttribute="trailing" id="ivJ-li-IV2"/>
-                            <constraint firstItem="APL-xX-zXu" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.702899" id="sFr-Of-bUd"/>
+                            <constraint firstItem="Twm-2y-9A3" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="j1f-8w-ku4"/>
                             <constraint firstItem="l2P-ZN-IW3" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="sdz-7i-qmA"/>
-                            <constraint firstItem="ZSw-gY-r4m" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="wO4-OX-Kz4"/>
                             <constraint firstAttribute="bottom" secondItem="l2P-ZN-IW3" secondAttribute="bottom" id="zn0-Na-XwN"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="guideOptionButton" destination="7am-AP-vCd" id="bnC-eR-c7G"/>
-                        <outlet property="guideOptionStack" destination="cVe-Ks-q6x" id="iUw-5K-jUu"/>
-                        <outlet property="inputOptionStack" destination="APL-xX-zXu" id="Gde-D0-xg7"/>
-                        <outlet property="noGuideOptionButton" destination="YyF-Ph-281" id="Xro-VY-WaT"/>
-                        <outlet property="textOptionButton" destination="Knk-Xn-Nzj" id="c2r-Li-BOv"/>
-                        <outlet property="voiceOptionButton" destination="Rgu-WH-XMZ" id="vab-4V-ZY8"/>
-                        <outletCollection property="labelList" destination="Dgw-Ka-o1a" collectionClass="NSMutableArray" id="VUG-Xr-BXn"/>
-                        <outletCollection property="labelList" destination="cNF-OC-Sr6" collectionClass="NSMutableArray" id="B7W-LP-22k"/>
-                        <outletCollection property="labelList" destination="ult-sr-2AS" collectionClass="NSMutableArray" id="nbP-cc-IQA"/>
-                        <outletCollection property="labelList" destination="WcG-5H-bmn" collectionClass="NSMutableArray" id="Qqq-JC-VGF"/>
+                        <outlet property="backButton" destination="56e-YB-6fJ" id="7Q9-rG-gH3"/>
+                        <outlet property="guideOptionButton" destination="xHV-Vo-fJy" id="iaX-Hu-YgZ"/>
+                        <outlet property="guideOptionStack" destination="Twm-2y-9A3" id="Pnk-kt-g7F"/>
+                        <outlet property="inputOptionStack" destination="nBJ-st-7ox" id="Ru8-78-woz"/>
+                        <outlet property="noGuideOptionButton" destination="rUh-6h-L36" id="Sn6-xi-qZA"/>
+                        <outlet property="textOptionButton" destination="Fvy-mS-9n7" id="n2n-Ho-YoN"/>
+                        <outlet property="voiceOptionButton" destination="KGx-j6-c7Z" id="ChF-9g-uft"/>
+                        <outletCollection property="labelList" destination="kjg-Ej-d9a" collectionClass="NSMutableArray" id="GRO-08-2Ak"/>
+                        <outletCollection property="labelList" destination="4mR-AR-uNC" collectionClass="NSMutableArray" id="3Kl-bk-vPT"/>
+                        <outletCollection property="labelList" destination="vz2-YZ-p8q" collectionClass="NSMutableArray" id="7rC-c9-lXF"/>
+                        <outletCollection property="labelList" destination="5wB-wT-jHZ" collectionClass="NSMutableArray" id="oOb-7Y-fxd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -185,7 +174,11 @@
         <image name="NoGuide" width="138" height="138"/>
         <image name="Text" width="138" height="138"/>
         <image name="Voice" width="138" height="138"/>
+        <image name="mainBackground" width="374" height="812"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="45">
+            <color red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
