@@ -46,9 +46,7 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
     
     Observable.zip(collectionView.rx.itemSelected,
                    collectionView.rx.modelSelected(Day.self))
-    .bind {
-      print($0, $1)
-    }
+    .bind(to: viewModel.input.didSelectCell)
     .disposed(by: disposeBag)
     
     viewModel.output.numberOfWeeksInBaseDate
