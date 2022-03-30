@@ -72,8 +72,10 @@ class DiaryInputOptionViewController: UIViewController, StoryboardInstantiable {
       .disposed(by: disposeBag)
     
     viewModel.output.gotocreateDiaryVC
-      .drive(onNext: { [weak self] _ in
-        print("여기까지 통과~")
+      .drive(onNext: { [weak self] in
+        let vc = CreateDiaryViewController(viewModel: $0)
+        vc.modalPresentationStyle = .fullScreen
+        self?.present(vc, animated: false)
       })
       .disposed(by: disposeBag)
   

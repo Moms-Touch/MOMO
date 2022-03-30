@@ -112,7 +112,7 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
       
       /// 작성된 일기가 없다면
       /// 일기 작성 화면
-      let viewmodel = DiaryInputOptionViewModel()
+      let viewmodel = DiaryInputOptionViewModel(repository: MomoDiaryRepository(diaryDataStore: MomoDiaryDataStore()))
       guard let diaryInputOptionVC = DiaryInputOptionViewController.loadFromStoryboard() as? DiaryInputOptionViewController else { return }
       diaryInputOptionVC.viewModel = viewmodel
       diaryInputOptionVC.modalTransitionStyle = .crossDissolve

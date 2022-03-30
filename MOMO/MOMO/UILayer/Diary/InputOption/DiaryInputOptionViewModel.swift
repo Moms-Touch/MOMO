@@ -29,17 +29,19 @@ final class DiaryInputOptionViewModel: ViewModelType {
   var output: Output
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
+  private let repository: DiaryRepository
   
   // MARK: - Init
   
-  init() {
+  init(repository: DiaryRepository) {
     let inputOption = BehaviorSubject<InputType>(value: .text)
     let hasGuideOption = BehaviorSubject<Bool?>(value: nil)
     let gotoSecondStep = BehaviorRelay<DiaryInputType>(value: DiaryInputType(inputType: .text, hasGuide: nil))
     let gotocreateDairyVC = PublishRelay<CreateDiaryViewModel>()
+    self.repository = repository
     
     self.input = Input(inputOption: inputOption.asObserver(), hasGuideOption: hasGuideOption.asObserver())
-    self.output = Output(gotoSecondStep: gotoSecondStep.asDriver(onErrorJustReturn: DiaryInputType(inputType: .text)), gotocreateDiaryVC: gotocreateDairyVC.asDriver(onErrorJustReturn: CreateDiaryViewModel(diaryInput: DiaryInputType(inputType: .text))))
+    self.output = Output(gotoSecondStep: gotoSecondStep.asDriver(onErrorJustReturn: DiaryInputType(inputType: .text)), gotocreateDiaryVC: gotocreateDairyVC.asDriver(onErrorJustReturn: CreateDiaryViewModel(repository: repository, diaryInput: DiaryInputType(inputType: .text))))
     
     // MARK: - Input -> Output
     
@@ -57,7 +59,7 @@ final class DiaryInputOptionViewModel: ViewModelType {
         return DiaryInputType(inputType: inputType, hasGuide: hasGuide)
       }
       .map {
-        CreateDiaryViewModel(diaryInput: $0)
+        CreateDiaryViewModel(repository: repository, diaryInput: $0)
       })
       .bind(to: gotocreateDairyVC)
       .disposed(by: disposeBag)

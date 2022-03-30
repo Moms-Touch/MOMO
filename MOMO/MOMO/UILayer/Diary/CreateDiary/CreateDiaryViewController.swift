@@ -6,50 +6,240 @@
 //
 
 import UIKit
-import RealmSwift
 
-final class CreateDiaryViewController: UIViewController, StoryboardInstantiable {
+import RealmSwift
+import RxSwift
+import RxCocoa
+
+final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
   
-  @IBOutlet weak var dateLabel: UILabel! {
-    didSet {
-      dateLabel.text = dateFormatter.string(from: Date())
-      dateLabel.navTitleStyle()
-    }
+  private let dateLabel = UILabel().then {
+    $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+    $0.text = Date().toString()
   }
   
-  @IBOutlet weak var diaryInputContainerView: UIView!
+  private let backButton = UIButton(type: .system).then {
+    $0.setImage(UIImage(systemName:"chevron.left"), for: .normal)
+  }
   
-  @IBOutlet var emotionButtons: [UIButton]! {
+  private let navBar = UIView(frame: .zero).then {
+    $0.backgroundColor = .clear
+  }
+  
+  private let completeDiaryButton = UIButton(type:.custom).then {
+    $0.setTitle("완료", for: .normal)
+    $0.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+    $0.setTitleColor(.label, for: .normal)
+  }
+  
+  private let diaryInputContainerView = UIView().then {
+    $0.backgroundColor = .clear
+  }
+  
+  private let blurView = BlurView()
+  private var emotionButtons = [UIButton]()
+  private var disposeBag = DisposeBag()
+  
+  // MARK: - ViewModel & Binding
+  
+  var viewModel: CreateDiaryViewModel
+  
+  func bindViewModel() {
     
-    didSet {
-      emotionButtons.first?.isSelected = true
-    }
-  }
-  
-  @IBOutlet weak var completeDiaryButton: UIButton! {
-    didSet {
-      completeDiaryButton.momoButtonStyle()
-    }
-  }
-  
-  var inputType: DiaryInputType!
-  
-  private let dateFormatter: DateFormatter = {
+    // MARK: - Input
+    backButton.rx.tap
+      .throttle(.seconds(1), scheduler: MainScheduler.instance)
+      .bind(to: viewModel.input.dismissClicked)
+      .disposed(by: disposeBag)
     
-    let formatter = DateFormatter()
-    formatter.dateFormat = .some("yyyy.MM.dd")
-    return formatter
-  }()
+    completeDiaryButton.rx.tap
+      .throttle(.seconds(1), scheduler: MainScheduler.instance)
+      .bind(to: viewModel.input.completedClicked)
+      .disposed(by: disposeBag)
+    
+    emotionButtons.enumerated().forEach { index, button in
+      button.rx.tap
+        .throttle(.seconds(1), scheduler: MainScheduler.instance)
+        .map{ return DiaryEmotion.allCases[index] }
+        .bind(to: viewModel.input.selectEmotionButton)
+        .disposed(by: disposeBag)
+      
+      button.rx.tap
+        .throttle(.seconds(1), scheduler: MainScheduler.instance)
+        .map { return button }
+        .bind(onNext: {
+          self.emotionButtons.forEach {
+            $0.isSelected = false
+          }
+          $0.isSelected = true
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Output
+    /// inputType 에 따라 InPutContainerView 를 채운다
+    
+    viewModel.output.withInputViewModel
+      .filter{ $0 is WithTextViewModel } // 나중에 변경하기
+      .map { WithTextViewController(viewModel: $0 as! WithTextViewModel) }
+      .drive(onNext: { [weak self] in
+        guard let self = self else {return}
+        self.appendChildVC(to: self.diaryInputContainerView, with: $0)
+      })
+      .disposed(by: disposeBag)
+  }
+  
+  // MARK: - Init
+  
+  init(viewModel: CreateDiaryViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   // MARK: - Life Cycle
   
   override func viewDidLoad() {
-    
     super.viewDidLoad()
-    
-    setUpInputContainerView()
-    
-    
+//    setupKeyboard()
+    setupUI()
+    self.bind(viewModel: self.viewModel)
+  }
+  
+  // MARK: - Method
+  
+  private func dismiss() {
+    self.alertWithObservable(title: "작성 중단", text: "그만두시겠어요? 작성중인 내용은 저장되지 않아요")
+      .bind(to: viewModel.input.dismissWithoutSave)
+      .disposed(by: disposeBag)
+  }
+  
+  private func saveCompleted() {
+    self.alertWithOneAnswer(title: "일기 저장 성공", text: "일기가 잘 저장되었어요", answer: "알겠어요")
+      .subscribe(onCompleted: { [weak self] in
+        guard let self = self else {return}
+        self.navigationController?.popViewController(animated: true)
+      })
+      .disposed(by: disposeBag)
+  }
+  
+//  @IBAction func completeDiary(_ sender: Any) {
+//
+//    /// 완료할건지 묻는 Alert
+//
+//    /// 감정
+//
+//    var emotion: DiaryEmotion
+//
+//    var buttonIndex: Int = -1
+//
+//    /// 텍스트와 음성에 따라 다르게 처리
+//    ///
+//
+//    var diary: Diary
+//
+//    switch inputType {
+//
+//      case .text:
+//
+//        guard let withTextVC = self.children.first as? WithTextViewController else { return }
+//
+//        guard let hasGuide = inputType.hasGuide else { return }
+//
+//        var qnaList: List<QNA> = List<QNA>()
+//
+//        if hasGuide {
+//
+//          /// 가이드가 있다면
+//          /// 질문은 3개일 것이다
+//          guard withTextVC.qnaList.count == 3 else {
+//
+//            /// 3가지 질문을 모두 작성하지 않았다면
+//            /// 알림 후 종료
+//
+//            let alertVC = UIAlertController(title: "다 채워지지 않음", message: "모든 답변을 채워주세요", preferredStyle: .alert)
+//
+//            alertVC.addAction(UIAlertAction.okAction)
+//
+//            self.present(alertVC, animated: true, completion: nil)
+//
+//            return
+//          }
+//
+//          /// 가이드가 없다면
+//          /// 질문은 1개일 것이다
+//        } else {
+//
+//          guard withTextVC.qnaList.count == 1 else {
+//
+//            /// 1가지 질문을 모두 작성하지 않았다면
+//            /// 알림 후 종료
+//
+//            let alertVC = UIAlertController(title: "다 채워지지 않음", message: "모든 답변을 채워주세요", preferredStyle: .alert)
+//
+//            alertVC.addAction(UIAlertAction.okAction)
+//
+//            self.present(alertVC, animated: true, completion: nil)
+//
+//            return
+//          }
+//
+//        }
+//
+//        for (question, answer) in withTextVC.qnaList {
+//
+//          qnaList.append(QNA(question: question, answer: answer))
+//
+//        }
+//
+//        diary = Diary(date: Date(), emotion: emotion, contentType: inputType.inputType, qnaList: qnaList)
+//
+//      case .voice:
+//
+//        guard let withVoiceVC = self.children.first as? WithVoiceViewController else { return }
+//
+//        /// 아직 녹음 중이라면 종료한다
+//        if let audioRecorder = withVoiceVC.audioRecorder {
+//
+//          withVoiceVC.finishRecording(success: true)
+//
+//        }
+//
+//        diary = Diary(date: Date(), emotion: emotion, contentType: inputType.inputType, qnaList: List<QNA>())
+//
+//
+//      default:
+//        fatalError("Invalid Input Type")
+//    }
+//
+//    /// DB 에 넣기 ^^..
+//    do {
+//
+//      let realm = try Realm()
+//
+//      try realm.write {
+//        realm.add(diary)
+//      }
+//
+//    } catch {
+//
+//      let alertVC = UIAlertController(title: "ERROR", message: error.localizedDescription, preferredStyle: .alert)
+//
+//      alertVC.addAction(UIAlertAction.okAction)
+//
+//      present(alertVC, animated: true)
+//    }
+//
+//  }
+  
+}
+// MARK: - Keyboard
+
+extension CreateDiaryViewController {
+  private func setupKeyboard() {
     NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { [weak self] noti in
       
       guard let self = self else { return }
@@ -69,222 +259,92 @@ final class CreateDiaryViewController: UIViewController, StoryboardInstantiable 
       self.view.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
     }
   }
-  
-  // MARK: - Method
+}
 
+// MARK: - Set Up UI
+extension CreateDiaryViewController {
   
-  /// inputType 에 따라 InPutContainerView 를 채운다
-  private func setUpInputContainerView() {
-    
-    var inputVC: UIViewController
-    
-    switch inputType?.inputType {
-        
-      case .text:
-        
-        inputVC = WithTextViewController.loadFromStoryboard()
-        
-        guard let hasGuide = inputType?.hasGuide else { return }
-        
-        (inputVC as! WithTextViewController).numOfCells = hasGuide ? 3 : 1
-        
-      case .voice:
-        
-        inputVC = WithVoiceViewController.loadFromStoryboard()
-        
-      default:
-        fatalError("Invalid Input Type")
+  private func appendChildVC(to parentView: UIView, with child: UIViewController) {
+    self.addChild(child)
+    parentView.addSubview(child.view)
+    child.view.snp.makeConstraints { make in
+      make.left.right.top.bottom.equalTo(self.diaryInputContainerView)
     }
-
-    addChild(inputVC)
-    
-    diaryInputContainerView.addSubview(inputVC.view)
-    
-    inputVC.view.translatesAutoresizingMaskIntoConstraints = false
-    
-    NSLayoutConstraint.activate([
-      inputVC.view.leadingAnchor.constraint(equalTo: diaryInputContainerView.leadingAnchor),
-      inputVC.view.topAnchor.constraint(equalTo: diaryInputContainerView.topAnchor),
-      inputVC.view.trailingAnchor.constraint(equalTo: diaryInputContainerView.trailingAnchor),
-      inputVC.view.bottomAnchor.constraint(equalTo: diaryInputContainerView.bottomAnchor),
-    ])
-    
-    inputVC.didMove(toParent: self)
+    child.didMove(toParent: self)
   }
   
-  
-  @IBAction func dismiss(_ sender: UIButton) {
+  private func makeEmotionButtonArray() -> [UIButton] {
     
-    let alertVC = UIAlertController(title: "작성 중단", message: "그만 두시겠어요? 작성중인 내용은 저장되지 않아요.", preferredStyle: .alert)
+    let happyBirdButton = makeEmotionButton(emotion: "bird.happy")
+    let sadBirdButton = makeEmotionButton(emotion: "bird.sad")
+    let blueBirdButton = makeEmotionButton(emotion: "bird.blue")
+    let angryBirdButton = makeEmotionButton(emotion: "bird.angry")
     
-    let okAction = UIAlertAction(title: "중단", style: .destructive) { _ in
-      
-      self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    let cancelAction = UIAlertAction(title: "마저 쓸래요", style: .default, handler: nil)
-    
-    alertVC.addAction(okAction)
-    alertVC.addAction(cancelAction)
-
-    present(alertVC, animated: true, completion: nil)
+    return [happyBirdButton, angryBirdButton, sadBirdButton, blueBirdButton]
   }
   
-  @IBAction func didSelectEmotionButton(_ sender: UIButton) {
-    
-    emotionButtons.forEach {
-      $0.isSelected = false
+  private func makeStackView(emotionButtons: [UIButton]) -> UIStackView {
+    let stackView = UIStackView(arrangedSubviews: emotionButtons).then {
+      $0.axis = .horizontal
+      $0.distribution = .equalSpacing
+      $0.spacing = 20
     }
     
-    sender.isSelected = true
-
+    self.view.addSubview(stackView)
+    stackView.snp.makeConstraints { make in
+      make.left.right.equalToSuperview().inset(20)
+      make.top.equalTo(navBar.snp.bottom).inset(-25)
+      make.bottom.equalTo(diaryInputContainerView.snp.top).offset(-15)
+    }
+    return stackView
   }
   
-  @IBAction func completeDiary(_ sender: Any) {
-    
-    /// 완료할건지 묻는 Alert
-    
-    /// 감정
-    
-    var emotion: DiaryEmotion
-    
-    var buttonIndex: Int = -1
-    
-    for (index, button) in emotionButtons.enumerated() {
-      if button.isSelected {
-        buttonIndex = index
-        break
-      }
+  private func makeEmotionButton(emotion: String) -> UIButton {
+    let button = UIButton(type: .custom).then {
+      $0.setImage(UIImage(named: emotion + ".default"), for: .normal)
+      $0.setImage(UIImage(named: emotion), for: .selected)
     }
-    
-    switch buttonIndex {
-      case 0:
-        emotion = DiaryEmotion.happy
-        break
-      case 1 :
-        emotion = DiaryEmotion.angry
-        break
-      case 2 :
-        emotion = DiaryEmotion.sad
-        break
-      case 3 :
-        emotion = DiaryEmotion.blue
-        break
-      default:
-      fatalError("Invalid Button Index")
-        
-    }
-    
-    
-    /// 텍스트와 음성에 따라 다르게 처리
-    ///
-    
-    var diary: Diary
-    
-    switch inputType.inputType {
-        
-      case .text:
-        
-        guard let withTextVC = self.children.first as? WithTextViewController else { return }
-        
-        guard let hasGuide = inputType.hasGuide else { return }
-        
-        var qnaList: List<QNA> = List<QNA>()
-        
-        if hasGuide {
-          
-          /// 가이드가 있다면
-          /// 질문은 3개일 것이다
-          guard withTextVC.qnaList.count == 3 else {
-            
-            /// 3가지 질문을 모두 작성하지 않았다면
-            /// 알림 후 종료
-            
-            let alertVC = UIAlertController(title: "다 채워지지 않음", message: "모든 답변을 채워주세요", preferredStyle: .alert)
-            
-            alertVC.addAction(UIAlertAction.okAction)
-            
-            self.present(alertVC, animated: true, completion: nil)
-            
-            return
-          }
-          
-          /// 가이드가 없다면
-          /// 질문은 1개일 것이다
-        } else {
-          
-          guard withTextVC.qnaList.count == 1 else {
-            
-            /// 1가지 질문을 모두 작성하지 않았다면
-            /// 알림 후 종료
-            
-            let alertVC = UIAlertController(title: "다 채워지지 않음", message: "모든 답변을 채워주세요", preferredStyle: .alert)
-            
-            alertVC.addAction(UIAlertAction.okAction)
-            
-            self.present(alertVC, animated: true, completion: nil)
-            
-            return
-          }
-          
-        }
-        
-        for (question, answer) in withTextVC.qnaList {
-          
-          qnaList.append(QNA(question: question, answer: answer))
-          
-        }
-        
-        diary = Diary(date: Date(), emotion: emotion, contentType: inputType.inputType, qnaList: qnaList)
-        
-      case .voice:
-        
-        guard let withVoiceVC = self.children.first as? WithVoiceViewController else { return }
-        
-        /// 아직 녹음 중이라면 종료한다
-        if let audioRecorder = withVoiceVC.audioRecorder {
-          
-          withVoiceVC.finishRecording(success: true)
-          
-        }
-
-        diary = Diary(date: Date(), emotion: emotion, contentType: inputType.inputType, qnaList: List<QNA>())
-      
-        
-      default:
-        fatalError("Invalid Input Type")
-    }
-    
-    /// DB 에 넣기 ^^..
-    do {
-      
-      let realm = try Realm()
-      
-      try realm.write {
-        realm.add(diary)
-      }
-      
-    } catch {
-      
-      let alertVC = UIAlertController(title: "ERROR", message: error.localizedDescription, preferredStyle: .alert)
-      
-      alertVC.addAction(UIAlertAction.okAction)
-      
-      present(alertVC, animated: true)
-    }
-    
-    let alertVC = UIAlertController(title: "일기 저장 성공!", message: "일기가 잘 저장되었어요.", preferredStyle: .alert)
-    
-    let okAction = UIAlertAction(title: "알겠어요", style: .default) { _ in
-      
-      self.navigationController?.popToRootViewController(animated: true)
-      
-    }
-    
-    alertVC.addAction(okAction)
-    
-    self.present(alertVC, animated: true, completion: nil)
-    
+    return button
   }
   
+  private func setupUI() {
+    navBar.addSubview(backButton)
+    navBar.addSubview(dateLabel)
+    navBar.addSubview(completeDiaryButton)
+    view.addSubview(blurView)
+    view.addSubview(navBar)
+    view.addSubview(diaryInputContainerView)
+    
+    blurView.snp.makeConstraints { make in
+      make.left.right.bottom.top.equalToSuperview()
+    }
+
+    backButton.snp.makeConstraints { make in
+      make.left.equalToSuperview().inset(20)
+      make.centerY.equalToSuperview()
+    }
+    
+    dateLabel.snp.makeConstraints { make in
+      make.center.equalToSuperview()
+    }
+    
+    completeDiaryButton.snp.makeConstraints { make in
+      make.right.equalToSuperview().inset(20)
+      make.centerY.equalToSuperview()
+    }
+    
+    navBar.snp.makeConstraints { make in
+      make.height.equalTo(44)
+      make.left.right.top.equalTo(view.safeAreaLayoutGuide)
+    }
+    
+    self.emotionButtons = makeEmotionButtonArray()
+    let stackview = makeStackView(emotionButtons: emotionButtons)
+    
+    diaryInputContainerView.snp.makeConstraints { make in
+      make.left.right.bottom.equalTo(view.safeAreaLayoutGuide)
+      make.top.equalTo(stackview.snp.bottom).offset(-15)
+    }
+    
+  }
 }

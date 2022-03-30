@@ -29,12 +29,9 @@
 		285209842753307100AB8BAC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 285209832753307100AB8BAC /* SnapKit */; };
 		285209992753325F00AB8BAC /* DiaryInputOption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209872753325F00AB8BAC /* DiaryInputOption.storyboard */; };
 		2852099A2753325F00AB8BAC /* DiaryInputOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209882753325F00AB8BAC /* DiaryInputOptionViewController.swift */; };
-		2852099C2753325F00AB8BAC /* CreateDiary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2852098C2753325F00AB8BAC /* CreateDiary.storyboard */; };
 		2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852098D2753325F00AB8BAC /* CreateDiaryViewController.swift */; };
 		2852099E2753325F00AB8BAC /* WithTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852098F2753325F00AB8BAC /* WithTextViewController.swift */; };
-		2852099F2753325F00AB8BAC /* WithText.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209902753325F00AB8BAC /* WithText.storyboard */; };
 		285209A02753325F00AB8BAC /* WithTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209912753325F00AB8BAC /* WithTextCollectionViewCell.swift */; };
-		285209A12753325F00AB8BAC /* WithTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285209922753325F00AB8BAC /* WithTextCollectionViewCell.xib */; };
 		285209A22753325F00AB8BAC /* DiaryReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209942753325F00AB8BAC /* DiaryReportViewController.swift */; };
 		285209A32753325F00AB8BAC /* DiaryReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209952753325F00AB8BAC /* DiaryReport.storyboard */; };
 		285209B52753327200AB8BAC /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209A82753327200AB8BAC /* Location.storyboard */; };
@@ -188,6 +185,10 @@
 		75CE01CA27662CE00057CF9B /* APIable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C927662CE00057CF9B /* APIable.swift */; };
 		B1615E9C27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */; };
 		B1615E9F27F2FC1100DC4E63 /* DiaryInputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615E9E27F2FC1100DC4E63 /* DiaryInputType.swift */; };
+		B1615EB727F4527E00DC4E63 /* WIthTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EB627F4527E00DC4E63 /* WIthTextViewModel.swift */; };
+		B1615EB927F4530600DC4E63 /* WithVoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EB827F4530600DC4E63 /* WithVoiceViewModel.swift */; };
+		B1615EBB27F470CA00DC4E63 /* WithTextCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */; };
+		B1615EBD27F4938C00DC4E63 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBC27F4938C00DC4E63 /* BlurView.swift */; };
 		B1B9AE9727EA16DD006E01E1 /* RecommendDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */; };
 		B1B9AE9B27EC767B006E01E1 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */; };
 		B1B9AE9D27EC76D9006E01E1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9C27EC76D9006E01E1 /* Day.swift */; };
@@ -241,12 +242,9 @@
 		28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellPresentationController.swift; sourceTree = "<group>"; };
 		285209872753325F00AB8BAC /* DiaryInputOption.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiaryInputOption.storyboard; sourceTree = "<group>"; };
 		285209882753325F00AB8BAC /* DiaryInputOptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryInputOptionViewController.swift; sourceTree = "<group>"; };
-		2852098C2753325F00AB8BAC /* CreateDiary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateDiary.storyboard; sourceTree = "<group>"; };
 		2852098D2753325F00AB8BAC /* CreateDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDiaryViewController.swift; sourceTree = "<group>"; };
 		2852098F2753325F00AB8BAC /* WithTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithTextViewController.swift; sourceTree = "<group>"; };
-		285209902753325F00AB8BAC /* WithText.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WithText.storyboard; sourceTree = "<group>"; };
 		285209912753325F00AB8BAC /* WithTextCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithTextCollectionViewCell.swift; sourceTree = "<group>"; };
-		285209922753325F00AB8BAC /* WithTextCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WithTextCollectionViewCell.xib; sourceTree = "<group>"; };
 		285209942753325F00AB8BAC /* DiaryReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryReportViewController.swift; sourceTree = "<group>"; };
 		285209952753325F00AB8BAC /* DiaryReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiaryReport.storyboard; sourceTree = "<group>"; };
 		285209972753325F00AB8BAC /* DiaryMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryMainViewController.swift; sourceTree = "<group>"; };
@@ -398,6 +396,10 @@
 		893E087FF19826B888D50EC3 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiaryViewModel.swift; sourceTree = "<group>"; };
 		B1615E9E27F2FC1100DC4E63 /* DiaryInputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInputType.swift; sourceTree = "<group>"; };
+		B1615EB627F4527E00DC4E63 /* WIthTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIthTextViewModel.swift; sourceTree = "<group>"; };
+		B1615EB827F4530600DC4E63 /* WithVoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceViewModel.swift; sourceTree = "<group>"; };
+		B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextCellViewModel.swift; sourceTree = "<group>"; };
+		B1615EBC27F4938C00DC4E63 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewModel.swift; sourceTree = "<group>"; };
 		B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
 		B1B9AE9C27EC76D9006E01E1 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -544,11 +546,10 @@
 		2852098B2753325F00AB8BAC /* CreateDiary */ = {
 			isa = PBXGroup;
 			children = (
-				2852098C2753325F00AB8BAC /* CreateDiary.storyboard */,
 				2852098D2753325F00AB8BAC /* CreateDiaryViewController.swift */,
+				B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */,
 				2852098E2753325F00AB8BAC /* WithText */,
 				DDE316FE277F13B70033FEF4 /* WithVoice */,
-				B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */,
 			);
 			path = CreateDiary;
 			sourceTree = "<group>";
@@ -557,9 +558,9 @@
 			isa = PBXGroup;
 			children = (
 				2852098F2753325F00AB8BAC /* WithTextViewController.swift */,
-				285209902753325F00AB8BAC /* WithText.storyboard */,
 				285209912753325F00AB8BAC /* WithTextCollectionViewCell.swift */,
-				285209922753325F00AB8BAC /* WithTextCollectionViewCell.xib */,
+				B1615EB627F4527E00DC4E63 /* WIthTextViewModel.swift */,
+				B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */,
 			);
 			path = WithText;
 			sourceTree = "<group>";
@@ -655,6 +656,7 @@
 				75AF4A7B277EB30C00F3A041 /* ViewController.swift */,
 				3AF3731E2789C9390007752E /* CustomFont.swift */,
 				3AF805992789DDA600D80F68 /* MyPageLabel.swift */,
+				B1615EBC27F4938C00DC4E63 /* BlurView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1245,6 +1247,7 @@
 			children = (
 				DDE31703277F24140033FEF4 /* WithVoiceViewController.swift */,
 				DDE3170E27802A310033FEF4 /* WithVoice.storyboard */,
+				B1615EB827F4530600DC4E63 /* WithVoiceViewModel.swift */,
 			);
 			path = WithVoice;
 			sourceTree = "<group>";
@@ -1354,13 +1357,11 @@
 				288ED75A27427CC200C5178D /* BookmarkList.storyboard in Resources */,
 				28F47164273BE5500074D148 /* MyBabyInfo.storyboard in Resources */,
 				758F519A277E112100DA88BE /* SignUp.storyboard in Resources */,
-				2852099C2753325F00AB8BAC /* CreateDiary.storyboard in Resources */,
 				285209BA2753327200AB8BAC /* FindPassword.storyboard in Resources */,
 				28CA30752753357300EF071E /* QuestionTableViewCell.xib in Resources */,
 				288ED76127427D5800C5178D /* ListTableViewCell.xib in Resources */,
 				28F4714E2738F67A0074D148 /* HomeMain.storyboard in Resources */,
 				DD43E8CE270B4A2300699DA1 /* LaunchScreen.storyboard in Resources */,
-				285209A12753325F00AB8BAC /* WithTextCollectionViewCell.xib in Resources */,
 				DDE3170B277F4F0E0033FEF4 /* QnAView.xib in Resources */,
 				285209A32753325F00AB8BAC /* DiaryReport.storyboard in Resources */,
 				28CA30762753357300EF071E /* QuestionsMain.storyboard in Resources */,
@@ -1368,7 +1369,6 @@
 				DD43E8DF270B4C0100699DA1 /* Colors.xcassets in Resources */,
 				285209B82753327200AB8BAC /* PregnantStatus.storyboard in Resources */,
 				DD43E8CB270B4A2300699DA1 /* Assets.xcassets in Resources */,
-				2852099F2753325F00AB8BAC /* WithText.storyboard in Resources */,
 				759A7319277890ED00E549F6 /* Detail.storyboard in Resources */,
 				28CA30782753357300EF071E /* CreateQuestion.storyboard in Resources */,
 				DDE317112781A08D0033FEF4 /* VoiceView.xib in Resources */,
@@ -1485,6 +1485,7 @@
 				285209E22753329600AB8BAC /* UIImage+Extension.swift in Sources */,
 				28F9B2582783A18A00D7EF7A /* extension+UITextView.swift in Sources */,
 				285D0DE127E712B400B22287 /* MomoRecommendRepository.swift in Sources */,
+				B1615EBD27F4938C00DC4E63 /* BlurView.swift in Sources */,
 				B1B9AEB327EDE20C006E01E1 /* DiaryRepository.swift in Sources */,
 				2861940727DCAAA30012250F /* MomoUserSessionRepository.swift in Sources */,
 				2861940527DCA8D10012250F /* UserSessionRepository.swift in Sources */,
@@ -1495,6 +1496,7 @@
 				B1B9AEA727EC81E8006E01E1 /* CalendarUseCase.swift in Sources */,
 				75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */,
 				2861943A27DF0B1A0012250F /* NetworkProtocol.swift in Sources */,
+				B1615EBB27F470CA00DC4E63 /* WithTextCellViewModel.swift in Sources */,
 				28F4713F2738A4020074D148 /* TabBar.swift in Sources */,
 				2861943427DEF00B0012250F /* InfoChangeCellViewModel.swift in Sources */,
 				2861940027DCA4BA0012250F /* MyInfoCellViewModel.swift in Sources */,
@@ -1511,6 +1513,7 @@
 				285209E72753329600AB8BAC /* PopAnimator.swift in Sources */,
 				285209EA2753329600AB8BAC /* Dimmable.swift in Sources */,
 				2861944F27DF49710012250F /* MomoAuthRepository.swift in Sources */,
+				B1615EB927F4530600DC4E63 /* WithVoiceViewModel.swift in Sources */,
 				DDA9999A2767946D00A21D9B /* XCAssetTypeAlias.swift in Sources */,
 				28F4FE152760C82F00E699FC /* SimpleCommunityData.swift in Sources */,
 				28B63E9C276DF53600CB5EBF /* CustomNavigationAnimator.swift in Sources */,
@@ -1546,6 +1549,7 @@
 				285209C02753327200AB8BAC /* LoginViewController.swift in Sources */,
 				2861943627DEF05D0012250F /* InfoUserManageViewModel.swift in Sources */,
 				288ED76027427D5800C5178D /* ListTableViewCell.swift in Sources */,
+				B1615EB727F4527E00DC4E63 /* WIthTextViewModel.swift in Sources */,
 				286DDE192771ADC3003E9563 /* GenericResponse.swift in Sources */,
 				B1B9AEB127ECC429006E01E1 /* CalendarHeaderViewModel.swift in Sources */,
 				2852099E2753325F00AB8BAC /* WithTextViewController.swift in Sources */,

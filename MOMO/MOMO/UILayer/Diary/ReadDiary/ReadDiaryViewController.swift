@@ -21,11 +21,7 @@ class ReadDiaryViewController: UIViewController, StoryboardInstantiable {
   
   @IBOutlet weak var qnaContainerStackView: UIStackView!
   
-  @IBOutlet weak var deleteButton: UIButton! {
-    didSet {
-      deleteButton.momoButtonStyle()
-    }
-  }
+  @IBOutlet weak var deleteButton: UIButton!
   
   
   var diary: Diary! {
@@ -78,7 +74,7 @@ class ReadDiaryViewController: UIViewController, StoryboardInstantiable {
      일기 Q&A
      */
     
-    guard let contentType = DiaryInputType.InputType(rawValue:diary.contentType) else { return }
+    guard let contentType = InputType(rawValue:diary.contentType) else { return }
     
     switch contentType {
         

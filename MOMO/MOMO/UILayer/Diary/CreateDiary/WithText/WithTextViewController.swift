@@ -6,104 +6,79 @@
 //
 
 import UIKit
-import OrderedCollections
 
-class WithTextViewController: ViewController, StoryboardInstantiable {
-  
-  static var storyboardName: String = "WithText"
+import RxSwift
+import RxCocoa
 
-  @IBOutlet weak var collectionView: UICollectionView!
+class WithTextViewController: ViewController, ViewModelBindableType {
   
-  @IBOutlet weak var pageControl: UIPageControl!
+  // MARK: - UI
   
-  var hasGuide: Bool {
+  private lazy var collectionView: UICollectionView = {
     
-    return numOfCells == 3 ? true : false
-  }
-  
-  var numOfCells: Int!
-  
-  var defaultQuestion = "자유롭게 일기를 작성해주세요."
-  
-  var questionManager = DiaryQuestionManager.shared
-  
-//  var qnaList: [String: String] = [:]
-  var qnaList: OrderedDictionary<String, String> = [:]
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    setUpCollectionView()
-    hideKeyboard()
-    setUpPageControl()
-  }
-  
-  private func setUpCollectionView() {
-    
-    collectionView.dataSource = self
-    collectionView.delegate = self
-    
-    collectionView.register(WithTextCollectionViewCell.nib, forCellWithReuseIdentifier: WithTextCollectionViewCell.identifier)
-    
-    collectionView.isPagingEnabled = true
-    collectionView.showsHorizontalScrollIndicator = false
-
-    guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-    
+    let layout = UICollectionViewFlowLayout()
     layout.minimumInteritemSpacing = 0
     layout.minimumLineSpacing = 0
+    layout.scrollDirection = .horizontal
+    
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    
+    collectionView.backgroundColor = .clear
+    collectionView.isPagingEnabled = true
+    collectionView.showsHorizontalScrollIndicator = false
+    
+    return collectionView
+  }()
+  
+  // MARK: - ViewModel & Binding
+  var viewModel: WithTextViewModel
+  
+  func bindViewModel() {
+    
+    // MARK: - Input
+    
+    // MARK: - Output
+    viewModel.output.datasource
+      .drive(collectionView.rx.items(cellIdentifier: WithTextCollectionViewCell.identifier, cellType: WithTextCollectionViewCell.self)){
+        index, item, cell in
+        cell.configure(with: WithTextCellViewModel(question: item, index: "\(index + 1)/3"))
+      }
+      .disposed(by: disposeBag)
+    
   }
   
+  // MARK: - Init
   
-  private func setUpPageControl() {
-    
-    ///numOfCells 는 inputType 의 hasGuide 로 정해진다
-    ///
-    /// 가이드가 있으면 컬렉션 뷰셀의 개수는 3
-    ///
-    /// 가이드가 없으면 컬렉션 뷰셀의 개수는 1 + 페이지 컨트롤은 숨겨져야한다
-
-    pageControl.isHidden = hasGuide ? false : true
-  }
-
-
-}
-
-extension WithTextViewController: UICollectionViewDataSource {
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
-    return numOfCells ?? 0
+  init(viewModel: WithTextViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+    self.bind(viewModel: self.viewModel)
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WithTextCollectionViewCell.identifier, for: indexPath) as? WithTextCollectionViewCell else { return UICollectionViewCell() }
-    
-    cell.backgroundColor = Asset.Colors.pink5.color
-    
-    if hasGuide {
-      
-      cell.questionLabel.text = questionManager.guideQuestionList[indexPath.row]
-      
-    } else {
-      
-      cell.questionLabel.text = defaultQuestion
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  // MARK: - LifeCycle
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupUI()
+  }
+  
+  // MARK: - Private Properties
+  private var disposeBag = DisposeBag()
+  
+  private func setupUI() {
+    view.addSubview(collectionView)
+    collectionView.snp.makeConstraints { make in
+      make.left.right.top.bottom.equalToSuperview()
     }
-    
-    cell.answerTextView.delegate = self
-    
-    cell.widthAnchor.constraint(equalToConstant: collectionView.frame.width).isActive = true
-    cell.heightAnchor.constraint(equalToConstant: collectionView.frame.height).isActive = true
-    
-    cell.tag = indexPath.row
-    
-    return cell
+    collectionView.register(WithTextCollectionViewCell.self)
+    collectionView.rx.setDelegate(self)
+      .disposed(by: disposeBag)
   }
-}
 
-extension WithTextViewController: UICollectionViewDelegate {
-  
 }
 
 extension WithTextViewController: UICollectionViewDelegateFlowLayout {
@@ -112,33 +87,26 @@ extension WithTextViewController: UICollectionViewDelegateFlowLayout {
     
     return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
   }
+
 }
 
-extension WithTextViewController {
-  
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-    pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
-  }
-}
-
-extension WithTextViewController: UITextViewDelegate {
-  
-  func textViewDidChange(_ textView: UITextView) {
-    
-    /// textView -> contentView -> Cell
-    guard let cell = textView.superview?.superview as? WithTextCollectionViewCell else { return }
-    
-    /// 가이드가 있으면
-    if hasGuide {
-      
-      qnaList.updateValue(textView.text, forKey: cell.questionLabel.text!)
-
-      /// 가이드가 없으면
-    } else {
-      
-      qnaList.updateValue(textView.text, forKey: defaultQuestion)
-    }
-  }
-  
-}
+//extension WithTextViewController: UITextViewDelegate {
+//  
+//  func textViewDidChange(_ textView: UITextView) {
+//    
+//    /// textView -> contentView -> Cell
+//    guard let cell = textView.superview?.superview as? WithTextCollectionViewCell else { return }
+//    
+//    /// 가이드가 있으면
+//    if hasGuide {
+//      
+//      qnaList.updateValue(textView.text, forKey: cell.questionLabel.text!)
+//
+//      /// 가이드가 없으면
+//    } else {
+//      
+//      qnaList.updateValue(textView.text, forKey: defaultQuestion)
+//    }
+//  }
+//  
+//}
