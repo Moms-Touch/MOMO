@@ -56,6 +56,7 @@ internal enum Asset {
     internal static let loveTheWorld = ImageAsset(name: "loveTheWorld")
     internal static let mainBack = ImageAsset(name: "mainBack")
     internal static let mainBackground = ImageAsset(name: "mainBackground")
+    internal static let mainbackgroundBlur = ImageAsset(name: "mainbackgroundBlur")
     internal static let mascot = ImageAsset(name: "mascot")
     internal static let alreadyBirth = ImageAsset(name: "already_birth")
     internal static let alreadyBrithSelect = ImageAsset(name: "already_brith_select")
