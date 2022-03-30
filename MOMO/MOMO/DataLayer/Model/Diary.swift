@@ -57,7 +57,7 @@ class QNA: Object {
  일기 중 감정 상태를 표현하는 열거형
  */
 
-enum DiaryEmotion: String {
+enum DiaryEmotion: String, CaseIterable {
   
   case happy
   case angry
