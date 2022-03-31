@@ -63,19 +63,7 @@ class WithTextCollectionViewCell: UICollectionViewCell {
         cell.bottomConstriant?.isActive = true
       })
       .disposed(by: disposeBag)
-    
-//    Observable.combineLatest(answerTextView.rx.text, keyboardHeight())
-//      .bind { [weak self] text, keyboardHeight in
-//        guard let self = self else {return}
-//        let caret = self.answerTextView.caretRect(for: self.answerTextView.selectedTextRange!.start)
-//        let keyboardTopBorder = self.answerTextView.bounds.size.height - keyboardHeight
-//        if caret.origin.y < keyboardTopBorder {
-//          self.answerTextView.scrollRectToVisible(caret, animated: true)
-//        }
-//      }
-//      .disposed(by: disposeBag)
-      
-    
+  
     // MARK: - Output
     viewModel.output.question
       .drive(questionLabel.rx.text)

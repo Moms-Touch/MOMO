@@ -9,6 +9,7 @@ import Foundation
 
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 class WithTextCellViewModel: ViewModelType {
  
@@ -25,7 +26,6 @@ class WithTextCellViewModel: ViewModelType {
   struct Output {
     var question: Driver<String>
     var index: Driver<String>
-    var content: Driver<String>
   }
   
   var output: Output
@@ -33,17 +33,30 @@ class WithTextCellViewModel: ViewModelType {
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
   private var defaultQuestion = "자유롭게 일기를 작성해주세요."
-
+  private var qnaRelay: GetQNAProtocol
   
   // MARK: - init
-  init(question: String, index: String) {
+  init(question: String, index: String, qnaRelay: GetQNAProtocol) {
     let questionRelay = BehaviorRelay<String>(value: question)
     let indexStr = question == defaultQuestion ? "" : index
     let indexRelay = BehaviorRelay<String>(value: indexStr)
     let textBehaviorSubject = BehaviorSubject<String>(value: "")
+    let qnaDic = BehaviorRelay<[String:String]>(value: [question: ""])
     
+    self.qnaRelay = qnaRelay
     self.input = Input(content: textBehaviorSubject.asObserver())
-    self.output = Output(question: questionRelay.asDriver(), index: indexRelay.asDriver(), content: textBehaviorSubject.asDriver(onErrorJustReturn: "오류"))
+    self.output = Output(question: questionRelay.asDriver(), index: indexRelay.asDriver())
+    
+    //input -> Output
+    textBehaviorSubject
+      .map { return [question: $0] }
+      .bind(to: qnaRelay.qnaListBehaviorRelay)
+      .disposed(by: disposeBag)
+      
   }
+  
+  
+  
+//  qnaList.updateValue(textView.text, forKey: cell.questionLabel.text!)
   
 }

@@ -24,7 +24,6 @@ class WithTextViewController: ViewController, ViewModelBindableType {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     
     collectionView.backgroundColor = .clear
-    collectionView.isPagingEnabled = true
     collectionView.showsHorizontalScrollIndicator = false
     
     return collectionView
@@ -39,12 +38,19 @@ class WithTextViewController: ViewController, ViewModelBindableType {
     
     // MARK: - Output
     viewModel.output.datasource
-      .drive(collectionView.rx.items(cellIdentifier: WithTextCollectionViewCell.identifier, cellType: WithTextCollectionViewCell.self)){
+      .drive(collectionView.rx.items(cellIdentifier: WithTextCollectionViewCell.identifier, cellType: WithTextCollectionViewCell.self)){ [weak self]
         index, item, cell in
-        cell.configure(with: WithTextCellViewModel(question: item, index: "\(index + 1)/3"))
+        guard let self = self else {return}
+        cell.configure(with: WithTextCellViewModel(question: item, index: "\(index + 1)/3", qnaRelay: self.viewModel))
       }
       .disposed(by: disposeBag)
     
+    //요런것도 viewmodel로 값을 옮긴다음에 빼야할까?
+    keyboardHeight()
+      .map { return $0 > 0 ? false : true }
+      .bind(to: collectionView.rx.isScrollEnabled)
+      .disposed(by: disposeBag)
+  
   }
   
   // MARK: - Init
@@ -90,23 +96,3 @@ extension WithTextViewController: UICollectionViewDelegateFlowLayout {
 
 }
 
-//extension WithTextViewController: UITextViewDelegate {
-//  
-//  func textViewDidChange(_ textView: UITextView) {
-//    
-//    /// textView -> contentView -> Cell
-//    guard let cell = textView.superview?.superview as? WithTextCollectionViewCell else { return }
-//    
-//    /// 가이드가 있으면
-//    if hasGuide {
-//      
-//      qnaList.updateValue(textView.text, forKey: cell.questionLabel.text!)
-//
-//      /// 가이드가 없으면
-//    } else {
-//      
-//      qnaList.updateValue(textView.text, forKey: defaultQuestion)
-//    }
-//  }
-//  
-//}

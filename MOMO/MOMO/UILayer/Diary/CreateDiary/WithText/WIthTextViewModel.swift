@@ -10,16 +10,13 @@ import Foundation
 import OrderedCollections
 import RxSwift
 import RxCocoa
+import RealmSwift
 
-class WithInputViewModel {
-  private var hasGuide: Bool
-  
-  init(hasGuide: Bool) {
-    self.hasGuide = hasGuide
-  }
+protocol GetQNAProtocol {
+  var qnaListBehaviorRelay: BehaviorRelay<[String:String]> { get set }
 }
 
-class WithTextViewModel: WithInputViewModel, ViewModelType {
+class WithTextViewModel: WithInputViewModel, ViewModelType, GetQNAProtocol {
   
   // MARK: - Input
   struct Input {
@@ -32,6 +29,7 @@ class WithTextViewModel: WithInputViewModel, ViewModelType {
   
   struct Output {
     var datasource: Driver<[String]>
+    var qnaDic: Driver<[String: String]>
   }
   
   var output: Output
@@ -45,13 +43,39 @@ class WithTextViewModel: WithInputViewModel, ViewModelType {
                                       "남기고 싶은 말이 있나요?"
   ]
   private var disposeBag = DisposeBag()
+  var qnaListBehaviorRelay: BehaviorRelay<[String:String]>
 
-  override init(hasGuide: Bool) {
-    
+  init(hasGuide: Bool, baseDate: Date) {
     let datasource = hasGuide == true ? BehaviorRelay<[String]>(value: guideQuestionList) : BehaviorRelay<[String]>(value: [defaultQuestion])
-    
+    self.qnaListBehaviorRelay = BehaviorRelay<[String:String]>(value: [:])
     self.input = Input()
-    self.output = Output(datasource: datasource.asDriver())
+    self.output = Output(datasource: datasource.asDriver(), qnaDic: qnaListBehaviorRelay.asDriver())
     super.init(hasGuide: hasGuide)
+    
+    datasource
+      .map({ questions in
+        var dic = [String:String]()
+        questions.forEach { question in
+          dic.updateValue("", forKey: question)
+        }
+        return dic
+      })
+      .bind(to: qnaListBehaviorRelay)
+      .disposed(by: disposeBag)
+  
+    qnaListBehaviorRelay
+      .map { dic -> (String, String)? in
+        if let key = dic.keys.first, let value = dic[key] {
+          return (String(key), value)
+        }
+        return nil
+      }
+      .compactMap { $0 }
+      .withUnretained(self)
+      .bind(onNext: {(vm, tuple) in
+        vm.qnaList.updateValue(tuple.1, forKey: tuple.0)
+      })
+      .disposed(by: disposeBag)
+    
   }
 }

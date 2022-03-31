@@ -189,6 +189,7 @@
 		B1615EB927F4530600DC4E63 /* WithVoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EB827F4530600DC4E63 /* WithVoiceViewModel.swift */; };
 		B1615EBB27F470CA00DC4E63 /* WithTextCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */; };
 		B1615EBD27F4938C00DC4E63 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBC27F4938C00DC4E63 /* BlurView.swift */; };
+		B1615EBF27F5AAA300DC4E63 /* WithInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBE27F5AAA300DC4E63 /* WithInputViewModel.swift */; };
 		B1B9AE9727EA16DD006E01E1 /* RecommendDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */; };
 		B1B9AE9B27EC767B006E01E1 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */; };
 		B1B9AE9D27EC76D9006E01E1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9C27EC76D9006E01E1 /* Day.swift */; };
@@ -400,6 +401,7 @@
 		B1615EB827F4530600DC4E63 /* WithVoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceViewModel.swift; sourceTree = "<group>"; };
 		B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextCellViewModel.swift; sourceTree = "<group>"; };
 		B1615EBC27F4938C00DC4E63 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		B1615EBE27F5AAA300DC4E63 /* WithInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithInputViewModel.swift; sourceTree = "<group>"; };
 		B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewModel.swift; sourceTree = "<group>"; };
 		B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
 		B1B9AE9C27EC76D9006E01E1 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */,
 				2852098E2753325F00AB8BAC /* WithText */,
 				DDE316FE277F13B70033FEF4 /* WithVoice */,
+				B1615EBE27F5AAA300DC4E63 /* WithInputViewModel.swift */,
 			);
 			path = CreateDiary;
 			sourceTree = "<group>";
@@ -1594,6 +1597,7 @@
 				28B49143274BB160002BA67A /* DeviceManager.swift in Sources */,
 				2861942027DE2DB20012250F /* MomoUserRemoteAPI.swift in Sources */,
 				2861941C27DE0E590012250F /* ViewModelBindableType.swift in Sources */,
+				B1615EBF27F5AAA300DC4E63 /* WithInputViewModel.swift in Sources */,
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,
 				DDE316F8277C94FB0033FEF4 /* Diary.swift in Sources */,
 				B1615E9C27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift in Sources */,
