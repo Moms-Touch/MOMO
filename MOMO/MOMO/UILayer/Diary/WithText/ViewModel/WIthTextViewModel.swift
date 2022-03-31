@@ -12,11 +12,11 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 
-protocol GetQNAProtocol {
+protocol DiaryContentGetable {
   var qnaListBehaviorRelay: BehaviorRelay<[String:String]> { get set }
 }
 
-class WithTextViewModel: WithInputViewModel, ViewModelType, GetQNAProtocol {
+class WithTextViewModel: WithInputViewModel, ViewModelType, DiaryContentGetable {
   
   // MARK: - Input
   struct Input {

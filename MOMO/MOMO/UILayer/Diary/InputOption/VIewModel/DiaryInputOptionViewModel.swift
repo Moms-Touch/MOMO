@@ -6,8 +6,10 @@
 //
 
 import Foundation
+
 import RxSwift
 import RxCocoa
+import AVFoundation
 
 final class DiaryInputOptionViewModel: ViewModelType {
   
@@ -34,14 +36,18 @@ final class DiaryInputOptionViewModel: ViewModelType {
   // MARK: - Init
   
   init(repository: DiaryRepository) {
+    
+    self.repository = repository
+    let usecase = MomoCreateDiaryUseCase(repository: self.repository)
+    let voiceUsecase = MomoWithVoiceUseCase(recodingSession: AVAudioSession.sharedInstance(), audioRecoder: AVAudioRecorder(), repository: repository)
+    
     let inputOption = BehaviorSubject<InputType>(value: .text)
     let hasGuideOption = BehaviorSubject<Bool?>(value: nil)
     let gotoSecondStep = BehaviorRelay<DiaryInputType>(value: DiaryInputType(inputType: .text, hasGuide: nil))
     let gotocreateDairyVC = PublishRelay<CreateDiaryViewModel>()
-    self.repository = repository
-    let usecase = MomoCreateDiaryUseCase(repository: self.repository)
+  
     self.input = Input(inputOption: inputOption.asObserver(), hasGuideOption: hasGuideOption.asObserver())
-    self.output = Output(gotoSecondStep: gotoSecondStep.asDriver(onErrorJustReturn: DiaryInputType(inputType: .text)), gotocreateDiaryVC: gotocreateDairyVC.asDriver(onErrorJustReturn: CreateDiaryViewModel(usecase: usecase, diaryInput: DiaryInputType(inputType: .text))))
+    self.output = Output(gotoSecondStep: gotoSecondStep.asDriver(onErrorJustReturn: DiaryInputType(inputType: .text)), gotocreateDiaryVC: gotocreateDairyVC.asDriver(onErrorJustReturn: CreateDiaryViewModel(usecase: usecase, voiceUsecase: voiceUsecase, diaryInput: DiaryInputType(inputType: .text))))
     
     // MARK: - Input -> Output
     
@@ -59,7 +65,7 @@ final class DiaryInputOptionViewModel: ViewModelType {
         return DiaryInputType(inputType: inputType, hasGuide: hasGuide)
       }
       .map {
-        CreateDiaryViewModel(usecase: usecase, diaryInput: $0)
+        CreateDiaryViewModel(usecase: usecase, voiceUsecase: voiceUsecase, diaryInput: $0)
       })
       .bind(to: gotocreateDairyVC)
       .disposed(by: disposeBag)

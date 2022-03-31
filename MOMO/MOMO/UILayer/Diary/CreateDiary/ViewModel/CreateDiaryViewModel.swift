@@ -40,14 +40,16 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
   private var disposeBag = DisposeBag()
   private let baseDate: Date
   private let usecase: CreateDiaryUseCase
+  private let voiceUsecase: WithVoiceUseCase
   var content: BehaviorRelay<[(String, String)]>
   
   // MARK: - Init
   
-  init(usecase: CreateDiaryUseCase, diaryInput: DiaryInputType, baseDate: Date = Date()) {
+  init(usecase: CreateDiaryUseCase, voiceUsecase: WithVoiceUseCase, diaryInput: DiaryInputType, baseDate: Date = Date()) {
     self.baseDate = baseDate
     self.content = BehaviorRelay<[(String, String)]>(value: [])
     self.usecase = usecase
+    self.voiceUsecase = voiceUsecase
     let withInputViewModel = BehaviorRelay<WithInputViewModel>(value: WithInputViewModel(hasGuide: false))
     
     let dismissClick = PublishSubject<Void>()
@@ -56,10 +58,6 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
     let dismiss = BehaviorRelay<Bool>(value: false)
     let complete = BehaviorRelay<Bool>(value: false)
     let dismissWithoutSave = PublishSubject<Bool>()
-    
-    func makeWithVoiceViewModel() -> WithVoiceViewModel {
-      return WithVoiceViewModel()
-    }
     
     self.input = Input(dismissClicked: dismissClick.asObserver(),
                        selectEmotionButton: selectEmotion.asObserver(),
@@ -74,7 +72,8 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
       //Diary를 만드는데 필요한 메타데이터를 넘긴다.
       withInputViewModel.accept(WithTextViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, content: self))
     } else {
-      withInputViewModel.accept(WithTextViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, content: self))
+      withInputViewModel.accept(
+        WithVoiceViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, usecase: self.voiceUsecase))
     }
     
       // TODO: 여기에 voice

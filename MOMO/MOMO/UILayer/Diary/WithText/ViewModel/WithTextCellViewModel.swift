@@ -33,10 +33,10 @@ class WithTextCellViewModel: ViewModelType {
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
   private var defaultQuestion = "자유롭게 일기를 작성해주세요."
-  private var qnaRelay: GetQNAProtocol
+  private var qnaRelay: DiaryContentGetable
   
   // MARK: - init
-  init(question: String, index: String, qnaRelay: GetQNAProtocol) {
+  init(question: String, index: String, qnaRelay: DiaryContentGetable) {
     let questionRelay = BehaviorRelay<String>(value: question)
     let indexStr = question == defaultQuestion ? "" : index
     let indexRelay = BehaviorRelay<String>(value: indexStr)
