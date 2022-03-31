@@ -128,10 +128,17 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, Di
     let okAction = UIAlertAction(title: "보러갈래요", style: .default) { action in
       
       /// 일기 상세 화면
+      let datastore = MomoDiaryDataStore()
+      let repo = MomoDiaryRepository(diaryDataStore: datastore)
+      repo.delete(diary: diary)
+        .subscribe(onCompleted: {
+          print("제거성공")
+        })
+        .dispose()
+        
+//      let readDiaryVC = ReadDiaryViewController.make(with: diary)
       
-      let readDiaryVC = ReadDiaryViewController.make(with: diary)
-      
-      self.show(readDiaryVC, sender: nil)
+//      self.show(readDiaryVC, sender: nil)
     }
     
     let cancelAction = UIAlertAction(title: "아니요", style: .cancel, handler: nil)

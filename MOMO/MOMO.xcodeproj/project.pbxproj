@@ -190,6 +190,7 @@
 		B1615EBB27F470CA00DC4E63 /* WithTextCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */; };
 		B1615EBD27F4938C00DC4E63 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBC27F4938C00DC4E63 /* BlurView.swift */; };
 		B1615EBF27F5AAA300DC4E63 /* WithInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBE27F5AAA300DC4E63 /* WithInputViewModel.swift */; };
+		B1615EC127F5AF4900DC4E63 /* CreateDiaryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EC027F5AF4900DC4E63 /* CreateDiaryUseCase.swift */; };
 		B1B9AE9727EA16DD006E01E1 /* RecommendDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */; };
 		B1B9AE9B27EC767B006E01E1 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */; };
 		B1B9AE9D27EC76D9006E01E1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9C27EC76D9006E01E1 /* Day.swift */; };
@@ -402,6 +403,7 @@
 		B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextCellViewModel.swift; sourceTree = "<group>"; };
 		B1615EBC27F4938C00DC4E63 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		B1615EBE27F5AAA300DC4E63 /* WithInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithInputViewModel.swift; sourceTree = "<group>"; };
+		B1615EC027F5AF4900DC4E63 /* CreateDiaryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiaryUseCase.swift; sourceTree = "<group>"; };
 		B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewModel.swift; sourceTree = "<group>"; };
 		B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
 		B1B9AE9C27EC76D9006E01E1 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -1012,6 +1014,22 @@
 			path = DiaryInputType;
 			sourceTree = "<group>";
 		};
+		B1615EC227F5AF5200DC4E63 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				B1615EC327F5AFAA00DC4E63 /* CreateDiaryUseCase */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		B1615EC327F5AFAA00DC4E63 /* CreateDiaryUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				B1615EC027F5AF4900DC4E63 /* CreateDiaryUseCase.swift */,
+			);
+			path = CreateDiaryUseCase;
+			sourceTree = "<group>";
+		};
 		B1B9AEA827ECC26B006E01E1 /* CalendarUseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1024,6 +1042,7 @@
 			isa = PBXGroup;
 			children = (
 				B1B9AEAA27ECC2D7006E01E1 /* Calendar */,
+				B1615EC227F5AF5200DC4E63 /* Diary */,
 			);
 			path = DomainLayer;
 			sourceTree = "<group>";
@@ -1510,6 +1529,7 @@
 				285209F12753329600AB8BAC /* TableViewGappable.swift in Sources */,
 				2861942827DE3ED80012250F /* CodingError.swift in Sources */,
 				288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */,
+				B1615EC127F5AF4900DC4E63 /* CreateDiaryUseCase.swift in Sources */,
 				2861940927DCD0720012250F /* MyInfoViewModel.swift in Sources */,
 				285D0DC727E0C3FA00B22287 /* InfoCellViewModel.swift in Sources */,
 				284BEBC12785CF01002C5A9E /* UINavigationController+Extension.swift in Sources */,

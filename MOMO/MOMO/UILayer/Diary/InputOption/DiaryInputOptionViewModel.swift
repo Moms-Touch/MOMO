@@ -39,9 +39,9 @@ final class DiaryInputOptionViewModel: ViewModelType {
     let gotoSecondStep = BehaviorRelay<DiaryInputType>(value: DiaryInputType(inputType: .text, hasGuide: nil))
     let gotocreateDairyVC = PublishRelay<CreateDiaryViewModel>()
     self.repository = repository
-    
+    let usecase = MomoCreateDiaryUseCase(repository: self.repository)
     self.input = Input(inputOption: inputOption.asObserver(), hasGuideOption: hasGuideOption.asObserver())
-    self.output = Output(gotoSecondStep: gotoSecondStep.asDriver(onErrorJustReturn: DiaryInputType(inputType: .text)), gotocreateDiaryVC: gotocreateDairyVC.asDriver(onErrorJustReturn: CreateDiaryViewModel(repository: repository, diaryInput: DiaryInputType(inputType: .text))))
+    self.output = Output(gotoSecondStep: gotoSecondStep.asDriver(onErrorJustReturn: DiaryInputType(inputType: .text)), gotocreateDiaryVC: gotocreateDairyVC.asDriver(onErrorJustReturn: CreateDiaryViewModel(usecase: usecase, diaryInput: DiaryInputType(inputType: .text))))
     
     // MARK: - Input -> Output
     
@@ -59,16 +59,12 @@ final class DiaryInputOptionViewModel: ViewModelType {
         return DiaryInputType(inputType: inputType, hasGuide: hasGuide)
       }
       .map {
-        CreateDiaryViewModel(repository: repository, diaryInput: $0)
+        CreateDiaryViewModel(usecase: usecase, diaryInput: $0)
       })
       .bind(to: gotocreateDairyVC)
       .disposed(by: disposeBag)
       
     
   }
-  
-  
-  
-  
   
 }

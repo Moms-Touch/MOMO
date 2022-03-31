@@ -44,19 +44,25 @@ class WithTextViewModel: WithInputViewModel, ViewModelType, GetQNAProtocol {
   ]
   private var disposeBag = DisposeBag()
   var qnaListBehaviorRelay: BehaviorRelay<[String:String]>
+  private var content: DiaryContentMakeable
 
-  init(hasGuide: Bool, baseDate: Date) {
+  init(hasGuide: Bool, baseDate: Date, content: DiaryContentMakeable) {
+    
     let datasource = hasGuide == true ? BehaviorRelay<[String]>(value: guideQuestionList) : BehaviorRelay<[String]>(value: [defaultQuestion])
     self.qnaListBehaviorRelay = BehaviorRelay<[String:String]>(value: [:])
+    self.content = content
+    
     self.input = Input()
     self.output = Output(datasource: datasource.asDriver(), qnaDic: qnaListBehaviorRelay.asDriver())
     super.init(hasGuide: hasGuide)
     
     datasource
-      .map({ questions in
+      .withUnretained(self)
+      .map({ vm, questions in
         var dic = [String:String]()
         questions.forEach { question in
           dic.updateValue("", forKey: question)
+          vm.qnaList.updateValue("", forKey: question)
         }
         return dic
       })
@@ -72,9 +78,13 @@ class WithTextViewModel: WithInputViewModel, ViewModelType, GetQNAProtocol {
       }
       .compactMap { $0 }
       .withUnretained(self)
-      .bind(onNext: {(vm, tuple) in
+      .map({ (vm, tuple) -> [(String, String)] in
         vm.qnaList.updateValue(tuple.1, forKey: tuple.0)
+        var contents: [(String, String)] = []
+        vm.qnaList.forEach { contents.append($0) }
+        return contents
       })
+      .bind(to: content.content)
       .disposed(by: disposeBag)
     
   }

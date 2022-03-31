@@ -8,10 +8,13 @@
 import Foundation
 
 import RxSwift
-import RealmSwift
 import RxCocoa
 
-class CreateDiaryViewModel: ViewModelType {
+protocol DiaryContentMakeable {
+  var content: BehaviorRelay<[(String, String)]> {get set}
+}
+
+class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
   
   // MARK: - Input
   struct Input {
@@ -35,24 +38,20 @@ class CreateDiaryViewModel: ViewModelType {
   
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
-  private let repository: DiaryRepository
   private let baseDate: Date
+  private let usecase: CreateDiaryUseCase
+  var content: BehaviorRelay<[(String, String)]>
   
   // MARK: - Init
   
-  init(repository: DiaryRepository, diaryInput: DiaryInputType, baseDate: Date = Date()) {
-    self.repository = repository
+  init(usecase: CreateDiaryUseCase, diaryInput: DiaryInputType, baseDate: Date = Date()) {
     self.baseDate = baseDate
+    self.content = BehaviorRelay<[(String, String)]>(value: [])
+    self.usecase = usecase
     let withInputViewModel = BehaviorRelay<WithInputViewModel>(value: WithInputViewModel(hasGuide: false))
-    if diaryInput.inputType == .text {
-      //Diary를 만드는데 필요한 메타데이터를 넘긴다.
-      withInputViewModel.accept(WithTextViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate))
-    } else {
-      withInputViewModel.accept(WithTextViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate))
-    }
     
     let dismissClick = PublishSubject<Void>()
-    let selectEmotion = BehaviorSubject<DiaryEmotion>(value: .happy)
+    let selectEmotion = BehaviorSubject<DiaryEmotion>(value: .unknown)
     let completeClick = PublishSubject<Void>()
     let dismiss = BehaviorRelay<Bool>(value: false)
     let complete = BehaviorRelay<Bool>(value: false)
@@ -71,15 +70,33 @@ class CreateDiaryViewModel: ViewModelType {
                          complete: complete.asDriver(),
                          withInputViewModel: withInputViewModel.asDriver())
     
+    if diaryInput.inputType == .text {
+      //Diary를 만드는데 필요한 메타데이터를 넘긴다.
+      withInputViewModel.accept(WithTextViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, content: self))
+    } else {
+      withInputViewModel.accept(WithTextViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, content: self))
+    }
+    
       // TODO: 여기에 voice
     // MARK: - Input -> Output
     
-    
-    
+    let saveObservable = Observable.combineLatest(self.content, selectEmotion)
+      
+    completeClick
+      .withLatestFrom(saveObservable)
+      .flatMap { [weak self] qnas, emotion -> Observable<Diary> in
+        guard let self = self else {
+          return Observable.error(AppError.noSelf)
+        }
+        return self.usecase.saveDiary(date: self.baseDate, emotion: emotion, contentType: diaryInput.inputType, qnas: qnas)
+      }
+      .map { _ in
+        return true
+      }
+      .bind(to: complete)
+      .disposed(by: disposeBag)
     }
-    
-    
-    
+
 }
 
 extension CreateDiaryViewModel {

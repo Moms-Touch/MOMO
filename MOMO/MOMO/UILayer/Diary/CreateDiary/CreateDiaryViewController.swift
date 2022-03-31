@@ -87,6 +87,12 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
         self.appendChildVC(to: self.diaryInputContainerView, with: $0)
       })
       .disposed(by: disposeBag)
+    
+    viewModel.output.complete
+      .drive(onNext: { [weak self] _ in
+        self?.saveCompleted()
+      })
+      .disposed(by: disposeBag)
   }
   
   // MARK: - Init
@@ -118,12 +124,12 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
   }
   
   private func saveCompleted() {
-    self.alertWithOneAnswer(title: "일기 저장 성공", text: "일기가 잘 저장되었어요", answer: "알겠어요")
-      .subscribe(onCompleted: { [weak self] in
-        guard let self = self else {return}
-        self.navigationController?.popViewController(animated: true)
-      })
-      .disposed(by: disposeBag)
+      self.alertWithOneAnswer(title: "일기 저장 성공", text: "일기가 잘 저장되었어요", answer: "알겠어요")
+        .subscribe(onCompleted: { [weak self] in
+          guard let self = self else {return}
+          self.navigationController?.popViewController(animated: true)
+        })
+        .disposed(by: disposeBag)
   }
   
 //  @IBAction func completeDiary(_ sender: Any) {

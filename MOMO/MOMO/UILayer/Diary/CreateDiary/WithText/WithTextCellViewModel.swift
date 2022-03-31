@@ -41,7 +41,6 @@ class WithTextCellViewModel: ViewModelType {
     let indexStr = question == defaultQuestion ? "" : index
     let indexRelay = BehaviorRelay<String>(value: indexStr)
     let textBehaviorSubject = BehaviorSubject<String>(value: "")
-    let qnaDic = BehaviorRelay<[String:String]>(value: [question: ""])
     
     self.qnaRelay = qnaRelay
     self.input = Input(content: textBehaviorSubject.asObserver())
@@ -54,9 +53,5 @@ class WithTextCellViewModel: ViewModelType {
       .disposed(by: disposeBag)
       
   }
-  
-  
-  
-//  qnaList.updateValue(textView.text, forKey: cell.questionLabel.text!)
-  
+
 }
