@@ -192,6 +192,8 @@
 		B1615EC527F5C2DC00DC4E63 /* WithVoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EC427F5C2DC00DC4E63 /* WithVoiceCollectionViewCell.swift */; };
 		B1615ECF27F5C49E00DC4E63 /* WithVoiceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615ECE27F5C49D00DC4E63 /* WithVoiceUseCase.swift */; };
 		B1615ED127F5D29800DC4E63 /* WithVoiceCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615ED027F5D29800DC4E63 /* WithVoiceCellModel.swift */; };
+		B1615ED527F6DC1800DC4E63 /* RecordStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615ED427F6DC1800DC4E63 /* RecordStatus.swift */; };
+		B1615ED827F6EAC400DC4E63 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B1615ED727F6EAC400DC4E63 /* Lottie */; };
 		B1B9AE9727EA16DD006E01E1 /* RecommendDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */; };
 		B1B9AE9B27EC767B006E01E1 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */; };
 		B1B9AE9D27EC76D9006E01E1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9C27EC76D9006E01E1 /* Day.swift */; };
@@ -404,6 +406,7 @@
 		B1615EC427F5C2DC00DC4E63 /* WithVoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1615ECE27F5C49D00DC4E63 /* WithVoiceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceUseCase.swift; sourceTree = "<group>"; };
 		B1615ED027F5D29800DC4E63 /* WithVoiceCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceCellModel.swift; sourceTree = "<group>"; };
+		B1615ED427F6DC1800DC4E63 /* RecordStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStatus.swift; sourceTree = "<group>"; };
 		B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewModel.swift; sourceTree = "<group>"; };
 		B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
 		B1B9AE9C27EC76D9006E01E1 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -463,6 +466,7 @@
 				DDE31709277F41E10033FEF4 /* OrderedCollections in Frameworks */,
 				280BEFC6274B65F100F031A7 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				285209842753307100AB8BAC /* SnapKit in Frameworks */,
+				B1615ED827F6EAC400DC4E63 /* Lottie in Frameworks */,
 				280BEFC4274B65F100F031A7 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				280BEFCD274B7B9400F031A7 /* Kingfisher in Frameworks */,
 				280BEFC2274B65F100F031A7 /* FirebaseAnalytics in Frameworks */,
@@ -1062,6 +1066,7 @@
 			isa = PBXGroup;
 			children = (
 				B1615E9E27F2FC1100DC4E63 /* DiaryInputType.swift */,
+				B1615ED427F6DC1800DC4E63 /* RecordStatus.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1382,6 +1387,7 @@
 				286193F827DB71B60012250F /* RxSwift */,
 				286193FB27DB71DC0012250F /* Then */,
 				281A90F227E099600019B690 /* RxGesture */,
+				B1615ED727F6EAC400DC4E63 /* Lottie */,
 			);
 			productName = MOMO;
 			productReference = DD43E8BE270B4A2100699DA1 /* MOMO.app */;
@@ -1421,6 +1427,7 @@
 				286193F327DB71B60012250F /* XCRemoteSwiftPackageReference "RxSwift" */,
 				286193FA27DB71DC0012250F /* XCRemoteSwiftPackageReference "Then" */,
 				281A90F127E0995F0019B690 /* XCRemoteSwiftPackageReference "RxGesture" */,
+				B1615ED627F6EAC400DC4E63 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = DD43E8BF270B4A2100699DA1 /* Products */;
 			projectDirPath = "";
@@ -1553,6 +1560,7 @@
 				28F47168273BE7150074D148 /* MyBabyInfoViewController.swift in Sources */,
 				285209E52753329600AB8BAC /* UITextfield+Extension.swift in Sources */,
 				285D0DDF27E7105900B22287 /* RecommendRepository.swift in Sources */,
+				B1615ED527F6DC1800DC4E63 /* RecordStatus.swift in Sources */,
 				28F4FE132760C3BA00E699FC /* LikeData.swift in Sources */,
 				281D35382761EF3F00A128A5 /* DiaryMainViewController.swift in Sources */,
 				288EFD112754F27C000D1617 /* AlertPageViewController.swift in Sources */,
@@ -1962,6 +1970,14 @@
 				minimumVersion = 2.8.3;
 			};
 		};
+		B1615ED627F6EAC400DC4E63 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.1;
+			};
+		};
 		DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -2050,6 +2066,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 286193FA27DB71DC0012250F /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		B1615ED727F6EAC400DC4E63 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1615ED627F6EAC400DC4E63 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		DDE316F3277C94D70033FEF4 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

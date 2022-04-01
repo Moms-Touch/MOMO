@@ -73,7 +73,7 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
       withInputViewModel.accept(WithTextViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, content: self))
     } else {
       withInputViewModel.accept(
-        WithVoiceViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, usecase: self.voiceUsecase))
+        WithVoiceViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, usecase: self.voiceUsecase, content: self))
     }
     
       // TODO: 여기에 voice
@@ -89,7 +89,8 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
         }
         return self.usecase.saveDiary(date: self.baseDate, emotion: emotion, contentType: diaryInput.inputType, qnas: qnas)
       }
-      .map { _ in
+      .map { dairy in
+        print(dairy)
         return true
       }
       .bind(to: complete)

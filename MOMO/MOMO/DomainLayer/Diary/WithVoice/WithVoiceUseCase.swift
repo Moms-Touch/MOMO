@@ -13,13 +13,6 @@ import RxSwift
 /* https://www.hackingwithswift.com/example-code/media/how-to-record-audio-using-avaudiorecorder
  */
 
-enum RecordStatus {
-  case notstarted
-  case recording
-  case paused
-  case finished
-}
-
 enum RecordError: Error {
   case permissionError
   case unknownError
@@ -27,9 +20,9 @@ enum RecordError: Error {
 
 protocol WithVoiceUseCase {
   func startRecording(date: Date) -> Observable<RecordStatus>
-  func pauseRecording() -> Observable<RecordStatus>
   func finishRecording(success: Bool) -> Observable<RecordStatus>
   func checkRecordPermission() -> Observable<RecordStatus>
+  var savedURL: BehaviorSubject<String> {get set}
 }
 
 final class MomoWithVoiceUseCase: NSObject, WithVoiceUseCase {
@@ -39,6 +32,7 @@ final class MomoWithVoiceUseCase: NSObject, WithVoiceUseCase {
   private let voiceRecordsDirectoryName: String = "VoiceRecords"
   private let repository: DiaryRepository
   private var disposeBag = DisposeBag()
+  var savedURL = BehaviorSubject<String>(value: "")
   
   init(recodingSession: AVAudioSession, audioRecoder: AVAudioRecorder, repository: DiaryRepository) {
     self.recordingSession = recodingSession
@@ -62,6 +56,7 @@ final class MomoWithVoiceUseCase: NSObject, WithVoiceUseCase {
       audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
       audioRecorder.delegate = self
       audioRecorder.record()
+      savedURL.onNext("\(audioFilename)")
       return Observable.just(.recording)
     } catch {
       return finishRecording(success: false)
@@ -69,11 +64,11 @@ final class MomoWithVoiceUseCase: NSObject, WithVoiceUseCase {
     
   }
   
-  func pauseRecording() -> Observable<RecordStatus> {
-    
-    audioRecorder.pause()
-    return Observable.just(RecordStatus.paused)
-  }
+//  func pauseRecording() -> Observable<RecordStatus> {
+//
+//    audioRecorder.pause()
+//    return Observable.just(RecordStatus.paused)
+//  }
   
   func finishRecording(success: Bool) -> Observable<RecordStatus> {
     

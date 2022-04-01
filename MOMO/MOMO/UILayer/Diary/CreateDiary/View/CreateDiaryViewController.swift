@@ -80,11 +80,15 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
     /// inputType 에 따라 InPutContainerView 를 채운다
     
     viewModel.output.withInputViewModel
-      .filter{ $0 is WithTextViewModel } // 나중에 변경하기
-      .map { WithTextViewController(viewModel: $0 as! WithTextViewModel) }
-      .drive(onNext: { [weak self] in
+      .drive(onNext: { [weak self] viewModel in
         guard let self = self else {return}
-        self.appendChildVC(to: self.diaryInputContainerView, with: $0)
+        if viewModel is WithTextViewModel {
+          let vc = WithTextViewController(viewModel: viewModel as! WithTextViewModel)
+          self.appendChildVC(to: self.diaryInputContainerView, with: vc)
+        } else {
+          let vc = WithVoiceViewController(viewModel: viewModel as! WithVoiceViewModel)
+          self.appendChildVC(to: self.diaryInputContainerView, with: vc)
+        }
       })
       .disposed(by: disposeBag)
     
@@ -110,7 +114,6 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    setupKeyboard()
     setupUI()
     self.bind(viewModel: self.viewModel)
   }
@@ -132,69 +135,6 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
         .disposed(by: disposeBag)
   }
   
-//  @IBAction func completeDiary(_ sender: Any) {
-//      case .voice:
-//
-//        guard let withVoiceVC = self.children.first as? WithVoiceViewController else { return }
-//
-//        /// 아직 녹음 중이라면 종료한다
-//        if let audioRecorder = withVoiceVC.audioRecorder {
-//
-//          withVoiceVC.finishRecording(success: true)
-//
-//        }
-//
-//        diary = Diary(date: Date(), emotion: emotion, contentType: inputType.inputType, qnaList: List<QNA>())
-//
-//
-//      default:
-//        fatalError("Invalid Input Type")
-//    }
-//
-//    /// DB 에 넣기 ^^..
-//    do {
-//
-//      let realm = try Realm()
-//
-//      try realm.write {
-//        realm.add(diary)
-//      }
-//
-//    } catch {
-//
-//      let alertVC = UIAlertController(title: "ERROR", message: error.localizedDescription, preferredStyle: .alert)
-//
-//      alertVC.addAction(UIAlertAction.okAction)
-//
-//      present(alertVC, animated: true)
-//    }
-//
-//  }
-  
-}
-// MARK: - Keyboard
-
-extension CreateDiaryViewController {
-  private func setupKeyboard() {
-    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { [weak self] noti in
-      
-      guard let self = self else { return }
-      
-      if let keyboardFrame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-         let keybaordRectangle = keyboardFrame.cgRectValue
-         let keyboardHeight = keybaordRectangle.height
-         
-        self.view.bounds = CGRect(x: 0, y: keyboardHeight / 2, width: self.view.bounds.width, height: self.view.bounds.height)
-       }
-    }
-    
-    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main) { [weak self] noti in
-      
-      guard let self = self else { return }
-      
-      self.view.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-    }
-  }
 }
 
 // MARK: - Set Up UI

@@ -42,13 +42,13 @@ final class WithVoiceViewController: UIViewController, ViewModelBindableType  {
       .drive(questionCount)
       .disposed(by: disposeBag)
     
-//    viewModel.output.datasource
-//      .drive(collectionView.rx.items(cellIdentifier: WithTextCollectionViewCell.identifier, cellType: WithTextCollectionViewCell.self)){ [weak self]
-//        index, item, cell in
-//        guard let self = self else {return}
-//        cell.backgroundColor = .red
-//      }
-//      .disposed(by: disposeBag)
+    viewModel.output.datasource
+      .drive(collectionView.rx.items(cellIdentifier: WithVoiceCollectionViewCell.identifier, cellType: WithVoiceCollectionViewCell.self)){ [weak self]
+        index, item, cell in
+        guard let self = self else {return}
+        cell.configure(with: WithVoiceCellModel(question: item, voiceRecordHelper: self.viewModel))
+      }
+      .disposed(by: disposeBag)
     
   }
   
@@ -75,7 +75,7 @@ extension WithVoiceViewController {
     collectionView.snp.makeConstraints { make in
       make.left.right.top.bottom.equalToSuperview()
     }
-    collectionView.register(WithTextCollectionViewCell.self)
+    collectionView.register(WithVoiceCollectionViewCell.self)
     collectionView.rx.setDelegate(self)
       .disposed(by: disposeBag)
   }
