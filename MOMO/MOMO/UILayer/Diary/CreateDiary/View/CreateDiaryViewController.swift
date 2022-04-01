@@ -97,6 +97,19 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
         self?.saveCompleted()
       })
       .disposed(by: disposeBag)
+    
+    viewModel.output.dismiss
+      .drive(onNext: { [weak self] in
+        self?.dismiss()
+      })
+      .disposed(by: disposeBag)
+    
+    viewModel.output.gotoOption
+      .drive(onNext: { [weak self] in
+        self?.dismiss(animated: true)
+      })
+      .disposed(by: disposeBag)
+    
   }
   
   // MARK: - Init
@@ -130,7 +143,7 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
       self.alertWithOneAnswer(title: "일기 저장 성공", text: "일기가 잘 저장되었어요", answer: "알겠어요")
         .subscribe(onCompleted: { [weak self] in
           guard let self = self else {return}
-          self.navigationController?.popViewController(animated: true)
+          self.view.window?.rootViewController?.dismiss(animated: true)
         })
         .disposed(by: disposeBag)
   }

@@ -29,9 +29,10 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
   // MARK: - Output
   
   struct Output {
-    var dismiss: Driver<Bool>
+    var dismiss: Driver<Void>
     var complete: Driver<Bool>
     var withInputViewModel: Driver<WithInputViewModel>
+    var gotoOption: Driver<Void>
   }
   
   var output: Output
@@ -55,7 +56,8 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
     let dismissClick = PublishSubject<Void>()
     let selectEmotion = BehaviorSubject<DiaryEmotion>(value: .unknown)
     let completeClick = PublishSubject<Void>()
-    let dismiss = BehaviorRelay<Bool>(value: false)
+    let dismiss = BehaviorRelay<Void>(value: ())
+    let gotoOption = PublishRelay<Void>()
     let complete = BehaviorRelay<Bool>(value: false)
     let dismissWithoutSave = PublishSubject<Bool>()
     
@@ -66,7 +68,8 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
     
     self.output = Output(dismiss: dismiss.asDriver(),
                          complete: complete.asDriver(),
-                         withInputViewModel: withInputViewModel.asDriver())
+                         withInputViewModel: withInputViewModel.asDriver(),
+                         gotoOption: gotoOption.asDriver(onErrorJustReturn: ()))
     
     if diaryInput.inputType == .text {
       //Diary를 만드는데 필요한 메타데이터를 넘긴다.
@@ -80,6 +83,15 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
     // MARK: - Input -> Output
     
     let saveObservable = Observable.combineLatest(self.content, selectEmotion)
+    
+    dismissClick
+      .bind(to: dismiss)
+      .disposed(by: disposeBag)
+    
+    dismissWithoutSave
+      .map { _ in return ()}
+      .bind(to: gotoOption)
+      .disposed(by: disposeBag)
       
     completeClick
       .withLatestFrom(saveObservable)
