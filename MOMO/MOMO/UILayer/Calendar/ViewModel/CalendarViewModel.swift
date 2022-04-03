@@ -39,10 +39,9 @@ class CalendarViewModel: ViewModelType {
     let dateSubject = BehaviorSubject<Date>(value: Date())
     self.calendarUseCase = calendarUseCase
     let numberOfWeeksInBaseDate = BehaviorRelay<Int>(value: self.calendarUseCase.numberOfWeeksInBaseDate)
-    let closeView = BehaviorRelay<Void>(value: ())
+    let closeView = PublishRelay<Void>()
     let calendarHeaderViewModel = makeCalendarHeaderViewModel()
     let didSelectCellPublishSubject = PublishSubject<(IndexPath, Day)>()
-    
     
     self.output = Output(days: daysBehaviorRelay.asDriver(onErrorJustReturn: []),
                          numberOfWeeksInBaseDate: numberOfWeeksInBaseDate.asDriver(onErrorJustReturn: 0),
@@ -50,11 +49,8 @@ class CalendarViewModel: ViewModelType {
                          calendarHeaderViewModel: calendarHeaderViewModel)
     self.input = Input(didSelectCell: didSelectCellPublishSubject.asObserver())
     
-    
-    
     dateSubject
       .withUnretained(self)
-      .debug()
       .flatMap {
         return $0.calendarUseCase.generateDaysInMonth(for: $1)
       }
@@ -67,7 +63,8 @@ class CalendarViewModel: ViewModelType {
       .disposed(by: disposeBag)
     
     calendarHeaderViewModel.output.closeView
-      .drive(closeView)
+      .asObservable()
+      .bind(to: closeView)
       .disposed(by: disposeBag)
   
     func makeCalendarHeaderViewModel() -> CalendarHeaderViewModel {

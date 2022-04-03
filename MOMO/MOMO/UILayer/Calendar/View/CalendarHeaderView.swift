@@ -61,7 +61,9 @@ class CalendarHeaderView: UIView, ViewModelBindableType {
     viewModel.output.dayLetter
       .filter { $1 != "" }
       .drive(onNext: { [unowned self] in
-        self.dayLabels[$0].text = $1
+        if self.dayLabels.count > 0 {
+          self.dayLabels[$0].text = $1
+        }
       })
       .disposed(by: disposeBag)
     

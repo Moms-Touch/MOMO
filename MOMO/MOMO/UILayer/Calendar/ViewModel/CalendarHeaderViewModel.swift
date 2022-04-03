@@ -53,7 +53,10 @@ final class CalendarHeaderViewModel: ViewModelType {
         month: monthBehaviorRelay.asDriver(onErrorJustReturn: "2021.7"),
         closeView: closeView.asDriver(onErrorJustReturn: ())
     )
-    self.input = Input(dayNumber: dayNumberPublishSubject.asObserver(), nextMonthClick: nextMonthClick.asObserver(), previousMonthClick: previousMonthClick.asObserver(), closeButtonClick: closeButtonClick.asObserver())
+    self.input = Input(dayNumber: dayNumberPublishSubject.asObserver(),
+                       nextMonthClick: nextMonthClick.asObserver(),
+                       previousMonthClick: previousMonthClick.asObserver(),
+                       closeButtonClick: closeButtonClick.asObserver())
     
     monthBehaviorRelay.accept(self.baseDate.toString(format: "yyyy.M"))
   
@@ -61,22 +64,20 @@ final class CalendarHeaderViewModel: ViewModelType {
     // MARK: - Input -> Output
     
     closeButtonClick
+      .withLatestFrom(closeView)
       .bind(to: closeView)
       .disposed(by: disposeBag)
     
     nextMonthClick.withLatestFrom(monthBehaviorRelay)
-      .debug()
       .map {
         var date = $0.toDate(format: "yyyy.M") ?? Date()
         date = calender.date(byAdding: .month, value: 1, to: date) ?? Date()
         return date.toString(format: "yyyy.M")
          }
-      .debug()
       .bind(to: monthBehaviorRelay)
       .disposed(by: disposeBag)
       
     previousMonthClick.withLatestFrom(monthBehaviorRelay)
-      .debug()
       .map {
         var date = $0.toDate(format: "yyyy.M") ?? Date()
         date = calender.date(byAdding: .month, value: -1, to: date) ?? Date()
