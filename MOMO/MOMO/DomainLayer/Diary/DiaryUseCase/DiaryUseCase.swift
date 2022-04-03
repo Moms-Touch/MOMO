@@ -6,31 +6,31 @@
 //
 
 import Foundation
-
 import RxSwift
-import RealmSwift
 
-protocol CreateDiaryUseCase {
+protocol DiaryUseCase {
   func saveDiary(date: Date, emotion: DiaryEmotion, contentType: InputType, qnas: [(String, String)]) -> Observable<Diary>
+  func fetchDiary(date: Date) -> Observable<Diary?>
 }
 
-final class MomoCreateDiaryUseCase: CreateDiaryUseCase {
+final class MomoDiaryUseCase: DiaryUseCase {
   
   private let repository: DiaryRepository
   
   init(repository: DiaryRepository) {
     self.repository = repository
   }
+  
+  func fetchDiary(date: Date) -> Observable<Diary?> {
+    return repository.readDiaryDetail(date: date.timeToZero())
+  }
 
   func saveDiary(date: Date, emotion: DiaryEmotion, contentType: InputType, qnas: [(String, String)]) -> Observable<Diary> {
     
-    let qnaList = List<QNA>()
-    qnas.forEach { qnaTuple in
-      let qna = QNA(question: qnaTuple.0, answer: qnaTuple.1)
-      qnaList.append(qna)
+    let qnaList = qnas.map { qnaTuple in
+      QNA(question: qnaTuple.0, answer: qnaTuple.1)
     }
-    let diary = Diary(date: date, emotion: emotion, contentType: contentType, qnaList: qnaList)
-    return repository.save(diary: diary).asObservable()
+    return repository.save(date: date, emotion: emotion, contentType: contentType, qnas: qnaList)
   }
   
   

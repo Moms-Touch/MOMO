@@ -24,6 +24,14 @@ final class MomoDiaryRepository: DiaryRepository {
       .share()
   }
   
+  func save(date: Date, emotion: DiaryEmotion, contentType: InputType, qnas: [QNA]) -> Observable<Diary> {
+    let qnaList = List<QNA>()
+    qnas.forEach { qnaList.append($0)}
+    let diary = Diary(date: date, emotion: emotion, contentType: contentType, qnaList: qnaList)
+    return diaryDataStore.create(diary: diary)
+      .share()
+  }
+  
   func readDiaryDetail(date: Date) -> Observable<Diary?> {
     return diaryDataStore.read(date: date)
       .share()
