@@ -18,26 +18,24 @@ enum RecordError: Error {
   case unknownError
 }
 
-protocol WithVoiceUseCase {
+protocol Recoder {
   func startRecording(date: Date) -> Observable<RecordStatus>
   func finishRecording(success: Bool) -> Observable<RecordStatus>
   func checkRecordPermission() -> Observable<RecordStatus>
   var savedURL: BehaviorSubject<String> {get set}
 }
 
-final class MomoWithVoiceUseCase: NSObject, WithVoiceUseCase {
+final class MomoRecoder: NSObject, Recoder {
   
   private var recordingSession: AVAudioSession
   private var audioRecorder: AVAudioRecorder
   private let voiceRecordsDirectoryName: String = "VoiceRecords"
-  private let repository: DiaryRepository
   private var disposeBag = DisposeBag()
   var savedURL = BehaviorSubject<String>(value: "")
   
-  init(recodingSession: AVAudioSession, audioRecoder: AVAudioRecorder, repository: DiaryRepository) {
+  init(recodingSession: AVAudioSession, audioRecoder: AVAudioRecorder) {
     self.recordingSession = recodingSession
     self.audioRecorder = audioRecoder
-    self.repository = repository
   }
   
   func startRecording(date: Date) -> Observable<RecordStatus> {
@@ -63,12 +61,6 @@ final class MomoWithVoiceUseCase: NSObject, WithVoiceUseCase {
     }
     
   }
-  
-//  func pauseRecording() -> Observable<RecordStatus> {
-//
-//    audioRecorder.pause()
-//    return Observable.just(RecordStatus.paused)
-//  }
   
   func finishRecording(success: Bool) -> Observable<RecordStatus> {
     
@@ -103,7 +95,7 @@ final class MomoWithVoiceUseCase: NSObject, WithVoiceUseCase {
 
 // MARK: - Private Methods
 
-extension MomoWithVoiceUseCase {
+extension MomoRecoder {
   
   private func getVoiceDirectory() -> URL {
     
@@ -135,7 +127,7 @@ extension MomoWithVoiceUseCase {
   }
 }
 
-extension MomoWithVoiceUseCase: AVAudioRecorderDelegate {
+extension MomoRecoder: AVAudioRecorderDelegate {
   func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
       if !flag {
           finishRecording(success: false)
