@@ -27,4 +27,8 @@ protocol DiaryRepository {
   
   @discardableResult
   func save(diary: Diary) -> Observable<Diary>
+  
+  @discardableResult
+  func save(date: Date, emotion: DiaryEmotion, contentType: InputType, qnas: [QNA]) -> Observable<Diary>
+
 }

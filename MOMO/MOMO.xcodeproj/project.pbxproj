@@ -22,7 +22,6 @@
 		281D35392761EF4200A128A5 /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209982753325F00AB8BAC /* DiaryMain.storyboard */; };
 		281D353B27622C5600A128A5 /* RecommendDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D353A27622C5600A128A5 /* RecommendDetail.storyboard */; };
 		281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281D353C2762313700A128A5 /* RecommendDetailViewController.swift */; };
-		281D353F27647FD500A128A5 /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281D353E27647FD500A128A5 /* BannerCell.swift */; };
 		284BEBC12785CF01002C5A9E /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284BEBC02785CF01002C5A9E /* UINavigationController+Extension.swift */; };
 		284C7C402780930C008A5374 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 284C7C3F2780930C008A5374 /* Toast */; };
 		28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */; };
@@ -188,12 +187,13 @@
 		B1615EBB27F470CA00DC4E63 /* WithTextCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */; };
 		B1615EBD27F4938C00DC4E63 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBC27F4938C00DC4E63 /* BlurView.swift */; };
 		B1615EBF27F5AAA300DC4E63 /* WithInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EBE27F5AAA300DC4E63 /* WithInputViewModel.swift */; };
-		B1615EC127F5AF4900DC4E63 /* CreateDiaryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EC027F5AF4900DC4E63 /* CreateDiaryUseCase.swift */; };
+		B1615EC127F5AF4900DC4E63 /* DiaryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EC027F5AF4900DC4E63 /* DiaryUseCase.swift */; };
 		B1615EC527F5C2DC00DC4E63 /* WithVoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EC427F5C2DC00DC4E63 /* WithVoiceCollectionViewCell.swift */; };
-		B1615ECF27F5C49E00DC4E63 /* WithVoiceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615ECE27F5C49D00DC4E63 /* WithVoiceUseCase.swift */; };
+		B1615ECF27F5C49E00DC4E63 /* Recoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615ECE27F5C49D00DC4E63 /* Recoder.swift */; };
 		B1615ED127F5D29800DC4E63 /* WithVoiceCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615ED027F5D29800DC4E63 /* WithVoiceCellModel.swift */; };
 		B1615ED527F6DC1800DC4E63 /* RecordStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615ED427F6DC1800DC4E63 /* RecordStatus.swift */; };
 		B1615ED827F6EAC400DC4E63 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B1615ED727F6EAC400DC4E63 /* Lottie */; };
+		B1615EDB27F7014600DC4E63 /* HomeMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EDA27F7014600DC4E63 /* HomeMainViewModel.swift */; };
 		B1B9AE9727EA16DD006E01E1 /* RecommendDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */; };
 		B1B9AE9B27EC767B006E01E1 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */; };
 		B1B9AE9D27EC76D9006E01E1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9AE9C27EC76D9006E01E1 /* Day.swift */; };
@@ -240,7 +240,6 @@
 		280BEFD4274BA35900F031A7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		281D353A27622C5600A128A5 /* RecommendDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecommendDetail.storyboard; sourceTree = "<group>"; };
 		281D353C2762313700A128A5 /* RecommendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewController.swift; sourceTree = "<group>"; };
-		281D353E27647FD500A128A5 /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
 		284BEBC02785CF01002C5A9E /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellPresentationController.swift; sourceTree = "<group>"; };
 		285209872753325F00AB8BAC /* DiaryInputOption.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiaryInputOption.storyboard; sourceTree = "<group>"; };
@@ -402,11 +401,12 @@
 		B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithTextCellViewModel.swift; sourceTree = "<group>"; };
 		B1615EBC27F4938C00DC4E63 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		B1615EBE27F5AAA300DC4E63 /* WithInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithInputViewModel.swift; sourceTree = "<group>"; };
-		B1615EC027F5AF4900DC4E63 /* CreateDiaryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiaryUseCase.swift; sourceTree = "<group>"; };
+		B1615EC027F5AF4900DC4E63 /* DiaryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUseCase.swift; sourceTree = "<group>"; };
 		B1615EC427F5C2DC00DC4E63 /* WithVoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceCollectionViewCell.swift; sourceTree = "<group>"; };
-		B1615ECE27F5C49D00DC4E63 /* WithVoiceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceUseCase.swift; sourceTree = "<group>"; };
+		B1615ECE27F5C49D00DC4E63 /* Recoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recoder.swift; sourceTree = "<group>"; };
 		B1615ED027F5D29800DC4E63 /* WithVoiceCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithVoiceCellModel.swift; sourceTree = "<group>"; };
 		B1615ED427F6DC1800DC4E63 /* RecordStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStatus.swift; sourceTree = "<group>"; };
+		B1615EDA27F7014600DC4E63 /* HomeMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainViewModel.swift; sourceTree = "<group>"; };
 		B1B9AE9627EA16DD006E01E1 /* RecommendDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewModel.swift; sourceTree = "<group>"; };
 		B1B9AE9A27EC767B006E01E1 /* MonthMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
 		B1B9AE9C27EC76D9006E01E1 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -635,6 +635,7 @@
 		285209CA2753329600AB8BAC /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				B1615ECE27F5C49D00DC4E63 /* Recoder.swift */,
 				28520975275261F200AB8BAC /* CollectionViewCellPresentationController.swift */,
 				DDA999992767946D00A21D9B /* XCAssetTypeAlias.swift */,
 				285209CB2753329600AB8BAC /* PopAnimator.swift */,
@@ -739,13 +740,9 @@
 		2861943127DE4A3D0012250F /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				285D0DDE27E7105900B22287 /* RecommendRepository.swift */,
 				285D0DE027E712B400B22287 /* MomoRecommendRepository.swift */,
-				2861940427DCA8D10012250F /* UserSessionRepository.swift */,
-				2861944727DF45880012250F /* AuthRepository.swift */,
 				2861940627DCAAA30012250F /* MomoUserSessionRepository.swift */,
 				2861944E27DF49710012250F /* MomoAuthRepository.swift */,
-				B1B9AEB227EDE20C006E01E1 /* DiaryRepository.swift */,
 				B1B9AEB427EDE226006E01E1 /* MomoDiaryRepository.swift */,
 			);
 			path = Repositories;
@@ -827,10 +824,23 @@
 		288ED75D27427D2A00C5178D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				28F4714D2738F67A0074D148 /* HomeMain.storyboard */,
+				288ED75927427CC200C5178D /* BookmarkList.storyboard */,
+				280BEFBA274B319500F031A7 /* PolicyBookmark.storyboard */,
+				280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */,
+				288EFD0E2754F23F000D1617 /* Alert.storyboard */,
+				28F471402738B3090074D148 /* HomeMainViewController.swift */,
+				288ED75B27427CD000C5178D /* BookmarkListViewController.swift */,
+				288ED76627428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift */,
+				288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */,
+				288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */,
+				288EFD0C2754F217000D1617 /* AlertViewController.swift */,
+				288EFD102754F27C000D1617 /* AlertPageViewController.swift */,
+				288EFD122754F2AE000D1617 /* AlertTableViewController.swift */,
+				288EFD142754F2E5000D1617 /* MessageTableViewController.swift */,
 				288ED75E27427D5800C5178D /* ListTableViewCell.swift */,
 				288ED75F27427D5800C5178D /* ListTableViewCell.xib */,
 				288EFD1C2755D41E000D1617 /* AlertTableViewCell.swift */,
-				281D353E27647FD500A128A5 /* BannerCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -904,34 +914,6 @@
 			path = Create;
 			sourceTree = "<group>";
 		};
-		28F471482738F0240074D148 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				28F471402738B3090074D148 /* HomeMainViewController.swift */,
-				288ED75B27427CD000C5178D /* BookmarkListViewController.swift */,
-				288ED76627428C0A00C5178D /* CommuntiyBookmarkTableViewController.swift */,
-				288ED76827428C1E00C5178D /* PolicyBookmarkTableViewController.swift */,
-				288ED76A27428C6F00C5178D /* BookmarkPageViewController.swift */,
-				288EFD0C2754F217000D1617 /* AlertViewController.swift */,
-				288EFD102754F27C000D1617 /* AlertPageViewController.swift */,
-				288EFD122754F2AE000D1617 /* AlertTableViewController.swift */,
-				288EFD142754F2E5000D1617 /* MessageTableViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		28F4714C2738F66C0074D148 /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				28F4714D2738F67A0074D148 /* HomeMain.storyboard */,
-				288ED75927427CC200C5178D /* BookmarkList.storyboard */,
-				280BEFBA274B319500F031A7 /* PolicyBookmark.storyboard */,
-				280BEFBC274B31B700F031A7 /* CommuntiyBookmark.storyboard */,
-				288EFD0E2754F23F000D1617 /* Alert.storyboard */,
-			);
-			path = Storyboard;
-			sourceTree = "<group>";
-		};
 		28F47156273BE05F0074D148 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -995,19 +977,18 @@
 		B1615EC227F5AF5200DC4E63 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				B1615ECD27F5C48A00DC4E63 /* WithVoice */,
 				B1615ECC27F5C37000DC4E63 /* Entity */,
-				B1615EC327F5AFAA00DC4E63 /* CreateDiaryUseCase */,
+				B1615EC327F5AFAA00DC4E63 /* DiaryUseCase */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
 		};
-		B1615EC327F5AFAA00DC4E63 /* CreateDiaryUseCase */ = {
+		B1615EC327F5AFAA00DC4E63 /* DiaryUseCase */ = {
 			isa = PBXGroup;
 			children = (
-				B1615EC027F5AF4900DC4E63 /* CreateDiaryUseCase.swift */,
+				B1615EC027F5AF4900DC4E63 /* DiaryUseCase.swift */,
 			);
-			path = CreateDiaryUseCase;
+			path = DiaryUseCase;
 			sourceTree = "<group>";
 		};
 		B1615EC627F5C2F700DC4E63 /* View */ = {
@@ -1071,14 +1052,6 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		B1615ECD27F5C48A00DC4E63 /* WithVoice */ = {
-			isa = PBXGroup;
-			children = (
-				B1615ECE27F5C49D00DC4E63 /* WithVoiceUseCase.swift */,
-			);
-			path = WithVoice;
-			sourceTree = "<group>";
-		};
 		B1615ED227F5D2FF00DC4E63 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,6 +1070,25 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B1615ED927F6F91E00DC4E63 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B1615EDA27F7014600DC4E63 /* HomeMainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B1615EE027F7086300DC4E63 /* Repositories(protocols) */ = {
+			isa = PBXGroup;
+			children = (
+				285D0DDE27E7105900B22287 /* RecommendRepository.swift */,
+				2861940427DCA8D10012250F /* UserSessionRepository.swift */,
+				2861944727DF45880012250F /* AuthRepository.swift */,
+				B1B9AEB227EDE20C006E01E1 /* DiaryRepository.swift */,
+			);
+			path = "Repositories(protocols)";
+			sourceTree = "<group>";
+		};
 		B1B9AEA827ECC26B006E01E1 /* CalendarUseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1100,7 @@
 		B1B9AEA927ECC2C5006E01E1 /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
+				B1615EE027F7086300DC4E63 /* Repositories(protocols) */,
 				B1B9AEAA27ECC2D7006E01E1 /* Calendar */,
 				B1615EC227F5AF5200DC4E63 /* Diary */,
 			);
@@ -1287,9 +1280,8 @@
 		DD43E8E5270B4EBE00699DA1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B1615ED927F6F91E00DC4E63 /* ViewModel */,
 				288ED75D27427D2A00C5178D /* View */,
-				28F4714C2738F66C0074D148 /* Storyboard */,
-				28F471482738F0240074D148 /* ViewController */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1539,7 +1531,6 @@
 				286193FE27DB7F590012250F /* MyInfoCollectionViewCell.swift in Sources */,
 				2861941127DCE0380012250F /* UserSession.swift in Sources */,
 				2861944227DF219A0012250F /* MomoAuthRemoteAPI.swift in Sources */,
-				281D353F27647FD500A128A5 /* BannerCell.swift in Sources */,
 				289B361A274F40DC00535B2E /* RecommendCollectionViewCell.swift in Sources */,
 				75BF0C0B276B489900C2D0C1 /* LoginApi.swift in Sources */,
 				DDE31706277F3CD10033FEF4 /* UIAlertAction+Extension.swift in Sources */,
@@ -1581,6 +1572,7 @@
 				288EFD132754F2AE000D1617 /* AlertTableViewController.swift in Sources */,
 				B1B9AEA527EC7D6B006E01E1 /* CalendarCollectionViewCell.swift in Sources */,
 				B1B9AEB527EDE226006E01E1 /* MomoDiaryRepository.swift in Sources */,
+				B1615EDB27F7014600DC4E63 /* HomeMainViewModel.swift in Sources */,
 				285209EB2753329600AB8BAC /* CanShowDetailView.swift in Sources */,
 				B1B9AEA727EC81E8006E01E1 /* CalendarUseCase.swift in Sources */,
 				75BF0C0F276B851800C2D0C1 /* GetApi.swift in Sources */,
@@ -1596,7 +1588,7 @@
 				285209F12753329600AB8BAC /* TableViewGappable.swift in Sources */,
 				2861942827DE3ED80012250F /* CodingError.swift in Sources */,
 				288ED76B27428C6F00C5178D /* BookmarkPageViewController.swift in Sources */,
-				B1615EC127F5AF4900DC4E63 /* CreateDiaryUseCase.swift in Sources */,
+				B1615EC127F5AF4900DC4E63 /* DiaryUseCase.swift in Sources */,
 				2861940927DCD0720012250F /* MyInfoViewModel.swift in Sources */,
 				285D0DC727E0C3FA00B22287 /* InfoCellViewModel.swift in Sources */,
 				284BEBC12785CF01002C5A9E /* UINavigationController+Extension.swift in Sources */,
@@ -1651,7 +1643,7 @@
 				28A9995F277880D300459D19 /* Post.swift in Sources */,
 				28A99969277AF4B400459D19 /* PutApi.swift in Sources */,
 				75BA37FA2781F5940035F886 /* PolicyMainTableViewCell.swift in Sources */,
-				B1615ECF27F5C49E00DC4E63 /* WithVoiceUseCase.swift in Sources */,
+				B1615ECF27F5C49E00DC4E63 /* Recoder.swift in Sources */,
 				2861942E27DE468E0012250F /* NetworkDecoding.swift in Sources */,
 				28A99970277C6B2500459D19 /* BabyInfoViewModel.swift in Sources */,
 				28A99967277AE5BB00459D19 /* UserData.swift in Sources */,
