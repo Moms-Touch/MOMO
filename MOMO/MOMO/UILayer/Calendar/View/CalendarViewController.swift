@@ -59,6 +59,24 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
       })
       .disposed(by: disposeBag)
     
+    viewModel.output.diaryInputOptionViewModel
+      .drive(onNext: { [weak self] in
+        self?.gotoDiaryInputOption(viewModel: $0)
+      })
+      .disposed(by: disposeBag)
+    
+    viewModel.output.readDiaryViewModel
+      .drive(onNext: { [weak self] in
+        print($0)
+      })
+      .disposed(by: disposeBag)
+    
+    viewModel.output.toastMessage
+      .drive(onNext: { [weak self] in
+        self?.view.makeToast($0)
+      })
+      .disposed(by: disposeBag)
+    
     collectionView.rx.setDelegate(self)
       .disposed(by: disposeBag)
   }
@@ -89,6 +107,19 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
     setupUI()
   }
   
+  
+}
+
+// MARK: - 화면전환
+extension CalendarViewController {
+  
+  private func gotoDiaryInputOption(viewModel: DiaryInputOptionViewModel) {
+    guard let diaryInputOptionVC = DiaryInputOptionViewController.loadFromStoryboard() as? DiaryInputOptionViewController else { return }
+    diaryInputOptionVC.viewModel = viewModel
+    diaryInputOptionVC.modalTransitionStyle = .crossDissolve
+    diaryInputOptionVC.modalPresentationStyle = .overFullScreen
+    self.present(diaryInputOptionVC, animated: true)
+  }
   
 }
 

@@ -112,7 +112,7 @@ class HomeMainViewModel: ViewModelType {
       let datastore = MomoDiaryDataStore()
       let repository = MomoDiaryRepository(diaryDataStore: datastore)
       let usecase = MomoCalendarUseCase(repository: repository, baseDate: Date())
-      return CalendarViewModel(calendarUseCase: usecase)
+      return CalendarViewModel(calendarUseCase: usecase, diaryUsecase: diaryUseCase)
     }
 
     func makeMyInfoViewModel() -> MyInfoViewModel {
