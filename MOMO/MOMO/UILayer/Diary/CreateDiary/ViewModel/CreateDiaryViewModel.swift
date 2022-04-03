@@ -40,17 +40,17 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
   private let baseDate: Date
-  private let usecase: CreateDiaryUseCase
-  private let voiceUsecase: WithVoiceUseCase
+  private let usecase: DiaryUseCase
+  private let recoder: Recoder
   var content: BehaviorRelay<[(String, String)]>
   
   // MARK: - Init
   
-  init(usecase: CreateDiaryUseCase, voiceUsecase: WithVoiceUseCase, diaryInput: DiaryInputType, baseDate: Date = Date()) {
+  init(usecase: DiaryUseCase, recoder: Recoder, diaryInput: DiaryInputType, baseDate: Date = Date()) {
     self.baseDate = baseDate
     self.content = BehaviorRelay<[(String, String)]>(value: [])
     self.usecase = usecase
-    self.voiceUsecase = voiceUsecase
+    self.recoder = recoder
     let withInputViewModel = BehaviorRelay<WithInputViewModel>(value: WithInputViewModel(hasGuide: false))
     
     let dismissClick = PublishSubject<Void>()
@@ -76,7 +76,7 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
       withInputViewModel.accept(WithTextViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, content: self))
     } else {
       withInputViewModel.accept(
-        WithVoiceViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, usecase: self.voiceUsecase, content: self))
+        WithVoiceViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, usecase: self.recoder, content: self))
     }
     
       // TODO: 여기에 voice

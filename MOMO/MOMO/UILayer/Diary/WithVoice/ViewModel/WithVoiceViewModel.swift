@@ -12,7 +12,7 @@ import OrderedCollections
 import RxCocoa
 
 protocol VoiceRecordable {
-  var usecase: WithVoiceUseCase { get set }
+  var usecase: Recoder { get set }
   var qnaListBehaviorRelay: BehaviorRelay<[String: String]> { get set }
   var baseDate: Date { get }
 }
@@ -40,7 +40,7 @@ class WithVoiceViewModel: WithInputViewModel, ViewModelType, VoiceRecordable {
   
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
-  var usecase: WithVoiceUseCase
+  var usecase: Recoder
   var baseDate: Date
   private var qnaList: OrderedDictionary<String, String> = [:]
   var qnaListBehaviorRelay: BehaviorRelay<[String : String]>
@@ -52,7 +52,7 @@ class WithVoiceViewModel: WithInputViewModel, ViewModelType, VoiceRecordable {
   private var content: DiaryContentMakeable
   
   // MARK: - init
-  init(hasGuide: Bool, baseDate: Date, usecase: WithVoiceUseCase, content: DiaryContentMakeable) {
+  init(hasGuide: Bool, baseDate: Date, usecase: Recoder, content: DiaryContentMakeable) {
     self.content = content
     self.usecase = usecase
     self.baseDate = baseDate
