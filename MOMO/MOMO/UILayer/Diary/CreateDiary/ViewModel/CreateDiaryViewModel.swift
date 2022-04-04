@@ -76,7 +76,7 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
       withInputViewModel.accept(WithTextViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, content: self))
     } else {
       withInputViewModel.accept(
-        WithVoiceViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, usecase: self.recoder, content: self))
+        WithVoiceViewModel(hasGuide: diaryInput.hasGuide ?? true, baseDate: self.baseDate, recoder: self.recoder, content: self))
     }
     
       // TODO: 여기에 voice

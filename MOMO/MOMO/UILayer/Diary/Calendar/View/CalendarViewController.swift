@@ -67,7 +67,10 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
     
     viewModel.output.readDiaryViewModel
       .drive(onNext: { [weak self] in
-        print($0)
+        let vc = ReadDiaryViewController(viewModel: $0)
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self?.present(vc, animated: true)
       })
       .disposed(by: disposeBag)
     
