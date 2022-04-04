@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class WithVoiceViewController: UIViewController, ViewModelBindableType  {
+final class WithVoiceViewController: UIViewController  {
   
   // MARK: - UI
   private let collectionView: UICollectionView = {
@@ -34,28 +34,48 @@ final class WithVoiceViewController: UIViewController, ViewModelBindableType  {
   
   // MARK: - ViewModel & Binding
   
-  var viewModel: WithVoiceViewModel
+  var editViewModel: WithVoiceViewModel?
+  var showViewModel: ReadContentViewModel?
   
   func bindViewModel() {
+    // MARK: - 일기작성일때 viewmodel
+    if let viewModel = editViewModel {
+      viewModel.output.questionCount
+        .drive(questionCount)
+        .disposed(by: disposeBag)
+      
+      viewModel.output.datasource
+        .drive(collectionView.rx.items(cellIdentifier: WithVoiceCollectionViewCell.identifier, cellType: WithVoiceCollectionViewCell.self)){
+          index, item, cell in
+          cell.configure(with: WithVoiceCellModel(question: item, voiceRecordHelper: viewModel))
+        }
+        .disposed(by: disposeBag)
+    }
     
-    viewModel.output.questionCount
-      .drive(questionCount)
-      .disposed(by: disposeBag)
+    // MARK: - 일기보기모드일때 viewmodel
+    if let viewModel = showViewModel {
+      
+      viewModel.output.qnaList
+        .map { return $0.count }
+        .drive(questionCount)
+        .disposed(by: disposeBag)
+      
+      viewModel.output.qnaList
+        .drive(collectionView.rx.items(cellIdentifier: WithVoiceCollectionViewCell.identifier, cellType: WithVoiceCollectionViewCell.self)) {
+          index, item, cell in
+          cell.configure(with: ReadVoiceCellViewModel(question: item.0, answer: item.1, recordPlayerPreparable: viewModel))
+        }
+        .disposed(by: disposeBag)
+    }
     
-    viewModel.output.datasource
-      .drive(collectionView.rx.items(cellIdentifier: WithVoiceCollectionViewCell.identifier, cellType: WithVoiceCollectionViewCell.self)){ [weak self]
-        index, item, cell in
-        guard let self = self else {return}
-        cell.configure(with: WithVoiceCellModel(question: item, voiceRecordHelper: self.viewModel))
-      }
-      .disposed(by: disposeBag)
     
   }
   
-  init(viewModel: WithVoiceViewModel) {
-    self.viewModel = viewModel
+  init(withVoiceViewModel: WithVoiceViewModel? = nil, readVoiceViewModel: ReadContentViewModel? = nil) {
+    self.editViewModel = withVoiceViewModel
+    self.showViewModel = readVoiceViewModel
     super.init(nibName: nil, bundle: nil)
-    self.bind(viewModel: self.viewModel)
+    bindViewModel()
   }
   
   required init?(coder: NSCoder) {

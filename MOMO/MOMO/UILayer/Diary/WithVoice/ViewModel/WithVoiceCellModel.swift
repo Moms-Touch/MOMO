@@ -50,11 +50,11 @@ final class WithVoiceCellModel {
       .flatMap { (cm, status: RecordStatus) -> Observable<RecordStatus> in
         switch status {
         case .notstarted:
-          return cm.voiceRecordHelper.usecase.startRecording(date: voiceRecordHelper.baseDate)
+          return cm.voiceRecordHelper.recoder.startRecording(date: voiceRecordHelper.baseDate)
         case .recording:
-          return cm.voiceRecordHelper.usecase.finishRecording(success: true)
+          return cm.voiceRecordHelper.recoder.finishRecording(success: true)
         case .finished:
-          return cm.voiceRecordHelper.usecase.finishRecording(success: true)
+          return cm.voiceRecordHelper.recoder.finishRecording(success: true)
         }
       }
       .bind(to: currentStatus)
@@ -65,7 +65,7 @@ final class WithVoiceCellModel {
       .filter { $0 == .finished }
       .withUnretained(self)
       .flatMap { cm, status -> (Observable<String>) in
-        return  cm.voiceRecordHelper.usecase.savedURL
+        return  cm.voiceRecordHelper.recoder.savedURL
       }
       .map { return [question: $0]}
       .bind(to: voiceRecordHelper.qnaListBehaviorRelay)

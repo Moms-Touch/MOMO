@@ -62,35 +62,39 @@ class WithVoiceCollectionViewCell: UICollectionViewCell {
   // MARK: - ViewModel & binding
   
   var viewModel: WithVoiceCellModel?
+  var showViewModel: ReadVoiceCellViewModel?
   
   func bindViewModel() {
-    guard let viewModel = viewModel else {
-      return
+    if let viewModel = viewModel {
+      // MARK: - Input
+      recordButton.rx.tap
+        .bind(to: viewModel.input.recordButtonClicked)
+        .disposed(by: disposeBag)
+      
+      
+      // MARK: - Output
+      viewModel.output.currentStatus
+        .debug()
+        .drive(onNext: { [unowned self] in
+          self.recordButton.setImage( $0.image!, for: .normal)
+          if $0 == .recording {
+            self.recordingAnimationView.isHidden = false
+            self.recordingAnimationView.play()
+          } else {
+            self.recordingAnimationView.pause()
+            self.recordingAnimationView.isHidden = true
+          }
+        })
+        .disposed(by: disposeBag)
+      
+      viewModel.output.question
+        .drive(questionLabel.rx.text)
+        .disposed(by: disposeBag)
     }
-    // MARK: - Input
-    recordButton.rx.tap
-      .bind(to: viewModel.input.recordButtonClicked)
-      .disposed(by: disposeBag)
     
-    
-    // MARK: - Output
-    viewModel.output.currentStatus
-      .debug()
-      .drive(onNext: { [unowned self] in
-        self.recordButton.setImage( $0.image!, for: .normal)
-        if $0 == .recording {
-          self.recordingAnimationView.isHidden = false
-          self.recordingAnimationView.play()
-        } else {
-          self.recordingAnimationView.pause()
-          self.recordingAnimationView.isHidden = true
-        }
-      })
-      .disposed(by: disposeBag)
-    
-    viewModel.output.question
-      .drive(questionLabel.rx.text)
-      .disposed(by: disposeBag)
+    if let viewModel = showViewModel {
+      
+    }
     
   }
   
@@ -109,4 +113,10 @@ extension WithVoiceCollectionViewCell {
     self.viewModel = viewModel
     self.bindViewModel()
   }
+  
+  func configure(with viewModel: ReadVoiceCellViewModel) {
+    self.showViewModel = viewModel
+    self.bindViewModel()
+  }
+  
 }

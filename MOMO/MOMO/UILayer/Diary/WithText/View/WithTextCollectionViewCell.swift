@@ -41,37 +41,56 @@ class WithTextCollectionViewCell: UICollectionViewCell {
   }
   
   var viewModel: WithTextCellViewModel?
+  var showViewModel: ReadTextCellViewModel?
   private var bottomConstriant: NSLayoutConstraint?
   
   func bindViewModel() {
+
+    if let viewModel = viewModel {
+      // MARK: - Input
+      answerTextView.rx.text
+        .compactMap { $0 }
+        .bind(to: viewModel.input.content)
+        .disposed(by: disposeBag)
+      
+      keyboardHeight()
+        .withUnretained(self)
+        .bind(onNext: { cell, height in
+          cell.bottomConstriant?.isActive = false
+          cell.bottomConstriant = cell.answerTextView.bottomAnchor.constraint(equalTo: cell.indexLabel.topAnchor, constant: -height)
+          cell.bottomConstriant?.isActive = true
+        })
+        .disposed(by: disposeBag)
     
-    guard let viewModel = viewModel else {
-      return
+      // MARK: - Output
+      viewModel.output.question
+        .drive(questionLabel.rx.text)
+        .disposed(by: disposeBag)
+      
+      viewModel.output.index
+        .drive(indexLabel.rx.text)
+        .disposed(by: disposeBag)
     }
     
-    // MARK: - Input
-    answerTextView.rx.text
-      .compactMap { $0 }
-      .bind(to: viewModel.input.content)
-      .disposed(by: disposeBag)
+    // MARK: - ShowMode
     
-    keyboardHeight()
-      .withUnretained(self)
-      .bind(onNext: { cell, height in
-        cell.bottomConstriant?.isActive = false
-        cell.bottomConstriant = cell.answerTextView.bottomAnchor.constraint(equalTo: cell.indexLabel.topAnchor, constant: -height)
-        cell.bottomConstriant?.isActive = true
-      })
-      .disposed(by: disposeBag)
-  
-    // MARK: - Output
-    viewModel.output.question
-      .drive(questionLabel.rx.text)
-      .disposed(by: disposeBag)
-    
-    viewModel.output.index
-      .drive(indexLabel.rx.text)
-      .disposed(by: disposeBag)
+    if let viewModel = showViewModel {
+      
+      viewModel.output.answer
+        .drive(onNext: { [weak self] in
+          guard let self = self else {return}
+          self.answerTextView.text = $0
+        })
+        .disposed(by: disposeBag)
+      
+      viewModel.output.question
+        .drive(questionLabel.rx.text)
+        .disposed(by: disposeBag)
+      
+      viewModel.output.index
+        .drive(indexLabel.rx.text)
+        .disposed(by: disposeBag)
+    }
     
   }
   
@@ -117,6 +136,13 @@ extension WithTextCollectionViewCell {
     self.viewModel = viewModel
     bindViewModel()
   }
+  
+  func configure(with viewModel: ReadTextCellViewModel) {
+    self.showViewModel = viewModel
+    self.answerTextView.isSelectable = false
+    bindViewModel()
+  }
+  
 }
 
 extension WithTextCollectionViewCell {

@@ -12,7 +12,7 @@ import OrderedCollections
 import RxCocoa
 
 protocol VoiceRecordable {
-  var usecase: Recoder { get set }
+  var recoder: Recoder { get set }
   var qnaListBehaviorRelay: BehaviorRelay<[String: String]> { get set }
   var baseDate: Date { get }
 }
@@ -40,25 +40,19 @@ class WithVoiceViewModel: WithInputViewModel, ViewModelType, VoiceRecordable {
   
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
-  var usecase: Recoder
+  var recoder: Recoder
   var baseDate: Date
-  private var qnaList: OrderedDictionary<String, String> = [:]
   var qnaListBehaviorRelay: BehaviorRelay<[String : String]>
-  private var defaultQuestion = "자유롭게 일기를 작성해주세요."
-  private var guideQuestionList: [String] = [ "오늘 하루는 어떠셨나요?",
-                                      "오늘 아이에게 무슨 일이 있었나요?",
-                                      "남기고 싶은 말이 있나요?"
-  ]
   private var content: DiaryContentMakeable
   
   // MARK: - init
-  init(hasGuide: Bool, baseDate: Date, usecase: Recoder, content: DiaryContentMakeable) {
+  init(hasGuide: Bool, baseDate: Date, recoder: Recoder, content: DiaryContentMakeable) {
     self.content = content
-    self.usecase = usecase
+    self.recoder = recoder
     self.baseDate = baseDate
     self.qnaListBehaviorRelay = BehaviorRelay<[String:String]>(value: [:])
     
-    let datasource = hasGuide == true ? BehaviorRelay<[String]>(value: guideQuestionList) : BehaviorRelay<[String]>(value: [defaultQuestion])
+    let datasource =  BehaviorRelay<[String]>(value: [])
     let questionCount = BehaviorRelay<Int>(value: 1)
     
     datasource
@@ -70,6 +64,8 @@ class WithVoiceViewModel: WithInputViewModel, ViewModelType, VoiceRecordable {
     self.output = Output(datasource: datasource.asDriver(), questionCount: questionCount.asDriver())
     super.init(hasGuide: hasGuide)
     
+    datasource.accept( hasGuide == true ? guideQuestionList : [defaultQuestion])
+
     datasource
       .withUnretained(self)
       .map { vm, questions -> [String: String] in

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class WithTextViewController: ViewController, ViewModelBindableType {
+class WithTextViewController: ViewController {
   
   // MARK: - UI
   
@@ -22,7 +22,7 @@ class WithTextViewController: ViewController, ViewModelBindableType {
     layout.scrollDirection = .horizontal
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    
+    collectionView.isPagingEnabled = true
     collectionView.backgroundColor = .clear
     collectionView.showsHorizontalScrollIndicator = false
     
@@ -30,35 +30,45 @@ class WithTextViewController: ViewController, ViewModelBindableType {
   }()
   
   // MARK: - ViewModel & Binding
-  var viewModel: WithTextViewModel
+  var editViewModel: WithTextViewModel?
+  var showViewModel: ReadContentViewModel?
   
   func bindViewModel() {
     
-    // MARK: - Input
-    
-    // MARK: - Output
-    viewModel.output.datasource
-      .drive(collectionView.rx.items(cellIdentifier: WithTextCollectionViewCell.identifier, cellType: WithTextCollectionViewCell.self)){ [weak self]
-        index, item, cell in
-        guard let self = self else {return}
-        cell.configure(with: WithTextCellViewModel(question: item, index: "\(index + 1)/3", qnaRelay: self.viewModel))
-      }
-      .disposed(by: disposeBag)
-    
-    //요런것도 viewmodel로 값을 옮긴다음에 빼야할까?
-    keyboardHeight()
-      .map { return $0 > 0 ? false : true }
-      .bind(to: collectionView.rx.isScrollEnabled)
-      .disposed(by: disposeBag)
+    if let viewModel = editViewModel {
+      viewModel.output.datasource
+        .drive(collectionView.rx.items(cellIdentifier: WithTextCollectionViewCell.identifier, cellType: WithTextCollectionViewCell.self)){
+          index, item, cell in
+          cell.configure(with: WithTextCellViewModel(question: item, index: "\(index + 1)/3", qnaRelay: viewModel))
+        }
+        .disposed(by: disposeBag)
+      
+      //요런것도 viewmodel로 값을 옮긴다음에 빼야할까?
+      keyboardHeight()
+        .map { return $0 > 0 ? false : true }
+        .bind(to: collectionView.rx.isScrollEnabled)
+        .disposed(by: disposeBag)
+    }
+   
+    if let viewModel = showViewModel {
+      viewModel.output.qnaList
+        .drive(collectionView.rx.items(cellIdentifier: WithTextCollectionViewCell.identifier, cellType: WithTextCollectionViewCell.self)){
+          index, item, cell in
+          cell.configure(with: ReadTextCellViewModel(question: item.0, answer: item.1, index: "\(index + 1)/3"))
+        }
+        .disposed(by: disposeBag)
+
+    }
   
   }
   
   // MARK: - Init
   
-  init(viewModel: WithTextViewModel) {
-    self.viewModel = viewModel
+  init(withTextViewModel: WithTextViewModel? = nil, readTextViewModel: ReadContentViewModel? = nil) {
+    self.editViewModel = withTextViewModel
+    self.showViewModel = readTextViewModel
     super.init(nibName: nil, bundle: nil)
-    self.bind(viewModel: self.viewModel)
+    bindViewModel()
   }
   
   required init?(coder: NSCoder) {

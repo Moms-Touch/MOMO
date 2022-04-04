@@ -36,25 +36,21 @@ class WithTextViewModel: WithInputViewModel, ViewModelType, DiaryContentGetable 
   
   // MARK: - Private Properties
   
-  private var qnaList: OrderedDictionary<String, String> = [:]
-  private var defaultQuestion = "자유롭게 일기를 작성해주세요."
-  private var guideQuestionList: [String] = [ "오늘 하루는 어떠셨나요?",
-                                      "오늘 아이에게 무슨 일이 있었나요?",
-                                      "남기고 싶은 말이 있나요?"
-  ]
+  
   private var disposeBag = DisposeBag()
   var qnaListBehaviorRelay: BehaviorRelay<[String:String]>
   private var content: DiaryContentMakeable
 
   init(hasGuide: Bool, baseDate: Date, content: DiaryContentMakeable) {
     
-    let datasource = hasGuide == true ? BehaviorRelay<[String]>(value: guideQuestionList) : BehaviorRelay<[String]>(value: [defaultQuestion])
+    let datasource =  BehaviorRelay<[String]>(value: [])
     self.qnaListBehaviorRelay = BehaviorRelay<[String:String]>(value: [:])
     self.content = content
     
     self.input = Input()
     self.output = Output(datasource: datasource.asDriver(), qnaDic: qnaListBehaviorRelay.asDriver())
     super.init(hasGuide: hasGuide)
+    datasource.accept( hasGuide == true ? guideQuestionList : [defaultQuestion])
     
     datasource
       .withUnretained(self)
