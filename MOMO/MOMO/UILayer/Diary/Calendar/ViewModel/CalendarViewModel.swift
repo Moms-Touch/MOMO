@@ -58,7 +58,7 @@ class CalendarViewModel: ViewModelType {
                          closeView: closeView.asDriver(onErrorJustReturn: ()),
                          calendarHeaderViewModel: calendarHeaderViewModel,
                          diaryInputOptionViewModel: diaryInputOptionViewModel.asDriver(),
-                         readDiaryViewModel: readDiaryViewModel.asDriver(onErrorJustReturn: makeReadDiaryViewModel(diary: Diary())),
+                         readDiaryViewModel: readDiaryViewModel.asDriver(onErrorJustReturn: makeReadDiaryViewModel(diary: nil)),
                          toastMessage: toastMessage.asDriver(onErrorJustReturn: "")
     )
     
@@ -95,7 +95,7 @@ class CalendarViewModel: ViewModelType {
         if !result { toastMessage.accept("미래의 일기는 작성할 수 없어요") }
         return result
       }
-      .flatMap { vm, date -> Observable<Diary?> in //미래가 아닌 날짜만 내려옴
+      .flatMap { vm, date -> Observable<DiaryEntity?> in //미래가 아닌 날짜만 내려옴
         return vm.diaryUseCase.fetchDiary(date: date)
       }
       .filter { $0 == nil}
@@ -107,7 +107,7 @@ class CalendarViewModel: ViewModelType {
     //일기가 있음
     didSelectOptionObservable
       .withUnretained(self)
-      .flatMap { (vm, date) -> Observable<Diary?> in
+      .flatMap { (vm, date) -> Observable<DiaryEntity?> in
         return vm.diaryUseCase.fetchDiary(date: date)
       }
       .compactMap { $0 }
@@ -120,8 +120,12 @@ class CalendarViewModel: ViewModelType {
       return CalendarHeaderViewModel(baseDate: Date())
     }
     
-    func makeReadDiaryViewModel(diary: Diary) -> ReadDiaryViewModel {
-      return ReadDiaryViewModel(diary: diary)
+    func makeReadDiaryViewModel(diary: DiaryEntity?) -> ReadDiaryViewModel {
+      guard let diary = diary else {
+        return ReadDiaryViewModel(diary: DiaryEntity(id: "0", date: Date(), emotion: .unknown, contentType: .text, qnaList: []), diaryUseCase: diaryUsecase)
+      }
+
+      return ReadDiaryViewModel(diary: diary, diaryUseCase: diaryUsecase)
     }
     
     func makeDiaryInputOptionViewModel() -> DiaryInputOptionViewModel {
