@@ -83,6 +83,12 @@ extension CalendarCollectionViewCell {
       }
     }
     
+    if day.date == Date().timeToZero() {
+      self.numberLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+    } else {
+      self.numberLabel.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+    }
+    
     self.numberLabel.text = day.number
     self.emojiImageView.image = day.mood.image
     

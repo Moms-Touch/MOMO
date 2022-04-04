@@ -18,8 +18,6 @@
 		280BEFCD274B7B9400F031A7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 280BEFCC274B7B9400F031A7 /* Kingfisher */; };
 		280BEFD5274BA35900F031A7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280BEFD4274BA35900F031A7 /* DetailViewController.swift */; };
 		281A90F327E099600019B690 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 281A90F227E099600019B690 /* RxGesture */; };
-		281D35382761EF3F00A128A5 /* DiaryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285209972753325F00AB8BAC /* DiaryMainViewController.swift */; };
-		281D35392761EF4200A128A5 /* DiaryMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285209982753325F00AB8BAC /* DiaryMain.storyboard */; };
 		281D353B27622C5600A128A5 /* RecommendDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D353A27622C5600A128A5 /* RecommendDetail.storyboard */; };
 		281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281D353C2762313700A128A5 /* RecommendDetailViewController.swift */; };
 		284BEBC12785CF01002C5A9E /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284BEBC02785CF01002C5A9E /* UINavigationController+Extension.swift */; };
@@ -248,8 +246,6 @@
 		2852098D2753325F00AB8BAC /* CreateDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDiaryViewController.swift; sourceTree = "<group>"; };
 		2852098F2753325F00AB8BAC /* WithTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithTextViewController.swift; sourceTree = "<group>"; };
 		285209912753325F00AB8BAC /* WithTextCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithTextCollectionViewCell.swift; sourceTree = "<group>"; };
-		285209972753325F00AB8BAC /* DiaryMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryMainViewController.swift; sourceTree = "<group>"; };
-		285209982753325F00AB8BAC /* DiaryMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiaryMain.storyboard; sourceTree = "<group>"; };
 		285209A82753327200AB8BAC /* Location.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
 		285209A92753327200AB8BAC /* NewPasswordInput.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewPasswordInput.storyboard; sourceTree = "<group>"; };
 		285209AA2753327200AB8BAC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -532,10 +528,10 @@
 			children = (
 				DDE316F9277EF5130033FEF4 /* ReadDiary */,
 				285209862753325F00AB8BAC /* InputOption */,
+				B1B9AEAE27ECC35D006E01E1 /* Calendar */,
 				2852098E2753325F00AB8BAC /* WithText */,
 				DDE316FE277F13B70033FEF4 /* WithVoice */,
 				2852098B2753325F00AB8BAC /* CreateDiary */,
-				285209962753325F00AB8BAC /* Main */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -565,15 +561,6 @@
 				B1615EC927F5C31300DC4E63 /* ViewModel */,
 			);
 			path = WithText;
-			sourceTree = "<group>";
-		};
-		285209962753325F00AB8BAC /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				285209972753325F00AB8BAC /* DiaryMainViewController.swift */,
-				285209982753325F00AB8BAC /* DiaryMain.storyboard */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		285209A62753327200AB8BAC /* Login */ = {
@@ -1264,7 +1251,6 @@
 			isa = PBXGroup;
 			children = (
 				B1B9AEAB27ECC320006E01E1 /* Recommend */,
-				B1B9AEAE27ECC35D006E01E1 /* Calendar */,
 				28CA30662753357300EF071E /* Community */,
 				285209A62753327200AB8BAC /* Login */,
 				285209852753325F00AB8BAC /* Diary */,
@@ -1470,7 +1456,6 @@
 				280BEFBF274B647900F031A7 /* GoogleService-Info.plist in Resources */,
 				DD1356FA270B526B003BAB4A /* swiftgen.yml in Resources */,
 				280BEFBD274B31B700F031A7 /* CommuntiyBookmark.storyboard in Resources */,
-				281D35392761EF4200A128A5 /* DiaryMain.storyboard in Resources */,
 				28CA30722753357300EF071E /* QuetsionDetail.storyboard in Resources */,
 				285209B52753327200AB8BAC /* Location.storyboard in Resources */,
 				285209992753325F00AB8BAC /* DiaryInputOption.storyboard in Resources */,
@@ -1565,7 +1550,6 @@
 				285D0DDF27E7105900B22287 /* RecommendRepository.swift in Sources */,
 				B1615ED527F6DC1800DC4E63 /* RecordStatus.swift in Sources */,
 				28F4FE132760C3BA00E699FC /* LikeData.swift in Sources */,
-				281D35382761EF3F00A128A5 /* DiaryMainViewController.swift in Sources */,
 				288EFD112754F27C000D1617 /* AlertPageViewController.swift in Sources */,
 				285209F02753329600AB8BAC /* simpleContent.swift in Sources */,
 				2861944827DF45880012250F /* AuthRepository.swift in Sources */,

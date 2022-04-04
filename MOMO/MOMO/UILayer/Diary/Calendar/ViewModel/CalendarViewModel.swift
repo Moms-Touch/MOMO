@@ -87,14 +87,15 @@ class CalendarViewModel: ViewModelType {
         return day.date
       })
       
+    // 일기가 없음
     didSelectOptionObservable
       .withUnretained(self)
       .filter { vm, date in
-        let result = date.timeToZero() <= Date().timeToZero()
+        let result = date.timeToZero() <= Date().timeToZero() // bool
         if !result { toastMessage.accept("미래의 일기는 작성할 수 없어요") }
         return result
       }
-      .flatMap { vm, date -> Observable<Diary?> in
+      .flatMap { vm, date -> Observable<Diary?> in //미래가 아닌 날짜만 내려옴
         return vm.diaryUseCase.fetchDiary(date: date)
       }
       .filter { $0 == nil}
@@ -103,6 +104,7 @@ class CalendarViewModel: ViewModelType {
       .bind(to: diaryInputOptionViewModel)
       .disposed(by: disposeBag)
     
+    //일기가 있음
     didSelectOptionObservable
       .withUnretained(self)
       .flatMap { (vm, date) -> Observable<Diary?> in
@@ -119,7 +121,7 @@ class CalendarViewModel: ViewModelType {
     }
     
     func makeReadDiaryViewModel(diary: Diary) -> ReadDiaryViewModel {
-      return ReadDiaryViewModel()
+      return ReadDiaryViewModel(diary: diary)
     }
     
     func makeDiaryInputOptionViewModel() -> DiaryInputOptionViewModel {
