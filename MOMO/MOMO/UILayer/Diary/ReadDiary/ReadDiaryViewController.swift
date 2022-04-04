@@ -6,190 +6,171 @@
 //
 
 import UIKit
-import RealmSwift
-import FSCalendar
+import Then
+import SnapKit
+
+import RxCocoa
+import RxSwift
+
 import AVFoundation
 
-
-class ReadDiaryViewController: UIViewController, StoryboardInstantiable {
+class ReadDiaryViewController: DiaryShowViewController, ViewModelBindableType {
   
-  @IBOutlet weak var dateLabel: UILabel! {
-    didSet {
-      dateLabel.navTitleStyle()
-    }
-  }
+  // MARK: - ViewModel & BindingViewModel
+  var viewModel: ReadDiaryViewModel
   
-  @IBOutlet weak var qnaContainerStackView: UIStackView!
-  
-  @IBOutlet weak var deleteButton: UIButton!
-  
-  
-  var diary: Diary! {
-    didSet {
-      
-      guard self.qnaContainerStackView != nil else { return }
-      
-      setUpViewWithDiary()
-    }
-  }
-  
-  private var player: AVQueuePlayer?
-  
-  var observation: NSKeyValueObservation?
-  
-  private let dateFormatter: DateFormatter = {
+  func bindViewModel() {
     
-    let formatter = DateFormatter()
-    formatter.dateFormat = .some("yyyy.MM.dd")
-    return formatter
-  }()
+    // MARK: - Input
+    backButton.rx.tap
+      .throttle(.seconds(1), scheduler: MainScheduler.instance)
+      .bind(to: viewModel.input.dismissClicked)
+      .disposed(by: disposeBag)
+    
+    completeOrDeleteButton.rx.tap
+      .throttle(.seconds(1), scheduler: MainScheduler.instance)
+      .bind(to: viewModel.input.deleteButtonClicked)
+      .disposed(by: disposeBag)
+    
+    // MARK: - Output
+    
+    viewModel.output.withInputViewModel
+      .drive(onNext: { [weak self] in
+        guard let self = self, let vm = $0 as? ReadContentViewModel else {return}
+        if vm.contentType == .text {
+          let vc = WithTextViewController(withTextViewModel: nil, readTextViewModel: vm)
+          self.appendChildVC(to: self.diaryInputContainerView, with: vc)
+        } else {
+          let vc = WithVoiceViewController(withVoiceViewModel: nil, readVoiceViewModel: vm)
+          self.appendChildVC(to: self.diaryInputContainerView, with: vc)
+        }
+      })
+      .disposed(by: disposeBag)
+    
+    viewModel.output.date
+      .drive(dateLabel.rx.text)
+      .disposed(by: disposeBag)
+    
+    viewModel.output.emotion
+      .filter({ emotion, index in
+        emotion != .unknown
+      })
+      .drive(onNext: { [unowned self] emotion, index in
+        self.emotionButtons.forEach { $0.isUserInteractionEnabled = false }
+        self.emotionButtons[index].isSelected = true
+      })
+      .disposed(by: disposeBag)
+    
+    viewModel.output.toastMessage
+      .drive(onNext: { [weak self] message in
+        self?.view.makeToast(message)
+      })
+      .disposed(by: disposeBag)
+    
+    viewModel.output.deleteCompleted
+      .debug()
+      .filter { $0 == true}
+      .drive(onNext: { [weak self] _ in
+        self?.view.makeToast("삭제가 완료되었습니다.")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          self?.view.window?.rootViewController?.dismiss(animated: false)
+        }
+      })
+      .disposed(by: disposeBag)
+    
+  }
+  
+  // MARK: - Private Properties
+  private var disposeBag = DisposeBag()
+  
+  
+  
+  // MARK: - init
+  init(viewModel: ReadDiaryViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   // MARK: - Life Cycle
   /// 1회성
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    setUpViewWithDiary()
+    completeOrDeleteButton.setTitle("삭제", for: .normal)
+    setupUI()
+    self.bind(viewModel: self.viewModel)
   }
   
-  /// 스토리 보드에서 뷰정보를 가져오고, diary 를 주입할 수 있는 생성자
-  static func make(with diary: Diary) -> ReadDiaryViewController {
-    
-    let vc = ReadDiaryViewController.loadFromStoryboard() as! ReadDiaryViewController
-    
-    vc.diary = diary
-    
-    return vc
-  }
-  
-  func setUpViewWithDiary() {
-    
-    /*
-     날짜
-     */
-    
-    dateLabel.text = dateFormatter.string(from: diary.date)
-    
-    /*
-     일기 Q&A
-     */
-    
-    guard let contentType = InputType(rawValue:diary.contentType) else { return }
-    
-    switch contentType {
-        
-      case .text:
-        
-        for (index, qna) in diary.qnaList.enumerated() {
-          
-          var qnaView: QnAView
-          
-          if diary.qnaList.count == 1 {
-            
-            qnaView = QnAView.make(question: qna.question, answer: qna.answer!)
-            
-          } else {
-            
-            qnaView = QnAView.make(question: "Q\(index+1). " + qna.question, answer: qna.answer!)
-          }
-          
-          qnaContainerStackView.addArrangedSubview(qnaView)
-        }
-        
-      case .voice:
-        
-        /// 음원이 경로에 있는지 확인
-        ///
-        // FIXME: AVPlayerItem 을 옵셔널 변수로 가지고 있으면
-        // line:113 에서의 코드 중복을 줄일 수 있을 것 같다.
-        let dataURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("VoiceRecords", isDirectory: true).appendingPathComponent("\(diary.date)").appendingPathExtension("m4a")
-        
-        guard FileManager.default.fileExists(atPath: dataURL.path) else { return }
-        
-        
-        /// 플레이어 생성
-        
-        player = AVQueuePlayer(url: dataURL)
-        
-        observation = player?.observe(\.currentItem, options: [.new], changeHandler: { [unowned self] object, change in
-          
-          let dataURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("VoiceRecords", isDirectory: true).appendingPathComponent("\(self.diary.date)").appendingPathExtension("m4a")
-          
-          guard FileManager.default.fileExists(atPath: dataURL.path) else { return }
-          
-          self.player?.insert(AVPlayerItem.init(url: dataURL), after: nil)
-          
-          self.player?.pause()
-          
-          (self.qnaContainerStackView.arrangedSubviews.last as? VoiceView)?.playButton.isSelected = false
-        })
-        
-        let voiceView = VoiceView.make()
-        
-        voiceView.playButton.addTarget(self, action: #selector(didTapPlayBuntton), for: .touchUpInside)
-        
-        qnaContainerStackView.addArrangedSubview(voiceView)
-    }
-    
-  }
-  
-  @objc func didTapPlayBuntton(_ sender: UIButton) {
-    
-    guard let player = player else {
-      return
-    }
-    
-    if sender.isSelected {
-      
-    /// 음성 중지
-      player.pause()
-      
-    } else {
-      
-    /// 음성 실행
-      player.play()
-      
-      
-    }
-    
-    sender.isSelected.toggle()
-  }
-  
-  @IBAction func deleteDiary(_ sender: UIButton) {
-    
-    let alertVC = UIAlertController(title: "일기 삭제", message: "정말로 삭제하시겠어요?", preferredStyle: .alert)
-    
-    let okAction = UIAlertAction(title: "네", style: .destructive) { _code in
-      
-      do {
-        
-        let realm = try Realm()
-        
-        try realm.write {
-          
-          realm.delete(self.diary)
-          
-        }
-        
-      } catch {
-        print(error.localizedDescription)
-      }
-      
-      self.navigationController?.popToRootViewController(animated: true)
-      
-      // TODO: Toast 필요
-    }
-    
-    alertVC.addAction(okAction)
-    alertVC.addAction(UIAlertAction.cancelAction)
-    
-    self.present(alertVC, animated: true, completion: nil)
-    
-  }
-  
-  @IBAction func dismiss(_ sender: UIButton) {
-    
-    self.navigationController?.popViewController(animated: true)
-  }
+//  func setUpViewWithDiary() {
+//    
+//    switch contentType {
+//
+//        
+//      case .voice:
+//        
+//        /// 음원이 경로에 있는지 확인
+//        ///
+//        // FIXME: AVPlayerItem 을 옵셔널 변수로 가지고 있으면
+//        // line:113 에서의 코드 중복을 줄일 수 있을 것 같다.
+//        let dataURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("VoiceRecords", isDirectory: true).appendingPathComponent("\(diary.date)").appendingPathExtension("m4a")
+//        
+//        guard FileManager.default.fileExists(atPath: dataURL.path) else { return }
+//        
+//        
+//        /// 플레이어 생성
+//        
+//        player = AVQueuePlayer(url: dataURL)
+//        
+//        observation = player?.observe(\.currentItem, options: [.new], changeHandler: { [unowned self] object, change in
+//          
+//          let dataURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("VoiceRecords", isDirectory: true).appendingPathComponent("\(self.diary.date)").appendingPathExtension("m4a")
+//          
+//          guard FileManager.default.fileExists(atPath: dataURL.path) else { return }
+//          
+//          self.player?.insert(AVPlayerItem.init(url: dataURL), after: nil)
+//          
+//          self.player?.pause()
+//          
+//          (self.qnaContainerStackView.arrangedSubviews.last as? VoiceView)?.playButton.isSelected = false
+//        })
+//        
+//        let voiceView = VoiceView.make()
+//        
+//        voiceView.playButton.addTarget(self, action: #selector(didTapPlayBuntton), for: .touchUpInside)
+//        
+//        qnaContainerStackView.addArrangedSubview(voiceView)
+//    }
+//    
+//  }
+
+
   
 }
+
+
+//private var player: AVQueuePlayer?
+
+//@objc func didTapPlayBuntton(_ sender: UIButton) {
+//
+//  guard let player = player else {
+//    return
+//  }
+//
+//  if sender.isSelected {
+//
+//  /// 음성 중지
+//    player.pause()
+//
+//  } else {
+//
+//  /// 음성 실행
+//    player.play()
+//
+//
+//  }
+//
+//  sender.isSelected.toggle()
+//}
