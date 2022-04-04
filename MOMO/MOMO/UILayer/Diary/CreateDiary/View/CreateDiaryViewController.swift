@@ -11,33 +11,8 @@ import RealmSwift
 import RxSwift
 import RxCocoa
 
-final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
+final class CreateDiaryViewController: DiaryShowViewController, ViewModelBindableType {
   
-  private let dateLabel = UILabel().then {
-    $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-    $0.text = Date().toString()
-  }
-  
-  private let backButton = UIButton(type: .system).then {
-    $0.setImage(UIImage(systemName:"chevron.left"), for: .normal)
-  }
-  
-  private let navBar = UIView(frame: .zero).then {
-    $0.backgroundColor = .clear
-  }
-  
-  private let completeDiaryButton = UIButton(type:.custom).then {
-    $0.setTitle("완료", for: .normal)
-    $0.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-    $0.setTitleColor(.label, for: .normal)
-  }
-  
-  private let diaryInputContainerView = UIView().then {
-    $0.backgroundColor = .clear
-  }
-  
-  private let blurView = BlurView()
-  private var emotionButtons = [UIButton]()
   private var disposeBag = DisposeBag()
   
   // MARK: - ViewModel & Binding
@@ -52,7 +27,7 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
       .bind(to: viewModel.input.dismissClicked)
       .disposed(by: disposeBag)
     
-    completeDiaryButton.rx.tap
+    completeOrDeleteButton.rx.tap
       .throttle(.seconds(1), scheduler: MainScheduler.instance)
       .bind(to: viewModel.input.completedClicked)
       .disposed(by: disposeBag)
@@ -82,11 +57,17 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
     viewModel.output.withInputViewModel
       .drive(onNext: { [weak self] viewModel in
         guard let self = self else {return}
-        if viewModel is WithTextViewModel {
-          let vc = WithTextViewController(viewModel: viewModel as! WithTextViewModel)
+  
+        if viewModel is WithTextViewModel,
+           let vm = viewModel as? WithTextViewModel {
+          let vc = WithTextViewController(withTextViewModel: vm,
+                                          readTextViewModel: nil)
           self.appendChildVC(to: self.diaryInputContainerView, with: vc)
-        } else {
-          let vc = WithVoiceViewController(viewModel: viewModel as! WithVoiceViewModel)
+          
+        } else if viewModel is WithVoiceViewModel,
+                  let vm = viewModel as? WithVoiceViewModel {
+          let vc = WithVoiceViewController(withVoiceViewModel: vm,
+                                           readVoiceViewModel: nil)
           self.appendChildVC(to: self.diaryInputContainerView, with: vc)
         }
       })
@@ -148,92 +129,9 @@ final class CreateDiaryViewController: UIViewController, ViewModelBindableType {
         .disposed(by: disposeBag)
   }
   
-}
-
-// MARK: - Set Up UI
-extension CreateDiaryViewController {
-  
-  private func appendChildVC(to parentView: UIView, with child: UIViewController) {
-    self.addChild(child)
-    parentView.addSubview(child.view)
-    child.view.snp.makeConstraints { make in
-      make.left.right.top.bottom.equalTo(self.diaryInputContainerView)
-    }
-    child.didMove(toParent: self)
+  internal override func setupUI() {
+    completeOrDeleteButton.setTitle("완료", for: .normal)
+    super.setupUI()
   }
   
-  private func makeEmotionButtonArray() -> [UIButton] {
-    
-    let happyBirdButton = makeEmotionButton(emotion: "bird.happy")
-    let sadBirdButton = makeEmotionButton(emotion: "bird.sad")
-    let blueBirdButton = makeEmotionButton(emotion: "bird.blue")
-    let angryBirdButton = makeEmotionButton(emotion: "bird.angry")
-    
-    return [happyBirdButton, angryBirdButton, sadBirdButton, blueBirdButton]
-  }
-  
-  private func makeStackView(emotionButtons: [UIButton]) -> UIStackView {
-    let stackView = UIStackView(arrangedSubviews: emotionButtons).then {
-      $0.axis = .horizontal
-      $0.distribution = .equalSpacing
-      $0.spacing = 20
-    }
-    
-    self.view.addSubview(stackView)
-    stackView.snp.makeConstraints { make in
-      make.left.right.equalToSuperview().inset(20)
-      make.top.equalTo(navBar.snp.bottom).inset(-25)
-      make.bottom.equalTo(diaryInputContainerView.snp.top).offset(-15)
-    }
-    return stackView
-  }
-  
-  private func makeEmotionButton(emotion: String) -> UIButton {
-    let button = UIButton(type: .custom).then {
-      $0.setImage(UIImage(named: emotion + ".default"), for: .normal)
-      $0.setImage(UIImage(named: emotion), for: .selected)
-    }
-    return button
-  }
-  
-  private func setupUI() {
-    navBar.addSubview(backButton)
-    navBar.addSubview(dateLabel)
-    navBar.addSubview(completeDiaryButton)
-    view.addSubview(blurView)
-    view.addSubview(navBar)
-    view.addSubview(diaryInputContainerView)
-    
-    blurView.snp.makeConstraints { make in
-      make.left.right.bottom.top.equalToSuperview()
-    }
-
-    backButton.snp.makeConstraints { make in
-      make.left.equalToSuperview().inset(20)
-      make.centerY.equalToSuperview()
-    }
-    
-    dateLabel.snp.makeConstraints { make in
-      make.center.equalToSuperview()
-    }
-    
-    completeDiaryButton.snp.makeConstraints { make in
-      make.right.equalToSuperview().inset(20)
-      make.centerY.equalToSuperview()
-    }
-    
-    navBar.snp.makeConstraints { make in
-      make.height.equalTo(44)
-      make.left.right.top.equalTo(view.safeAreaLayoutGuide)
-    }
-    
-    self.emotionButtons = makeEmotionButtonArray()
-    let stackview = makeStackView(emotionButtons: emotionButtons)
-    
-    diaryInputContainerView.snp.makeConstraints { make in
-      make.left.right.bottom.equalTo(view.safeAreaLayoutGuide)
-      make.top.equalTo(stackview.snp.bottom).offset(-15)
-    }
-    
-  }
 }
