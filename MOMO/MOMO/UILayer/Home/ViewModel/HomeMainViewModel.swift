@@ -26,7 +26,7 @@ class HomeMainViewModel: ViewModelType {
   // MARK: - Output
   
   struct Output {
-    var diary: Driver<Diary?>
+    var diary: Driver<DiaryEntity?>
     var gotoCalendar: Driver<CalendarViewModel>
     var gotoBookmark: Driver<Void>
     var gotoSetting: Driver<MyInfoViewModel>
@@ -60,7 +60,7 @@ class HomeMainViewModel: ViewModelType {
     let gotoSetting = settingClicked.withLatestFrom(myInfoViewModel)
     
     let diaryInputOptionViewModel = BehaviorRelay<DiaryInputOptionViewModel>(value: makeDiaryInputViewModel())
-    let diary = BehaviorRelay<Diary?>(value: nil)
+    let diary = BehaviorRelay<DiaryEntity?>(value: nil)
     
     let profileImage = BehaviorRelay<String>(value: "mascot")
     let toastMessage = BehaviorRelay<String>(value: "가운데 버튼을 눌러서, 아이의 사진으로 변경해보아요🤰")

@@ -188,17 +188,17 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, UI
     self.present(diaryInputOptionVC, animated: true)
   }
   
-  private func gotoTodayDiary(diary: Diary) {
+  private func gotoTodayDiary(diary: DiaryEntity) {
     
     alertWithObservable(title: "작성한 일기 있음", text: "오늘은 이미 일기를 작성하셨습니다. 보러가실래요?")
       .bind(onNext: { _ in
         let datastore = MomoDiaryDataStore()
         let repo = MomoDiaryRepository(diaryDataStore: datastore)
-        repo.delete(diary: diary)
-          .subscribe(onCompleted: {
-            print("제거성공")
-          })
-          .dispose()
+//        repo.delete(diary: diary)
+//          .subscribe(onCompleted: {
+//            print("제거성공")
+//          })
+//          .dispose()
       })
       .disposed(by: disposeBag)
     
