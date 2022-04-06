@@ -8,9 +8,9 @@
 import Foundation
 
 import OrderedCollections
+
 import RxSwift
 import RxCocoa
-import RealmSwift
 
 protocol DiaryContentGetable {
   var qnaListBehaviorRelay: BehaviorRelay<[String:String]> { get set }
