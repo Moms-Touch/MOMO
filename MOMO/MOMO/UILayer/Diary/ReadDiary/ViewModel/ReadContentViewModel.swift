@@ -14,6 +14,7 @@ protocol RecordPlayerPreparable {
   var diaryDate: Date { get }
 }
 
+// MARK: - ReadContentViewModel은 ReadText, ReadVoice가 합쳐진 ViewModel, Text는 내용, Voice는 URL의 string version이 들어있기 때문에 둘을 합칠 수 있었다.
 final class ReadContentViewModel: WithInputViewModel, ViewModelType, RecordPlayerPreparable {
   
   // MARK: - Input

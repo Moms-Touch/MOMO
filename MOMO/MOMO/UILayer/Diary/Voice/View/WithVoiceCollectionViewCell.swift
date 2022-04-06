@@ -78,6 +78,7 @@ class WithVoiceCollectionViewCell: UICollectionViewCell {
   var showViewModel: ReadVoiceCellViewModel?
   
   func bindViewModel() {
+    // MARK: - 쓰기 모드
     if let viewModel = viewModel {
       // MARK: - Input
       recordButton.rx.tap
@@ -105,6 +106,7 @@ class WithVoiceCollectionViewCell: UICollectionViewCell {
         .disposed(by: disposeBag)
     }
     
+    // MARK: - 보기모드
     if let viewModel = showViewModel {
       
       durationLabel.isHidden = false
@@ -155,11 +157,13 @@ class WithVoiceCollectionViewCell: UICollectionViewCell {
 }
 
 extension WithVoiceCollectionViewCell {
+  // MARK: - 쓰기 모드 configure viewModel
   func configure(with viewModel: WithVoiceCellModel) {
     self.viewModel = viewModel
     self.bindViewModel()
   }
   
+  // MARK: - 보기 모드 configure viewmodel
   func configure(with viewModel: ReadVoiceCellViewModel) {
     self.showViewModel = viewModel
     self.bindViewModel()

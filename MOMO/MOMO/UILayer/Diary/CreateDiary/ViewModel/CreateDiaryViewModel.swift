@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol DiaryContentMakeable {
+  // content는 question과 answer의 내용을 가지고 있다.
   var content: BehaviorRelay<[(String, String)]> {get set}
 }
 

@@ -19,8 +19,6 @@ protocol VoiceRecordable {
 
 class WithVoiceViewModel: WithInputViewModel, ViewModelType, VoiceRecordable {
   
-  
-  
   // MARK: - Input
   
   struct Input {
@@ -43,7 +41,7 @@ class WithVoiceViewModel: WithInputViewModel, ViewModelType, VoiceRecordable {
   var recoder: Recoder
   var baseDate: Date
   var qnaListBehaviorRelay: BehaviorRelay<[String : String]>
-  private var content: DiaryContentMakeable
+  private var content: DiaryContentMakeable // 상위 viewmodel로부터 의존성을 주입받았다.
   
   // MARK: - init
   init(hasGuide: Bool, baseDate: Date, recoder: Recoder, content: DiaryContentMakeable) {
@@ -66,6 +64,7 @@ class WithVoiceViewModel: WithInputViewModel, ViewModelType, VoiceRecordable {
     
     datasource.accept( hasGuide == true ? guideQuestionList : [defaultQuestion])
 
+    // Question 개수에 따라서 dic을 초기화시킨다. 
     datasource
       .withUnretained(self)
       .map { vm, questions -> [String: String] in
