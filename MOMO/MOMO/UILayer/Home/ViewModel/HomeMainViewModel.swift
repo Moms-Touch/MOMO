@@ -120,7 +120,7 @@ class HomeMainViewModel: ViewModelType {
     }
     
     func makeDiaryInputViewModel() -> DiaryInputOptionViewModel {
-      return DiaryInputOptionViewModel(usecase: diaryUseCase)
+      return DiaryInputOptionViewModel(baseDate: Date().timeToZero(), usecase: diaryUseCase)
     }
     
     

@@ -91,6 +91,10 @@ final class CreateDiaryViewController: DiaryShowViewController, ViewModelBindabl
       })
       .disposed(by: disposeBag)
     
+    viewModel.output.date
+      .drive(dateLabel.rx.text)
+      .disposed(by: disposeBag)
+    
   }
   
   // MARK: - Init

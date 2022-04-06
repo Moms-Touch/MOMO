@@ -32,10 +32,11 @@ final class DiaryInputOptionViewModel: ViewModelType {
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
   private let usecase: DiaryUseCase
+  private let baseDate: Date
   // MARK: - Init
   
-  init(usecase: DiaryUseCase) {
-    
+  init(baseDate: Date, usecase: DiaryUseCase) {
+    self.baseDate = baseDate
     self.usecase = usecase
     let recoder = MomoRecoder(recodingSession: AVAudioSession.sharedInstance(), audioRecoder: AVAudioRecorder())
     
@@ -45,7 +46,7 @@ final class DiaryInputOptionViewModel: ViewModelType {
     let gotocreateDairyVC = PublishRelay<CreateDiaryViewModel>()
   
     self.input = Input(inputOption: inputOption.asObserver(), hasGuideOption: hasGuideOption.asObserver())
-    self.output = Output(gotoSecondStep: gotoSecondStep.asDriver(onErrorJustReturn: DiaryInputType(inputType: .text)), gotocreateDiaryVC: gotocreateDairyVC.asDriver(onErrorJustReturn: CreateDiaryViewModel(usecase: usecase, recoder: recoder, diaryInput: DiaryInputType(inputType: .text))))
+    self.output = Output(gotoSecondStep: gotoSecondStep.asDriver(onErrorJustReturn: DiaryInputType(inputType: .text)), gotocreateDiaryVC: gotocreateDairyVC.asDriver(onErrorJustReturn: CreateDiaryViewModel(usecase: usecase, recoder: recoder, diaryInput: DiaryInputType(inputType: .text), baseDate: baseDate)))
     
     // MARK: - Input -> Output
     
@@ -63,7 +64,7 @@ final class DiaryInputOptionViewModel: ViewModelType {
         return DiaryInputType(inputType: inputType, hasGuide: hasGuide)
       }
       .map {
-        CreateDiaryViewModel(usecase: usecase, recoder: recoder, diaryInput: $0)
+        CreateDiaryViewModel(usecase: usecase, recoder: recoder, diaryInput: $0, baseDate: baseDate)
       })
       .bind(to: gotocreateDairyVC)
       .disposed(by: disposeBag)

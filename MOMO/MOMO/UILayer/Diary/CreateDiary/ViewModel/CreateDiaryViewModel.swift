@@ -32,6 +32,7 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
     var dismiss: Driver<Void>
     var complete: Driver<Bool>
     var withInputViewModel: Driver<WithInputViewModel>
+    var date: Driver<String>
     var gotoOption: Driver<Void>
   }
   
@@ -60,6 +61,7 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
     let gotoOption = PublishRelay<Void>()
     let complete = BehaviorRelay<Bool>(value: false)
     let dismissWithoutSave = PublishSubject<Bool>()
+    let dateString = BehaviorRelay<String>(value: baseDate.toString())
     
     self.input = Input(dismissClicked: dismissClick.asObserver(),
                        selectEmotionButton: selectEmotion.asObserver(),
@@ -69,6 +71,7 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
     self.output = Output(dismiss: dismiss.asDriver(),
                          complete: complete.asDriver(),
                          withInputViewModel: withInputViewModel.asDriver(),
+                         date: dateString.asDriver(),
                          gotoOption: gotoOption.asDriver(onErrorJustReturn: ()))
     
     if diaryInput.inputType == .text {

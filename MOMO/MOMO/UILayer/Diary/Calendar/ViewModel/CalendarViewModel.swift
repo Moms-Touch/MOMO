@@ -48,7 +48,7 @@ class CalendarViewModel: ViewModelType {
     let calendarHeaderViewModel = makeCalendarHeaderViewModel()
     
     let didSelectCellPublishSubject = PublishSubject<(IndexPath, Day)>()
-    let diaryInputOptionViewModel = BehaviorRelay<DiaryInputOptionViewModel>(value: makeDiaryInputOptionViewModel())
+    let diaryInputOptionViewModel = BehaviorRelay<DiaryInputOptionViewModel>(value: makeDiaryInputOptionViewModel(date: Date()))
     let readDiaryViewModel = PublishRelay<ReadDiaryViewModel>()
     
     let toastMessage = PublishRelay<String>()
@@ -95,12 +95,15 @@ class CalendarViewModel: ViewModelType {
         if !result { toastMessage.accept("미래의 일기는 작성할 수 없어요") }
         return result
       }
-      .flatMap { vm, date -> Observable<DiaryEntity?> in //미래가 아닌 날짜만 내려옴
-        return vm.diaryUseCase.fetchDiary(date: date)
+      .flatMap { vm, date -> Observable<(Date, DiaryEntity?)> in //미래가 아닌 날짜만 내려옴
+        return Observable.zip(Observable.just(date), vm.diaryUseCase.fetchDiary(date: date))
       }
-      .filter { $0 == nil}
-      .withLatestFrom(diaryInputOptionViewModel)
-      .map{ _ in return makeDiaryInputOptionViewModel() }
+      // 일기가 없다 -> 작성해야지
+      .filter { $1 == nil }
+      .withLatestFrom(diaryInputOptionViewModel, resultSelector: { tuple , _ in
+        return tuple.0
+      })
+      .map { return makeDiaryInputOptionViewModel(date: $0)}
       .bind(to: diaryInputOptionViewModel)
       .disposed(by: disposeBag)
     
@@ -128,8 +131,8 @@ class CalendarViewModel: ViewModelType {
       return ReadDiaryViewModel(diary: diary, diaryUseCase: diaryUsecase)
     }
     
-    func makeDiaryInputOptionViewModel() -> DiaryInputOptionViewModel {
-      return DiaryInputOptionViewModel(usecase: diaryUsecase)
+    func makeDiaryInputOptionViewModel(date: Date) -> DiaryInputOptionViewModel {
+      return DiaryInputOptionViewModel(baseDate: date, usecase: diaryUsecase)
     }
     
     
