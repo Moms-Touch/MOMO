@@ -68,7 +68,7 @@ final class CalendarViewController: UIViewController, ViewModelBindableType {
     viewModel.output.readDiaryViewModel
       .drive(onNext: { [weak self] in
         let vc = ReadDiaryViewController(viewModel: $0)
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         self?.present(vc, animated: true)
       })
