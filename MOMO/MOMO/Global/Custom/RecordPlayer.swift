@@ -31,9 +31,10 @@ final class MomoRecordPlayer: NSObject, RecordPlayer, AVAudioPlayerDelegate {
   private var player: AVAudioPlayer
   var recordPlayerStatus: BehaviorRelay<PlayerStatus>
   
-  init(date: Date) {
+  init(date: Date, index: Int) {
     
-    let dataURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("VoiceRecords", isDirectory: true).appendingPathComponent("\(date)").appendingPathExtension("m4a")
+    let dataURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("VoiceRecords/\(date.toString())", isDirectory: true).appendingPathComponent("\(index)").appendingPathExtension("m4a")
+    
     recordPlayerStatus = BehaviorRelay<PlayerStatus>(value: .notStarted)
     do {
       self.player = try AVAudioPlayer(contentsOf: dataURL)

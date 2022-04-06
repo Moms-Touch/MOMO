@@ -47,7 +47,7 @@ final class WithVoiceViewController: UIViewController  {
       viewModel.output.datasource
         .drive(collectionView.rx.items(cellIdentifier: WithVoiceCollectionViewCell.identifier, cellType: WithVoiceCollectionViewCell.self)){
           index, item, cell in
-          cell.configure(with: WithVoiceCellModel(question: item, voiceRecordHelper: viewModel))
+          cell.configure(with: WithVoiceCellModel(question: item, voiceRecordHelper: viewModel, index: index))
         }
         .disposed(by: disposeBag)
     }
@@ -63,7 +63,7 @@ final class WithVoiceViewController: UIViewController  {
       viewModel.output.qnaList
         .drive(collectionView.rx.items(cellIdentifier: WithVoiceCollectionViewCell.identifier, cellType: WithVoiceCollectionViewCell.self)) {
           index, item, cell in
-          cell.configure(with: ReadVoiceCellViewModel(question: item.0, recordPlayerPreparable: viewModel, recordPlayer: MomoRecordPlayer(date: viewModel.diaryDate)))
+          cell.configure(with: ReadVoiceCellViewModel(question: item.0, recordPlayerPreparable: viewModel, recordPlayer: MomoRecordPlayer(date: viewModel.diaryDate, index: index)))
         }
         .disposed(by: disposeBag)
     }

@@ -33,7 +33,7 @@ final class WithVoiceCellModel {
   private var disposeBag = DisposeBag()
   private var voiceRecordHelper: VoiceRecordable
   // MARK: - init
-  init(question: String, voiceRecordHelper: VoiceRecordable) {
+  init(question: String, voiceRecordHelper: VoiceRecordable, index: Int) {
     self.voiceRecordHelper = voiceRecordHelper
     let recordButtonClicked = PublishSubject<Void>()
     let currentStatus = BehaviorRelay<RecordStatus>(value: .notstarted)
@@ -50,7 +50,7 @@ final class WithVoiceCellModel {
       .flatMap { (cm, status: RecordStatus) -> Observable<RecordStatus> in
         switch status {
         case .notstarted:
-          return cm.voiceRecordHelper.recoder.startRecording(date: voiceRecordHelper.baseDate)
+          return cm.voiceRecordHelper.recoder.startRecording(date: voiceRecordHelper.baseDate, index: index)
         case .recording:
           return cm.voiceRecordHelper.recoder.finishRecording(success: true)
         case .finished:

@@ -19,7 +19,7 @@ enum RecordError: Error {
 }
 
 protocol Recoder {
-  func startRecording(date: Date) -> Observable<RecordStatus>
+  func startRecording(date: Date, index: Int) -> Observable<RecordStatus>
   func finishRecording(success: Bool) -> Observable<RecordStatus>
   func checkRecordPermission() -> Observable<RecordStatus>
   var savedURL: BehaviorSubject<String> {get set}
@@ -38,10 +38,11 @@ final class MomoRecoder: NSObject, Recoder {
     self.audioRecorder = audioRecoder
   }
   
-  func startRecording(date: Date) -> Observable<RecordStatus> {
+  func startRecording(date: Date, index: Int) -> Observable<RecordStatus> {
     
-    let audioFilename = getVoiceDirectory()
-      .appendingPathComponent("\(date).m4a")
+    // 폴더명/VoiceRecords/2022.04.06/1.m4a
+    let audioFilename = getDateDirectory(dateDirectoryName: date.toString())
+      .appendingPathComponent("\(index).m4a")
     
     let settings = [
       AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -106,10 +107,17 @@ extension MomoRecoder {
     return docURL.appendingPathComponent(voiceRecordsDirectoryName, isDirectory: true)
   }
   
+  private func getDateDirectory(dateDirectoryName: String) -> URL {
+    makeDateFolderIfNotExists(dateDirectory: dateDirectoryName)
+    let docURL = getDocumentsDirectory()
+    return docURL.appendingPathComponent(voiceRecordsDirectoryName).appendingPathComponent(dateDirectoryName, isDirectory: true)
+  }
+  
   private func getDocumentsDirectory() -> URL {
     let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     return paths[0]
   }
+  
   
   private func makeVoiceDirectoryIfNotExists() {
     
@@ -125,6 +133,23 @@ extension MomoRecoder {
       }
     }
   }
+  
+  private func makeDateFolderIfNotExists(dateDirectory: String) {
+    
+    let docURL = getDocumentsDirectory()
+    
+    let dataPath = docURL.appendingPathComponent(voiceRecordsDirectoryName).appendingPathComponent(dateDirectory)
+    
+    if !FileManager.default.fileExists(atPath: dataPath.path) {
+      do {
+        try FileManager.default.createDirectory(atPath: dataPath.path, withIntermediateDirectories: true, attributes: nil)
+      } catch {
+        print(error.localizedDescription)
+      }
+    }
+    
+  }
+  
 }
 
 extension MomoRecoder: AVAudioRecorderDelegate {

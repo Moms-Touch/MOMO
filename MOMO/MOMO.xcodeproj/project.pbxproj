@@ -195,7 +195,6 @@
 		B1615EE327F9B26A00DC4E63 /* ReadDiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EE227F9B26A00DC4E63 /* ReadDiaryViewModel.swift */; };
 		B1615EE627FAC51E00DC4E63 /* DiaryShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EE527FAC51E00DC4E63 /* DiaryShowViewController.swift */; };
 		B1615EEA27FADD7900DC4E63 /* ReadContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EE927FADD7900DC4E63 /* ReadContentViewModel.swift */; };
-		B1615EEC27FAEB1300DC4E63 /* RealmCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EEB27FAEB1300DC4E63 /* RealmCoder.swift */; };
 		B1615EEE27FAEF0800DC4E63 /* DiaryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EED27FAEF0800DC4E63 /* DiaryEntity.swift */; };
 		B1615EF027FB0C6B00DC4E63 /* ReadTextCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EEF27FB0C6B00DC4E63 /* ReadTextCellViewModel.swift */; };
 		B1615EF427FB17EE00DC4E63 /* RecordPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EF327FB17EE00DC4E63 /* RecordPlayer.swift */; };
@@ -408,7 +407,6 @@
 		B1615EE227F9B26A00DC4E63 /* ReadDiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDiaryViewModel.swift; sourceTree = "<group>"; };
 		B1615EE527FAC51E00DC4E63 /* DiaryShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryShowViewController.swift; sourceTree = "<group>"; };
 		B1615EE927FADD7900DC4E63 /* ReadContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadContentViewModel.swift; sourceTree = "<group>"; };
-		B1615EEB27FAEB1300DC4E63 /* RealmCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoder.swift; sourceTree = "<group>"; };
 		B1615EED27FAEF0800DC4E63 /* DiaryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntity.swift; sourceTree = "<group>"; };
 		B1615EEF27FB0C6B00DC4E63 /* ReadTextCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTextCellViewModel.swift; sourceTree = "<group>"; };
 		B1615EF327FB17EE00DC4E63 /* RecordPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPlayer.swift; sourceTree = "<group>"; };
@@ -641,7 +639,6 @@
 				3AF3731E2789C9390007752E /* CustomFont.swift */,
 				3AF805992789DDA600D80F68 /* MyPageLabel.swift */,
 				B1615EBC27F4938C00DC4E63 /* BlurView.swift */,
-				B1615EEB27FAEB1300DC4E63 /* RealmCoder.swift */,
 				B1615EF327FB17EE00DC4E63 /* RecordPlayer.swift */,
 			);
 			path = Custom;
@@ -852,7 +849,6 @@
 				28A9996F277C6B2500459D19 /* BabyInfoViewModel.swift */,
 				286193FF27DCA4BA0012250F /* MyInfoCellViewModel.swift */,
 				2861940827DCD0720012250F /* MyInfoViewModel.swift */,
-				2861941B27DE0E590012250F /* ViewModelBindableType.swift */,
 				2861943327DEF00B0012250F /* InfoChangeCellViewModel.swift */,
 				2861943527DEF05D0012250F /* InfoUserManageViewModel.swift */,
 				285D0DC627E0C3FA00B22287 /* InfoCellViewModel.swift */,
@@ -1051,7 +1047,6 @@
 			isa = PBXGroup;
 			children = (
 				DDE31703277F24140033FEF4 /* WithVoiceViewController.swift */,
-				B1615EF527FB202F00DC4E63 /* ReadVoiceCellViewModel.swift */,
 				B1615EC427F5C2DC00DC4E63 /* WithVoiceCollectionViewCell.swift */,
 			);
 			path = View;
@@ -1060,6 +1055,7 @@
 		B1615ED327F5D30500DC4E63 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B1615EF527FB202F00DC4E63 /* ReadVoiceCellViewModel.swift */,
 				B1615EB827F4530600DC4E63 /* WithVoiceViewModel.swift */,
 				B1615ED027F5D29800DC4E63 /* WithVoiceCellModel.swift */,
 			);
@@ -1108,6 +1104,14 @@
 				DDE316FC277EF53B0033FEF4 /* ReadDiaryViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B185A24F27FDBB2700E98030 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2861941B27DE0E590012250F /* ViewModelBindableType.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		B1B9AEA827ECC26B006E01E1 /* CalendarUseCase */ = {
@@ -1274,6 +1278,7 @@
 		DD43E8D6270B4AC800699DA1 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				B185A24F27FDBB2700E98030 /* Protocols */,
 				B1B9AEAB27ECC320006E01E1 /* Recommend */,
 				28CA30662753357300EF071E /* Community */,
 				285209A62753327200AB8BAC /* Login */,
@@ -1687,7 +1692,6 @@
 				2852099D2753325F00AB8BAC /* CreateDiaryViewController.swift in Sources */,
 				DDE316F8277C94FB0033FEF4 /* Diary.swift in Sources */,
 				B1615E9C27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift in Sources */,
-				B1615EEC27FAEB1300DC4E63 /* RealmCoder.swift in Sources */,
 				B1B9AEBC27EE1727006E01E1 /* MomoDiaryDataStore.swift in Sources */,
 				2861942C27DE46850012250F /* NetworkEncoding.swift in Sources */,
 				2861945327E069EA0012250F /* MomoUserSessionDataStore.swift in Sources */,
