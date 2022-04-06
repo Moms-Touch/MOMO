@@ -111,11 +111,3 @@ extension WithVoiceViewController: UICollectionViewDelegateFlowLayout {
     
   }
 }
-
-
-
-//let alertVC = UIAlertController(title: "에러 발생", message: "잠시 뒤에 다시 시도해 주세요", preferredStyle: .alert)
-//
-//alertVC.addAction(UIAlertAction.okAction)
-//
-//present(alertVC, animated: true)

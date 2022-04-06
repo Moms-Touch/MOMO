@@ -532,8 +532,8 @@
 				DDE316F9277EF5130033FEF4 /* ReadDiary */,
 				285209862753325F00AB8BAC /* InputOption */,
 				B1B9AEAE27ECC35D006E01E1 /* Calendar */,
-				2852098E2753325F00AB8BAC /* WithText */,
-				DDE316FE277F13B70033FEF4 /* WithVoice */,
+				2852098E2753325F00AB8BAC /* Text */,
+				DDE316FE277F13B70033FEF4 /* Voice */,
 				2852098B2753325F00AB8BAC /* CreateDiary */,
 			);
 			path = Diary;
@@ -557,13 +557,13 @@
 			path = CreateDiary;
 			sourceTree = "<group>";
 		};
-		2852098E2753325F00AB8BAC /* WithText */ = {
+		2852098E2753325F00AB8BAC /* Text */ = {
 			isa = PBXGroup;
 			children = (
 				B1615EC827F5C30900DC4E63 /* View */,
 				B1615EC927F5C31300DC4E63 /* ViewModel */,
 			);
-			path = WithText;
+			path = Text;
 			sourceTree = "<group>";
 		};
 		285209A62753327200AB8BAC /* Login */ = {
@@ -1014,6 +1014,7 @@
 			isa = PBXGroup;
 			children = (
 				B1615EB627F4527E00DC4E63 /* WIthTextViewModel.swift */,
+				B1615EEF27FB0C6B00DC4E63 /* ReadTextCellViewModel.swift */,
 				B1615EBA27F470CA00DC4E63 /* WithTextCellViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1050,6 +1051,7 @@
 			isa = PBXGroup;
 			children = (
 				DDE31703277F24140033FEF4 /* WithVoiceViewController.swift */,
+				B1615EF527FB202F00DC4E63 /* ReadVoiceCellViewModel.swift */,
 				B1615EC427F5C2DC00DC4E63 /* WithVoiceCollectionViewCell.swift */,
 			);
 			path = View;
@@ -1088,8 +1090,6 @@
 			children = (
 				B1615EE227F9B26A00DC4E63 /* ReadDiaryViewModel.swift */,
 				B1615EE927FADD7900DC4E63 /* ReadContentViewModel.swift */,
-				B1615EEF27FB0C6B00DC4E63 /* ReadTextCellViewModel.swift */,
-				B1615EF527FB202F00DC4E63 /* ReadVoiceCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1100,6 +1100,14 @@
 				B1615EE527FAC51E00DC4E63 /* DiaryShowViewController.swift */,
 			);
 			path = DiaryShowViewController;
+			sourceTree = "<group>";
+		};
+		B185A24E27FDA58D00E98030 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDE316FC277EF53B0033FEF4 /* ReadDiaryViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B1B9AEA827ECC26B006E01E1 /* CalendarUseCase */ = {
@@ -1329,18 +1337,18 @@
 			isa = PBXGroup;
 			children = (
 				B1615EE127F9B25900DC4E63 /* ViewModel */,
-				DDE316FC277EF53B0033FEF4 /* ReadDiaryViewController.swift */,
+				B185A24E27FDA58D00E98030 /* View */,
 			);
 			path = ReadDiary;
 			sourceTree = "<group>";
 		};
-		DDE316FE277F13B70033FEF4 /* WithVoice */ = {
+		DDE316FE277F13B70033FEF4 /* Voice */ = {
 			isa = PBXGroup;
 			children = (
 				B1615ED227F5D2FF00DC4E63 /* View */,
 				B1615ED327F5D30500DC4E63 /* ViewModel */,
 			);
-			path = WithVoice;
+			path = Voice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
