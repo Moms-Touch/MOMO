@@ -95,16 +95,13 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
       
     completeClick
       .withLatestFrom(saveObservable)
-      .flatMap { [weak self] qnas, emotion -> Observable<Diary> in
+      .flatMap { [weak self] qnas, emotion -> Observable<DiaryEntity> in
         guard let self = self else {
           return Observable.error(AppError.noSelf)
         }
         return self.usecase.saveDiary(date: self.baseDate, emotion: emotion, contentType: diaryInput.inputType, qnas: qnas)
       }
-      .map { dairy in
-        print(dairy)
-        return true
-      }
+      .map { _ in return true }
       .bind(to: complete)
       .disposed(by: disposeBag)
     }

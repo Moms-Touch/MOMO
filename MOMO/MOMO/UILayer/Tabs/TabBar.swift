@@ -52,8 +52,7 @@ class TabBar: UITabBarController {
     let userRepository = MomoUserSessionRepository(remoteAPI: userRemoteAPI, dataStore: datastore)
     let datastore = MomoDiaryDataStore()
     let repository = MomoDiaryRepository(diaryDataStore: datastore)
-    let realmCoder = MomoDiaryRealmCoder()
-    let diaryUsecase = MomoDiaryUseCase(repository: repository, realmCoder: realmCoder)
+    let diaryUsecase = MomoDiaryUseCase(repository: repository)
     let viewmodel = HomeMainViewModel(diaryUseCase: diaryUsecase, userRepository: userRepository)
     return HomeMainViewController(viewModel: viewmodel)
   }

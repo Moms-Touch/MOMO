@@ -37,6 +37,18 @@ class Diary: Object {
   }
 }
 
+extension Diary {
+  func toDomain() -> DiaryEntity {
+    
+    var qnaList = [(String, String)]()
+    self.qnaList.forEach { qna in
+      qnaList += [(qna.question, qna.answer ?? "")]
+    }
+    
+    return DiaryEntity(id: self.id.stringValue, date: self.date, emotion: DiaryEmotion(rawValue: self.emotion) ?? .unknown, contentType: InputType(rawValue: self.contentType) ?? .text, qnaList: qnaList)
+  }
+}
+
 /*
  한 쌍의 질문과 대답을 표현하는 Realm 모델
  음성의 경우 answer 에 음성파일의 경로가 들어있다

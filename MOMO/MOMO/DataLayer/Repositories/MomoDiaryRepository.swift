@@ -10,7 +10,7 @@ import RxSwift
 import RealmSwift
 
 final class MomoDiaryRepository: DiaryRepository {
-  
+    
   private let diaryDataStore: DiaryDataStore
   
   init(diaryDataStore: DiaryDataStore) {
@@ -19,21 +19,29 @@ final class MomoDiaryRepository: DiaryRepository {
   
   // MARK: - Methods
   
-  func save(diary: Diary) -> Observable<Diary> {
+  func save(diary: Diary) -> Observable<DiaryEntity> {
     return diaryDataStore.create(diary: diary)
+      .map { return $0.toDomain() }
       .share()
   }
   
-  func save(date: Date, emotion: DiaryEmotion, contentType: InputType, qnas: [QNA]) -> Observable<Diary> {
+  func save(date: Date, emotion: DiaryEmotion, contentType: InputType, qnas: [QNA]) -> Observable<DiaryEntity> {
     let qnaList = List<QNA>()
     qnas.forEach { qnaList.append($0)}
     let diary = Diary(date: date, emotion: emotion, contentType: contentType, qnaList: qnaList)
     return diaryDataStore.create(diary: diary)
+      .map { $0.toDomain() }
       .share()
   }
   
-  func readDiaryDetail(date: Date) -> Observable<Diary?> {
+  func readDiaryDetail(date: Date) -> Observable<DiaryEntity?> {
     return diaryDataStore.read(date: date)
+      .map {
+        if let diary = $0 {
+          return diary.toDomain()
+        }
+        return nil
+      }
       .share()
   }
   
@@ -66,12 +74,19 @@ final class MomoDiaryRepository: DiaryRepository {
       .share()
   }
   
-  func delete(diary: Diary) -> Completable {
-    return diaryDataStore.delete(diary: diary)
+  func delete(diary: DiaryEntity) -> Completable {
+    return diaryDataStore.delete(diaryId: diary.id)
   }
   
-  func updateDiary(with new: Diary) -> Observable<Diary> {
-    return diaryDataStore.update(with: new)
+  func updateDiary(with new: DiaryEntity) -> Observable<DiaryEntity> {
+    
+    let qnaList = List<QNA>()
+    new.qnaList.forEach { tuple in
+      qnaList.append(QNA(question: tuple.0, answer: tuple.1))
+    }
+    let diary = Diary(date: new.date, emotion: new.emotion, contentType: new.contentType, qnaList: qnaList)
+    return diaryDataStore.update(with: diary)
+      .map { $0.toDomain() }
       .share()
   }
   
