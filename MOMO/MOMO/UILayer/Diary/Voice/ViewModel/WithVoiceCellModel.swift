@@ -34,10 +34,18 @@ final class WithVoiceCellModel {
   private var voiceRecordHelper: VoiceRecordable
   // MARK: - init
   init(question: String, voiceRecordHelper: VoiceRecordable, index: Int) {
+    // MARK: - dependencies
+    
     self.voiceRecordHelper = voiceRecordHelper
-    let recordButtonClicked = PublishSubject<Void>()
+    
+    // MARK: - Streams
+    //output streams
     let currentStatus = BehaviorRelay<RecordStatus>(value: .notstarted)
     let questionRelay = BehaviorRelay<String>(value: question)
+    
+    //input streams
+    let recordButtonClicked = PublishSubject<Void>()
+    
     self.input = Input(recordButtonClicked: recordButtonClicked.asObserver())
     
     self.output = Output(currentStatus: currentStatus.asDriver(), question: questionRelay.asDriver())

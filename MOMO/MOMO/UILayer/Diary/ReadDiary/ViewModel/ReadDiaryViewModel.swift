@@ -73,9 +73,13 @@ class ReadDiaryViewModel: ViewModelType {
       .bind(to: baseDate)
       .disposed(by: disposeBag)
     
+    // DiaryEntity를 활용해서 하위 ViewModel을 제작한다.
     diary
       .map { diary in
-        return ReadContentViewModel(hasGuide: diary.qnaList.count == 3, qnaList: diary.qnaList, contentType: diary.contentType, diaryDate: diary.date) as WithInputViewModel
+        return ReadContentViewModel(hasGuide: diary.qnaList.count == 3,
+                                    qnaList: diary.qnaList,
+                                    contentType: diary.contentType,
+                                    diaryDate: diary.date) as WithInputViewModel
 
       }
       .bind(to: withInputViewModel)

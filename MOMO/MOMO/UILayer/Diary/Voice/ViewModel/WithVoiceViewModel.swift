@@ -45,11 +45,14 @@ class WithVoiceViewModel: WithInputViewModel, ViewModelType, VoiceRecordable {
   
   // MARK: - init
   init(hasGuide: Bool, baseDate: Date, recoder: Recoder, content: DiaryContentMakeable) {
+    // MARK: - dependencies
+    
     self.content = content
     self.recoder = recoder
     self.baseDate = baseDate
     self.qnaListBehaviorRelay = BehaviorRelay<[String:String]>(value: [:])
     
+    // MARK: - Streams
     let datasource =  BehaviorRelay<[String]>(value: [])
     let questionCount = BehaviorRelay<Int>(value: 1)
     

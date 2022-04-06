@@ -43,13 +43,17 @@ class WithTextViewModel: WithInputViewModel, ViewModelType, DiaryContentGetable 
 
   init(hasGuide: Bool, baseDate: Date, content: DiaryContentMakeable) {
     
-    let datasource =  BehaviorRelay<[String]>(value: [])
+    // MARK: - dependencies
     self.qnaListBehaviorRelay = BehaviorRelay<[String:String]>(value: [:])
     self.content = content
+    
+    let datasource =  BehaviorRelay<[String]>(value: [])
+    
     
     self.input = Input()
     self.output = Output(datasource: datasource.asDriver(), qnaDic: qnaListBehaviorRelay.asDriver())
     super.init(hasGuide: hasGuide)
+    
     datasource.accept( hasGuide == true ? guideQuestionList : [defaultQuestion])
     
     datasource

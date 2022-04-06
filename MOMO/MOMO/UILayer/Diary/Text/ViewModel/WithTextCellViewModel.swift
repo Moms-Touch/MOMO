@@ -36,12 +36,16 @@ class WithTextCellViewModel: ViewModelType {
   
   // MARK: - init
   init(question: String, index: String, qnaRelay: DiaryContentGetable) {
+    
+    // MARK: - dependencies
+    self.qnaRelay = qnaRelay
+    
+    // MARK: - Streams
     let questionRelay = BehaviorRelay<String>(value: question)
     let indexStr = question == defaultQuestion ? "" : index
     let indexRelay = BehaviorRelay<String>(value: indexStr)
     let textBehaviorSubject = BehaviorSubject<String>(value: "")
     
-    self.qnaRelay = qnaRelay
     self.input = Input(content: textBehaviorSubject.asObserver())
     self.output = Output(question: questionRelay.asDriver(), index: indexRelay.asDriver())
     

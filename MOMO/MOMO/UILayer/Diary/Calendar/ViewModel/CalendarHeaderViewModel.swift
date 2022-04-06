@@ -37,17 +37,22 @@ final class CalendarHeaderViewModel: ViewModelType {
   // MARK: - Init
   
   init(baseDate: Date) {
+    
+    // MARK: - Dependencies
+    self.baseDate = baseDate
+    let calender = Calendar(identifier: .gregorian)
   
-    let dayNumberPublishSubject = PublishSubject<Int>()
+    // output stream
     let dayLetterBehaviorRelay = BehaviorRelay<(Int, String)>(value: (0, ""))
     let monthBehaviorRelay = BehaviorRelay<String>(value: "2021.7")
+    let closeView = BehaviorRelay<Void>(value: ())
+  
+    // input stream
+    let dayNumberPublishSubject = PublishSubject<Int>()
     let nextMonthClick = PublishSubject<Void>()
     let previousMonthClick = PublishSubject<Void>()
     let closeButtonClick = PublishSubject<Void>()
-    let closeView = BehaviorRelay<Void>(value: ())
-    let calender = Calendar(identifier: .gregorian)
-      
-    self.baseDate = baseDate
+    
     self.output = Output(
         dayLetter: dayLetterBehaviorRelay.asDriver(onErrorJustReturn: (0, "")),
         month: monthBehaviorRelay.asDriver(onErrorJustReturn: "2021.7"),

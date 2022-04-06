@@ -39,18 +39,24 @@ class CalendarViewModel: ViewModelType {
   // MARK: - init
   
   init(calendarUseCase: CalendarUseCase, diaryUsecase: DiaryUseCase) {
-    let daysBehaviorRelay = BehaviorRelay<[Day]>(value: [])
-    let dateSubject = BehaviorSubject<Date>(value: Date())
+    
+    // MARK: - Dependencies
     self.calendarUseCase = calendarUseCase
     self.diaryUseCase = diaryUsecase
-    let numberOfWeeksInBaseDate = BehaviorRelay<Int>(value: self.calendarUseCase.numberOfWeeksInBaseDate)
-    let closeView = PublishRelay<Void>()
     let calendarHeaderViewModel = makeCalendarHeaderViewModel()
     
-    let didSelectCellPublishSubject = PublishSubject<(IndexPath, Day)>()
-    let diaryInputOptionViewModel = BehaviorRelay<DiaryInputOptionViewModel>(value: makeDiaryInputOptionViewModel(date: Date()))
-    let readDiaryViewModel = PublishRelay<ReadDiaryViewModel>()
+    // MARK: - Streams
     
+    // output stream
+    let daysBehaviorRelay = BehaviorRelay<[Day]>(value: [])
+    let dateSubject = BehaviorSubject<Date>(value: Date())
+    let numberOfWeeksInBaseDate = BehaviorRelay<Int>(value: self.calendarUseCase.numberOfWeeksInBaseDate)
+    let diaryInputOptionViewModel = BehaviorRelay<DiaryInputOptionViewModel>(value: makeDiaryInputOptionViewModel(date: Date()))
+    
+    //input stream
+    let closeView = PublishRelay<Void>()
+    let didSelectCellPublishSubject = PublishSubject<(IndexPath, Day)>()
+    let readDiaryViewModel = PublishRelay<ReadDiaryViewModel>()
     let toastMessage = PublishRelay<String>()
     
     self.output = Output(days: daysBehaviorRelay.asDriver(onErrorJustReturn: []),
@@ -63,6 +69,8 @@ class CalendarViewModel: ViewModelType {
     )
     
     self.input = Input(didSelectCell: didSelectCellPublishSubject.asObserver())
+    
+    // MARK: - Input -> Output Or Usecase
     
     dateSubject
       .withUnretained(self)
@@ -114,10 +122,12 @@ class CalendarViewModel: ViewModelType {
         return vm.diaryUseCase.fetchDiary(date: date)
       }
       .compactMap { $0 }
+    //일기를 읽을 수 있는 ViewModel을 생성해서 bind 시킨다.
       .map { return makeReadDiaryViewModel(diary: $0)}
       .bind(to: readDiaryViewModel)
       .disposed(by: disposeBag)
       
+    // MARK: - Dependency Factories - 후에 DIContainer로 이동시킬 예정
           
     func makeCalendarHeaderViewModel() -> CalendarHeaderViewModel {
       return CalendarHeaderViewModel(baseDate: Date())

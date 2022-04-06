@@ -38,20 +38,26 @@ class ReadVoiceCellViewModel: ViewModelType {
   // MARK: - init
   init(question: String, recordPlayerPreparable: RecordPlayerPreparable, recordPlayer: RecordPlayer) {
     
+    // MARK: - dependencies
     self.recordPlayerPreparable = recordPlayerPreparable
-    
     self.recordPlayer = recordPlayer
     
+    // MARK: - Streams
+    // output stream
     let questionRelay = BehaviorRelay<String>(value: question)
-    let playerButtonClicked = PublishSubject<Void>()
     let currentStatus = BehaviorRelay<PlayerStatus>(value: .notStarted)
     let playerTimer = BehaviorRelay<(String, String)>(value: ("", ""))
+    
+    //input stream
+    let playerButtonClicked = PublishSubject<Void>()
     
     self.input = Input(playerButtonClicked: playerButtonClicked.asObserver())
     self.output = Output(question: questionRelay.asDriver(),
                          currentStatus: currentStatus.asDriver(),
                          playerTimer: playerTimer.asDriver()
     )
+    
+    // MARK: - Input -> Output
     
     playerButtonClicked.withLatestFrom(currentStatus)
       .withUnretained(self)

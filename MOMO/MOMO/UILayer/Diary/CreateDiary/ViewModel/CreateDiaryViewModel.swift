@@ -49,20 +49,27 @@ class CreateDiaryViewModel: ViewModelType, DiaryContentMakeable {
   // MARK: - Init
   
   init(usecase: DiaryUseCase, recoder: Recoder, diaryInput: DiaryInputType, baseDate: Date = Date()) {
+    
+    // MARK: - dependencies
     self.baseDate = baseDate
     self.content = BehaviorRelay<[(String, String)]>(value: [])
     self.usecase = usecase
     self.recoder = recoder
-    let withInputViewModel = BehaviorRelay<WithInputViewModel>(value: WithInputViewModel(hasGuide: false))
     
-    let dismissClick = PublishSubject<Void>()
-    let selectEmotion = BehaviorSubject<DiaryEmotion>(value: .unknown)
-    let completeClick = PublishSubject<Void>()
-    let dismiss = BehaviorRelay<Void>(value: ())
-    let gotoOption = PublishRelay<Void>()
-    let complete = BehaviorRelay<Bool>(value: false)
-    let dismissWithoutSave = PublishSubject<Bool>()
+    // MARK: - Streams
+    
+    //output Stream
+    let withInputViewModel = BehaviorRelay<WithInputViewModel>(value: WithInputViewModel(hasGuide: false))
     let dateString = BehaviorRelay<String>(value: baseDate.toString())
+    let dismiss = BehaviorRelay<Void>(value: ())
+    let selectEmotion = BehaviorSubject<DiaryEmotion>(value: .unknown)
+    let gotoOption = PublishRelay<Void>()
+    
+    //input stream
+    let completeClick = PublishSubject<Void>()
+    let dismissClick = PublishSubject<Void>()
+    let dismissWithoutSave = PublishSubject<Bool>()
+    let complete = BehaviorRelay<Bool>(value: false)
     
     self.input = Input(dismissClicked: dismissClick.asObserver(),
                        selectEmotionButton: selectEmotion.asObserver(),
