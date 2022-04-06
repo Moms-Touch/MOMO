@@ -9,6 +9,13 @@ import UIKit
 import FirebaseStorage
 import Kingfisher
 import PDFKit
+import RxSwift
+import RxCocoa
+
+enum StorageServiceError: Error {
+  case invalidURL
+  case firebaseError
+}
 
 class StorageService {
   
@@ -110,6 +117,36 @@ class StorageService {
           imageCompletion(nil)
         }
       }
+    }
+  }
+  
+  func downloadUIImageWithURL(with UrlString: String) -> Observable<UIImage> {
+    
+    return Observable.create { [weak self] observer in
+      guard let self = self else {return
+        observer.onError(StorageServiceError.invalidURL) as! Disposable}
+      guard let newURL = UrlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+        return observer.onError(StorageServiceError.invalidURL) as! Disposable
+      }
+      let imageUrl = "\(self.imageBaseUrl)\(newURL)"
+      self.storage.reference(forURL: imageUrl).downloadURL { (url, error) in
+        if let error = error {
+          return observer.onError(error)
+        }
+        guard let url = url else {
+          return observer.onError(StorageServiceError.invalidURL)
+        }
+        let resource = ImageResource(downloadURL: url)
+        Kingfisher.KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
+          switch result{
+          case .success(let value):
+            return observer.onNext(value.image)
+          case .failure:
+            return observer.onError(StorageServiceError.firebaseError)
+          }
+        }
+      }
+      return Disposables.create()
     }
   }
   

@@ -147,7 +147,10 @@ final class HomeMainViewController: UIViewController, StoryboardInstantiable, UI
       .disposed(by: disposeBag)
     
     viewModel.output.profileImage
-      .map { UIImage(named: $0)! }
+      .flatMap({ imageURL in
+        return StorageService.shared.downloadUIImageWithURL(with: imageURL)
+          .asDriver(onErrorJustReturn: UIImage(named: "mascot")!)
+      })
       .drive(babyProfileImageView.rx.image)
       .disposed(by: disposeBag)
     
