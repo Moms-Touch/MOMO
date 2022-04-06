@@ -29,6 +29,7 @@ final class MomoDiaryRepository: DiaryRepository {
     let qnaList = List<QNA>()
     qnas.forEach { qnaList.append($0)}
     let diary = Diary(date: date, emotion: emotion, contentType: contentType, qnaList: qnaList)
+    print(diary)
     return diaryDataStore.create(diary: diary)
       .map { $0.toDomain() }
       .share()
