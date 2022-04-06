@@ -102,7 +102,7 @@ final class MomoDiaryDataStore: DiaryDataStore {
     do {
       let realm = try Realm()
       let id = try ObjectId(string: id)
-      let predicate = NSPredicate(format: "id == %s", id)
+      let predicate = NSPredicate(format: "id == %@", id)
       return realm.objects(Diary.self).filter(predicate).first
     } catch {
         return nil
