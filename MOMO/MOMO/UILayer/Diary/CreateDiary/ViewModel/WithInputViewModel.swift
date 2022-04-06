@@ -8,7 +8,7 @@
 import Foundation
 import OrderedCollections
 
-// WithTextViewModel, WithVoiceViewModel의 부모viewmodel
+// WithTextViewModel, WithVoiceViewModel, ReadContentViewModel의 부모 뷰모델
 
 class WithInputViewModel {
   private var hasGuide: Bool
