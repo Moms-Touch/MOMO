@@ -20,7 +20,7 @@ enum RecordStatus {
     case .recording:
       return UIImage()
     case .finished:
-      return UIImage(named: "play")
+      return UIImage(named: "end")
     }
   }
 }

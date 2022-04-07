@@ -74,6 +74,7 @@ internal enum Asset {
     internal static let policy = ImageAsset(name: "policy")
     internal static let policySelect = ImageAsset(name: "policy_select")
     internal static let todayBtn = ImageAsset(name: "todayBtn")
+    internal static let end = ImageAsset(name: "end")
     internal static let micOn = ImageAsset(name: "micOn")
     internal static let pause = ImageAsset(name: "pause")
     internal static let play = ImageAsset(name: "play")
