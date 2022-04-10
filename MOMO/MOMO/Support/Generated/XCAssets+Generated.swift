@@ -56,12 +56,14 @@ internal enum Asset {
     internal static let loveTheWorld = ImageAsset(name: "loveTheWorld")
     internal static let mainBack = ImageAsset(name: "mainBack")
     internal static let mainBackground = ImageAsset(name: "mainBackground")
+    internal static let mainbackgroundBlur = ImageAsset(name: "mainbackgroundBlur")
     internal static let mascot = ImageAsset(name: "mascot")
     internal static let alreadyBirth = ImageAsset(name: "already_birth")
     internal static let alreadyBrithSelect = ImageAsset(name: "already_brith_select")
     internal static let pregnant = ImageAsset(name: "pregnant")
     internal static let pregnantSelect = ImageAsset(name: "pregnant_select")
     internal static let recommendBtn = ImageAsset(name: "recommendBtn")
+    internal static let recordingAnimation = DataAsset(name: "recordingAnimation")
     internal static let singlemomAssoication = ImageAsset(name: "singlemomAssoication")
     internal static let calendar = ImageAsset(name: "calendar")
     internal static let calendarSelect = ImageAsset(name: "calendar_select")
@@ -72,6 +74,10 @@ internal enum Asset {
     internal static let policy = ImageAsset(name: "policy")
     internal static let policySelect = ImageAsset(name: "policy_select")
     internal static let todayBtn = ImageAsset(name: "todayBtn")
+    internal static let end = ImageAsset(name: "end")
+    internal static let micOn = ImageAsset(name: "micOn")
+    internal static let pause = ImageAsset(name: "pause")
+    internal static let play = ImageAsset(name: "play")
     internal static let writeButton = ImageAsset(name: "writeButton")
   }
   internal enum Colors {
@@ -133,6 +139,30 @@ internal extension ColorAsset.Color {
     self.init(named: NSColor.Name(asset.name), bundle: bundle)
     #elseif os(watchOS)
     self.init(named: asset.name)
+    #endif
+  }
+}
+
+internal struct DataAsset {
+  internal fileprivate(set) var name: String
+
+  @available(iOS 9.0, tvOS 9.0, watchOS 6.0, macOS 10.11, *)
+  internal var data: NSDataAsset {
+    guard let data = NSDataAsset(asset: self) else {
+      fatalError("Unable to load data asset named \(name).")
+    }
+    return data
+  }
+}
+
+@available(iOS 9.0, tvOS 9.0, watchOS 6.0, macOS 10.11, *)
+internal extension NSDataAsset {
+  convenience init?(asset: DataAsset) {
+    let bundle = BundleToken.bundle
+    #if os(iOS) || os(tvOS) || os(watchOS)
+    self.init(name: asset.name, bundle: bundle)
+    #elseif os(macOS)
+    self.init(name: NSDataAsset.Name(asset.name), bundle: bundle)
     #endif
   }
 }

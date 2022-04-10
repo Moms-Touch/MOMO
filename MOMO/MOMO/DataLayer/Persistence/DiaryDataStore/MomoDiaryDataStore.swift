@@ -60,7 +60,7 @@ final class MomoDiaryDataStore: DiaryDataStore {
     }
   }
   
-  func delete(diary: Diary) -> Completable {
+  func delete(diaryId: String) -> Completable {
     return Completable.create { completable in
       
       guard let realm = try? Realm() else {
@@ -68,10 +68,14 @@ final class MomoDiaryDataStore: DiaryDataStore {
       }
       
       do {
-        try realm.write {
-          realm.delete(diary)
+        try realm.write { [unowned self] in
+          if let entity = self.selectById(id: diaryId) {
+            realm.delete(entity)
+            completable(.completed)
+          } else {
+            completable(.error(DataStoreError.deleteError))
+          }
         }
-        completable(.completed)
       } catch {
         completable(.error(DataStoreError.deleteError))
       }
@@ -94,4 +98,16 @@ final class MomoDiaryDataStore: DiaryDataStore {
   }
   
   
+  private func selectById(id: String) -> Diary? {
+    do {
+      let realm = try Realm()
+      let id = try ObjectId(string: id)
+      let predicate = NSPredicate(format: "id == %@", id)
+      return realm.objects(Diary.self).filter(predicate).first
+    } catch {
+        return nil
+    }
+  }
+
+
 }

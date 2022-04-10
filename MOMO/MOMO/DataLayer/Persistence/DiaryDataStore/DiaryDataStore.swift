@@ -20,7 +20,7 @@ protocol DiaryDataStore {
   func read(from fromDate: Date, to toDate: Date) -> Observable<[Diary]>
   
   @discardableResult
-  func delete(diary: Diary) -> Completable
+  func delete(diaryId: String) -> Completable
   
   @discardableResult
   func update(with new: Diary) -> Observable<Diary>

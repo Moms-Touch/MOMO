@@ -26,7 +26,7 @@ class Diary: Object {
   /// 이 때 contentType 이 음성이라면 음성 파일의 URL path 가 들어 있다.
   @Persisted var qnaList: List<QNA>
   
-  convenience init(date: Date, emotion: DiaryEmotion, contentType: DiaryInputType.InputType, qnaList: List<QNA>) {
+  convenience init(date: Date, emotion: DiaryEmotion, contentType: InputType, qnaList: List<QNA>) {
     
     self.init()
     self.date = date.timeToZero()
@@ -34,6 +34,18 @@ class Diary: Object {
     self.contentType = contentType.rawValue
     self.qnaList = qnaList
     
+  }
+}
+
+extension Diary {
+  func toDomain() -> DiaryEntity {
+    
+    var qnaList = [(String, String)]()
+    self.qnaList.forEach { qna in
+      qnaList += [(qna.question, qna.answer ?? "")]
+    }
+    
+    return DiaryEntity(id: self.id.stringValue, date: self.date, emotion: DiaryEmotion(rawValue: self.emotion) ?? .unknown, contentType: InputType(rawValue: self.contentType) ?? .text, qnaList: qnaList)
   }
 }
 
@@ -57,7 +69,7 @@ class QNA: Object {
  일기 중 감정 상태를 표현하는 열거형
  */
 
-enum DiaryEmotion: String {
+enum DiaryEmotion: String, CaseIterable {
   
   case happy
   case angry
