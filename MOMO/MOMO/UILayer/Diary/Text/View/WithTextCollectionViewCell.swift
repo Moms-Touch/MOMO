@@ -42,7 +42,7 @@ class WithTextCollectionViewCell: UICollectionViewCell {
   
   var viewModel: WithTextCellViewModel?
   var showViewModel: ReadTextCellViewModel?
-  private var bottomConstriant: NSLayoutConstraint?
+  var bottomConstriant: NSLayoutConstraint?
   
   func bindViewModel() {
 
@@ -51,15 +51,6 @@ class WithTextCollectionViewCell: UICollectionViewCell {
       answerTextView.rx.text
         .compactMap { $0 }
         .bind(to: viewModel.input.content)
-        .disposed(by: disposeBag)
-      
-      keyboardHeight()
-        .withUnretained(self)
-        .bind(onNext: { cell, height in
-          cell.bottomConstriant?.isActive = false
-          cell.bottomConstriant = cell.answerTextView.bottomAnchor.constraint(equalTo: cell.indexLabel.topAnchor, constant: -height)
-          cell.bottomConstriant?.isActive = true
-        })
         .disposed(by: disposeBag)
     
       // MARK: - Output
@@ -102,9 +93,11 @@ class WithTextCollectionViewCell: UICollectionViewCell {
   
   override func layoutSubviews() {
     answerTextView.addDoneButton(title: "완료", target: self, selector: #selector(tapDone))
+    
     contentView.addSubview(questionLabel)
-    contentView.addSubview(answerTextView)
     contentView.addSubview(indexLabel)
+    contentView.addSubview(answerTextView)
+    
     
     questionLabel.snp.makeConstraints { make in
       make.left.right.equalToSuperview().inset(16)
@@ -144,21 +137,3 @@ extension WithTextCollectionViewCell {
   }
   
 }
-
-extension WithTextCollectionViewCell {
-  func keyboardHeight() -> Observable<CGFloat> {
-    return Observable
-      .from([
-        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-          .map { notification -> CGFloat in
-            (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height ?? 0
-          },
-        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-          .map { _ -> CGFloat in
-            0
-          }
-      ])
-      .merge()
-  }
-}
-

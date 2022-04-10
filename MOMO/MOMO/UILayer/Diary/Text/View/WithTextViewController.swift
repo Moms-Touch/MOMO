@@ -48,8 +48,23 @@ class WithTextViewController: ViewController {
         .map { return $0 > 0 ? false : true }
         .bind(to: collectionView.rx.isScrollEnabled)
         .disposed(by: disposeBag)
+      
+      keyboardHeight()
+        .withUnretained(self)
+        .filter{ vc, height in
+          vc.collectionView.visibleCells.first as? WithTextCollectionViewCell != nil
+        }
+        .bind(onNext: { vc, height in
+          print(height)
+          let cell = vc.collectionView.visibleCells.first as! WithTextCollectionViewCell
+          cell.bottomConstriant?.isActive = false
+          cell.bottomConstriant = cell.answerTextView.bottomAnchor.constraint(equalTo: cell.indexLabel.topAnchor, constant: -height)
+          cell.bottomConstriant?.isActive = true
+        })
+        .disposed(by: disposeBag)
+      
     }
-   
+    
     if let viewModel = showViewModel {
       viewModel.output.qnaList
         .drive(collectionView.rx.items(cellIdentifier: WithTextCollectionViewCell.identifier, cellType: WithTextCollectionViewCell.self)){
@@ -57,9 +72,9 @@ class WithTextViewController: ViewController {
           cell.configure(with: ReadTextCellViewModel(question: item.0, answer: item.1, index: "\(index + 1)/3"))
         }
         .disposed(by: disposeBag)
-
+      
     }
-  
+    
   }
   
   // MARK: - Init
@@ -76,7 +91,7 @@ class WithTextViewController: ViewController {
   }
   
   // MARK: - LifeCycle
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
@@ -94,7 +109,7 @@ class WithTextViewController: ViewController {
     collectionView.rx.setDelegate(self)
       .disposed(by: disposeBag)
   }
-
+  
 }
 
 extension WithTextViewController: UICollectionViewDelegateFlowLayout {
@@ -103,6 +118,6 @@ extension WithTextViewController: UICollectionViewDelegateFlowLayout {
     
     return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
   }
-
+  
 }
 
