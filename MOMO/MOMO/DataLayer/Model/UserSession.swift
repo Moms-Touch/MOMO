@@ -12,7 +12,9 @@ class UserSession {
   //MARK: - Properties
   let profile: UserData
   let token: Token
-  
+  /**
+   UserSession 내부에 Userdata, token을 저장하면서, 후에 token, userdata가 필요할때 꺼내 쓸수있다.
+   */
   public init(profile: UserData, token: Token) {
     self.profile = profile
     self.token = token

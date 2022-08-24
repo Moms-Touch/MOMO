@@ -104,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-ios.git",
       "state" : {
-        "revision" : "4a6058cbbdfe4f74aeae92c8bd51ad3b0de2a1ee",
-        "version" : "3.3.0"
+        "revision" : "4ca8023b820b7d5d5ae1e2637c046e3dab0f45d0",
+        "version" : "3.4.2"
       }
     },
     {
@@ -149,8 +149,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RxSwiftCommunity/RxGesture.git",
       "state" : {
-        "revision" : "53ebed7fe3f15021bf518d9d1e8b147e2ddffa0a",
-        "version" : "4.0.3"
+        "revision" : "1b137c576b4aaaab949235752278956697c9e4a0",
+        "version" : "4.0.4"
       }
     },
     {

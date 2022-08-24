@@ -26,7 +26,12 @@ final class MomoUserRemoteAPI: UserRemoteAPI {
     return networkManager.request(apiModel: DeleteApi.deleteUser(token: token))
       .asCompletable()
   }
-  
+    
+    /// 사용자의 정보를 업데이트하는 API
+    /// - Parameters:
+    ///   - info: UserData(사용자 정보 전체)
+    ///   - token: Token
+    /// - Returns: 새로운 유저 정보를 담은 Observable
   func updateUserInfo(with info: UserData, token: Token) -> Observable<UserData> {
     return networkManager.request(apiModel: PutApi.putUser(token: token, email: info.email , nickname: info.nickname, isPregnant: info.isPregnant, hasChild: info.hasChild, age: info.age, location: info.location))
       .asObservable()
