@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home Main View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="HomeMainViewController" id="Y6W-OH-hqX" customClass="HomeMainViewController" customModule="MOMO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Vtj-m1-iDU">
+                                <rect key="frame" x="144" y="54" width="87" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="8SV-tA-wNA"/>
+                                    <constraint firstAttribute="width" constant="87" id="QCk-N8-cvK"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKa-eB-caM">
+                                <rect key="frame" x="331" y="59" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="JMK-Qq-ZVk"/>
+                                    <constraint firstAttribute="height" constant="24" id="V7y-GT-Fnf"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="" image="bell">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system" title="">
+                                    <color key="baseForegroundColor" name="45"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapBellButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qUG-64-sFn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wfy-1u-fgY">
+                                <rect key="frame" x="20" y="59" width="24" height="24"/>
+                                <accessibility key="accessibilityConfiguration" label="북마크"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="G9H-FJ-n7Z"/>
+                                    <constraint firstAttribute="width" constant="24" id="ygb-zv-cFD"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="" image="bookmark"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Bookmark" title=""/>
+                                <connections>
+                                    <action selector="didTapBookmarkListButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hUI-BS-7Rx"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="9Ei-lu-XKr">
+                                <rect key="frame" x="295" y="624" width="60" height="134"/>
+                                <subviews>
+                                    <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BN5-lx-hwb">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <accessibility key="accessibilityConfiguration" label="추천정보 보기"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="8CZ-PZ-3Hg"/>
+                                            <constraint firstAttribute="width" secondItem="BN5-lx-hwb" secondAttribute="height" multiplier="1:1" id="zoP-M0-3ew"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="calendarButton"/>
+                                        <connections>
+                                            <action selector="gotoCalender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="h1i-yL-UYu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMt-7h-60l">
+                                        <rect key="frame" x="0.0" y="74" width="60" height="60"/>
+                                        <accessibility key="accessibilityConfiguration" label="오늘 하루 일기 쓰기"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="7pg-ru-n7e"/>
+                                            <constraint firstAttribute="width" secondItem="CMt-7h-60l" secondAttribute="height" multiplier="1:1" id="AFB-Fs-ocR"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="" backgroundImage="writeButton"/>
+                                        <connections>
+                                            <action selector="didTapTodayButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YwV-jJ-VsW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7N-2r-EST">
+                                <rect key="frame" x="121" y="194" width="133" height="133"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="lJe-gp-myE">
+                                        <rect key="frame" x="4" y="4" width="125" height="125"/>
+                                        <accessibility key="accessibilityConfiguration" hint="아기 사진 및 설정화면" label="아기 사진">
+                                            <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lJe-gp-myE" secondAttribute="bottom" constant="4" id="LSN-jq-R4L"/>
+                                    <constraint firstItem="lJe-gp-myE" firstAttribute="leading" secondItem="i7N-2r-EST" secondAttribute="leading" constant="4" id="Oyj-ta-YSm"/>
+                                    <constraint firstItem="lJe-gp-myE" firstAttribute="top" secondItem="i7N-2r-EST" secondAttribute="top" constant="4" id="QZM-ks-Lf5"/>
+                                    <constraint firstAttribute="width" secondItem="i7N-2r-EST" secondAttribute="height" multiplier="1:1" id="tDa-YD-Sfx"/>
+                                    <constraint firstAttribute="trailing" secondItem="lJe-gp-myE" secondAttribute="trailing" constant="4" id="yf3-qH-pnq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="i7N-2r-EST" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8Vo-3m-6qy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9Ei-lu-XKr" secondAttribute="trailing" constant="20" id="9Et-sL-0oa"/>
+                            <constraint firstItem="PKa-eB-caM" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="CEs-zJ-aK1"/>
+                            <constraint firstItem="Wfy-1u-fgY" firstAttribute="centerY" secondItem="Vtj-m1-iDU" secondAttribute="centerY" id="IVc-wL-3zS"/>
+                            <constraint firstItem="Wfy-1u-fgY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="QAq-OB-0wb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PKa-eB-caM" secondAttribute="trailing" constant="20" id="WV3-4X-7VP"/>
+                            <constraint firstItem="lJe-gp-myE" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="1/3" id="YPa-yI-3Nl"/>
+                            <constraint firstItem="i7N-2r-EST" firstAttribute="top" secondItem="Vtj-m1-iDU" secondAttribute="bottom" constant="106" id="Ydu-fP-HPS"/>
+                            <constraint firstItem="Vtj-m1-iDU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="d8n-qD-aFj"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9Ei-lu-XKr" secondAttribute="bottom" constant="20" id="lmD-Fe-CTX"/>
+                            <constraint firstItem="Vtj-m1-iDU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="sr3-ty-Rmm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="babyProfileImageView" destination="lJe-gp-myE" id="N3U-TK-htE"/>
+                        <outlet property="bookmarkButton" destination="Wfy-1u-fgY" id="ie1-e5-phi"/>
+                        <outlet property="imageHuggingView" destination="i7N-2r-EST" id="gKg-ij-gMS"/>
+                        <outlet property="logo" destination="Vtj-m1-iDU" id="JI6-de-Xwk"/>
+                        <outlet property="settingButton" destination="PKa-eB-caM" id="jR1-H4-8RT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.399999999999999" y="93.103448275862078"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Bookmark" width="24" height="24"/>
+        <image name="Logo" width="84" height="16"/>
+        <image name="bell" width="24" height="24"/>
+        <image name="bookmark" width="24" height="24"/>
+        <image name="calendarButton" width="58" height="58"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="mascot" width="153" height="141"/>
+        <image name="writeButton" width="58" height="58"/>
+        <namedColor name="45">
+            <color red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
