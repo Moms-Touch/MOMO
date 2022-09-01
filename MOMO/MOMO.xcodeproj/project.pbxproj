@@ -72,7 +72,6 @@
 		285D0DE127E712B400B22287 /* MomoRecommendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DE027E712B400B22287 /* MomoRecommendRepository.swift */; };
 		285D0DE327E7163800B22287 /* RecommendRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DE227E7163800B22287 /* RecommendRemoteAPI.swift */; };
 		285D0DE527E718FA00B22287 /* MomoRecommendRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D0DE427E718FA00B22287 /* MomoRecommendRemoteAPI.swift */; };
-		286193F227DB6E9A0012250F /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F127DB6E9A0012250F /* FSCalendar */; };
 		286193F527DB71B60012250F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F427DB71B60012250F /* RxCocoa */; };
 		286193F727DB71B60012250F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F627DB71B60012250F /* RxRelay */; };
 		286193F927DB71B60012250F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 286193F827DB71B60012250F /* RxSwift */; };
@@ -460,7 +459,6 @@
 				286193FC27DB71DC0012250F /* Then in Frameworks */,
 				286193F727DB71B60012250F /* RxRelay in Frameworks */,
 				284C7C402780930C008A5374 /* Toast in Frameworks */,
-				286193F227DB6E9A0012250F /* FSCalendar in Frameworks */,
 				DDE31709277F41E10033FEF4 /* OrderedCollections in Frameworks */,
 				280BEFC6274B65F100F031A7 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				285209842753307100AB8BAC /* SnapKit in Frameworks */,
@@ -1386,7 +1384,6 @@
 				DDE316F5277C94D70033FEF4 /* RealmSwift */,
 				DDE31708277F41E10033FEF4 /* OrderedCollections */,
 				284C7C3F2780930C008A5374 /* Toast */,
-				286193F127DB6E9A0012250F /* FSCalendar */,
 				286193F427DB71B60012250F /* RxCocoa */,
 				286193F627DB71B60012250F /* RxRelay */,
 				286193F827DB71B60012250F /* RxSwift */,
@@ -1425,7 +1422,6 @@
 				280BEFC0274B65F100F031A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				280BEFCB274B7B9400F031A7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */,
-				28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				DDE316F2277C94D70033FEF4 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				DDE31707277F41E00033FEF4 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				284C7C3E2780930C008A5374 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
@@ -1966,14 +1962,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.8.3;
-			};
-		};
 		B1615ED627F6EAC400DC4E63 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -2045,11 +2033,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 285209822753307100AB8BAC /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		286193F127DB6E9A0012250F /* FSCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28CA3063275334D900EF071E /* XCRemoteSwiftPackageReference "FSCalendar" */;
-			productName = FSCalendar;
 		};
 		286193F427DB71B60012250F /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
