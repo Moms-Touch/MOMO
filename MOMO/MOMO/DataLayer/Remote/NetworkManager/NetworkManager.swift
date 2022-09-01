@@ -26,7 +26,10 @@ class NetworkManager: NetworkProtocol {
   private let session: URLSessionProtocol
   
   //MARK: - Methods
-
+    
+    /// 기존에 있던 request를 Single로 묶어서 rx환경에서 편하게 만듬
+    /// - Parameter apiModel: APIable에 정의된 API를 받는다 (API에 대한 정보가 다 있음)
+    /// - Returns: Single<Data>
   func request(apiModel: APIable) -> Single<Data> {
     return Single<Data>.create { (single) -> Disposable in
       let request = self.request(apiModel: apiModel) { result in
@@ -54,19 +57,26 @@ extension NetworkManager {
       
       //MARK: - EncodingType
       switch apiModel.encodingType {
-      case .URLEncoding:
-      
+      case .URLEncoding: // urlEncoding.QueryString형식으로 url 만들기
         guard let tempUrl = URL.URLEncodingType(parameters: apiModel.param, url: apiModel.url) else {
           completion(.failure(NetworkError.invalidURL))
           return nil
         }
         url = tempUrl
-      case .JSONEncoding:
+          
+      case .JSONEncoding: //JSONEncoding일때는 그냥 url만들기
         guard let tempUrl = URL(string: apiModel.url) else {
           completion(.failure(NetworkError.invalidURL))
           return nil
         }
         url = tempUrl
+          
+      default: // formdata 돌릴때 그냥 URL를 만들기
+          guard let tempUrl = URL(string: apiModel.url) else {
+            completion(.failure(NetworkError.invalidURL))
+            return nil
+          }
+          url = tempUrl
       }
          
       //MARK: - URLRequest
@@ -80,7 +90,7 @@ extension NetworkManager {
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
       case .jsonData:
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-      case .urlEncoding:
+      case .HTMLform:
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
       case .noBody:
         break
@@ -121,7 +131,13 @@ extension NetworkManager {
 //MARK: - Private Methods
 
 extension NetworkManager {
-  
+    
+    /// 각 contentType에 대한 body를 만드는 함수
+    /// - Parameters:
+    ///   - parameter: body를 만드는데 필요한 key, value
+    ///   - contentType: contentType (Multipart, json, HTMLform)
+    ///   - url: url
+    /// - Returns: Data (body data)
   private func createDataBody(parameter: [String: String?]?, contentType: ContentType, url: String) -> Data? {
     var body = Data()
     let lineBreak = "\r\n"
@@ -137,7 +153,7 @@ extension NetworkManager {
         if let data = coder.encode(parameters: parameter){
           body = data
         }
-      case .urlEncoding:
+      case .HTMLform:
         if let data = coder.encode(parameters: parameter, url: url){
           body = data
         }

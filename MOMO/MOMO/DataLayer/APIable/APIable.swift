@@ -38,7 +38,7 @@ enum RequestType: String {
 enum ContentType {
   case multiPartForm
   case jsonData
-  case urlEncoding
+  case HTMLform
   case noBody
   
   var description: String {
@@ -47,7 +47,7 @@ enum ContentType {
       return "multipart/form-data"
     case .jsonData:
       return "aplication/json"
-    case .urlEncoding:
+    case .HTMLform:
       return "application/x-www-form-urlencoded"
     case .noBody:
       return ""

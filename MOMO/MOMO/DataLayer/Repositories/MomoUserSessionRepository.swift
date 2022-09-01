@@ -75,11 +75,12 @@ final class MomoUserSessionRepository: UserSessionRepository {
       .flatMap({ profile, token in
         return self.userDataStore.save(userSession: UserSession(profile: profile, token: token))
       })
-      .map({ session in
-        return (session.profile, session.token)
-      })
-      .compactMap { $0.0}
-      .asObservable()
+      .flatMap { session -> Observable<UserData> in
+          return Observable.create { observer in
+              observer.onNext(session.profile)
+              return Disposables.create()
+          }
+      }
       .share()
 
   }
