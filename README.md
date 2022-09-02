@@ -38,7 +38,7 @@
 
 ## FSCalendar 걷어내기
 * 기존의 앱은 빠른 달력 개발을 위해서 FSCalendar를 사용했다. 하지만 FSCalendar를 커스텀하는 것보다, 달력기능을 직접만들어서 보여주는 것이 편했기 때문에, 운영하는 도중, 달력을 만들고 FSCalendar를 걷어냈다.
-* [모모의 FSCaldendar 걷어내기](https://github.com/Moms-Touch/MOMO/wiki)
+* [모모의 FSCaldendar 걷어내기](https://github.com/Moms-Touch/MOMO/wiki/FSCalendar-%EA%B1%B7%EC%96%B4%EB%82%B4%EA%B8%B0)
 <p class='center'> 
     <img src="https://user-images.githubusercontent.com/69891604/187993667-10f09c7f-18f2-47ee-a8ef-b8f6e781c561.png" width="200" height="400"/>
 </p>
