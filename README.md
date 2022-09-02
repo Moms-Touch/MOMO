@@ -34,7 +34,7 @@
 
 ## Moya와 비슷한 API Manager 만들기
 * Moya 라이브러리를 쓰지 않으면서, Moya 처럼 Network layer를 쌓는 방식을 채택했다. 서버 개발자들과 협업을 하면서, REST API를 활용할 때, JSON Encoding, URL Encoding 형식만을 사용하고, Response 형식도 맞췄기 때문에, 제너릭한 코드를 작성할 수 있었다.
-* [모모의 API Manager 만들기](https://github.com/Moms-Touch/MOMO/wiki)
+* [모모의 API Manager 만들기](https://github.com/Moms-Touch/MOMO/wiki/Moya%EC%99%80-%EB%B9%84%EC%8A%B7%ED%95%9C-API-Manager-%EB%A7%8C%EB%93%A4%EA%B8%B0)
 
 ## FSCalendar 걷어내기
 * 기존의 앱은 빠른 달력 개발을 위해서 FSCalendar를 사용했다. 하지만 FSCalendar를 커스텀하는 것보다, 달력기능을 직접만들어서 보여주는 것이 편했기 때문에, 운영하는 도중, 달력을 만들고 FSCalendar를 걷어냈다.

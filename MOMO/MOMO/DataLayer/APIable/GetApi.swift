@@ -35,7 +35,7 @@ extension GetApi {
   var contentType: ContentType {
     switch self {
     case .noticeGet, .policyGet, .infoGet, .bookmarkGet, .loginGet, .userGet, .babyGet, .likeGet, .nicknameGet, .infoDetailGet, .policyDetailGet:
-      return .noBody
+      return .jsonData
     default:
       return .noBody
     }

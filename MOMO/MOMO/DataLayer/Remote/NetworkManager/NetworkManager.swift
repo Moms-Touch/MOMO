@@ -82,7 +82,7 @@ extension NetworkManager {
       //MARK: - URLRequest
       var request = URLRequest(url: url)
       request.httpMethod = apiModel.requestType.method
-      request.httpBody = createDataBody(parameter: apiModel.param, contentType: apiModel.contentType, url: apiModel.url)
+        
       
       //MARK: - ContentType
       switch apiModel.contentType {
