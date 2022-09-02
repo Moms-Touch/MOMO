@@ -51,6 +51,14 @@
 * 모모에서는 URLSession을 사용할 때, 테스트가 용이한 코드를 작성하기 위해서 URLSession과 URLSessionTask를 mocking할 수 있는 장치를 마련한다. 그를 위해서 URLSession과 URLSessionTask에 채택시킬 각각의 protocol을 만들고, 그 프로토콜을 채택한 mock 객체를 만들 수 있다.
 * [모모의 URLSession Testable하게 만들기](https://github.com/Moms-Touch/MOMO/wiki/%EB%AA%A8%EB%AA%A8%EC%9D%98-URLSession-Testable%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0)
 
+## CollectionView의 크기가 마음대로 정해지는 issue
+* collectionView cell의 크기가 image로 인해 마음대로 정해지는 issue가 발생했다. 이로 인해서 cell의 크기를 미리 정해줘야하는 issue가 생겼다. 
+* [collectionView cell의 최적화 크기 찾기](https://github.com/Moms-Touch/MOMO/wiki)
+
+## TextView에 글을 쓸 때, keyboard 영역 아래로 내려가는 issue
+* textview에 글을 쓰다보면, keyboard 영역 아래로 계속 내려가는 issue가 발생했다. 커서를 기준으로 자동스크롤이 진행되어야하는데, 그렇지 않았다. 그렇기에, textview를 키보드의 유무에 따라서 autoLayout 변경했다.
+* [TextView에 글을 쓸 때, keyboard 영역 아래로 내려가는 issue](https://github.com/Moms-Touch/MOMO/wiki)
+
 ## License
 ```
 MIT License
