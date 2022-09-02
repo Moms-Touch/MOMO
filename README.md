@@ -49,7 +49,7 @@
 
 ## URLSessionProtocol 
 * 모모에서는 URLSession을 사용할 때, 테스트가 용이한 코드를 작성하기 위해서 URLSession과 URLSessionTask를 mocking할 수 있는 장치를 마련한다. 그를 위해서 URLSession과 URLSessionTask에 채택시킬 각각의 protocol을 만들고, 그 프로토콜을 채택한 mock 객체를 만들 수 있다.
-* [모모의 URLSession Testable하게 만들기](https://github.com/Moms-Touch/MOMO/wiki)
+* [모모의 URLSession Testable하게 만들기](https://github.com/Moms-Touch/MOMO/wiki/%EB%AA%A8%EB%AA%A8%EC%9D%98-URLSession-Testable%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0)
 
 ## License
 ```
