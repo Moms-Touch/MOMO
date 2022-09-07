@@ -53,7 +53,7 @@
 
 ## CollectionView의 크기가 마음대로 정해지는 issue
 * collectionView cell의 크기가 image로 인해 마음대로 정해지는 issue가 발생했다. 이로 인해서 cell의 크기를 미리 정해줘야하는 issue가 생겼다. 
-* [collectionView cell의 최적화 크기 찾기](https://github.com/Moms-Touch/MOMO/wiki)
+* [collectionView cell의 최적화 크기 찾기](https://github.com/Moms-Touch/MOMO/wiki/collectionView-cell%EC%9D%98-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%81%AC%EA%B8%B0-%EC%B0%BE%EA%B8%B0)
 
 ## TextView에 글을 쓸 때, keyboard 영역 아래로 내려가는 issue
 * textview에 글을 쓰다보면, keyboard 영역 아래로 계속 내려가는 issue가 발생했다. 커서를 기준으로 자동스크롤이 진행되어야하는데, 그렇지 않았다. 그렇기에, textview를 키보드의 유무에 따라서 autoLayout 변경했다.
