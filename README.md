@@ -36,6 +36,9 @@
 
 ## 개선점
 
+### MVVM-C 도입
+- 
+
 ### Rx + Clean Architecture
 * 기존의 앱은 MVC 기반으로 개발되었다. MVC를 선택한 이유는 앱을 기획하고, 개발하는데 있어서 해커톤 일정을 맞추기 위한 속도가 중시되었다. 또한 직관적인 UI 개발을 위하여 storyboard를 활용한 개발이 진행되었다.
 * 운영을 하면서, RxSwift를 기반으로 한 Clean Architecture을 도입중에 있다. 현재는 로그인, 회원가입을 제외한 대부분의 기능이 모두 RX + Clean Architecture로 변화가 이루어졌다.
