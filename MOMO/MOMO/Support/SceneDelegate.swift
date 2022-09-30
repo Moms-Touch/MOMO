@@ -8,7 +8,11 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
+    let sceneDIContainer = SceneDIContainer()
+    
+    var sceneFlowCoordintor: SceneFlowCoordinator?
+    
   var isLogged = true
   var window: UIWindow?
 

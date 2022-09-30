@@ -177,6 +177,9 @@
 		75CE01C527661C0F0057CF9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C427661C0F0057CF9B /* NetworkManager.swift */; };
 		75CE01C727662CAC0057CF9B /* NetworkCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C627662CAC0057CF9B /* NetworkCoder.swift */; };
 		75CE01CA27662CE00057CF9B /* APIable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE01C927662CE00057CF9B /* APIable.swift */; };
+		8103F24B28E72B2200CC5E47 /* SceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8103F24A28E72B2200CC5E47 /* SceneDIContainer.swift */; };
+		8103F24D28E72CBD00CC5E47 /* SceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8103F24C28E72CBD00CC5E47 /* SceneFlowCoordinator.swift */; };
+		8103F24F28E72F0800CC5E47 /* LoginDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8103F24E28E72F0800CC5E47 /* LoginDIContainer.swift */; };
 		B1615E9C27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */; };
 		B1615E9F27F2FC1100DC4E63 /* DiaryInputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615E9E27F2FC1100DC4E63 /* DiaryInputType.swift */; };
 		B1615EB727F4527E00DC4E63 /* WIthTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1615EB627F4527E00DC4E63 /* WIthTextViewModel.swift */; };
@@ -389,6 +392,9 @@
 		75CE01C427661C0F0057CF9B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		75CE01C627662CAC0057CF9B /* NetworkCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCoder.swift; sourceTree = "<group>"; };
 		75CE01C927662CE00057CF9B /* APIable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIable.swift; sourceTree = "<group>"; };
+		8103F24A28E72B2200CC5E47 /* SceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDIContainer.swift; sourceTree = "<group>"; };
+		8103F24C28E72CBD00CC5E47 /* SceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFlowCoordinator.swift; sourceTree = "<group>"; };
+		8103F24E28E72F0800CC5E47 /* LoginDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDIContainer.swift; sourceTree = "<group>"; };
 		893E087FF19826B888D50EC3 /* Pods_MOMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1615E9B27F2F3CD00DC4E63 /* CreateDiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiaryViewModel.swift; sourceTree = "<group>"; };
 		B1615E9E27F2FC1100DC4E63 /* DiaryInputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInputType.swift; sourceTree = "<group>"; };
@@ -961,6 +967,15 @@
 			path = APIable;
 			sourceTree = "<group>";
 		};
+		8103F24928E72B0E00CC5E47 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				8103F24A28E72B2200CC5E47 /* SceneDIContainer.swift */,
+				8103F24E28E72F0800CC5E47 /* LoginDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
 		B1615EC227F5AF5200DC4E63 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
@@ -1259,6 +1274,7 @@
 		DD43E8D5270B4A3A00699DA1 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				8103F24928E72B0E00CC5E47 /* DIContainer */,
 				DD1356FB270B53C4003BAB4A /* Generated */,
 				DD43E8C3270B4A2100699DA1 /* SceneDelegate.swift */,
 				DD43E8C1270B4A2100699DA1 /* AppDelegate.swift */,
@@ -1268,6 +1284,7 @@
 				DD43E8CF270B4A2300699DA1 /* Info.plist */,
 				28B49140274BB12C002BA67A /* DeviceGroup.swift */,
 				28B49142274BB160002BA67A /* DeviceManager.swift */,
+				8103F24C28E72CBD00CC5E47 /* SceneFlowCoordinator.swift */,
 			);
 			name = Support;
 			path = MOMO/Support;
@@ -1621,6 +1638,7 @@
 				28520976275261F200AB8BAC /* CollectionViewCellPresentationController.swift in Sources */,
 				28B49141274BB12C002BA67A /* DeviceGroup.swift in Sources */,
 				285D0DE327E7163800B22287 /* RecommendRemoteAPI.swift in Sources */,
+				8103F24F28E72F0800CC5E47 /* LoginDIContainer.swift in Sources */,
 				285209EE2753329600AB8BAC /* KeyboardScrollable.swift in Sources */,
 				281D353D2762313700A128A5 /* RecommendDetailViewController.swift in Sources */,
 				B1615EE627FAC51E00DC4E63 /* DiaryShowViewController.swift in Sources */,
@@ -1647,12 +1665,14 @@
 				28F471412738B3090074D148 /* HomeMainViewController.swift in Sources */,
 				288EFD1D2755D41E000D1617 /* AlertTableViewCell.swift in Sources */,
 				75CE01CA27662CE00057CF9B /* APIable.swift in Sources */,
+				8103F24B28E72B2200CC5E47 /* SceneDIContainer.swift in Sources */,
 				288EFD1B2755ADA0000D1617 /* MomoPageViewController.swift in Sources */,
 				28A9995F277880D300459D19 /* Post.swift in Sources */,
 				28A99969277AF4B400459D19 /* PutApi.swift in Sources */,
 				B1615EF427FB17EE00DC4E63 /* RecordPlayer.swift in Sources */,
 				75BA37FA2781F5940035F886 /* PolicyMainTableViewCell.swift in Sources */,
 				B1615ECF27F5C49E00DC4E63 /* Recoder.swift in Sources */,
+				8103F24D28E72CBD00CC5E47 /* SceneFlowCoordinator.swift in Sources */,
 				2861942E27DE468E0012250F /* NetworkDecoding.swift in Sources */,
 				28A99970277C6B2500459D19 /* BabyInfoViewModel.swift in Sources */,
 				28A99967277AE5BB00459D19 /* UserData.swift in Sources */,
