@@ -55,10 +55,6 @@
     <img src="https://user-images.githubusercontent.com/69891604/187993667-10f09c7f-18f2-47ee-a8ef-b8f6e781c561.png" width="200" height="400"/>
 </p>
 
-### KingFisher 걷어내기
-* KingFisher의 기능은 많지만, MOMO에서 사용하는 기능은 이미지 캐싱하는 기능만 사용한다. 그렇기 때문에 이미지 캐싱 class와 protocol을 사용해서 KingFisher을 걷어냈다.
-* [모모의 KingFisher 걷어내기](https://github.com/Moms-Touch/MOMO/wiki)
-
 ### URLSessionProtocol 
 * 모모에서는 URLSession을 사용할 때, 테스트가 용이한 코드를 작성하기 위해서 URLSession과 URLSessionTask를 mocking할 수 있는 장치를 마련한다. 그를 위해서 URLSession과 URLSessionTask에 채택시킬 각각의 protocol을 만들고, 그 프로토콜을 채택한 mock 객체를 만들 수 있다.
 * [모모의 URLSession Testable하게 만들기](https://github.com/Moms-Touch/MOMO/wiki/%EB%AA%A8%EB%AA%A8%EC%9D%98-URLSession-Testable%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0)
